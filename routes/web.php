@@ -17,7 +17,9 @@ Route::get('/', function () {
 
 Route::get('/admin', 'LoginController@index');
 Route::post('/admin/login', 'LoginController@checkLogin');
-
+Route::get('/admin/dashboard',function () {
+    return view('admin.dashboard');
+});
 /*Route::get('/admin', function() {
     return view('admin.login');
 });*/
