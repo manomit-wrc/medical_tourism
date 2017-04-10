@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin', function() {
+Route::get('/admin', 'LoginController@index');
+Route::post('/admin/login', 'LoginController@checkLogin');
+
+/*Route::get('/admin', function() {
     return view('admin.login');
-});
+});*/
