@@ -18,7 +18,7 @@
                     <li><a href="#">Cities</a></li>
                     <li><a href="#">Help</a></li>                  
                 </ul>
-                <span class="copy">&copy; 2015 Company Name</span>
+                <span class="copy">&copy; <script>document.write(new Date().getFullYear())</script> Swasthya Bandhab</span>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4">
               <ul class="social list-inline">
@@ -31,35 +31,47 @@
         </div>
     </footer>
 </div>
+<!-- jQuery 2.2.3 -->
+{!!Html::script("storage/admin/js/jquery-2.2.3.min.js")!!}
+<!-- Bootstrap 3.3.6 -->
+{!!Html::script("storage/admin/js/bootstrap.min.js")!!}
+<!-- DataTables -->
+{!!Html::script("storage/admin/js/jquery.dataTables.min.js")!!}
+{!!Html::script("storage/admin/js/dataTables.bootstrap.min.js")!!}
+<!-- SlimScroll 1.3.0 -->
+{!!Html::script("storage/admin/js/jquery.slimscroll.min.js")!!}
+<!-- FastClick -->
+{!!Html::script("storage/admin/js/fastclick.js")!!}
+<!-- AdminLTE App -->
+{!!Html::script("storage/admin/js/app.min.js")!!}
+<!-- Sparkline -->
+{!!Html::script("storage/admin/js/jquery.sparkline.min.js")!!}
+<!-- jvectormap -->
+{!!Html::script("storage/admin/js/jquery-jvectormap-1.2.2.min.js")!!}
+{!!Html::script("storage/admin/js/jquery-jvectormap-world-mill-en.js")!!}
 
-{!!Html::script("js/jquery.min.js")!!}
-{!!Html::script("js/jquery.validate.js")!!}
-{!!Html::script("js/bootstrap.min.js")!!}
-{!!Html::script("js/custome.js")!!}
-{!!Html::script("js/star-rating.js")!!}
-{!!Html::script("js/bootstrap-datepicker.js")!!}
+<!-- ChartJS 1.0.1 -->
+{!!Html::script("storage/admin/js/Chart.min.js")!!}
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<!--- {!!Html::script("js/dashboard2.js")!!}-->
+<!--- AdminLTE for demo purposes -->
+{!!Html::script("storage/admin/js/demo.js")!!}
 
-{!!Html::script("js/viewportchecker.js")!!}
-
-<script type="text/javascript">
-jQuery(document).ready(function() {
-   $(".reply").click(function(){
-     var cur_el=$(this).parent()
-     var next_el=cur_el.find(".tg");
-     next_el.slideToggle( "slow");
-    }); 
-  jQuery('.post').addClass("hidden").viewportChecker({
-      classToAdd: 'visible animated fadeIn', // Class to add to the elements when they are visible
-      offset: 100    
-     }); 
-
-   $('#datepicker-component').datepicker({
-         format: 'dd-mm-yyyy'
-      });
-
-         
-});            
+<script>
+$(function () {
+    //$("#example1").DataTable();
+    $('#example1').DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false
+    });
+  });
 </script>
+<!-- page script -->
+
 <!-- modal  -->
 <div class="modal fade" id="inviteFriend" role="dialog">
     <div class="modal-dialog">
@@ -98,9 +110,9 @@ jQuery(document).ready(function() {
 
 <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.3.8
+      <b>Version</b> 1.0.0
     </div>
-    <strong>Copyright &copy; 2014-2016 <a href="#">Test</a>.</strong> All rights
+    <strong>Copyright &copy; <script>document.write(new Date().getFullYear())</script> <a href="#">Swasthya Bandhab</a>.</strong> All rights
     reserved.
 </footer>
 
@@ -299,25 +311,3 @@ jQuery(document).ready(function() {
   </div>
 <!-- ./wrapper -->
 
-<!-- jQuery 2.2.3 -->
-{!! Html::script('storage/admin/js/jquery-2.2.3.min.js') !!}   
-<!-- Bootstrap 3.3.6 -->
-{!! Html::script('storage/admin/js//bootstrap.min.js') !!}   
-<!-- FastClick -->
-{!! Html::script('storage/admin/js/fastclick.js') !!}   
-<!-- AdminLTE App -->
-{!! Html::script('storage/admin/js/app.min.js') !!}   
-<!-- Sparkline -->
-{!! Html::script('storage/admin/js/jquery.sparkline.min.js') !!}   
-<!-- jvectormap -->
-{!! Html::script('storage/admin/js/jquery-jvectormap-1.2.2.min.js') !!}   
-{!! Html::script('storage/admin/js/jquery-jvectormap-world-mill-en.js') !!}   
-<!-- SlimScroll 1.3.0 -->
-{!! Html::script('storage/admin/js/jquery.slimscroll.min.js') !!}   
-<!-- ChartJS 1.0.1 -->
-{!! Html::script('storage/admin/js/Chart.min.js') !!}   
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-{!! Html::script('storage/admin/js/dashboard2.js') !!}   
-<!-- AdminLTE for demo purposes -->
-{!! Html::script('storage/admin/js/demo.js') !!} 
-  

@@ -701,3 +701,21 @@ Stack trace:
 [2017-04-12 04:33:14] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'LangHelper' not found' in D:\medical_tourism\storage\framework\views\474874c186a61fee78b2e8ef992ac2bb833c412d.php:4
 Stack trace:
 #0 {main}  
+[2017-04-12 06:11:50] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'App\Http\Controllers\Session' not found' in C:\xampp\htdocs\medical_tourism\app\Http\Controllers\LoginController.php:40
+Stack trace:
+#0 {main}  
+[2017-04-12 06:12:32] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'App\Http\Controllers\Redirect' not found' in C:\xampp\htdocs\medical_tourism\app\Http\Controllers\LoginController.php:42
+Stack trace:
+#0 {main}  
+[2017-04-12 07:26:03] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'App\Http\Controllers\Auth' not found' in C:\xampp\htdocs\medical_tourism\app\Http\Controllers\DashboardController.php:14
+Stack trace:
+#0 {main}  
+[2017-04-12 07:28:36] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'App\Http\Controllers\Auth' not found' in C:\xampp\htdocs\medical_tourism\app\Http\Controllers\DashboardController.php:14
+Stack trace:
+#0 {main}  
+[2017-04-12 07:29:18] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'App\Http\Controllers\Auth' not found' in C:\xampp\htdocs\medical_tourism\app\Http\Controllers\DashboardController.php:14
+Stack trace:
+#0 {main}  
+[2017-04-12 08:43:31] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Cannot use Auth as Auth because the name is already in use' in C:\xampp\htdocs\medical_tourism\app\Http\Controllers\LoginController.php:7
+Stack trace:
+#0 {main}  

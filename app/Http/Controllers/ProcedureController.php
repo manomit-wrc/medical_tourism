@@ -6,14 +6,14 @@ use Illuminate\Http\Request;
 use Auth;
 use Session;
 
-class DashboardController extends Controller
+class ProcedureController extends Controller
 {
     public function __construct() {
     	$this->middleware('auth');
     }
     public function index() {
-    	$user_data = Auth::user();
-        Session::put('name',$user_data->name);
-    	return view('admin.dashboard');
+    	//$user_data = Auth::user();
+        //Session::put('name',$user_data->name);
+    	return view('admin.procedure.index');
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+
 class LoginController extends Controller
 {
     public function __construct() {
@@ -34,6 +35,12 @@ class LoginController extends Controller
     		return view('admin.login');
     	}
 
+    }
+    //Admin Logout
+    public function logout() {
+      Auth::logout(); // logout user
+      return view('admin.login');
+      //return redirect('/admin/login');//redirect back to login
     }
     
 }

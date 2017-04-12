@@ -8,8 +8,11 @@
   {!! Html::style('storage/admin/css/bootstrap.min.css') !!}
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-  <!-- Ionicons -->
+   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+   <!-- DataTables -->
+  {!! Html::style('storage/admin/css/dataTables.bootstrap.css') !!}
+  
   <!-- jvectormap -->
   {!! Html::style('storage/admin/css/jquery-jvectormap-1.2.2.css') !!}
   <!-- Theme style -->
