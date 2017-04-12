@@ -25,8 +25,8 @@ class LoginController extends Controller
 
     	if(Auth::guard('web')->attempt(['email'=>$request->email, 'password'=>$request->password], $request->remember)) {
             //echo "hiiiii"; die;
-    		//return redirect('/admin/dashboard');
-            return view('admin.dashboard');
+    		return redirect('/admin/dashboard');
+            //return view('admin.dashboard');
     	}
     	else {
     		$request->session()->flash("login-status", "Email ID Or Password Didn't Matched");
@@ -35,7 +35,5 @@ class LoginController extends Controller
     	}
 
     }
-    public function dashboard() {
-        return view('admin.dashboard');
-    }
+    
 }
