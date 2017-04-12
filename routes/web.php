@@ -17,9 +17,7 @@ Route::get('/', function () {
 
 Route::get('/admin', 'LoginController@index');
 Route::post('/admin/login', 'LoginController@checkLogin');
-Route::get('/admin/dashboard',function () {
-    return view('admin.dashboard');
-});
-/*Route::get('/admin', function() {
-    return view('admin.login');
+Route::get('/admin/dashboard', 'DashboardController@index')->middleware('web');
+/*Route::group(['middleware' => ['web']], function () {
+    Route::get('/admin/dashboard', 'DashboardController@index');
 });*/
