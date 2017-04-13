@@ -5,12 +5,13 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Procedure
+        Treatment
        <!--  <small>advanced tables</small> -->
       </h1>
       <ol class="breadcrumb">
         <li><a href="#">Home</a></li>
-        <li class="active">Procedure</li>
+        <li class="active">Treatment</li>
+        
       </ol>
     </section>
 
@@ -24,7 +25,7 @@
               <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
             </div>
 
-            <div><a href="{!!URL::to('/admin/procedure/create')!!}"><button type="button" class="btn bg-purple">ADD</button></a></div>
+            <div><a href="{!!URL::to('/admin/treatment/create')!!}"><button type="button" class="btn bg-purple">ADD</button></a></div>
 
             <!-- /.box-header -->
             <div class="box-body">

@@ -35,6 +35,8 @@
 {!!Html::script("storage/admin/js/jquery-2.2.3.min.js")!!}
 <!-- Bootstrap 3.3.6 -->
 {!!Html::script("storage/admin/js/bootstrap.min.js")!!}
+<!-- Select2 -->
+{!!Html::script("storage/admin/js/select2.full.min.js")!!}
 <!-- DataTables -->
 {!!Html::script("storage/admin/js/jquery.dataTables.min.js")!!}
 {!!Html::script("storage/admin/js/dataTables.bootstrap.min.js")!!}
@@ -59,6 +61,8 @@
 
 <script>
 $(function () {
+    //Initialize Select2 Elements
+    $(".select2").select2();
     //$("#example1").DataTable();
     $('#example1').DataTable({
       "paging": true,

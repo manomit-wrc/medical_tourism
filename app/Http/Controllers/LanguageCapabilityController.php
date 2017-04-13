@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\LanguageCapability as LanguageCapability;
 use Auth;
 
-class ProcedureController extends Controller
+
+class LanguageCapabilityController extends Controller
 {
-    public function __construct() {
+     public function __construct() {
     	$this->middleware('auth');
     }
 
@@ -18,9 +20,10 @@ class ProcedureController extends Controller
      * @return Response
      */
     public function index() {
-    	return view('admin.procedure.index');
+    	return view('admin.languagecapability.index');
     }
 
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -28,7 +31,7 @@ class ProcedureController extends Controller
      */
     public function create()
     {
-       return view('admin.procedure.create');
+       return view('admin.languagecapability.create');
     }
 
     /**
@@ -36,9 +39,10 @@ class ProcedureController extends Controller
      *
      * @return Response
      */
-    public function store()
+    public function store(LanguageCapability $request)
     {
-        //
+       // Getting all data after success validation.
+       print_r($request->all());die;
     }
 
     /**
@@ -60,7 +64,7 @@ class ProcedureController extends Controller
      */
     public function edit($id)
     {
-       return view('admin.procedure.edit');
+       return view('admin.languagecapability.edit');
     }
 
     /**

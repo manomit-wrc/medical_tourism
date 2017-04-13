@@ -41,8 +41,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{!!URL::to('/admin/procedure')!!}"><i class="fa fa-circle-o"></i>Procedure management</a></li>
-            <li class="active"><a href="#"><i class="fa fa-circle-o"></i>Treatment management</a></li>
+            <li class="{{ Request::segment(2) === 'languagecapability' ? 'active' : null }}"><a href="{!!URL::to('/admin/languagecapability')!!}"><i class="fa fa-circle-o"></i>Language capability</a></li>
+            <li class="{{ Request::segment(2) === 'procedure' ? 'active' : null }}"><a href="{!!URL::to('/admin/procedure')!!}"><i class="fa fa-circle-o"></i>Procedure management</a></li>
+            <li class="{{ Request::segment(2) === 'treatment' ? 'active' : null }}" ><a href="{!!URL::to('/admin/treatment')!!}"><i class="fa fa-circle-o"></i>Treatment management</a></li>
           </ul>
         </li>
 

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
 
-class ProcedureController extends Controller
+class TreatmentController extends Controller
 {
     public function __construct() {
     	$this->middleware('auth');
@@ -18,7 +18,7 @@ class ProcedureController extends Controller
      * @return Response
      */
     public function index() {
-    	return view('admin.procedure.index');
+    	return view('admin.treatment.index');
     }
 
     /**
@@ -28,7 +28,7 @@ class ProcedureController extends Controller
      */
     public function create()
     {
-       return view('admin.procedure.create');
+       return view('admin.treatment.create');
     }
 
     /**
@@ -60,7 +60,7 @@ class ProcedureController extends Controller
      */
     public function edit($id)
     {
-       return view('admin.procedure.edit');
+       return view('admin.treatment.edit');
     }
 
     /**

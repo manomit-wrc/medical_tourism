@@ -15,6 +15,8 @@
   
   <!-- jvectormap -->
   {!! Html::style('storage/admin/css/jquery-jvectormap-1.2.2.css') !!}
+  <!-- Select2 -->
+  {!! Html::style('storage/admin/css/select2.min.css') !!}
   <!-- Theme style -->
   {!! Html::style('storage/admin/css/AdminLTE.min.css') !!}
   <!-- AdminLTE Skins. Choose a skin from the css/skins
