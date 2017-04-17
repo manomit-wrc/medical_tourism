@@ -29,6 +29,9 @@
 
             <!-- /.box-header -->
             <div class="box-body">
+              @if (Session::has('message'))
+                  <div class="alert alert-info">{{ Session::get('message') }}</div>
+              @endif
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                   <tr>
@@ -38,17 +41,27 @@
                 </thead>
                
                 <tbody>
-                  <tr>
-                    <td>Trident</td>
-                    <td>Internet</td>
-                  </tr>
-               
+                  @if (count($langcapabilites) > 0)
+                    @foreach($langcapabilites as $langcapabi)
+                      <tr>
+                        <td>{{ $langcapabi->name }}</td>
+                        <td>
+                          <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
+                            <!-- we will add this later since its a little more complicated than the other two buttons -->
+                             {!! Form::open(array('method' => 'DELETE','url' => array('admin/languagecapability/delete', $langcapabi->id),'class' => 'pull-right')) !!}
+                                  {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                              {!! Form::close() !!}
+                          <a href="{!!URL::to('/admin/languagecapability/edit',$langcapabi->id)!!}" class="btn btn-primary">Edit</a>
+                        </td>
+                      </tr>
+                    @endforeach
+                  @endif
                 </tbody>
                 <tfoot>
-                <tr>
+                <!-- <tr>
                   <th>Rendering engine</th>
                   <th>Browser</th>
-                </tr>
+                </tr> -->
                 </tfoot>
               </table>
             </div>

@@ -26,36 +26,41 @@
           <!-- /.box -->
           <!-- general form elements disabled -->
           <div class="box box-warning">
-            <!-- <div class="box-header with-border">
-              <h3 class="box-title">General Elements</h3>
-            </div> -->
-            <!-- /.box-header -->
-            <div class="box-body">
+            <div class="box-header with-border">
+              <h3 class="box-title">Edit {{ $procedures_data->name }}</h3>
+            </div>
+             <!-- if there are creation errors, they will show here -->
              
-                 {!! Form::open(array('method' => 'POST' , 'id'=>'procedure_add' , 'role'=>'form','class'=>'procedure_form','url'=>'procedure/create')) !!}
+            <!-- /.box-header -->
+            @if($errors->any())
+              <div class="alert alert-danger">
+                  @foreach($errors->all() as $error)
+                      <p>{{ $error }}</p>
+                  @endforeach
+              </div>
+            @endif
+            <div class="box-body">
+                 {{ Form::model($procedures_data,array('method' => 'PATCH','role'=>'form','url' => array('admin/procedure/update', $procedures_data->id),'id'=>'procedure_edit')) }}
                     
                     <div class="col-md-6">
+                        
+
                         <!-- text input -->
                         <div class="form-group">
-                          <label>Procedure name</label>
-                          {!! Form::text('name','',array('class'=>'form-control','id'=>'name','placeholder'=>'Enter procedure name')) !!}
+                          {!! Form::label('name', 'Procedure name:') !!}
+                          {!! Form::text('name',null,array('class'=>'form-control','id'=>'name','placeholder'=>'Enter procedure name')) !!}
                         </div>
                         <!-- /.text input -->
 
-                        <!-- textarea -->
-                       <!--  <div class="form-group">
-                          <label>Textarea</label>
-                          <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
-                        </div> -->
-                        <!-- /.textarea -->
+                        
                         
                          <!-- input button -->
                         <div class="box-footer">
-                           {!! Form::button('submit',array('class'=>'btn btn-primary pull-right','id'=>'exact-submit-button'))!!}
+                           {!! Form::submit('submit',array('class'=>'btn btn-primary pull-right','id'=>'exact-submit-button'))!!}
                         </div>
                         <!-- /.input button -->
                     </div>
-                 {!! Form::token()!!}
+                
                 {!! Form::close() !!}
               
             </div>

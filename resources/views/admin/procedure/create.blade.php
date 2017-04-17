@@ -16,7 +16,7 @@
     </section>
 
   <!-- Main content -->
-    <section class="content">
+     <section class="content">
       <div class="row">
   
         <!-- right column -->
@@ -26,34 +26,39 @@
           <!-- /.box -->
           <!-- general form elements disabled -->
           <div class="box box-warning">
+             <!-- if there are creation errors, they will show here -->
+            
             <!-- <div class="box-header with-border">
               <h3 class="box-title">General Elements</h3>
             </div> -->
             <!-- /.box-header -->
+            @if($errors->any())
+              <div class="alert alert-danger">
+                  @foreach($errors->all() as $error)
+                      <p>{{ $error }}</p>
+                  @endforeach
+              </div>
+            @endif
             <div class="box-body">
              
-                 {!! Form::open(array('method' => 'POST' , 'id'=>'procedure_add' , 'role'=>'form','class'=>'procedure_form','url'=>'procedure/create')) !!}
+                 {!! Form::open(array('method' => 'POST','role'=>'form','url'=>'admin/procedure/store','id'=>'procedure_add')) !!}
                     
                     <div class="col-md-6">
+                        
+
                         <!-- text input -->
                         <div class="form-group">
-                          <label>Procedure name</label>
+                          {!! Form::label('name', 'Procedure name:') !!}
                           {!! Form::text('name','',array('class'=>'form-control','id'=>'name','placeholder'=>'Enter procedure name')) !!}
                         </div>
                         <!-- /.text input -->
 
-                        <!-- textarea -->
-                       <!--  <div class="form-group">
-                          <label>Textarea</label>
-                          <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
-                        </div> -->
-                        <!-- /.textarea -->
                         
-                         <!-- input button -->
+                         <!-- input submit button -->
                         <div class="box-footer">
-                           {!! Form::button('submit',array('class'=>'btn btn-primary pull-right','id'=>'exact-submit-button'))!!}
+                           {!! Form::submit('submit',array('class'=>'btn btn-primary pull-right','id'=>'exact-submit-button'))!!}
                         </div>
-                        <!-- /.input button -->
+                        <!-- /.input submit button -->
                     </div>
                  {!! Form::token()!!}
                 {!! Form::close() !!}

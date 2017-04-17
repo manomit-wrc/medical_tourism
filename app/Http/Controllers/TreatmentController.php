@@ -4,7 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Procedure;
+use App\Treatment;
 use Auth;
+use Input;
+use Redirect;
+use Session;
+use Validator;
 
 class TreatmentController extends Controller
 {
@@ -18,7 +24,9 @@ class TreatmentController extends Controller
      * @return Response
      */
     public function index() {
-    	return view('admin.treatment.index');
+    	$treatment_datas = Treatment::all();
+        //echo "<pre>"; print_r($treatment_datas); die;
+        return view('admin.treatment.index')->with('treatment_datas',$treatment_datas);
     }
 
     /**
@@ -28,7 +36,9 @@ class TreatmentController extends Controller
      */
     public function create()
     {
-       return view('admin.treatment.create');
+       $procedure_lists = Procedure::where('status', 1)->orderBy('name')->pluck('name', 'id');
+       //echo "<pre>"; print_r($procedure_lists); die;
+       return view('admin.treatment.create')->with('procedure_lists',$procedure_lists);
     }
 
     /**
@@ -36,9 +46,20 @@ class TreatmentController extends Controller
      *
      * @return Response
      */
-    public function store()
+    public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+        'name' => 'required|unique:treatments',
+        'procedure_id' => 'required'
+      ]);
+      
+      // Getting all data after success validation. 
+      //dd($request->all()); 
+      $input = $request->all();
+     
+      Treatment::create($input);
+      Session::flash('message', 'Successfully added!');
+      return Redirect::to('/admin/treatment');
     }
 
     /**
@@ -60,7 +81,12 @@ class TreatmentController extends Controller
      */
     public function edit($id)
     {
-       return view('admin.treatment.edit');
+       
+       $procedure_lists = Procedure::where('status', 1)->orderBy('name')->pluck('name', 'id');
+       //echo "<pre>"; print_r($procedure_lists); die;
+       // get the treatment
+       $treatment_datas = Treatment::findOrFail($id);
+       return view('admin.treatment.edit')->with(array('treatment_datas'=> $treatment_datas,'procedure_lists'=> $procedure_lists));
     }
 
     /**
@@ -70,9 +96,25 @@ class TreatmentController extends Controller
      * @return Response
      */
 
-    public function update($id)
+    public function update($id,Request $request)
     {
-        //
+       //echo $id; die;
+        $trtmnt = Treatment::find($id);
+        // validate
+        $this->validate($request, [
+        'name' => 'required|unique:treatments',
+        'procedure_id' => 'required'
+        ]);
+      
+        // Getting all data after success validation. 
+        $input = $request->all();
+        //echo "<pre>"; print_r($input); die;
+        $trtmnt->fill($input)->save();
+         
+
+        // redirect
+        Session::flash('message', 'Successfully updated');
+        return Redirect::to('/admin/treatment');
     }
 
     /**

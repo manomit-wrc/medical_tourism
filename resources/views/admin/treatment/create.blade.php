@@ -16,7 +16,7 @@
     </section>
 
   <!-- Main content -->
-    <section class="content">
+     <section class="content">
       <div class="row">
   
         <!-- right column -->
@@ -26,49 +26,45 @@
           <!-- /.box -->
           <!-- general form elements disabled -->
           <div class="box box-warning">
+             <!-- if there are creation errors, they will show here -->
+            
             <!-- <div class="box-header with-border">
               <h3 class="box-title">General Elements</h3>
             </div> -->
             <!-- /.box-header -->
+            @if($errors->any())
+              <div class="alert alert-danger">
+                  @foreach($errors->all() as $error)
+                      <p>{{ $error }}</p>
+                  @endforeach
+              </div>
+            @endif
             <div class="box-body">
              
-                 {!! Form::open(array('method' => 'POST' , 'id'=>'treatment_add' , 'role'=>'form','class'=>'treatment_form','url'=>'treatment/create')) !!}
+                 {!! Form::open(array('method' => 'POST','role'=>'form','url'=>'admin/treatment/store','id'=>'treatment_add')) !!}
                     
                     <div class="col-md-6">
-                        <!-- form-group dropdown-->
+                        
+                         <!-- form-group dropdown-->
                         <div class="form-group">
-                          <label>Procedure</label>
-                          <select class="form-control select2" style="width: 100%;">
-                            <option selected="selected">Alabama</option>
-                            <option>Alaska</option>
-                            <option>California</option>
-                            <option>Delaware</option>
-                            <option>Tennessee</option>
-                            <option>Texas</option>
-                            <option>Washington</option>
-                          </select>
+                          <label>{!! Form::label('procedure_id', 'Procedure:') !!}</label>
+                           {!! Form::select('procedure_id', $procedure_lists, null, ['class' => 'form-control select2']) !!}
                         </div>
                         <!-- /.form-group dropdown-->
-
+                        
                         <!-- text input -->
                         <div class="form-group">
-                          <label>Treatment name</label>
+                          {!! Form::label('name', 'Treatment name:') !!}
                           {!! Form::text('name','',array('class'=>'form-control','id'=>'name','placeholder'=>'Enter treatment name')) !!}
                         </div>
                         <!-- /.text input -->
 
-                        <!-- textarea -->
-                       <!--  <div class="form-group">
-                          <label>Textarea</label>
-                          <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
-                        </div> -->
-                        <!-- /.textarea -->
                         
-                         <!-- input button -->
+                         <!-- input submit button -->
                         <div class="box-footer">
-                           {!! Form::button('submit',array('class'=>'btn btn-primary pull-right','id'=>'exact-submit-button'))!!}
+                           {!! Form::submit('submit',array('class'=>'btn btn-primary pull-right','id'=>'exact-submit-button'))!!}
                         </div>
-                        <!-- /.input button -->
+                        <!-- /.input submit button -->
                     </div>
                  {!! Form::token()!!}
                 {!! Form::close() !!}

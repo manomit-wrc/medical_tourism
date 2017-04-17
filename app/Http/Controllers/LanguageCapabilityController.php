@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\LanguageCapability as LanguageCapability;
+use App\LanguageCapability;
 use Auth;
+use Input;
+use Redirect;
+use Session;
+use Validator;
 
 
 class LanguageCapabilityController extends Controller
@@ -20,7 +24,9 @@ class LanguageCapabilityController extends Controller
      * @return Response
      */
     public function index() {
-    	return view('admin.languagecapability.index');
+        $langcapabilites = LanguageCapability::all();
+        //echo "<pre>"; print_r($langcapbes); die;
+    	return view('admin.languagecapability.index')->with('langcapabilites',$langcapabilites);
     }
 
     
@@ -39,10 +45,19 @@ class LanguageCapabilityController extends Controller
      *
      * @return Response
      */
-    public function store(LanguageCapability $request)
+    public function store(Request $request)
     {
-       // Getting all data after success validation.
-       print_r($request->all());die;
+       $this->validate($request, [
+        'name' => 'required|unique:language_capabilities'
+      ]);
+      
+      // Getting all data after success validation. 
+      //dd($request->all()); 
+      $input = $request->all();
+     
+      LanguageCapability::create($input);
+      Session::flash('message', 'Successfully added!');
+      return Redirect::to('/admin/languagecapability');
     }
 
     /**
@@ -64,7 +79,9 @@ class LanguageCapabilityController extends Controller
      */
     public function edit($id)
     {
-       return view('admin.languagecapability.edit');
+       // get the language capability
+       $langcapabilites = LanguageCapability::findOrFail($id);
+       return view('admin.languagecapability.edit')->with('langcapabilites', $langcapabilites);
     }
 
     /**
@@ -74,10 +91,25 @@ class LanguageCapabilityController extends Controller
      * @return Response
      */
 
-    public function update($id)
+    public function update($id,Request $request)
     {
-        //
-    }
+        //echo $id; die;
+        $langcap = LanguageCapability::find($id);
+        // validate
+        $this->validate($request, [
+        'name' => 'required|unique:language_capabilities'
+        ]);
+      
+        // Getting all data after success validation. 
+        $input = $request->all();
+        //echo "<pre>"; print_r($input); die;
+        $langcap->fill($input)->save();
+         
+
+        // redirect
+        Session::flash('message', 'Successfully updated');
+        return Redirect::to('/admin/languagecapability');
+    }   
 
     /**
      * Remove the specified resource from storage.
@@ -88,6 +120,13 @@ class LanguageCapabilityController extends Controller
 
     public function destroy($id)
     {
-        //
+       //echo $id; die;
+       // delete
+        $langcap = LanguageCapability::findOrFail($id);
+        $langcap->delete();
+
+        // redirect
+        Session::flash('message', 'Successfully deleted');
+        return Redirect::to('/admin/languagecapability');
     }
 }

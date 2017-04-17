@@ -26,21 +26,29 @@
           <!-- /.box -->
           <!-- general form elements disabled -->
           <div class="box box-warning">
-            <!-- <div class="box-header with-border">
-              <h3 class="box-title">General Elements</h3>
-            </div> -->
-            <!-- /.box-header -->
-            <div class="box-body">
+            <div class="box-header with-border">
+              <h3 class="box-title">Edit {{ $langcapabilites->name }}</h3>
+            </div>
+             <!-- if there are creation errors, they will show here -->
              
-                 {!! Form::open(array('method' => 'POST' , 'id'=>'treatment_add' , 'role'=>'form','class'=>'treatment_form','url'=>'treatment/create')) !!}
+            <!-- /.box-header -->
+            @if($errors->any())
+              <div class="alert alert-danger">
+                  @foreach($errors->all() as $error)
+                      <p>{{ $error }}</p>
+                  @endforeach
+              </div>
+            @endif
+            <div class="box-body">
+                 {{ Form::model($langcapabilites,array('method' => 'PATCH','role'=>'form','url' => array('admin/languagecapability/update', $langcapabilites->id),'id'=>'languagecapability_edit')) }}
                     
                     <div class="col-md-6">
                         
 
                         <!-- text input -->
                         <div class="form-group">
-                          <label>Language capability name</label>
-                          {!! Form::text('name','',array('class'=>'form-control','id'=>'name','placeholder'=>'Enter language capability name')) !!}
+                          {!! Form::label('name', 'Language capability name:') !!}
+                          {!! Form::text('name',null,array('class'=>'form-control','id'=>'name','placeholder'=>'Enter language capability name')) !!}
                         </div>
                         <!-- /.text input -->
 
@@ -53,11 +61,11 @@
                         
                          <!-- input button -->
                         <div class="box-footer">
-                           {!! Form::button('submit',array('class'=>'btn btn-primary pull-right','id'=>'exact-submit-button'))!!}
+                           {!! Form::submit('submit',array('class'=>'btn btn-primary pull-right','id'=>'exact-submit-button'))!!}
                         </div>
                         <!-- /.input button -->
                     </div>
-                 {!! Form::token()!!}
+                
                 {!! Form::close() !!}
               
             </div>

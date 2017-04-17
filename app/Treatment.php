@@ -11,7 +11,7 @@ class Treatment extends Model
      *
      * @var string
      */
-    protected $table = 'procedures';
+    protected $table = 'treatments';
 
     /**
      * The attributes that are mass assignable.
@@ -25,4 +25,5 @@ class Treatment extends Model
      *
      * @var array
      */
+    
 }
