@@ -44,6 +44,10 @@
             <li class="{{ Request::segment(2) === 'languagecapability' ? 'active' : null }}"><a href="{!!URL::to('/admin/languagecapability')!!}"><i class="fa fa-circle-o"></i>Language capability</a></li>
             <li class="{{ Request::segment(2) === 'procedure' ? 'active' : null }}"><a href="{!!URL::to('/admin/procedure')!!}"><i class="fa fa-circle-o"></i>Procedure management</a></li>
             <li class="{{ Request::segment(2) === 'treatment' ? 'active' : null }}" ><a href="{!!URL::to('/admin/treatment')!!}"><i class="fa fa-circle-o"></i>Treatment management</a></li>
+            <li class="{{ Request::segment(2) === 'accrediation' ? 'active' : null }}" ><a href="{!!URL::to('/admin/accrediation')!!}"><i class="fa fa-circle-o"></i>Accrediation management</a></li>
+            <li class="{{ Request::segment(2) === 'accomodation' ? 'active' : null }}" ><a href="{!!URL::to('/admin/accomodation')!!}"><i class="fa fa-circle-o"></i>Accomodation management</a></li>
+            <li class="{{ Request::segment(2) === 'cuisine' ? 'active' : null }}" ><a href="{!!URL::to('/admin/cuisine')!!}"><i class="fa fa-circle-o"></i>Cuisine management</a></li>
+            <li class="{{ Request::segment(2) === 'specificservice' ? 'active' : null }}" ><a href="{!!URL::to('/admin/specificservice')!!}"><i class="fa fa-circle-o"></i>Specific Service management</a></li>
           </ul>
         </li>
 

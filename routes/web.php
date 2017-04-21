@@ -46,4 +46,36 @@ Route::group(['middleware' => ['auth']], function () {
     Route::patch('/admin/treatment/update/{id}','TreatmentController@update');
     Route::delete('/admin/treatment/delete/{id}','TreatmentController@destroy');
 
+    //Accrediation section 
+    Route::get('/admin/accrediation', 'AccrediationController@index');
+    Route::get('/admin/accrediation/create','AccrediationController@create');
+    Route::post('/admin/accrediation/store','AccrediationController@store');
+    Route::get('/admin/accrediation/edit/{id}','AccrediationController@edit');
+    Route::patch('/admin/accrediation/update/{id}','AccrediationController@update');
+    Route::delete('/admin/accrediation/delete/{id}','AccrediationController@destroy');
+
+    //Accomodation section 
+    Route::get('/admin/accomodation', 'AccomodationController@index');
+    Route::get('/admin/accomodation/create','AccomodationController@create');
+    Route::post('/admin/accomodation/store','AccomodationController@store');
+    Route::get('/admin/accomodation/edit/{id}','AccomodationController@edit');
+    Route::patch('/admin/accomodation/update/{id}','AccomodationController@update');
+    Route::delete('/admin/accomodation/delete/{id}','AccomodationController@destroy');
+
+    //Cuisine section 
+    Route::get('/admin/cuisine', 'CuisineController@index');
+    Route::get('/admin/cuisine/create','CuisineController@create');
+    Route::post('/admin/cuisine/store','CuisineController@store');
+    Route::get('/admin/cuisine/edit/{id}','CuisineController@edit');
+    Route::patch('/admin/cuisine/update/{id}','CuisineController@update');
+    Route::delete('/admin/cuisine/delete/{id}','CuisineController@destroy');
+
+    //Specific Service section 
+    Route::get('/admin/specificservice', 'SpecificServiceController@index');
+    Route::get('/admin/specificservice/create','SpecificServiceController@create');
+    Route::post('/admin/specificservice/store','SpecificServiceController@store');
+    Route::get('/admin/specificservice/edit/{id}','SpecificServiceController@edit');
+    Route::patch('/admin/specificservice/update/{id}','SpecificServiceController@update');
+    Route::delete('/admin/specificservice/delete/{id}','SpecificServiceController@destroy');
+
 });

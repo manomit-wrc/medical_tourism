@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Procedure extends Model
+class Accomodation extends Model
 {
-    /**
+     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'procedures';
+    protected $table = 'accomodations';
 
     /**
      * The attributes that are mass assignable.
@@ -25,8 +25,4 @@ class Procedure extends Model
      *
      * @var array
      */
-    public function treatments()
-    {
-        return $this->hasMany('App\Treatment');
-    }
 }
