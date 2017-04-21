@@ -45,7 +45,9 @@
                     @foreach($accrediation_lists as $accrediation_lists)
                       <tr>
                         <td>{{ $accrediation_lists->name }}</td>
-                        <td><img src='{!!URL::to("public/images/accrediation/".$accrediation_lists->accrediation_logo)!!}' class="img-circle" alt="Accrediation Logo"></td>
+                        <td>
+                          <img src="{{url('/uploads/accrediations/'.$accrediation_lists->accrediation_logo)}}" alt="Accrediation Logo" height="80" width="80">
+                         </td>
                         <td>
                           <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
                             <!-- we will add this later since its a little more complicated than the other two buttons -->

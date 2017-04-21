@@ -11,6 +11,7 @@ use Redirect;
 use Session;
 use Validator;
 
+
 class AccrediationController extends Controller
 {
      public function __construct() {
@@ -45,28 +46,43 @@ class AccrediationController extends Controller
      */
     public function store(Request $request)
     {
-	       $this->validate($request, [
-	        'name' => 'required|unique:accrediations',
-	        'accrediation_logo' => 'required'
-	      ]);
+	      // echo public_path(); die;
+          $this->validate($request, [
+            'name' => 'required|unique:accrediations',
+            'accrediation_logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024'
+          ]);
        
-        $imageName =  rand(11111, 99999) .'.' . $request->file('accrediation_logo')->getClientOriginalExtension();
-        //echo $imageName; die;
-	    $request->file('accrediation_logo')->move(
-	        base_path() . '/uploads/accrediations/', $imageName
-	    );
-        //echo $imageName; die;
-        $accrd = new Accrediation(array(
-	      'name' => $request->get('name'),
-	      'accrediation_logo' =>$imageName
-	    ));
+            /*$imageName =  rand(11111, 99999) .'.' . $request->file('accrediation_logo')->getClientOriginalExtension();
+            //echo $imageName; die;
+    	    $request->file('accrediation_logo')->move(
+    	        base_path() . '/uploads/accrediations/', $imageName
+    	    );*/
 
-	    $accrd->save();
+             //echo $imagename; die;
+            /*$accrd = new Accrediation(array(
+              'name' => $request->get('name'),
+              'accrediation_logo' =>$imagename
+            ));
 
-	    
+            $accrd->save();*/
+
+        
+            $accd = new Accrediation($request->input()) ;
+            $accd->name = $request->get('name') ;
+            if($file = $request->hasFile('accrediation_logo')) {
+                
+                $file = $request->file('accrediation_logo') ;
+                
+                $fileName = $file->getClientOriginalName() ;
+                $destinationPath = public_path().'/uploads/accrediations/' ;
+                $file->move($destinationPath,$fileName);
+                $accd->accrediation_logo = $fileName ;
+            }
+            
+            $accd->save() ;
       
-      Session::flash('message', 'Successfully added!');
-      return Redirect::to('/admin/accrediation');
+          Session::flash('message', 'Successfully added!');
+          return Redirect::to('/admin/accrediation');
     }
 
     /**
@@ -103,17 +119,27 @@ class AccrediationController extends Controller
     public function update($id,Request $request)
     {
         //echo $id; die;
-        $langcap = Accrediation::find($id);
+        $accd = Accrediation::find($id);
         // validate
         $this->validate($request, [
-        'name' => 'required|unique:accrediations'
+        'name' => 'required|unique:accrediations',
+        'accrediation_logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024'
         ]);
       
-        // Getting all data after success validation. 
-        $input = $request->all();
-        //echo "<pre>"; print_r($input); die;
-        $langcap->fill($input)->save();
-         
+        // Getting all data after success validation.
+         $accd->name = $request->get('name') ;
+        if($file = $request->hasFile('accrediation_logo')) {
+            
+            $file = $request->file('accrediation_logo') ;
+            
+            $fileName = $file->getClientOriginalName() ;
+            $destinationPath = public_path().'/uploads/accrediations/' ;
+            $file->move($destinationPath,$fileName);
+            $accd->accrediation_logo = $fileName ;
+        }
+        
+        $accd->save() ;
+
 
         // redirect
         Session::flash('message', 'Successfully updated');

@@ -55,6 +55,7 @@
                         <!-- file input -->
                         <div class="form-group">
                           {!! Form::label('Accrediation logo') !!}
+                          <img src="{{url('/uploads/accrediations/'.$accrediations_data->accrediation_logo)}}" alt="Accrediation Logo" height="80" width="80">
                           {!! Form::file('accrediation_logo', null) !!}
                         </div>
                          <!-- /.file input -->
