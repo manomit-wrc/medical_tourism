@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddProcedureImageColumsToProceduresTable' => $baseDir . '/database/migrations/2017_04_24_130154_add_procedure_image_colums_to_procedures_table.php',
     'AddStatusToProceduresTables' => $baseDir . '/database/migrations/2017_04_13_074936_add_status_to_procedures_tables.php',
     'AlterTableMedicalFacilitiesChangeDescription' => $baseDir . '/database/migrations/2017_04_24_121844_alter_table_medical_facilities_change_description.php',
     'CreateAccomodationsTable' => $baseDir . '/database/migrations/2017_04_21_073022_create_accomodations_table.php',

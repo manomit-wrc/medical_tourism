@@ -41,7 +41,7 @@
             @endif
             <div class="box-body">
              
-                 {!! Form::open(array('method' => 'POST','role'=>'form','url'=>'admin/procedure/store','id'=>'procedure_add')) !!}
+                 {!! Form::open(array('method' => 'POST','role'=>'form','files' => true,'url'=>'admin/procedure/store','id'=>'procedure_add')) !!}
                     
                     <div class="col-md-6">
                         
@@ -53,7 +53,13 @@
                         </div>
                         <!-- /.text input -->
 
-                        
+                        <!-- file input -->
+                        <div class="form-group">
+                          {!! Html::decode(Form::label('procedure_image','Procedure image: <span style="color:red;">* (Image must be minimum of 243x149)</span>')) !!}
+                          {!! Form::file('procedure_image', null) !!}
+                        </div>
+                         <!-- /.file input -->
+
                          <!-- input submit button -->
                         <div class="box-footer">
                            {!! Form::submit('submit',array('class'=>'btn btn-primary pull-right','id'=>'exact-submit-button'))!!}

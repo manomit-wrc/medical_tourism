@@ -328,6 +328,7 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
     );
 
     public static $classMap = array (
+        'AddProcedureImageColumsToProceduresTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_24_130154_add_procedure_image_colums_to_procedures_table.php',
         'AddStatusToProceduresTables' => __DIR__ . '/../..' . '/database/migrations/2017_04_13_074936_add_status_to_procedures_tables.php',
         'AlterTableMedicalFacilitiesChangeDescription' => __DIR__ . '/../..' . '/database/migrations/2017_04_24_121844_alter_table_medical_facilities_change_description.php',
         'CreateAccomodationsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_21_073022_create_accomodations_table.php',

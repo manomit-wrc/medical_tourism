@@ -65,7 +65,7 @@
                         <!-- file input -->
                         <div class="form-group">
                           {!! Html::decode(Form::label('facility_image','Facility image: <span style="color:red;">* (Image must be minimum of 243x149)</span>')) !!}
-                          <!-- <img src="{{url('/uploads/medicalfacilities/thumb/'.$medfac_data->facility_image)}}" alt="Facility Image"> -->
+                          <img src="{{url('/uploads/medicalfacilities/thumb/'.$medfac_data->facility_image)}}" alt="Facility Image">
                           {!! Form::file('facility_image', null) !!}
                         </div>
                          <!-- /.file input -->

@@ -40,7 +40,7 @@
               </div>
             @endif
             <div class="box-body">
-                 {{ Form::model($procedures_data,array('method' => 'PATCH','role'=>'form','url' => array('admin/procedure/update', $procedures_data->id),'id'=>'procedure_edit')) }}
+                 {{ Form::model($procedures_data,array('method' => 'PATCH','role'=>'form','files' => true,'url' => array('admin/procedure/update', $procedures_data->id),'id'=>'procedure_edit')) }}
                     
                     <div class="col-md-6">
                         
@@ -52,7 +52,13 @@
                         </div>
                         <!-- /.text input -->
 
-                        
+                        <!-- file input -->
+                        <div class="form-group">
+                          {!! Html::decode(Form::label('procedure_image','Procedure image: <span style="color:red;">* (Image must be minimum of 243x149)</span>')) !!}
+                          <img src="{{url('/uploads/procedures/thumb/'.$procedures_data->procedure_image)}}" alt="Procedure Image">
+                          {!! Form::file('procedure_image', null) !!}
+                        </div>
+                         <!-- /.file input -->
                         
                          <!-- input button -->
                         <div class="box-footer">
