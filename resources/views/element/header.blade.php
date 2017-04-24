@@ -214,7 +214,8 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="{!!URL::to('storage/admin/images/user2-160x160.jpg')!!}" class="user-image" alt="User Image">
-              <span class="hidden-xs">{!!Session::get('name')!!}</span>
+              <span class="hidden-xs">{{ Auth::guard('admin')->user()->name }}</span>
+              
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -222,7 +223,8 @@
                 <img src="{!!URL::to('storage/admin/images/user2-160x160.jpg')!!}" class="img-circle" alt="User Image">
 
                 <p>
-                  {!!Session::get('name')!!}
+
+                  {{ Auth::guard('admin')->user()->name }}
                   <small>Member since Nov. 2012</small>
                 </p>
               </li>

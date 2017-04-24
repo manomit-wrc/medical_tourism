@@ -9,11 +9,9 @@ use Session;
 class DashboardController extends Controller
 {
     public function __construct() {
-    	$this->middleware('auth');
+
     }
     public function index() {
-    	$user_data = Auth::user();
-        Session::put('name',$user_data->name);
     	return view('admin.dashboard');
     }
 }

@@ -18,11 +18,11 @@ Route::get('/', function () {
 Route::get('/admin', 'LoginController@index');
 Route::post('/admin/login', 'LoginController@checkLogin');
 //Route::get('/admin/dashboard', 'DashboardController@index')->middleware('web');
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['admin']], function () {
 	Route::get('/admin/logout', array('uses' => 'LoginController@logout'));
     Route::get('/admin/dashboard', 'DashboardController@index');
-    
-    //Language capability section 
+
+    //Language capability section
     Route::get('/admin/languagecapability', 'LanguageCapabilityController@index');
     Route::get('/admin/languagecapability/create','LanguageCapabilityController@create');
     Route::post('/admin/languagecapability/store','LanguageCapabilityController@store');
@@ -30,7 +30,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::patch('/admin/languagecapability/update/{id}','LanguageCapabilityController@update');
     Route::delete('/admin/languagecapability/delete/{id}','LanguageCapabilityController@destroy');
 
-    //Procedure section 
+    //Procedure section
     Route::get('/admin/procedure', 'ProcedureController@index');
     Route::get('/admin/procedure/create','ProcedureController@create');
     Route::post('/admin/procedure/store','ProcedureController@store');
@@ -38,7 +38,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::patch('/admin/procedure/update/{id}','ProcedureController@update');
     Route::delete('/admin/procedure/delete/{id}','ProcedureController@destroy');
 
-    //Treatment section 
+    //Treatment section
     Route::get('/admin/treatment', 'TreatmentController@index');
     Route::get('/admin/treatment/create','TreatmentController@create');
     Route::post('/admin/treatment/store','TreatmentController@store');
@@ -46,7 +46,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::patch('/admin/treatment/update/{id}','TreatmentController@update');
     Route::delete('/admin/treatment/delete/{id}','TreatmentController@destroy');
 
-    //Accrediation section 
+    //Accrediation section
     Route::get('/admin/accrediation', 'AccrediationController@index');
     Route::get('/admin/accrediation/create','AccrediationController@create');
     Route::post('/admin/accrediation/store','AccrediationController@store');
@@ -54,7 +54,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::patch('/admin/accrediation/update/{id}','AccrediationController@update');
     Route::delete('/admin/accrediation/delete/{id}','AccrediationController@destroy');
 
-    //Accomodation section 
+    //Accomodation section
     Route::get('/admin/accomodation', 'AccomodationController@index');
     Route::get('/admin/accomodation/create','AccomodationController@create');
     Route::post('/admin/accomodation/store','AccomodationController@store');
@@ -62,7 +62,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::patch('/admin/accomodation/update/{id}','AccomodationController@update');
     Route::delete('/admin/accomodation/delete/{id}','AccomodationController@destroy');
 
-    //Cuisine section 
+    //Cuisine section
     Route::get('/admin/cuisine', 'CuisineController@index');
     Route::get('/admin/cuisine/create','CuisineController@create');
     Route::post('/admin/cuisine/store','CuisineController@store');
@@ -70,7 +70,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::patch('/admin/cuisine/update/{id}','CuisineController@update');
     Route::delete('/admin/cuisine/delete/{id}','CuisineController@destroy');
 
-    //Specific Service section 
+    //Specific Service section
     Route::get('/admin/specificservice', 'SpecificServiceController@index');
     Route::get('/admin/specificservice/create','SpecificServiceController@create');
     Route::post('/admin/specificservice/store','SpecificServiceController@store');
@@ -78,7 +78,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::patch('/admin/specificservice/update/{id}','SpecificServiceController@update');
     Route::delete('/admin/specificservice/delete/{id}','SpecificServiceController@destroy');
 
-    //Banner section 
+    //Banner section
     Route::get('/admin/banner', 'BannerController@index');
     Route::get('/admin/banner/create','BannerController@create');
     Route::post('/admin/banner/store','BannerController@store');

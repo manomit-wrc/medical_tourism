@@ -14,7 +14,7 @@ use Validator;
 class CuisineController extends Controller
 {
     public function __construct() {
-    	$this->middleware('auth');
+    	
     }
 
     /**
@@ -48,11 +48,11 @@ class CuisineController extends Controller
         $this->validate($request, [
         'name' => 'required|unique:cuisines'
       ]);
-      
-      // Getting all data after success validation. 
-      //dd($request->all()); 
+
+      // Getting all data after success validation.
+      //dd($request->all());
       $input = $request->all();
-     
+
       Cuisine::create($input);
       Session::flash('message', 'Successfully added!');
       return Redirect::to('/admin/cuisine');
@@ -97,12 +97,12 @@ class CuisineController extends Controller
         $this->validate($request, [
         'name' => 'required|unique:accomodations'
         ]);
-      
-        // Getting all data after success validation. 
+
+        // Getting all data after success validation.
         $input = $request->all();
         //echo "<pre>"; print_r($input); die;
         $langcap->fill($input)->save();
-         
+
 
         // redirect
         Session::flash('message', 'Successfully updated');

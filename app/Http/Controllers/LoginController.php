@@ -12,7 +12,12 @@ class LoginController extends Controller
 
     }
     public function index() {
-    	return view('admin.login');
+      if(Auth::guard('admin')->check()) {
+
+            return redirect('/admin/dashboard');
+        }
+
+        return view('admin.login');
     }
     public function checkLogin(Request $request) {
     	$this->validate($request,[
@@ -24,7 +29,7 @@ class LoginController extends Controller
     			'password.required' => 'Please Enter Password'
     		]);
 
-    	if(Auth::guard('web')->attempt(['email'=>$request->email, 'password'=>$request->password], $request->remember)) {
+    	if(Auth::guard('admin')->attempt(['email'=>$request->email, 'password'=>$request->password], $request->remember)) {
             //echo "hiiiii"; die;
     		return redirect('/admin/dashboard');
             //return view('admin.dashboard');
@@ -38,9 +43,9 @@ class LoginController extends Controller
     }
     //Admin Logout
     public function logout() {
-      Auth::logout(); // logout user
-      return view('admin.login');
-      //return redirect('/admin/login');//redirect back to login
+      Auth::guard('admin')->logout();
+      return redirect('/admin');
+
     }
-    
+
 }

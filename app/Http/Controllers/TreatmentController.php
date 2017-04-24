@@ -15,7 +15,7 @@ use Validator;
 class TreatmentController extends Controller
 {
     public function __construct() {
-    	$this->middleware('auth');
+    	
     }
 
     /**
@@ -53,11 +53,11 @@ class TreatmentController extends Controller
         'name' => 'required|unique:treatments',
         'procedure_id' => 'required'
       ]);
-      
-      // Getting all data after success validation. 
-      //dd($request->all()); 
+
+      // Getting all data after success validation.
+      //dd($request->all());
       $input = $request->all();
-     
+
       Treatment::create($input);
       Session::flash('message', 'Successfully added!');
       return Redirect::to('/admin/treatment');
@@ -82,7 +82,7 @@ class TreatmentController extends Controller
      */
     public function edit($id)
     {
-       
+
        $procedure_lists = Procedure::where('status', 1)->orderBy('name')->pluck('name', 'id');
        //echo "<pre>"; print_r($procedure_lists); die;
        // get the treatment
@@ -106,12 +106,12 @@ class TreatmentController extends Controller
         'name' => 'required|unique:treatments',
         'procedure_id' => 'required'
         ]);
-      
-        // Getting all data after success validation. 
+
+        // Getting all data after success validation.
         $input = $request->all();
         //echo "<pre>"; print_r($input); die;
         $trtmnt->fill($input)->save();
-         
+
 
         // redirect
         Session::flash('message', 'Successfully updated');

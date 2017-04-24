@@ -16,7 +16,7 @@ use File;
 class BannerController extends Controller
 {
     public function __construct() {
-    	$this->middleware('auth');
+    	
     }
 
     /**
@@ -54,7 +54,7 @@ class BannerController extends Controller
             'banner_url' => 'required|url',
           ]);
 
-        
+
             $bannr = new Banner($request->input()) ;
             $bannr->banner_heading = $request->get('banner_heading') ;
             $bannr->banner_sub_heading = $request->get('banner_sub_heading') ;
@@ -64,11 +64,11 @@ class BannerController extends Controller
             //echo "<pre>"; print_r($request->file('banner_image'));die;
 
             if($file = $request->hasFile('banner_image')) {
-                
+
                 $file = $request->file('banner_image') ;
-                
+
                 $fileName = time().'_'.$file->getClientOriginalName() ;
-               
+
                 //thumb destination path
                 $destinationPath = public_path().'/uploads/banners/thumb' ;
 
@@ -77,16 +77,16 @@ class BannerController extends Controller
                 $img->resize(100, 100, function ($constraint){
                     $constraint->aspectRatio();
                 })->save($destinationPath.'/'.$fileName);
-                
+
                 //original destination path
                 $destinationPath = public_path().'/uploads/banners/' ;
                 $file->move($destinationPath,$fileName);
 
                 $bannr->banner_image = $fileName ;
             }
-            
+
             $bannr->save() ;
-      
+
           Session::flash('message', 'Successfully added!');
           return Redirect::to('/admin/banner');
     }
@@ -132,7 +132,7 @@ class BannerController extends Controller
             'banner_heading' => 'required',
             'banner_url' => 'required|url',
         ]);
-      
+
         // Getting all data after success validation.
         $bannr->banner_heading = $request->get('banner_heading') ;
         $bannr->banner_sub_heading = $request->get('banner_sub_heading') ;
@@ -142,11 +142,11 @@ class BannerController extends Controller
         //echo "<pre>"; print_r($request->file('banner_image'));die;
 
         if($file = $request->hasFile('banner_image')) {
-            
+
             $file = $request->file('banner_image') ;
-            
+
             $fileName = time().'_'.$file->getClientOriginalName() ;
-           
+
             //thumb destination path
             $destinationPath = public_path().'/uploads/banners/thumb' ;
 
@@ -155,14 +155,14 @@ class BannerController extends Controller
             $img->resize(100, 100, function ($constraint){
                 $constraint->aspectRatio();
             })->save($destinationPath.'/'.$fileName);
-            
+
             //original destination path
             $destinationPath = public_path().'/uploads/banners/' ;
             $file->move($destinationPath,$fileName);
 
             $bannr->banner_image = $fileName ;
         }
-        
+
         $bannr->save() ;
 
 

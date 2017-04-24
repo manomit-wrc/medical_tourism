@@ -16,7 +16,7 @@ use File;
 class AccrediationController extends Controller
 {
     public function __construct() {
-    	$this->middleware('auth');
+    	
     }
 
     /**
@@ -52,14 +52,14 @@ class AccrediationController extends Controller
             'name' => 'required|unique:accrediations',
             'accrediation_logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024'
           ]);
-       
+
             $accd = new Accrediation($request->input()) ;
             $accd->name = $request->get('name') ;
-            
+
             if($file = $request->hasFile('accrediation_logo')) {
-                
+
                 $file = $request->file('accrediation_logo') ;
-                
+
                 $fileName = time().'_'.$file->getClientOriginalName() ;
                 //thumb destination path
                 $destinationPath = public_path().'/uploads/accrediations/thumb' ;
@@ -68,15 +68,15 @@ class AccrediationController extends Controller
                 $img->resize(100, 100, function ($constraint){
                     $constraint->aspectRatio();
                 })->save($destinationPath.'/'.$fileName);
-                
+
                 //original destination path
                 $destinationPath = public_path().'/uploads/accrediations/' ;
                 $file->move($destinationPath,$fileName);
                 $accd->accrediation_logo = $fileName ;
             }
-            
+
             $accd->save() ;
-      
+
           Session::flash('message', 'Successfully added!');
           return Redirect::to('/admin/accrediation');
     }
@@ -121,14 +121,14 @@ class AccrediationController extends Controller
         'name' => 'required|unique:accrediations',
         'accrediation_logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024'
         ]);
-      
+
         // Getting all data after success validation.
          $accd->name = $request->get('name') ;
 
         if($file = $request->hasFile('accrediation_logo')) {
-                
+
             $file = $request->file('accrediation_logo') ;
-            
+
             $fileName = time().'_'.$file->getClientOriginalName() ;
             //thumb destination path
             $destinationPath = public_path().'/uploads/accrediations/thumb' ;
@@ -137,13 +137,13 @@ class AccrediationController extends Controller
             $img->resize(100, 100, function ($constraint){
                 $constraint->aspectRatio();
             })->save($destinationPath.'/'.$fileName);
-            
+
             //original destination path
             $destinationPath = public_path().'/uploads/accrediations/' ;
             $file->move($destinationPath,$fileName);
             $accd->accrediation_logo = $fileName ;
         }
-        
+
         $accd->save() ;
 
 

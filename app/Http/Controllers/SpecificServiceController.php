@@ -14,7 +14,7 @@ use Validator;
 class SpecificServiceController extends Controller
 {
     public function __construct() {
-    	$this->middleware('auth');
+    	
     }
 
     /**
@@ -28,7 +28,7 @@ class SpecificServiceController extends Controller
     	return view('admin.specificservice.index')->with('langcapabilites',$langcapabilites);
     }
 
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -49,11 +49,11 @@ class SpecificServiceController extends Controller
        $this->validate($request, [
         'name' => 'required|unique:specific_services'
       ]);
-      
-      // Getting all data after success validation. 
-      //dd($request->all()); 
+
+      // Getting all data after success validation.
+      //dd($request->all());
       $input = $request->all();
-     
+
       SpecificService::create($input);
       Session::flash('message', 'Successfully added!');
       return Redirect::to('/admin/specificservice');
@@ -98,17 +98,17 @@ class SpecificServiceController extends Controller
         $this->validate($request, [
         'name' => 'required|unique:specific_services'
         ]);
-      
-        // Getting all data after success validation. 
+
+        // Getting all data after success validation.
         $input = $request->all();
         //echo "<pre>"; print_r($input); die;
         $specserv->fill($input)->save();
-         
+
 
         // redirect
         Session::flash('message', 'Successfully updated');
         return Redirect::to('/admin/specificservice');
-    }   
+    }
 
     /**
      * Remove the specified resource from storage.

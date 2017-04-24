@@ -15,7 +15,7 @@ use Validator;
 class LanguageCapabilityController extends Controller
 {
     public function __construct() {
-    	$this->middleware('auth');
+    	
     }
 
     /**
@@ -29,7 +29,7 @@ class LanguageCapabilityController extends Controller
     	return view('admin.languagecapability.index')->with('langcapabilites',$langcapabilites);
     }
 
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -50,11 +50,11 @@ class LanguageCapabilityController extends Controller
        $this->validate($request, [
         'name' => 'required|unique:language_capabilities'
       ]);
-      
-      // Getting all data after success validation. 
-      //dd($request->all()); 
+
+      // Getting all data after success validation.
+      //dd($request->all());
       $input = $request->all();
-     
+
       LanguageCapability::create($input);
       Session::flash('message', 'Successfully added!');
       return Redirect::to('/admin/languagecapability');
@@ -99,17 +99,17 @@ class LanguageCapabilityController extends Controller
         $this->validate($request, [
         'name' => 'required|unique:language_capabilities'
         ]);
-      
-        // Getting all data after success validation. 
+
+        // Getting all data after success validation.
         $input = $request->all();
         //echo "<pre>"; print_r($input); die;
         $langcap->fill($input)->save();
-         
+
 
         // redirect
         Session::flash('message', 'Successfully updated');
         return Redirect::to('/admin/languagecapability');
-    }   
+    }
 
     /**
      * Remove the specified resource from storage.

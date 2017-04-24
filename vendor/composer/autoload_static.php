@@ -309,6 +309,7 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         'CreateLanguageCapabilitiesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_13_104412_create_language_capabilities_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateProceduresTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_13_054018_create_procedures_table.php',
+        'CreateRolesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_24_085106_create_roles_table.php',
         'CreateSpecificServiceTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_21_092026_create_specific_service_table.php',
         'CreateTreatmentsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_13_094025_create_treatments_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
