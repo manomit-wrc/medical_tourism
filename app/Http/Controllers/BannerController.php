@@ -48,7 +48,7 @@ class BannerController extends Controller
     {
 	      //print_r($request->input()); die;
           $this->validate($request, [
-            'banner_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
+            'banner_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|dimensions:width=1700,height=601',
             'banner_heading' => 'required',
             'banner_url' => 'required|url',
           ]);
@@ -109,9 +109,9 @@ class BannerController extends Controller
      */
     public function edit($id)
     {
-        // get the Accrediation
-       $accrediations_data = Banner::findOrFail($id);
-       return view('admin.banner.edit')->with('accrediations_data', $accrediations_data);
+        // get the Banner
+       $banners_data = Banner::findOrFail($id);
+       return view('admin.banner.edit')->with('banners_data', $banners_data);
     }
 
     /**
@@ -124,26 +124,45 @@ class BannerController extends Controller
     public function update($id,Request $request)
     {
         //echo $id; die;
-        $accd = Banner::find($id);
+        $bannr = Banner::find($id);
         // validate
         $this->validate($request, [
-        'name' => 'required|unique:accrediations',
-        'accrediation_logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024'
+            'banner_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|dimensions:width=1700,height=601',
+            'banner_heading' => 'required',
+            'banner_url' => 'required|url',
         ]);
       
         // Getting all data after success validation.
-         $accd->name = $request->get('name') ;
-        if($file = $request->hasFile('accrediation_logo')) {
+        $bannr->banner_heading = $request->get('banner_heading') ;
+        $bannr->banner_sub_heading = $request->get('banner_sub_heading') ;
+        $bannr->banner_heading = $request->get('banner_heading') ;
+        $bannr->banner_url = $request->get('banner_url') ;
+
+        //echo "<pre>"; print_r($request->file('banner_image'));die;
+
+        if($file = $request->hasFile('banner_image')) {
             
-            $file = $request->file('accrediation_logo') ;
+            $file = $request->file('banner_image') ;
             
-            $fileName = $file->getClientOriginalName() ;
-            $destinationPath = public_path().'/uploads/accrediations/' ;
+            $fileName = time().'_'.$file->getClientOriginalName() ;
+           
+            //thumb destination path
+            $destinationPath = public_path().'/uploads/banners/thumb' ;
+
+            $img = Image::make($file->getRealPath());
+
+            $img->resize(100, 100, function ($constraint){
+                $constraint->aspectRatio();
+            })->save($destinationPath.'/'.$fileName);
+            
+            //original destination path
+            $destinationPath = public_path().'/uploads/banners/' ;
             $file->move($destinationPath,$fileName);
-            $accd->accrediation_logo = $fileName ;
+
+            $bannr->banner_image = $fileName ;
         }
         
-        $accd->save() ;
+        $bannr->save() ;
 
 
         // redirect

@@ -47,14 +47,14 @@
                         
                         <!-- file input -->
                         <div class="form-group">
-                          {!! Form::label('Banner image') !!}
+                          {!! Html::decode(Form::label('banner_image','Banner image: <span style="color:red;">* (Image must be 1700x601)</span>')) !!}
                           {!! Form::file('banner_image', null) !!}
                         </div>
                          <!-- /.file input -->
 
                         <!-- text input -->
                         <div class="form-group">
-                          {!! Form::label('banner_heading', 'Banner heading:') !!}<span style="color:red;">*</span>
+                          {!! Html::decode(Form::label('banner_heading','Banner heading: <span style="color:red;">* </span>')) !!}
                           {!! Form::text('banner_heading','',array('class'=>'form-control','id'=>'banner_heading','placeholder'=>'Enter banner heading')) !!}
                         </div>
                         <!-- /.text input -->
@@ -68,7 +68,7 @@
 
                         <!-- text input -->
                         <div class="form-group">
-                          {!! Form::label('banner_url', 'Youtube video url:') !!}
+                          {!! Html::decode(Form::label('banner_url','Youtube video url: <span style="color:red;">* </span>')) !!}
                           {!! Form::text('banner_url','',array('class'=>'form-control','id'=>'banner_url','placeholder'=>'Enter youtube video url')) !!}
                         </div>
                         <!-- /.text input -->

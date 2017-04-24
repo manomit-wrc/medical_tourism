@@ -51,7 +51,7 @@
                         </td>
                         <td>{{ $banner_lists->banner_heading }}</td>
                         <td>{{ $banner_lists->banner_sub_heading }}</td>
-                        <td>{{ $banner_lists->banner_url }}</td>
+                        <td><a href="{{ $banner_lists->banner_url }}" target="_blank">{{ $banner_lists->banner_url }}</a></td>
                         <td>
                           <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
                             <!-- we will add this later since its a little more complicated than the other two buttons -->

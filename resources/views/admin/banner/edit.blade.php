@@ -5,12 +5,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Accrediation
+        Banner
        <!--  <small>advanced tables</small> -->
       </h1>
       <ol class="breadcrumb">
         <li><a href="{!!URL::to('/admin/dashboard')!!}">Home</a></li>
-        <li><a href="{!!URL::to('/admin/accrediation')!!}">Accrediation</a></li>
+        <li><a href="{!!URL::to('/admin/banner')!!}">Banner</a></li>
         <li class="active">Edit</li>
       </ol>
     </section>
@@ -27,7 +27,7 @@
           <!-- general form elements disabled -->
           <div class="box box-warning">
             <div class="box-header with-border">
-              <h3 class="box-title">Edit {{ $accrediations_data->name }}</h3>
+              <h3 class="box-title">Edit {{ $banners_data->banner_heading }}</h3>
             </div>
              <!-- if there are creation errors, they will show here -->
              
@@ -40,25 +40,39 @@
               </div>
             @endif
             <div class="box-body">
-                 {{ Form::model($accrediations_data,array('method' => 'PATCH','role'=>'form','url' => array('admin/accrediation/update', $accrediations_data->id),'id'=>'procedure_edit')) }}
+                 {{ Form::model($banners_data,array('method' => 'PATCH','role'=>'form','url' => array('admin/banner/update', $banners_data->id),'id'=>'banner_edit')) }}
                     
                     <div class="col-md-6">
                         
-
-                        <!-- text input -->
+                         <!-- file input -->
                         <div class="form-group">
-                          {!! Form::label('name', 'Accrediation name:') !!}
-                          {!! Form::text('name',null,array('class'=>'form-control','id'=>'name','placeholder'=>'Enter accrediation name')) !!}
+                          {!! Html::decode(Form::label('banner_image','Banner image: <span style="color:red;">* (Image must be 1700x601)</span>')) !!}
+                          <img src="{{url('/uploads/banners/thumb/'.$banners_data->banner_image)}}" alt="Banner Image">
+                          {!! Form::file('banner_image', null) !!}
+                        </div>
+                         <!-- /.file input -->
+                         
+                          <!-- text input -->
+                        <div class="form-group">
+                          {!! Html::decode(Form::label('banner_heading','Banner heading: <span style="color:red;">* </span>')) !!}
+                          {!! Form::text('banner_heading',null,array('class'=>'form-control','id'=>'banner_heading','placeholder'=>'Enter banner heading')) !!}
                         </div>
                         <!-- /.text input -->
 
-                        <!-- file input -->
+                        <!-- text input -->
                         <div class="form-group">
-                          {!! Form::label('Accrediation logo') !!}
-                          <img src="{{url('/uploads/accrediations/'.$accrediations_data->accrediation_logo)}}" alt="Accrediation Logo" height="80" width="80">
-                          {!! Form::file('accrediation_logo', null) !!}
+                          {!! Form::label('banner_sub_heading', 'Banner sub heading:') !!}
+                          {!! Form::text('banner_sub_heading',null,array('class'=>'form-control','id'=>'banner_sub_heading','placeholder'=>'Enter banner sub heading')) !!}
                         </div>
-                         <!-- /.file input -->
+                        <!-- /.text input -->
+
+                        <!-- text input -->
+                        <div class="form-group">
+                          {!! Html::decode(Form::label('banner_url','Youtube video url: <span style="color:red;">* </span>')) !!}
+                          {!! Form::text('banner_url',null,array('class'=>'form-control','id'=>'banner_url','placeholder'=>'Enter youtube video url')) !!}
+                        </div>
+                        <!-- /.text input -->
+                       
                         
                          <!-- input button -->
                         <div class="box-footer">
