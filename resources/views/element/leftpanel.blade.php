@@ -2,7 +2,7 @@
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
-      
+
       <!-- Sidebar user panel -->
      <!--  <div class="user-panel">
         <div class="pull-left image">
@@ -49,6 +49,8 @@
             <li class="{{ Request::segment(2) === 'cuisine' ? 'active' : null }}" ><a href="{!!URL::to('/admin/cuisine')!!}"><i class="fa fa-circle-o"></i>Cuisine management</a></li>
             <li class="{{ Request::segment(2) === 'specificservice' ? 'active' : null }}" ><a href="{!!URL::to('/admin/specificservice')!!}"><i class="fa fa-circle-o"></i>Specific Service management</a></li>
             <li class="{{ Request::segment(2) === 'banner' ? 'active' : null }}" ><a href="{!!URL::to('/admin/banner')!!}"><i class="fa fa-circle-o"></i>Banner management</a></li>
+            <li class="{{ Request::segment(2) === 'role' ? 'active' : null }}"><a href="/admin/role"><i class="fa fa-circle-o"></i>Role management</a></li>
+
           </ul>
         </li>
 
@@ -64,7 +66,7 @@
             <li class="active"><a href="#"><i class="fa fa-circle-o"></i>Video management</a></li>
           </ul>
         </li>
-        
+
        <!--  <li class="treeview">
           <a href="#">
             <i class="fa fa-files-o"></i>

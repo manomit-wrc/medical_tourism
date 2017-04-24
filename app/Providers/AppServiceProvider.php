@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
+use View;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -13,7 +13,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+          view()->composer('*', function ($view) {
+
+          $current_route_name = \Request::route()->getName();
+          
+
+          $view->with('current_route_name', $current_route_name);
+
+      });
     }
 
     /**
