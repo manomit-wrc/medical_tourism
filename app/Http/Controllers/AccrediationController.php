@@ -119,7 +119,7 @@ class AccrediationController extends Controller
         // validate
         $this->validate($request, [
         'name' => 'required|unique:accrediations',
-        'accrediation_logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024'
+        'accrediation_logo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:1024'
         ]);
 
         // Getting all data after success validation.

@@ -40,7 +40,7 @@
               </div>
             @endif
             <div class="box-body">
-                 {{ Form::model($accrediations_data,array('method' => 'PATCH','role'=>'form','url' => array('admin/accrediation/update', $accrediations_data->id),'id'=>'procedure_edit')) }}
+                 {{ Form::model($accrediations_data,array('method' => 'PATCH','role'=>'form','files' => true,'url' => array('admin/accrediation/update', $accrediations_data->id),'id'=>'procedure_edit')) }}
                     
                     <div class="col-md-6">
                         

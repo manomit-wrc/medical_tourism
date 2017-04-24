@@ -40,7 +40,7 @@
               </div>
             @endif
             <div class="box-body">
-                 {{ Form::model($banners_data,array('method' => 'PATCH','role'=>'form','url' => array('admin/banner/update', $banners_data->id),'id'=>'banner_edit')) }}
+                 {{ Form::model($banners_data,array('method' => 'PATCH','role'=>'form','files' => true,'url' => array('admin/banner/update', $banners_data->id),'id'=>'banner_edit')) }}
                     
                     <div class="col-md-6">
                         
