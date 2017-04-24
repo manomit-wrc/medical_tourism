@@ -78,4 +78,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::patch('/admin/specificservice/update/{id}','SpecificServiceController@update');
     Route::delete('/admin/specificservice/delete/{id}','SpecificServiceController@destroy');
 
+    //Banner section 
+    Route::get('/admin/banner', 'BannerController@index');
+    Route::get('/admin/banner/create','BannerController@create');
+    Route::post('/admin/banner/store','BannerController@store');
+    Route::get('/admin/banner/edit/{id}','BannerController@edit');
+    Route::patch('/admin/banner/update/{id}','BannerController@update');
+    Route::delete('/admin/banner/delete/{id}','BannerController@destroy');
+
 });

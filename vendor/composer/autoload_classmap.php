@@ -6,10 +6,18 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddStatusToProceduresTables' => $baseDir . '/database/migrations/2017_04_13_074936_add_status_to_procedures_tables.php',
+    'CreateAccomodationsTable' => $baseDir . '/database/migrations/2017_04_21_073022_create_accomodations_table.php',
+    'CreateAccrediationsTable' => $baseDir . '/database/migrations/2017_04_21_051438_create_accrediations_table.php',
+    'CreateBannersTable' => $baseDir . '/database/migrations/2017_04_21_124438_create_banners_table.php',
+    'CreateCuisinesTable' => $baseDir . '/database/migrations/2017_04_21_085431_create_cuisines_table.php',
+    'CreateLanguageCapabilitiesTable' => $baseDir . '/database/migrations/2017_04_13_104412_create_language_capabilities_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+    'CreateProceduresTable' => $baseDir . '/database/migrations/2017_04_13_054018_create_procedures_table.php',
+    'CreateSpecificServiceTable' => $baseDir . '/database/migrations/2017_04_21_092026_create_specific_service_table.php',
+    'CreateTreatmentsTable' => $baseDir . '/database/migrations/2017_04_13_094025_create_treatments_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
-    'DropNameToUsersTable' => $baseDir . '/database/migrations/2017_04_07_050507_drop_name_to_users_table.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
     'File_Iterator_Facade' => $vendorDir . '/phpunit/php-file-iterator/src/Facade.php',
     'File_Iterator_Factory' => $vendorDir . '/phpunit/php-file-iterator/src/Factory.php',
