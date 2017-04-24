@@ -46,7 +46,7 @@
                       <tr>
                         <td>{{ $accrediation_lists->name }}</td>
                         <td>
-                          <img src="{{url('/uploads/accrediations/'.$accrediation_lists->accrediation_logo)}}" alt="Accrediation Logo" height="80" width="80">
+                          <img src="{{url('/uploads/accrediations/thumb/'.$accrediation_lists->accrediation_logo)}}" alt="Accrediation Logo" >
                          </td>
                         <td>
                           <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->

@@ -10,7 +10,8 @@ use Input;
 use Redirect;
 use Session;
 use Validator;
-
+use Image;
+use File;
 
 class AccrediationController extends Controller
 {
@@ -52,28 +53,23 @@ class AccrediationController extends Controller
             'accrediation_logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024'
           ]);
        
-            /*$imageName =  rand(11111, 99999) .'.' . $request->file('accrediation_logo')->getClientOriginalExtension();
-            //echo $imageName; die;
-    	    $request->file('accrediation_logo')->move(
-    	        base_path() . '/uploads/accrediations/', $imageName
-    	    );*/
-
-             //echo $imagename; die;
-            /*$accrd = new Accrediation(array(
-              'name' => $request->get('name'),
-              'accrediation_logo' =>$imagename
-            ));
-
-            $accrd->save();*/
-
-        
             $accd = new Accrediation($request->input()) ;
             $accd->name = $request->get('name') ;
+            
             if($file = $request->hasFile('accrediation_logo')) {
                 
                 $file = $request->file('accrediation_logo') ;
                 
-                $fileName = $file->getClientOriginalName() ;
+                $fileName = time().'_'.$file->getClientOriginalName() ;
+                //thumb destination path
+                $destinationPath = public_path().'/uploads/accrediations/thumb' ;
+                $img = Image::make($file->getRealPath());
+
+                $img->resize(100, 100, function ($constraint){
+                    $constraint->aspectRatio();
+                })->save($destinationPath.'/'.$fileName);
+                
+                //original destination path
                 $destinationPath = public_path().'/uploads/accrediations/' ;
                 $file->move($destinationPath,$fileName);
                 $accd->accrediation_logo = $fileName ;
@@ -128,11 +124,21 @@ class AccrediationController extends Controller
       
         // Getting all data after success validation.
          $accd->name = $request->get('name') ;
+
         if($file = $request->hasFile('accrediation_logo')) {
-            
+                
             $file = $request->file('accrediation_logo') ;
             
-            $fileName = $file->getClientOriginalName() ;
+            $fileName = time().'_'.$file->getClientOriginalName() ;
+            //thumb destination path
+            $destinationPath = public_path().'/uploads/accrediations/thumb' ;
+            $img = Image::make($file->getRealPath());
+
+            $img->resize(100, 100, function ($constraint){
+                $constraint->aspectRatio();
+            })->save($destinationPath.'/'.$fileName);
+            
+            //original destination path
             $destinationPath = public_path().'/uploads/accrediations/' ;
             $file->move($destinationPath,$fileName);
             $accd->accrediation_logo = $fileName ;
@@ -157,8 +163,10 @@ class AccrediationController extends Controller
     {
         //echo $id; die;
        // delete
-        $procobj = Accrediation::findOrFail($id);
-        $procobj->delete();
+        $accobj = Accrediation::findOrFail($id);
+        File::delete(public_path('/uploads/accrediations/'. $accobj->accrediation_logo));
+        File::delete(public_path('/uploads/accrediations/thumb/'. $accobj->accrediation_logo));
+        $accobj->delete();
 
         // redirect
         Session::flash('message', 'Successfully deleted');

@@ -9822,3 +9822,9 @@ Stack trace:
 #43 C:\xampp\htdocs\medical_tourism\public\index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #44 C:\xampp\htdocs\medical_tourism\server.php(21): require_once('C:\\xampp\\htdocs...')
 #45 {main}  
+[2017-04-24 09:21:42] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'App\Http\Controllers\File' not found' in C:\xampp\htdocs\medical_tourism\app\Http\Controllers\AccrediationController.php:166
+Stack trace:
+#0 {main}  
+[2017-04-24 09:28:16] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'App\Http\Controllers\File' not found' in C:\xampp\htdocs\medical_tourism\app\Http\Controllers\BannerController.php:185
+Stack trace:
+#0 {main}  

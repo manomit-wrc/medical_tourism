@@ -11,6 +11,7 @@ use Redirect;
 use Session;
 use Validator;
 use Image;
+use File;
 
 class BannerController extends Controller
 {
@@ -181,8 +182,10 @@ class BannerController extends Controller
     {
         //echo $id; die;
        // delete
-        $procobj = Banner::findOrFail($id);
-        $procobj->delete();
+        $bannobj = Banner::findOrFail($id);
+        File::delete(public_path('/uploads/banners/'. $bannobj->banner_image));
+        File::delete(public_path('/uploads/banners/thumb/'. $bannobj->banner_image));
+        $bannobj->delete();
 
         // redirect
         Session::flash('message', 'Successfully deleted');
