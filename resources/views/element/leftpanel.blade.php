@@ -47,14 +47,16 @@
             <li class="{{ Request::segment(2) === 'accrediation' ? 'active' : null }}" ><a href="{!!URL::to('/admin/accrediation')!!}"><i class="fa fa-circle-o"></i>Accrediation management</a></li>
             <li class="{{ Request::segment(2) === 'accomodation' ? 'active' : null }}" ><a href="{!!URL::to('/admin/accomodation')!!}"><i class="fa fa-circle-o"></i>Accomodation management</a></li>
             <li class="{{ Request::segment(2) === 'cuisine' ? 'active' : null }}" ><a href="{!!URL::to('/admin/cuisine')!!}"><i class="fa fa-circle-o"></i>Cuisine management</a></li>
-            <li class="{{ Request::segment(2) === 'specificservice' ? 'active' : null }}" ><a href="{!!URL::to('/admin/specificservice')!!}"><i class="fa fa-circle-o"></i>Specific Service management</a></li>
+            <li class="{{ Request::segment(2) === 'specificservice' ? 'active' : null }}" ><a href="{!!URL::to('/admin/specificservice')!!}"><i class="fa fa-circle-o"></i>Specific service management</a></li>
             <li class="{{ Request::segment(2) === 'banner' ? 'active' : null }}" ><a href="{!!URL::to('/admin/banner')!!}"><i class="fa fa-circle-o"></i>Banner management</a></li>
+            <li class="{{ Request::segment(2) === 'degree' ? 'active' : null }}" ><a href="{!!URL::to('/admin/degree')!!}"><i class="fa fa-circle-o"></i>Degree management</a></li>
+            <li class="{{ Request::segment(2) === 'medicalfacility' ? 'active' : null }}" ><a href="{!!URL::to('/admin/medicalfacility')!!}"><i class="fa fa-circle-o"></i>Medical facility management</a></li>
           </ul>
         </li>
 
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-picture-o"></i> <span>Banner management</span>
+            <i class="fa fa-picture-o"></i> <span>Something management</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
