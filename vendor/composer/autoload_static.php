@@ -89,6 +89,9 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         array (
             'Dotenv\\' => 7,
             'Doctrine\\Instantiator\\' => 22,
+            'Doctrine\\Common\\Cache\\' => 22,
+            'Doctrine\\Common\\Annotations\\' => 28,
+            'Doctrine\\Common\\' => 16,
             'DeepCopy\\' => 9,
         ),
         'C' => 
@@ -239,6 +242,18 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         array (
             0 => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator',
         ),
+        'Doctrine\\Common\\Cache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/cache/lib/Doctrine/Common/Cache',
+        ),
+        'Doctrine\\Common\\Annotations\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/annotations/lib/Doctrine/Common/Annotations',
+        ),
+        'Doctrine\\Common\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/common/lib/Doctrine/Common',
+        ),
         'DeepCopy\\' => 
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
@@ -293,20 +308,36 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         ),
         'D' => 
         array (
+            'Doctrine\\DBAL\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/doctrine/dbal/lib',
+            ),
+            'Doctrine\\Common\\Lexer\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/doctrine/lexer/lib',
+            ),
             'Doctrine\\Common\\Inflector\\' => 
             array (
                 0 => __DIR__ . '/..' . '/doctrine/inflector/lib',
+            ),
+            'Doctrine\\Common\\Collections\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/doctrine/collections/lib',
             ),
         ),
     );
 
     public static $classMap = array (
+        'AddProcedureImageColumsToProceduresTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_24_130154_add_procedure_image_colums_to_procedures_table.php',
         'AddStatusToProceduresTables' => __DIR__ . '/../..' . '/database/migrations/2017_04_13_074936_add_status_to_procedures_tables.php',
+        'AlterTableMedicalFacilitiesChangeDescription' => __DIR__ . '/../..' . '/database/migrations/2017_04_24_121844_alter_table_medical_facilities_change_description.php',
         'CreateAccomodationsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_21_073022_create_accomodations_table.php',
         'CreateAccrediationsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_21_051438_create_accrediations_table.php',
         'CreateBannersTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_21_124438_create_banners_table.php',
         'CreateCuisinesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_21_085431_create_cuisines_table.php',
+        'CreateDegreesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_24_100115_create_degrees_table.php',
         'CreateLanguageCapabilitiesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_13_104412_create_language_capabilities_table.php',
+        'CreateMedicalFacilitiesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_24_105551_create_medical_facilities_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateProceduresTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_13_054018_create_procedures_table.php',
         'CreateRolesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_24_085106_create_roles_table.php',

@@ -35,6 +35,7 @@
                 <thead>
                   <tr>
                     <th>Procedure name</th>
+                    <th>Procedure Image</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
@@ -44,6 +45,9 @@
                     @foreach($procedure_lists as $procedure_lists)
                       <tr>
                         <td>{{ $procedure_lists->name }}</td>
+                        <td>
+                          <img src="{{url('/uploads/procedures/thumb/'.$procedure_lists->procedure_image)}}" alt="Procedure Image" >
+                        </td>
                         <td>
                           <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
                             <!-- we will add this later since its a little more complicated than the other two buttons -->

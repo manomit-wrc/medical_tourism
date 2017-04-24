@@ -16,7 +16,7 @@ use File;
 class BannerController extends Controller
 {
     public function __construct() {
-    	
+
     }
 
     /**
@@ -128,7 +128,7 @@ class BannerController extends Controller
         $bannr = Banner::find($id);
         // validate
         $this->validate($request, [
-            'banner_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|dimensions:width=1700,height=601',
+            'banner_image' => 'image|mimes:jpeg,png,jpg,gif,svg|dimensions:width=1700,height=601',
             'banner_heading' => 'required',
             'banner_url' => 'required|url',
         ]);

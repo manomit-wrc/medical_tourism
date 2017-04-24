@@ -86,7 +86,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::patch('/admin/banner/update/{id}','BannerController@update');
     Route::delete('/admin/banner/delete/{id}','BannerController@destroy');
 
-    // Role section
+
 
     Route::get('/admin/role', 'RoleController@index');
     Route::get('/admin/role/create', ['as' => 'create-role', 'uses' => 'RoleController@create']);
@@ -94,5 +94,21 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/role/edit/{id}', 'RoleController@edit');
     Route::post('admin/role/update/{id}', 'RoleController@update');
     Route::get('/admin/role/delete/{id}','RoleController@delete');
+
+    Route::get('/admin/degree', 'DegreeController@index');
+    Route::get('/admin/degree/create','DegreeController@create');
+    Route::post('/admin/degree/store','DegreeController@store');
+    Route::get('/admin/degree/edit/{id}','DegreeController@edit');
+    Route::patch('/admin/degree/update/{id}','DegreeController@update');
+    Route::delete('/admin/degree/delete/{id}','DegreeController@destroy');
+
+    //Medical Facility section
+    Route::get('/admin/medicalfacility', 'MedicalFacilityController@index');
+    Route::get('/admin/medicalfacility/create','MedicalFacilityController@create');
+    Route::post('/admin/medicalfacility/store','MedicalFacilityController@store');
+    Route::get('/admin/medicalfacility/edit/{id}','MedicalFacilityController@edit');
+    Route::patch('/admin/medicalfacility/update/{id}','MedicalFacilityController@update');
+    Route::delete('/admin/medicalfacility/delete/{id}','MedicalFacilityController@destroy');
+
 
 });

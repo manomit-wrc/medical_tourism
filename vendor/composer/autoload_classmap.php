@@ -6,12 +6,16 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddProcedureImageColumsToProceduresTable' => $baseDir . '/database/migrations/2017_04_24_130154_add_procedure_image_colums_to_procedures_table.php',
     'AddStatusToProceduresTables' => $baseDir . '/database/migrations/2017_04_13_074936_add_status_to_procedures_tables.php',
+    'AlterTableMedicalFacilitiesChangeDescription' => $baseDir . '/database/migrations/2017_04_24_121844_alter_table_medical_facilities_change_description.php',
     'CreateAccomodationsTable' => $baseDir . '/database/migrations/2017_04_21_073022_create_accomodations_table.php',
     'CreateAccrediationsTable' => $baseDir . '/database/migrations/2017_04_21_051438_create_accrediations_table.php',
     'CreateBannersTable' => $baseDir . '/database/migrations/2017_04_21_124438_create_banners_table.php',
     'CreateCuisinesTable' => $baseDir . '/database/migrations/2017_04_21_085431_create_cuisines_table.php',
+    'CreateDegreesTable' => $baseDir . '/database/migrations/2017_04_24_100115_create_degrees_table.php',
     'CreateLanguageCapabilitiesTable' => $baseDir . '/database/migrations/2017_04_13_104412_create_language_capabilities_table.php',
+    'CreateMedicalFacilitiesTable' => $baseDir . '/database/migrations/2017_04_24_105551_create_medical_facilities_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateProceduresTable' => $baseDir . '/database/migrations/2017_04_13_054018_create_procedures_table.php',
     'CreateRolesTable' => $baseDir . '/database/migrations/2017_04_24_085106_create_roles_table.php',

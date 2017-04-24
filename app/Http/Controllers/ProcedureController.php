@@ -10,6 +10,8 @@ use Input;
 use Redirect;
 use Session;
 use Validator;
+use Image;
+use File;
 
 class ProcedureController extends Controller
 {
@@ -46,14 +48,43 @@ class ProcedureController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-        'name' => 'required|unique:procedures'
+        'name' => 'required|unique:procedures',
+        'procedure_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=243,min_height=149',
       ]);
 
       // Getting all data after success validation.
-      //dd($request->all());
-      $input = $request->all();
+      
+      $procedureobj = new Procedure($request->input()) ;
+      
+      $procedureobj->name = $request->get('name') ;
+           
 
-      Procedure::create($input);
+        //echo "<pre>"; print_r($request->file('procedure_image'));die;
+
+        if($file = $request->hasFile('procedure_image')) {
+
+            $file = $request->file('procedure_image') ;
+
+            $fileName = time().'_'.$file->getClientOriginalName() ;
+
+            //thumb destination path
+            $destinationPath = public_path().'/uploads/procedures/thumb' ;
+
+            $img = Image::make($file->getRealPath());
+
+            $img->resize(243, 149, function ($constraint){
+                $constraint->aspectRatio();
+            })->save($destinationPath.'/'.$fileName);
+
+            //original destination path
+            $destinationPath = public_path().'/uploads/procedures/' ;
+            $file->move($destinationPath,$fileName);
+
+            $procedureobj->procedure_image = $fileName ;
+        }
+
+        $procedureobj->save() ;
+
       Session::flash('message', 'Successfully added!');
       return Redirect::to('/admin/procedure');
     }
@@ -92,16 +123,42 @@ class ProcedureController extends Controller
     public function update($id,Request $request)
     {
         //echo $id; die;
-        $langcap = Procedure::find($id);
+        $procedureobj = Procedure::find($id);
         // validate
         $this->validate($request, [
-        'name' => 'required|unique:procedures'
+        'name' => 'required|unique:procedures',
+        'procedure_image' => 'image|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=243,min_height=149',
         ]);
 
         // Getting all data after success validation.
-        $input = $request->all();
-        //echo "<pre>"; print_r($input); die;
-        $langcap->fill($input)->save();
+        $procedureobj->name = $request->get('name') ;
+       
+
+        //echo "<pre>"; print_r($request->file('procedure_image'));die;
+
+        if($file = $request->hasFile('procedure_image')) {
+
+            $file = $request->file('procedure_image') ;
+
+            $fileName = time().'_'.$file->getClientOriginalName() ;
+
+            //thumb destination path
+            $destinationPath = public_path().'/uploads/procedures/thumb' ;
+
+            $img = Image::make($file->getRealPath());
+
+            $img->resize(100, 100, function ($constraint){
+                $constraint->aspectRatio();
+            })->save($destinationPath.'/'.$fileName);
+
+            //original destination path
+            $destinationPath = public_path().'/uploads/procedures/' ;
+            $file->move($destinationPath,$fileName);
+
+            $procedureobj->procedure_image = $fileName ;
+        }
+
+        $procedureobj->save() ;
 
 
         // redirect
@@ -121,6 +178,8 @@ class ProcedureController extends Controller
         //echo $id; die;
        // delete
         $procobj = Procedure::findOrFail($id);
+        File::delete(public_path('/uploads/medicalfacilities/'. $medfacobj->banner_image));
+        File::delete(public_path('/uploads/medicalfacilities/thumb/'. $medfacobj->banner_image));
         $procobj->delete();
 
         // redirect
