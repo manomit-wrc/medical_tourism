@@ -47,14 +47,14 @@
 
                         <!-- text input -->
                         <div class="form-group">
-                          {!! Form::label('name', 'Accrediation name:') !!}
+                          {!! Html::decode(Form::label('name','Accrediation name: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('name',null,array('class'=>'form-control','id'=>'name','placeholder'=>'Enter accrediation name')) !!}
                         </div>
                         <!-- /.text input -->
 
                         <!-- file input -->
                         <div class="form-group">
-                          {!! Form::label('Accrediation logo') !!}
+                          {!! Html::decode(Form::label('accrediation_logo','Accrediation logo: <span style="color:red;">*</span>')) !!}
                           <img src="{{url('/uploads/accrediations/thumb/'.$accrediations_data->accrediation_logo)}}" alt="Accrediation Logo" >
                           {!! Form::file('accrediation_logo', null) !!}
                         </div>

@@ -47,15 +47,15 @@
 
                         <!-- form-group dropdown-->
                         <div class="form-group">
-                          <label>{!! Form::label('procedure_id', 'Procedure:') !!}</label>
+                           {!! Html::decode(Form::label('procedure_id','Procedure: <span style="color:red;">*</span>')) !!}
                            {!! Form::select('procedure_id', $procedure_lists, null, ['class' => 'form-control select2']) !!}
                         </div>
                         <!-- /.form-group dropdown-->
                         
                         <!-- text input -->
                         <div class="form-group">
-                          {!! Form::label('name', 'Treatment name:') !!}
-                          {!! Form::text('name',null,array('class'=>'form-control','id'=>'name','placeholder'=>'Enter treatment name')) !!}
+                           {!! Html::decode(Form::label('name','Treatment name: <span style="color:red;">*</span>')) !!}
+                           {!! Form::text('name',null,array('class'=>'form-control','id'=>'name','placeholder'=>'Enter treatment name')) !!}
                         </div>
                         <!-- /.text input -->
                         

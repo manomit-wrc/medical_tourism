@@ -48,7 +48,7 @@
 
                         <!-- text input -->
                         <div class="form-group">
-                          {!! Form::label('name', 'Language capability name:') !!}
+                          {!! Html::decode(Form::label('name','Language capability name: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('name','',array('class'=>'form-control','id'=>'name','placeholder'=>'Enter language capability name')) !!}
                         </div>
                         <!-- /.text input -->
