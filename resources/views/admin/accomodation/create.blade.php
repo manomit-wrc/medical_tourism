@@ -48,7 +48,7 @@
 
                         <!-- text input -->
                         <div class="form-group">
-                          {!! Form::label('name', 'Accomodation name:') !!}
+                          {!! Html::decode(Form::label('name','Accomodation name: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('name','',array('class'=>'form-control','id'=>'name','placeholder'=>'Enter accomodation name')) !!}
                         </div>
                         <!-- /.text input -->
