@@ -49,13 +49,9 @@
             <li class="{{ Request::segment(2) === 'cuisine' ? 'active' : null }}" ><a href="{!!URL::to('/admin/cuisine')!!}"><i class="fa fa-circle-o"></i>Cuisine management</a></li>
             <li class="{{ Request::segment(2) === 'specificservice' ? 'active' : null }}" ><a href="{!!URL::to('/admin/specificservice')!!}"><i class="fa fa-circle-o"></i>Specific service management</a></li>
             <li class="{{ Request::segment(2) === 'banner' ? 'active' : null }}" ><a href="{!!URL::to('/admin/banner')!!}"><i class="fa fa-circle-o"></i>Banner management</a></li>
-<<<<<<< HEAD
             <li class="{{ Request::segment(2) === 'role' ? 'active' : null }}"><a href="/admin/role"><i class="fa fa-circle-o"></i>Role management</a></li>
-
-=======
             <li class="{{ Request::segment(2) === 'degree' ? 'active' : null }}" ><a href="{!!URL::to('/admin/degree')!!}"><i class="fa fa-circle-o"></i>Degree management</a></li>
             <li class="{{ Request::segment(2) === 'medicalfacility' ? 'active' : null }}" ><a href="{!!URL::to('/admin/medicalfacility')!!}"><i class="fa fa-circle-o"></i>Medical facility management</a></li>
->>>>>>> 07ebc9407448f5ded61392e2628d0852bef4a94d
           </ul>
         </li>
 
