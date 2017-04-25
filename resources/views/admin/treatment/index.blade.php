@@ -36,6 +36,7 @@
                 <thead>
                   <tr>
                     <th>Treatment name</th>
+                    <th>Procedure name</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
@@ -45,6 +46,7 @@
                     @foreach($treatment_datas as $treatment_data)
                       <tr>
                         <td>{{ $treatment_data->name }}</td>
+                        <td>{{ $treatment_data->procedure->name }}</td>
                         <td>
                           <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
                             <!-- we will add this later since its a little more complicated than the other two buttons -->

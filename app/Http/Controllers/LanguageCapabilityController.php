@@ -12,6 +12,7 @@ use Session;
 use Validator;
 
 
+
 class LanguageCapabilityController extends Controller
 {
     public function __construct() {

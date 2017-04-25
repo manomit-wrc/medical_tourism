@@ -86,8 +86,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::patch('/admin/banner/update/{id}','BannerController@update');
     Route::delete('/admin/banner/delete/{id}','BannerController@destroy');
 
-
-
+    //Role section
     Route::get('/admin/role', 'RoleController@index');
     Route::get('/admin/role/create', ['as' => 'create-role', 'uses' => 'RoleController@create']);
     Route::post('/admin/role/add', 'RoleController@add');
@@ -95,6 +94,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('admin/role/update/{id}', 'RoleController@update');
     Route::get('/admin/role/delete/{id}','RoleController@delete');
 
+    //Degree section
     Route::get('/admin/degree', 'DegreeController@index');
     Route::get('/admin/degree/create','DegreeController@create');
     Route::post('/admin/degree/store','DegreeController@store');
@@ -110,7 +110,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::patch('/admin/medicalfacility/update/{id}','MedicalFacilityController@update');
     Route::delete('/admin/medicalfacility/delete/{id}','MedicalFacilityController@destroy');
 
-    //Register admin user section
+
 
     Route::get('/admin/adminuser','AdminUserController@index');
     Route::get('/admin/adminuser/create', 'AdminUserController@create');
@@ -121,4 +121,39 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/permission/','AdminUserController@permission');
     Route::post('/admin/store_permission/', 'AdminUserController@store_permission');
     Route::post('/admin/get_permission/','AdminUserController@get_permission');
+
+    //Medical Provider type section
+    Route::get('/admin/providertype', 'ProviderTypeController@index');
+    Route::get('/admin/providertype/create','ProviderTypeController@create');
+    Route::post('/admin/providertype/store','ProviderTypeController@store');
+    Route::get('/admin/providertype/edit/{id}','ProviderTypeController@edit');
+    Route::patch('/admin/providertype/update/{id}','ProviderTypeController@update');
+    Route::delete('/admin/providertype/delete/{id}','ProviderTypeController@destroy');
+
+    //Payment type section
+    Route::get('/admin/paymenttype', 'PaymentTypeController@index');
+    Route::get('/admin/paymenttype/create','PaymentTypeController@create');
+    Route::post('/admin/paymenttype/store','PaymentTypeController@store');
+    Route::get('/admin/paymenttype/edit/{id}','PaymentTypeController@edit');
+    Route::patch('/admin/paymenttype/update/{id}','PaymentTypeController@update');
+    Route::delete('/admin/paymenttype/delete/{id}','PaymentTypeController@destroy');
+
+    //Country State city
+    /*Route::get('/admin/api/dependent-dropdown','APIController@index');
+    Route::get('/admin/api/get-state-list','APIController@getStateList');
+    Route::get('/admin/api/get-city-list','APIController@getCityList');*/
+
+    Route::get('/admin/api/dependent-dropdown','CountryStateCityController@index');
+    Route::get('/admin/api/get-state-list','CountryStateCityController@getStateList');
+    Route::get('/admin/api/get-city-list','CountryStateCityController@getCityList');
+
+    //Hotel section
+    Route::get('/admin/hotel', 'HotelController@index');
+    Route::get('/admin/hotel/create','HotelController@create');
+    Route::post('/admin/hotel/store','HotelController@store');
+    Route::get('/admin/hotel/edit/{id}','HotelController@edit');
+    Route::patch('/admin/hotel/update/{id}','HotelController@update');
+    Route::delete('/admin/hotel/delete/{id}','HotelController@destroy');
+
+
 });

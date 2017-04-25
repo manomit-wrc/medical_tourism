@@ -52,19 +52,20 @@
             <li class="{{ Request::segment(2) === 'role' ? 'active' : null }}"><a href="/admin/role"><i class="fa fa-circle-o"></i>Role management</a></li>
             <li class="{{ Request::segment(2) === 'degree' ? 'active' : null }}" ><a href="{!!URL::to('/admin/degree')!!}"><i class="fa fa-circle-o"></i>Degree management</a></li>
             <li class="{{ Request::segment(2) === 'medicalfacility' ? 'active' : null }}" ><a href="{!!URL::to('/admin/medicalfacility')!!}"><i class="fa fa-circle-o"></i>Medical facility management</a></li>
+            <li class="{{ Request::segment(2) === 'providertype' ? 'active' : null }}" ><a href="{!!URL::to('/admin/providertype')!!}"><i class="fa fa-circle-o"></i>Provider type management</a></li>
+            <li class="{{ Request::segment(2) === 'paymenttype' ? 'active' : null }}" ><a href="{!!URL::to('/admin/paymenttype')!!}"><i class="fa fa-circle-o"></i>Payment type management</a></li>
           </ul>
         </li>
 
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-picture-o"></i> <span>Something management</span>
+            <i class="fa fa-hotel"></i> <span>Hotel management</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i>Image management</a></li>
-            <li class="active"><a href="#"><i class="fa fa-circle-o"></i>Video management</a></li>
+             <li class="{{ Request::segment(2) === 'hotel' ? 'active' : null }}"><a href="{!!URL::to('/admin/hotel')!!}"><i class="fa fa-circle-o"></i>hotel list</a></li>
           </ul>
         </li>
 

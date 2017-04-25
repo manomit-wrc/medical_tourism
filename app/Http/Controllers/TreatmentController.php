@@ -25,7 +25,7 @@ class TreatmentController extends Controller
      */
     public function index() {
     	$treatment_datas = Treatment::all();
-
+        //print_r($treatment_datas[0]->procedure->name); die;
         //echo "<pre>"; print_r($treatment_datas); die;
         return view('admin.treatment.index')->with('treatment_datas',$treatment_datas);
     }

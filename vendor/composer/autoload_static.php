@@ -18,6 +18,7 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
+        '377d15ea71be0306a9829d9f78207a1c' => __DIR__ . '/..' . '/torann/currency/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -32,6 +33,10 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         'W' => 
         array (
             'Webmozart\\Assert\\' => 17,
+        ),
+        'T' => 
+        array (
+            'Torann\\Currency\\' => 16,
         ),
         'S' => 
         array (
@@ -87,6 +92,7 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         ),
         'D' => 
         array (
+            'DougSisk\\CountryState\\' => 22,
             'Dotenv\\' => 7,
             'Doctrine\\Instantiator\\' => 22,
             'Doctrine\\Common\\Cache\\' => 22,
@@ -121,6 +127,10 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         'Webmozart\\Assert\\' => 
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
+        ),
+        'Torann\\Currency\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/torann/currency/src',
         ),
         'Symfony\\Polyfill\\Util\\' => 
         array (
@@ -234,6 +244,10 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         array (
             0 => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker',
         ),
+        'DougSisk\\CountryState\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dougsisk/laravel-country-state/src',
+        ),
         'Dotenv\\' => 
         array (
             0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
@@ -287,6 +301,14 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
             array (
                 0 => __DIR__ . '/..' . '/phpspec/prophecy/src',
             ),
+            'Phine\\Exception' => 
+            array (
+                0 => __DIR__ . '/..' . '/phine/exception/src/lib',
+            ),
+            'Phine\\Country' => 
+            array (
+                0 => __DIR__ . '/..' . '/phine/country/src/lib',
+            ),
         ),
         'M' => 
         array (
@@ -328,20 +350,33 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
     );
 
     public static $classMap = array (
+<<<<<<< HEAD
         'AddPermissionIdToPermissions' => __DIR__ . '/../..' . '/database/migrations/2017_04_25_125438_add_permission_id_to_permissions.php',
+=======
+        'AddCurrencyIdColumsToHotelsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_25_091752_add_currency_id_colums_to_hotels_table.php',
+>>>>>>> 1eb7a18545d3526cf685cf602e975579f76a0c96
         'AddProcedureImageColumsToProceduresTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_24_130154_add_procedure_image_colums_to_procedures_table.php',
         'AddStatusToProceduresTables' => __DIR__ . '/../..' . '/database/migrations/2017_04_13_074936_add_status_to_procedures_tables.php',
         'AlterTableMedicalFacilitiesChangeDescription' => __DIR__ . '/../..' . '/database/migrations/2017_04_24_121844_alter_table_medical_facilities_change_description.php',
         'CreateAccomodationsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_21_073022_create_accomodations_table.php',
         'CreateAccrediationsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_21_051438_create_accrediations_table.php',
         'CreateBannersTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_21_124438_create_banners_table.php',
+        'CreateCountryStateCityTables' => __DIR__ . '/../..' . '/database/migrations/2017_04_25_064451_create_country_state_city_tables.php',
         'CreateCuisinesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_21_085431_create_cuisines_table.php',
+        'CreateCurrencyTable' => __DIR__ . '/../..' . '/database/migrations/2013_11_26_161501_create_currency_table.php',
         'CreateDegreesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_24_100115_create_degrees_table.php',
+        'CreateHotelClassTypesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_25_111718_create_hotel_class_types_table.php',
+        'CreateHotelsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_25_132205_create_hotels_table.php',
         'CreateLanguageCapabilitiesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_13_104412_create_language_capabilities_table.php',
         'CreateMedicalFacilitiesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_24_105551_create_medical_facilities_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+<<<<<<< HEAD
         'CreatePermissionsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_25_113125_create_permissions_table.php',
+=======
+        'CreatePaymentTypesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_25_054933_create_payment_types_table.php',
+>>>>>>> 1eb7a18545d3526cf685cf602e975579f76a0c96
         'CreateProceduresTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_13_054018_create_procedures_table.php',
+        'CreateProviderTypesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_25_051217_create_provider_types_table.php',
         'CreateRolesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_24_085106_create_roles_table.php',
         'CreateSpecificServiceTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_21_092026_create_specific_service_table.php',
         'CreateTreatmentsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_13_094025_create_treatments_table.php',
@@ -798,6 +833,7 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         'PHP_Token_XOR_EQUAL' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD_FROM' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'RenameClassColumn' => __DIR__ . '/../..' . '/database/migrations/2017_04_25_114410_rename_class_column.php',
         'RoleTableSeeder' => __DIR__ . '/../..' . '/database/seeds/RoleTableSeeder.php',
         'SebastianBergmann\\CodeCoverage\\CodeCoverage' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/CodeCoverage.php',
         'SebastianBergmann\\CodeCoverage\\CoveredCodeNotExecutedException' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Exception/CoveredCodeNotExecutedException.php',

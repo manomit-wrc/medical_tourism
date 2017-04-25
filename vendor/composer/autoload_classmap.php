@@ -6,20 +6,33 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+<<<<<<< HEAD
     'AddPermissionIdToPermissions' => $baseDir . '/database/migrations/2017_04_25_125438_add_permission_id_to_permissions.php',
+=======
+    'AddCurrencyIdColumsToHotelsTable' => $baseDir . '/database/migrations/2017_04_25_091752_add_currency_id_colums_to_hotels_table.php',
+>>>>>>> 1eb7a18545d3526cf685cf602e975579f76a0c96
     'AddProcedureImageColumsToProceduresTable' => $baseDir . '/database/migrations/2017_04_24_130154_add_procedure_image_colums_to_procedures_table.php',
     'AddStatusToProceduresTables' => $baseDir . '/database/migrations/2017_04_13_074936_add_status_to_procedures_tables.php',
     'AlterTableMedicalFacilitiesChangeDescription' => $baseDir . '/database/migrations/2017_04_24_121844_alter_table_medical_facilities_change_description.php',
     'CreateAccomodationsTable' => $baseDir . '/database/migrations/2017_04_21_073022_create_accomodations_table.php',
     'CreateAccrediationsTable' => $baseDir . '/database/migrations/2017_04_21_051438_create_accrediations_table.php',
     'CreateBannersTable' => $baseDir . '/database/migrations/2017_04_21_124438_create_banners_table.php',
+    'CreateCountryStateCityTables' => $baseDir . '/database/migrations/2017_04_25_064451_create_country_state_city_tables.php',
     'CreateCuisinesTable' => $baseDir . '/database/migrations/2017_04_21_085431_create_cuisines_table.php',
+    'CreateCurrencyTable' => $baseDir . '/database/migrations/2013_11_26_161501_create_currency_table.php',
     'CreateDegreesTable' => $baseDir . '/database/migrations/2017_04_24_100115_create_degrees_table.php',
+    'CreateHotelClassTypesTable' => $baseDir . '/database/migrations/2017_04_25_111718_create_hotel_class_types_table.php',
+    'CreateHotelsTable' => $baseDir . '/database/migrations/2017_04_25_132205_create_hotels_table.php',
     'CreateLanguageCapabilitiesTable' => $baseDir . '/database/migrations/2017_04_13_104412_create_language_capabilities_table.php',
     'CreateMedicalFacilitiesTable' => $baseDir . '/database/migrations/2017_04_24_105551_create_medical_facilities_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+<<<<<<< HEAD
     'CreatePermissionsTable' => $baseDir . '/database/migrations/2017_04_25_113125_create_permissions_table.php',
+=======
+    'CreatePaymentTypesTable' => $baseDir . '/database/migrations/2017_04_25_054933_create_payment_types_table.php',
+>>>>>>> 1eb7a18545d3526cf685cf602e975579f76a0c96
     'CreateProceduresTable' => $baseDir . '/database/migrations/2017_04_13_054018_create_procedures_table.php',
+    'CreateProviderTypesTable' => $baseDir . '/database/migrations/2017_04_25_051217_create_provider_types_table.php',
     'CreateRolesTable' => $baseDir . '/database/migrations/2017_04_24_085106_create_roles_table.php',
     'CreateSpecificServiceTable' => $baseDir . '/database/migrations/2017_04_21_092026_create_specific_service_table.php',
     'CreateTreatmentsTable' => $baseDir . '/database/migrations/2017_04_13_094025_create_treatments_table.php',
@@ -476,6 +489,7 @@ return array(
     'PHP_Token_XOR_EQUAL' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
     'PHP_Token_YIELD' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
     'PHP_Token_YIELD_FROM' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
+    'RenameClassColumn' => $baseDir . '/database/migrations/2017_04_25_114410_rename_class_column.php',
     'RoleTableSeeder' => $baseDir . '/database/seeds/RoleTableSeeder.php',
     'SebastianBergmann\\CodeCoverage\\CodeCoverage' => $vendorDir . '/phpunit/php-code-coverage/src/CodeCoverage.php',
     'SebastianBergmann\\CodeCoverage\\CoveredCodeNotExecutedException' => $vendorDir . '/phpunit/php-code-coverage/src/Exception/CoveredCodeNotExecutedException.php',
