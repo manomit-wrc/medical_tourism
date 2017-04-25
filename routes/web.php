@@ -126,5 +126,22 @@ Route::group(['middleware' => ['admin']], function () {
     Route::patch('/admin/paymenttype/update/{id}','PaymentTypeController@update');
     Route::delete('/admin/paymenttype/delete/{id}','PaymentTypeController@destroy');
 
+    //Country State city
+    /*Route::get('/admin/api/dependent-dropdown','APIController@index');
+    Route::get('/admin/api/get-state-list','APIController@getStateList');
+    Route::get('/admin/api/get-city-list','APIController@getCityList');*/
+
+    Route::get('/admin/api/dependent-dropdown','CountryStateCityController@index');
+    Route::get('/admin/api/get-state-list','CountryStateCityController@getStateList');
+    Route::get('/admin/api/get-city-list','CountryStateCityController@getCityList');
+
+    //Hotel section
+    Route::get('/admin/hotel', 'HotelController@index');
+    Route::get('/admin/hotel/create','HotelController@create');
+    Route::post('/admin/hotel/store','HotelController@store');
+    Route::get('/admin/hotel/edit/{id}','HotelController@edit');
+    Route::patch('/admin/hotel/update/{id}','HotelController@update');
+    Route::delete('/admin/hotel/delete/{id}','HotelController@destroy');
+
 
 });

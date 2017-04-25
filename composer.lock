@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6c4e8e29161fa3cb16a557f16340bf54",
+    "content-hash": "9330c4918e7ee94b62ed931f12772ffb",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -562,6 +562,61 @@
                 "parser"
             ],
             "time": "2014-09-09T13:34:57+00:00"
+        },
+        {
+            "name": "dougsisk/laravel-country-state",
+            "version": "1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DougSisk/laravel-country-state.git",
+                "reference": "e1cb0a3a56a3538c6483bd0a74b358d7ae251020"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DougSisk/laravel-country-state/zipball/e1cb0a3a56a3538c6483bd0a74b358d7ae251020",
+                "reference": "e1cb0a3a56a3538c6483bd0a74b358d7ae251020",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0",
+                "phine/country": "~1.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~3.0",
+                "phpunit/phpunit": "~4.0|~5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "DougSisk\\CountryState\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Doug Sisk",
+                    "homepage": "http://dougsisk.com"
+                }
+            ],
+            "description": "Country & state helper for Laravel 5.",
+            "homepage": "https://github.com/DougSisk/laravel-country-state",
+            "keywords": [
+                "countries",
+                "country",
+                "laravel",
+                "state",
+                "states"
+            ],
+            "time": "2016-10-13T21:43:34+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -1373,6 +1428,109 @@
                 "random"
             ],
             "time": "2017-03-13T16:27:32+00:00"
+        },
+        {
+            "name": "phine/country",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kherge-abandoned/lib-country.git",
+                "reference": "17278e939832013a3c7981b71f63ceb7480e79a1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kherge-abandoned/lib-country/zipball/17278e939832013a3c7981b71f63ceb7480e79a1",
+                "reference": "17278e939832013a3c7981b71f63ceb7480e79a1",
+                "shasum": ""
+            },
+            "require": {
+                "phine/exception": "~1.0",
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "league/phpunit-coverage-listener": "~1.0",
+                "phine/test": "~1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Phine\\Country": "src/lib"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kevin Herrera",
+                    "email": "kevin@herrera.io",
+                    "homepage": "http://kevin.herrera.io"
+                }
+            ],
+            "description": "A PHP library for country and subdivision data.",
+            "homepage": "https://github.com/phine/lib-country",
+            "keywords": [
+                "countries",
+                "country"
+            ],
+            "abandoned": true,
+            "time": "2015-04-21T03:50:08+00:00"
+        },
+        {
+            "name": "phine/exception",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kherge-abandoned/lib-exception.git",
+                "reference": "150c6b6090b2ebc53c60e87cb20c7f1287b7b68a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kherge-abandoned/lib-exception/zipball/150c6b6090b2ebc53c60e87cb20c7f1287b7b68a",
+                "reference": "150c6b6090b2ebc53c60e87cb20c7f1287b7b68a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "league/phpunit-coverage-listener": "~1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Phine\\Exception": "src/lib"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kevin Herrera",
+                    "email": "kevin@herrera.io",
+                    "homepage": "http://kevin.herrera.io"
+                }
+            ],
+            "description": "A PHP library for improving the use of exceptions.",
+            "homepage": "https://github.com/phine/lib-exception",
+            "keywords": [
+                "exception"
+            ],
+            "abandoned": true,
+            "time": "2013-08-27T17:43:25+00:00"
         },
         {
             "name": "psr/http-message",
@@ -2459,6 +2617,64 @@
                 "dump"
             ],
             "time": "2017-01-24T13:02:38+00:00"
+        },
+        {
+            "name": "torann/currency",
+            "version": "1.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Torann/laravel-currency.git",
+                "reference": "8a65ebcc8233df529cc13a67370239088bcc21d1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Torann/laravel-currency/zipball/8a65ebcc8233df529cc13a67370239088bcc21d1",
+                "reference": "8a65ebcc8233df529cc13a67370239088bcc21d1",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/cache": "~5.1",
+                "illuminate/support": "~5.1",
+                "php": ">=5.5.9"
+            },
+            "suggest": {
+                "illuminate/database": "Allows for storing of currencies in the database"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Torann\\Currency\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD 2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Daniel Stainback",
+                    "email": "torann@gmail.com"
+                }
+            ],
+            "description": "This provides Laravel 5 with currency functions such as currency formatting and conversion using up-to-date exchange rates.",
+            "keywords": [
+                "currency",
+                "exchange rate",
+                "finance",
+                "laravel",
+                "money",
+                "openexchangerates",
+                "yahoo finance"
+            ],
+            "time": "2017-04-20T20:24:18+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

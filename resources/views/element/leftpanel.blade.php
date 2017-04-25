@@ -59,14 +59,13 @@
 
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-picture-o"></i> <span>Something management</span>
+            <i class="fa fa-hotel"></i> <span>Hotel management</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i>Image management</a></li>
-            <li class="active"><a href="#"><i class="fa fa-circle-o"></i>Video management</a></li>
+             <li class="{{ Request::segment(2) === 'hotel' ? 'active' : null }}"><a href="{!!URL::to('/admin/hotel')!!}"><i class="fa fa-circle-o"></i>hotel list</a></li>
           </ul>
         </li>
 
