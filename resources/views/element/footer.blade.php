@@ -16,7 +16,7 @@
                     <li><a href="#">Privacy</a></li>
                     <li><a href="#">Quick links</a></li>
                     <li><a href="#">Cities</a></li>
-                    <li><a href="#">Help</a></li>                  
+                    <li><a href="#">Help</a></li>
                 </ul>
                 <span class="copy">&copy; <script>document.write(new Date().getFullYear())</script> Swasthya Bandhab</span>
             </div>
@@ -74,6 +74,90 @@ $(function () {
     });
   });
 </script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.2.0/jquery-confirm.min.css" >
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.2.0/jquery-confirm.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(e){
+    var permissionArr = new Array();
+    $("#btn_check_all").click(function(e){
+
+      $(".chk-route-list").prop('checked',true);
+    });
+    $("#btn_uncheck_all").click(function(e){
+      $(".chk-route-list").prop('checked',false);
+    });
+    $(".exact-submit-button").click(function(e){
+      if(!$("#role").val()) {
+        jconfirm({
+            title: 'Alert!',
+            content: "Please select role"
+        });
+      }
+      else if(!$('.chk-route-list').is(':checked')) {
+        jconfirm({
+            title: 'Alert!',
+            content: "Please select role"
+        });
+      }
+      else {
+        $('.chk-route-list').each(function(){
+          if($(this).is(":checked")) {
+            permissionArr.push({permission_id:$(this).attr('id'),permission_name:$(this).val()});
+          }
+        });
+
+        $.ajax({
+          type:"POST",
+          url:"/admin/store_permission/",
+          data: {role:$("#role").val(),permissionArr:permissionArr,_token:"{{csrf_token()}}"},
+          success:function(response) {
+            if(response.status == 1) {
+              jconfirm({
+                  title: 'Confirm!',
+                  content: "Permission addedd successfully",
+                  buttons: {
+                    OK: function () {
+                      window.location.reload();
+                     }
+                  }
+              });
+            }
+            else {
+              jconfirm({
+                  title: 'Alert!',
+                  content: "Please try again"
+              });
+            }
+          }
+        });
+      }
+
+    });
+
+    $("#role").change(function(e){
+      var value = $(this).val();
+      $(".chk-route-list").prop('checked',false);
+      if(value) {
+        $.ajax({
+          type:"POST",
+          url: "/admin/get_permission/",
+          data: {role_id:value,_token:"{{csrf_token()}}"},
+          success:function(response) {
+            if(response.status == 1) {
+              for(var i=0;i<response.data.length;i++) {
+                $("#"+response.data[i].permission_id).prop('checked',true);
+              }
+            }
+            else {
+              $(".chk-route-list").prop('checked',false);
+            }
+          }
+        });
+      }
+    });
+  });
+</script>
 <!-- page script -->
 
 <!-- modal  -->
@@ -95,7 +179,7 @@ $(function () {
             </div>
         </div>
         <div class="modal-body">
-         
+
             <div class="form-group">
               <label>Text</label>
               {!!Form::textarea('subject','invite to friends',['class'=>'form-control','required'=>'required','id'=>'subject'])!!}
@@ -106,7 +190,7 @@ $(function () {
            {!!Form::submit('Submit',["class"=>"btn btn-primary",'id'=>'invite_friends_button'])!!}
         </div>
       </div>
-      
+
     </div>
   </div>
 <!-- end modal  -->
@@ -314,4 +398,3 @@ $(function () {
   <div class="control-sidebar-bg"></div>
   </div>
 <!-- ./wrapper -->
-

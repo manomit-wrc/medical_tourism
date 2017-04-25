@@ -30,4 +30,17 @@ class User extends Authenticatable
     public function roles() {
       return $this->belongsToMany('App\Role', 'user_role','user_id','role_id');
     }
+
+
+
+    public function hasRole($action,$user_id)
+    {
+      $roles = $this->roles()->where('user_id',$user_id)->first();
+      if(\App\Permission::where(['permission_name'=>$action,'role_id'=>$roles->role_id])->first()) {
+	       return true;
+      }
+      else {
+       return false;
+      }
+    }
 }

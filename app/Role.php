@@ -13,9 +13,12 @@ class Role extends Model
     public $timestamps = true;
 
     public function users() {
-      $this->belongsToMany('App\User', 'user_role','role_id','user_id');
+      return $this->belongsToMany('App\User', 'user_role','role_id','user_id');
     }
 
+    public function permissions() {
+      return $this->hasMany('\App\Permission');
+    }
     public function setRoleNameAttribute($value)
     {
         return $this->attributes['role_name'] = strtoupper($value);

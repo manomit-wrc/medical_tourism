@@ -328,6 +328,7 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
     );
 
     public static $classMap = array (
+        'AddPermissionIdToPermissions' => __DIR__ . '/../..' . '/database/migrations/2017_04_25_125438_add_permission_id_to_permissions.php',
         'AddProcedureImageColumsToProceduresTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_24_130154_add_procedure_image_colums_to_procedures_table.php',
         'AddStatusToProceduresTables' => __DIR__ . '/../..' . '/database/migrations/2017_04_13_074936_add_status_to_procedures_tables.php',
         'AlterTableMedicalFacilitiesChangeDescription' => __DIR__ . '/../..' . '/database/migrations/2017_04_24_121844_alter_table_medical_facilities_change_description.php',
@@ -339,6 +340,7 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         'CreateLanguageCapabilitiesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_13_104412_create_language_capabilities_table.php',
         'CreateMedicalFacilitiesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_24_105551_create_medical_facilities_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+        'CreatePermissionsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_25_113125_create_permissions_table.php',
         'CreateProceduresTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_13_054018_create_procedures_table.php',
         'CreateRolesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_24_085106_create_roles_table.php',
         'CreateSpecificServiceTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_21_092026_create_specific_service_table.php',

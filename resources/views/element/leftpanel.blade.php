@@ -68,6 +68,19 @@
           </ul>
         </li>
 
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-picture-o"></i> <span>User management</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="{{ Request::segment(2) === 'adminuser' ? 'active' : null }}" ><a href="{{ url('/admin/adminuser')}}"><i class="fa fa-circle-o"></i>Manage user</a></li>
+            <li class="{{ Request::segment(2) === 'permission' ? 'active' : null }}" ><a href="{{ url('/admin/permission')}}"><i class="fa fa-circle-o"></i>Manage permission</a></li>
+          </ul>
+        </li>
+
        <!--  <li class="treeview">
           <a href="#">
             <i class="fa fa-files-o"></i>

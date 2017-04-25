@@ -110,5 +110,15 @@ Route::group(['middleware' => ['admin']], function () {
     Route::patch('/admin/medicalfacility/update/{id}','MedicalFacilityController@update');
     Route::delete('/admin/medicalfacility/delete/{id}','MedicalFacilityController@destroy');
 
+    //Register admin user section
 
+    Route::get('/admin/adminuser','AdminUserController@index');
+    Route::get('/admin/adminuser/create', 'AdminUserController@create');
+    Route::post('/admin/adminuser/add', 'AdminUserController@add');
+    Route::get('/admin/adminuser/edit/{id}','AdminUserController@edit');
+    Route::post('/admin/adminuser/update/{id}', 'AdminUserController@update');
+    Route::get('/admin/adminuser/delete/{id}','AdminUserController@delete');
+    Route::get('/admin/permission/','AdminUserController@permission');
+    Route::post('/admin/store_permission/', 'AdminUserController@store_permission');
+    Route::post('/admin/get_permission/','AdminUserController@get_permission');
 });
