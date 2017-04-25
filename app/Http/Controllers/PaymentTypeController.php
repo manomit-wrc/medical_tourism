@@ -4,18 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Procedure;
-use App\Treatment;
+use App\PaymentType;
 use Auth;
 use Input;
 use Redirect;
 use Session;
 use Validator;
 
-class TreatmentController extends Controller
+class PaymentTypeController extends Controller
 {
-    public function __construct() {
-
+     public function __construct() {
+    	
     }
 
     /**
@@ -24,22 +23,19 @@ class TreatmentController extends Controller
      * @return Response
      */
     public function index() {
-    	$treatment_datas = Treatment::all();
-        //print_r($treatment_datas[0]->procedure->name); die;
-        //echo "<pre>"; print_r($treatment_datas); die;
-        return view('admin.treatment.index')->with('treatment_datas',$treatment_datas);
+        $paymnttype_lists = PaymentType::all();
+        //echo "<pre>"; print_r($paymnttype_lists); die;
+        return view('admin.paymenttype.index')->with('paymnttype_lists',$paymnttype_lists);
     }
 
-    /**
+     /**
      * Show the form for creating a new resource.
      *
      * @return Response
      */
     public function create()
     {
-       $procedure_lists = Procedure::where('status', 1)->orderBy('name')->pluck('name', 'id');
-       //echo "<pre>"; print_r($procedure_lists); die;
-       return view('admin.treatment.create')->with('procedure_lists',$procedure_lists);
+       return view('admin.paymenttype.create');
     }
 
     /**
@@ -49,18 +45,17 @@ class TreatmentController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-        'name' => 'required|unique:treatments',
-        'procedure_id' => 'required'
+       $this->validate($request, [
+        'name' => 'required|unique:payment_types'
       ]);
 
       // Getting all data after success validation.
       //dd($request->all());
       $input = $request->all();
 
-      Treatment::create($input);
+      PaymentType::create($input);
       Session::flash('message', 'Successfully added!');
-      return Redirect::to('/admin/treatment');
+      return Redirect::to('/admin/paymenttype');
     }
 
     /**
@@ -82,12 +77,9 @@ class TreatmentController extends Controller
      */
     public function edit($id)
     {
-
-       $procedure_lists = Procedure::where('status', 1)->orderBy('name')->pluck('name', 'id');
-       //echo "<pre>"; print_r($procedure_lists); die;
-       // get the treatment
-       $treatment_datas = Treatment::findOrFail($id);
-       return view('admin.treatment.edit')->with(array('treatment_datas'=> $treatment_datas,'procedure_lists'=> $procedure_lists));
+       // get the paymenttypes types
+       $paymenttypes_data = PaymentType::findOrFail($id);
+       return view('admin.paymenttype.edit')->with('paymenttypes_data', $paymenttypes_data);
     }
 
     /**
@@ -99,23 +91,22 @@ class TreatmentController extends Controller
 
     public function update($id,Request $request)
     {
-       //echo $id; die;
-        $trtmnt = Treatment::find($id);
+        //echo $id; die;
+        $provdrtp = PaymentType::find($id);
         // validate
         $this->validate($request, [
-        'name' => 'required|unique:treatments',
-        'procedure_id' => 'required'
+        'name' => 'required|unique:payment_types'
         ]);
 
         // Getting all data after success validation.
         $input = $request->all();
         //echo "<pre>"; print_r($input); die;
-        $trtmnt->fill($input)->save();
+        $provdrtp->fill($input)->save();
 
 
         // redirect
         Session::flash('message', 'Successfully updated');
-        return Redirect::to('/admin/treatment');
+        return Redirect::to('/admin/paymenttype');
     }
 
     /**
@@ -127,13 +118,13 @@ class TreatmentController extends Controller
 
     public function destroy($id)
     {
-        //echo $id; die;
+       //echo $id; die;
        // delete
-        $trtmntobj = Treatment::findOrFail($id);
-        $trtmntobj->delete();
+        $provdrtp = PaymentType::findOrFail($id);
+        $provdrtp->delete();
 
         // redirect
         Session::flash('message', 'Successfully deleted');
-        return Redirect::to('/admin/treatment');
+        return Redirect::to('/admin/paymenttype');
     }
 }

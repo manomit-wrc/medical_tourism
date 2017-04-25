@@ -4,18 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Procedure;
-use App\Treatment;
+use App\ProviderType;
 use Auth;
 use Input;
 use Redirect;
 use Session;
 use Validator;
 
-class TreatmentController extends Controller
+class ProviderTypeController extends Controller
 {
     public function __construct() {
-
+    	
     }
 
     /**
@@ -24,22 +23,19 @@ class TreatmentController extends Controller
      * @return Response
      */
     public function index() {
-    	$treatment_datas = Treatment::all();
-        //print_r($treatment_datas[0]->procedure->name); die;
-        //echo "<pre>"; print_r($treatment_datas); die;
-        return view('admin.treatment.index')->with('treatment_datas',$treatment_datas);
+        $providertype_lists = ProviderType::all();
+        //echo "<pre>"; print_r($providertype_lists); die;
+        return view('admin.providertype.index')->with('providertype_lists',$providertype_lists);
     }
 
-    /**
+     /**
      * Show the form for creating a new resource.
      *
      * @return Response
      */
     public function create()
     {
-       $procedure_lists = Procedure::where('status', 1)->orderBy('name')->pluck('name', 'id');
-       //echo "<pre>"; print_r($procedure_lists); die;
-       return view('admin.treatment.create')->with('procedure_lists',$procedure_lists);
+       return view('admin.providertype.create');
     }
 
     /**
@@ -49,18 +45,17 @@ class TreatmentController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-        'name' => 'required|unique:treatments',
-        'procedure_id' => 'required'
+       $this->validate($request, [
+        'name' => 'required|unique:provider_types'
       ]);
 
       // Getting all data after success validation.
       //dd($request->all());
       $input = $request->all();
 
-      Treatment::create($input);
+      ProviderType::create($input);
       Session::flash('message', 'Successfully added!');
-      return Redirect::to('/admin/treatment');
+      return Redirect::to('/admin/providertype');
     }
 
     /**
@@ -82,12 +77,9 @@ class TreatmentController extends Controller
      */
     public function edit($id)
     {
-
-       $procedure_lists = Procedure::where('status', 1)->orderBy('name')->pluck('name', 'id');
-       //echo "<pre>"; print_r($procedure_lists); die;
-       // get the treatment
-       $treatment_datas = Treatment::findOrFail($id);
-       return view('admin.treatment.edit')->with(array('treatment_datas'=> $treatment_datas,'procedure_lists'=> $procedure_lists));
+       // get the provider types
+       $providertypes_data = ProviderType::findOrFail($id);
+       return view('admin.providertype.edit')->with('providertypes_data', $providertypes_data);
     }
 
     /**
@@ -99,23 +91,22 @@ class TreatmentController extends Controller
 
     public function update($id,Request $request)
     {
-       //echo $id; die;
-        $trtmnt = Treatment::find($id);
+        //echo $id; die;
+        $provdrtp = ProviderType::find($id);
         // validate
         $this->validate($request, [
-        'name' => 'required|unique:treatments',
-        'procedure_id' => 'required'
+        'name' => 'required|unique:provider_types'
         ]);
 
         // Getting all data after success validation.
         $input = $request->all();
         //echo "<pre>"; print_r($input); die;
-        $trtmnt->fill($input)->save();
+        $provdrtp->fill($input)->save();
 
 
         // redirect
         Session::flash('message', 'Successfully updated');
-        return Redirect::to('/admin/treatment');
+        return Redirect::to('/admin/providertype');
     }
 
     /**
@@ -127,13 +118,13 @@ class TreatmentController extends Controller
 
     public function destroy($id)
     {
-        //echo $id; die;
+       //echo $id; die;
        // delete
-        $trtmntobj = Treatment::findOrFail($id);
-        $trtmntobj->delete();
+        $provdrtp = ProviderType::findOrFail($id);
+        $provdrtp->delete();
 
         // redirect
         Session::flash('message', 'Successfully deleted');
-        return Redirect::to('/admin/treatment');
+        return Redirect::to('/admin/providertype');
     }
 }

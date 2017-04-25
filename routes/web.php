@@ -86,15 +86,15 @@ Route::group(['middleware' => ['admin']], function () {
     Route::patch('/admin/banner/update/{id}','BannerController@update');
     Route::delete('/admin/banner/delete/{id}','BannerController@destroy');
 
-
-
+    //Role section
     Route::get('/admin/role', 'RoleController@index');
     Route::get('/admin/role/create', ['as' => 'create-role', 'uses' => 'RoleController@create']);
     Route::post('/admin/role/add', 'RoleController@add');
     Route::get('/admin/role/edit/{id}', 'RoleController@edit');
     Route::post('admin/role/update/{id}', 'RoleController@update');
     Route::get('/admin/role/delete/{id}','RoleController@delete');
-
+    
+    //Degree section
     Route::get('/admin/degree', 'DegreeController@index');
     Route::get('/admin/degree/create','DegreeController@create');
     Route::post('/admin/degree/store','DegreeController@store');
@@ -109,6 +109,22 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/medicalfacility/edit/{id}','MedicalFacilityController@edit');
     Route::patch('/admin/medicalfacility/update/{id}','MedicalFacilityController@update');
     Route::delete('/admin/medicalfacility/delete/{id}','MedicalFacilityController@destroy');
+
+    //Medical Provider type section
+    Route::get('/admin/providertype', 'ProviderTypeController@index');
+    Route::get('/admin/providertype/create','ProviderTypeController@create');
+    Route::post('/admin/providertype/store','ProviderTypeController@store');
+    Route::get('/admin/providertype/edit/{id}','ProviderTypeController@edit');
+    Route::patch('/admin/providertype/update/{id}','ProviderTypeController@update');
+    Route::delete('/admin/providertype/delete/{id}','ProviderTypeController@destroy');
+
+    //Payment type section
+    Route::get('/admin/paymenttype', 'PaymentTypeController@index');
+    Route::get('/admin/paymenttype/create','PaymentTypeController@create');
+    Route::post('/admin/paymenttype/store','PaymentTypeController@store');
+    Route::get('/admin/paymenttype/edit/{id}','PaymentTypeController@edit');
+    Route::patch('/admin/paymenttype/update/{id}','PaymentTypeController@update');
+    Route::delete('/admin/paymenttype/delete/{id}','PaymentTypeController@destroy');
 
 
 });
