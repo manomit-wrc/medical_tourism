@@ -25,5 +25,8 @@ class Treatment extends Model
      *
      * @var array
      */
-    
+
+     public function procedure() {
+       return $this->belongsTo('\App\Procedure');
+     }
 }

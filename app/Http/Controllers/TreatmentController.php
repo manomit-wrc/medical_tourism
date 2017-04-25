@@ -15,7 +15,7 @@ use Validator;
 class TreatmentController extends Controller
 {
     public function __construct() {
-    	
+
     }
 
     /**
@@ -25,7 +25,7 @@ class TreatmentController extends Controller
      */
     public function index() {
     	$treatment_datas = Treatment::all();
-        //$treatment_datas = Procedure::find()->treatments;
+
         //echo "<pre>"; print_r($treatment_datas); die;
         return view('admin.treatment.index')->with('treatment_datas',$treatment_datas);
     }
