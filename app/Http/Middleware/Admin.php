@@ -24,8 +24,15 @@ class Admin
            return response('Insufficient permission',401);
          }
 
-        return $next($request);
-        
+
+        $action = Route::getCurrentRoute()->getPath();
+        $user = new User();
+        if($user->hasRole($action,Auth::guard($guard)->user()->id)) {
+          return $next($request);
+        }
+        else {
+          return response('Insufficient permission',401);
+        }
 
      }
 }
