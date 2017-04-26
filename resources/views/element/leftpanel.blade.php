@@ -74,12 +74,15 @@
         <li class="treeview">
           <a href="#">
             <i class="fa fa-newspaper-o"></i> <span>News & Events management</span>
+            <i class="fa fa-picture-o"></i> <span>User management</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-             @if($user_view_composer->hasRole('admin/news',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'news' ? 'active' : null }}"><a href="{!!URL::to('/admin/news')!!}"><i class="fa fa-circle-o"></i>News management</a></li>@endif
+            @if($user_view_composer->hasRole('admin/news',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'news' ? 'active' : null }}"><a href="{!!URL::to('/admin/news')!!}"><i class="fa fa-circle-o"></i>News management</a></li>@endif
+            @if($user_view_composer->hasRole('admin/adminuser',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'adminuser' ? 'active' : null }}" ><a href="{{ url('/admin/adminuser')}}"><i class="fa fa-circle-o"></i>Manage user</a></li>@endif
+            @if($user_view_composer->hasRole('admin/permission',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'permission' ? 'active' : null }}" ><a href="{{ url('/admin/permission')}}"><i class="fa fa-circle-o"></i>Manage permission</a></li>@endif
           </ul>
         </li>
 
@@ -104,8 +107,10 @@
             </span>
           </a>
           <ul class="treeview-menu">
+
             @if($user_view_composer->hasRole('admin/doctors',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'doctors' ? 'active' : null }}" ><a href="{{ url('/admin/doctors')}}"><i class="fa fa-circle-o"></i>Manage doctors</a></li>@endif
             @if($user_view_composer->hasRole('admin/providerconnectivity',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'providerconnectivity' ? 'active' : null }}" ><a href="{{ url('/admin/providerconnectivity')}}"><i class="fa fa-circle-o"></i>Manage connectivity</a></li>@endif
+            @if($user_view_composer->hasRole('admin/doctors',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'doctors' ? 'active' : null }}" ><a href="{{ url('/admin/doctors')}}"><i class="fa fa-circle-o"></i>Manage doctors</a></li>@endif
           </ul>
         </li>
 

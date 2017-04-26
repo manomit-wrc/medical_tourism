@@ -13,6 +13,7 @@ class Doctor extends Model
     public $timestamps = true;
 
     public function degrees() {
+
       return $this->belongsToMany('\App\Degree','doctor_degree','doctor_id','degree_id');
     }
 

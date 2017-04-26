@@ -15,7 +15,6 @@ return array(
     'CreateAccomodationsTable' => $baseDir . '/database/migrations/2017_04_21_073022_create_accomodations_table.php',
     'CreateAccrediationsTable' => $baseDir . '/database/migrations/2017_04_21_051438_create_accrediations_table.php',
     'CreateBannersTable' => $baseDir . '/database/migrations/2017_04_21_124438_create_banners_table.php',
-    'CreateConnectivitiesTable' => $baseDir . '/database/migrations/2017_04_26_071329_create_connectivities_table.php',
     'CreateCountryStateCityTables' => $baseDir . '/database/migrations/2017_04_25_064451_create_country_state_city_tables.php',
     'CreateCuisinesTable' => $baseDir . '/database/migrations/2017_04_21_085431_create_cuisines_table.php',
     'CreateCurrencyTable' => $baseDir . '/database/migrations/2013_11_26_161501_create_currency_table.php',
