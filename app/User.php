@@ -35,12 +35,18 @@ class User extends Authenticatable
 
     public function hasRole($action,$user_id)
     {
-      $roles = $this->roles()->where('user_id',$user_id)->first();
-      if(\App\Permission::where(['permission_name'=>$action,'role_id'=>$roles->role_id])->first()) {
-	       return true;
+      $user_details = User::find($user_id);
+      $roles =   $user_details->roles()->wherePivot('user_id', '=', $user_id)->first();
+      if($roles) {
+        if(\App\Permission::where(['permission_name'=>$action,'role_id'=>$roles->id])->first()) {
+  	       return true;
+        }
+        else {
+         return false;
+        }
       }
       else {
-       return false;
+        return true;
       }
     }
 }
