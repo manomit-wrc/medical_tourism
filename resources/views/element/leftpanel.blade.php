@@ -55,6 +55,7 @@
             @if($user_view_composer->hasRole('admin/medicalfacility',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'medicalfacility' ? 'active' : null }}" ><a href="{!!URL::to('/admin/medicalfacility')!!}"><i class="fa fa-circle-o"></i>Medical facility management</a></li>@endif
             @if($user_view_composer->hasRole('admin/providertype',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'providertype' ? 'active' : null }}" ><a href="{!!URL::to('/admin/providertype')!!}"><i class="fa fa-circle-o"></i>Provider type management</a></li>@endif
             @if($user_view_composer->hasRole('admin/paymenttype',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'paymenttype' ? 'active' : null }}" ><a href="{!!URL::to('/admin/paymenttype')!!}"><i class="fa fa-circle-o"></i>Payment type management</a></li>@endif
+            @if($user_view_composer->hasRole('admin/connectivity',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'connectivity' ? 'active' : null }}" ><a href="{!!URL::to('/admin/connectivity')!!}"><i class="fa fa-circle-o"></i>Connectivity management</a></li>@endif
           </ul>
         </li>
 

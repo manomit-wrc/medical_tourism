@@ -165,4 +165,12 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/doctors/edit/{id}','DoctorController@edit');
     Route::post('/admin/doctors/update/{id}','DoctorController@update');
     Route::delete('/admin/doctors/delete/{id}','DoctorController@destroy');
+
+    //connectivity section
+    Route::get('/admin/connectivity', 'ConnectivityController@index');
+    Route::get('/admin/connectivity/create','ConnectivityController@create');
+    Route::post('/admin/connectivity/store','ConnectivityController@store');
+    Route::get('/admin/connectivity/edit/{id}','ConnectivityController@edit');
+    Route::patch('/admin/connectivity/update/{id}','ConnectivityController@update');
+    Route::delete('/admin/connectivity/delete/{id}','ConnectivityController@destroy');
 });
