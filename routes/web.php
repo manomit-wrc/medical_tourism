@@ -19,6 +19,7 @@ Route::get('/admin', 'LoginController@index');
 Route::post('/admin/login', 'LoginController@checkLogin');
 //Route::get('/admin/dashboard', 'DashboardController@index')->middleware('web');
 Route::group(['middleware' => ['admin']], function () {
+
 	Route::get('/admin/logout', array('uses' => 'LoginController@logout'));
     Route::get('/admin/dashboard', 'DashboardController@index');
 

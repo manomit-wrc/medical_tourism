@@ -3,7 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use View;
+use Illuminate\Support\Facades\View;
+use App\User;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -13,13 +14,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-          view()->composer('*', function ($view) {
-
-          $current_route_name = \Request::route()->getName();
-          
-
-          $view->with('current_route_name', $current_route_name);
-
+      View::composer('*', function($view){
+        $view->with('user_view_composer', new User());
       });
     }
 

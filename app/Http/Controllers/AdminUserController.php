@@ -12,19 +12,7 @@ use Illuminate\Support\Facades\Route;
 class AdminUserController extends Controller
 {
     public function __construct(Request $request) {
-      /*$routeCollection = Route::getRoutes();
-      foreach ($routeCollection as $value) {
-        //echo $value->getPath()."<br/>";
-        if($value->getPath() == Route::getCurrentRoute()->getPath())
-        {
-          echo "True";
-        }
-        else {
-          echo "False";
-        }
-      }
 
-      die();*/
     }
 
     public function index() {
@@ -119,6 +107,7 @@ class AdminUserController extends Controller
     public function store_permission(Request $request) {
       if($request->ajax()) {
         $role = $request->role;
+        $affectedRows = \App\Permission::where('role_id', '=', $role)->delete();
         $permissionArr = $request->permissionArr;
         foreach ($permissionArr as $key => $value) {
           $data[] = [

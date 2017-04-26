@@ -74,7 +74,7 @@ $(function () {
     });
   });
 </script>
-<<<<<<< HEAD
+
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.2.0/jquery-confirm.min.css" >
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.2.0/jquery-confirm.min.js"></script>
@@ -159,23 +159,23 @@ $(function () {
     });
   });
 </script>
-=======
+
 <!--State/city/dropdown start-->
 <script type="text/javascript">
     $('#country_id').change(function(){
-    var countryID = $(this).val();    
+    var countryID = $(this).val();
     if(countryID){
         $.ajax({
            type:"GET",
            url:"{{url('/admin/api/get-state-list')}}?country_id="+countryID,
-           success:function(res){               
+           success:function(res){
             if(res){
                 $("#state_id").empty();
                 $("#state_id").append('<option>Select</option>');
                 $.each(res,function(key,value){
                     $("#state_id").append('<option value="'+key+'">'+value+'</option>');
                 });
-           
+
             }else{
                $("#state_id").empty();
             }
@@ -184,21 +184,21 @@ $(function () {
     }else{
         $("#state_id").empty();
         $("#city_id").empty();
-    }      
+    }
    });
     $('#state_id').on('change',function(){
-    var stateID = $(this).val();    
+    var stateID = $(this).val();
     if(stateID){
         $.ajax({
            type:"GET",
            url:"{{url('/admin/api/get-city-list')}}?state_id="+stateID,
-           success:function(res){               
+           success:function(res){
             if(res){
                 $("#city_id").empty();
                 $.each(res,function(key,value){
                     $("#city_id").append('<option value="'+key+'">'+value+'</option>');
                 });
-           
+
             }else{
                $("#city_id").empty();
             }
@@ -207,11 +207,11 @@ $(function () {
     }else{
         $("#city_id").empty();
     }
-        
+
    });
 </script>
 <!--State/city/dropdown end-->
->>>>>>> 1eb7a18545d3526cf685cf602e975579f76a0c96
+
 <!-- page script -->
 
 <!-- modal  -->
