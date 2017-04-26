@@ -25,6 +25,7 @@
               <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
             </div>
 
+
             <div><a href="{{ url('/admin/doctors/create') }}"><button type="button" class="btn bg-purple">ADD</button></a></div>
 
             <!-- /.box-header -->

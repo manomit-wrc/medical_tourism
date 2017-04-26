@@ -165,4 +165,5 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/doctors/edit/{id}','DoctorController@edit');
     Route::post('/admin/doctors/update/{id}','DoctorController@update');
     Route::delete('/admin/doctors/delete/{id}','DoctorController@destroy');
+    
 });

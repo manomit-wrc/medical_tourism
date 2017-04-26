@@ -91,6 +91,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
+            
             @if($user_view_composer->hasRole('admin/doctors',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'doctors' ? 'active' : null }}" ><a href="{{ url('/admin/doctors')}}"><i class="fa fa-circle-o"></i>Manage doctors</a></li>@endif
           </ul>
         </li>

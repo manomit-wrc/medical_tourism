@@ -25,4 +25,9 @@ class Degree extends Model
      *
      * @var array
      */
+
+     public function doctors() {
+
+       return $this->belongsToMany('\App\Doctor','doctor_degree','degree_id','doctor_id');
+     }
 }
