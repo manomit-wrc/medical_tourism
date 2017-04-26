@@ -101,7 +101,14 @@
                           {!! Form::text('max_price_per_night','',array('class'=>'form-control','id'=>'max_price_per_night','placeholder'=>'Enter maximum price per night')) !!}
                         </div>
                         <!-- /.text input -->
-
+                       
+                        <!-- text input -->
+                        <div class="form-group">
+                          {!! Html::decode(Form::label('banner_url','Youtube video url: <span style="color:red;">* </span>')) !!}
+                          {!! Form::text('banner_url','',array('class'=>'form-control','id'=>'banner_url','placeholder'=>'Enter youtube video url')) !!}
+                        </div>
+                        <!-- /.text input -->
+                        
                          <!-- input submit button -->
                         <div class="box-footer">
                            {!! Form::submit('submit',array('class'=>'btn btn-primary pull-right','id'=>'exact-submit-button'))!!}
