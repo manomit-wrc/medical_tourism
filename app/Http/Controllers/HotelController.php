@@ -51,7 +51,15 @@ class HotelController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-        'name' => 'required|unique:accomodations'
+        'name' => 'required',
+        'address' => 'required',
+        'country_id' => 'required',
+        'state_id' => 'required',
+        'city_id' => 'required',
+        'hotel_class_id' => 'required',
+        'no_of_rooms' => 'required|numeric',
+        'min_price_per_night' => 'required',
+        'max_price_per_night' => 'required',
       ]);
 
       // Getting all data after success validation.

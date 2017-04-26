@@ -88,6 +88,13 @@
                         </div>
                         <!-- /.form-group dropdown-->
                         
+                         <!-- text input -->
+                        <div class="form-group">
+                          {!! Html::decode(Form::label('no_of_rooms','Number of rooms: <span style="color:red;">*</span>')) !!}
+                          {!! Form::text('no_of_rooms','',array('class'=>'form-control','id'=>'no_of_rooms','placeholder'=>'Enter number of rooms')) !!}
+                        </div>
+                        <!-- /.text input -->
+
                         <!-- text input -->
                         <div class="form-group">
                           {!! Html::decode(Form::label('min_price_per_night','Minimum price per night: <span style="color:red;">*</span>')) !!}
@@ -104,11 +111,11 @@
                        
                         <!-- text input -->
                         <div class="form-group">
-                          {!! Html::decode(Form::label('banner_url','Youtube video url: <span style="color:red;">* </span>')) !!}
-                          {!! Form::text('banner_url','',array('class'=>'form-control','id'=>'banner_url','placeholder'=>'Enter youtube video url')) !!}
+                          {!! Html::decode(Form::label('booking_url','Direct booking url: <span style="color:red;">* </span>')) !!}
+                          {!! Form::text('booking_url','',array('class'=>'form-control','id'=>'booking_url','placeholder'=>'Enter direct booking url')) !!}
                         </div>
                         <!-- /.text input -->
-                        
+
                          <!-- input submit button -->
                         <div class="box-footer">
                            {!! Form::submit('submit',array('class'=>'btn btn-primary pull-right','id'=>'exact-submit-button'))!!}
