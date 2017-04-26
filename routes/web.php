@@ -157,4 +157,12 @@ Route::group(['middleware' => ['admin']], function () {
     Route::delete('/admin/hotel/delete/{id}','HotelController@destroy');
 
 
+    //Doctor section
+
+    Route::get('/admin/doctors','DoctorController@index');
+    Route::get('/admin/doctors/create','DoctorController@create');
+    Route::post('/admin/doctors/store','DoctorController@store');
+    Route::get('/admin/doctors/edit/{id}','DoctorController@edit');
+    Route::post('/admin/doctors/update/{id}','DoctorController@update');
+    Route::delete('/admin/doctors/delete/{id}','DoctorController@destroy');
 });
