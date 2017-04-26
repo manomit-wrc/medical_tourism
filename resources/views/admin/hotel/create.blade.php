@@ -87,6 +87,20 @@
                            {!! Form::select('hotel_class_id',['' => 'Select'] +$hotelclasstypes, null, ['class' => 'form-control select2']) !!}
                         </div>
                         <!-- /.form-group dropdown-->
+                        
+                        <!-- text input -->
+                        <div class="form-group">
+                          {!! Html::decode(Form::label('min_price_per_night','Minimum price per night: <span style="color:red;">*</span>')) !!}
+                          {!! Form::text('min_price_per_night','',array('class'=>'form-control','id'=>'min_price_per_night','placeholder'=>'Enter minimum price per night')) !!}
+                        </div>
+                        <!-- /.text input -->
+
+                        <!-- text input -->
+                        <div class="form-group">
+                          {!! Html::decode(Form::label('max_price_per_night','Maximum price per night: <span style="color:red;">*</span>')) !!}
+                          {!! Form::text('max_price_per_night','',array('class'=>'form-control','id'=>'max_price_per_night','placeholder'=>'Enter maximum price per night')) !!}
+                        </div>
+                        <!-- /.text input -->
 
                          <!-- input submit button -->
                         <div class="box-footer">
