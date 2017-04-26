@@ -29,4 +29,9 @@ class Procedure extends Model
     {
         return $this->hasMany('App\Treatment');
     }
+
+    public function doctors() {
+
+      return $this->belongsToMany('\App\Doctor','doctor_procedure','procedure_id','doctor_id');
+    }
 }
