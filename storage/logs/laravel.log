@@ -16161,6 +16161,7 @@ Stack trace:
 #37 C:\xampp\htdocs\medical_tourism\public\index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #38 C:\xampp\htdocs\medical_tourism\server.php(21): require_once('C:\\xampp\\htdocs...')
 #39 {main}  
+<<<<<<< HEAD
 [2017-04-26 03:58:03] local.ERROR: exception 'ErrorException' with message 'Trying to get property of non-object' in C:\xampp\htdocs\medical_tourism\app\User.php:39
 Stack trace:
 #0 C:\xampp\htdocs\medical_tourism\app\User.php(39): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 39, Array)
@@ -16372,6 +16373,9 @@ Stack trace:
 #38 C:\xampp\htdocs\medical_tourism\server.php(21): require_once('C:\\xampp\\htdocs...')
 #39 {main}  
 [2017-04-26 04:18:04] local.ERROR: exception 'ErrorException' with message 'Trying to get property of non-object' in C:\xampp\htdocs\medical_tourism\app\User.php:39
+=======
+[2017-04-26 04:15:02] local.ERROR: exception 'ErrorException' with message 'Trying to get property of non-object' in C:\xampp\htdocs\medical_tourism\app\User.php:39
+>>>>>>> e4e79f620c489af536444c4aed54e64436457371
 Stack trace:
 #0 C:\xampp\htdocs\medical_tourism\app\User.php(39): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(8, 'Trying to get p...', 'C:\\xampp\\htdocs...', 39, Array)
 #1 C:\xampp\htdocs\medical_tourism\app\Http\Middleware\Admin.php(30): App\User->hasRole('admin/dashboard', 1)
