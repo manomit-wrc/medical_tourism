@@ -74,7 +74,7 @@ $(function () {
     });
   });
 </script>
-<<<<<<< HEAD
+
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.2.0/jquery-confirm.min.css" >
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.2.0/jquery-confirm.min.js"></script>
@@ -159,7 +159,7 @@ $(function () {
     });
   });
 </script>
-=======
+
 <!--State/city/dropdown start-->
 <script type="text/javascript">
     $('#country_id').change(function(){
@@ -211,7 +211,7 @@ $(function () {
    });
 </script>
 <!--State/city/dropdown end-->
->>>>>>> 1eb7a18545d3526cf685cf602e975579f76a0c96
+
 <!-- page script -->
 
 <!-- modal  -->

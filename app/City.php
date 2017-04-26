@@ -26,7 +26,7 @@ class City extends Model
      * @var array
      */
 
-     public function city() {
+     public function state() {
        return $this->belongsTo('\App\State');
      }
 }

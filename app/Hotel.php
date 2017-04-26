@@ -25,8 +25,15 @@ class Hotel extends Model
      *
      * @var array
      */
+    public function city() {
+       return $this->belongsTo('\App\City');
+    }
 
-     public function currency() {
+    public function hotelclasstype() {
+       return $this->belongsTo('\App\HotelClassType');
+    } 
+
+    public function currency() {
        return $this->belongsTo('\App\Currency');
-     }
+    }
 }

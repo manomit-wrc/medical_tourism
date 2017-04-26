@@ -5,12 +5,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Accomodation
+        Hotel
        <!--  <small>advanced tables</small> -->
       </h1>
       <ol class="breadcrumb">
         <li><a href="{!!URL::to('/admin/dashboard')!!}">Home</a></li>
-        <li><a href="{!!URL::to('/admin/accomodation')!!}">Accomodation</a></li>
+        <li><a href="{!!URL::to('/admin/hotel')!!}">Hotel</a></li>
         <li class="active">Edit</li>
       </ol>
     </section>
@@ -27,7 +27,7 @@
           <!-- general form elements disabled -->
           <div class="box box-warning">
             <div class="box-header with-border">
-              <h3 class="box-title">Edit {{ $accomodations_data->name }}</h3>
+              <h3 class="box-title">Edit {{ $hotels_data->name }}</h3>
             </div>
              <!-- if there are creation errors, they will show here -->
              
@@ -40,18 +40,79 @@
               </div>
             @endif
             <div class="box-body">
-                 {{ Form::model($accomodations_data,array('method' => 'PATCH','role'=>'form','url' => array('admin/accomodation/update', $accomodations_data->id),'id'=>'accomodation_edit')) }}
+                 {{ Form::model($hotels_data,array('method' => 'PATCH','role'=>'form','url' => array('admin/hotel/update', $hotels_data->id),'id'=>'hotel_edit')) }}
                     
                     <div class="col-md-6">
                         
-
-                        <!-- text input -->
+                         <!-- text input -->
                         <div class="form-group">
-                          {!! Html::decode(Form::label('name','Accomodation name: <span style="color:red;">*</span>')) !!}
-                          {!! Form::text('name',null,array('class'=>'form-control','id'=>'name','placeholder'=>'Enter accomodation name')) !!}
+                          {!! Html::decode(Form::label('name','Hotel name: <span style="color:red;">*</span>')) !!}
+                          {!! Form::text('name',null,array('class'=>'form-control','id'=>'name','placeholder'=>'Enter hotel name')) !!}
                         </div>
                         <!-- /.text input -->
 
+                        <!-- text input -->
+                        <div class="form-group">
+                          {!! Html::decode(Form::label('address','Address: <span style="color:red;">*</span>')) !!}
+                          {!! Form::text('address',null,array('class'=>'form-control','id'=>'address','placeholder'=>'Enter hotel address')) !!}
+                        </div>
+                        <!-- /.text input -->
+
+                         <!-- form-group dropdown-->
+                        <div class="form-group">
+                           {!! Html::decode(Form::label('country_id','Country: <span style="color:red;">*</span>')) !!}
+                           {!! Form::select('country_id',['' => 'Select'] +$countries, null, ['class' => 'form-control select2']) !!}
+                        </div>
+                        <!-- /.form-group dropdown-->
+
+                        <!-- form-group dropdown-->
+                        <div class="form-group">
+                           {!! Html::decode(Form::label('state_id','State: <span style="color:red;">*</span>')) !!}
+                           {!! Form::select('state_id',['' => 'Select'] +$states, null, ['class' => 'form-control select2']) !!}
+                        </div>
+                        <!-- /.form-group dropdown-->
+
+                         <!-- form-group dropdown-->
+                        <div class="form-group">
+                           {!! Html::decode(Form::label('city_id','City: <span style="color:red;">*</span>')) !!}
+                           {!! Form::select('city_id',['' => 'Select'] +$cities, null, ['class' => 'form-control select2']) !!}
+                        </div>
+                        <!-- /.form-group dropdown-->
+
+                         <!-- form-group dropdown-->
+                        <div class="form-group">
+                           {!! Html::decode(Form::label('hotel_class_id','Hotel class: <span style="color:red;">*</span>')) !!}
+                           {!! Form::select('hotel_class_id',['' => 'Select'] +$hotelclasstypes, null, ['class' => 'form-control select2']) !!}
+                        </div>
+                        <!-- /.form-group dropdown-->
+                        
+                         <!-- text input -->
+                        <div class="form-group">
+                          {!! Html::decode(Form::label('no_of_rooms','Number of rooms: <span style="color:red;">*</span>')) !!}
+                          {!! Form::text('no_of_rooms',null,array('class'=>'form-control','id'=>'no_of_rooms','placeholder'=>'Enter number of rooms')) !!}
+                        </div>
+                        <!-- /.text input -->
+
+                        <!-- text input -->
+                        <div class="form-group">
+                          {!! Html::decode(Form::label('min_price_per_night','Minimum price per night: <span style="color:red;">*</span>')) !!}
+                          {!! Form::text('min_price_per_night',null,array('class'=>'form-control','id'=>'min_price_per_night','placeholder'=>'Enter minimum price per night')) !!}
+                        </div>
+                        <!-- /.text input -->
+
+                        <!-- text input -->
+                        <div class="form-group">
+                          {!! Html::decode(Form::label('max_price_per_night','Maximum price per night: <span style="color:red;">*</span>')) !!}
+                          {!! Form::text('max_price_per_night',null,array('class'=>'form-control','id'=>'max_price_per_night','placeholder'=>'Enter maximum price per night')) !!}
+                        </div>
+                        <!-- /.text input -->
+                       
+                        <!-- text input -->
+                        <div class="form-group">
+                          {!! Html::decode(Form::label('booking_url','Direct booking url: <span style="color:red;">* </span>')) !!}
+                          {!! Form::text('booking_url',null,array('class'=>'form-control','id'=>'booking_url','placeholder'=>'Enter direct booking url')) !!}
+                        </div>
+                        <!-- /.text input -->
                         
                         
                          <!-- input button -->

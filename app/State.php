@@ -26,7 +26,7 @@ class State extends Model
      * @var array
      */
 
-     public function state() {
+     public function country() {
        return $this->belongsTo('\App\Country');
      }
 }

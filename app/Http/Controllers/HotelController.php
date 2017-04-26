@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Hotel;
 use App\HotelClassType;
 use App\Country;
+use App\State;
+use App\City;
 use Auth;
 use Input;
 use Redirect;
@@ -27,7 +29,7 @@ class HotelController extends Controller
      */
     public function index() {
         $hotels_list = Hotel::all();
-        //echo "<pre>"; print_r($hotels_list); die;
+        //echo "<pre>"; print_r($hotels_list); die; //print_r($hotels_list[0]->city->state->country); die;
         return view('admin.hotel.index')->with('hotels_list',$hotels_list);
     }
 
@@ -51,22 +53,35 @@ class HotelController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-        'name' => 'required',
-        'address' => 'required',
-        'country_id' => 'required',
-        'state_id' => 'required',
-        'city_id' => 'required',
-        'hotel_class_id' => 'required',
-        'no_of_rooms' => 'required|numeric',
-        'min_price_per_night' => 'required',
-        'max_price_per_night' => 'required',
-      ]);
+            'name' => 'required',
+            'address' => 'required',
+            'country_id' => 'required',
+            'state_id' => 'required',
+            'city_id' => 'required',
+            'hotel_class_id' => 'required',
+            'no_of_rooms' => 'required|numeric',
+            'min_price_per_night' => 'required|numeric',
+            'max_price_per_night' => 'required|numeric',
+            'booking_url' => 'required|url',
+       ]);
 
       // Getting all data after success validation.
-      //dd($request->all());
-      $input = $request->all();
+      /*$input = $request->all();
+      dd($input); die();
+      Hotel::create($input);*/
+      $htl = new Hotel($request->input()) ;
+      $htl->name = $request->get('name') ;
+      $htl->address = $request->get('address') ;
+      $htl->country_id = $request->get('country_id') ;
+      $htl->state_id = $request->get('state_id') ;
+      $htl->city_id = $request->get('city_id') ;
+      $htl->hotel_class_id = $request->get('hotel_class_id') ;
+      $htl->no_of_rooms = $request->get('no_of_rooms') ;
+      $htl->min_price_per_night = $request->get('min_price_per_night') ;
+      $htl->max_price_per_night = $request->get('max_price_per_night') ;
+      $htl->booking_url = $request->get('booking_url') ;
+      $htl->save() ;
 
-      Hotel::create($input);
       Session::flash('message', 'Successfully added!');
       return Redirect::to('/admin/hotel');
     }
@@ -91,8 +106,12 @@ class HotelController extends Controller
     public function edit($id)
     {
         // get the Accomodation
-       $accomodations_data = Hotel::findOrFail($id);
-       return view('admin.hotel.edit')->with('accomodations_data', $accomodations_data);
+       $hotels_data = Hotel::findOrFail($id);
+       $countries = Country::orderBy('name')->pluck('name', 'id')->all();
+       $states = State::orderBy('name')->pluck('name', 'id')->all();
+       $cities = City::orderBy('name')->pluck('name', 'id')->all();
+       $hotelclasstypes = HotelClassType::orderBy('id')->pluck('name', 'id')->all();    
+       return view('admin.hotel.edit', compact('hotels_data','countries','states','cities','hotelclasstypes'));
     }
 
     /**
@@ -105,16 +124,34 @@ class HotelController extends Controller
     public function update($id,Request $request)
     {
         //echo $id; die;
-        $langcap = Hotel::find($id);
+        $htlobj = Hotel::find($id);
         // validate
         $this->validate($request, [
-        'name' => 'required|unique:accomodations'
+            'name' => 'required',
+            'address' => 'required',
+            'country_id' => 'required',
+            'state_id' => 'required',
+            'city_id' => 'required',
+            'hotel_class_id' => 'required',
+            'no_of_rooms' => 'required|numeric',
+            'min_price_per_night' => 'required|numeric',
+            'max_price_per_night' => 'required|numeric',
+            'booking_url' => 'required|url',
         ]);
 
-        // Getting all data after success validation.
-        $input = $request->all();
-        //echo "<pre>"; print_r($input); die;
-        $langcap->fill($input)->save();
+        // Getting all data after success validation.        
+        //echo "<pre>"; print_r($request->all()); die;
+          $htlobj->name = $request->get('name') ;
+          $htlobj->address = $request->get('address') ;
+          $htlobj->country_id = $request->get('country_id') ;
+          $htlobj->state_id = $request->get('state_id') ;
+          $htlobj->city_id = $request->get('city_id') ;
+          $htlobj->hotel_class_id = $request->get('hotel_class_id') ;
+          $htlobj->no_of_rooms = $request->get('no_of_rooms') ;
+          $htlobj->min_price_per_night = $request->get('min_price_per_night') ;
+          $htlobj->max_price_per_night = $request->get('max_price_per_night') ;
+          $htlobj->booking_url = $request->get('booking_url') ;
+          $htlobj->save() ;
 
 
         // redirect

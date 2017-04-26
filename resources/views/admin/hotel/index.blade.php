@@ -35,6 +35,7 @@
                 <thead>
                   <tr>
                     <th>Hotel name</th>
+                    <th>Address</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
@@ -44,6 +45,7 @@
                     @foreach($hotels_list as $hotels_list)
                       <tr>
                         <td>{{ $hotels_list->name }}</td>
+                        <td>{{ $hotels_list->address }} , {{ $hotels_list->city->name }} , {{ $hotels_list->city->state->name }} , {{ $hotels_list->city->state->country->name }}</td>
                         <td>
                           <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
                             <!-- we will add this later since its a little more complicated than the other two buttons -->
