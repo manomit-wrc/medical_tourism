@@ -20,4 +20,8 @@ class Doctor extends Model
     public function procedures() {
       return $this->belongsToMany('\App\Procedure','doctor_procedure','doctor_id','procedure_id');
     }
+
+    public function cities() {
+      return $this->belongsTo('\App\City','city_id');
+    }
 }

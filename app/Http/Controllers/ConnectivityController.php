@@ -121,11 +121,11 @@ class ConnectivityController extends Controller
     {
         //echo $id; die;
        // delete
-        $cntobj = Connectivity::findOrFail($id);
-        $cntobj->delete();
+        $trtmntobj = Treatment::findOrFail($id);
+        $trtmntobj->delete();
 
         // redirect
         Session::flash('message', 'Successfully deleted');
-        return Redirect::to('/admin/connectivity');
+        return Redirect::to('/admin/treatment');
     }
 }

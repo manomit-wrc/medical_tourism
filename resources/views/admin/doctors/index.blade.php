@@ -46,16 +46,19 @@
                 </thead>
 
                 <tbody>
-                  @if (count($user_data) > 0)
+                  @if (count($doctor_data) > 0)
 
-                    @foreach($user_data as $d)
+                    @foreach($doctor_data as $dd)
                       <tr>
-                        <td>{{ $d->roles[0]->name }}</td>
-                        <td>{{ $d->name }}</td>
+                        <td>{{ $dd->first_name }}</td>
+                        <td>{{ $dd->last_name }}</td>
+                        <td>{{ $dd->email }}</td>
+                        <td>{{ $dd->mobile_no }}</td>
+                        <td>{{ $dd->cities->name }}</td>
                         <td>
 
-                          <a href="{!!URL::to('/admin/adminuser/edit',$d->id)!!}" class="btn btn-primary">Edit</a>&nbsp;|&nbsp;
-                          <a href="/admin/adminuser/delete/{{$d->id}}" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger" >Delete</a>
+                          <a href="{!!URL::to('/admin/doctors/edit',$dd->id)!!}" class="btn btn-primary">Edit</a>&nbsp;|&nbsp;
+                          <a href="/admin/doctors/delete/{{$dd->id}}" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger" >Delete</a>
                         </td>
                       </tr>
                     @endforeach

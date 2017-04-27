@@ -62,7 +62,7 @@
 <script>
 $(function () {
     //Initialize Select2 Elements
-    $(".select2").select2();
+    $(".js-example-basic-multiple").select2();
     //$("#example1").DataTable();
     $('#example1').DataTable({
       "paging": true,
