@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Connectivity;
+use App\ConnectivityServices;
 use Auth;
 use Input;
 use Redirect;
 use Session;
 use Validator;
 
-class ConnectivityController extends Controller
+class ConnectivityServicesController extends Controller
 {
     public function __construct() {
 
@@ -23,9 +23,9 @@ class ConnectivityController extends Controller
      * @return Response
      */
     public function index() {
-    	$connectivity_data = Connectivity::all();
-        //echo "<pre>"; print_r($connectivity_data); die;
-        return view('admin.connectivity.index')->with('connectivity_data',$connectivity_data);
+    	$con_srv_data = ConnectivityServices::all();
+        //echo "<pre>"; print_r($con_srv_data); die;
+        return view('admin.connectivityservices.index')->with('con_srv_data',$con_srv_data);
     }
 
     /**
@@ -35,7 +35,7 @@ class ConnectivityController extends Controller
      */
     public function create()
     {
-       return view('admin.connectivity.create');
+       return view('admin.connectivityservices.create');
     }
 
     /**
@@ -46,16 +46,16 @@ class ConnectivityController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-        'name' => 'required|unique:connectivities'
+        'name' => 'required|unique:connectivity_services'
       ]);
 
       // Getting all data after success validation.
       //dd($request->all());
       $input = $request->all();
 
-      Connectivity::create($input);
+      ConnectivityServices::create($input);
       Session::flash('message', 'Successfully added!');
-      return Redirect::to('/admin/connectivity');
+      return Redirect::to('/admin/connectivityservices');
     }
 
     /**
@@ -79,8 +79,8 @@ class ConnectivityController extends Controller
     {
 
        // get the Connectivity
-       $connectivity_data = Connectivity::findOrFail($id);
-       return view('admin.connectivity.edit')->with(array('connectivity_data'=> $connectivity_data));
+       $conn_srvc_data = ConnectivityServices::findOrFail($id);
+       return view('admin.connectivityservices.edit')->with(array('conn_srvc_data'=> $conn_srvc_data));
     }
 
     /**
@@ -93,10 +93,10 @@ class ConnectivityController extends Controller
     public function update($id,Request $request)
     {
        //echo $id; die;
-        $connectivity = Connectivity::find($id);
+        $connectivity = ConnectivityServices::find($id);
         // validate
         $this->validate($request, [
-        'name' => 'required|unique:connectivities'
+        'name' => 'required|unique:connectivity_services'
         ]);
 
         // Getting all data after success validation.
@@ -107,7 +107,7 @@ class ConnectivityController extends Controller
 
         // redirect
         Session::flash('message', 'Successfully updated');
-        return Redirect::to('/admin/connectivity');
+        return Redirect::to('/admin/connectivityservices');
     }
 
     /**
@@ -121,11 +121,11 @@ class ConnectivityController extends Controller
     {
         //echo $id; die;
        // delete
-        $cntobj = Connectivity::findOrFail($id);
-        $cntobj->delete();
+        $con_serv_obj = ConnectivityServices::findOrFail($id);
+        $con_serv_obj->delete();
 
         // redirect
         Session::flash('message', 'Successfully deleted');
-        return Redirect::to('/admin/connectivity');
+        return Redirect::to('/admin/connectivityservices');
     }
 }

@@ -183,7 +183,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::patch('/admin/news/update/{id}','NewsController@update');
     Route::delete('/admin/news/delete/{id}','NewsController@destroy');
 
-    //provider connectivitysettings master section
+    //provider connectivitysettings  section
     Route::get('/admin/providerconnectivity', 'ProviderConnectivityController@index');
     Route::get('/admin/providerconnectivity/create','ProviderConnectivityController@create');
     Route::post('/admin/providerconnectivity/store','ProviderConnectivityController@store');
@@ -198,5 +198,13 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/doctors/edit/{id}','DoctorController@edit');
     Route::post('/admin/doctors/update/{id}','DoctorController@update');
     Route::delete('/admin/doctors/delete/{id}','DoctorController@destroy');
+
+    //connectivityservices master section
+    Route::get('/admin/connectivityservices', 'ConnectivityServicesController@index');
+    Route::get('/admin/connectivityservices/create','ConnectivityServicesController@create');
+    Route::post('/admin/connectivityservices/store','ConnectivityServicesController@store');
+    Route::get('/admin/connectivityservices/edit/{id}','ConnectivityServicesController@edit');
+    Route::patch('/admin/connectivityservices/update/{id}','ConnectivityServicesController@update');
+    Route::delete('/admin/connectivityservices/delete/{id}','ConnectivityServicesController@destroy');
    
 });
