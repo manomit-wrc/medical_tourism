@@ -207,6 +207,6 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/hospitals/edit/{id}','HospitalController@edit');
     Route::patch('/admin/hospitals/update/{id}','HospitalController@update');
     Route::delete('/admin/hospitals/delete/{id}','HospitalController@destroy');
-
+    Route::get('/admin/hospitals/show/{id}','HospitalController@show');
 
 });

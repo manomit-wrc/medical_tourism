@@ -1,16 +1,17 @@
 @extends('admin.layouts.dashboard_layout')
+@section('title', 'Hospital')
 @section('content')
  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Hotel
+        Hospital
        <!--  <small>advanced tables</small> -->
       </h1>
       <ol class="breadcrumb">
         <li><a href="{!!URL::to('/admin/dashboard')!!}">Home</a></li>
-        <li><a href="{!!URL::to('/admin/hotel')!!}">Hotel</a></li>
+        <li><a href="{!!URL::to('/admin/hospitals')!!}">Hospital</a></li>
         <li class="active">Add</li>
       </ol>
     </section>
@@ -41,22 +42,59 @@
             @endif
             <div class="box-body">
              
-                 {!! Form::open(array('method' => 'POST','role'=>'form','url'=>'admin/hotel/store','id'=>'hotel_add')) !!}
+                 {!! Form::open(array('method' => 'POST','role'=>'form','files' => true,'url'=>'admin/hospitals/store','id'=>'hospital_add')) !!}
                     
                     <div class="col-md-6">
                         
 
                         <!-- text input -->
                         <div class="form-group">
-                          {!! Html::decode(Form::label('name','Hotel name: <span style="color:red;">*</span>')) !!}
-                          {!! Form::text('name','',array('class'=>'form-control','id'=>'name','placeholder'=>'Enter hotel name')) !!}
+                          {!! Html::decode(Form::label('name','Hospital name: <span style="color:red;">*</span>')) !!}
+                          {!! Form::text('name','',array('class'=>'form-control','id'=>'name','placeholder'=>'Enter hospital name')) !!}
+                        </div>
+                        <!-- /.text input -->
+
+                         <!-- text input -->
+                        <div class="form-group">
+                          {!! Html::decode(Form::label('description','Hospital description: <span style="color:red;">*</span>')) !!}
+                          {!! Form::textarea('description','',array('class'=>'form-control','id'=>'description','placeholder'=>'Enter hospital description')) !!}
                         </div>
                         <!-- /.text input -->
 
                         <!-- text input -->
                         <div class="form-group">
-                          {!! Html::decode(Form::label('address','Address: <span style="color:red;">*</span>')) !!}
-                          {!! Form::text('address','',array('class'=>'form-control','id'=>'address','placeholder'=>'Enter hotel address')) !!}
+                          {!! Html::decode(Form::label('email','Email: <span style="color:red;">*</span>')) !!}
+                          {!! Form::text('email','',array('class'=>'form-control','id'=>'email','placeholder'=>'Enter email')) !!}
+                        </div>
+                        <!-- /.text input -->
+
+                        <!-- text input -->
+                        <div class="form-group">
+                          {!! Html::decode(Form::label('phone','Phone: <span style="color:red;">*</span>')) !!}
+                          {!! Form::text('phone','',array('class'=>'form-control','id'=>'phone','placeholder'=>'Enter phone')) !!}
+                        </div>
+                        <!-- /.text input -->
+
+                        <!-- text input -->
+                        <div class="form-group">
+                          {!! Html::decode(Form::label('website','Website: <span style="color:red;">*</span>')) !!}
+                          {!! Form::text('website','',array('class'=>'form-control','id'=>'website','placeholder'=>'Enter website')) !!}
+                        </div>
+                        <!-- /.text input -->
+
+                        <!-- file input -->
+                        <div class="form-group">
+                          {!! Html::decode(Form::label('avators','Image: <span style="color:red;">* (Image must be minimum of 745x214)</span>')) !!}
+                          {!! Form::file('avators', null) !!}
+                        </div>
+                         <!-- /.file input -->
+
+                    </div>
+                    <div class="col-md-6">
+                        <!-- text input -->
+                        <div class="form-group">
+                          {!! Html::decode(Form::label('street_address','Address: <span style="color:red;">*</span>')) !!}
+                          {!! Form::text('street_address','',array('class'=>'form-control','id'=>'street_address','placeholder'=>'Enter hospital address')) !!}
                         </div>
                         <!-- /.text input -->
 
@@ -81,38 +119,40 @@
                         </div>
                         <!-- /.form-group dropdown-->
 
-                         <!-- form-group dropdown-->
+                         <!-- text input -->
                         <div class="form-group">
-                           {!! Html::decode(Form::label('hotel_class_id','Hotel class: <span style="color:red;">*</span>')) !!}
-                           {!! Form::select('hotel_class_id',['' => 'Select'] +$hotelclasstypes, null, ['class' => 'form-control select2']) !!}
+                          {!! Html::decode(Form::label('zipcode','Zipcode: <span style="color:red;">*</span>')) !!}
+                          {!! Form::text('zipcode','',array('class'=>'form-control','id'=>'zipcode','placeholder'=>'Enter zipcode')) !!}
                         </div>
-                        <!-- /.form-group dropdown-->
+                        <!-- /.text input -->
+
+                         
                         
                          <!-- text input -->
                         <div class="form-group">
-                          {!! Html::decode(Form::label('no_of_rooms','Number of rooms: <span style="color:red;">*</span>')) !!}
-                          {!! Form::text('no_of_rooms','',array('class'=>'form-control','id'=>'no_of_rooms','placeholder'=>'Enter number of rooms')) !!}
+                          {!! Html::decode(Form::label('number_of_beds','Number of beds: <span style="color:red;">*</span>')) !!}
+                          {!! Form::text('number_of_beds','',array('class'=>'form-control','id'=>'number_of_beds','placeholder'=>'Enter number of beds')) !!}
+                        </div>
+                        <!-- /.text input -->
+
+                         <!-- text input -->
+                        <div class="form-group">
+                          {!! Html::decode(Form::label('number_of_icu_beds','Number of icu beds: <span style="color:red;">*</span>')) !!}
+                          {!! Form::text('number_of_icu_beds','',array('class'=>'form-control','id'=>'number_of_icu_beds','placeholder'=>'Enter number of icu beds')) !!}
                         </div>
                         <!-- /.text input -->
 
                         <!-- text input -->
                         <div class="form-group">
-                          {!! Html::decode(Form::label('min_price_per_night','Minimum price per night: <span style="color:red;">*</span>')) !!}
-                          {!! Form::text('min_price_per_night','',array('class'=>'form-control','id'=>'min_price_per_night','placeholder'=>'Enter minimum price per night')) !!}
-                        </div>
-                        <!-- /.text input -->
-
-                        <!-- text input -->
-                        <div class="form-group">
-                          {!! Html::decode(Form::label('max_price_per_night','Maximum price per night: <span style="color:red;">*</span>')) !!}
-                          {!! Form::text('max_price_per_night','',array('class'=>'form-control','id'=>'max_price_per_night','placeholder'=>'Enter maximum price per night')) !!}
+                          {!! Html::decode(Form::label('number_of_operating_rooms','Number of operating rooms: <span style="color:red;">*</span>')) !!}
+                          {!! Form::text('number_of_operating_rooms','',array('class'=>'form-control','id'=>'number_of_operating_rooms','placeholder'=>'Enter number of operating rooms')) !!}
                         </div>
                         <!-- /.text input -->
                        
                         <!-- text input -->
                         <div class="form-group">
-                          {!! Html::decode(Form::label('booking_url','Direct booking url: <span style="color:red;">* </span>')) !!}
-                          {!! Form::text('booking_url','',array('class'=>'form-control','id'=>'booking_url','placeholder'=>'Enter direct booking url')) !!}
+                          {!! Html::decode(Form::label('number_of_avg_international_patients','Number of average international patients: <span style="color:red;">* </span>')) !!}
+                          {!! Form::text('number_of_avg_international_patients','',array('class'=>'form-control','id'=>'number_of_avg_international_patients','placeholder'=>'Enter number of average internatinal patients')) !!}
                         </div>
                         <!-- /.text input -->
 

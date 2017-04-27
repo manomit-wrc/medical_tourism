@@ -1,11 +1,12 @@
 @extends('admin.layouts.dashboard_layout')
+@section('title', 'Hospital')
 @section('content')
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-       {{ $hotels_data->name }}
+       {{ $hosptl_data->name }}
       </h1>
       <ol class="breadcrumb">
         <li><a href="{!!URL::to('/admin/dashboard')!!}">Home</a></li>
@@ -30,15 +31,20 @@
           </div>
         </div>
         <div class="box-body">
-          <b>Name</b> : {{ $hotels_data->name }}<br/>
-          <b>Address</b> : {{ $hotels_data->address }} <br/>
-          <b>City</b> : {{ $hotels_data->city->name }}<br/>
-          <b>State</b> : {{ $hotels_data->city->state->name }}<br/>
-          <b>Country</b> :{{ $hotels_data->city->state->country->name }}<br/>
-          <b>Number of rooms</b> : {{ $hotels_data->no_of_rooms }}<br/>
-          <b>Minimum price per night</b> : {{ $hotels_data->min_price_per_night }}<br/>
-          <b>Maximum price per night</b> : {{ $hotels_data->max_price_per_night }}<br/>
-          <b>Url</b> : {{ $hotels_data->booking_url }}<br/>
+          <b>Name</b> : {{ $hosptl_data->name }}<br/>
+          <b>Description</b> : {{ $hosptl_data->description }}<br/>
+          <b>Phone</b> : {{ $hosptl_data->phone }}<br/>
+          <b>Website</b> : {{ $hosptl_data->website }}<br/>
+          <b>Address</b> : {{ $hosptl_data->street_address }} <br/>
+          <b>City</b> : {{ $hosptl_data->city->name }}<br/>
+          <b>State</b> : {{ $hosptl_data->city->state->name }}<br/>
+          <b>Country</b> :{{ $hosptl_data->city->state->country->name }}<br/>
+          <b>Zipcode</b> :{{ $hosptl_data->zipcode}}<br/>
+          <b>Number of beds</b> : {{ $hosptl_data->number_of_beds }}<br/>
+          <b>Number of icu beds</b> : {{ $hosptl_data->number_of_icu_beds }}<br/>
+          <b>Number of operating rooms</b> : {{ $hosptl_data->number_of_operating_rooms }}<br/>
+          <b>Number of average international patients</b> : {{ $hosptl_data->number_of_avg_international_patients }}<br/>
+          <b>Image</b> : <img src="{{url('/uploads/hospitals/thumb/'.$hosptl_data->avators)}}" alt="Hospital Image"><br/>
         </div>
         <!-- /.box-body -->
         <!-- <div class="box-footer">
