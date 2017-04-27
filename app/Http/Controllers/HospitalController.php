@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Hotel;
+use App\Hospital;
 use App\HotelClassType;
 use App\Country;
 use App\State;
@@ -15,8 +15,7 @@ use Redirect;
 use Session;
 use Validator;
 
-
-class HotelController extends Controller
+class HospitalController extends Controller
 {
     public function __construct() {
     	
@@ -28,9 +27,9 @@ class HotelController extends Controller
      * @return Response
      */
     public function index() {
-        $hotels_list = Hotel::all();
+        $hotels_list = Hospital::all();
         //echo "<pre>"; print_r($hotels_list); die; //print_r($hotels_list[0]->city->state->country); die;
-        return view('admin.hotel.index')->with('hotels_list',$hotels_list);
+        return view('admin.hospitals.index')->with('hotels_list',$hotels_list);
     }
 
     /**

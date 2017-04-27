@@ -368,6 +368,7 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         'CreateDoctorDegreeTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_26_082652_create_doctor_degree_table.php',
         'CreateDoctorProcedureTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_26_082629_create_doctor_procedure_table.php',
         'CreateDoctorsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_26_071406_create_doctors_table.php',
+        'CreateHospitalsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_27_092607_create_hospitals_table.php',
         'CreateHotelClassTypesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_25_111718_create_hotel_class_types_table.php',
         'CreateHotelsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_25_132205_create_hotels_table.php',
         'CreateLanguageCapabilitiesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_13_104412_create_language_capabilities_table.php',

@@ -1,17 +1,16 @@
 @extends('admin.layouts.dashboard_layout')
-@section('title', 'Medical facility')
 @section('content')
  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Medical Facility
+        Hotel
        <!--  <small>advanced tables</small> -->
       </h1>
       <ol class="breadcrumb">
         <li><a href="#">Home</a></li>
-        <li class="active">Medical Facility</li>
+        <li class="active">Hotel</li>
       </ol>
     </section>
 
@@ -25,7 +24,7 @@
               <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
             </div>
 
-            <div><a href="{!!URL::to('/admin/medicalfacility/create')!!}"><button type="button" class="btn bg-purple">ADD</button></a></div>
+            <div><a href="{!!URL::to('/admin/hotel/create')!!}"><button type="button" class="btn bg-purple">ADD</button></a></div>
 
             <!-- /.box-header -->
             <div class="box-body">
@@ -35,29 +34,26 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                   <tr>
-                    <th>Facility image</th>
-                    <th>Facility name</th>
-                    <th>Description</th>
+                    <th>Hotel name</th>
+                    <th>Address</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
                
                 <tbody>
-                  @if (count($medfac_lists) > 0)
-                    @foreach($medfac_lists as $medfac_lists)
+                  @if (count($hotels_list) > 0)
+                    @foreach($hotels_list as $hotels_list)
                       <tr>
-                        <td>
-                          <img src="{{url('/uploads/medicalfacilities/thumb/'.$medfac_lists->facility_image)}}" alt="Facility Image" >
-                        </td>
-                        <td>{{ $medfac_lists->name }}</td>
-                        <td>{{ $medfac_lists->description }}</td>
+                        <td>{{ $hotels_list->name }}</td>
+                        <td>{{ $hotels_list->address }} , {{ $hotels_list->city->name }} , {{ $hotels_list->city->state->name }} , {{ $hotels_list->city->state->country->name }}</td>
                         <td>
                           <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
                             <!-- we will add this later since its a little more complicated than the other two buttons -->
-                             {!! Form::open(array('method' => 'DELETE','url' => array('admin/medicalfacility/delete', $medfac_lists->id),'class' => 'pull-right')) !!}
+                             {!! Form::open(array('method' => 'DELETE','url' => array('admin/hotel/delete', $hotels_list->id),'class' => 'pull-right')) !!}
                                   {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                               {!! Form::close() !!}
-                          <a href="{!!URL::to('/admin/medicalfacility/edit',$medfac_lists->id)!!}" class="btn btn-primary">Edit</a>
+                          <a href="{!!URL::to('/admin/hotel/show',$hotels_list->id)!!}" class="btn btn-info">view</a>   
+                          <a href="{!!URL::to('/admin/hotel/edit',$hotels_list->id)!!}" class="btn btn-primary">Edit</a>
                         </td>
                       </tr>
                     @endforeach

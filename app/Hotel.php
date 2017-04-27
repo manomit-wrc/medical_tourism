@@ -29,7 +29,7 @@ class Hotel extends Model
        return $this->belongsTo('\App\City');
     }
 
-    public function hotelclasstype() {
+    public function hotelclasstypes() {
        return $this->belongsTo('\App\HotelClassType');
     } 
 

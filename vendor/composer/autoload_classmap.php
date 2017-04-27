@@ -24,6 +24,7 @@ return array(
     'CreateDoctorDegreeTable' => $baseDir . '/database/migrations/2017_04_26_082652_create_doctor_degree_table.php',
     'CreateDoctorProcedureTable' => $baseDir . '/database/migrations/2017_04_26_082629_create_doctor_procedure_table.php',
     'CreateDoctorsTable' => $baseDir . '/database/migrations/2017_04_26_071406_create_doctors_table.php',
+    'CreateHospitalsTable' => $baseDir . '/database/migrations/2017_04_27_092607_create_hospitals_table.php',
     'CreateHotelClassTypesTable' => $baseDir . '/database/migrations/2017_04_25_111718_create_hotel_class_types_table.php',
     'CreateHotelsTable' => $baseDir . '/database/migrations/2017_04_25_132205_create_hotels_table.php',
     'CreateLanguageCapabilitiesTable' => $baseDir . '/database/migrations/2017_04_13_104412_create_language_capabilities_table.php',

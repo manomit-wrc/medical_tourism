@@ -18,7 +18,7 @@
                     <li><a href="#">Cities</a></li>
                     <li><a href="#">Help</a></li>
                 </ul>
-                <span class="copy">&copy; <script>document.write(new Date().getFullYear())</script> Swasthya Bandhab</span>
+                <span class="copy">&copy; <script>document.write(new Date().getFullYear())</script> Swasthya Bandhav</span>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4">
               <ul class="social list-inline">

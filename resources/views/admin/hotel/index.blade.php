@@ -1,4 +1,5 @@
 @extends('admin.layouts.dashboard_layout')
+@section('title', 'Hotel')
 @section('content')
  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -52,6 +53,7 @@
                              {!! Form::open(array('method' => 'DELETE','url' => array('admin/hotel/delete', $hotels_list->id),'class' => 'pull-right')) !!}
                                   {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                               {!! Form::close() !!}
+                          <a href="{!!URL::to('/admin/hotel/show',$hotels_list->id)!!}" class="btn btn-info">view</a>   
                           <a href="{!!URL::to('/admin/hotel/edit',$hotels_list->id)!!}" class="btn btn-primary">Edit</a>
                         </td>
                       </tr>

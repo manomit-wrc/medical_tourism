@@ -155,7 +155,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/hotel/edit/{id}','HotelController@edit');
     Route::patch('/admin/hotel/update/{id}','HotelController@update');
     Route::delete('/admin/hotel/delete/{id}','HotelController@destroy');
-
+    Route::get('/admin/hotel/show/{id}','HotelController@show');
 
 
     //Doctor section
@@ -206,5 +206,13 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/connectivityservices/edit/{id}','ConnectivityServicesController@edit');
     Route::patch('/admin/connectivityservices/update/{id}','ConnectivityServicesController@update');
     Route::delete('/admin/connectivityservices/delete/{id}','ConnectivityServicesController@destroy');
+
+    //hospitals section
+    Route::get('/admin/hospitals', 'HospitalController@index');
+    Route::get('/admin/hospitals/create','HospitalController@create');
+    Route::post('/admin/hospitals/store','HospitalController@store');
+    Route::get('/admin/hospitals/edit/{id}','HospitalController@edit');
+    Route::patch('/admin/hospitals/update/{id}','HospitalController@update');
+    Route::delete('/admin/hospitals/delete/{id}','HospitalController@destroy');
    
 });
