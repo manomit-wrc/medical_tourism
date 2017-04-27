@@ -107,8 +107,8 @@
           </a>
           <ul class="treeview-menu">
             @if($user_view_composer->hasRole('admin/doctors',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'doctors' ? 'active' : null }}" ><a href="{{ url('/admin/doctors')}}"><i class="fa fa-user-md"></i>Manage doctors</a></li>@endif
-            @if($user_view_composer->hasRole('admin/providerconnectivity',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'providerconnectivity' ? 'active' : null }}" ><a href="{{ url('/admin/providerconnectivity')}}"><i class="fa fa-circle-o"></i>Manage connectivity</a></li>@endif
-            @if($user_view_composer->hasRole('admin/hospitals',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'hospitals' ? 'active' : null }}" ><a href="{{ url('/admin/hospitals')}}"><i class="fa fa-circle-o"></i>Manage hospitals</a></li>@endif
+            @if($user_view_composer->hasRole('admin/providerconnectivity',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'providerconnectivity' ? 'active' : null }}" ><a href="{{ url('/admin/providerconnectivity')}}"><i class="fa fa-connectdevelop"></i>Manage connectivity</a></li>@endif
+            @if($user_view_composer->hasRole('admin/hospitals',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'hospitals' ? 'active' : null }}" ><a href="{{ url('/admin/hospitals')}}"><i class="fa fa-hospital-o"></i>Manage hospitals</a></li>@endif
           </ul>
         </li>
 
