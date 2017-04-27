@@ -55,6 +55,7 @@
             @if($user_view_composer->hasRole('admin/medicalfacility',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'medicalfacility' ? 'active' : null }}" ><a href="{!!URL::to('/admin/medicalfacility')!!}"><i class="fa fa-circle-o"></i>Medical facility management</a></li>@endif
             @if($user_view_composer->hasRole('admin/providertype',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'providertype' ? 'active' : null }}" ><a href="{!!URL::to('/admin/providertype')!!}"><i class="fa fa-circle-o"></i>Provider type management</a></li>@endif
             @if($user_view_composer->hasRole('admin/paymenttype',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'paymenttype' ? 'active' : null }}" ><a href="{!!URL::to('/admin/paymenttype')!!}"><i class="fa fa-circle-o"></i>Payment type management</a></li>@endif
+            @if($user_view_composer->hasRole('admin/connectivity',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'connectivity' ? 'active' : null }}" ><a href="{!!URL::to('/admin/connectivity')!!}"><i class="fa fa-circle-o"></i>Connectivity master management</a></li>@endif
           </ul>
         </li>
 
@@ -72,7 +73,19 @@
 
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-picture-o"></i> <span>User management</span>
+            <i class="fa fa-newspaper-o"></i> <span>News & Events management</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            @if($user_view_composer->hasRole('admin/news',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'news' ? 'active' : null }}"><a href="{!!URL::to('/admin/news')!!}"><i class="fa fa-circle-o"></i>News management</a></li>@endif
+          </ul>
+        </li>
+
+         <li class="treeview">
+          <a href="#">
+            <i class="fa fa-newspaper-o"></i> <span>User management</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -82,6 +95,7 @@
             @if($user_view_composer->hasRole('admin/permission',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'permission' ? 'active' : null }}" ><a href="{{ url('/admin/permission')}}"><i class="fa fa-circle-o"></i>Manage permission</a></li>@endif
           </ul>
         </li>
+
 
         <li class="treeview">
           <a href="javascript:void(0)">
@@ -93,6 +107,7 @@
           <ul class="treeview-menu">
 
             @if($user_view_composer->hasRole('admin/doctors',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'doctors' ? 'active' : null }}" ><a href="{{ url('/admin/doctors')}}"><i class="fa fa-circle-o"></i>Manage doctors</a></li>@endif
+            @if($user_view_composer->hasRole('admin/providerconnectivity',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'providerconnectivity' ? 'active' : null }}" ><a href="{{ url('/admin/providerconnectivity')}}"><i class="fa fa-circle-o"></i>Manage connectivity</a></li>@endif
           </ul>
         </li>
 

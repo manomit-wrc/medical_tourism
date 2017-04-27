@@ -157,13 +157,38 @@ Route::group(['middleware' => ['admin']], function () {
     Route::delete('/admin/hotel/delete/{id}','HotelController@destroy');
 
 
-    //Doctor section
+    //connectivity master section
+    Route::get('/admin/connectivity', 'ConnectivityController@index');
+    Route::get('/admin/connectivity/create','ConnectivityController@create');
+    Route::post('/admin/connectivity/store','ConnectivityController@store');
+    Route::get('/admin/connectivity/edit/{id}','ConnectivityController@edit');
+    Route::patch('/admin/connectivity/update/{id}','ConnectivityController@update');
+    Route::delete('/admin/connectivity/delete/{id}','ConnectivityController@destroy');
 
+    //news section
+    Route::get('/admin/news','NewsController@index');
+    Route::get('/admin/news/create','NewsController@create');
+    Route::post('/admin/news/store','NewsController@store');
+    Route::get('/admin/news/edit/{id}','NewsController@edit');
+    Route::patch('/admin/news/update/{id}','NewsController@update');
+    Route::delete('/admin/news/delete/{id}','NewsController@destroy');
+
+    //provider connectivitysettings master section
+    Route::get('/admin/providerconnectivity', 'ProviderConnectivityController@index');
+    Route::get('/admin/providerconnectivity/create','ProviderConnectivityController@create');
+    Route::post('/admin/providerconnectivity/store','ProviderConnectivityController@store');
+    Route::get('/admin/providerconnectivity/edit/{id}','ProviderConnectivityController@edit');
+    Route::patch('/admin/providerconnectivity/update/{id}','ProviderConnectivityController@update');
+    Route::delete('/admin/providerconnectivity/delete/{id}','ProviderConnectivityController@destroy');
+
+    //Doctor section
     Route::get('/admin/doctors','DoctorController@index');
     Route::get('/admin/doctors/create','DoctorController@create');
     Route::post('/admin/doctors/store','DoctorController@store');
     Route::get('/admin/doctors/edit/{id}','DoctorController@edit');
     Route::post('/admin/doctors/update/{id}','DoctorController@update');
-    Route::delete('/admin/doctors/delete/{id}','DoctorController@destroy');
-    
+    Route::get('/admin/doctors/delete/{id}','DoctorController@delete');
+    Route::post('/admin/doctors/get_state_list','DoctorController@get_state_list');
+    Route::post('/admin/doctors/get_city_list','DoctorController@get_city_list');
+
 });
