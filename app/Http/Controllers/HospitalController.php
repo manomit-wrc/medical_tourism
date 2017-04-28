@@ -9,6 +9,8 @@ use App\HotelClassType;
 use App\Country;
 use App\State;
 use App\City;
+use App\Treatment;
+use App\HospitalTreatment;
 use Auth;
 use Input;
 use Redirect;
@@ -16,6 +18,7 @@ use Session;
 use Validator;
 use Image;
 use File;
+use Illuminate\Support\Facades\Route;
 
 class HospitalController extends Controller
 {
@@ -129,6 +132,71 @@ class HospitalController extends Controller
         $hosptl_data = Hospital::findOrFail($id);
        //echo "<pre>"; print_r($hotels_data->hotelclasstypes); die;
         return view('admin.hospitals.show',compact('hosptl_data'));
+    }
+    /**
+     * Display the treatment resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function treatment($id)
+    {
+        $treatment_datas = Treatment::all();
+        //echo "<pre>"; print_r($treatment_datas); print_r($treatment_datas[0]->procedure); die;
+        return view('admin.hospitals.treatment',compact('treatment_datas'));
+    }
+
+    public function store_treatment(Request $request) {
+      if($request->ajax()) { 
+        //echo $request->hospital_id;  die;
+        //echo "<pre>"; print_r($request->treatmentArr); die;
+        $hospital_id = $request->hospital_id;
+        $existRows = \App\HospitalTreatment::where('hospital_id', '=', $hospital_id)->all();
+        if(count($existRows)>0)
+        {
+          $affectedRows = \App\HospitalTreatment::where('hospital_id', '=', $hospital_id)->delete();
+        //echo "<pre>"; print_r($affectedRows); die;
+        }  
+        
+        $treatmentArr = $request->treatmentArr;
+        foreach ($treatmentArr as $key => $value) {
+          $data[] = [
+                'hospital_id' => $hospital_id,
+                'treatment_id' => $value['treatment_id']
+            ];
+        }
+        //echo "<pre>"; print_r($data); die;
+        $result = \App\HospitalTreatment::insert($data);
+        //echo "<pre>"; print_r($result); die;
+
+        if($result) {
+          return response()->json(['status' => '1']);
+        }
+        else {
+          return response()->json(['status' => '0']);
+        }
+      }
+    }
+
+    public function get_treatment(Request $request) {
+      if($request->ajax()) {
+        $data = [];
+        $role_id = $request->role_id;
+        $permission_details = HospitalTreatment::find($role_id)->permissions;
+        foreach ($permission_details as $key => $permission) {
+          $data[] = [
+                'hospital_id' => $permission->permission_id,
+                'treatment_id' => $permission->permission_name
+            ];
+        }
+
+        if($data) {
+          return response()->json(['status' => '1','data'=>$data]);
+        }
+        else {
+          return response()->json(['status' => '0','data'=>array()]);
+        }
+      }
     }
 
     /**

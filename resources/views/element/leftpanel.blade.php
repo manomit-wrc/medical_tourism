@@ -61,7 +61,7 @@
         </li>
 
         <li class="treeview">
-          <a href="#">
+          <a href="javascript:void(0)">
             <i class="fa fa-hotel"></i> <span>Hotel management</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -73,7 +73,7 @@
         </li>
 
         <li class="treeview">
-          <a href="#">
+          <a href="javascript:void(0)">
             <i class="fa fa-newspaper-o"></i> <span>News & Events management</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -86,8 +86,8 @@
 
 
 
-         <li class="treeview">
-          <a href="#">
+        <li class="treeview">
+          <a href="javascript:void(0)">
             <i class="fa fa-users"></i> <span>User management</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -110,13 +110,14 @@
           <ul class="treeview-menu">
             @if($user_view_composer->hasRole('admin/doctors',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'doctors' ? 'active' : null }}" ><a href="{{ url('/admin/doctors')}}"><i class="fa fa-user-md"></i>Manage doctors</a></li>@endif
             @if($user_view_composer->hasRole('admin/providerconnectivity',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'providerconnectivity' ? 'active' : null }}" ><a href="{{ url('/admin/providerconnectivity')}}"><i class="fa fa-connectdevelop"></i>Manage connectivity</a></li>@endif
+            @if($user_view_composer->hasRole('admin/providerconnectivityservices',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'providerconnectivityservices' ? 'active' : null }}" ><a href="{{ url('/admin/providerconnectivityservices')}}"><i class="fa fa-connectdevelop"></i>Manage Connectivity to services</a></li>@endif
             @if($user_view_composer->hasRole('admin/hospitals',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'hospitals' ? 'active' : null }}" ><a href="{{ url('/admin/hospitals')}}"><i class="fa fa-hospital-o"></i>Manage hospitals</a></li>@endif
             @if($user_view_composer->hasRole('admin/package-types',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'package-types' ? 'active' : null }}" ><a href="{{ url('/admin/package-types')}}"><i class="fa fa-hospital-o"></i>Manage package types</a></li>@endif
           </ul>
         </li>
 
         <li class="treeview">
-          <a href="#">
+          <a href="javascript:void(0)">
             <i class="fa fa-thumbs-up"></i> <span>Success story management</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>

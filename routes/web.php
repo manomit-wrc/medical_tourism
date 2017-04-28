@@ -208,6 +208,9 @@ Route::group(['middleware' => ['admin']], function () {
     Route::patch('/admin/hospitals/update/{id}','HospitalController@update');
     Route::delete('/admin/hospitals/delete/{id}','HospitalController@destroy');
     Route::get('/admin/hospitals/show/{id}','HospitalController@show');
+    Route::get('/admin/hospitals/treatment/{id}','HospitalController@treatment');
+    Route::post('/admin/store_treatment/', 'HospitalController@store_treatment');
+    Route::post('/admin/get_treatment/','HospitalController@get_treatment');
 
 
     Route::get('/admin/package-types/', 'PackageTypeController@index');
@@ -221,4 +224,13 @@ Route::group(['middleware' => ['admin']], function () {
     Route::patch('/admin/successstories/update/{id}','SuccessStoryController@update');
     Route::delete('/admin/successstories/delete/{id}','SuccessStoryController@destroy');
     Route::get('/admin/successstories/show/{id}','SuccessStoryController@show');
+
+     //Provider connectivity services section
+    Route::get('/admin/providerconnectivityservices','ProviderConnectivityServicesController@index');
+    Route::get('/admin/providerconnectivityservices/create','ProviderConnectivityServicesController@create');
+    Route::post('/admin/providerconnectivityservices/store','ProviderConnectivityServicesController@store');
+    Route::get('/admin/providerconnectivityservices/edit/{id}','ProviderConnectivityServicesController@edit');
+    Route::patch('/admin/providerconnectivityservices/update/{id}','ProviderConnectivityServicesController@update');
+    Route::delete('/admin/providerconnectivityservices/delete/{id}','ProviderConnectivityServicesController@destroy');
+    Route::get('/admin/providerconnectivityservices/show/{id}','ProviderConnectivityServicesController@show');
 });

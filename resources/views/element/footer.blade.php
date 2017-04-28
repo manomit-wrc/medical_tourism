@@ -94,6 +94,7 @@ $(function () {
     $("#btn_uncheck_all").click(function(e){
       $(".chk-route-list").prop('checked',false);
     });
+    
     $(".exact-submit-button").click(function(e){
       if(!$("#role").val()) {
         jconfirm({
@@ -163,6 +164,74 @@ $(function () {
         });
       }
     });
+
+    /*add treatment from hospital*/
+    var treatmentArr = new Array();
+    $("#hptl_tmt_add_btn").click(function(e){
+      if(!$('.chk-route-list').is(':checked')) {
+        jconfirm({
+            title: 'Alert!',
+            content: "Please select treatment"
+        });
+      }
+      else {
+        $('.chk-route-list').each(function(){
+          if($(this).is(":checked")) {
+            treatmentArr.push({treatment_id:$(this).val()});
+          }
+        });
+
+        $.ajax({ 
+          type:"POST",
+          url:"/admin/store_treatment/",
+          data: {hospital_id:$('#hospital_id').val(),treatmentArr:treatmentArr,_token:"{{csrf_token()}}"},
+          success:function(response) { //alert(response);
+            if(response.status == 1) {
+              jconfirm({
+                  title: 'Confirm!',
+                  content: "treatment addedd successfully",
+                  buttons: {
+                    OK: function () {
+                      window.location.reload();
+                     }
+                  }
+              });
+            }
+            else {
+              jconfirm({
+                  title: 'Alert!',
+                  content: "Please try again"
+              });
+            }
+          }
+        });
+      }
+
+    });
+
+    $("#role").change(function(e){
+      var value = $(this).val();
+      $(".chk-route-list").prop('checked',false);
+      if(value) {
+        $.ajax({
+          type:"POST",
+          url: "/admin/get_permission/",
+          data: {role_id:value,_token:"{{csrf_token()}}"},
+          success:function(response) {
+            if(response.status == 1) {
+              for(var i=0;i<response.data.length;i++) {
+                $("#"+response.data[i].permission_id).prop('checked',true);
+              }
+            }
+            else {
+              $(".chk-route-list").prop('checked',false);
+            }
+          }
+        });
+      }
+    });
+
+
   });
 </script>
 
