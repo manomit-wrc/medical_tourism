@@ -209,4 +209,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::delete('/admin/hospitals/delete/{id}','HospitalController@destroy');
     Route::get('/admin/hospitals/show/{id}','HospitalController@show');
 
+
+    Route::get('/admin/package-types/', 'PackageTypeController@index');
+    Route::get('/admin/package-types/create', 'PackageTypeController@create');
 });
