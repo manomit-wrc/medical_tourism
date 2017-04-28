@@ -212,4 +212,13 @@ Route::group(['middleware' => ['admin']], function () {
 
     Route::get('/admin/package-types/', 'PackageTypeController@index');
     Route::get('/admin/package-types/create', 'PackageTypeController@create');
+
+    //success story section
+    Route::get('/admin/successstories','SuccessStoryController@index');
+    Route::get('/admin/successstories/create','SuccessStoryController@create');
+    Route::post('/admin/successstories/store','SuccessStoryController@store');
+    Route::get('/admin/successstories/edit/{id}','SuccessStoryController@edit');
+    Route::patch('/admin/successstories/update/{id}','SuccessStoryController@update');
+    Route::delete('/admin/successstories/delete/{id}','SuccessStoryController@destroy');
+    Route::get('/admin/successstories/show/{id}','SuccessStoryController@show');
 });

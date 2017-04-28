@@ -59,7 +59,13 @@
 <!--- AdminLTE for demo purposes -->
 {!!Html::script("storage/admin/js/demo.js")!!}
 
+{!!Html::script("vendor/unisharp/laravel-ckeditor/ckeditor.js")!!}
+
+
 <script>
+/*ckeditor implementation initialization*/ 
+CKEDITOR.replace('textarea_id'); //id here
+
 $(function () {
     //Initialize Select2 Elements
     $(".js-example-basic-multiple").select2();

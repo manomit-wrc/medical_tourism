@@ -84,6 +84,8 @@
           </ul>
         </li>
 
+
+
          <li class="treeview">
           <a href="#">
             <i class="fa fa-users"></i> <span>User management</span>
@@ -113,6 +115,17 @@
           </ul>
         </li>
 
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-thumbs-up"></i> <span>Success story management</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            @if($user_view_composer->hasRole('admin/successstories',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'successstories' ? 'active' : null }}"><a href="{!!URL::to('/admin/successstories')!!}"><i class="fa fa-thumbs-up"></i>Success story</a></li>@endif
+          </ul>
+        </li>
 
       </ul>
     </section>
