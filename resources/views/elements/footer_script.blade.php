@@ -1,9 +1,8 @@
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    {!!Html::script("storage/frontend/js/jquery.min.js")!!}
     {!!Html::script("storage/frontend/js/bootstrap.min.js")!!}
     {!!Html::script("storage/frontend/js/jquery.jcarousel.min.js")!!}
     {!!Html::script("storage/frontend/js/jcarousel.responsive.js")!!}
-   
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+    {!!Html::script("storage/frontend/js/owl.carousel.min.js")!!}
  
     <script type="text/javascript">
       $(document).ready(function(){

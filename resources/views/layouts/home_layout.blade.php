@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 	@include('elements.head')
-  	  <body>
+  	<body>
     	@include('elements.header')
-        @include('elements.slider')
+    	@include('elements.headernav')
+      @include('elements.slider')
     	@include('elements.homesearch')
     	@yield('content')
     	@include('elements.footer')

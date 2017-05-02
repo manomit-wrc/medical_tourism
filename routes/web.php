@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     //Frontend routing start here
-    return view('welcome');
+    return view('index');
 });
 //Route::get('/', 'HomeController@index');
 
