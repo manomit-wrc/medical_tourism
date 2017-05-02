@@ -209,29 +209,6 @@ $(function () {
 
     });
 
-    $("#role").change(function(e){
-      var value = $(this).val();
-      $(".chk-route-list").prop('checked',false);
-      if(value) {
-        $.ajax({
-          type:"POST",
-          url: "/admin/get_permission/",
-          data: {role_id:value,_token:"{{csrf_token()}}"},
-          success:function(response) {
-            if(response.status == 1) {
-              for(var i=0;i<response.data.length;i++) {
-                $("#"+response.data[i].permission_id).prop('checked',true);
-              }
-            }
-            else {
-              $(".chk-route-list").prop('checked',false);
-            }
-          }
-        });
-      }
-    });
-
-
   });
 </script>
 

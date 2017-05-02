@@ -33,7 +33,6 @@ class HospitalController extends Controller
      */
     public function index() {
         $hospitals_list = Hospital::all();
-        //echo "<pre>"; print_r($hospitals_list); die; 
         return view('admin.hospitals.index')->with('hospitals_list',$hospitals_list);
     }
 
@@ -142,8 +141,14 @@ class HospitalController extends Controller
     public function treatment($id)
     {
         $treatment_datas = Treatment::all();
-        //echo "<pre>"; print_r($treatment_datas); print_r($treatment_datas[0]->procedure); die;
-        return view('admin.hospitals.treatment',compact('treatment_datas'));
+        //echo "<pre>"; print_r($treatment_datas); die();
+        $hospital_treatment_datas = Hospital::with('treatments')->where('id',$id)->get()->toArray();
+        //echo "<pre>"; print_r($hospital_treatment_datas); die();
+        foreach ($hospital_treatment_datas[0]['treatments'] as $key => $value) {
+          $hos_treat_datas['treatment_array'][] = $value['id'];
+        }
+        //echo "<pre>"; print_r($hos_treat_datas); die();
+        return view('admin.hospitals.treatment',compact('treatment_datas','hos_treat_datas'));
     }
 
     public function store_treatment(Request $request) {
@@ -151,7 +156,9 @@ class HospitalController extends Controller
         //echo $request->hospital_id;  die;
         //echo "<pre>"; print_r($request->treatmentArr); die;
         $hospital_id = $request->hospital_id;
-        $existRows = \App\HospitalTreatment::where('hospital_id', '=', $hospital_id)->all();
+        //echo $hospital_id; die;
+        $existRows = \App\HospitalTreatment::where('hospital_id', '=', $hospital_id)->get();
+        //echo "<pre>"; print_r($existRows); die;
         if(count($existRows)>0)
         {
           $affectedRows = \App\HospitalTreatment::where('hospital_id', '=', $hospital_id)->delete();
@@ -178,27 +185,7 @@ class HospitalController extends Controller
       }
     }
 
-    public function get_treatment(Request $request) {
-      if($request->ajax()) {
-        $data = [];
-        $role_id = $request->role_id;
-        $permission_details = HospitalTreatment::find($role_id)->permissions;
-        foreach ($permission_details as $key => $permission) {
-          $data[] = [
-                'hospital_id' => $permission->permission_id,
-                'treatment_id' => $permission->permission_name
-            ];
-        }
-
-        if($data) {
-          return response()->json(['status' => '1','data'=>$data]);
-        }
-        else {
-          return response()->json(['status' => '0','data'=>array()]);
-        }
-      }
-    }
-
+    
     /**
      * Show the form for editing the specified resource.
      *

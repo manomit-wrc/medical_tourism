@@ -50,10 +50,11 @@
                        @endif
                        
                        @php
-                        $procid = $val->procedure->id
+                        $procid = $val->procedure->id;
+                        $srchkey = $val->id;
                        @endphp 
                          
-                         <input type="checkbox" id="ch{{ $val->id }}"  class="chk-route-list" value="{{ $val->id }}" autofocus >{{ $val->name }}
+                         <input type="checkbox"  id="ch{{ $val->id }}"  class="chk-route-list" value="{{ $val->id }}" {{ in_array($srchkey,$hos_treat_datas)? "checked":"" }} >{{ $val->name }}
                     </div>
                     @endforeach
 
