@@ -12,8 +12,10 @@
 */
 
 Route::get('/', function () {
+    //Frontend routing start here
     return view('welcome');
 });
+//Route::get('/', 'HomeController@index');
 
 Route::get('/admin', 'LoginController@index');
 Route::post('/admin/login', 'LoginController@checkLogin');
