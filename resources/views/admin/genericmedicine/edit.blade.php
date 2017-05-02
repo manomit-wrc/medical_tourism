@@ -1,17 +1,17 @@
 @extends('admin.layouts.dashboard_layout')
-@section('title', 'Language capability')
+@section('title', 'Generic Medicine')
 @section('content')
  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Language capability
+        Generic Medicine
        <!--  <small>advanced tables</small> -->
       </h1>
       <ol class="breadcrumb">
         <li><a href="{!!URL::to('/admin/dashboard')!!}">Home</a></li>
-        <li><a href="{!!URL::to('/admin/languagecapability')!!}">Language capability</a></li>
+        <li><a href="{!!URL::to('/admin/genericmedicine')!!}">Generic Medicine</a></li>
         <li class="active">Edit</li>
       </ol>
     </section>
@@ -28,7 +28,7 @@
           <!-- general form elements disabled -->
           <div class="box box-warning">
             <div class="box-header with-border">
-              <h3 class="box-title">Edit {{ $langcapabilites->name }}</h3>
+              <h3 class="box-title">Edit {{ $genericmedicine->generic_name_of_the_medicine }} </h3>
             </div>
              <!-- if there are creation errors, they will show here -->
              
@@ -41,15 +41,34 @@
               </div>
             @endif
             <div class="box-body">
-                 {{ Form::model($langcapabilites,array('method' => 'PATCH','role'=>'form','url' => array('admin/languagecapability/update', $langcapabilites->id),'id'=>'languagecapability_edit')) }}
+                 {{ Form::model($genericmedicine,array('method' => 'PATCH','role'=>'form','url' => array('admin/genericmedicine/update', $genericmedicine->id),'id'=>'genericmedicine_edit')) }}
                     
                     <div class="col-md-6">
                         
 
                         <!-- text input -->
                         <div class="form-group">
-                          {!! Html::decode(Form::label('name','Language capability name: <span style="color:red;">*</span>')) !!}
-                          {!! Form::text('name',null,array('class'=>'form-control','id'=>'name','placeholder'=>'Enter language capability name')) !!}
+                          {!! Html::decode(Form::label('generic_name_of_the_medicine','Enter Generic Name of the Medicine: <span style="color:red;">*</span>')) !!}
+                          {!! Form::text('generic_name_of_the_medicine',null,array('class'=>'form-control','id'=>'generic_name_of_the_medicine','placeholder'=>'Enter Generic Name of the Medicine')) !!}
+                        </div>
+
+                        <div class="form-group">
+                          {!! Html::decode(Form::label('unit','Strip/Unit: <span style="color:red;">*</span>')) !!}
+                          {!! Form::text('unit',null,array('class'=>'form-control','id'=>'unit','placeholder'=>'Enter Strip/Unit')) !!}
+                        </div>
+
+                        <div class="form-group">
+                          {!! Html::decode(Form::label('price','Price: <span style="color:red;">*</span>')) !!}
+                          {!! Form::text('price',null,array('class'=>'form-control','id'=>'price','placeholder'=>'Enter Price')) !!}
+                        </div>
+
+                        <div class="form-group">
+                          <label for="name">Category: <span style="color:red;">*</span></label>
+                          <select class="form-control js-example-basic-multiple" id="procedure_id[]" name="procedure_id[]" multiple="multiple">
+                            @foreach($procedure_list as $key => $value)
+                            <option value="{{ $key }}" {{ in_array($key, $procedures_array)? 'selected':'' }}>{{$value}}</option>
+                            @endforeach
+                          </select>                          
                         </div>
                         <!-- /.text input -->
 

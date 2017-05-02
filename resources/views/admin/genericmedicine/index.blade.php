@@ -53,9 +53,10 @@
                         <td>
                           <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
                             <!-- we will add this later since its a little more complicated than the other two buttons -->
-                             {!! Form::open(array('method' => 'DELETE','url' => array('admin/genericmedicine/delete', $genmedval->id),'class' => 'pull-right')) !!}
+                            {!! Form::open(array('method' => 'DELETE','url' => array('admin/genericmedicine/delete', $genmedval->id),'class' => 'pull-right')) !!}
                                   {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                               {!! Form::close() !!}
+                             
                           <a href="{!!URL::to('/admin/genericmedicine/edit',$genmedval->id)!!}" class="btn btn-primary">Edit</a>
                         </td>
                       </tr>

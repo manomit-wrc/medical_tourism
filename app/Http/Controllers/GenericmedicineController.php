@@ -22,7 +22,7 @@ class GenericmedicineController extends Controller
     	return view('admin.genericmedicine.index')->with('genericmedicine',$genericmedicine);
     }
 
-   public function create()
+   	public function create()
     {
     	$procedure_list = \App\Procedure::get()->pluck('name','id')->toArray();
        //	return view('admin.genericmedicine.create');
@@ -72,9 +72,15 @@ class GenericmedicineController extends Controller
      */
     public function edit($id)
     {
-       // get the language capability
-       $langcapabilites = LanguageCapability::findOrFail($id);
-       return view('admin.languagecapability.edit')->with('langcapabilites', $langcapabilites);
+        $genericmedicine = Genericmedicine::find($id);
+        $data['genericmedicine'] = $genericmedicine;       
+       	$data['genericmedicine_procedure_details'] = Genericmedicine::with('procedures')->where('id',$id)->get()->toArray(); 
+       	$data['procedure_list'] = \App\Procedure::get()->pluck('name','id')->toArray();
+       //echo '<pre>'; print_r($data['procedure_list']); die();  
+       	foreach ($data['genericmedicine_procedure_details'][0]['procedures'] as $key => $value) {
+          	$data['procedures_array'][] = $value['id'];
+        }       
+       	return view('admin.genericmedicine.edit',$data);      
     }
 
     /**
@@ -87,21 +93,25 @@ class GenericmedicineController extends Controller
     public function update($id,Request $request)
     {
         //echo $id; die;
-        $langcap = LanguageCapability::find($id);
+        $gems = Genericmedicine::find($id);
         // validate
         $this->validate($request, [
-        'name' => 'required|unique:language_capabilities'
-        ]);
-
-        // Getting all data after success validation.
-        $input = $request->all();
-        //echo "<pre>"; print_r($input); die;
-        $langcap->fill($input)->save();
+        'generic_name_of_the_medicine' => 'required',
+        'unit' => 'required',
+        'price' => 'required',
+        'procedure_id' => 'required'
+      ]);
+       	$gems->generic_name_of_the_medicine = $request->generic_name_of_the_medicine;
+       	$gems->unit = $request->unit;
+       	$gems->price = $request->price;
+       	$gems->save();
+        $gems->procedures()->wherePivot('genericmedicine_id', '=', $request->id)->detach();
+        $gems->procedures()->attach($request->procedure_id);
 
 
         // redirect
         Session::flash('message', 'Successfully updated');
-        return Redirect::to('/admin/languagecapability');
+        return Redirect::to('/admin/genericmedicine');
     }
 
     /**
@@ -113,13 +123,15 @@ class GenericmedicineController extends Controller
 
     public function destroy($id)
     {
-       //echo $id; die;
-       // delete
-        $langcap = LanguageCapability::findOrFail($id);
-        $langcap->delete();
-
-        // redirect
-        Session::flash('message', 'Successfully deleted');
-        return Redirect::to('/admin/languagecapability');
+       //echo $id; die; 
+       	if($id) {
+        	$genmed_details = Genericmedicine::find($id);
+        	if($genmed_details) {
+          		$genmed_details->procedures()->wherePivot('genericmedicine_id', '=', $id)->detach();          
+          		$genmed_details->delete();
+         		Session::flash('message', 'Deleted successfully');
+          		return redirect('/admin/genericmedicine');
+        	}
+      	}
     }
 }
