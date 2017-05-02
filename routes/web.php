@@ -233,4 +233,12 @@ Route::group(['middleware' => ['admin']], function () {
     Route::patch('/admin/providerconnectivityservices/update/{id}','ProviderConnectivityServicesController@update');
     Route::delete('/admin/providerconnectivityservices/delete/{id}','ProviderConnectivityServicesController@destroy');
     Route::get('/admin/providerconnectivityservices/show/{id}','ProviderConnectivityServicesController@show');
+	
+	 /* genericmedicine section */
+	Route::get('/admin/genericmedicine','genericmedicineController@index');
+    Route::get('/admin/genericmedicine/create','genericmedicineController@create');
+    Route::post('/admin/genericmedicine/store','genericmedicineController@store');
+    Route::get('/admin/genericmedicine/edit/{id}','genericmedicineController@edit');
+    Route::patch('/admin/genericmedicine/update/{id}','genericmedicineController@update');
+    Route::delete('/admin/genericmedicine/delete/{id}','genericmedicineController@destroy');
 });
