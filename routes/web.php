@@ -210,7 +210,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/hospitals/show/{id}','HospitalController@show');
     Route::get('/admin/hospitals/treatment/{id}','HospitalController@treatment');
     Route::post('/admin/store_treatment/', 'HospitalController@store_treatment');
-    Route::post('/admin/get_treatment/','HospitalController@get_treatment');
+    
 
 
     Route::get('/admin/package-types/', 'PackageTypeController@index');
@@ -225,7 +225,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::delete('/admin/successstories/delete/{id}','SuccessStoryController@destroy');
     Route::get('/admin/successstories/show/{id}','SuccessStoryController@show');
 
-     //Provider connectivity services section
+    //Provider connectivity services section
     Route::get('/admin/providerconnectivityservices','ProviderConnectivityServicesController@index');
     Route::get('/admin/providerconnectivityservices/create','ProviderConnectivityServicesController@create');
     Route::post('/admin/providerconnectivityservices/store','ProviderConnectivityServicesController@store');
