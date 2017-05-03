@@ -75,6 +75,7 @@ class GenericmedicineController extends Controller
        	$gems->generic_name_of_the_medicine = $request->generic_name_of_the_medicine;
        	$gems->unit = $request->unit;
        	$gems->price = $request->price;
+        $gems->status = $request->status; 
        	$gems->save();
         $gems->procedures()->wherePivot('genericmedicine_id', '=', $request->id)->detach();
         $gems->procedures()->attach($request->procedure_id);

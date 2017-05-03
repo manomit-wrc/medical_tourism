@@ -59,6 +59,13 @@
                             @endforeach
                           </select>                          
                         </div>
+                        <div class="form-group">
+                          <label for="name">Status: </label>
+                          <select name="status" id="status" class="form-control" autofocus >
+                            <option value="1" {{ $medicaltest->status == "1" ? 'selected' : '' }}>Active</option>
+                            <option value="0" {{ $medicaltest->status == "0" ? 'selected' : '' }}>In-Active</option>
+                          </select>                          
+                        </div>
                         <!-- /.text input -->
 
                         <!-- textarea -->
