@@ -118,7 +118,7 @@
 
                               <div class="col-md-6  col-sm-6">
                                   <div class="designby">
-                                  Powered by WRC Technologies
+                                  Powered by<a href="http://www.wrctechnologies.com/" target="_blank"> WRC Technologies</a>
                                   </div>
                               </div>
                               </div>

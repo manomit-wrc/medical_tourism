@@ -29,12 +29,13 @@
             <button type="button"><i class="fa fa-search" aria-hidden="true"></i> SEARCH</button>
 
         </div>
-                          
-        <div class="qc">
-            <a href="contact.html">
-            <img src="images/mail.png" alt=""><br>
-            quick <strong>contact</strong>
-            </a>
-        </div>
+        @if(Request::segment(1) != 'contact')
+            <div class="qc">
+                <a href="{!!URL::to('/contact')!!}">
+                <img src="{!!URL::to('storage/frontend/images/mail.png')!!}" alt=""><br>
+                quick <strong>contact</strong>
+                </a>
+            </div>
+        @endif
 
 </div>
