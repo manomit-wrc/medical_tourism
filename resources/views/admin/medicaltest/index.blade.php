@@ -49,7 +49,7 @@
                       <tr>
                         <td>{{ $medtval->test_name }}</td>
                         <td>{{ $cat_name }}</td>
-                        <td>{{ ($medtval->status ==1)? 'Active':'Inactive' }}</td>
+                        <td>{{ ($medtval->status ==1)? 'Active':'In-Active' }}</td>
                         <td>
                           <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
                             <!-- we will add this later since its a little more complicated than the other two buttons -->

@@ -66,6 +66,7 @@ class MedicaltestController extends Controller
         'medicaltestcategories_id' => 'required'        
       ]);
        	$medtest->test_name = $request->test_name;
+        $medtest->status = $request->status;
        	$medtest->medicaltestcategories_id = $request->medicaltestcategories_id;        
        	$medtest->save();       
         Session::flash('message', 'Successfully updated');

@@ -57,7 +57,8 @@ class MedicalTestCategoriesController extends Controller
         $this->validate($request, [
         'cat_name' => 'required'        
       ]);
-       	$medtestcat->cat_name = $request->cat_name;       	
+       	$medtestcat->cat_name = $request->cat_name;
+        $medtestcat->status = $request->status;       	
        	$medtestcat->save();
         // redirect
         Session::flash('message', 'Successfully updated');

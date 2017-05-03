@@ -51,6 +51,13 @@
                           {!! Html::decode(Form::label('cat_name','Name: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('cat_name',null,array('class'=>'form-control','id'=>'cat_name','placeholder'=>'Enter Name')) !!}
                         </div>
+                        <div class="form-group">
+                          <label for="name">Status: </label>
+                          <select name="status" id="status" class="form-control" autofocus >
+                            <option value="1" {{ $medicaltestcategories->status == "1" ? 'selected' : '' }}>Active</option>
+                            <option value="0" {{ $medicaltestcategories->status == "0" ? 'selected' : '' }}>In-Active</option>
+                          </select>                          
+                        </div>
                          <!-- textarea -->
                        <!--  <div class="form-group">
                           <label>Textarea</label>

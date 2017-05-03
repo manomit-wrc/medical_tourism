@@ -39,6 +39,7 @@
                     <th>Generic Name of the Medicine</th>
                     <th>Strip/Unit</th>
                     <th>MRP</th>
+                    <th>Status</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
@@ -50,6 +51,7 @@
                         <td>{{ $genmedval->generic_name_of_the_medicine }}</td>
                         <td>{{ $genmedval->unit }}</td>
                         <td>{{ $genmedval->price }}</td>
+                        <td>{{ ($genmedval->status ==1)? 'Active':'In-Active' }}</td>
                         <td>
                           <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
                             <!-- we will add this later since its a little more complicated than the other two buttons -->
