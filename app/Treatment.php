@@ -29,4 +29,8 @@ class Treatment extends Model
      public function procedure() {
        return $this->belongsTo('\App\Procedure');
      }
+     public function hospitals()
+    {
+      return $this->belongsToMany('\App\Hospital','hospital_treatment','treatment_id','hospital_id');
+    }
 }

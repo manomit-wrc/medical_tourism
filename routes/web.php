@@ -12,8 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    //Frontend routing start here
+    return view('index');
 });
+//Route::get('/', 'HomeController@index');
 
 Route::get('/admin', 'LoginController@index');
 Route::post('/admin/login', 'LoginController@checkLogin');
@@ -208,13 +210,45 @@ Route::group(['middleware' => ['admin']], function () {
     Route::patch('/admin/hospitals/update/{id}','HospitalController@update');
     Route::delete('/admin/hospitals/delete/{id}','HospitalController@destroy');
     Route::get('/admin/hospitals/show/{id}','HospitalController@show');
+    Route::get('/admin/hospitals/treatment/{id}','HospitalController@treatment');
+    Route::post('/admin/store_treatment/', 'HospitalController@store_treatment');
+    
 
 
     Route::get('/admin/package-types/', 'PackageTypeController@index');
     Route::get('/admin/package-types/create', 'PackageTypeController@create');
+<<<<<<< HEAD
     Route::post('/admin/package-types/store', 'PackageTypeController@store');
     Route::get('/admin/package-types/edit/{id}', 'PackageTypeController@edit');
     Route::post('/admin/package-types/update/{id}','PackageTypeController@update');
     Route::get('/admin/package-types/delete/{id}','PackageTypeController@delete');
 
+=======
+
+    //success story section
+    Route::get('/admin/successstories','SuccessStoryController@index');
+    Route::get('/admin/successstories/create','SuccessStoryController@create');
+    Route::post('/admin/successstories/store','SuccessStoryController@store');
+    Route::get('/admin/successstories/edit/{id}','SuccessStoryController@edit');
+    Route::patch('/admin/successstories/update/{id}','SuccessStoryController@update');
+    Route::delete('/admin/successstories/delete/{id}','SuccessStoryController@destroy');
+    Route::get('/admin/successstories/show/{id}','SuccessStoryController@show');
+
+    //Provider connectivity services section
+    Route::get('/admin/providerconnectivityservices','ProviderConnectivityServicesController@index');
+    Route::get('/admin/providerconnectivityservices/create','ProviderConnectivityServicesController@create');
+    Route::post('/admin/providerconnectivityservices/store','ProviderConnectivityServicesController@store');
+    Route::get('/admin/providerconnectivityservices/edit/{id}','ProviderConnectivityServicesController@edit');
+    Route::patch('/admin/providerconnectivityservices/update/{id}','ProviderConnectivityServicesController@update');
+    Route::delete('/admin/providerconnectivityservices/delete/{id}','ProviderConnectivityServicesController@destroy');
+    Route::get('/admin/providerconnectivityservices/show/{id}','ProviderConnectivityServicesController@show');
+	
+	 /* genericmedicine section */
+	Route::get('/admin/genericmedicine','genericmedicineController@index');
+    Route::get('/admin/genericmedicine/create','genericmedicineController@create');
+    Route::post('/admin/genericmedicine/store','genericmedicineController@store');
+    Route::get('/admin/genericmedicine/edit/{id}','genericmedicineController@edit');
+    Route::patch('/admin/genericmedicine/update/{id}','genericmedicineController@update');
+    Route::delete('/admin/genericmedicine/delete/{id}','genericmedicineController@destroy');
+>>>>>>> 2f9747d8f3d2df9d7a8b4f9949e66d766778f427
 });

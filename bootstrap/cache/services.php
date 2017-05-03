@@ -31,6 +31,7 @@
     27 => 'Intervention\\Image\\ImageServiceProvider',
     28 => 'DougSisk\\CountryState\\CountryStateServiceProvider',
     29 => 'Torann\\Currency\\CurrencyServiceProvider',
+    30 => 'Unisharp\\Ckeditor\\ServiceProvider',
   ),
   'eager' => 
   array (
@@ -51,6 +52,7 @@
     14 => 'Intervention\\Image\\ImageServiceProvider',
     15 => 'DougSisk\\CountryState\\CountryStateServiceProvider',
     16 => 'Torann\\Currency\\CurrencyServiceProvider',
+    17 => 'Unisharp\\Ckeditor\\ServiceProvider',
   ),
   'deferred' => 
   array (

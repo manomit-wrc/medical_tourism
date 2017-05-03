@@ -11,7 +11,8 @@
         "intervention/image": "^2.3",
         "laravel/framework": "5.3.*",
         "laravelcollective/html": "5.3.*",
-        "torann/currency": "^1.0"
+        "torann/currency": "^1.0",
+        "unisharp/laravel-ckeditor": "^4.6"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

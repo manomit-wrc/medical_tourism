@@ -32,7 +32,7 @@
             <div class="box-body">
               @if (Session::has('message'))
                   <div class="alert alert-info">{{ Session::get('message') }}</div>
-              @endif
+              @endif              
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                   <tr>

@@ -182,6 +182,7 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         DougSisk\CountryState\CountryStateServiceProvider::class,
         Torann\Currency\CurrencyServiceProvider::class,
+        Unisharp\Ckeditor\ServiceProvider::class,
     ],
 
     /*

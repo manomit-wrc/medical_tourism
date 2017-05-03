@@ -34,6 +34,10 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         array (
             'Webmozart\\Assert\\' => 17,
         ),
+        'U' => 
+        array (
+            'Unisharp\\Ckeditor\\' => 18,
+        ),
         'T' => 
         array (
             'Torann\\Currency\\' => 16,
@@ -127,6 +131,10 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         'Webmozart\\Assert\\' => 
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
+        ),
+        'Unisharp\\Ckeditor\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/unisharp/laravel-ckeditor',
         ),
         'Torann\\Currency\\' => 
         array (
@@ -355,10 +363,13 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         'AddProcedureImageColumsToProceduresTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_24_130154_add_procedure_image_colums_to_procedures_table.php',
         'AddStatusToProceduresTables' => __DIR__ . '/../..' . '/database/migrations/2017_04_13_074936_add_status_to_procedures_tables.php',
         'AddUserIdToDoctorsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_26_083459_add_user_id_to_doctors_table.php',
+        'AddUserIdToPackageTypesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_27_132153_add_user_id_to_package_types_table.php',
         'AlterTableMedicalFacilitiesChangeDescription' => __DIR__ . '/../..' . '/database/migrations/2017_04_24_121844_alter_table_medical_facilities_change_description.php',
         'CreateAccomodationsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_21_073022_create_accomodations_table.php',
         'CreateAccrediationsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_21_051438_create_accrediations_table.php',
         'CreateBannersTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_21_124438_create_banners_table.php',
+        'CreateConnectivitiesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_26_071329_create_connectivities_table.php',
+        'CreateConnectivityServicesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_27_054504_create_connectivity_services_table.php',
         'CreateCountryStateCityTables' => __DIR__ . '/../..' . '/database/migrations/2017_04_25_064451_create_country_state_city_tables.php',
         'CreateCuisinesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_21_085431_create_cuisines_table.php',
         'CreateCurrencyTable' => __DIR__ . '/../..' . '/database/migrations/2013_11_26_161501_create_currency_table.php',
@@ -366,20 +377,24 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         'CreateDoctorDegreeTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_26_082652_create_doctor_degree_table.php',
         'CreateDoctorProcedureTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_26_082629_create_doctor_procedure_table.php',
         'CreateDoctorsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_26_071406_create_doctors_table.php',
+        'CreateHospitalTreatmentTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_28_121421_create_hospital_treatment_table.php',
         'CreateHospitalsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_27_092607_create_hospitals_table.php',
         'CreateHotelClassTypesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_25_111718_create_hotel_class_types_table.php',
         'CreateHotelsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_25_132205_create_hotels_table.php',
         'CreateLanguageCapabilitiesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_13_104412_create_language_capabilities_table.php',
         'CreateMedicalFacilitiesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_24_105551_create_medical_facilities_table.php',
         'CreateNewsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_26_091813_create_news_table.php',
+        'CreatePackageTypesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_27_125305_create_package_types_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreatePaymentTypesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_25_054933_create_payment_types_table.php',
         'CreatePermissionsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_25_113125_create_permissions_table.php',
         'CreateProceduresTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_13_054018_create_procedures_table.php',
         'CreateProviderConnectivitiesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_26_101111_create_provider_connectivities_table.php',
+        'CreateProviderConnectivityServicesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_27_054852_create_provider_connectivity_services_table.php',
         'CreateProviderTypesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_25_051217_create_provider_types_table.php',
         'CreateRolesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_24_085106_create_roles_table.php',
         'CreateSpecificServiceTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_21_092026_create_specific_service_table.php',
+        'CreateSuccessStoriesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_28_052704_create_success_stories_table.php',
         'CreateTreatmentsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_13_094025_create_treatments_table.php',
         'CreateUserRoleTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_24_132948_create_user_role_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',

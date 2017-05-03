@@ -9,6 +9,8 @@ use App\HotelClassType;
 use App\Country;
 use App\State;
 use App\City;
+use App\Treatment;
+use App\HospitalTreatment;
 use Auth;
 use Input;
 use Redirect;
@@ -16,6 +18,7 @@ use Session;
 use Validator;
 use Image;
 use File;
+use Illuminate\Support\Facades\Route;
 
 class HospitalController extends Controller
 {
@@ -30,7 +33,6 @@ class HospitalController extends Controller
      */
     public function index() {
         $hospitals_list = Hospital::all();
-        //echo "<pre>"; print_r($hospitals_list); die; 
         return view('admin.hospitals.index')->with('hospitals_list',$hospitals_list);
     }
 
@@ -130,7 +132,60 @@ class HospitalController extends Controller
        //echo "<pre>"; print_r($hotels_data->hotelclasstypes); die;
         return view('admin.hospitals.show',compact('hosptl_data'));
     }
+    /**
+     * Display the treatment resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function treatment($id)
+    {
+        $treatment_datas = Treatment::all();
+        //echo "<pre>"; print_r($treatment_datas); die();
+        $hospital_treatment_datas = Hospital::with('treatments')->where('id',$id)->get()->toArray();
+        //echo "<pre>"; print_r($hospital_treatment_datas); die();
+        foreach ($hospital_treatment_datas[0]['treatments'] as $key => $value) {
+          $hos_treat_datas['treatment_array'][] = $value['id'];
+        }
+        //echo "<pre>"; print_r($hos_treat_datas); die();
+        return view('admin.hospitals.treatment',compact('treatment_datas','hos_treat_datas'));
+    }
 
+    public function store_treatment(Request $request) {
+      if($request->ajax()) { 
+        //echo $request->hospital_id;  die;
+        //echo "<pre>"; print_r($request->treatmentArr); die;
+        $hospital_id = $request->hospital_id;
+        //echo $hospital_id; die;
+        $existRows = \App\HospitalTreatment::where('hospital_id', '=', $hospital_id)->get();
+        //echo "<pre>"; print_r($existRows); die;
+        if(count($existRows)>0)
+        {
+          $affectedRows = \App\HospitalTreatment::where('hospital_id', '=', $hospital_id)->delete();
+        //echo "<pre>"; print_r($affectedRows); die;
+        }  
+        
+        $treatmentArr = $request->treatmentArr;
+        foreach ($treatmentArr as $key => $value) {
+          $data[] = [
+                'hospital_id' => $hospital_id,
+                'treatment_id' => $value['treatment_id']
+            ];
+        }
+        //echo "<pre>"; print_r($data); die;
+        $result = \App\HospitalTreatment::insert($data);
+        //echo "<pre>"; print_r($result); die;
+
+        if($result) {
+          return response()->json(['status' => '1']);
+        }
+        else {
+          return response()->json(['status' => '0']);
+        }
+      }
+    }
+
+    
     /**
      * Show the form for editing the specified resource.
      *

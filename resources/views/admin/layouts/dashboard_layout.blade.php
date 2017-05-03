@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
-	@include('element.head')
+	@include('admin.element.head')
   	<body class="hold-transition skin-blue sidebar-mini">
   	   <div class="wrapper">
-    	@include('element.header')
-    	@include('element.leftpanel')
+    	@include('admin.element.header')
+    	@include('admin.element.leftpanel')
     	@yield('content')
-    	@include('element.footer')
-      @include('element.footer_script')
+    	@include('admin.element.footer')
+      @include('admin.element.footer_script')
   	</body>
 </html>
