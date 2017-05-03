@@ -218,7 +218,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('/admin/store_treatment/', 'HospitalController@store_treatment');
     
 
-
+    //package type section
     Route::get('/admin/package-types/', 'PackageTypeController@index');
     Route::get('/admin/package-types/create', 'PackageTypeController@create');
     Route::post('/admin/package-types/store', 'PackageTypeController@store');

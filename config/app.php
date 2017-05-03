@@ -234,7 +234,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Currency' => Torann\Currency\Facades\Currency::class,
-
+        'Helper' => App\Helpers\Helper::class,
     ],
 
 ];
