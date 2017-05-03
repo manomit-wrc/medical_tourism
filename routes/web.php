@@ -250,4 +250,20 @@ Route::group(['middleware' => ['admin']], function () {
     Route::patch('/admin/genericmedicine/update/{id}','genericmedicineController@update');
     Route::delete('/admin/genericmedicine/delete/{id}','genericmedicineController@destroy');
 
+     /* medical test categories section */
+    Route::get('/admin/medicaltestcategories','MedicalTestCategoriesController@index');
+    Route::get('/admin/medicaltestcategories/create','MedicalTestCategoriesController@create');
+    Route::post('/admin/medicaltestcategories/store','MedicalTestCategoriesController@store');
+    Route::get('/admin/medicaltestcategories/edit/{id}','MedicalTestCategoriesController@edit');
+    Route::patch('/admin/medicaltestcategories/update/{id}','MedicalTestCategoriesController@update');
+    Route::delete('/admin/medicaltestcategories/delete/{id}','MedicalTestCategoriesController@destroy');
+
+     /* medical test section */
+    Route::get('/admin/medicaltest','MedicaltestController@index');
+    Route::get('/admin/medicaltest/create','MedicaltestController@create');
+    Route::post('/admin/medicaltest/store','MedicaltestController@store');
+    Route::get('/admin/medicaltest/edit/{id}','MedicaltestController@edit');
+    Route::patch('/admin/medicaltest/update/{id}','MedicaltestController@update');
+    Route::delete('/admin/medicaltest/delete/{id}','MedicaltestController@destroy');
+
 });
