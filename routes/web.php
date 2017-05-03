@@ -212,4 +212,9 @@ Route::group(['middleware' => ['admin']], function () {
 
     Route::get('/admin/package-types/', 'PackageTypeController@index');
     Route::get('/admin/package-types/create', 'PackageTypeController@create');
+    Route::post('/admin/package-types/store', 'PackageTypeController@store');
+    Route::get('/admin/package-types/edit/{id}', 'PackageTypeController@edit');
+    Route::post('/admin/package-types/update/{id}','PackageTypeController@update');
+    Route::get('/admin/package-types/delete/{id}','PackageTypeController@delete');
+
 });

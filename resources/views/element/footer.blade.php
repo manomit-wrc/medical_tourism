@@ -59,6 +59,12 @@
 <!--- AdminLTE for demo purposes -->
 {!!Html::script("storage/admin/js/demo.js")!!}
 
+@if(Request::segment(2) === 'package-types' && (Request::segment(3) === 'create' || Request::segment(3) === 'edit'))
+  {!!Html::script("storage/admin/ckeditor/ckeditor.js")!!}
+  <script type="text/javascript">
+      CKEDITOR.replace( 'ckeditor' );
+  </script>
+@endif
 <script>
 $(function () {
     //Initialize Select2 Elements

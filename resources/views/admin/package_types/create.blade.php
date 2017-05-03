@@ -1,6 +1,7 @@
 @extends('admin.layouts.dashboard_layout')
 @section('content')
  <!-- Content Wrapper. Contains page content -->
+
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -31,17 +32,17 @@
 
                 <form method="post" name="frmPackageType" action="/admin/package-types/store" enctype="multipart/form-data" >
                   {{ csrf_field() }}
-                  <div class="col-md-6">
+                  <div class="col-md-12">
                     <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                       <label for="name">Name: <span style="color:red;">*</span></label>
                       <input type="text" name="name" id="name" class="form-control" value="{{ old('name')}}" autofocus >
 
                       <span class="text-danger">{{ $errors->first('name') }}</span>
                     </div>
-                    <div class="form-group {{ $errors->has('description') ? 'has-error' : '' }}">
+                    <div class="form-group {{ $errors->has('ckeditor') ? 'has-error' : '' }}">
                       <label for="name">Description: <span style="color:red;">*</span></label>
-                      <textarea name="description" id="description" class="form-control" ></textarea>
-                      <span class="text-danger">{{ $errors->first('description') }}</span>
+                      <textarea name="ckeditor" id="ckeditor" class="form-control ckeditor" ></textarea>
+                      <span class="text-danger">{{ $errors->first('ckeditor') }}</span>
                     </div>
                   </div>
 

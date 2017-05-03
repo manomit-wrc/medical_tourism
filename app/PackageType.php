@@ -8,7 +8,7 @@ class PackageType extends Model
 {
     protected $fillable = [
       'name','description','status'
-    ]
+    ];
 
     public $timestamps = true;
 }
