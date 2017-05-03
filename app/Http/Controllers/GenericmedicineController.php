@@ -28,12 +28,7 @@ class GenericmedicineController extends Controller
        //	return view('admin.genericmedicine.create');
        return view('admin.genericmedicine.create')->with(['procedure_list'=>$procedure_list]);
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @return Response
-     */
+    
     public function store(Request $request)
     {
       $this->validate($request, [
@@ -52,24 +47,7 @@ class GenericmedicineController extends Controller
       	Session::flash('message', 'Successfully added!');
       	return Redirect::to('/admin/genericmedicine');
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
+    
     public function edit($id)
     {
         $genericmedicine = Genericmedicine::find($id);
@@ -81,14 +59,7 @@ class GenericmedicineController extends Controller
           	$data['procedures_array'][] = $value['id'];
         }       
        	return view('admin.genericmedicine.edit',$data);      
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
+    }    
 
     public function update($id,Request $request)
     {
@@ -112,14 +83,7 @@ class GenericmedicineController extends Controller
         // redirect
         Session::flash('message', 'Successfully updated');
         return Redirect::to('/admin/genericmedicine');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
+    }   
 
     public function destroy($id)
     {

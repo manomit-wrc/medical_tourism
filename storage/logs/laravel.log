@@ -246,6 +246,32 @@ Stack trace:
 #28 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Cookie\Middleware\EncryptCookies.php(59): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
 #29 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Cookie\Middleware\EncryptCookies->handle(Object(Illuminate\Http\Request), Object(Closure))
 #30 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+<<<<<<< HEAD
+#31 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Cookie\Middleware\EncryptCookies.php(59): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#32 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Cookie\Middleware\EncryptCookies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#33 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#34 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(104): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#35 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Routing\Router.php(655): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#36 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Routing\Router.php(629): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#37 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Routing\Router.php(607): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#38 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(268): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#39 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(53): Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#40 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode.php(46): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#41 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(137): Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode->handle(Object(Illuminate\Http\Request), Object(Closure))
+#42 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Routing\Pipeline.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#43 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(104): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#44 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(150): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#45 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(117): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#46 C:\xampp\htdocs\medical_tourism\public\index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#47 C:\xampp\htdocs\medical_tourism\server.php(21): require_once('C:\\xampp\\htdocs...')
+#48 {main}  
+[2017-04-28 04:36:47] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'public' (T_PUBLIC), expecting ',' or ';'' in C:\xampp\htdocs\medical_tourism\app\PackageType.php:13
+Stack trace:
+#0 {main}  
+[2017-04-28 05:49:23] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'App\Http\Controllers\Validator' not found' in C:\xampp\htdocs\medical_tourism\app\Http\Controllers\PackageTypeController.php:23
+Stack trace:
+#0 {main}  
+=======
 #31 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(104): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
 #32 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Routing\Router.php(655): Illuminate\Pipeline\Pipeline->then(Object(Closure))
 #33 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Routing\Router.php(629): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
@@ -261,3 +287,19 @@ Stack trace:
 #43 C:\xampp\htdocs\medical_tourism\public\index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #44 C:\xampp\htdocs\medical_tourism\server.php(21): require_once('C:\\xampp\\htdocs...')
 #45 {main}  
+>>>>>>> 2f9747d8f3d2df9d7a8b4f9949e66d766778f427
+[2017-05-03 04:16:27] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '<<' (T_SL)' in C:\medical_tourism\routes\web.php:220
+Stack trace:
+#0 {main}  
+[2017-05-03 04:16:29] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '<<' (T_SL)' in C:\medical_tourism\routes\web.php:220
+Stack trace:
+#0 {main}  
+[2017-05-03 04:16:31] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '<<' (T_SL)' in C:\medical_tourism\routes\web.php:220
+Stack trace:
+#0 {main}  
+[2017-05-03 04:19:57] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '<<' (T_SL)' in C:\medical_tourism\routes\web.php:220
+Stack trace:
+#0 {main}  
+[2017-05-03 04:19:59] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '<<' (T_SL)' in C:\medical_tourism\routes\web.php:220
+Stack trace:
+#0 {main}  
