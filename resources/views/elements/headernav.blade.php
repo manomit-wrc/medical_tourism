@@ -14,15 +14,15 @@
                             </div>
                             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                               <ul class="nav navbar-nav">
-                                <li class="active"><a href="index.html">Home</a></li>
-                                <li><a href="about.html">About Swasthya Bandhav</a></li>
-                                <li><a href="services.html">Services</a></li>
+                                <li class="{{ Request::segment(1) === '' ? 'active' : null }}"><a href="{!!URL::to('/')!!}">Home</a></li>
+                                <li class="{{ Request::segment(1) === 'about' ? 'active' : null }}"><a href="{!!URL::to('/about')!!}">About Swasthya Bandhav</a></li>
+                                <li class="{{ Request::segment(1) === 'services' ? 'active' : null }}"><a href="{!!URL::to('/services')!!}">Services</a></li>
                               </ul>                              
                               <ul class="nav navbar-nav navbar-right">
-                                <li><a href="inquiry.html">Inquiry</a></li>
-                                <li><a href="facilities.html">facilities</a></li>
-                                <li><a href="doctors.html">doctors</a></li>
-                                <li><a href="contact.html">contact us</a></li>                           
+                                <li class="{{ Request::segment(1) === 'enquiry' ? 'active' : null }}"><a href="{!!URL::to('/enquiry')!!}">Enquiry</a></li>
+                                <li class="{{ Request::segment(1) === 'facilities' ? 'active' : null }}"><a href="{!!URL::to('/facilities')!!}">facilities</a></li>
+                                <li class="{{ Request::segment(1) === 'doctors' ? 'active' : null }}"><a href="{!!URL::to('/doctors')!!}">doctors</a></li>
+                                <li class="{{ Request::segment(1) === 'contact' ? 'active' : null }}"><a href="{!!URL::to('/contact')!!}">contact us</a></li>                           
                               </ul>
                             </div>                          
                         </nav>

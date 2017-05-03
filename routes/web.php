@@ -10,13 +10,17 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+//Frontend routing start here
+Route::get('/','HomeController@index');
+Route::get('/about','PagesController@about');
+Route::get('/services','PagesController@services');
+Route::get('/servicedetails','PagesController@servicedetails');
+Route::get('/enquiry','PagesController@enquiry');
+Route::get('/facilities','PagesController@facilities');
+Route::get('/doctors','PagesController@doctors');
+Route::get('/contact','PagesController@contact');
 
-Route::get('/', function () {
-    //Frontend routing start here
-    return view('index');
-});
-//Route::get('/', 'HomeController@index');
-
+//Backend routing start here
 Route::get('/admin', 'LoginController@index');
 Route::post('/admin/login', 'LoginController@checkLogin');
 //Route::get('/admin/dashboard', 'DashboardController@index')->middleware('web');

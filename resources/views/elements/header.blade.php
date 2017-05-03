@@ -1,7 +1,7 @@
 <div class="container">
         <div class="row">
             <div class="col-md-3 col-md-push-4">
-                <div class="logo"><a href="index.html"><img src="{!!URL::to('storage/frontend/images/logo.png')!!}"  alt="Logo"></a></div>
+                <div class="logo"><a href="{!!URL::to('/')!!}"><img src="{!!URL::to('storage/frontend/images/logo.png')!!}"  alt="Logo"></a></div>
             </div>
             <div class="col-md-4 col-md-pull-3">
                  <div class="call"><i class="fa fa-phone" aria-hidden="true"></i>Call us now +62 008 65 001</div>
