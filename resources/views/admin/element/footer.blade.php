@@ -60,17 +60,15 @@
 {!!Html::script("storage/admin/js/demo.js")!!}
 
 
-@if(Request::segment(2) === 'package-types' && (Request::segment(3) === 'create' || Request::segment(3) === 'edit'))
-  {!!Html::script("storage/admin/ckeditor/ckeditor.js")!!}
+@if((Request::segment(2) === 'package-types' && (Request::segment(3) === 'create' || Request::segment(3) === 'edit'))||(Request::segment(2) === 'successstories' && (Request::segment(3) === 'create' || Request::segment(3) === 'edit')))
+  {!!Html::script("vendor/unisharp/laravel-ckeditor/ckeditor.js")!!}
   <script type="text/javascript">
-      CKEDITOR.replace( 'ckeditor' );
+      CKEDITOR.replace('textarea_id');
   </script>
 @endif
-
-{!!Html::script("vendor/unisharp/laravel-ckeditor/ckeditor.js")!!}
 <script>
-/*ckeditor implementation initialization*/ 
-CKEDITOR.replace('textarea_id'); //id here
+/*ckeditor implementation initialization*/
+ //id here
 
 $(function () {
     //Initialize Select2 Elements
@@ -100,7 +98,7 @@ $(function () {
     $("#btn_uncheck_all").click(function(e){
       $(".chk-route-list").prop('checked',false);
     });
-    
+
     $(".exact-submit-button").click(function(e){
       if(!$("#role").val()) {
         jconfirm({
@@ -187,8 +185,9 @@ $(function () {
           }
         });
 
-        $.ajax({ 
-          type:"",
+
+        $.ajax({
+          type:"POST",
           url:"/admin/store_treatment/",
           data: {hospital_id:$('#hospital_id').val(),treatmentArr:treatmentArr,_token:"{{csrf_token()}}"},
           success:function(response) { //alert(response);
@@ -273,7 +272,7 @@ $(function () {
 <!---hospital wise medical test start-->
   <script>
     function showproducts(val){
-      $("#product_data_"+val).toggle(); 
+      $("#product_data_"+val).toggle();
       $('#select_allcatproduct'+val).on('click',function(){
         if($('.checkboxcatproduct'+val+':checked').length == $('.checkboxcatproduct'+val).length){
           $('#select_allcatproduct'+val).show();
@@ -286,9 +285,9 @@ $(function () {
           $('.checkboxcatproduct'+val).each(function(){
             this.checked = false;
           });
-        } 
+        }
       });
-      
+
       $('.checkboxcatproduct'+val).on('click',function(){
         if($('.checkboxcatproduct'+val+':checked').length == $('.checkboxcatproduct'+val).length){
           $('#select_allcatproduct'+val).prop('checked',true);
@@ -301,6 +300,7 @@ $(function () {
       $("#hosmedtest").modal('show');
       $("#medicaltest_cat_id").val(val);
     }
+
     function submitmedicaltest(){ 
       //alert($('#medicaltest_cat_id').val());          
         $.ajax({ 
@@ -325,10 +325,11 @@ $(function () {
                   content: "Please try again"
               });
             }
-            
-          }
-        });
-      }
+       }
+       });
+       }     
+
+    
   </script>
 <!---hospital wise medical test end-->
 
