@@ -284,7 +284,8 @@ class HospitalController extends Controller
     }
     public function medicaltest($id)
     {  
-      $medicaltestdata = Medicaltest::all();    
+      $medicaltestdata = Medicaltest::all();
+      //$medicaltestdata = Medicaltest::with('medicaltestcategories')->groupBy('medicaltestcategories_id')->get()->toArray();    
       $data['medicaltestdata'] = $medicaltestdata;
       //echo "<pre>"; print_r($medicaltestdata); die;
       //echo "<pre>"; print_r($medicaltestdata[0]->medicaltestcategories); die;        
@@ -294,11 +295,24 @@ class HospitalController extends Controller
     public function store_medicaltest(Request $request) {
       //echo "<pre>"; print_r($request->all()); die;
       $medicaltestArr = $request->medicaltestArr;
-      print_r($medicaltestArr); die();
+      //print_r($medicaltestArr); die();
     }
 
-    public function ajaxstoremedicaltest() {
-      echo 'dsfsdfds';       
+    public function ajaxstoremedicaltest(Request $request) {      
+      $test_name = $request->test_name;
+      $medicaltestcategories_id = $request->medicaltestcategories_id; 
+      $data = [          
+          'medicaltestcategories_id' => $medicaltestcategories_id,
+          'test_name' => $test_name,
+          'created_at' => date('Y-m-d H:i:s'),
+          'updated_at' => date('Y-m-d H:i:s')
+      ];         
+      $result = \App\Medicaltest::insert($data); 
+      if($result) {
+          return response()->json(['status' => '1']);
+        }else {
+          return response()->json(['status' => '0']);
+        }    
     }
 
     /**

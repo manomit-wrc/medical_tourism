@@ -188,7 +188,7 @@ $(function () {
         });
 
         $.ajax({ 
-          type:"POST",
+          type:"",
           url:"/admin/store_treatment/",
           data: {hospital_id:$('#hospital_id').val(),treatmentArr:treatmentArr,_token:"{{csrf_token()}}"},
           success:function(response) { //alert(response);
@@ -302,13 +302,29 @@ $(function () {
       $("#medicaltest_cat_id").val(val);
     }
     function submitmedicaltest(){ 
-      alert($('#medicaltest_cat_id').val());          
+      //alert($('#medicaltest_cat_id').val());          
         $.ajax({ 
           type:"POST",
           url:"/admin/ajaxstoremedicaltest/",
-          data: {medicaltestcategories_id:$('#medicaltest_cat_id').val()},
-          success:function(response) { 
-            alert(response);
+          data: {medicaltestcategories_id:$('#medicaltest_cat_id').val(),hospital_id:$('#hospital_id').val(),test_name:$('#test_name').val(),_token:"{{csrf_token()}}"},
+            success:function(response) {            
+           if(response.status == 1) {
+              jconfirm({
+                  title: 'Confirm!',
+                  content: "Medical Test addedd successfully",
+                  buttons: {
+                    OK: function () {
+                      window.location.reload();
+                     }
+                  }
+              });
+            }
+            else {
+              jconfirm({
+                  title: 'Alert!',
+                  content: "Please try again"
+              });
+            }
             
           }
         });
