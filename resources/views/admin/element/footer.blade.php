@@ -270,6 +270,52 @@ $(function () {
 </script>
 <!--State/city/dropdown end-->
 
+<!---hospital wise medical test start-->
+  <script>
+    function showproducts(val){
+      $("#product_data_"+val).toggle(); 
+      $('#select_allcatproduct'+val).on('click',function(){
+        if($('.checkboxcatproduct'+val+':checked').length == $('.checkboxcatproduct'+val).length){
+          $('#select_allcatproduct'+val).show();
+        }
+        if(this.checked){
+          $('.checkboxcatproduct'+val).each(function(){
+            this.checked = true;
+          });
+        }else{
+          $('.checkboxcatproduct'+val).each(function(){
+            this.checked = false;
+          });
+        } 
+      });
+      
+      $('.checkboxcatproduct'+val).on('click',function(){
+        if($('.checkboxcatproduct'+val+':checked').length == $('.checkboxcatproduct'+val).length){
+          $('#select_allcatproduct'+val).prop('checked',true);
+        }else{
+          $('#select_allcatproduct'+val).prop('checked',false);
+        }
+      });
+    }
+    function addnewmedicaltest(val){
+      $("#hosmedtest").modal('show');
+      $("#medicaltest_cat_id").val(val);
+    }
+    function submitmedicaltest(){ 
+      alert($('#medicaltest_cat_id').val());          
+        $.ajax({ 
+          type:"POST",
+          url:"/admin/ajaxstoremedicaltest/",
+          data: {medicaltestcategories_id:$('#medicaltest_cat_id').val()},
+          success:function(response) { 
+            alert(response);
+            
+          }
+        });
+      }
+  </script>
+<!---hospital wise medical test end-->
+
 <!-- page script -->
 
 <!-- modal  -->

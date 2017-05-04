@@ -44,20 +44,23 @@
                 </thead>
                
                 <tbody>
+
                   @if (count($medicaltest) > 0)
+
                     @foreach($medicaltest as $medtval)
+                    
                       <tr>
-                        <td>{{ $medtval->test_name }}</td>
-                        <td>{{ $cat_name }}</td>
-                        <td>{{ ($medtval->status ==1)? 'Active':'In-Active' }}</td>
+                        <td>{{$medtval['test_name']}}</td>
+                        <td>{{ $medtval['medicaltestcategories']['cat_name'] }}</td>
+                        <td>{{ ($medtval['status'] ==1)? 'Active':'In-Active' }}</td>
                         <td>
                           <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
                             <!-- we will add this later since its a little more complicated than the other two buttons -->
-                            {!! Form::open(array('method' => 'DELETE','url' => array('admin/medicaltest/delete', $medtval->id),'class' => 'pull-right')) !!}
+                            {!! Form::open(array('method' => 'DELETE','url' => array('admin/medicaltest/delete', $medtval['id']),'class' => 'pull-right')) !!}
                                   {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                               {!! Form::close() !!}
                              
-                          <a href="{!!URL::to('/admin/medicaltest/edit',$medtval->id)!!}" class="btn btn-primary">Edit</a>
+                          <a href="{!!URL::to('/admin/medicaltest/edit',$medtval['id'])!!}" class="btn btn-primary">Edit</a>
                         </td>
                       </tr>
                     @endforeach

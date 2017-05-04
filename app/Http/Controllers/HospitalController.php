@@ -11,6 +11,8 @@ use App\State;
 use App\City;
 use App\Treatment;
 use App\HospitalTreatment;
+use App\MedicalTestCategories;
+use App\Medicaltest;
 use Auth;
 use Input;
 use Redirect;
@@ -279,6 +281,24 @@ class HospitalController extends Controller
         // redirect
         Session::flash('message', 'Successfully updated');
         return Redirect::to('/admin/hospitals');
+    }
+    public function medicaltest($id)
+    {  
+      $medicaltestdata = Medicaltest::all();    
+      $data['medicaltestdata'] = $medicaltestdata;
+      //echo "<pre>"; print_r($medicaltestdata); die;
+      //echo "<pre>"; print_r($medicaltestdata[0]->medicaltestcategories); die;        
+      return view('admin.hospitals.medicaltest',$data);
+    }
+
+    public function store_medicaltest(Request $request) {
+      //echo "<pre>"; print_r($request->all()); die;
+      $medicaltestArr = $request->medicaltestArr;
+      print_r($medicaltestArr); die();
+    }
+
+    public function ajaxstoremedicaltest() {
+      echo 'dsfsdfds';       
     }
 
     /**

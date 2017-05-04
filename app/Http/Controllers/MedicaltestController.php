@@ -18,11 +18,14 @@ class MedicaltestController extends Controller
     	
     }
 	public function index() {
-        $medicaltest = Medicaltest::all();
-        //echo "<pre>"; print_r($medicaltest[0]->medicaltestcategories->cat_name); die;        
-        $data['medicaltest'] = $medicaltest; 
-        $data['cat_name'] = $medicaltest[0]->medicaltestcategories->cat_name;
-       	return view('admin.medicaltest.index',$data); 
+        $medicaltest = Medicaltest::with('medicaltestcategories')->orderBy('medicaltestcategories_id')->get()->toArray();
+        
+        $data['medicaltest'] = $medicaltest;
+        /*echo "<pre>";
+        print_r($data['medicaltest']);
+        echo $data['medicaltest'][0]['test_name'];
+        die();*/
+        return view('admin.medicaltest.index',$data); 
     }
 
    	public function create()
@@ -41,8 +44,7 @@ class MedicaltestController extends Controller
 
        	$medt = new Medicaltest();
        	$medt->test_name = $request->test_name;
-       	$medt->medicaltestcategories_id = $request->medicaltestcategories_id;
-       	$medt->cat_id = $request->medicaltestcategories_id;       
+       	$medt->medicaltestcategories_id = $request->medicaltestcategories_id;       	     
        	$medt->save();      	
       	Session::flash('message', 'Successfully added!');
       	return Redirect::to('/admin/medicaltest');
