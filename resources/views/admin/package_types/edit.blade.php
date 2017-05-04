@@ -41,7 +41,7 @@
                     </div>
                     <div class="form-group {{ $errors->has('ckeditor') ? 'has-error' : '' }}">
                       <label for="name">Description: <span style="color:red;">*</span></label>
-                      <textarea name="ckeditor" id="ckeditor" class="form-control ckeditor" >{{ $package_details->description }}</textarea>
+                      <textarea name="ckeditor" id="textarea_id" class="form-control ckeditor" >{{ $package_details->description }}</textarea>
                       <span class="text-danger">{{ $errors->first('ckeditor') }}</span>
                     </div>
                   </div>
