@@ -18,5 +18,26 @@
               singleItem:true,
               autoPlay:true
           });
+            
+            /*Slider video start*/
+           
+           $(".youtubeModalclass").click(function () {
+                var youtubeid =$(this).attr('data-id');
+                var url='//www.youtube.com/embed/'+youtubeid;
+               // alert(url);
+
+                /* Assign empty url value to the iframe src attribute when modal hide, which stop the video playing */
+                $("#VideoModal").on('hide.bs.modal', function(){
+                   $("#iframeVideo").attr('src', '');
+                });
+                
+                /* Assign the initially stored url back to the iframe src attribute when modal is displayed again */
+                $("#VideoModal").on('show.bs.modal', function(){
+                    $("#iframeVideo").attr('src', url);
+                });
+
+            });
+          
+            /*Slider video end*/
       });
     </script>

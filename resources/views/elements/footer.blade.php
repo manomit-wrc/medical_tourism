@@ -7,41 +7,36 @@
                           <h2><strong>Success</strong> stories</h2>
                           <div class="successbox">
                               <div id="testimonial-slider" class="owl-carousel">
-                                  <div class="testimonial">
-                                      <div class="pic">
-                                           <img src="{!!URL::to('storage/frontend/images/ti1.jpg')!!}" class="img-responsive" alt="Image 1">
-                                      </div>
+                                 @if (count($successstory_lists) > 0)
+                                        @foreach($successstory_lists as $successstory_lists)
+                                 <!--  <div class="testimonial">
+                                     
+                                          <div class="pic">
+                                               <img src="{{url('/uploads/successstories/thumb/'.$successstory_lists->story_image)}}" class="img-responsive" alt="Image 1">
+                                          </div>
+                                          <p class="description">
+                                            <b>{{ $successstory_lists->title }}</b><br>
+                                            {!! \Illuminate\Support\Str::words($successstory_lists->description, 10,'....')  !!}
+                                          <br>
+                                          <span>WRC Technologies</span>
+                                          </p>
                                       
-                                      <p class="description">
-                                      There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form...
-                                      <br>
-                                      <span>WRC Technologies</span>
-                                      </p>
-                                  </div>
+                                  </div> -->
 
                                   <div class="testimonial">
                                       <div class="pic">
-                                          <img src="{!!URL::to('storage/frontend/images/ti1.jpg')!!}" class="img-responsive" alt="Image 1">
+                                          <img src="{{url('/uploads/successstories/'.$successstory_lists->story_image)}}" alt="" class="img-responsive">
                                       </div>
                                       
                                       <p class="description">
-                                      There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form...
+                                      <b>{!! \Illuminate\Support\Str::words($successstory_lists->title, 5,'....')  !!}</b><br>
+                                      {!! \Illuminate\Support\Str::words(strip_tags($successstory_lists->description), 10,'....')  !!}
                                       <br>
                                       <span>WRC Technologies</span>
                                       </p>
                                   </div>
-
-                                  <div class="testimonial">
-                                      <div class="pic">
-                                         <img src="{!!URL::to('storage/frontend/images/ti1.jpg')!!}" class="img-responsive" alt="Image 1">
-                                      </div>
-                                      
-                                      <p class="description">
-                                      There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form...
-                                      <br>
-                                      <span>WRC Technologies</span>
-                                      </p>
-                                  </div>
+                                    @endforeach
+                                      @endif  
                    
                                   
                               </div>

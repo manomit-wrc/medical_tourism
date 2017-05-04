@@ -44,7 +44,7 @@
     </div>
   </div>
 
-
+<!--/////////////////////////////////Medical Category section start///////////////////////////////////////-->
   <div class="container-fluid">
       <div class="row">
           <div class="category">
@@ -58,11 +58,11 @@ industry's standard dummy text</p>
                           <div class="jcarousel-wrapper">
                             <div class="jcarousel">
                                 <ul>
-                                    <li><img src="{!!URL::to('storage/frontend/images/b1.jpg')!!}"  alt="Image 1"><h3>Nephrology</h3></li>
-                                    <li><img src="{!!URL::to('storage/frontend/images/b2.jpg')!!}"  alt="Image 1"><h3>Cardiology</h3></li>
-                                    <li><img src="{!!URL::to('storage/frontend/images/b3.jpg')!!}"  alt="Image 1"><h3>Neurology</h3></li>
-                                    <li><img src="{!!URL::to('storage/frontend/images/b4.jpg')!!}"  alt="Image 1"><h3>Orthopedics</h3></li>
-                                    <li><img src="{!!URL::to('storage/frontend/images/b3.jpg')!!}"  alt="Image 1"><h3>Nephrology</h3></li>
+                                    @if(count($procedure_lists) > 0)
+                                      @foreach($procedure_lists as $procedure_lists)
+                                        <li><img src="{{url('/uploads/procedures/thumb/'.$procedure_lists->procedure_image)}}"  alt="Image 1"><h3>{{ $procedure_lists->name }}</h3></li>
+                                      @endforeach
+                                    @endif
                                 </ul>
                             </div>
                             <p class="jcarousel-pagination"></p>
@@ -73,7 +73,9 @@ industry's standard dummy text</p>
           </div>
       </div>
   </div>
+  <!--/////////////////////////////////Medical Category section end///////////////////////////////////////-->
 
+  <!--/////////////////////////////////Medical Facility section start///////////////////////////////////////-->
    <div class="container-fluid">
       <div class="row">
           <div class="medicalF">
@@ -85,33 +87,14 @@ industry's standard dummy text</p>
                        <div class="jcarousel-wrapper">
                             <div class="jcarousel">
                                 <ul>
-                                    <li><img src="{!!URL::to('storage/frontend/images/b1.jpg')!!}"  alt="Image 1">
-                                        <h3>Nephrology</h3>
-                                        <p>Lorem Ipsum is simply dummy text of the printing.</p>
+                                  @if(count($medicalfacility_lists) > 0)
+                                    @foreach($medicalfacility_lists as $medicalfacility_lists)
+                                    <li><img src="{{url('/uploads/medicalfacilities/thumb/'.$medicalfacility_lists->facility_image)}}"  alt="{{ $medicalfacility_lists->name }}">
+                                        <h3>{{ $medicalfacility_lists->name }}</h3>
+                                        <p>{!! \Illuminate\Support\Str::words($medicalfacility_lists->description, 10,'....')  !!}</p>
                                     </li>
-
-                                    <li><img src="{!!URL::to('storage/frontend/images/b2.jpg')!!}"  alt="Image 1">
-                                        <h3>Nephrology</h3>
-                                        <p>Lorem Ipsum is simply dummy text of the printing.</p>
-                                    </li>
-
-                                    <li><img src="{!!URL::to('storage/frontend/images/b3.jpg')!!}"  alt="Image 1">
-                                        <h3>Nephrology</h3>
-                                        <p>Lorem Ipsum is simply dummy text of the printing.</p>
-                                    </li>
-
-                                    <li><img src="{!!URL::to('storage/frontend/images/b4.jpg')!!}"  alt="Image 1">
-                                        <h3>Nephrology</h3>
-                                        <p>Lorem Ipsum is simply dummy text of the printing.</p>
-                                    </li>
-
-                                    <li><img src="{!!URL::to('storage/frontend/images/b3.jpg')!!}"  alt="Image 1">
-                                        <h3>Nephrology</h3>
-                                        <p>Lorem Ipsum is simply dummy text of the printing.</p>
-                                    </li>
-                                    
-                                    
-                                    
+                                    @endforeach
+                                  @endif
                                 </ul>
                             </div>
                             <a href="#" class="jcarousel-control-prev"><img src="{!!URL::to('storage/frontend/images/mal.png')!!}"  alt="Image 1"></a>
@@ -126,6 +109,7 @@ industry's standard dummy text</p>
           </div>
       </div>
   </div>
+  <!--/////////////////////////////////Medical Facility section end///////////////////////////////////////-->
 
 
   <div class="container">

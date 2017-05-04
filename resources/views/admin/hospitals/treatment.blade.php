@@ -40,7 +40,7 @@
                     </div>
                     <input id="hospital_id" name="hospital_id" type="hidden" value="{{Request::segment(4)}}">
                     @php
-                        $procid = 0 
+                        $procid = 0 ;
                     @endphp 
 
                     @foreach($treatment_datas as $key => $val)

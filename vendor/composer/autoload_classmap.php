@@ -30,6 +30,7 @@ return array(
     'CreateDoctorsTable' => $baseDir . '/database/migrations/2017_04_26_071406_create_doctors_table.php',
     'CreateGenericmedicineCategoriesTable' => $baseDir . '/database/migrations/2017_05_02_085242_create_genericmedicine_categories_table.php',
     'CreateGenericmedicinesTable' => $baseDir . '/database/migrations/2017_05_02_061235_create_genericmedicines_table.php',
+    'CreateHospitalMedicaltestTable' => $baseDir . '/database/migrations/2017_05_04_071855_create_hospital_medicaltest_table.php',
     'CreateHospitalTreatmentTable' => $baseDir . '/database/migrations/2017_04_28_121421_create_hospital_treatment_table.php',
     'CreateHospitalsTable' => $baseDir . '/database/migrations/2017_04_27_092607_create_hospitals_table.php',
     'CreateHotelClassTypesTable' => $baseDir . '/database/migrations/2017_04_25_111718_create_hotel_class_types_table.php',

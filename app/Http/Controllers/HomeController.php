@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Banner;
+use App\Procedure;
+use App\MedicalFacility;
+use App\SuccessStories;
 
 class HomeController extends Controller
 {
@@ -17,6 +21,14 @@ class HomeController extends Controller
      * @return Response
      */
     public function index() {
-        return view('pages.home');
+        $banner_lists = Banner::all();
+        //echo "<pre>"; print_r($banner_lists); die;
+        $procedure_lists = Procedure::all();
+        //echo "<pre>"; print_r($langcapbes); die;
+        $medicalfacility_lists = MedicalFacility::all();
+        //echo "<pre>"; print_r($medicalfacility_lists); die;
+        $successstory_lists = SuccessStories::all();
+        //echo "<pre>"; print_r($successstory_lists); die;
+        return view('pages.home', compact('banner_lists', 'procedure_lists','medicalfacility_lists','successstory_lists'));
     }
 }

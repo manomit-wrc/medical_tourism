@@ -4,40 +4,60 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\SuccessStories;
 
 class PagesController extends Controller
 {
-    
+    private $successstory_list;
+    public function __construct()
+    {
+        $this->successstory_list = SuccessStories::all();
+    }
+
 	public function about()
 	{
-		return view('pages.about');
+		$successstory_lists = $this->successstory_list;
+        //return view('pages.about');
+		return view('pages.about', compact('successstory_lists'));
 	}
 
 	public function services()
 	{
-		return view('pages.services');
+		$successstory_lists = $this->successstory_list;
+        //return view('pages.services');
+		return view('pages.services', compact('successstory_lists'));
 	}
 	public function servicedetails()
 	{
-		return view('pages.servicedetails');
+		$successstory_lists = $this->successstory_list;
+        //return view('pages.servicedetails');
+		return view('pages.servicedetails', compact('successstory_lists'));
 	}
 	public function enquiry()
 	{
-		return view('pages.enquiry');
+		$successstory_lists = $this->successstory_list;
+        //return view('pages.enquiry');
+		return view('pages.enquiry', compact('successstory_lists'));
 	}
 
 	public function facilities()
 	{
-		return view('pages.facilities');
+		$successstory_lists = $this->successstory_list;
+        //return view('pages.facilities');
+		return view('pages.facilities', compact('successstory_lists'));
 	}
 
 	public function doctors()
 	{
-		return view('pages.doctors');
+		$successstory_lists = $this->successstory_list;
+        //return view('pages.doctors');
+		return view('pages.doctors', compact('successstory_lists'));
 	}
 
 	public function contact()
 	{
-		return view('pages.contact');
+		$successstory_lists = $this->successstory_list;
+        //return view('pages.contact');
+		return view('pages.contact', compact('successstory_lists'));
 	}
 }

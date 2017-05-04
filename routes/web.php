@@ -19,6 +19,7 @@ Route::get('/enquiry','PagesController@enquiry');
 Route::get('/facilities','PagesController@facilities');
 Route::get('/doctors','PagesController@doctors');
 Route::get('/contact','PagesController@contact');
+//Route::get('/successstory','HelperController@successstory');
 
 //Backend routing start here
 Route::get('/admin', 'LoginController@index');
