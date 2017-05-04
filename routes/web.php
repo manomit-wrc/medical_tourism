@@ -221,7 +221,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('/admin/ajaxstoremedicaltest/','HospitalController@ajaxstoremedicaltest');
     
 
-
+    //package type section
     Route::get('/admin/package-types/', 'PackageTypeController@index');
     Route::get('/admin/package-types/create', 'PackageTypeController@create');
     Route::post('/admin/package-types/store', 'PackageTypeController@store');
