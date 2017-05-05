@@ -6,6 +6,6 @@ use App\Treatment;
 Class TreatmentComposer {
 	public function compose(View $view)
 	{
-      $view->with('treatment_lists', Treatment::orderByRaw("RAND()")->take(5)->get());
+      $view->with('treatment_lists', Treatment::orderByRaw("RAND()")->take(6)->get());
 	}
 }

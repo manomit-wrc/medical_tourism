@@ -6,6 +6,6 @@ use App\ProviderType;
 Class ProvidertypeComposer {
 	public function compose(View $view)
 	{
-      $view->with('providertype_lists', ProviderType::orderByRaw("RAND()")->take(5)->get());
+      $view->with('providertype_lists', ProviderType::orderByRaw("RAND()")->take(6)->get());
 	}
 }

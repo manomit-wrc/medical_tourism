@@ -9,8 +9,8 @@
                 @foreach($service_lists as $service_lists)
                     <div class="col-sm-6 col-md-6">
                         <div class="servicesbox">
-                            <img src="{{url('/uploads/medicalfacilities/thumb_352_170/'.$service_lists->facility_image)}}" alt="">
-                            <h4>{{ $service_lists->name }}</h4>
+                            <a  href="{!!URL::to('/servicedetails/'.$service_lists->id)!!}"><img src="{{url('/uploads/medicalfacilities/thumb_352_170/'.$service_lists->facility_image)}}" alt=""></a>
+                            <h4><a  href="{!!URL::to('/servicedetails/'.$service_lists->id)!!}">{{ $service_lists->name }}</a></h4>
                             <p>{!! \Illuminate\Support\Str::words($service_lists->description, 10,'....')  !!}</p>
                             <a class="viewdetails" href="{!!URL::to('/servicedetails/'.$service_lists->id)!!}">VIEW MORE</a>
                         </div>

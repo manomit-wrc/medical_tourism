@@ -18,6 +18,7 @@ Route::get('/servicedetails/{id}','PagesController@servicedetails');
 Route::get('/enquiry','PagesController@enquiry');
 Route::get('/facilities','PagesController@facilities');
 Route::get('/doctors','PagesController@doctors');
+Route::get('/doctordetail/{id}','PagesController@doctordetail');
 Route::get('/contact','PagesController@contact');
 Route::get('/news','PagesController@news');
 Route::get('/newsdetails/{id}','PagesController@newsdetails');

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\MedicalFacility;
 use App\News;
+use App\Doctor;
 
 class PagesController extends Controller
 {
@@ -43,7 +44,17 @@ class PagesController extends Controller
 
 	public function doctors()
 	{
-		return view('pages.doctors');
+		$doctor_data = Doctor::all();
+		//echo "<pre>"; print_r($doctor_data); die;
+        return view('pages.doctors')->with('doctor_data',$doctor_data);
+		//return view('pages.doctors');
+	}
+
+	public function doctordetail($id)
+	{
+		$doctor_data = Doctor::findOrFail($id);
+        return view('pages.doctordetail')->with('doctor_data',$doctor_data);
+		//return view('pages.doctors');
 	}
 
 	public function contact()

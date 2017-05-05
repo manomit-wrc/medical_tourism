@@ -6,6 +6,6 @@ use App\Hospital;
 Class MedicalproviderComposer {
 	public function compose(View $view)
 	{
-      $view->with('medicalprovider_lists', Hospital::orderByRaw("RAND()")->take(5)->get());
+      $view->with('medicalprovider_lists', Hospital::orderByRaw("RAND()")->take(6)->get());
 	}
 }
