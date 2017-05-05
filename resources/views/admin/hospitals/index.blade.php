@@ -54,7 +54,8 @@
                                   {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                               {!! Form::close() !!}
                           <a href="{!!URL::to('/admin/hospitals/show',$hospitals_list->id)!!}" class="btn btn-info">view</a>
-                          <a href="{!!URL::to('/admin/hospitals/treatment',$hospitals_list->id)!!}" class="btn btn-warning">Treatment</a>   
+                          <a href="{!!URL::to('/admin/hospitals/treatment',$hospitals_list->id)!!}" class="btn btn-warning">Treatment</a>
+                          <a href="{!!URL::to('/admin/hospitals/medicaltest',$hospitals_list->id)!!}" class="btn btn-warning">Medical Test</a>   
                           <a href="{!!URL::to('/admin/hospitals/edit',$hospitals_list->id)!!}" class="btn btn-primary">Edit</a>
                         </td>
                       </tr>

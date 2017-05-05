@@ -16,6 +16,6 @@ class Hospital extends Model
     public function treatments()
     {
       return $this->belongsToMany('\App\Treatment','hospital_treatment','hospital_id','treatment_id');
-    }
+    }    
     
 }

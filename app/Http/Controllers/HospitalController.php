@@ -11,6 +11,8 @@ use App\State;
 use App\City;
 use App\Treatment;
 use App\HospitalTreatment;
+use App\MedicalTestCategories;
+use App\Medicaltest;
 use Auth;
 use Input;
 use Redirect;
@@ -279,6 +281,38 @@ class HospitalController extends Controller
         // redirect
         Session::flash('message', 'Successfully updated');
         return Redirect::to('/admin/hospitals');
+    }
+    public function medicaltest($id)
+    {  
+      $medicaltestdata = Medicaltest::all();
+      //$medicaltestdata = Medicaltest::with('medicaltestcategories')->groupBy('medicaltestcategories_id')->get()->toArray();    
+      $data['medicaltestdata'] = $medicaltestdata;
+      //echo "<pre>"; print_r($medicaltestdata); die;
+      //echo "<pre>"; print_r($medicaltestdata[0]->medicaltestcategories); die;        
+      return view('admin.hospitals.medicaltest',$data);
+    }
+
+    public function store_medicaltest(Request $request) {
+      //echo "<pre>"; print_r($request->all()); die;
+      $medicaltestArr = $request->medicaltestArr;
+      //print_r($medicaltestArr); die();
+    }
+
+    public function ajaxstoremedicaltest(Request $request) {      
+      $test_name = $request->test_name;
+      $medicaltestcategories_id = $request->medicaltestcategories_id; 
+      $data = [          
+          'medicaltestcategories_id' => $medicaltestcategories_id,
+          'test_name' => $test_name,
+          'created_at' => date('Y-m-d H:i:s'),
+          'updated_at' => date('Y-m-d H:i:s')
+      ];         
+      $result = \App\Medicaltest::insert($data); 
+      if($result) {
+          return response()->json(['status' => '1']);
+        }else {
+          return response()->json(['status' => '0']);
+        }    
     }
 
     /**
