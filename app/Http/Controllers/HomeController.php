@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Banner;
 use App\Procedure;
 use App\MedicalFacility;
-use App\SuccessStories;
+
 
 class HomeController extends Controller
 {
@@ -27,8 +27,6 @@ class HomeController extends Controller
         //echo "<pre>"; print_r($langcapbes); die;
         $medicalfacility_lists = MedicalFacility::all();
         //echo "<pre>"; print_r($medicalfacility_lists); die;
-        $successstory_lists = SuccessStories::all();
-        //echo "<pre>"; print_r($successstory_lists); die;
-        return view('pages.home', compact('banner_lists', 'procedure_lists','medicalfacility_lists','successstory_lists'));
+        return view('pages.home', compact('banner_lists', 'procedure_lists','medicalfacility_lists'));
     }
 }

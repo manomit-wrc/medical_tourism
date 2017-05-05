@@ -9,7 +9,7 @@ class Helper
 
     public static function successstory()
     {
-       echo "hi";
+       //echo "hi";
       
     }
 
