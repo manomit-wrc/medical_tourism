@@ -10,34 +10,20 @@
                               
                                  @if (count($successstory_lists) > 0)
                                         @foreach($successstory_lists as $successstory_lists)
-                                 <!--  <div class="testimonial">
+                                          <div class="testimonial">
+                                              <div class="pic">
+                                                  <img src="{{url('/uploads/successstories/'.$successstory_lists->story_image)}}" alt="" class="img-responsive">
+                                              </div>
 
-                                          <div class="pic">
-                                               <img src="{{url('/uploads/successstories/thumb/'.$successstory_lists->story_image)}}" class="img-responsive" alt="Image 1">
+                                              <p class="description">
+                                              <b>{!! \Illuminate\Support\Str::words($successstory_lists->title, 5,'....')  !!}</b><br>
+                                              {!! \Illuminate\Support\Str::words(strip_tags($successstory_lists->description), 10,'....')  !!}
+                                              <br>
+                                              <span>WRC Technologies</span>
+                                              </p>
                                           </div>
-                                          <p class="description">
-                                            <b>{{ $successstory_lists->title }}</b><br>
-                                            {!! \Illuminate\Support\Str::words($successstory_lists->description, 10,'....')  !!}
-                                          <br>
-                                          <span>WRC Technologies</span>
-                                          </p>
-
-                                  </div> -->
-
-                                  <div class="testimonial">
-                                      <div class="pic">
-                                          <img src="{{url('/uploads/successstories/'.$successstory_lists->story_image)}}" alt="" class="img-responsive">
-                                      </div>
-
-                                      <p class="description">
-                                      <b>{!! \Illuminate\Support\Str::words($successstory_lists->title, 5,'....')  !!}</b><br>
-                                      {!! \Illuminate\Support\Str::words(strip_tags($successstory_lists->description), 10,'....')  !!}
-                                      <br>
-                                      <span>WRC Technologies</span>
-                                      </p>
-                                  </div>
-                                    @endforeach
-                                      @endif
+                                        @endforeach
+                                  @endif
 
 
                               </div>
