@@ -76,23 +76,27 @@
           <div class="box box-warning">
 
             <div class="box-body">
-
+               @if (Session::has('message'))
+                  <div class="alert alert-info" id="result7">{{ Session::get('message') }}</div>
+              @endif
+               @if (Session::has('error_message'))
+                  <div class="alert alert-danger" id="result8">{{ Session::get('error_message') }}</div>
+              @endif
                 {!! Form::open(array('method' => 'POST','role'=>'form','url'=>'admin/hospitals/store_medicaltest/','id'=>'medicaltest_add')) !!}
                   <input id="hospital_id" name="hospital_id" type="hidden" value="{{Request::segment(4)}}">                
                   <div class="col-md-6">                  
                     <ul id="tree2" class="tree">
-                     @php
-                        $procid = 0 
-                    @endphp 
-                    @foreach($medicaltestdata as $key => $val)                    
+                    @foreach($medicaltestdata as $key => $val)                     
                       <li class="branch">
-                        <input name="countrychk2[]" onclick="shhh" id="select_allcatproduct{{ $val->medicaltestcategories->id }}" class="productcatalog" type="checkbox" value="{{ $val->medicaltestcategories->id }}">
-                        <a href="javascript:void(0)" onclick="showproducts({{ $val->medicaltestcategories->id }})">{{ $val->medicaltestcategories->cat_name }}</a>
-                        <ul id="product_data_{{ $val->medicaltestcategories->id }}" style="display:none;">
-                          <li><input name="medicaltestArr[]" class="checkboxcatproduct{{ $val->medicaltestcategories->id }}" id="{{ $val->id }}" type="checkbox" value="{{ $val->id }}">
-                            {{ $val->test_name }}
-                          </li>                        
-                         <li style="cursor: pointer;" onclick="addnewmedicaltest({{ $val->medicaltestcategories->id }})">Add New</li>                         
+                        <input name="countrychk2[]" onclick="shhh" id="select_allcatproduct{{ $val['cat_id']}}" class="productcatalog" type="checkbox" value="{{ $val['cat_id'] }}">
+                        <a href="javascript:void(0)" onclick="showproducts({{ $val['cat_id'] }})">{{ $val['catname'] }}</a>
+                        <ul id="product_data_{{ $val['cat_id'] }}" style="display:none;">
+                          @foreach($val['testarr'] as $key1 => $val1)                         
+                          <li><input name="medicaltestArr[]" {{ in_array($val1['id'], $medicaltest_array)? 'checked':'' }} class="checkboxcatproduct{{ $val['cat_id'] }}" id="{{ $val1['id'] }}" type="checkbox" value="{{ $val1['id'] }}">
+                            {{ $val1['testname'] }}
+                          </li>
+                          @endforeach                       
+                         <li class="last-child{{ $val['cat_id'] }}" style="cursor: pointer;" onclick="addnewmedicaltest({{ $val['cat_id'] }})">Add New</li>                         
                         </ul>
                       </li>
                     @endforeach                          
@@ -110,12 +114,15 @@
                         <button style=" margin-top: 15px !important" type="button" class="close" data-dismiss="modal">&times;</button>        
                         <h4 style="color:#777">Add Medical Test</h4>
                       </div>                                    
-                        <div class="modal-body">
+                      <div class="modal-body">
+                        <div class="alert alert-success fade in alert-dismissable" id="result" style="display:none"></div>
                           <div class="form-group">
                           {!! Html::decode(Form::label('test_name','Test Name: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('test_name','',array('class'=>'form-control','id'=>'test_name','placeholder'=>'Enter Test Name')) !!}
-                        </div>                        
-                        </div>              
+                          <div class="alert alert-danger fade in alert-dismissable" id="test_name_error" style="display:none; margin-top:5px;">
+                            </div>
+                          </div>                        
+                      </div>              
                       <div class="modal-footer">                        
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>&nbsp;
                         <input type="hidden" name="medicaltest_cat_id" id="medicaltest_cat_id"  value="">

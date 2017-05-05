@@ -12,7 +12,8 @@ use App\City;
 use App\Treatment;
 use App\HospitalTreatment;
 use App\MedicalTestCategories;
-use App\Medicaltest;
+use App\Medicaltest;  
+use App\HospitalMedicalTest;
 use Auth;
 use Input;
 use Redirect;
@@ -283,36 +284,126 @@ class HospitalController extends Controller
         return Redirect::to('/admin/hospitals');
     }
     public function medicaltest($id)
-    {  
-      $medicaltestdata = Medicaltest::all();
-      //$medicaltestdata = Medicaltest::with('medicaltestcategories')->groupBy('medicaltestcategories_id')->get()->toArray();    
-      $data['medicaltestdata'] = $medicaltestdata;
-      //echo "<pre>"; print_r($medicaltestdata); die;
+    { 
+      $medicaltestcatdata = MedicalTestCategories::all();
+      $hospitalmedicaltest = HospitalMedicalTest::where('hospital_id',$id)->get()->toArray();
+      //echo "<pre>"; print_r($hospitalmedicaltest); die;
+      foreach ($hospitalmedicaltest as $key => $value) {
+          $data['medicaltest_array'][] = $value['medicaltest_id'];
+      }
+      //echo "<pre>"; print_r($data['medicaltest_array']); die;
+     /* $data['medicaltestdata'] = array();
+      foreach($medicaltestcatdata as $key => $val)
+      {
+        //$data['medicaltestdata']['catid'] = $val->id;
+        //$data['medicaltestdata']['catname'] = $val->cat_name;
+        
+        $medicaltest = Medicaltest::where('medicaltestcategories_id',$val->id)->get()->toArray();
+        //echo "<pre>"; print_r($medicaltest); die;
+        foreach($medicaltest as $keyy => $vall)
+        {
+          $data['medicaltestdata'][$key]['catid'] =$vall['medicaltestcategories_id'];
+          $data['medicaltestdata'][$key]['catname'] =$val->cat_name;
+          $data['medicaltestdata'][$key]['id'][] =$vall['id'];
+          $data['medicaltestdata'][$key]['testname'][] =$vall['test_name'];
+        }
+          
+      } */
+      foreach($medicaltestcatdata as $key => $val)
+      {
+        //$data['medicaltestdata']['catid'] = $val->id;
+        //$data['medicaltestdata']['catname'] = $val->cat_name;
+        $data1[] = array(
+          'cat_id' => $val->id,
+          'catname' => $val->cat_name,
+          'testarr' => $this->gettestarr($val->id)
+        );
+      }
+      $data['medicaltestdata'] =$data1;
+    // echo "<pre>"; print_r($data1); die;
+      //echo "<pre>"; print_r($data['medicaltestdata']); die;
       //echo "<pre>"; print_r($medicaltestdata[0]->medicaltestcategories); die;        
       return view('admin.hospitals.medicaltest',$data);
     }
 
+    public function gettestarr($cat_id) {
+      $medicaltest = Medicaltest::where('medicaltestcategories_id',$cat_id)->get()->toArray();
+        //echo "<pre>"; print_r($medicaltest); die;
+        foreach($medicaltest as $keyy => $vall)
+        {      
+          $data[] = array(
+            'id' => $vall['id'],
+            'testname' => $vall['test_name'],          
+          );
+        }
+        return $data;
+    }
+
     public function store_medicaltest(Request $request) {
       //echo "<pre>"; print_r($request->all()); die;
+      $hospital_id = $request->hospital_id;
       $medicaltestArr = $request->medicaltestArr;
-      //print_r($medicaltestArr); die();
+      if(count($medicaltestArr) > 0){
+      // print_r($medicaltestArr); die();
+      //echo $request->hospital_id;  die;
+      //echo "<pre>"; print_r($request->treatmentArr); die;      
+        //echo $hospital_id; die;
+        $existRows = \App\HospitalMedicalTest::where('hospital_id', '=', $hospital_id)->get();
+        //echo "<pre>"; print_r($existRows); die;
+        if(count($existRows)>0)
+        {
+          $affectedRows = \App\HospitalMedicalTest::where('hospital_id', '=', $hospital_id)->delete();        
+        }
+        foreach ($medicaltestArr as $key => $value) {
+          $data[] = [
+                'hospital_id' => $hospital_id,
+                'medicaltest_id' => $value,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ];
+        }
+        //echo "<pre>"; print_r($data); die;
+        $result = \App\HospitalMedicalTest::insert($data);
+        Session::flash('message', 'Successfully added!');
+        return Redirect::to('/admin/hospitals/medicaltest/'.$hospital_id);
+      }else{
+        Session::flash('error_message', 'Please select medical test!');
+        return Redirect::to('/admin/hospitals/medicaltest/'.$hospital_id);
+      }
     }
 
     public function ajaxstoremedicaltest(Request $request) {      
       $test_name = $request->test_name;
-      $medicaltestcategories_id = $request->medicaltestcategories_id; 
-      $data = [          
+      $medicaltestcategories_id = $request->medicaltestcategories_id;
+      $existRows = \App\Medicaltest::where('medicaltestcategories_id', '=', $medicaltestcategories_id)->where('test_name', '=', $test_name)->get();
+        /*echo count($existRows); die;*/
+       if(count($existRows)>0)
+        {
+          $returnArr = array('status'=>'3','msg'=>'Test name already exists on this category');
+        } else{
+      /*$data = [          
           'medicaltestcategories_id' => $medicaltestcategories_id,
           'test_name' => $test_name,
           'created_at' => date('Y-m-d H:i:s'),
           'updated_at' => date('Y-m-d H:i:s')
       ];         
-      $result = \App\Medicaltest::insert($data); 
-      if($result) {
-          return response()->json(['status' => '1']);
-        }else {
-          return response()->json(['status' => '0']);
-        }    
+      $result = \App\Medicaltest::insert($data);
+      echo "<pre>"; print_r($result); die; */
+        $mt = new Medicaltest();
+        $mt->medicaltestcategories_id = $medicaltestcategories_id;
+        $mt->test_name = $test_name; 
+        $mt->created_at = date('Y-m-d H:i:s'); 
+        $mt->updated_at = date('Y-m-d H:i:s');         
+        $mt->save();
+        $lastinsert_id = $mt->id;
+        if($lastinsert_id) {              
+          $returnArr = array('status'=>'1','lastinsert_id'=>$lastinsert_id,'test_name'=>$test_name,'msg'=>'Inserted Successfully');
+        }else{
+          $returnArr = array('status'=>'0','msg'=>'Inserted Faliure');
+        } 
+      }    
+        echo json_encode($returnArr);
+        die(); 
     }
 
     /**
