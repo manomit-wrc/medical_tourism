@@ -8,7 +8,7 @@
 
             <div class="col-sm-12">
                 <div class="detailsP">
-                    <img src="{{url('/uploads/medicalfacilities/thumb_745_214/'.$news_data->facility_image)}}" alt="News Image">
+                    <img src="{{url('/uploads/news/thumb_745_214/'.$news_data->news_image)}}" alt="News Image">
                     <h4><b>{{ $news_data->title }}</b></h4>
                     <p>Updated : {{ \Carbon\Carbon::parse($news_data->updated_at)->format('F j, Y')}}</p>
                 </div>

@@ -37,6 +37,7 @@
                   <tr>
                     <th>Heading</th>
                     <th>Description</th>
+                    <th>Image</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
@@ -45,8 +46,11 @@
                   @if (count($news_data) > 0)
                     @foreach($news_data as $news_data)
                       <tr>
-                        <td>{{ $news_data->title }}</td>
-                        <td>{{ $news_data->description }}</td>
+                        <td>{!! \Illuminate\Support\Str::words($news_data->title, 10,'....')  !!}</td>
+                        <td>{!! \Illuminate\Support\Str::words($news_data->description, 10,'....')  !!}</td>
+                        <td>
+                          <img src="{{url('/uploads/news/thumb_352_170/'.$news_data->news_image)}}" alt="News Image" >
+                        </td>
                         <td>
                           <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
                             <!-- we will add this later since its a little more complicated than the other two buttons -->

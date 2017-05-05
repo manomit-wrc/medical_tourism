@@ -9,7 +9,7 @@
                 @foreach($news_lists as $news_lists)
                     <div class="col-sm-6 col-md-6">
                         <div class="servicesbox">
-                           <!--  <img src="{{url('/uploads/medicalfacilities/thumb_352_170/'.$news_lists->facility_image)}}" alt=""> -->
+                            <img src="{{url('/uploads/news/thumb_352_170/'.$news_lists->news_image)}}" alt="">
                             <h4>{{ $news_lists->title }}</h4>
                             <p>Updated : {{ \Carbon\Carbon::parse($news_lists->updated_at)->format('F j, Y')}}</p>
                             <p>{!! \Illuminate\Support\Str::words($news_lists->description, 10,'....')  !!}</p>

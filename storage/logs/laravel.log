@@ -964,3 +964,6 @@ Stack trace:
 #43 C:\xampp\htdocs\medical_tourism\public\index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #44 C:\xampp\htdocs\medical_tourism\server.php(21): require_once('C:\\xampp\\htdocs...')
 #45 {main}  
+[2017-05-05 11:56:43] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'App\Http\Controllers\Image' not found' in C:\xampp\htdocs\medical_tourism\app\Http\Controllers\NewsController.php:70
+Stack trace:
+#0 {main}  
