@@ -54,42 +54,43 @@
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel"><i class="fa fa-lock" aria-hidden="true"></i> Register</h4>
+                    <h4 class="modal-title" id="myModalLabel"><i class="fa fa-lock" aria-hidden="true"></i> Patient Registration</h4>
+                    <h4 class="registration" style="display:none;">Registration successfully done. Email activation link is sent to your email</h4>
                   </div>
+                  <form name="frmRegistration" id="frmRegistration" method="post" >
                   <div class="modal-body">
                       <div class="infbox">
                         <div class="userid"><i class="fa fa-user" aria-hidden="true"></i></div>
-                        <input name="" type="text" class="loginuser" placeholder="First Name" />
+                        <input name="first_name" id="first_name" type="text" class="loginuser" placeholder="Enter First Name" />
                       </div>
                       <br clear="all">
                       <div class="infbox">
                         <div class="userid"><i class="fa fa-user" aria-hidden="true"></i></div>
-                        <input name="" type="text" class="loginuser" placeholder="Last Name" />
+                        <input name="last_name" id="last_name" type="text" class="loginuser" placeholder="Enter Last Name" />
                       </div>
                       <br clear="all">
                       <div class="infbox">
                         <div class="userid"><i class="fa fa-envelope-open" aria-hidden="true"></i></div>
-                        <input name="" type="text" class="loginuser" placeholder="Email" />
+                        <input name="email_id" id="email_id" type="text" class="loginuser" placeholder="Enter Email ID" />
                       </div>
                       <br clear="all">
-                      <div class="infbox">
-                        <div class="userid"><i class="fa fa-globe" aria-hidden="true"></i></div>
-                        <select name="" class="countryreg">
-                                <option value="Select Country">Select Country</option>
-                                <option value="India">India</option>
-                                <option value="India">India</option>
-                            </select>
-                      </div>
-                      <br clear="all">
+
                       <div class="infbox">
                         <div class="userid"><i class="fa fa-phone-square" aria-hidden="true"></i></div>
-                        <input name="" type="text" class="loginuser" placeholder="Phone" />
+                        <input name="mobile_no" id="mobile_no" type="text" class="loginuser" maxlength="10" placeholder="Enter Mobile No" />
                       </div>
-                      
+
+                      <br clear="all">
+
+                      <div class="infbox">
+                        <div class="userid"><i class="fa fa-key" aria-hidden="true"></i></div>
+                        <input name="password" id="password" type="password" class="loginuser" placeholder="Enter Password" />
+                      </div>
 
                   </div>
+                </form>
                   <div class="modal-footer">
-                    <button type="button" class="viewmoreBTN">SIGN UP</button>
+                    <button type="button" class="viewmoreBTN" id="btnRegistration">SIGN UP</button>
                   </div>
                 </div>
               </div>
@@ -99,5 +100,3 @@
 
         </div>
     </div>
-
-   
