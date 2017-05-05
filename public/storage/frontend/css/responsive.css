@@ -270,7 +270,11 @@ float: none !important;
 		text-align: center;
 	}
 
+	.address li strong{
+		width: 60% !important;
 	}
+
+}
 
 	@media screen and (max-width: 480px) {
 

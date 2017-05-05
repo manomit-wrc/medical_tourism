@@ -14,12 +14,14 @@
 Route::get('/','HomeController@index');
 Route::get('/about','PagesController@about');
 Route::get('/services','PagesController@services');
-Route::get('/servicedetails','PagesController@servicedetails');
+Route::get('/servicedetails/{id}','PagesController@servicedetails');
 Route::get('/enquiry','PagesController@enquiry');
 Route::get('/facilities','PagesController@facilities');
 Route::get('/doctors','PagesController@doctors');
 Route::get('/contact','PagesController@contact');
-//Route::get('/successstory','HelperController@successstory');
+Route::get('/news','PagesController@news');
+Route::get('/newsdetails/{id}','PagesController@newsdetails');
+
 
 //Backend routing start here
 Route::get('/admin', 'LoginController@index');

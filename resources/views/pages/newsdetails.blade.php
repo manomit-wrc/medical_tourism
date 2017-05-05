@@ -1,5 +1,5 @@
 @extends('layouts.inner_layout')
-@section('title', 'Service Details')
+@section('title', 'News Details')
 @section('content')
 <div class="col-md-8">
     <div class="rightP">
@@ -8,8 +8,9 @@
 
             <div class="col-sm-12">
                 <div class="detailsP">
-                    <img src="{{url('/uploads/medicalfacilities/thumb_745_214/'.$service_data->facility_image)}}" alt="Facility Image">
-                    <h4><b>{{ $service_data->name }}</b></h4>
+                    <img src="{{url('/uploads/medicalfacilities/thumb_745_214/'.$news_data->facility_image)}}" alt="News Image">
+                    <h4><b>{{ $news_data->title }}</b></h4>
+                    <p>Updated : {{ \Carbon\Carbon::parse($news_data->updated_at)->format('F j, Y')}}</p>
                 </div>
 
 
@@ -20,7 +21,7 @@
                     <!-- Tab panes -->
                     <div class="tab-content">
                       <div role="tabpanel" class="tab-pane active">
-                          <p>{{ $service_data->description }}</p>
+                          <p>{{ $news_data->description }}</p>
                       
                     </div>
 

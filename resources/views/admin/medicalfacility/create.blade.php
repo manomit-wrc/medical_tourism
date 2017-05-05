@@ -64,7 +64,7 @@
 
                         <!-- file input -->
                         <div class="form-group">
-                          {!! Html::decode(Form::label('facility_image','Facility image: <span style="color:red;">* (Image must be minimum of 243x149)</span>')) !!}
+                          {!! Html::decode(Form::label('facility_image','Facility image: <span style="color:red;">* (Image must be minimum of 745x214)</span>')) !!}
                           {!! Form::file('facility_image', null) !!}
                         </div>
                          <!-- /.file input -->

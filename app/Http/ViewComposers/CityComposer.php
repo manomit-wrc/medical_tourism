@@ -1,11 +1,11 @@
 <?php
 namespace App\Http\ViewComposers;
 use Illuminate\View\View;
-use App\SuccessStories;
+use App\City;
 
-Class SuccessComposer {
+Class CityComposer {
 	public function compose(View $view)
 	{
-      $view->with('successstory_lists', SuccessStories::all());
+      $view->with('city_lists', City::orderByRaw("RAND()")->take(5)->get());
 	}
 }

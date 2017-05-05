@@ -47,10 +47,10 @@
                     @foreach($medfac_lists as $medfac_lists)
                       <tr>
                         <td>
-                          <img src="{{url('/uploads/medicalfacilities/thumb/'.$medfac_lists->facility_image)}}" alt="Facility Image" >
+                          <img src="{{url('/uploads/medicalfacilities/thumb_243_149/'.$medfac_lists->facility_image)}}" alt="Facility Image" >
                         </td>
                         <td>{{ $medfac_lists->name }}</td>
-                        <td>{{ $medfac_lists->description }}</td>
+                        <td>{!! \Illuminate\Support\Str::words($medfac_lists->description, 10,'....')  !!}</td>
                         <td>
                           <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
                             <!-- we will add this later since its a little more complicated than the other two buttons -->

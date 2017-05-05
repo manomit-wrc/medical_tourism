@@ -44,39 +44,44 @@
                       <div class="col-md-2">
                           <h3>Swasthya Bandhav</h3>
                           <ul>
-                              <li><a href="#">Home</a></li>
-                              <li><a href="#">About Swasthya Bandhav</a></li>
-                              <li><a href="#">Services</a></li>
-                              <li><a href="#">Inquiry</a></li>
-                              <li><a href="#">Contact Us</a></li>
+                              <li><a href="{!!URL::to('/')!!}">Home</a></li>
+                              <li><a href="{!!URL::to('/about')!!}">About Swasthya Bandhav</a></li>
+                              <li><a href="{!!URL::to('/services')!!}">Services</a></li>
+                              <li><a href="{!!URL::to('/enquiry')!!}">Enquiry</a></li>
+                              <li><a href="{!!URL::to('/news')!!}">News</a></li>
+                              <li><a href="{!!URL::to('/contact')!!}">Contact Us</a></li>
                           </ul>
                       </div>
+                      
                       <div class="col-md-3">
                           <h3>Medical Providers</h3>
                           <ul>
-                              <li><a href="#">Ayurveda & Alternate Medicine</a></li>
-                              <li><a href="#">Medical Treatment</a></li>
-                              <li><a href="#">Wellness & Rejuvenation</a></li>
+                            @if (count($providertype_lists) > 0)
+                              @foreach($providertype_lists as $providertype_lists)
+                              <li><a href="#">{{ $providertype_lists->name }}</a></li>
+                              @endforeach
+                            @endif
                           </ul>
                       </div>
+
                       <div class="col-md-2">
                           <h3>Medical Treatment</h3>
                           <ul>
-                              <li><a href="#">Gastroenterology</a></li>
-                              <li><a href="#">Vascular Surgery</a></li>
-                              <li><a href="#">Allergy</a></li>
-                              <li><a href="#">Sleep Medicine</a></li>
-                              <li><a href="#">Ophthalmology (Eye)</a></li>
+                            @if (count($treatment_lists) > 0)
+                              @foreach($treatment_lists as $treatment_lists)
+                              <li><a href="#">{{ ucfirst(strtolower($treatment_lists->name)) }}</a></li>
+                              @endforeach
+                            @endif
                           </ul>
                       </div>
                       <div class="col-md-2">
                           <h3>Facility Locations</h3>
                           <ul>
-                              <li><a href="#">Varanasi</a></li>
-                              <li><a href="#">Kolkata</a></li>
-                              <li><a href="#">Delhi</a></li>
-                              <li><a href="#">Calicut</a></li>
-                              <li><a href="#">Surat</a></li>
+                              @if (count($city_lists) > 0)
+                              @foreach($city_lists as $city_lists)
+                              <li><a href="#">{{ ucfirst(strtolower($city_lists->name)) }}</a></li>
+                              @endforeach
+                            @endif
                           </ul>
                       </div>
                       <div class="col-md-3">

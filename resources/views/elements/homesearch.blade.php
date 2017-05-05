@@ -89,7 +89,7 @@ industry's standard dummy text</p>
                                 <ul>
                                   @if(count($medicalfacility_lists) > 0)
                                     @foreach($medicalfacility_lists as $medicalfacility_lists)
-                                    <li><img src="{{url('/uploads/medicalfacilities/thumb/'.$medicalfacility_lists->facility_image)}}"  alt="{{ $medicalfacility_lists->name }}">
+                                    <li><img src="{{url('/uploads/medicalfacilities/thumb_243_149/'.$medicalfacility_lists->facility_image)}}"  alt="{{ $medicalfacility_lists->name }}">
                                         <h3>{{ $medicalfacility_lists->name }}</h3>
                                         <p>{!! \Illuminate\Support\Str::words($medicalfacility_lists->description, 10,'....')  !!}</p>
                                     </li>

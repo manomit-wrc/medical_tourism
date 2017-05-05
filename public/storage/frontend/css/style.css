@@ -1573,3 +1573,43 @@ text-align: center;
 		display: block;
 	}
 }
+
+.address{
+	width: 100%;
+	padding-left: 0;
+	background: #fff;
+	padding: 10px;
+}
+
+.address li{
+	width: 100%;
+	list-style: none;
+	font-size: 13px;
+	padding: 6px 0;
+	text-align: left;
+}
+
+.address li strong{
+	width: 30%;
+	display: inline-block;
+}
+
+.number{
+	width: 100%;
+	padding-left: 0;
+	background: #fff;
+	padding: 10px;
+}
+
+.number li{
+	width: 100%;
+	list-style: none;
+	font-size: 13px;
+	padding: 6px 0;
+	text-align: left;
+}
+
+.number li strong{
+	width: 60%;
+	display: inline-block;
+}
