@@ -259,7 +259,22 @@ float: none !important;
 		width: 100%;
 	}
 
+	.listtypeleft2{
+		margin-right: 0 !important;
+		width: 100% !important;
 	}
+
+	.on767{
+		margin: 0px auto;
+		width: 200px;
+		text-align: center;
+	}
+
+	.address li strong{
+		width: 60% !important;
+	}
+
+}
 
 	@media screen and (max-width: 480px) {
 

@@ -14,11 +14,16 @@
 Route::get('/','HomeController@index');
 Route::get('/about','PagesController@about');
 Route::get('/services','PagesController@services');
-Route::get('/servicedetails','PagesController@servicedetails');
+Route::get('/servicedetails/{id}','PagesController@servicedetails');
 Route::get('/enquiry','PagesController@enquiry');
 Route::get('/facilities','PagesController@facilities');
 Route::get('/doctors','PagesController@doctors');
 Route::get('/contact','PagesController@contact');
+Route::get('/news','PagesController@news');
+Route::get('/newsdetails/{id}','PagesController@newsdetails');
+Route::get('/frontend/check_user_exist','PagesController@check_user_exist');
+Route::post('/patient-registration','PagesController@patient_registration');
+
 
 //Backend routing start here
 Route::get('/admin', 'LoginController@index');
@@ -249,7 +254,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::patch('/admin/providerconnectivityservices/update/{id}','ProviderConnectivityServicesController@update');
     Route::delete('/admin/providerconnectivityservices/delete/{id}','ProviderConnectivityServicesController@destroy');
     Route::get('/admin/providerconnectivityservices/show/{id}','ProviderConnectivityServicesController@show');
-	
+
 	 /* genericmedicine section */
 	Route::get('/admin/genericmedicine','genericmedicineController@index');
     Route::get('/admin/genericmedicine/create','genericmedicineController@create');

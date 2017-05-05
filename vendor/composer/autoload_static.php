@@ -382,6 +382,7 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         'CreateDoctorsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_26_071406_create_doctors_table.php',
         'CreateGenericmedicineCategoriesTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_02_085242_create_genericmedicine_categories_table.php',
         'CreateGenericmedicinesTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_02_061235_create_genericmedicines_table.php',
+        'CreateHospitalMedicaltestTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_04_071855_create_hospital_medicaltest_table.php',
         'CreateHospitalTreatmentTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_28_121421_create_hospital_treatment_table.php',
         'CreateHospitalsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_27_092607_create_hospitals_table.php',
         'CreateHotelClassTypesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_25_111718_create_hotel_class_types_table.php',

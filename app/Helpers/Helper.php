@@ -1,16 +1,16 @@
 <?php
 
 namespace App\Helpers;
+use App\SuccessStories;
 
 
 class Helper
 {
 
-    public static function homePageURL()
+    public static function successstory()
     {
-
-        return url('/');
-
+       //echo "hi";
+      
     }
 
 }

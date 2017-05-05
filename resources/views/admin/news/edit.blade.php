@@ -59,6 +59,14 @@
                           {!! Form::textarea('description',null,array('class'=>'form-control','id'=>'description','placeholder'=>'Enter news')) !!}
                         </div>
                         <!-- /.text input -->
+
+                        <!-- file input -->
+                        <div class="form-group">
+                          {!! Html::decode(Form::label('news_image','News image: <span style="color:red;">* (Image must be minimum of 745x214)</span>')) !!}
+                          <img src="{{url('/uploads/news/thumb_352_170/'.$news_data->news_image)}}" alt="Facility Image">
+                          {!! Form::file('news_image', null) !!}
+                        </div>
+                         <!-- /.file input -->
                         
                          <!-- input button -->
                         <div class="box-footer">

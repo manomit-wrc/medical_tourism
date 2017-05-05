@@ -5,42 +5,18 @@
     <div class="rightP">
         <h3>Our <b>Services</b></h3>
         <div class="row">
-
-            <div class="col-sm-6 col-md-6">
-                <div class="servicesbox">
-                    <img src="{!!URL::to('storage/frontend/images/sr1.jpg')!!}" alt="">
-                    <h4>Apollo hospital kolkata</h4>
-                    <p>Lorem Ipsum is simply dummy text of the printing.</p>
-                    <a class="viewdetails" href="{!!URL::to('/servicedetails')!!}">VIEW MORE</a>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-6">
-                <div class="servicesbox">
-                    <img src="{!!URL::to('storage/frontend/images/sr2.jpg')!!}" alt="">
-                    <h4>AMRI hospital kolkata</h4>
-                    <p>Lorem Ipsum is simply dummy text of the printing.</p>
-                    <a class="viewdetails" href="{!!URL::to('/servicedetails')!!}">VIEW MORE</a>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-6">
-                <div class="servicesbox">
-                    <img src="{!!URL::to('storage/frontend/images/sr3.jpg')!!}" alt="">
-                    <h4>RUBY hospital kolkata</h4>
-                    <p>Lorem Ipsum is simply dummy text of the printing.</p>
-                    <a class="viewdetails" href="{!!URL::to('/servicedetails')!!}">VIEW MORE</a>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-6">
-                <div class="servicesbox">
-                    <img src="{!!URL::to('storage/frontend/images/sr4.jpg')!!}" alt="">
-                    <h4>Peerless hospital kolkata</h4>
-                    <p>Lorem Ipsum is simply dummy text of the printing.</p>
-                    <a class="viewdetails" href="{!!URL::to('/servicedetails')!!}">VIEW MORE</a>
-                </div>
-            </div>
+            @if (count($service_lists) > 0)
+                @foreach($service_lists as $service_lists)
+                    <div class="col-sm-6 col-md-6">
+                        <div class="servicesbox">
+                            <img src="{{url('/uploads/medicalfacilities/thumb_352_170/'.$service_lists->facility_image)}}" alt="">
+                            <h4>{{ $service_lists->name }}</h4>
+                            <p>{!! \Illuminate\Support\Str::words($service_lists->description, 10,'....')  !!}</p>
+                            <a class="viewdetails" href="{!!URL::to('/servicedetails/'.$service_lists->id)!!}">VIEW MORE</a>
+                        </div>
+                    </div>
+                @endforeach
+            @endif
 
         </div>
     </div>

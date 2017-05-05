@@ -4,38 +4,55 @@
           <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
               <!-- Indicators -->
               <ol class="carousel-indicators">
-                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                @if(count($banner_lists) > 0)
+                   @for ($j = 0; $j < count($banner_lists); $j++)
+                    <li data-target="#carousel-example-generic" data-slide-to="{{ $j }}"></li>
+                   @endfor
+                @endif  
               </ol>
               <!-- Wrapper for slides -->
               <div class="carousel-inner" role="listbox">
-                <div class="item active">
-                  <img src="{!!URL::to('storage/frontend/images/slide1.jpg')!!}" class="imageWDTH" alt=""> 
-                  <div class="carousel-caption">
-                    <div class="banner_text">
-                        <h1>Welcome to Swasthya Bandhav</h1>
-                        <h2>A Premier Healthcare</h2>
-                    </div>
-                    <div class="videobx">
-                        <div class="play"><a href="#" data-toggle="modal" data-target="#VideoModal"><i class="fa fa-play-circle" aria-hidden="true"></i></a></div>
-                        <img src="{!!URL::to('storage/frontend/images/dr1.jpg')!!}" alt="">
+              @if(count($banner_lists) > 0)
+                @php
+                  $i = 1 ;
+                @endphp 
+                
+                @foreach($banner_lists as $banner_lists)
+                
+                  @php
+                    $active_class = ($i == 1) ? 'active' : '';
+                  @endphp 
+                  
+                  <div class="item {{ $active_class }}">
+                    <img src="{{url('/uploads/banners/'.$banner_lists->banner_image)}}" class="imageWDTH" alt=""> 
+                    <div class="carousel-caption">
+                      <div class="banner_text">
+                          <h1>{{ $banner_lists->banner_heading }}</h1>
+                          <h2>{{ $banner_lists->banner_sub_heading }}</h2>
+                      </div>
+
+                      <div class="videobx">
+                          @php
+                            $banner_url=$banner_lists->banner_url;
+                            preg_match("#([\/|\?|&]vi?[\/|=]|youtu\.be\/|embed\/)(\w+)#", $banner_url, $matches);
+                            // var_dump(end($matches));
+                          @endphp
+                          <div class="play">
+                            <a href="#" data-toggle="modal" data-target="#VideoModal"  class="youtubeModalclass" data-id="{{ end($matches) }}" ><i class="fa fa-play-circle" aria-hidden="true"></i></a>
+                          </div>
+                         
+                         <!--  <img src="{!!URL::to('storage/frontend/images/dr1.jpg')!!}" alt=""> -->
+                         <img src="http://img.youtube.com/vi/{{ end($matches) }}/0.jpg" alt="">
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="item">
-                  <img src="{!!URL::to('storage/frontend/images/slide1.jpg')!!}" class="imageWDTH" alt="">
-                  <div class="carousel-caption">
-                    <div class="banner_text">
-                        <h1>Welcome to Swasthya Bandhav</h1>
-                        <h2>A Premier Healthcare</h2>
-                    </div>
-                    <div class="videobx">
-                        <div class="play"><a href="#" data-toggle="modal" data-target="#VideoModal"><i class="fa fa-play-circle" aria-hidden="true"></i></a></div>
-                        <img src="{!!URL::to('storage/frontend/images/dr1.jpg')!!}" alt="">
-                    </div>
-                  </div>
-                </div>
+                  @php
+                    $i++;
+                  @endphp 
+
+                @endforeach
+              @endif
+                
               </div>
               <!-- Controls -->
               <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
@@ -57,11 +74,7 @@
           <h4 class="modal-title" id="myModalLabel">Video</h4>
         </div>
         <div class="modal-body">
-            <video width="100%" controls>
-              <source src="mov_bbb.mp4" type="video/mp4">
-              <source src="mov_bbb.ogg" type="video/ogg">
-              Your browser does not support HTML5 video.
-            </video>
+             <iframe id="iframeVideo" width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
         </div>                  
       </div>
     </div>

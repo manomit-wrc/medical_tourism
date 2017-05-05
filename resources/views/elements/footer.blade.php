@@ -7,43 +7,25 @@
                           <h2><strong>Success</strong> stories</h2>
                           <div class="successbox">
                               <div id="testimonial-slider" class="owl-carousel">
-                                  <div class="testimonial">
-                                      <div class="pic">
-                                           <img src="{!!URL::to('storage/frontend/images/ti1.jpg')!!}" class="img-responsive" alt="Image 1">
-                                      </div>
-                                      
-                                      <p class="description">
-                                      There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form...
-                                      <br>
-                                      <span>WRC Technologies</span>
-                                      </p>
-                                  </div>
+                              
+                                 @if (count($successstory_lists) > 0)
+                                        @foreach($successstory_lists as $successstory_lists)
+                                          <div class="testimonial">
+                                              <div class="pic">
+                                                  <img src="{{url('/uploads/successstories/'.$successstory_lists->story_image)}}" alt="" class="img-responsive">
+                                              </div>
 
-                                  <div class="testimonial">
-                                      <div class="pic">
-                                          <img src="{!!URL::to('storage/frontend/images/ti1.jpg')!!}" class="img-responsive" alt="Image 1">
-                                      </div>
-                                      
-                                      <p class="description">
-                                      There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form...
-                                      <br>
-                                      <span>WRC Technologies</span>
-                                      </p>
-                                  </div>
+                                              <p class="description">
+                                              <b>{!! \Illuminate\Support\Str::words($successstory_lists->title, 5,'....')  !!}</b><br>
+                                              {!! \Illuminate\Support\Str::words(strip_tags($successstory_lists->description), 10,'....')  !!}
+                                              <br>
+                                              <span>WRC Technologies</span>
+                                              </p>
+                                          </div>
+                                        @endforeach
+                                  @endif
 
-                                  <div class="testimonial">
-                                      <div class="pic">
-                                         <img src="{!!URL::to('storage/frontend/images/ti1.jpg')!!}" class="img-responsive" alt="Image 1">
-                                      </div>
-                                      
-                                      <p class="description">
-                                      There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form...
-                                      <br>
-                                      <span>WRC Technologies</span>
-                                      </p>
-                                  </div>
-                   
-                                  
+
                               </div>
                           </div>
                       </div>
@@ -62,39 +44,44 @@
                       <div class="col-md-2">
                           <h3>Swasthya Bandhav</h3>
                           <ul>
-                              <li><a href="#">Home</a></li>
-                              <li><a href="#">About Swasthya Bandhav</a></li>
-                              <li><a href="#">Services</a></li>
-                              <li><a href="#">Inquiry</a></li>
-                              <li><a href="#">Contact Us</a></li>
+                              <li><a href="{!!URL::to('/')!!}">Home</a></li>
+                              <li><a href="{!!URL::to('/about')!!}">About Swasthya Bandhav</a></li>
+                              <li><a href="{!!URL::to('/services')!!}">Services</a></li>
+                              <li><a href="{!!URL::to('/enquiry')!!}">Enquiry</a></li>
+                              <li><a href="{!!URL::to('/news')!!}">News</a></li>
+                              <li><a href="{!!URL::to('/contact')!!}">Contact Us</a></li>
                           </ul>
                       </div>
+                      
                       <div class="col-md-3">
                           <h3>Medical Providers</h3>
                           <ul>
-                              <li><a href="#">Ayurveda & Alternate Medicine</a></li>
-                              <li><a href="#">Medical Treatment</a></li>
-                              <li><a href="#">Wellness & Rejuvenation</a></li>
+                            @if (count($providertype_lists) > 0)
+                              @foreach($providertype_lists as $providertype_lists)
+                              <li><a href="#">{{ $providertype_lists->name }}</a></li>
+                              @endforeach
+                            @endif
                           </ul>
                       </div>
+
                       <div class="col-md-2">
                           <h3>Medical Treatment</h3>
                           <ul>
-                              <li><a href="#">Gastroenterology</a></li>
-                              <li><a href="#">Vascular Surgery</a></li>
-                              <li><a href="#">Allergy</a></li>
-                              <li><a href="#">Sleep Medicine</a></li>
-                              <li><a href="#">Ophthalmology (Eye)</a></li>
+                            @if (count($treatment_lists) > 0)
+                              @foreach($treatment_lists as $treatment_lists)
+                              <li><a href="#">{{ ucfirst(strtolower($treatment_lists->name)) }}</a></li>
+                              @endforeach
+                            @endif
                           </ul>
                       </div>
                       <div class="col-md-2">
                           <h3>Facility Locations</h3>
                           <ul>
-                              <li><a href="#">Varanasi</a></li>
-                              <li><a href="#">Kolkata</a></li>
-                              <li><a href="#">Delhi</a></li>
-                              <li><a href="#">Calicut</a></li>
-                              <li><a href="#">Surat</a></li>
+                              @if (count($city_lists) > 0)
+                              @foreach($city_lists as $city_lists)
+                              <li><a href="#">{{ ucfirst(strtolower($city_lists->name)) }}</a></li>
+                              @endforeach
+                            @endif
                           </ul>
                       </div>
                       <div class="col-md-3">

@@ -10,6 +10,8 @@ use Input;
 use Redirect;
 use Session;
 use Validator;
+use Image;
+use File;
 
 class NewsController extends Controller
 {
@@ -47,14 +49,45 @@ class NewsController extends Controller
     {
         $this->validate($request, [
         'title' => 'required|unique:news',
-        'description' => 'required'
+        'description' => 'required',
+        'news_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=745,min_height=214'
       ]);
 
-      // Getting all data after success validation.
-      //dd($request->all());
-      $input = $request->all();
+        $newscobj = new News($request->input()) ;
+        $newscobj->title = $request->get('title') ;
+        $newscobj->description = $request->get('description') ;
 
-      News::create($input);
+        //echo "<pre>"; print_r($request->file('news_image'));die;
+
+        if($file = $request->hasFile('news_image')) {
+
+            $file = $request->file('news_image') ;
+
+            $fileName = time().'_'.$file->getClientOriginalName() ;
+
+            //thumb destination path
+            $destinationPathThumb2 = public_path().'/uploads/news/thumb_352_170' ;
+            $destinationPathThumb3 = public_path().'/uploads/news/thumb_745_214' ;
+
+            $img = Image::make($file->getRealPath());
+
+            $img->resize(352, 170, function ($constraint){
+                $constraint->aspectRatio();
+            })->save($destinationPathThumb2.'/'.$fileName);
+
+            $img->resize(745, 214, function ($constraint){
+                $constraint->aspectRatio();
+            })->save($destinationPathThumb3.'/'.$fileName);
+
+            //original destination path
+            $destinationPathOriginal = public_path().'/uploads/news/' ;
+            $file->move($destinationPathOriginal,$fileName);
+
+            $newscobj->news_image = $fileName ;
+        }
+
+        $newscobj->save() ;
+
       Session::flash('message', 'Successfully added!');
       return Redirect::to('/admin/news');
     }
@@ -97,13 +130,45 @@ class NewsController extends Controller
         // validate
         $this->validate($request, [
         'title' => 'required|unique:news',
-        'description' => 'required'
+        'description' => 'required',
+        'news_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=745,min_height=214',
         ]);
 
         // Getting all data after success validation.
-        $input = $request->all();
-        //echo "<pre>"; print_r($input); die;
-        $nws->fill($input)->save();
+        $nws->title = $request->get('title') ;
+        $nws->description = $request->get('description') ;
+
+        //echo "<pre>"; print_r($request->file('news_image'));die;
+
+        if($file = $request->hasFile('news_image')) {
+
+            $file = $request->file('news_image') ;
+
+            $fileName = time().'_'.$file->getClientOriginalName() ;
+
+            //thumb destination path
+            $destinationPathThumb2 = public_path().'/uploads/news/thumb_352_170' ;
+            $destinationPathThumb3 = public_path().'/uploads/news/thumb_745_214' ;
+
+            $img = Image::make($file->getRealPath());
+
+            
+            $img->resize(352, 170, function ($constraint){
+                $constraint->aspectRatio();
+            })->save($destinationPathThumb2.'/'.$fileName);
+
+             $img->resize(745,214, function ($constraint){
+                $constraint->aspectRatio();
+            })->save($destinationPathThumb3.'/'.$fileName);
+
+            //original destination path
+            $destinationPathoriginal = public_path().'/uploads/news/' ;
+            $file->move($destinationPathoriginal,$fileName);
+
+            $nws->news_image = $fileName ;
+        }
+
+        $nws->save() ;
 
 
         // redirect
