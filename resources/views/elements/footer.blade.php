@@ -7,10 +7,11 @@
                           <h2><strong>Success</strong> stories</h2>
                           <div class="successbox">
                               <div id="testimonial-slider" class="owl-carousel">
+                              
                                  @if (count($successstory_lists) > 0)
                                         @foreach($successstory_lists as $successstory_lists)
                                  <!--  <div class="testimonial">
-                                     
+
                                           <div class="pic">
                                                <img src="{{url('/uploads/successstories/thumb/'.$successstory_lists->story_image)}}" class="img-responsive" alt="Image 1">
                                           </div>
@@ -20,14 +21,14 @@
                                           <br>
                                           <span>WRC Technologies</span>
                                           </p>
-                                      
+
                                   </div> -->
 
                                   <div class="testimonial">
                                       <div class="pic">
                                           <img src="{{url('/uploads/successstories/'.$successstory_lists->story_image)}}" alt="" class="img-responsive">
                                       </div>
-                                      
+
                                       <p class="description">
                                       <b>{!! \Illuminate\Support\Str::words($successstory_lists->title, 5,'....')  !!}</b><br>
                                       {!! \Illuminate\Support\Str::words(strip_tags($successstory_lists->description), 10,'....')  !!}
@@ -36,9 +37,9 @@
                                       </p>
                                   </div>
                                     @endforeach
-                                      @endif  
-                   
-                                  
+                                      @endif
+
+
                               </div>
                           </div>
                       </div>
