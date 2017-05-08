@@ -33,7 +33,7 @@
        <!--  <li class="header">MAIN NAVIGATION</li> -->
         <li><a href="{!!URL::to('/admin/dashboard')!!}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
 
-        <li class="active treeview">
+        <li class="treeview {{ Request::segment(2) === 'languagecapability' || Request::segment(2) === 'procedure' || Request::segment(2) === 'treatment' || Request::segment(2) === 'genericmedicine' ? 'active' : null }}">
           <a href="javascript:void(0)">
             <i class="fa fa-cog"></i> <span>Settings management</span>
             <span class="pull-right-container">
@@ -64,7 +64,7 @@
           </ul>
         </li>
 
-        <li class="treeview">
+        <li class="treeview {{ Request::segment(2) === 'hotel' ? 'active' : null }}">
           <a href="javascript:void(0)">
             <i class="fa fa-hotel"></i> <span>Hotel management</span>
             <span class="pull-right-container">
@@ -76,7 +76,7 @@
           </ul>
         </li>
 
-        <li class="treeview">
+        <li class="treeview {{ Request::segment(2) === 'news' ? 'active' : null }}">
           <a href="javascript:void(0)">
             <i class="fa fa-newspaper-o"></i> <span>News & Events management</span>
             <span class="pull-right-container">
@@ -90,7 +90,7 @@
 
 
 
-        <li class="treeview">
+        <li class="treeview {{ Request::segment(2) === 'adminuser' || Request::segment(2) === 'permission' ? 'active' : null }}">
           <a href="javascript:void(0)">
             <i class="fa fa-users"></i> <span>User management</span>
             <span class="pull-right-container">
@@ -104,7 +104,7 @@
         </li>
 
 
-        <li class="treeview">
+        <li class="treeview {{ Request::segment(2) === 'doctors' || Request::segment(2) === 'providerconnectivity' ? 'active' : null }}">
           <a href="javascript:void(0)">
             <i class="fa fa-hospital-o"></i> <span>Hospital management</span>
             <span class="pull-right-container">
