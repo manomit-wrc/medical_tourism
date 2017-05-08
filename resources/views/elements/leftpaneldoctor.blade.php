@@ -2,12 +2,40 @@
          <div class="qtbox">
             <div class="dr_img">
                
-                <img src="{{url('/uploads/doctors/thumb/'.$doctor_data->avators)}}" alt="doctor Image">
+                <img src="{{url('/uploads/doctors/thumb/'.$doctor_details->avators)}}" alt="doctor Image">
             </div>
 
-            <h4 class="user_name">{{ $doctor_data->first_name.' '.$doctor_data->last_name }}</h4>
+            <h4 class="user_name">{{ $doctor_details->first_name.' '.$doctor_details->last_name }}</h4>
             <hr>
-            <h5 class="user_address">MD, DM - Cardiology</h5>
+            @php
+                $doctor_degrees_var = '';
+                $i=1;
+            @endphp 
+            @if (count($doctor_degree_details) > 0)
+                @foreach($doctor_degree_details as $doctor_degrees_arr)
+                    @php 
+                     $j=count($doctor_degrees_arr['degrees']);
+                    @endphp
+
+                    @foreach($doctor_degrees_arr['degrees'] as $doctor_degrees_array)
+                       @php
+                        $doctor_degrees_var.= $doctor_degrees_array['name'];
+                       @endphp 
+
+                       @if ($i != $j)
+                         @php
+                           $doctor_degrees_var.=' , ';
+                          @endphp 
+                       @endif
+
+                       @php
+                        $i++;
+                       @endphp 
+
+                    @endforeach
+                @endforeach
+            @endif
+            <h5 class="user_address">{{ $doctor_degrees_var }}</h5>
             <hr>
             <h5 class="user_address">HOD Cardiology</h5>                            
           </div>
