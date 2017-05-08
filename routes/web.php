@@ -21,6 +21,17 @@ Route::get('/doctors','PagesController@doctors');
 Route::get('/contact','PagesController@contact');
 Route::get('/frontend/check_user_exist','PagesController@check_user_exist');
 Route::post('/patient-registration','PagesController@patient_registration');
+Route::post('/patient-login','PagesController@patient_login');
+
+Route::group(['middleware' => ['front']], function() {
+	Route::get('/profile','PagesController@patient_profile');
+	Route::post('/update-profile','PagesController@update_profile');
+	Route::get('/patient-logout','PagesController@patient_logout');
+	Route::post('/get_state_list','PagesController@get_state_list');
+	Route::post('/get_city_list','PagesController@get_city_list');
+	Route::get('/change-password','PagesController@change_password');
+	Route::post('update-password','PagesController@update_password');
+});
 //Route::get('/successstory','HelperController@successstory');
 
 //Backend routing start here

@@ -3,10 +3,49 @@
     {!!Html::script("storage/frontend/js/jquery.jcarousel.min.js")!!}
     {!!Html::script("storage/frontend/js/jcarousel.responsive.js")!!}
     {!!Html::script("storage/frontend/js/owl.carousel.min.js")!!}
+    {!!Html::script("storage/frontend/js/custom-file-input.js")!!}
+
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/additional-methods.min.js"></script>
     <script type="text/javascript">
+      function get_select_birthday() {
+        var dob_days = "{{$dob_days}}";
+
+        var monthStart = new Date(parseInt($("#dob_year").val()), parseInt($("#dob_month").val()), 1);
+        var monthEnd = new Date(parseInt($("#dob_year").val()), parseInt($("#dob_month").val()) + 1, 1);
+        var monthLength = (monthEnd - monthStart) / (1000 * 60 * 60 * 24);
+        $("#dob_days").find('option').not(':first').remove();
+        for(var i=1;i<=monthLength;i++) {
+          $("#dob_days").append('<option value="'+i+'">'+i+'</option>');
+        }
+        $('#dob_days option[value="'+dob_days+'"]').attr('selected', true);
+      }
       $(document).ready(function(){
+          get_select_birthday();
+          $("#dob_year").change(function(e){
+
+            if($(this).val() && $("#dob_month").val() !="") {
+
+              var monthStart = new Date(parseInt($(this).val()), parseInt($("#dob_month").val()), 1);
+              var monthEnd = new Date(parseInt($(this).val()), parseInt($("#dob_month").val()) + 1, 1);
+              var monthLength = (monthEnd - monthStart) / (1000 * 60 * 60 * 24);
+            }
+            $("#dob_days").find('option').not(':first').remove();
+            for(var i=1;i<=monthLength;i++) {
+              $("#dob_days").append('<option value="'+i+'">'+i+'</option>');
+            }
+          });
+          $("#dob_month").change(function(e){
+            if($(this).val() && $("#dob_year").val() !="") {
+              var monthStart = new Date(parseInt($("#dob_year").val()), parseInt($(this).val()), 1);
+              var monthEnd = new Date(parseInt($("#dob_year").val()), parseInt($(this).val()) + 1, 1);
+              var monthLength = (monthEnd - monthStart) / (1000 * 60 * 60 * 24);
+            }
+            $("#dob_days").find('option').not(':first').remove();
+            for(var i=1;i<=monthLength;i++) {
+              $("#dob_days").append('<option value="'+i+'">'+i+'</option>');
+            }
+          });
           $("#testimonial-slider").owlCarousel({
               items:1,
               itemsDesktop:[1000,1],
@@ -43,6 +82,9 @@
 
             $("#btnRegistration").click(function(e){
               $("#frmRegistration").submit();
+            });
+            $("#btnLogin").click(function(e){
+              $("#frmLogin").submit();
             });
             $.validator.addMethod("pwcheck", function(value) {
                return /[A-Z]/.test(value) // has a uppercase letter
@@ -140,6 +182,110 @@
                     $("#btnRegistration").prop('disabled', false);
                   }
                 });
+              }
+            });
+
+            $("#frmLogin").validate({
+              rules: {
+                login_email_id: {
+                  required: true,
+                  email: true
+                },
+                login_password: {
+                  required: true
+                }
+              },
+              messages: {
+                login_email_id: {
+                  required: "Please enter email id",
+                  email: "Please enter valid email format"
+                },
+                login_password: {
+                  required: "Please enter password"
+                }
+              },
+              submitHandler:function(form) {
+                $.ajax({
+                  type: "POST",
+                  url: "/patient-login",
+                  data: {
+                    email_id: $("#login_email_id").val(),
+                    password: $("#login_password").val(),
+                    _token: "{{csrf_token()}}"
+                  },
+                  beforeSend:function() {
+                    $("#btnLogin").prop('disabled', true);
+                  },
+                  success:function(response) {
+                    if(response.status == 1)
+                    {
+                      $(".login").html("");
+                      window.location.href="/profile";
+                    }
+                    else {
+
+                      $(".login").html("Email ID or Password is invalid");
+                      $(".login").addClass('registration-error');
+                      $(".login").removeClass('registration-success');
+                    }
+                    $(".login").show();
+                    $("#btnLogin").prop('disabled', false);
+
+                  },
+                  error:function(xhr) {
+                    $(".login").html("Error occurred. Please try again");
+                    $(".login").addClass('registration-error');
+                    $(".login").removeClass('registration-success');
+                    $("#btnLogin").prop('disabled', false);
+                  }
+                });
+              }
+            });
+
+
+            $("#country_id").change(function(e){
+              var value = $(this).val();
+              if(value) {
+                $.ajax({
+                  type:"POST",
+                  url:"/get_state_list",
+                  data: {country_id:value, _token:"{{csrf_token()}}"},
+                  success:function(response) {
+                    $('#state_id').find('option').not(':first').remove();
+                    for (var key in response.state_list) {
+                      $("#state_id").append('<option value="'+key+'">'+response.state_list[key]+'</option>');
+                    }
+                  },
+                  error:function(xhr) {
+
+                  }
+                });
+              }
+              else {
+                $('#state_id').find('option').not(':first').remove();
+              }
+            });
+
+            $("#state_id").change(function(e){
+              var value = $(this).val();
+              if(value) {
+                $.ajax({
+                  type:"POST",
+                  url:"/get_city_list",
+                  data: {state_id:value, _token:"{{csrf_token()}}"},
+                  success:function(response) {
+                    $('#city_id').find('option').not(':first').remove();
+                    for (var key in response.city_list) {
+                      $("#city_id").append('<option value="'+key+'">'+response.city_list[key]+'</option>');
+                    }
+                  },
+                  error:function(xhr) {
+
+                  }
+                });
+              }
+              else {
+                $('#city_id').find('option').not(':first').remove();
               }
             });
       });

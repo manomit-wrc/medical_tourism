@@ -8,10 +8,16 @@
             </div>
             <div class="col-md-5">
                  <div class="rightlinks">
-                    <ul>
-                        <li><a href="#" data-toggle="modal" data-target="#LoginModal"><i class="fa fa-sign-in" aria-hidden="true"></i>Login</a></li>
-                        <li><a href="#" data-toggle="modal" data-target="#RegModal"><i class="fa fa-lock" aria-hidden="true"></i>Register</a></li>
-                    </ul>
+                   @if(Auth::guard('front')->check())
+                     <img src="{!! Auth::guard('front')->user()->thumb() !!}" alt=""> Welcome Mr. {{ Auth::guard('front')->user()->last_name }},
+                     <a href="/patient-logout" class="logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+                   @else
+                     <ul>
+                         <li><a href="#" data-toggle="modal" data-target="#LoginModal"><i class="fa fa-sign-in" aria-hidden="true"></i>Login</a></li>
+                         <li><a href="#" data-toggle="modal" data-target="#RegModal"><i class="fa fa-lock" aria-hidden="true"></i>Register</a></li>
+                     </ul>
+                   @endif
+
                     </div>
             </div>
 
@@ -22,26 +28,29 @@
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel"><i class="fa fa-user" aria-hidden="true"></i> USER LOGIN</h4>
+                    <h4 class="login" style="display:none;"></h4>
                   </div>
+                  <form name="frmLogin" id="frmLogin" method="post">
                   <div class="modal-body">
                       <div class="infbox">
                         <div class="userid"><i class="fa fa-user" aria-hidden="true"></i></div>
-                        <input name="" type="text" class="loginuser" placeholder="User Id" />
+                        <input name="login_email_id" id="login_email_id" type="text" class="loginuser" placeholder="Enter Email ID" />
                       </div>
                       <br clear="all">
                       <div class="infbox">
                         <div class="userid"><i class="fa fa-unlock-alt" aria-hidden="true"></i></div>
-                        <input name="" type="password" class="loginuser" placeholder="Password" />
+                        <input name="login_password" id="login_password" type="password" class="loginuser" placeholder="Enter Password" />
                       </div>
                       <br clear="all">
                       <div class="remindbox">
-                          <input name="" type="checkbox" value="" /> &nbsp; Remember Me
-                          <span><a href="#">Forgot Password?</a></span>
+                          <input name="remember_me" type="checkbox" value="1" /> &nbsp; Remember Me
+                          <span><a href="javascript:void(0)">Forgot Password?</a></span>
                       </div>
 
                   </div>
+                </form>
                   <div class="modal-footer">
-                    <button type="button" class="viewmoreBTN">SIGNIN</button>
+                    <button type="button" class="viewmoreBTN" id="btnLogin">SIGNIN</button>
                   </div>
                 </div>
               </div>
@@ -55,7 +64,7 @@
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel"><i class="fa fa-lock" aria-hidden="true"></i> Patient Registration</h4>
-                    <h4 class="registration" style="display:none;">Registration successfully done. Email activation link is sent to your email</h4>
+                    <h4 class="registration" style="display:none;"></h4>
                   </div>
                   <form name="frmRegistration" id="frmRegistration" method="post" >
                   <div class="modal-body">
