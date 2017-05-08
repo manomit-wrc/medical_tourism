@@ -3,10 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-
 use Illuminate\Support\Facades\Auth;
 use Image;
+
+use App\Http\Controllers\Controller;
+use App\MedicalFacility;
+use App\News;
+use App\Doctor;
+use App\Faq;
+
+
 
 class PagesController extends Controller
 {
@@ -22,12 +28,15 @@ class PagesController extends Controller
 
 	public function services()
 	{
-
-		return view('pages.services');
+        $service_lists = MedicalFacility::all();
+        //echo "<pre>"; print_r($service_lists); die;
+        return view('pages.services')->with('service_lists',$service_lists);
 	}
-	public function servicedetails()
+	public function servicedetails($id)
 	{
-		return view('pages.servicedetails');
+		$service_data = MedicalFacility::findOrFail($id);
+		//echo "<pre>"; print_r($service_data); die;
+        return view('pages.servicedetails')->with('service_data', $service_data);
 	}
 	public function enquiry()
 	{
@@ -41,13 +50,74 @@ class PagesController extends Controller
 
 	public function doctors()
 	{
-		return view('pages.doctors');
+		$doctor_data = Doctor::all();
+		//echo "<pre>"; print_r($doctor_data); die;
+        return view('pages.doctors')->with('doctor_data',$doctor_data);
+		//return view('pages.doctors');
+	}
+
+	public function doctordetail($id)
+	{
+		$data['doctor_details'] = Doctor::findOrFail($id);
+		$data['doctor_procedure_details'] = Doctor::with('procedures')->where('id',$id)->get()->toArray();
+    $data['doctor_degree_details'] = Doctor::with('degrees')->where('id',$id)->get()->toArray();
+		//echo "<pre>"; print_r($data); die;
+    return view('pages.doctordetail',$data);
 	}
 
 	public function contact()
 	{
 		return view('pages.contact');
 	}
+
+  public function news()
+	{
+        $news_lists = News::all();
+        //echo "<pre>"; print_r($news_lists); die;
+        return view('pages.news')->with('news_lists',$news_lists);
+	}
+
+	public function newsdetails($id)
+	{
+		$news_data = News::findOrFail($id);
+		//echo "<pre>"; print_r($news_data); die;
+        return view('pages.newsdetails')->with('news_data',$news_data);
+	}
+
+	public function faqs()
+	{
+        $data = array();
+        $faqs_data = Faq::all();
+        //echo "<pre>"; print_r($faqs_data); die;
+        //echo "<pre>"; print_r($faqs_data[0]->faqcategory); die;
+
+        return view('pages.faqs')->with('faqs_data',$faqs_data);
+	}
+
+	public function connectivity()
+	{
+        //$faqs_lists = Faq::all();
+        //echo "<pre>"; print_r($faqs_lists); die;
+        //return view('pages.faqs')->with('faqs_lists',$faqs_lists);
+        return view('pages.connectivity');
+	}
+
+	public function immigration()
+	{
+        //$faqs_lists = Faq::all();
+        //echo "<pre>"; print_r($faqs_lists); die;
+        //return view('pages.faqs')->with('faqs_lists',$faqs_lists);
+        return view('pages.immigration');
+	}
+
+	public function visa()
+	{
+        //$faqs_lists = Faq::all();
+        //echo "<pre>"; print_r($faqs_lists); die;
+        //return view('pages.faqs')->with('faqs_lists',$faqs_lists);
+        return view('pages.visa');
+	}
+
 
   public function check_user_exist(Request $request) {
     $email_id = $request->input('email_id');
@@ -230,4 +300,5 @@ class PagesController extends Controller
       return redirect('/change-password');
     }
   }
+
 }

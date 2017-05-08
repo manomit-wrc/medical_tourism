@@ -14,11 +14,19 @@
 Route::get('/','HomeController@index');
 Route::get('/about','PagesController@about');
 Route::get('/services','PagesController@services');
-Route::get('/servicedetails','PagesController@servicedetails');
+Route::get('/servicedetails/{id}','PagesController@servicedetails');
 Route::get('/enquiry','PagesController@enquiry');
 Route::get('/facilities','PagesController@facilities');
 Route::get('/doctors','PagesController@doctors');
+Route::get('/doctordetail/{id}','PagesController@doctordetail');
 Route::get('/contact','PagesController@contact');
+Route::post('contact-us', ['as'=>'contactus.store','uses'=>'ContactUSController@contactUSPost']);
+Route::get('/news','PagesController@news');
+Route::get('/newsdetails/{id}','PagesController@newsdetails');
+Route::get('/faqs','PagesController@faqs');
+Route::get('/connectivity','PagesController@connectivity');
+Route::get('/immigration','PagesController@immigration');
+Route::get('/visa','PagesController@visa');
 Route::get('/frontend/check_user_exist','PagesController@check_user_exist');
 Route::post('/patient-registration','PagesController@patient_registration');
 Route::post('/patient-login','PagesController@patient_login');
@@ -33,6 +41,7 @@ Route::group(['middleware' => ['front']], function() {
 	Route::post('update-password','PagesController@update_password');
 });
 //Route::get('/successstory','HelperController@successstory');
+
 
 //Backend routing start here
 Route::get('/admin', 'LoginController@index');
@@ -229,10 +238,13 @@ Route::group(['middleware' => ['admin']], function () {
     Route::delete('/admin/hospitals/delete/{id}','HospitalController@destroy');
     Route::get('/admin/hospitals/show/{id}','HospitalController@show');
     Route::get('/admin/hospitals/treatment/{id}','HospitalController@treatment');
-    Route::post('/admin/store_treatment/', 'HospitalController@store_treatment');
+    Route::post('/admin/hospitals/store_treatment/', 'HospitalController@store_treatment');
     Route::get('/admin/hospitals/medicaltest/{id}','HospitalController@medicaltest');
     Route::post('/admin/hospitals/store_medicaltest/','HospitalController@store_medicaltest');
     Route::post('/admin/ajaxstoremedicaltest/','HospitalController@ajaxstoremedicaltest');
+    Route::post('/admin/hospitals/gettestarr/','HospitalController@gettestarr');
+    Route::post('/admin/ajaxstoretreatment/','HospitalController@ajaxstoretreatment');
+    Route::post('/admin/hospitals/gettreatarr/','HospitalController@gettreatarr');
 
 
     //package type section
@@ -286,5 +298,27 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/medicaltest/edit/{id}','MedicaltestController@edit');
     Route::patch('/admin/medicaltest/update/{id}','MedicaltestController@update');
     Route::delete('/admin/medicaltest/delete/{id}','MedicaltestController@destroy');
+
+     /* contact section */
+    Route::get('/admin/contact','ContactUSController@index');
+    Route::get('/admin/contact/details/{id}','ContactUSController@details');
+
+    //faq category section
+    Route::get('/admin/faqcategories','FaqCategoryController@index');
+    Route::get('/admin/faqcategories/create','FaqCategoryController@create');
+    Route::post('/admin/faqcategories/store','FaqCategoryController@store');
+    Route::get('/admin/faqcategories/edit/{id}','FaqCategoryController@edit');
+    Route::patch('/admin/faqcategories/update/{id}','FaqCategoryController@update');
+    Route::delete('/admin/faqcategories/delete/{id}','FaqCategoryController@destroy');
+    Route::get('/admin/faqcategories/show/{id}','FaqCategoryController@show');
+
+    //faqs  section
+    Route::get('/admin/faq','FaqController@index');
+    Route::get('/admin/faq/create','FaqController@create');
+    Route::post('/admin/faq/store','FaqController@store');
+    Route::get('/admin/faq/edit/{id}','FaqController@edit');
+    Route::patch('/admin/faq/update/{id}','FaqController@update');
+    Route::delete('/admin/faq/delete/{id}','FaqController@destroy');
+    Route::get('/admin/faq/show/{id}','FaqController@show');
 
 });

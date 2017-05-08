@@ -22,27 +22,27 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
     );
 
     public static $prefixLengthsPsr4 = array (
-        'p' => 
+        'p' =>
         array (
             'phpDocumentor\\Reflection\\' => 25,
         ),
-        'X' => 
+        'X' =>
         array (
             'XdgBaseDir\\' => 11,
         ),
-        'W' => 
+        'W' =>
         array (
             'Webmozart\\Assert\\' => 17,
         ),
-        'U' => 
+        'U' =>
         array (
             'Unisharp\\Ckeditor\\' => 18,
         ),
-        'T' => 
+        'T' =>
         array (
             'Torann\\Currency\\' => 16,
         ),
-        'S' => 
+        'S' =>
         array (
             'Symfony\\Polyfill\\Util\\' => 22,
             'Symfony\\Polyfill\\Php56\\' => 23,
@@ -62,39 +62,39 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
             'Symfony\\Component\\Console\\' => 26,
             'SuperClosure\\' => 13,
         ),
-        'R' => 
+        'R' =>
         array (
             'Ramsey\\Uuid\\' => 12,
         ),
-        'P' => 
+        'P' =>
         array (
             'Psy\\' => 4,
             'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
             'PhpParser\\' => 10,
         ),
-        'M' => 
+        'M' =>
         array (
             'Monolog\\' => 8,
         ),
-        'L' => 
+        'L' =>
         array (
             'League\\Flysystem\\' => 17,
         ),
-        'I' => 
+        'I' =>
         array (
             'Intervention\\Image\\' => 19,
             'Illuminate\\' => 11,
         ),
-        'G' => 
+        'G' =>
         array (
             'GuzzleHttp\\Psr7\\' => 16,
         ),
-        'F' => 
+        'F' =>
         array (
             'Faker\\' => 6,
         ),
-        'D' => 
+        'D' =>
         array (
             'DougSisk\\CountryState\\' => 22,
             'Dotenv\\' => 7,
@@ -104,253 +104,253 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
             'Doctrine\\Common\\' => 16,
             'DeepCopy\\' => 9,
         ),
-        'C' => 
+        'C' =>
         array (
             'Cron\\' => 5,
             'Collective\\Html\\' => 16,
             'ClassPreloader\\' => 15,
             'Carbon\\' => 7,
         ),
-        'A' => 
+        'A' =>
         array (
             'App\\' => 4,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'phpDocumentor\\Reflection\\' => 
+        'phpDocumentor\\Reflection\\' =>
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
             1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
         ),
-        'XdgBaseDir\\' => 
+        'XdgBaseDir\\' =>
         array (
             0 => __DIR__ . '/..' . '/dnoegel/php-xdg-base-dir/src',
         ),
-        'Webmozart\\Assert\\' => 
+        'Webmozart\\Assert\\' =>
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
         ),
-        'Unisharp\\Ckeditor\\' => 
+        'Unisharp\\Ckeditor\\' =>
         array (
             0 => __DIR__ . '/..' . '/unisharp/laravel-ckeditor',
         ),
-        'Torann\\Currency\\' => 
+        'Torann\\Currency\\' =>
         array (
             0 => __DIR__ . '/..' . '/torann/currency/src',
         ),
-        'Symfony\\Polyfill\\Util\\' => 
+        'Symfony\\Polyfill\\Util\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-util',
         ),
-        'Symfony\\Polyfill\\Php56\\' => 
+        'Symfony\\Polyfill\\Php56\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php56',
         ),
-        'Symfony\\Polyfill\\Mbstring\\' => 
+        'Symfony\\Polyfill\\Mbstring\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
         ),
-        'Symfony\\Component\\Yaml\\' => 
+        'Symfony\\Component\\Yaml\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/yaml',
         ),
-        'Symfony\\Component\\VarDumper\\' => 
+        'Symfony\\Component\\VarDumper\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/var-dumper',
         ),
-        'Symfony\\Component\\Translation\\' => 
+        'Symfony\\Component\\Translation\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/translation',
         ),
-        'Symfony\\Component\\Routing\\' => 
+        'Symfony\\Component\\Routing\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/routing',
         ),
-        'Symfony\\Component\\Process\\' => 
+        'Symfony\\Component\\Process\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/process',
         ),
-        'Symfony\\Component\\HttpKernel\\' => 
+        'Symfony\\Component\\HttpKernel\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/http-kernel',
         ),
-        'Symfony\\Component\\HttpFoundation\\' => 
+        'Symfony\\Component\\HttpFoundation\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/http-foundation',
         ),
-        'Symfony\\Component\\Finder\\' => 
+        'Symfony\\Component\\Finder\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/finder',
         ),
-        'Symfony\\Component\\EventDispatcher\\' => 
+        'Symfony\\Component\\EventDispatcher\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/event-dispatcher',
         ),
-        'Symfony\\Component\\DomCrawler\\' => 
+        'Symfony\\Component\\DomCrawler\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/dom-crawler',
         ),
-        'Symfony\\Component\\Debug\\' => 
+        'Symfony\\Component\\Debug\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/debug',
         ),
-        'Symfony\\Component\\CssSelector\\' => 
+        'Symfony\\Component\\CssSelector\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/css-selector',
         ),
-        'Symfony\\Component\\Console\\' => 
+        'Symfony\\Component\\Console\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
         ),
-        'SuperClosure\\' => 
+        'SuperClosure\\' =>
         array (
             0 => __DIR__ . '/..' . '/jeremeamia/SuperClosure/src',
         ),
-        'Ramsey\\Uuid\\' => 
+        'Ramsey\\Uuid\\' =>
         array (
             0 => __DIR__ . '/..' . '/ramsey/uuid/src',
         ),
-        'Psy\\' => 
+        'Psy\\' =>
         array (
             0 => __DIR__ . '/..' . '/psy/psysh/src/Psy',
         ),
-        'Psr\\Log\\' => 
+        'Psr\\Log\\' =>
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
         ),
-        'Psr\\Http\\Message\\' => 
+        'Psr\\Http\\Message\\' =>
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
-        'PhpParser\\' => 
+        'PhpParser\\' =>
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
         ),
-        'Monolog\\' => 
+        'Monolog\\' =>
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
         ),
-        'League\\Flysystem\\' => 
+        'League\\Flysystem\\' =>
         array (
             0 => __DIR__ . '/..' . '/league/flysystem/src',
         ),
-        'Intervention\\Image\\' => 
+        'Intervention\\Image\\' =>
         array (
             0 => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image',
         ),
-        'Illuminate\\' => 
+        'Illuminate\\' =>
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
         ),
-        'GuzzleHttp\\Psr7\\' => 
+        'GuzzleHttp\\Psr7\\' =>
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
         ),
-        'Faker\\' => 
+        'Faker\\' =>
         array (
             0 => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker',
         ),
-        'DougSisk\\CountryState\\' => 
+        'DougSisk\\CountryState\\' =>
         array (
             0 => __DIR__ . '/..' . '/dougsisk/laravel-country-state/src',
         ),
-        'Dotenv\\' => 
+        'Dotenv\\' =>
         array (
             0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
         ),
-        'Doctrine\\Instantiator\\' => 
+        'Doctrine\\Instantiator\\' =>
         array (
             0 => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator',
         ),
-        'Doctrine\\Common\\Cache\\' => 
+        'Doctrine\\Common\\Cache\\' =>
         array (
             0 => __DIR__ . '/..' . '/doctrine/cache/lib/Doctrine/Common/Cache',
         ),
-        'Doctrine\\Common\\Annotations\\' => 
+        'Doctrine\\Common\\Annotations\\' =>
         array (
             0 => __DIR__ . '/..' . '/doctrine/annotations/lib/Doctrine/Common/Annotations',
         ),
-        'Doctrine\\Common\\' => 
+        'Doctrine\\Common\\' =>
         array (
             0 => __DIR__ . '/..' . '/doctrine/common/lib/Doctrine/Common',
         ),
-        'DeepCopy\\' => 
+        'DeepCopy\\' =>
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
         ),
-        'Cron\\' => 
+        'Cron\\' =>
         array (
             0 => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron',
         ),
-        'Collective\\Html\\' => 
+        'Collective\\Html\\' =>
         array (
             0 => __DIR__ . '/..' . '/laravelcollective/html/src',
         ),
-        'ClassPreloader\\' => 
+        'ClassPreloader\\' =>
         array (
             0 => __DIR__ . '/..' . '/classpreloader/classpreloader/src',
         ),
-        'Carbon\\' => 
+        'Carbon\\' =>
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
         ),
-        'App\\' => 
+        'App\\' =>
         array (
             0 => __DIR__ . '/../..' . '/app',
         ),
     );
 
     public static $prefixesPsr0 = array (
-        'P' => 
+        'P' =>
         array (
-            'Prophecy\\' => 
+            'Prophecy\\' =>
             array (
                 0 => __DIR__ . '/..' . '/phpspec/prophecy/src',
             ),
-            'Phine\\Exception' => 
+            'Phine\\Exception' =>
             array (
                 0 => __DIR__ . '/..' . '/phine/exception/src/lib',
             ),
-            'Phine\\Country' => 
+            'Phine\\Country' =>
             array (
                 0 => __DIR__ . '/..' . '/phine/country/src/lib',
             ),
         ),
-        'M' => 
+        'M' =>
         array (
-            'Mockery' => 
+            'Mockery' =>
             array (
                 0 => __DIR__ . '/..' . '/mockery/mockery/library',
             ),
         ),
-        'J' => 
+        'J' =>
         array (
-            'JakubOnderka\\PhpConsoleHighlighter' => 
+            'JakubOnderka\\PhpConsoleHighlighter' =>
             array (
                 0 => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src',
             ),
-            'JakubOnderka\\PhpConsoleColor' => 
+            'JakubOnderka\\PhpConsoleColor' =>
             array (
                 0 => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src',
             ),
         ),
-        'D' => 
+        'D' =>
         array (
-            'Doctrine\\DBAL\\' => 
+            'Doctrine\\DBAL\\' =>
             array (
                 0 => __DIR__ . '/..' . '/doctrine/dbal/lib',
             ),
-            'Doctrine\\Common\\Lexer\\' => 
+            'Doctrine\\Common\\Lexer\\' =>
             array (
                 0 => __DIR__ . '/..' . '/doctrine/lexer/lib',
             ),
-            'Doctrine\\Common\\Inflector\\' => 
+            'Doctrine\\Common\\Inflector\\' =>
             array (
                 0 => __DIR__ . '/..' . '/doctrine/inflector/lib',
             ),
-            'Doctrine\\Common\\Collections\\' => 
+            'Doctrine\\Common\\Collections\\' =>
             array (
                 0 => __DIR__ . '/..' . '/doctrine/collections/lib',
             ),
@@ -358,16 +358,26 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
     );
 
     public static $classMap = array (
+        'AddAboutToDoctors' => __DIR__ . '/../..' . '/database/migrations/2017_05_08_042422_add_about_to_doctors.php',
         'AddCurrencyIdColumsToHotelsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_25_091752_add_currency_id_colums_to_hotels_table.php',
         'AddNewsImageToNewsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_05_113435_add_news_image_to_news_table.php',
         'AddPasswordToPatientsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_05_102509_add_password_to_patients_table.php',
         'AddPermissionIdToPermissions' => __DIR__ . '/../..' . '/database/migrations/2017_04_25_125438_add_permission_id_to_permissions.php',
         'AddProcedureImageColumsToProceduresTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_24_130154_add_procedure_image_colums_to_procedures_table.php',
+
         'AddRememberTokenToPatientsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_08_073932_add_remember_token_to_patients_table.php',
         'AddStatusToProceduresTables' => __DIR__ . '/../..' . '/database/migrations/2017_04_13_074936_add_status_to_procedures_tables.php',
         'AddUserIdToDoctorsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_26_083459_add_user_id_to_doctors_table.php',
         'AddUserIdToPackageTypesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_27_132153_add_user_id_to_package_types_table.php',
         'AddUsernameToPatientsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_08_091825_add_username_to_patients_table.php',
+
+        'AddStatusContactusTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_08_102311_add_status_contactus_table.php',
+        'AddStatusToProceduresTables' => __DIR__ . '/../..' . '/database/migrations/2017_04_13_074936_add_status_to_procedures_tables.php',
+        'AddUserIdToDoctorsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_26_083459_add_user_id_to_doctors_table.php',
+        'AddUserIdToPackageTypesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_27_132153_add_user_id_to_package_types_table.php',
+        'AlterTableDoctorsChangeAbout' => __DIR__ . '/../..' . '/database/migrations/2017_05_08_050127_alter_table_doctors_change_about.php',
+        'AlterTableFaqsChangeFaqCategoryId' => __DIR__ . '/../..' . '/database/migrations/2017_05_08_131634_alter_table_faqs_change_faq_category_id.php',
+
         'AlterTableMedicalFacilitiesChangeDescription' => __DIR__ . '/../..' . '/database/migrations/2017_04_24_121844_alter_table_medical_facilities_change_description.php',
         'AlterTableMedicalTestCategoriesChangeCatId' => __DIR__ . '/../..' . '/database/migrations/2017_05_03_062700_alter_table_medical_test_categories_change_cat_id.php',
         'AlterTableMedicalTestCategoriesChangeCatName' => __DIR__ . '/../..' . '/database/migrations/2017_05_03_054857_alter_table_medical_test_categories_change_cat_name.php',
@@ -376,6 +386,7 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         'CreateBannersTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_21_124438_create_banners_table.php',
         'CreateConnectivitiesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_26_071329_create_connectivities_table.php',
         'CreateConnectivityServicesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_27_054504_create_connectivity_services_table.php',
+        'CreateContactUsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_08_060817_create_contact_us_table.php',
         'CreateCountryStateCityTables' => __DIR__ . '/../..' . '/database/migrations/2017_04_25_064451_create_country_state_city_tables.php',
         'CreateCuisinesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_21_085431_create_cuisines_table.php',
         'CreateCurrencyTable' => __DIR__ . '/../..' . '/database/migrations/2013_11_26_161501_create_currency_table.php',
@@ -383,6 +394,8 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         'CreateDoctorDegreeTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_26_082652_create_doctor_degree_table.php',
         'CreateDoctorProcedureTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_26_082629_create_doctor_procedure_table.php',
         'CreateDoctorsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_26_071406_create_doctors_table.php',
+        'CreateFaqCategoriesTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_08_085507_create_faq_categories_table.php',
+        'CreateFaqsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_08_093445_create_faqs_table.php',
         'CreateGenericmedicineCategoriesTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_02_085242_create_genericmedicine_categories_table.php',
         'CreateGenericmedicinesTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_02_061235_create_genericmedicines_table.php',
         'CreateHospitalMedicaltestsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_04_102001_create_hospital_medicaltests_table.php',

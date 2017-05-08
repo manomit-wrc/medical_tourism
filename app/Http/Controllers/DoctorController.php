@@ -33,6 +33,7 @@ class DoctorController extends Controller
         Validator::make($request->all(), [
           'first_name' => 'required|max:32',
           'last_name' => 'required|max:32',
+          'about' => 'required',
           'street_address' => 'required',
           'country_id' => 'required',
           'state_id' => 'required',
@@ -77,6 +78,7 @@ class DoctorController extends Controller
         $doctors = new Doctor();
         $doctors->first_name = $request->first_name;
         $doctors->last_name = $request->last_name;
+        $doctors->about = $request->about;
         $doctors->street_address = $request->street_address;
         $doctors->user_id = Auth::guard('admin')->user()->id;
         $doctors->country_id = $request->country_id;
@@ -122,6 +124,7 @@ class DoctorController extends Controller
       Validator::make($request->all(), [
         'first_name' => 'required|max:32',
         'last_name' => 'required|max:32',
+        'about' => 'required',
         'street_address' => 'required',
         'country_id' => 'required',
         'state_id' => 'required',
@@ -168,6 +171,7 @@ class DoctorController extends Controller
 
           $doctors->first_name = $request->first_name;
           $doctors->last_name = $request->last_name;
+          $doctors->about = $request->about;
           $doctors->street_address = $request->street_address;
           $doctors->user_id = Auth::guard('admin')->user()->id;
           $doctors->country_id = $request->country_id;

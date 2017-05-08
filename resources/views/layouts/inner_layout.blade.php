@@ -11,6 +11,9 @@
                     <div class="row">
                       @if(Request::segment(1) != 'enquiry' && Request::segment(1) != 'profile' && Request::segment(1) != 'change-password')
                        @include('elements.leftpanel')
+                        @if(Request::segment(1) == 'doctordetail')
+                          @include('elements.leftpaneldoctor')
+                        @endif
                       @endif
       	               @yield('content')
                     </div>

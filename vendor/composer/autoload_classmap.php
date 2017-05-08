@@ -6,16 +6,26 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddAboutToDoctors' => $baseDir . '/database/migrations/2017_05_08_042422_add_about_to_doctors.php',
     'AddCurrencyIdColumsToHotelsTable' => $baseDir . '/database/migrations/2017_04_25_091752_add_currency_id_colums_to_hotels_table.php',
     'AddNewsImageToNewsTable' => $baseDir . '/database/migrations/2017_05_05_113435_add_news_image_to_news_table.php',
     'AddPasswordToPatientsTable' => $baseDir . '/database/migrations/2017_05_05_102509_add_password_to_patients_table.php',
     'AddPermissionIdToPermissions' => $baseDir . '/database/migrations/2017_04_25_125438_add_permission_id_to_permissions.php',
     'AddProcedureImageColumsToProceduresTable' => $baseDir . '/database/migrations/2017_04_24_130154_add_procedure_image_colums_to_procedures_table.php',
+
     'AddRememberTokenToPatientsTable' => $baseDir . '/database/migrations/2017_05_08_073932_add_remember_token_to_patients_table.php',
     'AddStatusToProceduresTables' => $baseDir . '/database/migrations/2017_04_13_074936_add_status_to_procedures_tables.php',
     'AddUserIdToDoctorsTable' => $baseDir . '/database/migrations/2017_04_26_083459_add_user_id_to_doctors_table.php',
     'AddUserIdToPackageTypesTable' => $baseDir . '/database/migrations/2017_04_27_132153_add_user_id_to_package_types_table.php',
     'AddUsernameToPatientsTable' => $baseDir . '/database/migrations/2017_05_08_091825_add_username_to_patients_table.php',
+
+    'AddStatusContactusTable' => $baseDir . '/database/migrations/2017_05_08_102311_add_status_contactus_table.php',
+    'AddStatusToProceduresTables' => $baseDir . '/database/migrations/2017_04_13_074936_add_status_to_procedures_tables.php',
+    'AddUserIdToDoctorsTable' => $baseDir . '/database/migrations/2017_04_26_083459_add_user_id_to_doctors_table.php',
+    'AddUserIdToPackageTypesTable' => $baseDir . '/database/migrations/2017_04_27_132153_add_user_id_to_package_types_table.php',
+    'AlterTableDoctorsChangeAbout' => $baseDir . '/database/migrations/2017_05_08_050127_alter_table_doctors_change_about.php',
+    'AlterTableFaqsChangeFaqCategoryId' => $baseDir . '/database/migrations/2017_05_08_131634_alter_table_faqs_change_faq_category_id.php',
+
     'AlterTableMedicalFacilitiesChangeDescription' => $baseDir . '/database/migrations/2017_04_24_121844_alter_table_medical_facilities_change_description.php',
     'AlterTableMedicalTestCategoriesChangeCatId' => $baseDir . '/database/migrations/2017_05_03_062700_alter_table_medical_test_categories_change_cat_id.php',
     'AlterTableMedicalTestCategoriesChangeCatName' => $baseDir . '/database/migrations/2017_05_03_054857_alter_table_medical_test_categories_change_cat_name.php',
@@ -24,6 +34,7 @@ return array(
     'CreateBannersTable' => $baseDir . '/database/migrations/2017_04_21_124438_create_banners_table.php',
     'CreateConnectivitiesTable' => $baseDir . '/database/migrations/2017_04_26_071329_create_connectivities_table.php',
     'CreateConnectivityServicesTable' => $baseDir . '/database/migrations/2017_04_27_054504_create_connectivity_services_table.php',
+    'CreateContactUsTable' => $baseDir . '/database/migrations/2017_05_08_060817_create_contact_us_table.php',
     'CreateCountryStateCityTables' => $baseDir . '/database/migrations/2017_04_25_064451_create_country_state_city_tables.php',
     'CreateCuisinesTable' => $baseDir . '/database/migrations/2017_04_21_085431_create_cuisines_table.php',
     'CreateCurrencyTable' => $baseDir . '/database/migrations/2013_11_26_161501_create_currency_table.php',
@@ -31,6 +42,8 @@ return array(
     'CreateDoctorDegreeTable' => $baseDir . '/database/migrations/2017_04_26_082652_create_doctor_degree_table.php',
     'CreateDoctorProcedureTable' => $baseDir . '/database/migrations/2017_04_26_082629_create_doctor_procedure_table.php',
     'CreateDoctorsTable' => $baseDir . '/database/migrations/2017_04_26_071406_create_doctors_table.php',
+    'CreateFaqCategoriesTable' => $baseDir . '/database/migrations/2017_05_08_085507_create_faq_categories_table.php',
+    'CreateFaqsTable' => $baseDir . '/database/migrations/2017_05_08_093445_create_faqs_table.php',
     'CreateGenericmedicineCategoriesTable' => $baseDir . '/database/migrations/2017_05_02_085242_create_genericmedicine_categories_table.php',
     'CreateGenericmedicinesTable' => $baseDir . '/database/migrations/2017_05_02_061235_create_genericmedicines_table.php',
     'CreateHospitalMedicaltestsTable' => $baseDir . '/database/migrations/2017_05_04_102001_create_hospital_medicaltests_table.php',

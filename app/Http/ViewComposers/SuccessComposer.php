@@ -6,6 +6,6 @@ use App\SuccessStories;
 Class SuccessComposer {
 	public function compose(View $view)
 	{
-    $view->with('successstory_lists', SuccessStories::all());
+      $view->with('successstory_lists', SuccessStories::all());
 	}
 }

@@ -15,6 +15,9 @@ class GeneralServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer('*', 'App\Http\ViewComposers\SuccessComposer');
+        View::composer('*', 'App\Http\ViewComposers\ProvidertypeComposer');
+        View::composer('*', 'App\Http\ViewComposers\TreatmentComposer');
+        View::composer('*', 'App\Http\ViewComposers\CityComposer');
     }
 
     /**

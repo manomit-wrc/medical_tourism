@@ -54,6 +54,15 @@ a, button{
 	text-decoration: none;
 }
 
+.servicesbox h4 a{
+	color: #000;
+}
+
+.servicesbox h4 a:hover{
+	color: #666;
+	text-decoration: none;
+}
+
 
 .rightlinks ul{
 	margin: 0;
@@ -904,6 +913,7 @@ p{
 .servicesbox img{
 	width: 100%;
 	border: 4px solid #575757;
+	max-height: 170px;
 }
 
 .servicesbox h4{
@@ -1133,6 +1143,7 @@ label{
 	width: 100%;
 	border: 4px solid #575757;
 	margin-bottom: 8px;
+	max-height: 214px;
 }
 
 
@@ -1583,4 +1594,92 @@ label.error {
 	.inputfile-6 + label strong {
 		display: block;
 	}
+}
+
+
+.address{
+	width: 100%;
+	padding-left: 0;
+	background: #fff;
+	padding: 10px;
+}
+
+.address li{
+	width: 100%;
+	list-style: none;
+	font-size: 13px;
+	padding: 6px 0;
+	text-align: left;
+}
+
+.address li strong{
+	width: 30%;
+	display: inline-block;
+}
+
+.number{
+	width: 100%;
+	padding-left: 0;
+	background: #fff;
+	padding: 10px;
+}
+
+.number li{
+	width: 100%;
+	list-style: none;
+	font-size: 13px;
+	padding: 6px 0;
+	text-align: left;
+}
+
+.number li strong{
+	width: 60%;
+	display: inline-block;
+}
+
+.panel-body ul li{
+	background:url(../images/arrow.png) left center no-repeat;
+	list-style: none;
+	padding-left: 15px;
+	margin: 8px 0;
+
+}
+
+.panel-body ul {
+	padding: 0;
+}
+
+.tablebg{
+	background: #fff;
+}
+
+
+.table_topbg{
+	background: #ce4c7d;
+	color: #fff;
+}
+
+.table_topbg th{
+	text-align: center;
+	vertical-align: middle !important;
+}
+
+
+.country_name{
+	width: 100%;
+	height: 100px;
+	background: #ce4c7d;
+	color: #fff;
+	font-weight: bold;
+	text-decoration: none;
+	text-align: center;
+	line-height: 100px;
+	display: block;
+	margin-bottom: 30px;
+}
+
+.country_name:hover{
+	background: #691134;
+	text-decoration: none;
+	color: #fff;
 }

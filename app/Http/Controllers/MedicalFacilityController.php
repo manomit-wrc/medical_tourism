@@ -51,7 +51,7 @@ class MedicalFacilityController extends Controller
           $this->validate($request, [
           	'name' => 'required',
             'description' => 'required',
-            'facility_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=243,min_height=149',
+            'facility_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=745,min_height=214',
           ]);
 
 
@@ -68,17 +68,27 @@ class MedicalFacilityController extends Controller
                 $fileName = time().'_'.$file->getClientOriginalName() ;
 
                 //thumb destination path
-                $destinationPath = public_path().'/uploads/medicalfacilities/thumb' ;
+                $destinationPathThumb1 = public_path().'/uploads/medicalfacilities/thumb_243_149' ;
+                $destinationPathThumb2 = public_path().'/uploads/medicalfacilities/thumb_352_170' ;
+                $destinationPathThumb3 = public_path().'/uploads/medicalfacilities/thumb_745_214' ;
 
                 $img = Image::make($file->getRealPath());
 
                 $img->resize(243, 149, function ($constraint){
                     $constraint->aspectRatio();
-                })->save($destinationPath.'/'.$fileName);
+                })->save($destinationPathThumb1.'/'.$fileName);
+
+                $img->resize(352, 170, function ($constraint){
+                    $constraint->aspectRatio();
+                })->save($destinationPathThumb2.'/'.$fileName);
+
+                $img->resize(745, 214, function ($constraint){
+                    $constraint->aspectRatio();
+                })->save($destinationPathThumb3.'/'.$fileName);
 
                 //original destination path
-                $destinationPath = public_path().'/uploads/medicalfacilities/' ;
-                $file->move($destinationPath,$fileName);
+                $destinationPathOriginal = public_path().'/uploads/medicalfacilities/' ;
+                $file->move($destinationPathOriginal,$fileName);
 
                 $medfacobj->facility_image = $fileName ;
             }
@@ -128,7 +138,7 @@ class MedicalFacilityController extends Controller
         $this->validate($request, [
           	'name' => 'required',
             'description' => 'required',
-            'facility_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=243,min_height=149',
+            'facility_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=745,min_height=214',
         ]);
 
         // Getting all data after success validation.
@@ -144,17 +154,27 @@ class MedicalFacilityController extends Controller
             $fileName = time().'_'.$file->getClientOriginalName() ;
 
             //thumb destination path
-            $destinationPath = public_path().'/uploads/medicalfacilities/thumb' ;
+            $destinationPathThumb1 = public_path().'/uploads/medicalfacilities/thumb_243_149' ;
+            $destinationPathThumb2 = public_path().'/uploads/medicalfacilities/thumb_352_170' ;
+            $destinationPathThumb3 = public_path().'/uploads/medicalfacilities/thumb_745_214' ;
 
             $img = Image::make($file->getRealPath());
 
-            $img->resize(100, 100, function ($constraint){
+            $img->resize(243, 149, function ($constraint){
                 $constraint->aspectRatio();
-            })->save($destinationPath.'/'.$fileName);
+            })->save($destinationPathThumb1.'/'.$fileName);
+
+            $img->resize(352, 170, function ($constraint){
+                $constraint->aspectRatio();
+            })->save($destinationPathThumb2.'/'.$fileName);
+
+             $img->resize(745,214, function ($constraint){
+                $constraint->aspectRatio();
+            })->save($destinationPathThumb3.'/'.$fileName);
 
             //original destination path
-            $destinationPath = public_path().'/uploads/medicalfacilities/' ;
-            $file->move($destinationPath,$fileName);
+            $destinationPathoriginal = public_path().'/uploads/medicalfacilities/' ;
+            $file->move($destinationPathoriginal,$fileName);
 
             $facmedobj->banner_image = $fileName ;
         }
