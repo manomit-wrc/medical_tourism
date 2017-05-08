@@ -52,9 +52,11 @@ class PagesController extends Controller
 
 	public function doctordetail($id)
 	{
-		$doctor_data = Doctor::findOrFail($id);
-        return view('pages.doctordetail')->with('doctor_data',$doctor_data);
-		//return view('pages.doctors');
+		$data['doctor_details'] = Doctor::findOrFail($id);
+		$data['doctor_procedure_details'] = Doctor::with('procedures')->where('id',$id)->get()->toArray();
+        $data['doctor_degree_details'] = Doctor::with('degrees')->where('id',$id)->get()->toArray();
+		//echo "<pre>"; print_r($data); die;
+        return view('pages.doctordetail',$data);
 	}
 
 	public function contact()

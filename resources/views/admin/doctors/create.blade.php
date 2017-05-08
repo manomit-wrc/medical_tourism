@@ -48,6 +48,15 @@
                       <span class="text-danger">{{ $errors->first('last_name') }}</span>
                     </div>
                   </div>
+                  <!-- textarea input -->
+                  <div class="col-md-6">
+                  <div class="form-group {{ $errors->has('about') ? 'has-error' : '' }}">
+                    {!! Html::decode(Form::label('about','Description: <span style="color:red;">*</span>')) !!}
+                    {!! Form::textarea('about','',array('class'=>'form-control ','id'=>'textarea_id','placeholder'=>'Enter about doctor')) !!}
+                    <span class="text-danger">{{ $errors->first('about') }}</span>
+                  </div>
+                   </div>
+                  <!-- /.textarea input -->
                   <div class="col-md-6">
                     <div class="form-group {{ $errors->has('street_address') ? 'has-error' : '' }}">
                       <label for="name">Street Address: <span style="color:red;">*</span></label>

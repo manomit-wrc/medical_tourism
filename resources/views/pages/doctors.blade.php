@@ -11,7 +11,7 @@
                 <div class="servicesbox">
                     <img src="{{url('/uploads/doctors/thumb/'.$doctor_data->avators)}}" alt="doctor Image">
                     <h4>{{ $doctor_data->first_name.' '.$doctor_data->last_name }}</h4>
-                    <p>Lorem Ipsum is simply dummy text of the printing.</p>
+                    <p>{!! \Illuminate\Support\Str::words($doctor_data->about, 8,'....')  !!}</p>
                     <!--<a class="viewdetails" href="details.html">VIEW MORE</a>-->
                     <a href="#" class="socialD"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                     <a href="#" class="socialD"><i class="fa fa-twitter" aria-hidden="true"></i></a>
