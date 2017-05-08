@@ -12,5 +12,4 @@ class MedicalTestCategories extends Model
     {
         return $this->hasMany('App\Medicaltest');
     }
-
 }
