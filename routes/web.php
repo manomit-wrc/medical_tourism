@@ -286,4 +286,22 @@ Route::group(['middleware' => ['admin']], function () {
      /* contact section */
     Route::get('/admin/contact','ContactUSController@index');    
 
+    //faq category section
+    Route::get('/admin/faqcategories','FaqCategoryController@index');
+    Route::get('/admin/faqcategories/create','FaqCategoryController@create');
+    Route::post('/admin/faqcategories/store','FaqCategoryController@store');
+    Route::get('/admin/faqcategories/edit/{id}','FaqCategoryController@edit');
+    Route::patch('/admin/faqcategories/update/{id}','FaqCategoryController@update');
+    Route::delete('/admin/faqcategories/delete/{id}','FaqCategoryController@destroy');
+    Route::get('/admin/faqcategories/show/{id}','FaqCategoryController@show');
+
+    //faqs  section
+    Route::get('/admin/faqcategories','FaqCategoryController@index');
+    Route::get('/admin/faqcategories/create','FaqCategoryController@create');
+    Route::post('/admin/faqcategories/store','FaqCategoryController@store');
+    Route::get('/admin/faqcategories/edit/{id}','FaqCategoryController@edit');
+    Route::patch('/admin/faqcategories/update/{id}','FaqCategoryController@update');
+    Route::delete('/admin/faqcategories/delete/{id}','FaqCategoryController@destroy');
+    Route::get('/admin/faqcategories/show/{id}','FaqCategoryController@show');
+
 });

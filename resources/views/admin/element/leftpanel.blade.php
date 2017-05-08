@@ -140,8 +140,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            @if($user_view_composer->hasRole('admin/successstories',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'successstories' ? 'active' : null }}"><a href="{!!URL::to('/admin/successstories')!!}"><i class="fa fa-question"></i>Faq category</a></li>@endif
-            @if($user_view_composer->hasRole('admin/successstories',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'successstories' ? 'active' : null }}"><a href="{!!URL::to('/admin/successstories')!!}"><i class="fa fa-question"></i>Faq</a></li>@endif
+            @if($user_view_composer->hasRole('admin/faqcategories',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'faqcategories' ? 'active' : null }}"><a href="{!!URL::to('/admin/faqcategories')!!}"><i class="fa fa-question"></i>Faq category</a></li>@endif
+            @if($user_view_composer->hasRole('admin/faqs',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'faqs' ? 'active' : null }}"><a href="{!!URL::to('/admin/faqs')!!}"><i class="fa fa-question"></i>FAQs</a></li>@endif
           </ul>
         </li>
 
