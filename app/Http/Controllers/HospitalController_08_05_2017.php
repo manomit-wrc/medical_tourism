@@ -9,7 +9,6 @@ use App\HotelClassType;
 use App\Country;
 use App\State;
 use App\City;
-use App\Procedure;
 use App\Treatment;
 use App\HospitalTreatment;
 use App\MedicalTestCategories;
@@ -144,94 +143,48 @@ class HospitalController extends Controller
      */
     public function treatment($id)
     {
-      $data = array();
-      $proceduredata = Procedure::all();
-      $hospitaltreatment = HospitalTreatment::where('hospital_id',$id)->get()->toArray();
-      // echo "<pre>"; print_r($hospitaltreatment); die;
-      foreach ($hospitaltreatment as $key => $value) {
-          $data['hospitaltreatment_array'][] = $value['treatment_id'];
-      }
-     // echo "<pre>"; print_r($data['hospitaltreatment_array']); die;     
-      foreach($proceduredata as $key => $val)
-      {      
-        $data1[] = array(
-          'cat_id' => $val->id,
-          'catname' => $val->name,
-          'treatarr' => $this->gettreatarr($val->id)
-        );
-      }
-        $data['proctreatdata'] =$data1;
-       /* echo "<pre>"; print_r($data1); die;*/
-       // echo "<pre>"; print_r($data['proctreatdata']); die;
-        //return view('admin.hospitals.treatment',compact('treatment_datas','hos_treat_datas'));
-        return view('admin.hospitals.treatment',$data);
-    }
-
-    public function gettreatarr($procedure_id) {      
-     $tratmentdta = Treatment::where('procedure_id',$procedure_id)->get()->toArray();
-        //echo "<pre>"; print_r($tratmentdta); die;
-       $data = array();
-        foreach($tratmentdta as $keyy => $vall)
-        {      
-          $data[] = array(
-            'id' => $vall['id'],
-            'name' => $vall['name'],          
-          );
+        $treatment_datas = Treatment::all();
+        //echo "<pre>"; print_r($treatment_datas); die();
+        $hospital_treatment_datas = Hospital::with('treatments')->where('id',$id)->get()->toArray();
+        //echo "<pre>"; print_r($hospital_treatment_datas); die();
+        foreach ($hospital_treatment_datas[0]['treatments'] as $key => $value) {
+          $hos_treat_datas['treatment_array'][] = $value['id'];
         }
-        /*echo "<pre>"; print_r($data); die;*/
-       return $data; 
-    }
-
-    public function ajaxstoretreatment(Request $request) {      
-      $name = $request->name;
-      $procedure_id = $request->procedure_id;
-      $existRows = \App\Treatment::where('procedure_id', '=', $procedure_id)->where('name', '=', $name)->get();
-        /*echo count($existRows); die;*/
-       if(count($existRows)>0)
-        {
-          $returnArr = array('status'=>'3','msg'=>'Treatment name already exists on this Procedure');
-        } else{      
-        $mt = new Treatment();
-        $mt->procedure_id = $procedure_id;
-        $mt->name = $name; 
-        $mt->created_at = date('Y-m-d H:i:s'); 
-        $mt->updated_at = date('Y-m-d H:i:s');         
-        $mt->save();
-        $lastinsert_id = $mt->id;
-        if($lastinsert_id) {              
-          $returnArr = array('status'=>'1','lastinsert_id'=>$lastinsert_id,'name'=>$name,'msg'=>'Inserted Successfully');
-        }else{
-          $returnArr = array('status'=>'0','msg'=>'Inserted Faliure');
-        } 
-      }    
-        echo json_encode($returnArr);
-        die(); 
+        //echo "<pre>"; print_r($hos_treat_datas); die();
+        return view('admin.hospitals.treatment',compact('treatment_datas','hos_treat_datas'));
     }
 
     public function store_treatment(Request $request) {
-      //echo "<pre>"; print_r($request->all()); die;
-      $hospital_id = $request->hospital_id;
-      $proceduretreatmentArr = $request->proceduretreatmentArr;
-      if(count($proceduretreatmentArr) > 0){      
+      if($request->ajax()) { 
+        //echo $request->hospital_id;  die;
+        //echo "<pre>"; print_r($request->treatmentArr); die;
+        $hospital_id = $request->hospital_id;
+        //echo $hospital_id; die;
         $existRows = \App\HospitalTreatment::where('hospital_id', '=', $hospital_id)->get();
         //echo "<pre>"; print_r($existRows); die;
         if(count($existRows)>0)
         {
-          $affectedRows = \App\HospitalTreatment::where('hospital_id', '=', $hospital_id)->delete();        
-        }
-        foreach ($proceduretreatmentArr as $key => $value) {
+          $affectedRows = \App\HospitalTreatment::where('hospital_id', '=', $hospital_id)->delete();
+        //echo "<pre>"; print_r($affectedRows); die;
+        }  
+        
+        $treatmentArr = $request->treatmentArr;
+        foreach ($treatmentArr as $key => $value) {
           $data[] = [
                 'hospital_id' => $hospital_id,
-                'treatment_id' => $value               
+                'treatment_id' => $value['treatment_id']
             ];
         }
         //echo "<pre>"; print_r($data); die;
         $result = \App\HospitalTreatment::insert($data);
-        Session::flash('message', 'Successfully added!');
-        return Redirect::to('/admin/hospitals/treatment/'.$hospital_id);
-      }else{
-        Session::flash('error_message', 'Please select Treatment!');
-        return Redirect::to('/admin/hospitals/treatment/'.$hospital_id);
+        //echo "<pre>"; print_r($result); die;
+
+        if($result) {
+          return response()->json(['status' => '1']);
+        }
+        else {
+          return response()->json(['status' => '0']);
+        }
       }
     }
 

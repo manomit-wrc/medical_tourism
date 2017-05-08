@@ -221,11 +221,13 @@ Route::group(['middleware' => ['admin']], function () {
     Route::delete('/admin/hospitals/delete/{id}','HospitalController@destroy');
     Route::get('/admin/hospitals/show/{id}','HospitalController@show');
     Route::get('/admin/hospitals/treatment/{id}','HospitalController@treatment');
-    Route::post('/admin/store_treatment/', 'HospitalController@store_treatment');
+    Route::post('/admin/hospitals/store_treatment/', 'HospitalController@store_treatment');
     Route::get('/admin/hospitals/medicaltest/{id}','HospitalController@medicaltest');
     Route::post('/admin/hospitals/store_medicaltest/','HospitalController@store_medicaltest');
     Route::post('/admin/ajaxstoremedicaltest/','HospitalController@ajaxstoremedicaltest');
     Route::post('/admin/hospitals/gettestarr/','HospitalController@gettestarr');
+    Route::post('/admin/ajaxstoretreatment/','HospitalController@ajaxstoretreatment');
+    Route::post('/admin/hospitals/gettreatarr/','HospitalController@gettreatarr');
     
 
     //package type section
