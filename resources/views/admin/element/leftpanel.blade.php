@@ -60,6 +60,7 @@
             @if($user_view_composer->hasRole('admin/medicalfacility',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'medicalfacility' ? 'active' : null }}" ><a href="{!!URL::to('/admin/medicalfacility')!!}"><i class="fa fa-circle-o"></i>Medical facility master</a></li>@endif
             @if($user_view_composer->hasRole('admin/banner',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'banner' ? 'active' : null }}" ><a href="{!!URL::to('/admin/banner')!!}"><i class="fa fa-image"></i>Banner management</a></li>@endif
             @if($user_view_composer->hasRole('admin/role',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'role' ? 'active' : null }}"><a href="/admin/role"><i class="fa fa-tasks"></i>Role management</a></li>@endif
+            @if($user_view_composer->hasRole('admin/contact',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'contact' ? 'active' : null }}"><a href="/admin/contact"><i class="fa fa-tasks"></i>Contact</a></li>@endif
           </ul>
         </li>
 
