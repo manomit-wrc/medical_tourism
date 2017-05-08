@@ -47,7 +47,7 @@
                       <tr>
                         <td>{{ $succstory_lists->title }}</td>
                         <td>
-                          <img src="{{url('/uploads/successstories/thumb/'.$succstory_lists->story_image)}}" alt="Procedure Image" >
+                          <img src="{{url('/uploads/successstories/thumb_200_200/'.$succstory_lists->story_image)}}" alt="Procedure Image" >
                         </td>
                         <td>
                           <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->

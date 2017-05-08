@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\MedicalFacility;
 use App\News;
 use App\Doctor;
+use App\Faq;
+
 
 class PagesController extends Controller
 {
@@ -76,6 +78,37 @@ class PagesController extends Controller
 		$news_data = News::findOrFail($id);
 		//echo "<pre>"; print_r($news_data); die;
         return view('pages.newsdetails')->with('news_data',$news_data);
+	}
+
+	public function faqs()
+	{
+        $faqs_lists = Faq::all();
+        //echo "<pre>"; print_r($faqs_lists); die;
+        return view('pages.faqs')->with('faqs_lists',$faqs_lists);
+	}
+
+	public function connectivity()
+	{
+        //$faqs_lists = Faq::all();
+        //echo "<pre>"; print_r($faqs_lists); die;
+        //return view('pages.faqs')->with('faqs_lists',$faqs_lists);
+        return view('pages.connectivity');
+	}
+
+	public function immigration()
+	{
+        //$faqs_lists = Faq::all();
+        //echo "<pre>"; print_r($faqs_lists); die;
+        //return view('pages.faqs')->with('faqs_lists',$faqs_lists);
+        return view('pages.immigration');
+	}
+
+	public function visa()
+	{
+        //$faqs_lists = Faq::all();
+        //echo "<pre>"; print_r($faqs_lists); die;
+        //return view('pages.faqs')->with('faqs_lists',$faqs_lists);
+        return view('pages.visa');
 	}
 
 

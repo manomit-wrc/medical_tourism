@@ -12,7 +12,7 @@
                                         @foreach($successstory_lists as $successstory_lists)
                                           <div class="testimonial">
                                               <div class="pic">
-                                                  <img src="{{url('/uploads/successstories/'.$successstory_lists->story_image)}}" alt="" class="img-responsive">
+                                                  <img src="{{url('/uploads/successstories/thumb_200_200/'.$successstory_lists->story_image)}}" alt="" class="img-responsive">
                                               </div>
 
                                               <p class="description">
@@ -50,6 +50,7 @@
                               <li><a href="{!!URL::to('/enquiry')!!}">Enquiry</a></li>
                               <li><a href="{!!URL::to('/news')!!}">News</a></li>
                               <li><a href="{!!URL::to('/contact')!!}">Contact Us</a></li>
+                              <li><a href="{!!URL::to('/faqs')!!}">FAQ</a></li>
                           </ul>
                       </div>
                       
@@ -99,7 +100,7 @@
                               <div class="row">
                               <div class="col-md-6 col-sm-6">
                                   <div class="copy">
-                                  Copyright 2017. All rights reserved
+                                  Copyright <script>document.write(new Date().getFullYear())</script>. All rights reserved
                                   </div>
                               </div>
 

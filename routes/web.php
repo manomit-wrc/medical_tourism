@@ -23,6 +23,10 @@ Route::get('/contact','PagesController@contact');
 Route::post('contact-us', ['as'=>'contactus.store','uses'=>'ContactUSController@contactUSPost']);
 Route::get('/news','PagesController@news');
 Route::get('/newsdetails/{id}','PagesController@newsdetails');
+Route::get('/faqs','PagesController@faqs');
+Route::get('/connectivity','PagesController@connectivity');
+Route::get('/immigration','PagesController@immigration');
+Route::get('/visa','PagesController@visa');
 Route::get('/frontend/check_user_exist','PagesController@check_user_exist');
 Route::post('/patient-registration','PagesController@patient_registration');
 
