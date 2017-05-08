@@ -15,54 +15,6 @@
         <li class="active">Medical Test List</li>
       </ol>
     </section>
-<style>
-.location {
-    width: 100%;
-    background: #fff;
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    padding: 5px;
-    height: 242px;
-    overflow-x: hidden;
-    overflow-y: scroll;
-}
-
-.tree, .tree ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.tree li {
-    margin: 0;
-    padding: 0 1em;
-    line-height: 2em;
-    color: #369;
-    position: relative;
-    color: #333;
-    font-size: 12px;
-  text-align: left;
-}
-
-.tree li ul li {
-    margin: 0;
-    padding: 0 0 0 2.5em;
-    line-height: 2em;
-    color: #369;
-    position: relative;
-    color: #333;
-    font-size: 12px;
-  text-align: left;
-}
-
-.tree li input[type=checkbox]{
-  margin:0 5px 0 0;
-}
-
-.tree li i{
-  font-size: 10px;
-  top: -2px;
-}
-</style>
   <!-- Main content -->
      <section class="content">
       <div class="row">
@@ -96,7 +48,7 @@
                             {{ $val1['testname'] }}
                           </li>
                           @endforeach                       
-                         <li class="last-child{{ $val['cat_id'] }}" style="cursor: pointer;" onclick="addnewmedicaltest({{ $val['cat_id'] }})">Add New</li>                         
+                         <li class="last-child{{ $val['cat_id'] }}"><a href="javascript:void(0)"  style="cursor: pointer; text-decoration:none;" onclick="addnewmedicaltest({{ $val['cat_id'] }})">Add New</a></li>                         
                         </ul>
                       </li>
                     @endforeach                          

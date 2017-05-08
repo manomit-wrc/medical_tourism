@@ -22,7 +22,8 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   {!! Html::style('storage/admin/css/_all-skins.min.css') !!}
-
+  <!-- custom css add here. -->
+  {!! Html::style('storage/admin/css/custom.css') !!}
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
