@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\ContactUS;
+use Input;
+use Redirect;
+use Session;
+use Validator;
 
 class ContactUSController extends Controller
 {
@@ -13,11 +18,10 @@ class ContactUSController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function contactUS()
-
+    public function contact()
     {
 
-        return view('contactUS');
+        return view('pages.contact');
 
     }
 
@@ -29,24 +33,22 @@ class ContactUSController extends Controller
      */
 
     public function contactUSPost(Request $request)
-
     {
 
         $this->validate($request, [
-
         		'name' => 'required',
-
         		'email' => 'required|email',
-
+        		'mobile_no' => 'required',
+        		'subject' => 'required',
         		'message' => 'required'
-
         	]);
 
 
         ContactUS::create($request->all());
 
-
-        return back()->with('success', 'Thanks for contacting us!');
+        Session::flash('message', 'Thanks for contacting us!');
+        return Redirect::to('/contact');
+        //return back()->with('success', 'Thanks for contacting us!');
 
     }
 }

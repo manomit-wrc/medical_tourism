@@ -6215,3 +6215,12 @@ Stack trace:
 [2017-05-08 05:59:13] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected ';'' in C:\xampp\htdocs\medical_tourism\storage\framework\views\da053ea5eaa73ce008525df03a9bfcbd98734f45.php:24
 Stack trace:
 #0 {main}  
+[2017-05-08 07:06:38] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'fa' (T_STRING), expecting ')'' in C:\xampp\htdocs\medical_tourism\storage\framework\views\d824d4fe54b9e6a09d741bab2d628cc6c9c54c83.php:60
+Stack trace:
+#0 {main}  
+[2017-05-08 07:20:06] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'App\Http\Controllers\Session' not found' in C:\xampp\htdocs\medical_tourism\app\Http\Controllers\ContactUSController.php:45
+Stack trace:
+#0 {main}  
+[2017-05-08 07:20:41] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'App\Http\Controllers\Redirect' not found' in C:\xampp\htdocs\medical_tourism\app\Http\Controllers\ContactUSController.php:47
+Stack trace:
+#0 {main}  
