@@ -24,7 +24,7 @@ class FaqController extends Controller
      * @return Response
      */
     public function index() {
-        $faqlist = Faq::with('faqcategory')->orderBy('faq_category_id')->get()->toArray();        
+        $faqlist = Faq::with('faqcategory')->orderBy('faqcategory_id')->get()->toArray();        
         $data['faqlist'] = $faqlist;
        /* echo "<pre>";
         print_r($data['faqlist']);       
@@ -86,7 +86,7 @@ class FaqController extends Controller
     {
 
        // get the Connectivity
-       $conn_srvc_data = FaqCategory::findOrFail($id);
+       $conn_srvc_data = Faq::findOrFail($id);
        return view('admin.connectivityservices.edit')->with(array('conn_srvc_data'=> $conn_srvc_data));
     }
 

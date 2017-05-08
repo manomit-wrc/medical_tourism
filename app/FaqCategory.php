@@ -12,8 +12,18 @@ class FaqCategory extends Model
      * @var string
      */
     protected $table = 'faq_categories';
+     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = ['name','status','created_at','updated_at'];
-    public function faq()
+    /**
+     * The attributes excluded from the model's JSON form.
+     *
+     * @var array
+     */
+    public function faqs()
     {
         return $this->hasMany('App\Faq');
     }

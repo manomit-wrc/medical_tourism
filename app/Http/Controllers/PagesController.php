@@ -56,9 +56,9 @@ class PagesController extends Controller
 	{
 		$data['doctor_details'] = Doctor::findOrFail($id);
 		$data['doctor_procedure_details'] = Doctor::with('procedures')->where('id',$id)->get()->toArray();
-        $data['doctor_degree_details'] = Doctor::with('degrees')->where('id',$id)->get()->toArray();
+    $data['doctor_degree_details'] = Doctor::with('degrees')->where('id',$id)->get()->toArray();
 		//echo "<pre>"; print_r($data); die;
-        return view('pages.doctordetail',$data);
+    return view('pages.doctordetail',$data);
 	}
 
 	public function contact()
@@ -66,7 +66,7 @@ class PagesController extends Controller
 		return view('pages.contact');
 	}
 
-    public function news()
+  public function news()
 	{
         $news_lists = News::all();
         //echo "<pre>"; print_r($news_lists); die;
@@ -82,9 +82,12 @@ class PagesController extends Controller
 
 	public function faqs()
 	{
-        $faqs_lists = Faq::all();
-        //echo "<pre>"; print_r($faqs_lists); die;
-        return view('pages.faqs')->with('faqs_lists',$faqs_lists);
+        $data = array();
+        $faqs_data = Faq::all();
+        //echo "<pre>"; print_r($faqs_data); die;
+        //echo "<pre>"; print_r($faqs_data[0]->faqcategory); die;
+        
+        return view('pages.faqs')->with('faqs_data',$faqs_data);
 	}
 
 	public function connectivity()

@@ -59,8 +59,8 @@
                         <!-- /.text input -->                                              
                         <div class="form-group">
                           <label for="name">Faq Category: <span style="color:red;">*</span></label>
-                          <select class="form-control js-example-basic-multiple" id="faq_category_id" 
-                          name="faq_category_id">
+                          <select class="form-control js-example-basic-multiple" id="faqcategory_id" 
+                          name="faqcategory_id">
                             @foreach($category_list as $key => $value)
                             <option value="{{ $key }}">{{$value}}</option>
                             @endforeach

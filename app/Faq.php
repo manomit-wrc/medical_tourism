@@ -18,7 +18,7 @@ class Faq extends Model
      *
      * @var array
      */
-    protected $fillable = ['title','description','faq_category_id','status','created_at','updated_at'];
+    protected $fillable = ['title','description','faqcategory_id','status','created_at','updated_at'];
 
     /**
      * The attributes excluded from the model's JSON form.
