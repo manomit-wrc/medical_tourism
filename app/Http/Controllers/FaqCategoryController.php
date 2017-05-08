@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\FaqCategory;
+use App\Faq;
 use Auth;
 use Input;
 use Redirect;
@@ -35,7 +36,7 @@ class FaqCategoryController extends Controller
      */
     public function create()
     {
-       return view('admin.connectivityservices.create');
+       return view('admin.faqcategories.create');
     }
 
     /**
@@ -46,7 +47,7 @@ class FaqCategoryController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-        'name' => 'required|unique:connectivity_services'
+        'name' => 'required|unique:faq_categories'
       ]);
 
       // Getting all data after success validation.
@@ -55,7 +56,7 @@ class FaqCategoryController extends Controller
 
       FaqCategory::create($input);
       Session::flash('message', 'Successfully added!');
-      return Redirect::to('/admin/connectivityservices');
+      return Redirect::to('/admin/faqcategories');
     }
 
     /**
@@ -79,8 +80,8 @@ class FaqCategoryController extends Controller
     {
 
        // get the Connectivity
-       $conn_srvc_data = FaqCategory::findOrFail($id);
-       return view('admin.connectivityservices.edit')->with(array('conn_srvc_data'=> $conn_srvc_data));
+       $faq_cat_data = FaqCategory::findOrFail($id);
+       return view('admin.faqcategories.edit')->with(array('faq_cat_data'=> $faq_cat_data));
     }
 
     /**
@@ -93,21 +94,21 @@ class FaqCategoryController extends Controller
     public function update($id,Request $request)
     {
        //echo $id; die;
-        $connectivity = FaqCategory::find($id);
+        $faqcat = FaqCategory::find($id);
         // validate
         $this->validate($request, [
-        'name' => 'required|unique:connectivity_services'
+        'name' => 'required|unique:faq_categories'
         ]);
 
         // Getting all data after success validation.
         $input = $request->all();
         //echo "<pre>"; print_r($input); die;
-        $connectivity->fill($input)->save();
+        $faqcat->fill($input)->save();
 
 
         // redirect
         Session::flash('message', 'Successfully updated');
-        return Redirect::to('/admin/connectivityservices');
+        return Redirect::to('/admin/faqcategories');
     }
 
     /**
@@ -121,11 +122,11 @@ class FaqCategoryController extends Controller
     {
         //echo $id; die;
        // delete
-        $con_serv_obj = FaqCategory::findOrFail($id);
-        $con_serv_obj->delete();
+        $faq_cat = FaqCategory::findOrFail($id);
+        $faq_cat->delete();
 
         // redirect
         Session::flash('message', 'Successfully deleted');
-        return Redirect::to('/admin/connectivityservices');
+        return Redirect::to('/admin/faqcategories');
     }
 }

@@ -42,15 +42,14 @@
                 </thead>               
                 <tbody>                        
                   @if (count($contactusdata) > 0)
-                    @foreach($contactusdata as $contactval) 
-                    {{ print_r($contactval->name) }}  {{ die() }}               
-                      <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                    @foreach($contactusdata as $contactval)                                  
+                      <tr style="background:{{ ($contactval->status=='2') ? '#e8e8e8':'' }}">
+                        <td>{{ $contactval->name }}</td>
+                        <td>{{ $contactval->email }}</td>
+                        <td>{{ $contactval->mobile_no }}</td>
+                        <td>{{ $contactval->subject }}</td>
                         <td>                       
-                          <a class="btn btn-primary">View</a>
+                         <a href="{!!URL::to('/admin/contact/details',$contactval->id)!!}" class="btn btn-success">View</a>
                         </td>
                       </tr>
                     @endforeach

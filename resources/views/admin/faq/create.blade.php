@@ -1,23 +1,23 @@
 @extends('admin.layouts.dashboard_layout')
-@section('title', 'Add FAQ Category')
+@section('title', 'Faq Add')
 @section('content')
  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Add FAQ Category
+        Faq Add
        <!--  <small>advanced tables</small> -->
       </h1>
       <ol class="breadcrumb">
         <li><a href="{!!URL::to('/admin/dashboard')!!}">Home</a></li>
-        <li><a href="{!!URL::to('/admin/faqcategories')!!}">FAQ Category</a></li>
+        <li><a href="{!!URL::to('/admin/faq')!!}">Faq List</a></li>
         <li class="active">Add</li>
       </ol>
     </section>
 
   <!-- Main content -->
-     <section class="content">
+    <section class="content">
       <div class="row">
   
         <!-- right column -->
@@ -42,20 +42,32 @@
             @endif
             <div class="box-body">
              
-                 {!! Form::open(array('method' => 'POST','role'=>'form','files' => true,'url'=>'admin/faqcategories/store','id'=>'faqcategories_add')) !!}
+                 {!! Form::open(array('method' => 'POST','role'=>'form','url'=>'admin/faq/store','id'=>'faq_add')) !!}
                     
                     <div class="col-md-6">
                         
 
                         <!-- text input -->
                         <div class="form-group">
-                          {!! Html::decode(Form::label('name','Category Name: <span style="color:red;">*</span>')) !!}
-                          {!! Form::text('name','',array('class'=>'form-control','id'=>'name','placeholder'=>'Enter  name')) !!}
+                          {!! Html::decode(Form::label('title','Question: <span style="color:red;">*</span>')) !!}
+                          {!!Form::text('title','',array('class'=>'form-control','id'=>'title','placeholder'=>'Enter  Question')) !!}
                         </div>
-                        <!-- /.text input -->
+                        <div class="form-group">
+                          {!! Html::decode(Form::label('description','Answer: <span style="color:red;">*</span>')) !!}
+                          {!! Form::textarea('description','',array('class'=>'form-control ','id'=>'description','placeholder'=>'Enter Answer')) !!}
+                        </div>
+                        <!-- /.text input -->                                              
+                        <div class="form-group">
+                          <label for="name">Faq Category: <span style="color:red;">*</span></label>
+                          <select class="form-control js-example-basic-multiple" id="faq_category_id" 
+                          name="faq_category_id">
+                            @foreach($category_list as $key => $value)
+                            <option value="{{ $key }}">{{$value}}</option>
+                            @endforeach
+                          </select>                          
+                        </div>             
 
-
-                         <!-- input submit button -->
+                        <!-- input submit button -->
                         <div class="box-footer">
                            {!! Form::submit('submit',array('class'=>'btn btn-primary pull-right','id'=>'exact-submit-button'))!!}
                         </div>

@@ -288,7 +288,8 @@ Route::group(['middleware' => ['admin']], function () {
     Route::delete('/admin/medicaltest/delete/{id}','MedicaltestController@destroy');
 
      /* contact section */
-    Route::get('/admin/contact','ContactUSController@index');    
+    Route::get('/admin/contact','ContactUSController@index'); 
+    Route::get('/admin/contact/details/{id}','ContactUSController@details');   
 
     //faq category section
     Route::get('/admin/faqcategories','FaqCategoryController@index');
@@ -300,12 +301,12 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/faqcategories/show/{id}','FaqCategoryController@show');
 
     //faqs  section
-    Route::get('/admin/faqcategories','FaqCategoryController@index');
-    Route::get('/admin/faqcategories/create','FaqCategoryController@create');
-    Route::post('/admin/faqcategories/store','FaqCategoryController@store');
-    Route::get('/admin/faqcategories/edit/{id}','FaqCategoryController@edit');
-    Route::patch('/admin/faqcategories/update/{id}','FaqCategoryController@update');
-    Route::delete('/admin/faqcategories/delete/{id}','FaqCategoryController@destroy');
-    Route::get('/admin/faqcategories/show/{id}','FaqCategoryController@show');
+    Route::get('/admin/faq','FaqController@index');
+    Route::get('/admin/faq/create','FaqController@create');
+    Route::post('/admin/faq/store','FaqController@store');
+    Route::get('/admin/faq/edit/{id}','FaqController@edit');
+    Route::patch('/admin/faq/update/{id}','FaqController@update');
+    Route::delete('/admin/faq/delete/{id}','FaqController@destroy');
+    Route::get('/admin/faq/show/{id}','FaqController@show');
 
 });

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Faq;
+use App\FaqCategory;
 use Auth;
 use Input;
 use Redirect;
@@ -23,9 +24,12 @@ class FaqController extends Controller
      * @return Response
      */
     public function index() {
-    	$faq_cat_data = FaqCategory::all();
-        //echo "<pre>"; print_r($faq_cat_data); die;
-        return view('admin.faqcategories.index')->with('faq_cat_data',$faq_cat_data);
+        $faqlist = Faq::with('faqcategory')->orderBy('faq_category_id')->get()->toArray();        
+        $data['faqlist'] = $faqlist;
+       /* echo "<pre>";
+        print_r($data['faqlist']);       
+        die(); */
+        return view('admin.faq.index',$data); 
     }
 
     /**
@@ -35,7 +39,9 @@ class FaqController extends Controller
      */
     public function create()
     {
-       return view('admin.connectivityservices.create');
+        $category_list = \App\FaqCategory::get()->pluck('name','id')->toArray();
+       //   return view('admin.genericmedicine.create');
+       return view('admin.faq.create')->with(['category_list'=>$category_list]);
     }
 
     /**
@@ -46,16 +52,17 @@ class FaqController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-        'name' => 'required|unique:connectivity_services'
+        'title' => 'required|unique:faqs', 
+        'description' => 'required'
       ]);
 
       // Getting all data after success validation.
       //dd($request->all());
       $input = $request->all();
 
-      FaqCategory::create($input);
+      Faq::create($input);
       Session::flash('message', 'Successfully added!');
-      return Redirect::to('/admin/connectivityservices');
+      return Redirect::to('/admin/faq');
     }
 
     /**

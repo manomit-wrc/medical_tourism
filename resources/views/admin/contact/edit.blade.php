@@ -1,18 +1,17 @@
 @extends('admin.layouts.dashboard_layout')
-@section('title', 'Generic Medicine')
+@section('title', 'View Contact')
 @section('content')
  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Generic Medicine
+        View Contact
        <!--  <small>advanced tables</small> -->
       </h1>
       <ol class="breadcrumb">
-        <li><a href="{!!URL::to('/admin/dashboard')!!}">Home</a></li>
-        <li><a href="{!!URL::to('/admin/genericmedicine')!!}">Generic Medicine</a></li>
-        <li class="active">Edit</li>
+        <li><a href="{!!URL::to('/admin/dashboard')!!}">Home</a></li>        
+        <li class="active">View Contact</li>
       </ol>
     </section>
 
@@ -28,7 +27,7 @@
           <!-- general form elements disabled -->
           <div class="box box-warning">
             <div class="box-header with-border">
-              <h3 class="box-title">Edit {{ $genericmedicine->generic_name_of_the_medicine }} </h3>
+              <h3 class="box-title"><span><i class="fa fa-eye"></i></span> View details of {{ $contactdata[0]['name'] }}  </h3>
             </div>
              <!-- if there are creation errors, they will show here -->
              
@@ -40,63 +39,31 @@
                   @endforeach
               </div>
             @endif
-            <div class="box-body">
-                 {{ Form::model($genericmedicine,array('method' => 'PATCH','role'=>'form','url' => array('admin/genericmedicine/update', $genericmedicine->id),'id'=>'genericmedicine_edit')) }}
-                    
-                    <div class="col-md-6">
-                        
-
-                        <!-- text input -->
-                        <div class="form-group">
-                          {!! Html::decode(Form::label('generic_name_of_the_medicine','Enter Generic Name of the Medicine: <span style="color:red;">*</span>')) !!}
-                          {!! Form::text('generic_name_of_the_medicine',null,array('class'=>'form-control','id'=>'generic_name_of_the_medicine','placeholder'=>'Enter Generic Name of the Medicine')) !!}
-                        </div>
-
-                        <div class="form-group">
-                          {!! Html::decode(Form::label('unit','Strip/Unit: <span style="color:red;">*</span>')) !!}
-                          {!! Form::text('unit',null,array('class'=>'form-control','id'=>'unit','placeholder'=>'Enter Strip/Unit')) !!}
-                        </div>
-
-                        <div class="form-group">
-                          {!! Html::decode(Form::label('price','Price: <span style="color:red;">*</span>')) !!}
-                          {!! Form::text('price',null,array('class'=>'form-control','id'=>'price','placeholder'=>'Enter Price')) !!}
-                        </div>
-
-                        <div class="form-group">
-                          <label for="name">Category: <span style="color:red;">*</span></label>
-                          <select class="form-control js-example-basic-multiple" id="procedure_id[]" name="procedure_id[]" multiple="multiple">
-                            @foreach($procedure_list as $key => $value)
-                            <option value="{{ $key }}" {{ in_array($key, $procedures_array)? 'selected':'' }}>{{$value}}</option>
-                            @endforeach
-                          </select>                          
-                        </div>
-
-                        <div class="form-group">
-                          <label for="name">Status: </label>
-                          <select name="status" id="status" class="form-control" autofocus >
-                            <option value="1" {{ $genericmedicine->status == "1" ? 'selected' : '' }}>Active</option>
-                            <option value="0" {{ $genericmedicine->status == "0" ? 'selected' : '' }}>In-Active</option>
-                          </select>                          
-                        </div>
-                        <!-- /.text input -->
-
-                        <!-- textarea -->
-                       <!--  <div class="form-group">
-                          <label>Textarea</label>
-                          <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
-                        </div> -->
-                        <!-- /.textarea -->
-                        
-                         <!-- input button -->
-                        <div class="box-footer">
-                           {!! Form::submit('submit',array('class'=>'btn btn-primary pull-right','id'=>'exact-submit-button'))!!}
-                        </div>
+            <div class="box-body">            
+                    <div class="col-md-6"> 
+                      <div class="form-group">
+                          {!! Html::decode(Form::label('name','Name: ')) !!}
+                          {{ ($contactdata[0]['name'])?  $contactdata[0]['name']:''}}
+                      </div>
+                      <div class="form-group">
+                          {!! Html::decode(Form::label('email','Email: ')) !!}
+                          {{ ($contactdata[0]['email'])? $contactdata[0]['email']:'' }}
+                      </div>
+                      <div class="form-group">
+                          {!! Html::decode(Form::label('mobile_no','Phono No: ')) !!}
+                          {{ ($contactdata[0]['mobile_no'])? $contactdata[0]['mobile_no']:'' }}
+                      </div>
+                      <div class="form-group">
+                          {!! Html::decode(Form::label('subject','Subject: ')) !!}
+                          {{ ($contactdata[0]['subject'])? $contactdata[0]['subject']:'' }}
+                      </div> 
+                      <div class="form-group">
+                          {!! Html::decode(Form::label('message','Message: ')) !!}
+                          {{ ($contactdata[0]['message'])? $contactdata[0]['message']:'' }}
+                      </div>                        
                         <!-- /.input button -->
-                    </div>
-                
-                {!! Form::close() !!}
-              
-            </div>
+                    </div>             
+             </div>
             <!-- /.box-body -->
           </div>
           <!-- /.box -->

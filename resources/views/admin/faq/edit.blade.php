@@ -1,17 +1,17 @@
 @extends('admin.layouts.dashboard_layout')
-@section('title', 'Edit FAQ Category')
+@section('title', 'Medical Test')
 @section('content')
  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Edit FAQ Category
+        Medical Test
        <!--  <small>advanced tables</small> -->
       </h1>
       <ol class="breadcrumb">
         <li><a href="{!!URL::to('/admin/dashboard')!!}">Home</a></li>
-        <li><a href="{!!URL::to('/admin/faqcategories')!!}">FAQ Category</a></li>
+        <li><a href="{!!URL::to('/admin/medicaltest')!!}">Medical Test</a></li>
         <li class="active">Edit</li>
       </ol>
     </section>
@@ -28,7 +28,7 @@
           <!-- general form elements disabled -->
           <div class="box box-warning">
             <div class="box-header with-border">
-              <h3 class="box-title">Edit {{ $faq_cat_data->name }}</h3>
+              <h3 class="box-title">Edit {{ $medicaltest->test_name }} </h3>
             </div>
              <!-- if there are creation errors, they will show here -->
              
@@ -41,18 +41,39 @@
               </div>
             @endif
             <div class="box-body">
-                 {{ Form::model($faq_cat_data,array('method' => 'PATCH','role'=>'form','files' => true,'url' => array('admin/faqcategories/update', $faq_cat_data->id),'id'=>'faqcategory_edit')) }}
+                 {{ Form::model($medicaltest,array('method' => 'PATCH','role'=>'form','url' => array('admin/medicaltest/update', $medicaltest->id),'id'=>'medicaltest_edit')) }}
                     
                     <div class="col-md-6">
                         
 
                         <!-- text input -->
                         <div class="form-group">
-                          {!! Html::decode(Form::label('name','Category Name: <span style="color:red;">*</span>')) !!}
-                          {!! Form::text('name',null,array('class'=>'form-control','id'=>'name','placeholder'=>'Enter name')) !!}
+                          {!! Html::decode(Form::label('test_name','Test Name: <span style="color:red;">*</span>')) !!}
+                          {!! Form::text('test_name',null,array('class'=>'form-control','id'=>'test_name','placeholder'=>'Enter Test Name')) !!}
+                        </div>
+                        <div class="form-group">
+                          <label for="name">Category: <span style="color:red;">*</span></label>
+                          <select class="form-control js-example-basic-multiple" id="medicaltestcategories_id" name="medicaltestcategories_id">
+                            @foreach($category_list as $key => $value)
+                            <option value="{{ $key }}" {{ ($key==$medicaltest->medicaltestcategories_id)? 'selected':'' }} >{{$value}}</option>
+                            @endforeach
+                          </select>                          
+                        </div>
+                        <div class="form-group">
+                          <label for="name">Status: </label>
+                          <select name="status" id="status" class="form-control" autofocus >
+                            <option value="1" {{ $medicaltest->status == "1" ? 'selected' : '' }}>Active</option>
+                            <option value="0" {{ $medicaltest->status == "0" ? 'selected' : '' }}>In-Active</option>
+                          </select>                          
                         </div>
                         <!-- /.text input -->
 
+                        <!-- textarea -->
+                       <!--  <div class="form-group">
+                          <label>Textarea</label>
+                          <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                        </div> -->
+                        <!-- /.textarea -->
                         
                          <!-- input button -->
                         <div class="box-footer">
