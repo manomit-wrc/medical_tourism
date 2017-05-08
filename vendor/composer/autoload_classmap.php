@@ -12,6 +12,7 @@ return array(
     'AddPasswordToPatientsTable' => $baseDir . '/database/migrations/2017_05_05_102509_add_password_to_patients_table.php',
     'AddPermissionIdToPermissions' => $baseDir . '/database/migrations/2017_04_25_125438_add_permission_id_to_permissions.php',
     'AddProcedureImageColumsToProceduresTable' => $baseDir . '/database/migrations/2017_04_24_130154_add_procedure_image_colums_to_procedures_table.php',
+    'AddStatusContactusTable' => $baseDir . '/database/migrations/2017_05_08_102311_add_status_contactus_table.php',
     'AddStatusToProceduresTables' => $baseDir . '/database/migrations/2017_04_13_074936_add_status_to_procedures_tables.php',
     'AddUserIdToDoctorsTable' => $baseDir . '/database/migrations/2017_04_26_083459_add_user_id_to_doctors_table.php',
     'AddUserIdToPackageTypesTable' => $baseDir . '/database/migrations/2017_04_27_132153_add_user_id_to_package_types_table.php',

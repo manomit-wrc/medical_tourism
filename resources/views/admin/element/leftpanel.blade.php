@@ -132,6 +132,19 @@
           </ul>
         </li>
 
+        <li class="treeview">
+          <a href="javascript:void(0)">
+            <i class="fa fa-question"></i> <span>FAQ</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            @if($user_view_composer->hasRole('admin/successstories',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'successstories' ? 'active' : null }}"><a href="{!!URL::to('/admin/successstories')!!}"><i class="fa fa-question"></i>Faq category</a></li>@endif
+            @if($user_view_composer->hasRole('admin/successstories',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'successstories' ? 'active' : null }}"><a href="{!!URL::to('/admin/successstories')!!}"><i class="fa fa-question"></i>Faq</a></li>@endif
+          </ul>
+        </li>
+
       </ul>
     </section>
     <!-- /.sidebar -->
