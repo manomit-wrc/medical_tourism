@@ -282,4 +282,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::patch('/admin/medicaltest/update/{id}','MedicaltestController@update');
     Route::delete('/admin/medicaltest/delete/{id}','MedicaltestController@destroy');
 
+     /* contact section */
+    Route::get('/admin/contact','ContactUSController@index');    
+
 });
