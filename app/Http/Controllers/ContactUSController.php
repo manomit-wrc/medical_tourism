@@ -25,6 +25,17 @@ class ContactUSController extends Controller
         /* echo "<pre>"; print_r($contactusdata); die;*/
         return view('admin.contact.index')->with('contactusdata',$contactusdata);
     }
+    public function details($id)
+    {
+        $conus = ContactUS::find($id);
+        $status = '2';
+        $conus->status = $status; 
+        $conus->save();
+        $contactdata = ContactUS::where('id',$id)->get()->toArray();
+        $data['contactdata'] =$contactdata; 
+        /*print_r($data['contactdata']); die();   */   
+        return view('admin.contact.edit',$data);      
+    }
     public function contact()
     {
         return view('pages.contact');

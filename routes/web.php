@@ -284,6 +284,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::delete('/admin/medicaltest/delete/{id}','MedicaltestController@destroy');
 
      /* contact section */
-    Route::get('/admin/contact','ContactUSController@index');    
+    Route::get('/admin/contact','ContactUSController@index'); 
+    Route::get('/admin/contact/details/{id}','ContactUSController@details');   
 
 });
