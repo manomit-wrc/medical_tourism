@@ -32,6 +32,8 @@ return array(
     'CreateDoctorDegreeTable' => $baseDir . '/database/migrations/2017_04_26_082652_create_doctor_degree_table.php',
     'CreateDoctorProcedureTable' => $baseDir . '/database/migrations/2017_04_26_082629_create_doctor_procedure_table.php',
     'CreateDoctorsTable' => $baseDir . '/database/migrations/2017_04_26_071406_create_doctors_table.php',
+    'CreateFaqCategoriesTable' => $baseDir . '/database/migrations/2017_05_08_085507_create_faq_categories_table.php',
+    'CreateFaqsTable' => $baseDir . '/database/migrations/2017_05_08_093445_create_faqs_table.php',
     'CreateGenericmedicineCategoriesTable' => $baseDir . '/database/migrations/2017_05_02_085242_create_genericmedicine_categories_table.php',
     'CreateGenericmedicinesTable' => $baseDir . '/database/migrations/2017_05_02_061235_create_genericmedicines_table.php',
     'CreateHospitalMedicaltestsTable' => $baseDir . '/database/migrations/2017_05_04_102001_create_hospital_medicaltests_table.php',

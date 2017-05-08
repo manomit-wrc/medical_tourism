@@ -384,6 +384,8 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         'CreateDoctorDegreeTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_26_082652_create_doctor_degree_table.php',
         'CreateDoctorProcedureTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_26_082629_create_doctor_procedure_table.php',
         'CreateDoctorsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_26_071406_create_doctors_table.php',
+        'CreateFaqCategoriesTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_08_085507_create_faq_categories_table.php',
+        'CreateFaqsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_08_093445_create_faqs_table.php',
         'CreateGenericmedicineCategoriesTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_02_085242_create_genericmedicine_categories_table.php',
         'CreateGenericmedicinesTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_02_061235_create_genericmedicines_table.php',
         'CreateHospitalMedicaltestsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_04_102001_create_hospital_medicaltests_table.php',
