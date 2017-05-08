@@ -20,6 +20,7 @@ Route::get('/facilities','PagesController@facilities');
 Route::get('/doctors','PagesController@doctors');
 Route::get('/doctordetail/{id}','PagesController@doctordetail');
 Route::get('/contact','PagesController@contact');
+Route::post('contact-us', ['as'=>'contactus.store','uses'=>'ContactUSController@contactUSPost']);
 Route::get('/news','PagesController@news');
 Route::get('/newsdetails/{id}','PagesController@newsdetails');
 Route::get('/frontend/check_user_exist','PagesController@check_user_exist');

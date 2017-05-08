@@ -19,44 +19,49 @@
             </div>
 
             <div class="col-sm-6 col-md-6">
-                <label>
-                    First Name
-                    <input type="text" name="" class="Cinput">
-                </label>
+                @if($errors->any())
+                      <div class="alert alert-danger">
+                          @foreach($errors->all() as $error)
+                              <p>{{ $error }}</p>
+                          @endforeach
+                      </div>
+                @endif
 
-                <label>
-                    Last Name
-                    <input type="text" name="" class="Cinput">
-                </label>
+                @if (Session::has('message'))
+                  <div class="alert alert-info">{{ Session::get('message') }}</div>
+                @endif
 
-                <label>
-                    Subject
-                    <select name="" class="listtypeleft1">
-                        <option value="Specility">Specility</option>
-                        <option value="Specility">Specility</option>
-                        <option value="Specility">Specility</option>
-                    </select>
-                </label>
+                {!! Form::open(array('method' => 'POST','role'=>'form','files' => true,'route'=>'contactus.store','id'=>'banner_add')) !!}
+                    <label>
+                        Name <span style="color:red;">* </span>
+                        {!! Form::text('name','',array('class'=>'Cinput','id'=>'name','placeholder'=>'Enter name')) !!}
+                    </label>
 
-                <label>
-                    Language
-                    <select name="" class="listtypeleft1">
-                        <option value="Specility">Language</option>
-                        <option value="Specility">Language</option>
-                        <option value="Specility">Language</option>
-                    </select>
-                </label>
+                    <label>
+                        Email <span style="color:red;">* </span>
+                        {!! Form::text('email','',array('class'=>'Cinput','id'=>'email','placeholder'=>'Enter email address')) !!}
+                    </label>
 
+                    <label>
+                        Mobile number <span style="color:red;">* </span>
+                        {!! Form::text('mobile_no','',array('class'=>'Cinput','id'=>'mobile_no','placeholder'=>'Enter mobile number')) !!}
+                    </label>
 
+                    <label>
+                        Subject <span style="color:red;">* </span>
+                        {!! Form::text('subject','',array('class'=>'Cinput','id'=>'subject','placeholder'=>'Enter subject')) !!}
+                    </label>
 
-                
+                    <label>
+                        Message <span style="color:red;">* </span>
+                        {!! Form::textarea('message','',array('class'=>'Cinput','id'=>'message_id','placeholder'=>'Enter message')) !!}
+                    </label>
+                     
+                     {!! Html::decode(Form::submit("SEND",array('class'=>"button",'id'=>'exact-submit-button'))) !!}
+                   
+                {!! Form::token()!!}
+                {!! Form::close() !!}
 
-                <label>
-                    Comments
-                    <textarea name="" cols="" rows="5" class="Cinput"></textarea>
-                </label>
-
-                <button type="button" class="button"><i class="fa fa-paper-plane" aria-hidden="true"></i> SEND</button>
             </div>
 
             
