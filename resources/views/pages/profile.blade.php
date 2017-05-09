@@ -19,11 +19,16 @@
                             </div>
 
                             <h4 class="user_name">{{Auth::guard('front')->user()->first_name}}&nbsp;{{Auth::guard('front')->user()->last_name}}</h4>
-                            <h5 class="user_address"><i class="fa fa-map-marker" aria-hidden="true"></i>{{Auth::guard('front')->user()->address}}</h5>
+
+                            @if($country_details['countries']['name'] && $state_details['states']['name'] && $city_details['cities']['name'])
+                              <h5 class="user_address"><i class="fa fa-map-marker" aria-hidden="true"></i>{{$city_details['cities']['name']}},&nbsp;{{$state_details['states']['name']}}, &nbsp;{{$country_details['countries']['name']}}</h5>
+                            @else
+                              <h5 class="user_address"><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;</h5>
+                            @endif
 
                             <button type="button" class="qtboxbtn" onclick="window.location.href = '/change-password'"><i class="fa fa-lock" aria-hidden="true"></i> Change Password</button>
                             <button type="button" class="active_btn" onclick="window.location.href = '/profile'"><i class="fa fa-user" aria-hidden="true"></i> Profile</button>
-                            <button type="button" class="qtboxbtn"><i class="fa fa-cog" aria-hidden="true"></i> Settings</button>
+                            <button type="button" class="qtboxbtn" onclick="window.location.href = '/upload-documents'"><i class="fa fa-cog" aria-hidden="true"></i> Documents</button>
                             <button type="button" class="qtboxbtn" onclick="window.location.href = '/patient-logout'"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</button>
                           </div>
                       </div>
@@ -39,6 +44,7 @@
                               <div>&nbsp;</div>
                               @if (Session::has('message'))
                                   <div class="alert alert-info">{{ Session::get('message') }}</div>
+                                  <a class="close" href="#" data-dismiss="alert" aria-label="close" title="close">×</a>
                               @endif
                               <div class="row">
                                 <form name="frmProfile" id="frmProfile" method="post" action="/update-profile" enctype="multipart/form-data">

@@ -9,7 +9,7 @@
             <div class="category">
                 <div class="container">
                     <div class="row">
-                      @if(Request::segment(1) != 'enquiry' && Request::segment(1) != 'profile' && Request::segment(1) != 'change-password')
+                      @if(Request::segment(1) != 'enquiry' && Request::segment(1) != 'profile' && Request::segment(1) != 'change-password' && Request::segment(1) != 'activate' && Request::segment(1) != 'upload-documents')
                        @include('elements.leftpanel')
                         @if(Request::segment(1) == 'doctordetail')
                           @include('elements.leftpaneldoctor')

@@ -11,8 +11,9 @@ use App\MedicalFacility;
 use App\News;
 use App\Doctor;
 use App\Faq;
-
-
+use Hash;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\RegistrationEmail;
 
 class PagesController extends Controller
 {
@@ -138,9 +139,12 @@ class PagesController extends Controller
       $patient->email_id = $request->input('email_id');
       $patient->mobile_no = $request->input('mobile_no');
       $patient->password = bcrypt($request->input('password'));
-      $patient->status = "1";
+      $patient->remember_token = str_replace("/","",Hash::make(str_random(30)));
+      $patient->status = "0";
 
       if($patient->save()) {
+        $activation_link = config('app.url').'activate/'.$patient->remember_token."/".time();
+        Mail::to($request->input('email_id'))->send(new RegistrationEmail($activation_link));
         return response()->json(['status'=>'1','msg'=>'Registration successfully done. Email activation link is sent to your email']);
       }
       else {
@@ -152,7 +156,7 @@ class PagesController extends Controller
   public function patient_login(Request $request) {
     if($request->ajax()) {
 
-      if(Auth::guard('front')->attempt(['email_id'=>$request->email_id, 'password'=>$request->password], $request->remember_me)) {
+      if(Auth::guard('front')->attempt(['email_id'=>$request->email_id, 'password'=>$request->password, 'status'=> '1'], $request->remember_me)) {
     		return response()->json(['status'=>'1']);
     	}
     	else {
@@ -168,8 +172,13 @@ class PagesController extends Controller
     $city_list = \App\City::where('state_id',Auth::guard('front')->user()->state_id)->pluck('name','id')->toArray();
     $years = array_combine(range(date("Y"), 1910), range(date("Y"), 1910));
 
+    $country_details = \App\Patient::with('countries')->find(Auth::guard('front')->user()->id)->toArray();
+    $state_details = \App\Patient::with('states')->find(Auth::guard('front')->user()->id)->toArray();
+    $city_details = \App\Patient::with('cities')->find(Auth::guard('front')->user()->id)->toArray();
 
-    return view('pages.profile')->with(['country_list'=>$country_list,'years'=>$years,'state_list'=>$state_list,'city_list'=>$city_list]);
+    /*print_r($country_details);
+    exit();*/
+    return view('pages.profile')->with(['country_list'=>$country_list,'years'=>$years,'state_list'=>$state_list,'city_list'=>$city_list,'country_details'=>$country_details,'state_details'=>$state_details,'city_details'=>$city_details]);
   }
 
   public function patient_logout() {
@@ -276,7 +285,10 @@ class PagesController extends Controller
   }
 
   public function change_password(Request $request) {
-    return view('pages.change_password');
+    $country_details = \App\Patient::with('countries')->find(Auth::guard('front')->user()->id)->toArray();
+    $state_details = \App\Patient::with('states')->find(Auth::guard('front')->user()->id)->toArray();
+    $city_details = \App\Patient::with('cities')->find(Auth::guard('front')->user()->id)->toArray();
+    return view('pages.change_password')->with(['country_details'=>$country_details,'state_details'=>$state_details,'city_details'=>$city_details]);
   }
 
   public function update_password(Request $request) {
@@ -299,6 +311,40 @@ class PagesController extends Controller
       $request->session()->flash("message", "Password updated successfully");
       return redirect('/change-password');
     }
+  }
+
+  public function activate($token,$current_time) {
+    $start_time = time();
+    $time_diff = ($start_time-$current_time)/60/1000;
+    if(number_format((float)$time_diff, 2, '.', '') > 1440) {
+      $message = "Activation link is expired";
+    }
+    else {
+      $patient_details = \App\Patient::where('remember_token',$token)->first();
+      if($patient_details) {
+        if($patient_details->status == "0") {
+          $patient_details->status = "1";
+          $patient_details->save();
+          $message = "Your account has been activated. Please click on login to further process.";
+        }
+        else {
+          $message = "Account already activated";
+        }
+      }
+      else {
+        $message = "Invalid activation token";
+      }
+    }
+
+    return view('pages.activation')->with('message',$message);
+  }
+
+  public function upload_documents() {
+    $country_details = \App\Patient::with('countries')->find(Auth::guard('front')->user()->id)->toArray();
+    $state_details = \App\Patient::with('states')->find(Auth::guard('front')->user()->id)->toArray();
+    $city_details = \App\Patient::with('cities')->find(Auth::guard('front')->user()->id)->toArray();
+    return view('pages.upload_document')->with(['country_details'=>$country_details,'state_details'=>$state_details,'city_details'=>$city_details]);
+    
   }
 
 }

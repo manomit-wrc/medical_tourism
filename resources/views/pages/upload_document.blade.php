@@ -25,9 +25,9 @@
                               <h5 class="user_address"><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;</h5>
                             @endif
 
-                            <button type="button" class="active_btn" onclick="window.location.href = '/change-password'"><i class="fa fa-lock" aria-hidden="true"></i> Change Password</button>
+                            <button type="button" class="qtboxbtn" onclick="window.location.href = '/change-password'"><i class="fa fa-lock" aria-hidden="true"></i> Change Password</button>
                             <button type="button" class="qtboxbtn" onclick="window.location.href = '/profile'"><i class="fa fa-user" aria-hidden="true"></i> Profile</button>
-                            <button type="button" class="qtboxbtn" onclick="window.location.href = '/upload-documents'"><i class="fa fa-cog" aria-hidden="true"></i> Documents</button>
+                            <button type="button" class="active_btn" onclick="window.location.href = '/upload-documents'"><i class="fa fa-cog" aria-hidden="true"></i> Documents</button>
                             <button type="button" class="qtboxbtn" onclick="window.location.href = '/patient-logout'"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</button>
                           </div>
                       </div>
@@ -45,38 +45,35 @@
                                   <div class="alert alert-info">{{ Session::get('message') }}</div>
                               @endif
                               <div class="row">
-                                <form name="frmChangePassword" id="frmChangePassword" method="post" action="/update-password" enctype="multipart/form-data">
-                                  {{csrf_field()}}
-                                  <div class="col-md-12">
-                                      <label>
-                                          Old Password
-
-                                          <input type="password" name="old_password" class="Cinput" style="{{$errors->has('old_password')?'border:1px solid #f00':''}}">
-                                          <span class="text-danger">{{ $errors->first('old_password') }}</span>
-                                      </label>
+                                <div class="loop_field">
+                                      <div class="col-sm-11" style="margin-top:25px;"><label>Upload Your Prescriptions</label></div>
+                                      <div class="col-sm-1">
+                                      <button type="button" class="plusbtn plus-button">+</button>
+                                      </div>
                                   </div>
+                                <div class="loop_field upload-field">
+                                                                           
+                                      <div class="col-sm-11">
+                                          <label class="on768">
+                                                                                       
+                                              <div class="upload_profile1">
+                                                <input type="file" name="upload_documents[]" id="file-1" class="inputfile on768"  />
+                                                <label for="file-1" style="padding:12px;"><i class="fa fa-cloud-upload" aria-hidden="true"></i> <span>Choose a file&hellip;</span></label>
+                                              </div>
+                                          </label>
+                                      </div>
+                                      
+                                      
+                                      {{-- <div class="col-sm-1">
+                                      <button type="button" class="plusbtn">x</button>
+                                      </div> --}}
 
-                                  <div class="col-md-12">
-                                      <label>
-                                          New Password
-
-                                          <input type="password" name="new_password" class="Cinput" style="{{$errors->has('new_password')?'border:1px solid #f00':''}}" value="{{ old('new_password')}}">
-                                          <span class="text-danger">{{ $errors->first('new_password') }}</span>
-                                      </label>
                                   </div>
-                                  <div class="col-md-12">
-                                      <label>
-                                          Confirm Password
-
-                                          <input type="password" name="confirm_password" class="Cinput" style="{{$errors->has('confirm_password')?'border:1px solid #f00':''}}" value="{{ old('confirm_password')}}">
-                                          <span class="text-danger">{{ $errors->first('confirm_password') }}</span>
-                                      </label>
-                                  </div>
-
+                                  
+                                  <br clear="all">
                                   <div class="col-sm-3">
                                       <button type="submit" class="button">SAVE</button>
                                   </div>
-                                </form>
                               </div>
                           </div>
                       </div>

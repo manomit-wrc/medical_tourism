@@ -12,6 +12,7 @@
 */
 //Frontend routing start here
 Route::get('/','HomeController@index');
+Route::get('/activate/{token}/{current_time}','PagesController@activate');
 Route::get('/about','PagesController@about');
 Route::get('/services','PagesController@services');
 Route::get('/servicedetails/{id}','PagesController@servicedetails');
@@ -39,6 +40,7 @@ Route::group(['middleware' => ['front']], function() {
 	Route::post('/get_city_list','PagesController@get_city_list');
 	Route::get('/change-password','PagesController@change_password');
 	Route::post('update-password','PagesController@update_password');
+    Route::get('/upload-documents','PagesController@upload_documents');
 });
 //Route::get('/successstory','HelperController@successstory');
 
