@@ -326,4 +326,12 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/homepagecontent','HomePageContentController@index');
     Route::patch('/admin/homepagecontent/store','HomePageContentController@store');
 
+     //Immigration section
+    Route::get('/admin/immigration', 'ImmigrationController@index');
+    Route::get('/admin/immigration/create','ImmigrationController@create');
+    Route::post('/admin/immigration/store','ImmigrationController@store');
+    Route::get('/admin/immigration/edit/{id}','ImmigrationController@edit');
+    Route::patch('/admin/immigration/update/{id}','ImmigrationController@update');
+    Route::delete('/admin/immigration/delete/{id}','ImmigrationController@destroy');
+
 });

@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AddAboutToDoctors' => $baseDir . '/database/migrations/2017_05_08_042422_add_about_to_doctors.php',
+    'AddCountryIdCityIdImmigrationsTable' => $baseDir . '/database/migrations/2017_05_09_085912_add_country_id_city_id_immigrations_table.php',
     'AddCurrencyIdColumsToHotelsTable' => $baseDir . '/database/migrations/2017_04_25_091752_add_currency_id_colums_to_hotels_table.php',
     'AddNewsImageToNewsTable' => $baseDir . '/database/migrations/2017_05_05_113435_add_news_image_to_news_table.php',
     'AddPasswordToPatientsTable' => $baseDir . '/database/migrations/2017_05_05_102509_add_password_to_patients_table.php',
@@ -20,6 +21,7 @@ return array(
     'AddUsernameToPatientsTable' => $baseDir . '/database/migrations/2017_05_08_091825_add_username_to_patients_table.php',
     'AlterTableDoctorsChangeAbout' => $baseDir . '/database/migrations/2017_05_08_050127_alter_table_doctors_change_about.php',
     'AlterTableFaqsChangeFaqCategoryId' => $baseDir . '/database/migrations/2017_05_08_131634_alter_table_faqs_change_faq_category_id.php',
+    'AlterTableImmigrationsChangeCountryIdStateId' => $baseDir . '/database/migrations/2017_05_09_093955_alter_table_immigrations_change_country_id_state_id.php',
     'AlterTableMedicalFacilitiesChangeDescription' => $baseDir . '/database/migrations/2017_04_24_121844_alter_table_medical_facilities_change_description.php',
     'AlterTableMedicalTestCategoriesChangeCatId' => $baseDir . '/database/migrations/2017_05_03_062700_alter_table_medical_test_categories_change_cat_id.php',
     'AlterTableMedicalTestCategoriesChangeCatName' => $baseDir . '/database/migrations/2017_05_03_054857_alter_table_medical_test_categories_change_cat_name.php',
@@ -46,6 +48,7 @@ return array(
     'CreateHospitalsTable' => $baseDir . '/database/migrations/2017_04_27_092607_create_hospitals_table.php',
     'CreateHotelClassTypesTable' => $baseDir . '/database/migrations/2017_04_25_111718_create_hotel_class_types_table.php',
     'CreateHotelsTable' => $baseDir . '/database/migrations/2017_04_25_132205_create_hotels_table.php',
+    'CreateImmigrationsTable' => $baseDir . '/database/migrations/2017_05_09_070335_create_immigrations_table.php',
     'CreateLanguageCapabilitiesTable' => $baseDir . '/database/migrations/2017_04_13_104412_create_language_capabilities_table.php',
     'CreateMedicalFacilitiesTable' => $baseDir . '/database/migrations/2017_04_24_105551_create_medical_facilities_table.php',
     'CreateMedicalTestCategoriesTable' => $baseDir . '/database/migrations/2017_05_03_051552_create_medical_test_categories_table.php',

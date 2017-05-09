@@ -5,14 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Image;
-
 use App\Http\Controllers\Controller;
 use App\MedicalFacility;
 use App\News;
 use App\Doctor;
 use App\FaqCategory;
 use App\Faq;
-
+use App\Immigration;
 
 
 class PagesController extends Controller
@@ -102,10 +101,9 @@ class PagesController extends Controller
 
 	public function immigration()
 	{
-        //$faqs_lists = Faq::all();
-        //echo "<pre>"; print_r($faqs_lists); die;
-        //return view('pages.faqs')->with('faqs_lists',$faqs_lists);
-        return view('pages.immigration');
+    $immigration_lists = Immigration::all();
+    //echo "<pre>"; print_r($immigration_lists); die;
+    return view('pages.immigration')->with('immigration_lists',$immigration_lists);
 	}
 
 	public function visa()

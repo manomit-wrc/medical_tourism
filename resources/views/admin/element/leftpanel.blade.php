@@ -133,13 +133,13 @@
         </li>
         <li class="treeview {{ Request::segment(2) === 'contact' ? 'active' : null }}">
           <a href="javascript:void(0)">
-            <i class="fa fa-list"></i> <span>Contact</span>
+            <i class="fa fa-contao"></i> <span>Contact</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-             @if($user_view_composer->hasRole('admin/contact',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'contact' ? 'active' : null }}"><a href="{!!URL::to('/admin/contact')!!}"><i class="fa fa-file-text-o"></i>Contact list</a></li>@endif
+             @if($user_view_composer->hasRole('admin/contact',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'contact' ? 'active' : null }}"><a href="{!!URL::to('/admin/contact')!!}"><i class="fa fa-contao"></i>Contact list</a></li>@endif
           </ul>
         </li>
 
@@ -153,6 +153,18 @@
           <ul class="treeview-menu">
             @if($user_view_composer->hasRole('admin/faqcategories',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'faqcategories' ? 'active' : null }}"><a href="{!!URL::to('/admin/faqcategories')!!}"><i class="fa fa-question"></i>Faq category</a></li>@endif
             @if($user_view_composer->hasRole('admin/faqs',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'faqs' ? 'active' : null }}"><a href="{!!URL::to('/admin/faq')!!}"><i class="fa fa-question"></i>FAQs</a></li>@endif
+          </ul>
+        </li>
+
+        <li class="treeview {{ Request::segment(2) === 'immigration' ? 'active' : null }}">
+          <a href="javascript:void(0)">
+            <i class="fa fa-list"></i> <span>Immigartion </span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            @if($user_view_composer->hasRole('admin/immigration',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'immigration' ? 'active' : null }}"><a href="{!!URL::to('/admin/immigration')!!}"><i class="fa fa-list"></i>Immigration</a></li>@endif
           </ul>
         </li>
 
