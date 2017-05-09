@@ -11,14 +11,14 @@ use App\News;
 use App\Doctor;
 use App\FaqCategory;
 use App\Faq;
-<<<<<<< HEAD
+
 use Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\RegistrationEmail;
-=======
+
 use App\Immigration;
 use App\CountryVisa;
->>>>>>> 731d19c4dfe6546ba0eeb35c222aba6898959924
+
 
 class PagesController extends Controller
 {

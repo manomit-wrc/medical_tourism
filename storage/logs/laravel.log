@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 
 [2017-05-05 05:04:54] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'App\Providers\View' not found' in C:\xampp\htdocs\medical_tourism\app\Providers\GeneralServiceProvider.php:16
 Stack trace:
@@ -569,7 +569,6 @@ Stack trace:
 #54 C:\xampp\htdocs\medical_tourism\server.php(21): require_once('C:\\xampp\\htdocs...')
 #55 {main}
 
-<<<<<<< HEAD
 Next exception 'Illuminate\Database\QueryException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'password' in 'field list' (SQL: insert into `patients` (`first_name`, `last_name`, `email_id`, `mobile_no`, `password`, `updated_at`, `created_at`) values (Manomit, Mitra, manomit@wrctechnologies.com, 8697733159, $2y$10$f3HGwaQ/XRdRaf/24uW/qeg1Y9vKeicEF6Ur39gOgmYj/.stCtesC, 2017-05-05 10:24:19, 2017-05-05 10:24:19))' in C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Database\Connection.php:770
 Stack trace:
 #0 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Database\Connection.php(726): Illuminate\Database\Connection->runQueryCallback('insert into `pa...', Array, Object(Closure))
@@ -1136,7 +1135,7 @@ Stack trace:
 #4 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Database\Connection.php(351): Illuminate\Database\Connection->run('select * from `...', Array, Object(Closure))
 #5 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php(1648): Illuminate\Database\Connection->select('select * from `...', Array, true)
 #6 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php(1634): Illuminate\Database\Query\Builder->runSelect()
-<<<<<<< HEAD
+
 #7 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php(1617): Illuminate\Database\Query\Builder->get(Array)
 #8 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Auth\DatabaseUserProvider.php(115): Illuminate\Database\Query\Builder->first()
 #9 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Auth\SessionGuard.php(353): Illuminate\Auth\DatabaseUserProvider->retrieveByCredentials(Array)
@@ -1246,7 +1245,7 @@ Stack trace:
 #3 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Database\Connection.php(351): Illuminate\Database\Connection->run('select * from `...', Array, Object(Closure))
 #4 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php(1648): Illuminate\Database\Connection->select('select * from `...', Array, true)
 #5 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php(1634): Illuminate\Database\Query\Builder->runSelect()
-<<<<<<< HEAD
+
 #6 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php(1617): Illuminate\Database\Query\Builder->get(Array)
 #7 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Auth\DatabaseUserProvider.php(115): Illuminate\Database\Query\Builder->first()
 #8 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Auth\SessionGuard.php(353): Illuminate\Auth\DatabaseUserProvider->retrieveByCredentials(Array)
@@ -1364,7 +1363,7 @@ Stack trace:
 #49 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(117): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
 #50 C:\xampp\htdocs\medical_tourism\public\index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #51 C:\xampp\htdocs\medical_tourism\server.php(21): require_once('C:\\xampp\\htdocs...')
-<<<<<<< HEAD
+
 #52 {main}
 
 Next exception 'Illuminate\Database\QueryException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'medical_tourism.app\patient' doesn't exist (SQL: select * from `App\Patient` where `email_id` = manomit@wrctechnologies.com limit 1)' in C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Database\Connection.php:770
@@ -1955,7 +1954,7 @@ Stack trace:
 #58 C:\xampp\htdocs\medical_tourism\server.php(21): require_once('C:\\xampp\\htdocs...')
 #59 {main}
 
-<<<<<<< HEAD
+
 Next exception 'Doctrine\DBAL\Driver\PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'remember_token' in 'field list'' in C:\xampp\htdocs\medical_tourism\vendor\doctrine\dbal\lib\Doctrine\DBAL\Driver\PDOConnection.php:79
 Stack trace:
 #0 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Database\Connection.php(501): Doctrine\DBAL\Driver\PDOConnection->prepare('update `patient...')
@@ -2325,7 +2324,7 @@ Stack trace:
 #59 C:\xampp\htdocs\medical_tourism\server.php(21): require_once('C:\\xampp\\htdocs...')
 #60 {main}
 
-<<<<<<< HEAD
+
 Next exception 'ErrorException' with message 'Use of undefined constant Auth - assumed 'Auth' (View: C:\xampp\htdocs\medical_tourism\resources\views\elements\header.blade.php) (View: C:\xampp\htdocs\medical_tourism\resources\views\elements\header.blade.php)' in C:\xampp\htdocs\medical_tourism\storage\framework\views\0984d8cf63e9152c0619deae4a8f262bc55be875.php:12
 Stack trace:
 #0 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\View\Engines\PhpEngine.php(44): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(ErrorException), 2)
@@ -2940,7 +2939,7 @@ Stack trace:
 #59 C:\xampp\htdocs\medical_tourism\server.php(21): require_once('C:\\xampp\\htdocs...')
 #60 {main}
 
-<<<<<<< HEAD
+
 Next exception 'ErrorException' with message 'htmlspecialchars() expects parameter 1 to be string, array given (View: C:\xampp\htdocs\medical_tourism\resources\views\elements\footer_script.blade.php) (View: C:\xampp\htdocs\medical_tourism\resources\views\elements\footer_script.blade.php)' in C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Support\helpers.php:519
 Stack trace:
 #0 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\View\Engines\PhpEngine.php(44): Illuminate\View\Engines\CompilerEngine->handleViewException(Object(ErrorException), 2)
@@ -3502,7 +3501,7 @@ Stack trace:
 #54 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(117): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
 #55 C:\xampp\htdocs\medical_tourism\public\index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #56 C:\xampp\htdocs\medical_tourism\server.php(21): require_once('C:\\xampp\\htdocs...')
-<<<<<<< HEAD
+
 #57 {main}
 
 Next exception 'ErrorException' with message 'Undefined variable: dob_days (View: C:\xampp\htdocs\medical_tourism\resources\views\elements\footer_script.blade.php) (View: C:\xampp\htdocs\medical_tourism\resources\views\elements\footer_script.blade.php)' in C:\xampp\htdocs\medical_tourism\storage\framework\views\868ace21608a354172431340291e5f138d3bb1d9.php:18
@@ -3883,7 +3882,7 @@ Stack trace:
 #54 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(117): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
 #55 C:\xampp\htdocs\medical_tourism\public\index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #56 C:\xampp\htdocs\medical_tourism\server.php(21): require_once('C:\\xampp\\htdocs...')
-<<<<<<< HEAD
+
 #57 {main}
 
 Next exception 'ErrorException' with message 'Undefined variable: dob_days (View: C:\xampp\htdocs\medical_tourism\resources\views\elements\footer_script.blade.php) (View: C:\xampp\htdocs\medical_tourism\resources\views\elements\footer_script.blade.php)' in C:\xampp\htdocs\medical_tourism\storage\framework\views\868ace21608a354172431340291e5f138d3bb1d9.php:18
@@ -4264,7 +4263,6 @@ Stack trace:
 #54 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(117): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
 #55 C:\xampp\htdocs\medical_tourism\public\index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #56 C:\xampp\htdocs\medical_tourism\server.php(21): require_once('C:\\xampp\\htdocs...')
-<<<<<<< HEAD
 #57 {main}
 
 Next exception 'ErrorException' with message 'Undefined variable: dob_days (View: C:\xampp\htdocs\medical_tourism\resources\views\elements\footer_script.blade.php) (View: C:\xampp\htdocs\medical_tourism\resources\views\elements\footer_script.blade.php)' in C:\xampp\htdocs\medical_tourism\storage\framework\views\868ace21608a354172431340291e5f138d3bb1d9.php:18
@@ -5180,6 +5178,7 @@ Stack trace:
 [2017-05-09 11:07:18] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '}'' in C:\xampp\htdocs\medical_tourism\routes\web.php:44
 Stack trace:
 #0 {main}  
-=======
-﻿
->>>>>>> 731d19c4dfe6546ba0eeb35c222aba6898959924
+
+[2017-05-09 12:49:35] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '<<' (T_SL)' in C:\xampp\htdocs\medical_tourism\app\Http\Controllers\PagesController.php:14
+Stack trace:
+#0 {main}  
