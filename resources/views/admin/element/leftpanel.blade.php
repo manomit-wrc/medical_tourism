@@ -158,7 +158,7 @@
 
         <li class="treeview {{ Request::segment(2) === 'immigration' ? 'active' : null }}">
           <a href="javascript:void(0)">
-            <i class="fa fa-list"></i> <span>Immigartion </span>
+            <i class="fa fa-briefcase"></i> <span>Accomodation </span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
