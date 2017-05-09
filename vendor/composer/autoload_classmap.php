@@ -12,12 +12,20 @@ return array(
     'AddPasswordToPatientsTable' => $baseDir . '/database/migrations/2017_05_05_102509_add_password_to_patients_table.php',
     'AddPermissionIdToPermissions' => $baseDir . '/database/migrations/2017_04_25_125438_add_permission_id_to_permissions.php',
     'AddProcedureImageColumsToProceduresTable' => $baseDir . '/database/migrations/2017_04_24_130154_add_procedure_image_colums_to_procedures_table.php',
+
+    'AddRememberTokenToPatientsTable' => $baseDir . '/database/migrations/2017_05_08_073932_add_remember_token_to_patients_table.php',
+    'AddStatusToProceduresTables' => $baseDir . '/database/migrations/2017_04_13_074936_add_status_to_procedures_tables.php',
+    'AddUserIdToDoctorsTable' => $baseDir . '/database/migrations/2017_04_26_083459_add_user_id_to_doctors_table.php',
+    'AddUserIdToPackageTypesTable' => $baseDir . '/database/migrations/2017_04_27_132153_add_user_id_to_package_types_table.php',
+    'AddUsernameToPatientsTable' => $baseDir . '/database/migrations/2017_05_08_091825_add_username_to_patients_table.php',
+
     'AddStatusContactusTable' => $baseDir . '/database/migrations/2017_05_08_102311_add_status_contactus_table.php',
     'AddStatusToProceduresTables' => $baseDir . '/database/migrations/2017_04_13_074936_add_status_to_procedures_tables.php',
     'AddUserIdToDoctorsTable' => $baseDir . '/database/migrations/2017_04_26_083459_add_user_id_to_doctors_table.php',
     'AddUserIdToPackageTypesTable' => $baseDir . '/database/migrations/2017_04_27_132153_add_user_id_to_package_types_table.php',
     'AlterTableDoctorsChangeAbout' => $baseDir . '/database/migrations/2017_05_08_050127_alter_table_doctors_change_about.php',
     'AlterTableFaqsChangeFaqCategoryId' => $baseDir . '/database/migrations/2017_05_08_131634_alter_table_faqs_change_faq_category_id.php',
+
     'AlterTableMedicalFacilitiesChangeDescription' => $baseDir . '/database/migrations/2017_04_24_121844_alter_table_medical_facilities_change_description.php',
     'AlterTableMedicalTestCategoriesChangeCatId' => $baseDir . '/database/migrations/2017_05_03_062700_alter_table_medical_test_categories_change_cat_id.php',
     'AlterTableMedicalTestCategoriesChangeCatName' => $baseDir . '/database/migrations/2017_05_03_054857_alter_table_medical_test_categories_change_cat_name.php',
