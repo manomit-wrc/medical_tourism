@@ -173,17 +173,27 @@ class ProcedureController extends Controller
      * @return Response
      */
 
-    public function destroy($id)
-    {
-        //echo $id; die;
-       // delete
+    /* public function destroy($id)
+    {       
         $procobj = Procedure::findOrFail($id);
-        File::delete(public_path('/uploads/medicalfacilities/'. $medfacobj->banner_image));
-        File::delete(public_path('/uploads/medicalfacilities/thumb/'. $medfacobj->banner_image));
+        File::delete(public_path('/uploads/medicalfacilities/'. $procobj->banner_image));
+        File::delete(public_path('/uploads/medicalfacilities/thumb/'. $procobj->banner_image));
         $procobj->delete();
 
         // redirect
         Session::flash('message', 'Successfully deleted');
         return Redirect::to('/admin/procedure');
+    } */
+    public function delete(Request $request,$id) {
+        if($id) {
+            $pro_details = Procedure::find($id);
+            if($pro_details) {
+                File::delete(public_path('/uploads/medicalfacilities/'. $pro_details->banner_image));
+                File::delete(public_path('/uploads/medicalfacilities/thumb/'. $pro_details->banner_image));          
+                $pro_details->delete();
+             $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/procedure');
+            }
+        }
     }
 }

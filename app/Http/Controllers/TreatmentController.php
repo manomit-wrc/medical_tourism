@@ -125,15 +125,23 @@ class TreatmentController extends Controller
      * @return Response
      */
 
-    public function destroy($id)
-    {
-        //echo $id; die;
-       // delete
+   /* public function destroy($id)
+    {        
         $trtmntobj = Treatment::findOrFail($id);
         $trtmntobj->delete();
 
         // redirect
         Session::flash('message', 'Successfully deleted');
         return Redirect::to('/admin/treatment');
+    } */
+    public function delete(Request $request,$id) {
+      if($id) {
+        $tre_details = Treatment::find($id);
+        if($tre_details) {          
+          $tre_details->delete();
+          $request->session()->flash("message", "Successfully deleted");
+          return redirect('/admin/treatment');
+        }
+      }
     }
 }

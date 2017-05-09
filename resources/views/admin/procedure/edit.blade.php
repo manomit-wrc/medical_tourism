@@ -55,15 +55,19 @@
 
                         <!-- file input -->
                         <div class="form-group">
-                          {!! Html::decode(Form::label('procedure_image','Procedure image: <span style="color:red;">* (Image must be minimum of 243x149)</span>')) !!}
-                          <img src="{{url('/uploads/procedures/thumb/'.$procedures_data->procedure_image)}}" alt="Procedure Image">
+                          {!! Html::decode(Form::label('procedure_image','Procedure image:')) !!}
+
+                          <img src="{{url('/uploads/procedures/thumb/'.$procedures_data->procedure_image)}}" alt="Procedure Image" class="img_broder">
                           {!! Form::file('procedure_image', null) !!}
+
+                          <span style="color:red;">* (Image must be minimum of 243x149)</span>
+
                         </div>
                          <!-- /.file input -->
                         
                          <!-- input button -->
                         <div class="box-footer">
-                           {!! Form::submit('submit',array('class'=>'btn btn-primary pull-right','id'=>'exact-submit-button'))!!}
+                           {!! Form::submit('submit',array('class'=>'btn btn-primary pull-left','id'=>'exact-submit-button'))!!}
                         </div>
                         <!-- /.input button -->
                     </div>

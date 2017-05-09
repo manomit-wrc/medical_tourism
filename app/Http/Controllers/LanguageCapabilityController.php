@@ -117,17 +117,15 @@ class LanguageCapabilityController extends Controller
      *
      * @param  int  $id
      * @return Response
-     */
-
-    public function destroy($id)
-    {
-       //echo $id; die;
-       // delete
-        $langcap = LanguageCapability::findOrFail($id);
-        $langcap->delete();
-
-        // redirect
-        Session::flash('message', 'Successfully deleted');
-        return Redirect::to('/admin/languagecapability');
+     */    
+    public function delete(Request $request,$id) {
+        if($id) {
+            $lng_details = LanguageCapability::find($id);
+            if($lng_details) {          
+            $lng_details->delete();
+            $request->session()->flash("message", "Successfully deleted");
+            return redirect('/admin/languagecapability');
+            }
+        }
     }
 }
