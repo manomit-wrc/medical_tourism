@@ -321,4 +321,12 @@ Route::group(['middleware' => ['admin']], function () {
     Route::delete('/admin/faq/delete/{id}','FaqController@destroy');
     Route::get('/admin/faq/show/{id}','FaqController@show');
 
+     //Immigration section
+    Route::get('/admin/immigration', 'ImmigrationController@index');
+    Route::get('/admin/immigration/create','ImmigrationController@create');
+    Route::post('/admin/immigration/store','ImmigrationController@store');
+    Route::get('/admin/immigration/edit/{id}','ImmigrationController@edit');
+    Route::patch('/admin/immigration/update/{id}','ImmigrationController@update');
+    Route::delete('/admin/immigration/delete/{id}','ImmigrationController@destroy');
+
 });
