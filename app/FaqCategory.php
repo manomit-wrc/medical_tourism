@@ -23,7 +23,7 @@ class FaqCategory extends Model
      *
      * @var array
      */
-    public function faqs()
+    public function faq()
     {
         return $this->hasMany('App\Faq');
     }
