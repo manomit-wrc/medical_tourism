@@ -34,5 +34,6 @@
   <script type="text/javascript">
           var base_url = "{!! URL::to('/')!!}";
   </script>
+  <link rel="icon" href="{!!URL::to('storage/admin/images/favicon.ico')!!}" type="image/gif" >
 </head>
 

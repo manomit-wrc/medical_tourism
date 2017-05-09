@@ -32,6 +32,7 @@ return array(
     'CreateConnectivityServicesTable' => $baseDir . '/database/migrations/2017_04_27_054504_create_connectivity_services_table.php',
     'CreateContactUsTable' => $baseDir . '/database/migrations/2017_05_08_060817_create_contact_us_table.php',
     'CreateCountryStateCityTables' => $baseDir . '/database/migrations/2017_04_25_064451_create_country_state_city_tables.php',
+    'CreateCountryVisaTable' => $baseDir . '/database/migrations/2017_05_09_111635_create_country_visa_table.php',
     'CreateCuisinesTable' => $baseDir . '/database/migrations/2017_04_21_085431_create_cuisines_table.php',
     'CreateCurrencyTable' => $baseDir . '/database/migrations/2013_11_26_161501_create_currency_table.php',
     'CreateDegreesTable' => $baseDir . '/database/migrations/2017_04_24_100115_create_degrees_table.php',

@@ -12,7 +12,7 @@ use App\Doctor;
 use App\FaqCategory;
 use App\Faq;
 use App\Immigration;
-
+use App\CountryVisa;
 
 class PagesController extends Controller
 {
@@ -108,10 +108,9 @@ class PagesController extends Controller
 
 	public function visa()
 	{
-        //$faqs_lists = Faq::all();
-        //echo "<pre>"; print_r($faqs_lists); die;
-        //return view('pages.faqs')->with('faqs_lists',$faqs_lists);
-        return view('pages.visa');
+      $cntvisa_lists = CountryVisa::all();
+     //echo "<pre>"; print_r($cntvisa_lists); die;
+      return view('pages.visa')->with('cntvisa_lists',$cntvisa_lists);
 	}
 
 
