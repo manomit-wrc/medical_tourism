@@ -441,6 +441,7 @@ $(function () {
       $("#name").val(''); 
     } 
 </script>
+
 <!-- hospital wise treatment end -- >
 
 <!-- page script -->

@@ -86,9 +86,8 @@ class GenericmedicineController extends Controller
         return Redirect::to('/admin/genericmedicine');
     }   
 
-    public function destroy($id)
-    {
-       //echo $id; die; 
+   /*  public function destroy($id)
+    {     
        	if($id) {
         	$genmed_details = Genericmedicine::find($id);
         	if($genmed_details) {
@@ -98,5 +97,16 @@ class GenericmedicineController extends Controller
           		return redirect('/admin/genericmedicine');
         	}
       	}
+    } */
+    public function delete(Request $request,$id) {
+      if($id) {
+        $genmed_details = Genericmedicine::find($id);
+        if($genmed_details) { 
+         $genmed_details->procedures()->wherePivot('genericmedicine_id', '=', $id)->detach();          
+          $genmed_details->delete();
+          $request->session()->flash("message", "Successfully deleted");
+          return redirect('/admin/genericmedicine');
+        }
+      }
     }
 }
