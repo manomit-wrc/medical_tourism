@@ -25,4 +25,15 @@ class Immigration extends Model
      *
      * @var array
      */
+    public function city() {
+       return $this->belongsTo('\App\City');
+    }
+
+    public function hotelclasstypes() {
+       return $this->belongsTo('\App\HotelClassType');
+    } 
+
+    public function currency() {
+       return $this->belongsTo('\App\Currency');
+    }
 }

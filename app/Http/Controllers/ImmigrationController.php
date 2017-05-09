@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Immigration;
+use App\Country;
+use App\State;
+use App\City;
 use Auth;
 use Input;
 use Redirect;
@@ -23,9 +26,9 @@ class ImmigrationController extends Controller
      * @return Response
      */
     public function index() {
-        $banner_lists = Immigration::all();
-        //echo "<pre>"; print_r($banner_lists); die;
-        return view('admin.immigration.index')->with('banner_lists',$banner_lists);
+        $immigration_lists = Immigration::all();
+        //echo "<pre>"; print_r($immigration_lists); die;
+        return view('admin.immigration.index')->with('immigration_lists',$immigration_lists);
     }
 
     /**
@@ -35,7 +38,9 @@ class ImmigrationController extends Controller
      */
     public function create()
     {
-       return view('admin.immigration.create');
+       $countries = Country::orderBy('name')->pluck('name', 'id')->all();
+       //echo "<pre>"; print_r($countries); die;
+       return view('admin.immigration.create', compact('countries'));	
     }
 
     /**
@@ -47,43 +52,30 @@ class ImmigrationController extends Controller
     {
 	      //print_r($request->input()); die;
           $this->validate($request, [
-            'banner_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|dimensions:width=1700,height=601',
-            'banner_heading' => 'required',
-            'banner_url' => 'required|url',
+            'name' => 'required',
+            'designation' => 'required',
+            'address' => 'required',
+            'country_id' => 'required',
+            'state_id' => 'required',
+            'city_id' => 'required',
+            'telephone' => 'required',
+            'email' => 'required|email',
           ]);
 
 
-            $bannr = new Banner($request->input()) ;
-            $bannr->banner_heading = $request->get('banner_heading') ;
-            $bannr->banner_sub_heading = $request->get('banner_sub_heading') ;
-            $bannr->banner_heading = $request->get('banner_heading') ;
-            $bannr->banner_url = $request->get('banner_url') ;
+            $immig = new Immigration($request->input()) ;
+            $immig->name = $request->get('name') ;
+            $immig->designation = $request->get('designation') ;
+            $immig->address = $request->get('address') ;
+            $immig->country_id = $request->get('country_id') ;
+            $immig->state_id = $request->get('state_id') ;
+            $immig->city_id = $request->get('city_id') ;
+            $immig->telephone = $request->get('telephone') ;
+            $immig->email = $request->get('email') ;
 
-            //echo "<pre>"; print_r($request->file('banner_image'));die;
+            
 
-            if($file = $request->hasFile('banner_image')) {
-
-                $file = $request->file('banner_image') ;
-
-                $fileName = time().'_'.$file->getClientOriginalName() ;
-
-                //thumb destination path
-                $destinationPath = public_path().'/uploads/banners/thumb' ;
-
-                $img = Image::make($file->getRealPath());
-
-                $img->resize(100, 100, function ($constraint){
-                    $constraint->aspectRatio();
-                })->save($destinationPath.'/'.$fileName);
-
-                //original destination path
-                $destinationPath = public_path().'/uploads/banners/' ;
-                $file->move($destinationPath,$fileName);
-
-                $bannr->banner_image = $fileName ;
-            }
-
-            $bannr->save() ;
+            $immig->save() ;
 
           Session::flash('message', 'Successfully added!');
           return Redirect::to('/admin/immigration');
@@ -108,9 +100,12 @@ class ImmigrationController extends Controller
      */
     public function edit($id)
     {
-        // get the Banner
-       $banners_data = Banner::findOrFail($id);
-       return view('admin.immigration.edit')->with('banners_data', $banners_data);
+        // get the immigration
+       $immigration_data = Immigration::findOrFail($id);
+       $countries = Country::orderBy('name')->pluck('name', 'id')->all();
+       $states = State::orderBy('name')->pluck('name', 'id')->all();
+       $cities = City::orderBy('name')->pluck('name', 'id')->all();
+       return view('admin.immigration.edit', compact('immigration_data','countries','states','cities'));
     }
 
     /**
@@ -123,45 +118,32 @@ class ImmigrationController extends Controller
     public function update($id,Request $request)
     {
         //echo $id; die;
-        $bannr = Banner::find($id);
+        $immgi = Immigration::find($id);
         // validate
         $this->validate($request, [
-            'banner_image' => 'image|mimes:jpeg,png,jpg,gif,svg|dimensions:width=1700,height=601',
-            'banner_heading' => 'required',
-            'banner_url' => 'required|url',
+            'name' => 'required',
+            'designation' => 'required',
+            'address' => 'required',
+            'country_id' => 'required',
+            'state_id' => 'required',
+            'city_id' => 'required',
+            'telephone' => 'required',
+            'email' => 'required|email',
         ]);
 
         // Getting all data after success validation.
-        $bannr->banner_heading = $request->get('banner_heading') ;
-        $bannr->banner_sub_heading = $request->get('banner_sub_heading') ;
-        $bannr->banner_heading = $request->get('banner_heading') ;
-        $bannr->banner_url = $request->get('banner_url') ;
+        $immgi->name = $request->get('name') ;
+        $immgi->designation = $request->get('designation') ;
+        $immgi->address = $request->get('address') ;
+        $immgi->country_id = $request->get('country_id') ;
+        $immgi->state_id = $request->get('state_id') ;
+        $immgi->city_id = $request->get('city_id') ;
+        $immgi->telephone = $request->get('telephone') ;
+        $immgi->email = $request->get('email') ;
 
-        //echo "<pre>"; print_r($request->file('banner_image'));die;
+        
 
-        if($file = $request->hasFile('banner_image')) {
-
-            $file = $request->file('banner_image') ;
-
-            $fileName = time().'_'.$file->getClientOriginalName() ;
-
-            //thumb destination path
-            $destinationPath = public_path().'/uploads/banners/thumb' ;
-
-            $img = Image::make($file->getRealPath());
-
-            $img->resize(100, 100, function ($constraint){
-                $constraint->aspectRatio();
-            })->save($destinationPath.'/'.$fileName);
-
-            //original destination path
-            $destinationPath = public_path().'/uploads/banners/' ;
-            $file->move($destinationPath,$fileName);
-
-            $bannr->banner_image = $fileName ;
-        }
-
-        $bannr->save() ;
+        $immgi->save() ;
 
 
         // redirect
@@ -180,10 +162,8 @@ class ImmigrationController extends Controller
     {
         //echo $id; die;
        // delete
-        $bannobj = Banner::findOrFail($id);
-        File::delete(public_path('/uploads/banners/'. $bannobj->banner_image));
-        File::delete(public_path('/uploads/banners/thumb/'. $bannobj->banner_image));
-        $bannobj->delete();
+        $immigrationobj = Immigration::findOrFail($id);
+        $immigrationobj->delete();
 
         // redirect
         Session::flash('message', 'Successfully deleted');

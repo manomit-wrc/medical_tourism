@@ -1,17 +1,17 @@
 @extends('admin.layouts.dashboard_layout')
-@section('title', 'Banner')
+@section('title', 'Immigration')
 @section('content')
  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Banner
+        Immigration
        <!--  <small>advanced tables</small> -->
       </h1>
       <ol class="breadcrumb">
         <li><a href="{!!URL::to('/admin/dashboard')!!}">Home</a></li>
-        <li><a href="{!!URL::to('/admin/banner')!!}">Banner</a></li>
+        <li><a href="{!!URL::to('/admin/immigration')!!}">Immigration</a></li>
         <li class="active">Add</li>
       </ol>
     </section>
@@ -42,39 +42,65 @@
             @endif
             <div class="box-body">
              
-                 {!! Form::open(array('method' => 'POST','role'=>'form','files' => true,'url'=>'admin/banner/store','id'=>'banner_add')) !!}
+                 {!! Form::open(array('method' => 'POST','role'=>'form','url'=>'admin/immigration/store','id'=>'immigration_add')) !!}
                     
                     <div class="col-md-6">
-                        
-                        <!-- file input -->
-                        <div class="form-group">
-                          {!! Html::decode(Form::label('banner_image','Banner image: <span style="color:red;">* (Image must be 1700x601)</span>')) !!}
-                          {!! Form::file('banner_image', null) !!}
-                        </div>
-                         <!-- /.file input -->
 
                         <!-- text input -->
                         <div class="form-group">
-                          {!! Html::decode(Form::label('banner_heading','Banner heading: <span style="color:red;">* </span>')) !!}
-                          {!! Form::text('banner_heading','',array('class'=>'form-control','id'=>'banner_heading','placeholder'=>'Enter banner heading')) !!}
+                          {!! Html::decode(Form::label('name','Name: <span style="color:red;">* </span>')) !!}
+                          {!! Form::text('name','',array('class'=>'form-control','id'=>'name','placeholder'=>'Enter name')) !!}
                         </div>
                         <!-- /.text input -->
 
                         <!-- text input -->
                         <div class="form-group">
-                          {!! Form::label('banner_sub_heading', 'Banner sub heading:') !!}
-                          {!! Form::text('banner_sub_heading','',array('class'=>'form-control','id'=>'banner_sub_heading','placeholder'=>'Enter banner sub heading')) !!}
+                          {!! Html::decode(Form::label('designation', 'Designation: <span style="color:red;">* </span>')) !!}
+                          {!! Form::text('designation','',array('class'=>'form-control','id'=>'designation','placeholder'=>'Enter designation')) !!}
                         </div>
                         <!-- /.text input -->
 
                         <!-- text input -->
                         <div class="form-group">
-                          {!! Html::decode(Form::label('banner_url','Youtube video url: <span style="color:red;">* </span>')) !!}
-                          {!! Form::text('banner_url','',array('class'=>'form-control','id'=>'banner_url','placeholder'=>'Enter youtube video url')) !!}
+                          {!! Html::decode(Form::label('address','Office address: <span style="color:red;">*</span>')) !!}
+                          {!! Form::text('address','',array('class'=>'form-control','id'=>'address','placeholder'=>'Enter office address')) !!}
                         </div>
                         <!-- /.text input -->
                         
-                        
+                         <!-- form-group dropdown-->
+                        <div class="form-group">
+                           {!! Html::decode(Form::label('country_id','Country: <span style="color:red;">*</span>')) !!}
+                           {!! Form::select('country_id',['' => 'Select'] +$countries, null, ['class' => 'form-control select2']) !!}
+                        </div>
+                        <!-- /.form-group dropdown-->
+
+                        <!-- form-group dropdown-->
+                        <div class="form-group">
+                           {!! Html::decode(Form::label('state_id','State: <span style="color:red;">*</span>')) !!}
+                           <select name="state_id" id="state_id" class="form-control select2" ></select>
+                        </div>
+                        <!-- /.form-group dropdown-->
+
+                         <!-- form-group dropdown-->
+                        <div class="form-group">
+                           {!! Html::decode(Form::label('city_id','City: <span style="color:red;">*</span>')) !!}
+                           <select name="city_id" id="city_id" class="form-control select2" ></select>
+                        </div>
+                        <!-- /.form-group dropdown-->
+
+                         <!-- text input -->
+                        <div class="form-group">
+                          {!! Html::decode(Form::label('telephone','Telephone: <span style="color:red;">*</span>')) !!}
+                          {!! Form::text('telephone','',array('class'=>'form-control','id'=>'telephone','placeholder'=>'Enter telephone')) !!}
+                        </div>
+                        <!-- /.text input -->
+
+                         <!-- text input -->
+                        <div class="form-group">
+                          {!! Html::decode(Form::label('email','Email: <span style="color:red;">*</span>')) !!}
+                          {!! Form::text('email','',array('class'=>'form-control','id'=>'email','placeholder'=>'Enter email')) !!}
+                        </div>
+                        <!-- /.text input -->
 
                          <!-- input submit button -->
                         <div class="box-footer">

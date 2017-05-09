@@ -1,17 +1,17 @@
 @extends('admin.layouts.dashboard_layout')
-@section('title', 'Banner')
+@section('title', 'Immigration')
 @section('content')
  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Banner
+        Immigration
        <!--  <small>advanced tables</small> -->
       </h1>
       <ol class="breadcrumb">
         <li><a href="{!!URL::to('/admin/dashboard')!!}">Home</a></li>
-        <li><a href="{!!URL::to('/admin/banner')!!}">Banner</a></li>
+        <li><a href="{!!URL::to('/admin/immigration')!!}">Immigration</a></li>
         <li class="active">Edit</li>
       </ol>
     </section>
@@ -28,7 +28,7 @@
           <!-- general form elements disabled -->
           <div class="box box-warning">
             <div class="box-header with-border">
-              <h3 class="box-title">Edit {{ $banners_data->banner_heading }}</h3>
+              <h3 class="box-title">Edit {{ $immigration_data->name }}</h3>
             </div>
              <!-- if there are creation errors, they will show here -->
              
@@ -41,38 +41,66 @@
               </div>
             @endif
             <div class="box-body">
-                 {{ Form::model($banners_data,array('method' => 'PATCH','role'=>'form','files' => true,'url' => array('admin/banner/update', $banners_data->id),'id'=>'banner_edit')) }}
+                 {{ Form::model($immigration_data,array('method' => 'PATCH','role'=>'form','files' => true,'url' => array('admin/immigration/update', $immigration_data->id),'id'=>'banner_edit')) }}
                     
                     <div class="col-md-6">
-                        
-                         <!-- file input -->
-                        <div class="form-group">
-                          {!! Html::decode(Form::label('banner_image','Banner image: <span style="color:red;">* (Image must be 1700x601)</span>')) !!}
-                          <img src="{{url('/uploads/banners/thumb/'.$banners_data->banner_image)}}" alt="Banner Image">
-                          {!! Form::file('banner_image', null) !!}
-                        </div>
-                         <!-- /.file input -->
                          
-                          <!-- text input -->
+                         <!-- text input -->
                         <div class="form-group">
-                          {!! Html::decode(Form::label('banner_heading','Banner heading: <span style="color:red;">* </span>')) !!}
-                          {!! Form::text('banner_heading',null,array('class'=>'form-control','id'=>'banner_heading','placeholder'=>'Enter banner heading')) !!}
+                          {!! Html::decode(Form::label('name','Name: <span style="color:red;">* </span>')) !!}
+                          {!! Form::text('name',null,array('class'=>'form-control','id'=>'name','placeholder'=>'Enter name')) !!}
                         </div>
                         <!-- /.text input -->
 
                         <!-- text input -->
                         <div class="form-group">
-                          {!! Form::label('banner_sub_heading', 'Banner sub heading:') !!}
-                          {!! Form::text('banner_sub_heading',null,array('class'=>'form-control','id'=>'banner_sub_heading','placeholder'=>'Enter banner sub heading')) !!}
+                          {!! Html::decode(Form::label('designation', 'Designation: <span style="color:red;">* </span>')) !!}
+                          {!! Form::text('designation',null,array('class'=>'form-control','id'=>'designation','placeholder'=>'Enter designation')) !!}
                         </div>
                         <!-- /.text input -->
 
                         <!-- text input -->
                         <div class="form-group">
-                          {!! Html::decode(Form::label('banner_url','Youtube video url: <span style="color:red;">* </span>')) !!}
-                          {!! Form::text('banner_url',null,array('class'=>'form-control','id'=>'banner_url','placeholder'=>'Enter youtube video url')) !!}
+                          {!! Html::decode(Form::label('address','Office address: <span style="color:red;">*</span>')) !!}
+                          {!! Form::text('address',null,array('class'=>'form-control','id'=>'address','placeholder'=>'Enter office address')) !!}
                         </div>
                         <!-- /.text input -->
+                        
+                          <!-- form-group dropdown-->
+                        <div class="form-group">
+                           {!! Html::decode(Form::label('country_id','Country: <span style="color:red;">*</span>')) !!}
+                           {!! Form::select('country_id',['' => 'Select'] +$countries, null, ['class' => 'form-control select2']) !!}
+                        </div>
+                        <!-- /.form-group dropdown-->
+
+                        <!-- form-group dropdown-->
+                        <div class="form-group">
+                           {!! Html::decode(Form::label('state_id','State: <span style="color:red;">*</span>')) !!}
+                           {!! Form::select('state_id',['' => 'Select'] +$states, null, ['class' => 'form-control select2']) !!}
+                        </div>
+                        <!-- /.form-group dropdown-->
+
+                         <!-- form-group dropdown-->
+                        <div class="form-group">
+                           {!! Html::decode(Form::label('city_id','City: <span style="color:red;">*</span>')) !!}
+                           {!! Form::select('city_id',['' => 'Select'] +$cities, null, ['class' => 'form-control select2']) !!}
+                        </div>
+                        <!-- /.form-group dropdown-->
+
+                         <!-- text input -->
+                        <div class="form-group">
+                          {!! Html::decode(Form::label('telephone','Telephone: <span style="color:red;">*</span>')) !!}
+                          {!! Form::text('telephone',null,array('class'=>'form-control','id'=>'telephone','placeholder'=>'Enter telephone')) !!}
+                        </div>
+                        <!-- /.text input -->
+
+                         <!-- text input -->
+                        <div class="form-group">
+                          {!! Html::decode(Form::label('email','Email: <span style="color:red;">*</span>')) !!}
+                          {!! Form::text('email',null,array('class'=>'form-control','id'=>'email','placeholder'=>'Enter email')) !!}
+                        </div>
+                        <!-- /.text input -->
+
                        
                         
                          <!-- input button -->

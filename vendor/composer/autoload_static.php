@@ -359,6 +359,7 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
 
     public static $classMap = array (
         'AddAboutToDoctors' => __DIR__ . '/../..' . '/database/migrations/2017_05_08_042422_add_about_to_doctors.php',
+        'AddCountryIdCityIdImmigrationsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_09_085912_add_country_id_city_id_immigrations_table.php',
         'AddCurrencyIdColumsToHotelsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_25_091752_add_currency_id_colums_to_hotels_table.php',
         'AddNewsImageToNewsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_05_113435_add_news_image_to_news_table.php',
         'AddPasswordToPatientsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_05_102509_add_password_to_patients_table.php',
@@ -372,6 +373,7 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         'AddUsernameToPatientsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_08_091825_add_username_to_patients_table.php',
         'AlterTableDoctorsChangeAbout' => __DIR__ . '/../..' . '/database/migrations/2017_05_08_050127_alter_table_doctors_change_about.php',
         'AlterTableFaqsChangeFaqCategoryId' => __DIR__ . '/../..' . '/database/migrations/2017_05_08_131634_alter_table_faqs_change_faq_category_id.php',
+        'AlterTableImmigrationsChangeCountryIdStateId' => __DIR__ . '/../..' . '/database/migrations/2017_05_09_093955_alter_table_immigrations_change_country_id_state_id.php',
         'AlterTableMedicalFacilitiesChangeDescription' => __DIR__ . '/../..' . '/database/migrations/2017_04_24_121844_alter_table_medical_facilities_change_description.php',
         'AlterTableMedicalTestCategoriesChangeCatId' => __DIR__ . '/../..' . '/database/migrations/2017_05_03_062700_alter_table_medical_test_categories_change_cat_id.php',
         'AlterTableMedicalTestCategoriesChangeCatName' => __DIR__ . '/../..' . '/database/migrations/2017_05_03_054857_alter_table_medical_test_categories_change_cat_name.php',
@@ -392,6 +394,7 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         'CreateFaqsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_08_093445_create_faqs_table.php',
         'CreateGenericmedicineCategoriesTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_02_085242_create_genericmedicine_categories_table.php',
         'CreateGenericmedicinesTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_02_061235_create_genericmedicines_table.php',
+        'CreateHomepageContentsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_09_062820_create_homepage_contents_table.php',
         'CreateHospitalMedicaltestsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_04_102001_create_hospital_medicaltests_table.php',
         'CreateHospitalTreatmentTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_28_121421_create_hospital_treatment_table.php',
         'CreateHospitalsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_27_092607_create_hospitals_table.php',
