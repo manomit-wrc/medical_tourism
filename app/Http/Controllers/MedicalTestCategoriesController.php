@@ -63,18 +63,17 @@ class MedicalTestCategoriesController extends Controller
         // redirect
         Session::flash('message', 'Successfully updated');
         return Redirect::to('/admin/medicaltestcategories');
-    }   
+    }
 
-    public function destroy($id)
-    {
-       //echo $id; die; 
-       	if($id) {
-        	$metcat = MedicalTestCategories::find($id);
-        	if($metcat) {          		        
-          		$metcat->delete();
-         		Session::flash('message', 'Deleted successfully');
-          		return redirect('/admin/medicaltestcategories');
-        	}
-      	}
+    
+    public function delete(Request $request,$id) {
+      if($id) {
+        $metcat = MedicalTestCategories::find($id);
+        if($metcat) {          
+          $metcat->delete();
+          $request->session()->flash("message", "Successfully deleted");
+          return redirect('/admin/medicaltestcategories');
+        }
+      }
     }
 }

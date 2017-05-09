@@ -5,15 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Image;
-
 use App\Http\Controllers\Controller;
 use App\MedicalFacility;
 use App\News;
 use App\Doctor;
+use App\FaqCategory;
 use App\Faq;
+<<<<<<< HEAD
 use Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\RegistrationEmail;
+=======
+use App\Immigration;
+use App\CountryVisa;
+>>>>>>> 731d19c4dfe6546ba0eeb35c222aba6898959924
 
 class PagesController extends Controller
 {
@@ -82,17 +87,14 @@ class PagesController extends Controller
 	{
 		$news_data = News::findOrFail($id);
 		//echo "<pre>"; print_r($news_data); die;
-        return view('pages.newsdetails')->with('news_data',$news_data);
+    return view('pages.newsdetails')->with('news_data',$news_data);
 	}
 
 	public function faqs()
-	{
-        $data = array();
-        $faqs_data = Faq::all();
-        //echo "<pre>"; print_r($faqs_data); die;
-        //echo "<pre>"; print_r($faqs_data[0]->faqcategory); die;
-
-        return view('pages.faqs')->with('faqs_data',$faqs_data);
+	{  
+      $faq_data = Faq::has('FaqCategory')->orderBy('faqcategory_id')->get();
+      //echo "<pre>"; print_r($faq_data); die;
+      return view('pages.faqs')->with('faq_data',$faq_data);
 	}
 
 	public function connectivity()
@@ -105,18 +107,16 @@ class PagesController extends Controller
 
 	public function immigration()
 	{
-        //$faqs_lists = Faq::all();
-        //echo "<pre>"; print_r($faqs_lists); die;
-        //return view('pages.faqs')->with('faqs_lists',$faqs_lists);
-        return view('pages.immigration');
+    $immigration_lists = Immigration::all();
+    //echo "<pre>"; print_r($immigration_lists); die;
+    return view('pages.immigration')->with('immigration_lists',$immigration_lists);
 	}
 
 	public function visa()
 	{
-        //$faqs_lists = Faq::all();
-        //echo "<pre>"; print_r($faqs_lists); die;
-        //return view('pages.faqs')->with('faqs_lists',$faqs_lists);
-        return view('pages.visa');
+      $cntvisa_lists = CountryVisa::all();
+     //echo "<pre>"; print_r($cntvisa_lists); die;
+      return view('pages.visa')->with('cntvisa_lists',$cntvisa_lists);
 	}
 
 

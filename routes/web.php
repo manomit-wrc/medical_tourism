@@ -59,24 +59,24 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/languagecapability/create','LanguageCapabilityController@create');
     Route::post('/admin/languagecapability/store','LanguageCapabilityController@store');
     Route::get('/admin/languagecapability/edit/{id}','LanguageCapabilityController@edit');
-    Route::patch('/admin/languagecapability/update/{id}','LanguageCapabilityController@update');
-    Route::delete('/admin/languagecapability/delete/{id}','LanguageCapabilityController@destroy');
+    Route::patch('/admin/languagecapability/update/{id}','LanguageCapabilityController@update');   
+	Route::get('/admin/languagecapability/delete/{id}','LanguageCapabilityController@delete');
 
     //Procedure section
     Route::get('/admin/procedure', 'ProcedureController@index');
     Route::get('/admin/procedure/create','ProcedureController@create');
     Route::post('/admin/procedure/store','ProcedureController@store');
     Route::get('/admin/procedure/edit/{id}','ProcedureController@edit');
-    Route::patch('/admin/procedure/update/{id}','ProcedureController@update');
-    Route::delete('/admin/procedure/delete/{id}','ProcedureController@destroy');
+    Route::patch('/admin/procedure/update/{id}','ProcedureController@update');    
+	Route::get('/admin/procedure/delete/{id}','ProcedureController@delete');
 
     //Treatment section
     Route::get('/admin/treatment', 'TreatmentController@index');
     Route::get('/admin/treatment/create','TreatmentController@create');
     Route::post('/admin/treatment/store','TreatmentController@store');
     Route::get('/admin/treatment/edit/{id}','TreatmentController@edit');
-    Route::patch('/admin/treatment/update/{id}','TreatmentController@update');
-    Route::delete('/admin/treatment/delete/{id}','TreatmentController@destroy');
+    Route::patch('/admin/treatment/update/{id}','TreatmentController@update');   
+	Route::get('/admin/treatment/delete/{id}','TreatmentController@delete');
 
     //Accrediation section
     Route::get('/admin/accrediation', 'AccrediationController@index');
@@ -282,8 +282,8 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/genericmedicine/create','genericmedicineController@create');
     Route::post('/admin/genericmedicine/store','genericmedicineController@store');
     Route::get('/admin/genericmedicine/edit/{id}','genericmedicineController@edit');
-    Route::patch('/admin/genericmedicine/update/{id}','genericmedicineController@update');
-    Route::delete('/admin/genericmedicine/delete/{id}','genericmedicineController@destroy');
+    Route::patch('/admin/genericmedicine/update/{id}','genericmedicineController@update');    
+	Route::get('/admin/genericmedicine/delete/{id}','genericmedicineController@delete');
 
      /* medical test categories section */
     Route::get('/admin/medicaltestcategories','MedicalTestCategoriesController@index');
@@ -292,14 +292,15 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/medicaltestcategories/edit/{id}','MedicalTestCategoriesController@edit');
     Route::patch('/admin/medicaltestcategories/update/{id}','MedicalTestCategoriesController@update');
     Route::delete('/admin/medicaltestcategories/delete/{id}','MedicalTestCategoriesController@destroy');
+	Route::get('/admin/medicaltestcategories/delete/{id}','MedicalTestCategoriesController@delete');
 
      /* medical test section */
     Route::get('/admin/medicaltest','MedicaltestController@index');
     Route::get('/admin/medicaltest/create','MedicaltestController@create');
     Route::post('/admin/medicaltest/store','MedicaltestController@store');
     Route::get('/admin/medicaltest/edit/{id}','MedicaltestController@edit');
-    Route::patch('/admin/medicaltest/update/{id}','MedicaltestController@update');
-    Route::delete('/admin/medicaltest/delete/{id}','MedicaltestController@destroy');
+    Route::patch('/admin/medicaltest/update/{id}','MedicaltestController@update');    
+	Route::get('/admin/medicaltest/delete/{id}','MedicaltestController@delete');
 
      /* contact section */
     Route::get('/admin/contact','ContactUSController@index');
@@ -319,8 +320,28 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/faq/create','FaqController@create');
     Route::post('/admin/faq/store','FaqController@store');
     Route::get('/admin/faq/edit/{id}','FaqController@edit');
-    Route::patch('/admin/faq/update/{id}','FaqController@update');
-    Route::delete('/admin/faq/delete/{id}','FaqController@destroy');
+    Route::patch('/admin/faq/update/{id}','FaqController@update');    
     Route::get('/admin/faq/show/{id}','FaqController@show');
+    Route::get('/admin/faq/delete/{id}','FaqController@delete');
+
+    // home page content
+    Route::get('/admin/homepagecontent','HomePageContentController@index');
+    Route::patch('/admin/homepagecontent/store','HomePageContentController@store');
+
+    //Immigration section
+    Route::get('/admin/immigration', 'ImmigrationController@index');
+    Route::get('/admin/immigration/create','ImmigrationController@create');
+    Route::post('/admin/immigration/store','ImmigrationController@store');
+    Route::get('/admin/immigration/edit/{id}','ImmigrationController@edit');
+    Route::patch('/admin/immigration/update/{id}','ImmigrationController@update');
+    Route::delete('/admin/immigration/delete/{id}','ImmigrationController@destroy');
+
+     //Visa section
+    Route::get('/admin/countryvisa', 'CountryVisaController@index');
+    Route::get('/admin/countryvisa/create','CountryVisaController@create');
+    Route::post('/admin/countryvisa/store','CountryVisaController@store');
+    Route::get('/admin/countryvisa/edit/{id}','CountryVisaController@edit');
+    Route::patch('/admin/countryvisa/update/{id}','CountryVisaController@update');
+    Route::delete('/admin/countryvisa/delete/{id}','CountryVisaController@destroy');
 
 });

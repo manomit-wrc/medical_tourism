@@ -56,14 +56,15 @@
 
                         <!-- file input -->
                         <div class="form-group">
-                          {!! Html::decode(Form::label('procedure_image','Procedure image: <span style="color:red;">* (Image must be minimum of 243x149)</span>')) !!}
+                          {!! Html::decode(Form::label('procedure_image','Procedure image: ')) !!}
                           {!! Form::file('procedure_image', null) !!}
+                          <span style="color:red;">* (Image must be minimum of 243x149)</span>
                         </div>
                          <!-- /.file input -->
 
                          <!-- input submit button -->
-                        <div class="box-footer">
-                           {!! Form::submit('submit',array('class'=>'btn btn-primary pull-right','id'=>'exact-submit-button'))!!}
+                        <div>
+                           {!! Form::submit('submit',array('class'=>'btn btn-primary pull-left','id'=>'exact-submit-button'))!!}
                         </div>
                         <!-- /.input submit button -->
                     </div>

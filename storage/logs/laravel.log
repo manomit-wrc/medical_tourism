@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 [2017-05-05 05:04:54] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'App\Providers\View' not found' in C:\xampp\htdocs\medical_tourism\app\Providers\GeneralServiceProvider.php:16
 Stack trace:
@@ -5179,3 +5180,6 @@ Stack trace:
 [2017-05-09 11:07:18] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '}'' in C:\xampp\htdocs\medical_tourism\routes\web.php:44
 Stack trace:
 #0 {main}  
+=======
+﻿
+>>>>>>> 731d19c4dfe6546ba0eeb35c222aba6898959924

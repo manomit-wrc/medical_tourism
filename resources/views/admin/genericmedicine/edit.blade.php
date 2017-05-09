@@ -64,7 +64,7 @@
 
                         <div class="form-group">
                           <label for="name">Category: <span style="color:red;">*</span></label>
-                          <select class="form-control js-example-basic-multiple" id="procedure_id[]" name="procedure_id[]" multiple="multiple">
+                          <select class="form-control" id="procedure_id[]" name="procedure_id[]" multiple="multiple">
                             @foreach($procedure_list as $key => $value)
                             <option value="{{ $key }}" {{ in_array($key, $procedures_array)? 'selected':'' }}>{{$value}}</option>
                             @endforeach
@@ -88,8 +88,8 @@
                         <!-- /.textarea -->
                         
                          <!-- input button -->
-                        <div class="box-footer">
-                           {!! Form::submit('submit',array('class'=>'btn btn-primary pull-right','id'=>'exact-submit-button'))!!}
+                        <div>
+                           {!! Form::submit('submit',array('class'=>'btn btn-primary pull-left','id'=>'exact-submit-button'))!!}
                         </div>
                         <!-- /.input button -->
                     </div>
