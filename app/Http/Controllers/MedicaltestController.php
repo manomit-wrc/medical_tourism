@@ -73,18 +73,15 @@ class MedicaltestController extends Controller
        	$medtest->save();       
         Session::flash('message', 'Successfully updated');
         return Redirect::to('/admin/medicaltest'); 
-    }   
-
-    public function destroy($id)
-    {
-       //echo $id; die; 
-       	if($id) {
-        	$medtest_details = Medicaltest::find($id); 
-        	if($medtest_details) {          		         
-          		$medtest_details->delete();
-         		Session::flash('message', 'Deleted successfully');
-          		return redirect('/admin/medicaltest');
-        	}
-      	}
+    }     
+    public function delete(Request $request,$id) {
+      if($id) {
+        $medtest_details = Medicaltest::find($id);
+        if($medtest_details) {          
+          $medtest_details->delete();
+          $request->session()->flash("message", "Successfully deleted");
+          return redirect('/admin/medicaltest');
+        }
+      }
     }
 }
