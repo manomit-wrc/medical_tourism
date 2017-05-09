@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\MedicalFacility;
 use App\News;
 use App\Doctor;
+use App\FaqCategory;
 use App\Faq;
 
 
@@ -77,17 +78,14 @@ class PagesController extends Controller
 	{
 		$news_data = News::findOrFail($id);
 		//echo "<pre>"; print_r($news_data); die;
-        return view('pages.newsdetails')->with('news_data',$news_data);
+    return view('pages.newsdetails')->with('news_data',$news_data);
 	}
 
 	public function faqs()
-	{
-        $data = array();
-        $faqs_data = Faq::all();
-        //echo "<pre>"; print_r($faqs_data); die;
-        //echo "<pre>"; print_r($faqs_data[0]->faqcategory); die;
-        
-        return view('pages.faqs')->with('faqs_data',$faqs_data);
+	{  
+      $faq_data = Faq::has('FaqCategory')->orderBy('faqcategory_id')->get();
+      //echo "<pre>"; print_r($faq_data); die;
+      return view('pages.faqs')->with('faq_data',$faq_data);
 	}
 
 	public function connectivity()

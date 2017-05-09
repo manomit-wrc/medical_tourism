@@ -1,5 +1,5 @@
 @extends('admin.layouts.dashboard_layout')
-@section('title', 'Medical Test')
+@section('title', 'Faq')
 @section('content')
  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
