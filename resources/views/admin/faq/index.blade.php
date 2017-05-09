@@ -31,7 +31,10 @@
             <!-- /.box-header -->
             <div class="box-body">
               @if (Session::has('message'))
-                  <div class="alert alert-info">{{ Session::get('message') }}</div>
+                  <div class="alert alert-info" id="result7">{{ Session::get('message') }}</div>
+              @endif
+               @if (Session::has('error_message'))
+                  <div class="alert alert-danger" id="result8">{{ Session::get('error_message') }}</div>
               @endif
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
@@ -51,16 +54,13 @@
                     
                       <tr>
                         <td>{{ $faqval['faqcategory']['name'] }}</td>
-                        <td>{{$faqval['title']}}</td>
-                        <td>{{ $faqval['description'] }}</td>
+                        <td>{!! \Illuminate\Support\Str::words($faqval['title'], 10,'....')  !!}</td>
+                        <td>{!! \Illuminate\Support\Str::words($faqval['description'], 10,'....')  !!}</td>
                         <td>{{ ($faqval['status'] ==1)? 'Active':'In-Active' }}</td>
                         <td>
                           <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
                             <!-- we will add this later since its a little more complicated than the other two buttons -->
-                            {!! Form::open(array('method' => 'DELETE','url' => array('admin/faq/delete', $faqval['id']),'class' => 'pull-right')) !!}
-                                  {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                              {!! Form::close() !!}
-                             
+                            <a href="{!!URL::to('/admin/faq/delete',$faqval['id'])!!}" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger" >Delete</a>                             
                           <a href="{!!URL::to('/admin/faq/edit',$faqval['id'])!!}" class="btn btn-primary">Edit</a>
                         </td>
                       </tr>

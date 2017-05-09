@@ -84,10 +84,10 @@ class FaqController extends Controller
      */
     public function edit($id)
     {
-
        // get the Connectivity
-       $conn_srvc_data = Faq::findOrFail($id);
-       return view('admin.connectivityservices.edit')->with(array('conn_srvc_data'=> $conn_srvc_data));
+       $faqdata = Faq::findOrFail($id);       
+       $category_list = \App\FaqCategory::get()->pluck('name','id')->toArray();      
+       return view('admin.faq.edit')->with(array('faqdata'=> $faqdata,'category_list'=> $category_list));
     }
 
     /**
@@ -100,21 +100,20 @@ class FaqController extends Controller
     public function update($id,Request $request)
     {
        //echo $id; die;
-        $connectivity = FaqCategory::find($id);
+        $faq = Faq::find($id);
         // validate
         $this->validate($request, [
-        'name' => 'required|unique:connectivity_services'
+        'title' => 'required',
+        'description' => 'required'
         ]);
 
         // Getting all data after success validation.
         $input = $request->all();
         //echo "<pre>"; print_r($input); die;
-        $connectivity->fill($input)->save();
-
-
+        $faq->fill($input)->save();
         // redirect
         Session::flash('message', 'Successfully updated');
-        return Redirect::to('/admin/connectivityservices');
+        return Redirect::to('/admin/faq');
     }
 
     /**
@@ -122,17 +121,16 @@ class FaqController extends Controller
      *
      * @param  int  $id
      * @return Response
-     */
+     */ 
 
-    public function destroy($id)
-    {
-        //echo $id; die;
-       // delete
-        $con_serv_obj = FaqCategory::findOrFail($id);
-        $con_serv_obj->delete();
-
-        // redirect
-        Session::flash('message', 'Successfully deleted');
-        return Redirect::to('/admin/connectivityservices');
+   public function delete(Request $request,$id) {
+      if($id) {
+        $faq_details = Faq::find($id);
+        if($faq_details) {          
+          $faq_details->delete();
+          $request->session()->flash("message", "Successfully deleted");
+          return redirect('/admin/faq');
+        }
+      }
     }
 }
