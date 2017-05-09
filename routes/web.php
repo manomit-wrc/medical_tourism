@@ -317,9 +317,13 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/faq/create','FaqController@create');
     Route::post('/admin/faq/store','FaqController@store');
     Route::get('/admin/faq/edit/{id}','FaqController@edit');
-    Route::patch('/admin/faq/update/{id}','FaqController@update');
-    Route::delete('/admin/faq/delete/{id}','FaqController@destroy');
+    Route::patch('/admin/faq/update/{id}','FaqController@update');    
     Route::get('/admin/faq/show/{id}','FaqController@show');
+    Route::get('/admin/faq/delete/{id}','FaqController@delete');
+
+    // home page content
+    Route::get('/admin/homepagecontent','HomePageContentController@index');
+    Route::post('/admin/homepagecontent/store','HomePageContentController@store');
 
      //Immigration section
     Route::get('/admin/immigration', 'ImmigrationController@index');

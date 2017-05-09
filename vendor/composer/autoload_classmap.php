@@ -40,6 +40,7 @@ return array(
     'CreateFaqsTable' => $baseDir . '/database/migrations/2017_05_08_093445_create_faqs_table.php',
     'CreateGenericmedicineCategoriesTable' => $baseDir . '/database/migrations/2017_05_02_085242_create_genericmedicine_categories_table.php',
     'CreateGenericmedicinesTable' => $baseDir . '/database/migrations/2017_05_02_061235_create_genericmedicines_table.php',
+    'CreateHomepageContentsTable' => $baseDir . '/database/migrations/2017_05_09_062820_create_homepage_contents_table.php',
     'CreateHospitalMedicaltestsTable' => $baseDir . '/database/migrations/2017_05_04_102001_create_hospital_medicaltests_table.php',
     'CreateHospitalTreatmentTable' => $baseDir . '/database/migrations/2017_04_28_121421_create_hospital_treatment_table.php',
     'CreateHospitalsTable' => $baseDir . '/database/migrations/2017_04_27_092607_create_hospitals_table.php',
