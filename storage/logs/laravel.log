@@ -7,3 +7,6 @@ Stack trace:
 [2017-05-10 08:38:02] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'JDT\LaravelEmailTemplates\ServiceProvider' not found' in C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Foundation\ProviderRepository.php:146
 Stack trace:
 #0 {main}  
+[2017-05-10 13:48:20] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected ':', expecting '('' in C:\xampp\htdocs\medical_tourism\storage\framework\views\7c74b45441aa40e7f20dce847d67cc870215d7c5.php:14
+Stack trace:
+#0 {main}  
