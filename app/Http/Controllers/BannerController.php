@@ -177,18 +177,17 @@ class BannerController extends Controller
      * @param  int  $id
      * @return Response
      */
-
-    public function destroy($id)
-    {
-        //echo $id; die;
-       // delete
-        $bannobj = Banner::findOrFail($id);
-        File::delete(public_path('/uploads/banners/'. $bannobj->banner_image));
-        File::delete(public_path('/uploads/banners/thumb/'. $bannobj->banner_image));
-        $bannobj->delete();
-
-        // redirect
-        Session::flash('message', 'Successfully deleted');
-        return Redirect::to('/admin/banner');
+    
+    public function delete(Request $request,$id) {
+        if($id) {
+            $bannobj = Banner::find($id);
+            if($bannobj) {
+                File::delete(public_path('/uploads/banners/'. $bannobj->banner_image));
+                File::delete(public_path('/uploads/banners/thumb/'. $bannobj->banner_image));          
+                $bannobj->delete();
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/banner');
+            }
+        }
     }
 }

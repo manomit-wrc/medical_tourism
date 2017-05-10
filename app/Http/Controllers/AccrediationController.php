@@ -159,17 +159,25 @@ class AccrediationController extends Controller
      * @return Response
      */
 
-    public function destroy($id)
-    {
-        //echo $id; die;
-       // delete
+   /* public function destroy($id)
+    {        
         $accobj = Accrediation::findOrFail($id);
         File::delete(public_path('/uploads/accrediations/'. $accobj->accrediation_logo));
         File::delete(public_path('/uploads/accrediations/thumb/'. $accobj->accrediation_logo));
         $accobj->delete();
-
-        // redirect
         Session::flash('message', 'Successfully deleted');
         return Redirect::to('/admin/accrediation');
+    }*/
+    public function delete(Request $request,$id) {
+        if($id) {
+            $accobj = Accrediation::find($id);
+            if($accobj) {
+                File::delete(public_path('/uploads/accrediations/'. $accobj->accrediation_logo));
+                File::delete(public_path('/uploads/accrediations/thumb/'. $accobj->accrediation_logo));
+                $accobj->delete();
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/accrediation');
+            }
+        }
     }
 }

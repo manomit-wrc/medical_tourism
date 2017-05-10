@@ -116,15 +116,21 @@ class AccomodationController extends Controller
      * @return Response
      */
 
-    public function destroy($id)
-    {
-        //echo $id; die;
-       // delete
+    /* public function destroy($id)
+    {        
         $procobj = Accomodation::findOrFail($id);
-        $procobj->delete();
-
-        // redirect
+        $procobj->delete();        
         Session::flash('message', 'Successfully deleted');
         return Redirect::to('/admin/accomodation');
+    } */
+    public function delete(Request $request,$id) {
+        if($id) {
+            $procobj = Accomodation::find($id);
+            if($procobj) {                        
+                $procobj->delete();
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/accomodation');
+            }
+        }
     }
 }

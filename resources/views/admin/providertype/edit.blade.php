@@ -43,8 +43,7 @@
             <div class="box-body">
                  {{ Form::model($providertypes_data,array('method' => 'PATCH','role'=>'form','url' => array('admin/providertype/update', $providertypes_data->id),'id'=>'provider_type_edit')) }}
                     
-                    <div class="col-md-6">
-                        
+                    <div class="col-md-6">                  
 
                         <!-- text input -->
                         <div class="form-group">
@@ -54,8 +53,8 @@
                         <!-- /.text input -->
 
                          <!-- input button -->
-                        <div class="box-footer">
-                           {!! Form::submit('submit',array('class'=>'btn btn-primary pull-right','id'=>'exact-submit-button'))!!}
+                        <div>
+                           {!! Form::submit('submit',array('class'=>'btn btn-primary pull-left','id'=>'exact-submit-button'))!!}
                         </div>
                         <!-- /.input button -->
                     </div>

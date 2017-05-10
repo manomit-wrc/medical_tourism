@@ -116,15 +116,23 @@ class ProviderTypeController extends Controller
      * @return Response
      */
 
-    public function destroy($id)
+   /* public function destroy($id)
     {
        //echo $id; die;
        // delete
         $provdrtp = ProviderType::findOrFail($id);
         $provdrtp->delete();
-
-        // redirect
         Session::flash('message', 'Successfully deleted');
         return Redirect::to('/admin/providertype');
+    }*/
+    public function delete(Request $request,$id) {
+        if($id) {
+            $provdrtp = ProviderType::find($id);
+            if($provdrtp) {                         
+                $provdrtp->delete();
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/providertype');
+            }
+        }
     }
 }
