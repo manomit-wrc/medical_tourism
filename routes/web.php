@@ -12,6 +12,7 @@
 */
 //Frontend routing start here
 Route::get('/','HomeController@index');
+Route::get('/activate/{token}/{current_time}','PagesController@activate');
 Route::get('/about','PagesController@about');
 Route::get('/services','PagesController@services');
 Route::get('/servicedetails/{id}','PagesController@servicedetails');
@@ -39,6 +40,7 @@ Route::group(['middleware' => ['front']], function() {
 	Route::post('/get_city_list','PagesController@get_city_list');
 	Route::get('/change-password','PagesController@change_password');
 	Route::post('update-password','PagesController@update_password');
+    Route::get('/upload-documents','PagesController@upload_documents');
 });
 //Route::get('/successstory','HelperController@successstory');
 
@@ -326,12 +328,20 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/homepagecontent','HomePageContentController@index');
     Route::patch('/admin/homepagecontent/store','HomePageContentController@store');
 
-     //Immigration section
+    //Immigration section
     Route::get('/admin/immigration', 'ImmigrationController@index');
     Route::get('/admin/immigration/create','ImmigrationController@create');
     Route::post('/admin/immigration/store','ImmigrationController@store');
     Route::get('/admin/immigration/edit/{id}','ImmigrationController@edit');
     Route::patch('/admin/immigration/update/{id}','ImmigrationController@update');
     Route::delete('/admin/immigration/delete/{id}','ImmigrationController@destroy');
+
+     //Visa section
+    Route::get('/admin/countryvisa', 'CountryVisaController@index');
+    Route::get('/admin/countryvisa/create','CountryVisaController@create');
+    Route::post('/admin/countryvisa/store','CountryVisaController@store');
+    Route::get('/admin/countryvisa/edit/{id}','CountryVisaController@edit');
+    Route::patch('/admin/countryvisa/update/{id}','CountryVisaController@update');
+    Route::delete('/admin/countryvisa/delete/{id}','CountryVisaController@destroy');
 
 });

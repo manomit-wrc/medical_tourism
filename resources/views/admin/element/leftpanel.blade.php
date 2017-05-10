@@ -133,13 +133,13 @@
         </li>
         <li class="treeview {{ Request::segment(2) === 'contact' ? 'active' : null }}">
           <a href="javascript:void(0)">
-            <i class="fa fa-contao"></i> <span>Contact</span>
+            <i class="fa fa-envelope"></i> <span>Contact</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-             @if($user_view_composer->hasRole('admin/contact',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'contact' ? 'active' : null }}"><a href="{!!URL::to('/admin/contact')!!}"><i class="fa fa-contao"></i>Contact list</a></li>@endif
+             @if($user_view_composer->hasRole('admin/contact',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'contact' ? 'active' : null }}"><a href="{!!URL::to('/admin/contact')!!}"><i class="fa fa-envelope"></i>Contact list</a></li>@endif
           </ul>
         </li>
 
@@ -156,7 +156,7 @@
           </ul>
         </li>
 
-        <li class="treeview {{ Request::segment(2) === 'immigration' ? 'active' : null }}">
+        <li class="treeview {{ Request::segment(2) === 'immigration' ? 'active' : null || Request::segment(2) === 'countryvisa' ? 'active' : null }}">
           <a href="javascript:void(0)">
             <i class="fa fa-briefcase"></i> <span>Accomodation </span>
             <span class="pull-right-container">
@@ -164,7 +164,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            @if($user_view_composer->hasRole('admin/immigration',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'immigration' ? 'active' : null }}"><a href="{!!URL::to('/admin/immigration')!!}"><i class="fa fa-list"></i>Immigration</a></li>@endif
+            @if($user_view_composer->hasRole('admin/immigration',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'immigration' ? 'active' : null }}"><a href="{!!URL::to('/admin/immigration')!!}"><i class="fa fa-address-card"></i>Immigration</a></li>@endif
+            @if($user_view_composer->hasRole('admin/countryvisa',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'countryvisa' ? 'active' : null }}"><a href="{!!URL::to('/admin/countryvisa')!!}"><i class="fa fa-address-card"></i>Visa</a></li>@endif
           </ul>
         </li>
 

@@ -288,5 +288,14 @@
                 $('#city_id').find('option').not(':first').remove();
               }
             });
+
+            $(".plus-button").click(function(e){
+              $(".upload-field").append('<div class="col-sm-11"><label class="on768"><div class="upload_profile1"><input type="file" name="upload_documents[]" id="file-1" class="inputfile on768"  /><label for="file-1" style="padding:12px;"><i class="fa fa-cloud-upload" aria-hidden="true"></i> <span>Choose a file&hellip;</span></label></div></label></div><div class="col-sm-1"><button type="button" class="plusbtn cross-button">x</button></div>');
+            });
+      });
+
+      $(document).on('click','.cross-button',function(e){
+        console.log($(this).find('.col-sm-11'));
+        $(this).find('.col-sm-11').remove();
       });
     </script>
