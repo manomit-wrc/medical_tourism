@@ -1,1 +1,9 @@
-﻿
+﻿[2017-05-10 08:34:49] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'JDT\LaravelEmailTemplates\ServiceProvider' not found' in C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Foundation\ProviderRepository.php:146
+Stack trace:
+#0 {main}  
+[2017-05-10 08:36:36] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'JDT\LaravelEmailTemplates\ServiceProvider' not found' in C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Foundation\ProviderRepository.php:146
+Stack trace:
+#0 {main}  
+[2017-05-10 08:38:02] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'JDT\LaravelEmailTemplates\ServiceProvider' not found' in C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Foundation\ProviderRepository.php:146
+Stack trace:
+#0 {main}  

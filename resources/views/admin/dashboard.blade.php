@@ -7,7 +7,7 @@
     <section class="content-header">
       <h1>
         Dashboard
-        <small>Version 2.0</small>
+        <small>Version 0.0</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -32,43 +32,52 @@
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
+        <!--///////////////////////////////Hospital section start/////////////////////////////////////////////-->
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
-            <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
+            <span class="info-box-icon bg-red"><i class="fa ion-ios-home-outline"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Likes</span>
-              <span class="info-box-number">41,410</span>
+              <span class="info-box-text">Hospitals</span>
+              <span class="info-box-number">{{ $total_hospital_count }}</span>
             </div>
             <!-- /.info-box-content -->
           </div>
           <!-- /.info-box -->
         </div>
+
         <!-- /.col -->
+
+        <!--///////////////////////////////////Hospital section end//////////////////////////////////////////-->
 
         <!-- fix for small devices only -->
         <div class="clearfix visible-sm-block"></div>
-
+        
+        <!--///////////////////////////////////Doctor Section Start//////////////////////////////////////////-->
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
-            <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
+            <span class="info-box-icon bg-green"><i class="ion ion-ios-person"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Sales</span>
-              <span class="info-box-number">760</span>
+              <span class="info-box-text">Doctors</span>
+              <span class="info-box-number">{{ $total_doctor_count }}</span>
             </div>
             <!-- /.info-box-content -->
           </div>
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
+        <!--///////////////////////////////////Dcotor section end//////////////////////////////////////////-->
+
+
+        <!--///////////////////////////////////Patient Section Start//////////////////////////////////////////-->
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
             <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">New Members</span>
-              <span class="info-box-number">2,000</span>
+              <span class="info-box-text">Patients</span>
+              <span class="info-box-number">{{ $total_patient_count }}</span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -77,6 +86,7 @@
         <!-- /.col -->
       </div>
       <!-- /.row -->
+      <!--///////////////////////////////////Patient Section End//////////////////////////////////////////-->
 
       <div class="row">
         <div class="col-md-12">
