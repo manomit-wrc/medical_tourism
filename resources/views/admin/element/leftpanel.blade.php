@@ -71,7 +71,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-             @if($user_view_composer->hasRole('admin/hotel',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'hotel' ? 'active' : null }}"><a href="{!!URL::to('/admin/hotel')!!}"><i class="fa fa-circle-o"></i>hotel list</a></li>@endif
+             @if($user_view_composer->hasRole('admin/hotel',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'hotel' ? 'active' : null }}"><a href="{!!URL::to('/admin/hotel')!!}"><i class="fa fa-bars"></i>hotel list</a></li>@endif
           </ul>
         </li>
 
@@ -83,7 +83,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            @if($user_view_composer->hasRole('admin/news',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'news' ? 'active' : null }}"><a href="{!!URL::to('/admin/news')!!}"><i class="fa fa-circle-o"></i>News management</a></li>@endif
+            @if($user_view_composer->hasRole('admin/news',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'news' ? 'active' : null }}"><a href="{!!URL::to('/admin/news')!!}"><i class="fa fa-newspaper-o"></i>News management</a></li>@endif
           </ul>
         </li>
 
@@ -98,7 +98,7 @@
           </a>
           <ul class="treeview-menu">
             @if($user_view_composer->hasRole('admin/adminuser',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'adminuser' ? 'active' : null }}" ><a href="{{ url('/admin/adminuser')}}"><i class="fa fa-group"></i>Manage user</a></li>@endif
-            @if($user_view_composer->hasRole('admin/permission',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'permission' ? 'active' : null }}" ><a href="{{ url('/admin/permission')}}"><i class="fa fa-roles"></i>Manage permission</a></li>@endif
+            @if($user_view_composer->hasRole('admin/permission',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'permission' ? 'active' : null }}" ><a href="{{ url('/admin/permission')}}"><i class="fa fa-key"></i>Manage permission</a></li>@endif
           </ul>
         </li>
 
@@ -115,7 +115,7 @@
             @if($user_view_composer->hasRole('admin/providerconnectivity',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'providerconnectivity' ? 'active' : null }}" ><a href="{{ url('/admin/providerconnectivity')}}"><i class="fa fa-connectdevelop"></i>Manage connectivity</a></li>@endif
             @if($user_view_composer->hasRole('admin/providerconnectivityservices',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'providerconnectivityservices' ? 'active' : null }}" ><a href="{{ url('/admin/providerconnectivityservices')}}"><i class="fa fa-connectdevelop"></i>Manage Connectivity to services</a></li>@endif
             @if($user_view_composer->hasRole('admin/hospitals',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'hospitals' ? 'active' : null }}" ><a href="{{ url('/admin/hospitals')}}"><i class="fa fa-hospital-o"></i>Manage hospitals</a></li>@endif
-            @if($user_view_composer->hasRole('admin/package-types',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'package-types' ? 'active' : null }}" ><a href="{{ url('/admin/package-types')}}"><i class="fa fa-hospital-o"></i>Manage package types</a></li>@endif
+            @if($user_view_composer->hasRole('admin/package-types',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'package-types' ? 'active' : null }}" ><a href="{{ url('/admin/package-types')}}"><i class="fa fa-credit-card-alt"></i>Manage package types</a></li>@endif
           </ul>
         </li>
 
