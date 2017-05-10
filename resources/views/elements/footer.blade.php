@@ -100,13 +100,19 @@
                       <div class="col-md-12">
                           <div class="footerdown">
                               <div class="row">
-                              <div class="col-md-6 col-sm-6">
+                              <div class="col-md-4 col-sm-6">
                                   <div class="copy">
                                   Copyright <script>document.write(new Date().getFullYear())</script>. All rights reserved
                                   </div>
                               </div>
 
-                              <div class="col-md-6  col-sm-6">
+                              <div class="col-md-4 col-sm-6">
+                                  <div class="copy">
+                                   <a href="{!!URL::to('/disclaimer/')!!}">Disclaimer </a> | <a href="{!!URL::to('/privacypolicy/')!!}">Privacy Policy </a> | <a href="">Site Map </a>
+                                  </div>
+                              </div>
+
+                              <div class="col-md-4  col-sm-6">
                                   <div class="designby">
                                   Powered by<a href="http://www.wrctechnologies.com/" target="_blank"> WRC Technologies</a>
                                   </div>

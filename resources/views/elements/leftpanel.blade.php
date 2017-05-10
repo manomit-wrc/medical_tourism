@@ -1,6 +1,6 @@
 <div class="col-md-4">
         <div class="qtbox">
-            <h3><img src="images/ql.jpg" alt=""> REQUEST A <strong>QUOTE</strong> <img src="images/qr.jpg" alt=""></h3>
+            <h3><img src="{!!URL::to('storage/frontend/images/ql.jpg')!!}" alt=""> REQUEST A <strong>QUOTE</strong> <img src="{!!URL::to('storage/frontend/images/qr.jpg')!!}" alt=""></h3>
 
             <select name="" class="listtypeleft">
                 <option value="Specility">Specility</option>

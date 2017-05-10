@@ -126,6 +126,21 @@ class PagesController extends Controller
       return view('pages.successstorydetails')->with('succstory_data',$succstory_data);
   }
 
+  public function disclaimer()
+  {
+        //$faqs_lists = Faq::all();
+        //echo "<pre>"; print_r($faqs_lists); die;
+        //return view('pages.faqs')->with('faqs_lists',$faqs_lists);
+        return view('pages.disclaimer');
+  }
+
+  public function privacypolicy()
+  {
+        //$faqs_lists = Faq::all();
+        //echo "<pre>"; print_r($faqs_lists); die;
+        //return view('pages.faqs')->with('faqs_lists',$faqs_lists);
+        return view('pages.privacypolicy');
+  }
 
   public function check_user_exist(Request $request) {
     $email_id = $request->input('email_id');
