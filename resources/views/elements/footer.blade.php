@@ -12,11 +12,13 @@
                                         @foreach($successstory_lists as $successstory_lists)
                                           <div class="testimonial">
                                               <div class="pic">
+                                                <a href="{!!URL::to('/successstory_details/'.$successstory_lists->id)!!}">
                                                   <img src="{{url('/uploads/successstories/thumb_200_200/'.$successstory_lists->story_image)}}" alt="" class="img-responsive">
+                                                </a>
                                               </div>
 
                                               <p class="description">
-                                              <b>{!! \Illuminate\Support\Str::words($successstory_lists->title, 5,'....')  !!}</b><br>
+                                              <b><a href="{!!URL::to('/successstory_details/'.$successstory_lists->id)!!}">{!! \Illuminate\Support\Str::words($successstory_lists->title, 5,'....')  !!}</a></b><br>
                                               {!! \Illuminate\Support\Str::words(strip_tags($successstory_lists->description), 10,'....')  !!}
                                               <br>
                                               <span>WRC Technologies</span>

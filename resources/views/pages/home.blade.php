@@ -78,7 +78,7 @@
 
             <div class="col-md-4">
                 <div class="accdbox">
-                    <a href="{!!URL::to('/connectivity')!!}"><img src="{{url('/uploads/homepagecontent/thumb_360_167/'.$homepagecondata[0]->accomodation_left_image)}}"  alt="Image 1"></a>
+                    <a href="{!!URL::to('/connectivity')!!}"><img src="{{url('/uploads/homepagecontent/thumb_360_167/'.$homepagecondata[0]->accomodation_left_image)}}"  alt="{{ $homepagecondata[0]->accomodation_left_title }}"></a>
                     <h3>{{ $homepagecondata[0]->accomodation_left_title }}</h3>
                     <p>{{ $homepagecondata[0]->accomodation_left_description }}</p>
                 </div>
@@ -86,7 +86,7 @@
 
             <div class="col-md-4">
                 <div class="accdbox">
-                    <a href="{!!URL::to('/immigration')!!}"><img src="{{url('/uploads/homepagecontent/thumb_360_167/'.$homepagecondata[0]->accomodation_middle_image)}}"  alt="Image 1"></a>
+                    <a href="{!!URL::to('/immigration')!!}"><img src="{{url('/uploads/homepagecontent/thumb_360_167/'.$homepagecondata[0]->accomodation_middle_image)}}"  alt="{{ $homepagecondata[0]->accomodation_middle_title }}"></a>
                     <h3>{{ $homepagecondata[0]->accomodation_middle_title }}</h3>
                     <p>{{ $homepagecondata[0]->accomodation_middle_description }}</p>
                 </div>
@@ -94,7 +94,7 @@
 
             <div class="col-md-4">
                 <div class="accdbox">
-                    <a href="{!!URL::to('/visa')!!}"><img src="{{url('/uploads/homepagecontent/thumb_360_167/'.$homepagecondata[0]->accomodation_right_image)}}"  alt="Image 1"></a>
+                    <a href="{!!URL::to('/visa')!!}"><img src="{{url('/uploads/homepagecontent/thumb_360_167/'.$homepagecondata[0]->accomodation_right_image)}}"  alt="{{ $homepagecondata[0]->accomodation_right_title }}"></a>
                     <h3>{{ $homepagecondata[0]->accomodation_right_title }}</h3>
                     <p>{{ $homepagecondata[0]->accomodation_right_description }}</p>
                 </div>
