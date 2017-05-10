@@ -13,7 +13,7 @@ class CreateHomepageContentsTable extends Migration
      */
     public function up()
     {
-         Schema::create('homepage_contents', function (Blueprint $table) {
+        Schema::create('homepage_contents', function (Blueprint $table) {
             $table->increments('id');
             $table->text('medical_category_description');
             $table->string('accomodation_left_title');

@@ -1,6 +1,1 @@
-[2017-05-10 05:49:58] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected ':'' in C:\xampp\htdocs\medical_tourism\storage\framework\views\2726a38cedf38174b1d02cbed18daa215e29efd0.php:71
-Stack trace:
-#0 {main}  
-[2017-05-10 05:49:59] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected ':'' in C:\xampp\htdocs\medical_tourism\storage\framework\views\2726a38cedf38174b1d02cbed18daa215e29efd0.php:71
-Stack trace:
-#0 {main}  
+﻿
