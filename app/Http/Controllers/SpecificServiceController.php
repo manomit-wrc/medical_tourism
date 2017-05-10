@@ -116,16 +116,15 @@ class SpecificServiceController extends Controller
      * @param  int  $id
      * @return Response
      */
-
-    public function destroy($id)
-    {
-       //echo $id; die;
-       // delete
-        $specserv = SpecificService::findOrFail($id);
-        $specserv->delete();
-
-        // redirect
-        Session::flash('message', 'Successfully deleted');
-        return Redirect::to('/admin/specificservice');
+   
+    public function delete(Request $request,$id) {
+        if($id) {
+            $specserv = SpecificService::find($id);
+            if($specserv) {                          
+                $specserv->delete();
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/specificservice');
+            }
+        }
     }
 }

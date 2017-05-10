@@ -26,19 +26,19 @@
               <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
             </div>
 
-            <div><a href="{{ route('create-role') }}"><button type="button" class="btn bg-purple">ADD</button></a></div>
+            <div class="topbtn"><a href="{{ route('create-role') }}"><button type="button" class="btn bg-purple btn-rightad">ADD</button></a></div>
 
             <!-- /.box-header -->
             <div class="box-body">
               @if (Session::has('message'))
-                  <div class="alert alert-info">{{ Session::get('message') }}</div>
+                  <div class="alert alert-info" id="result7">{{ Session::get('message') }}</div>
               @endif
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                   <tr>
                     <th>Role name</th>
                     <th>Status</th>
-                    <th>Actions</th>
+                    <th width="11%">Actions</th>
                   </tr>
                 </thead>
 

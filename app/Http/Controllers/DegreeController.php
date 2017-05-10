@@ -115,16 +115,15 @@ class DegreeController extends Controller
      * @param  int  $id
      * @return Response
      */
-
-    public function destroy($id)
-    {
-        //echo $id; die;
-       // delete
-        $procobj = Degree::findOrFail($id);
-        $procobj->delete();
-
-        // redirect
-        Session::flash('message', 'Successfully deleted');
-        return Redirect::to('/admin/degree');
+   
+    public function delete(Request $request,$id) {
+        if($id) {
+            $procobj = Degree::find($id);
+            if($procobj) {                         
+                $procobj->delete();
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/degree');
+            }
+        }
     }
 }

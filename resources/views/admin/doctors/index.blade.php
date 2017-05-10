@@ -27,7 +27,7 @@
             </div>
 
 
-            <div><a href="{{ url('/admin/doctors/create') }}"><button type="button" class="btn bg-purple">ADD</button></a></div>
+            <div class="topbtn"><a href="{{ url('/admin/doctors/create') }}"><button type="button" class="btn bg-purple btn-rightad">ADD</button></a></div>
 
             <!-- /.box-header -->
             <div class="box-body">
@@ -42,7 +42,7 @@
                     <th>Email</th>
                     <th>Mobile No</th>
                     <th>City</th>
-                    <th>Actions</th>
+                    <th width="11%">Actions</th>
                   </tr>
                 </thead>
 

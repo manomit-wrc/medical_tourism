@@ -116,15 +116,21 @@ class PaymentTypeController extends Controller
      * @return Response
      */
 
-    public function destroy($id)
-    {
-       //echo $id; die;
-       // delete
+    /* public function destroy($id)
+    {       
         $provdrtp = PaymentType::findOrFail($id);
         $provdrtp->delete();
-
-        // redirect
         Session::flash('message', 'Successfully deleted');
         return Redirect::to('/admin/paymenttype');
+    } */
+    public function delete(Request $request,$id) {
+        if($id) {
+            $provdrtp = PaymentType::find($id);
+            if($provdrtp) {                         
+                $provdrtp->delete();
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/paymenttype');
+            }
+        }
     }
 }

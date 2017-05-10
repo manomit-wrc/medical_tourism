@@ -25,12 +25,12 @@
               <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
             </div>
 
-            <div><a href="{!!URL::to('/admin/banner/create')!!}"><button type="button" class="btn bg-purple">ADD</button></a></div>
+            <div class="topbtn"><a href="{!!URL::to('/admin/banner/create')!!}"><button type="button" class="btn bg-purple btn-rightad">ADD</button></a></div>
 
             <!-- /.box-header -->
             <div class="box-body">
               @if (Session::has('message'))
-                  <div class="alert alert-info">{{ Session::get('message') }}</div>
+                  <div class="alert alert-info" id="result7">{{ Session::get('message') }}</div>
               @endif
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
@@ -39,7 +39,7 @@
                     <th>Banner heading</th>
                     <th>Banner sub heading</th>
                     <th>Youtube url</th>
-                    <th>Actions</th>
+                    <th width="11%">Actions</th>
                   </tr>
                 </thead>
                
@@ -48,18 +48,16 @@
                     @foreach($banner_lists as $banner_lists)
                       <tr>
                         <td>
-                          <img src="{{url('/uploads/banners/thumb/'.$banner_lists->banner_image)}}" alt="Banner Logo" >
+                          <img class="procedure_img" src="{{url('/uploads/banners/thumb/'.$banner_lists->banner_image)}}" alt="Banner Logo" >
                         </td>
                         <td>{{ $banner_lists->banner_heading }}</td>
                         <td>{{ $banner_lists->banner_sub_heading }}</td>
                         <td><a href="{{ $banner_lists->banner_url }}" target="_blank">{{ $banner_lists->banner_url }}</a></td>
                         <td>
                           <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
-                            <!-- we will add this later since its a little more complicated than the other two buttons -->
-                             {!! Form::open(array('method' => 'DELETE','url' => array('admin/banner/delete', $banner_lists->id),'class' => 'pull-right')) !!}
-                                  {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                              {!! Form::close() !!}
+                            <!-- we will add this later since its a little more complicated than the other two buttons -->                            
                           <a href="{!!URL::to('/admin/banner/edit',$banner_lists->id)!!}" class="btn btn-primary">Edit</a>
+                          <a href="{!!URL::to('/admin/banner/delete',$banner_lists->id)!!}" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger" >Delete</a>
                         </td>
                       </tr>
                     @endforeach

@@ -194,17 +194,25 @@ class MedicalFacilityController extends Controller
      * @return Response
      */
 
-    public function destroy($id)
-    {
-        //echo $id; die;
-       // delete
+   /* public function destroy($id)
+    {        
         $medfacobj = MedicalFacility::findOrFail($id);
         File::delete(public_path('/uploads/medicalfacilities/'. $medfacobj->banner_image));
         File::delete(public_path('/uploads/medicalfacilities/thumb/'. $medfacobj->banner_image));
         $medfacobj->delete();
-
-        // redirect
         Session::flash('message', 'Successfully deleted');
         return Redirect::to('/admin/medicalfacility');
+    }*/
+    public function delete(Request $request,$id) {
+        if($id) {
+            $medfacobj = MedicalFacility::find($id);
+            if($medfacobj) {
+                File::delete(public_path('/uploads/medicalfacilities/'. $medfacobj->banner_image));
+                File::delete(public_path('/uploads/medicalfacilities/thumb/'. $medfacobj->banner_image));          
+                $medfacobj->delete();
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/medicalfacility');
+            }
+        }
     }
 }

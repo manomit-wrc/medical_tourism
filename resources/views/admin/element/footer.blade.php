@@ -60,6 +60,7 @@
 {!!Html::script("storage/admin/js/demo.js")!!}
 
 
+
 @if((Request::segment(2) === 'package-types' && (Request::segment(3) === 'create' || Request::segment(3) === 'edit'))||(Request::segment(2) === 'successstories' && (Request::segment(3) === 'create' || Request::segment(3) === 'edit')) ||(Request::segment(2) === 'cmspagedetail' && (Request::segment(3) === 'create' || Request::segment(3) === 'edit')))
   {!!Html::script("vendor/unisharp/laravel-ckeditor/ckeditor.js")!!}
   <script type="text/javascript">
@@ -441,7 +442,6 @@ $(function () {
       $("#name").val(''); 
     } 
 </script>
-
 <!-- hospital wise treatment end -- >
 
 <!-- page script -->

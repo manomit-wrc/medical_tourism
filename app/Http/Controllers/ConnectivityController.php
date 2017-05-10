@@ -116,16 +116,15 @@ class ConnectivityController extends Controller
      * @param  int  $id
      * @return Response
      */
-
-    public function destroy($id)
-    {
-        //echo $id; die;
-       // delete
-        $trtmntobj = Treatment::findOrFail($id);
-        $trtmntobj->delete();
-
-        // redirect
-        Session::flash('message', 'Successfully deleted');
-        return Redirect::to('/admin/treatment');
+    
+    public function delete(Request $request,$id) {
+        if($id) {
+            $con_details = Connectivity::find($id);
+            if($con_details) {                         
+                $con_details->delete();
+             $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/connectivity');
+            }
+        }
     }
 }

@@ -117,15 +117,14 @@ class ConnectivityServicesController extends Controller
      * @return Response
      */
 
-    public function destroy($id)
-    {
-        //echo $id; die;
-       // delete
-        $con_serv_obj = ConnectivityServices::findOrFail($id);
-        $con_serv_obj->delete();
-
-        // redirect
-        Session::flash('message', 'Successfully deleted');
-        return Redirect::to('/admin/connectivityservices');
+    public function delete(Request $request,$id) {
+        if($id) {
+            $con_serv_obj = ConnectivityServices::find($id);
+            if($con_serv_obj) {                        
+                $con_serv_obj->delete();
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/connectivityservices');
+            }
+        }
     }
 }

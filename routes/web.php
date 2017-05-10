@@ -85,38 +85,39 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/accrediation/edit/{id}','AccrediationController@edit');
     Route::patch('/admin/accrediation/update/{id}','AccrediationController@update');
     Route::delete('/admin/accrediation/delete/{id}','AccrediationController@destroy');
+    Route::get('/admin/accrediation/delete/{id}','AccrediationController@delete');
 
     //Accomodation section
     Route::get('/admin/accomodation', 'AccomodationController@index');
     Route::get('/admin/accomodation/create','AccomodationController@create');
     Route::post('/admin/accomodation/store','AccomodationController@store');
     Route::get('/admin/accomodation/edit/{id}','AccomodationController@edit');
-    Route::patch('/admin/accomodation/update/{id}','AccomodationController@update');
-    Route::delete('/admin/accomodation/delete/{id}','AccomodationController@destroy');
+    Route::patch('/admin/accomodation/update/{id}','AccomodationController@update');    
+    Route::get('/admin/accomodation/delete/{id}','AccomodationController@delete');
 
     //Cuisine section
     Route::get('/admin/cuisine', 'CuisineController@index');
     Route::get('/admin/cuisine/create','CuisineController@create');
     Route::post('/admin/cuisine/store','CuisineController@store');
     Route::get('/admin/cuisine/edit/{id}','CuisineController@edit');
-    Route::patch('/admin/cuisine/update/{id}','CuisineController@update');
-    Route::delete('/admin/cuisine/delete/{id}','CuisineController@destroy');
+    Route::patch('/admin/cuisine/update/{id}','CuisineController@update');    
+    Route::get('/admin/cuisine/delete/{id}','CuisineController@delete');
 
     //Specific Service section
     Route::get('/admin/specificservice', 'SpecificServiceController@index');
     Route::get('/admin/specificservice/create','SpecificServiceController@create');
     Route::post('/admin/specificservice/store','SpecificServiceController@store');
     Route::get('/admin/specificservice/edit/{id}','SpecificServiceController@edit');
-    Route::patch('/admin/specificservice/update/{id}','SpecificServiceController@update');
-    Route::delete('/admin/specificservice/delete/{id}','SpecificServiceController@destroy');
+    Route::patch('/admin/specificservice/update/{id}','SpecificServiceController@update');    
+    Route::get('/admin/specificservice/delete/{id}','SpecificServiceController@delete');
 
     //Banner section
     Route::get('/admin/banner', 'BannerController@index');
     Route::get('/admin/banner/create','BannerController@create');
     Route::post('/admin/banner/store','BannerController@store');
     Route::get('/admin/banner/edit/{id}','BannerController@edit');
-    Route::patch('/admin/banner/update/{id}','BannerController@update');
-    Route::delete('/admin/banner/delete/{id}','BannerController@destroy');
+    Route::patch('/admin/banner/update/{id}','BannerController@update');    
+    Route::get('/admin/banner/delete/{id}','BannerController@delete');
 
     //Role section
     Route::get('/admin/role', 'RoleController@index');
@@ -131,16 +132,16 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/degree/create','DegreeController@create');
     Route::post('/admin/degree/store','DegreeController@store');
     Route::get('/admin/degree/edit/{id}','DegreeController@edit');
-    Route::patch('/admin/degree/update/{id}','DegreeController@update');
-    Route::delete('/admin/degree/delete/{id}','DegreeController@destroy');
+    Route::patch('/admin/degree/update/{id}','DegreeController@update');  
+    Route::get('/admin/degree/delete/{id}','DegreeController@delete');
 
     //Medical Facility section
     Route::get('/admin/medicalfacility', 'MedicalFacilityController@index');
     Route::get('/admin/medicalfacility/create','MedicalFacilityController@create');
     Route::post('/admin/medicalfacility/store','MedicalFacilityController@store');
     Route::get('/admin/medicalfacility/edit/{id}','MedicalFacilityController@edit');
-    Route::patch('/admin/medicalfacility/update/{id}','MedicalFacilityController@update');
-    Route::delete('/admin/medicalfacility/delete/{id}','MedicalFacilityController@destroy');
+    Route::patch('/admin/medicalfacility/update/{id}','MedicalFacilityController@update');    
+    Route::get('/admin/medicalfacility/delete/{id}','MedicalFacilityController@delete');
 
 
 
@@ -159,16 +160,16 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/providertype/create','ProviderTypeController@create');
     Route::post('/admin/providertype/store','ProviderTypeController@store');
     Route::get('/admin/providertype/edit/{id}','ProviderTypeController@edit');
-    Route::patch('/admin/providertype/update/{id}','ProviderTypeController@update');
-    Route::delete('/admin/providertype/delete/{id}','ProviderTypeController@destroy');
+    Route::patch('/admin/providertype/update/{id}','ProviderTypeController@update');    
+    Route::get('/admin/providertype/delete/{id}','ProviderTypeController@delete');
 
     //Payment type section
     Route::get('/admin/paymenttype', 'PaymentTypeController@index');
     Route::get('/admin/paymenttype/create','PaymentTypeController@create');
     Route::post('/admin/paymenttype/store','PaymentTypeController@store');
     Route::get('/admin/paymenttype/edit/{id}','PaymentTypeController@edit');
-    Route::patch('/admin/paymenttype/update/{id}','PaymentTypeController@update');
-    Route::delete('/admin/paymenttype/delete/{id}','PaymentTypeController@destroy');
+    Route::patch('/admin/paymenttype/update/{id}','PaymentTypeController@update');    
+    Route::get('/admin/paymenttype/delete/{id}','PaymentTypeController@delete');
 
     //Country State city
     /*Route::get('/admin/api/dependent-dropdown','APIController@index');
@@ -193,8 +194,8 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/connectivity/create','ConnectivityController@create');
     Route::post('/admin/connectivity/store','ConnectivityController@store');
     Route::get('/admin/connectivity/edit/{id}','ConnectivityController@edit');
-    Route::patch('/admin/connectivity/update/{id}','ConnectivityController@update');
-    Route::delete('/admin/connectivity/delete/{id}','ConnectivityController@destroy');
+    Route::patch('/admin/connectivity/update/{id}','ConnectivityController@update');   
+    Route::get('/admin/connectivity/delete/{id}','ConnectivityController@delete');
 
     //news section
     Route::get('/admin/news','NewsController@index');
@@ -228,8 +229,8 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/connectivityservices/create','ConnectivityServicesController@create');
     Route::post('/admin/connectivityservices/store','ConnectivityServicesController@store');
     Route::get('/admin/connectivityservices/edit/{id}','ConnectivityServicesController@edit');
-    Route::patch('/admin/connectivityservices/update/{id}','ConnectivityServicesController@update');
-    Route::delete('/admin/connectivityservices/delete/{id}','ConnectivityServicesController@destroy');
+    Route::patch('/admin/connectivityservices/update/{id}','ConnectivityServicesController@update');    
+    Route::get('/admin/connectivityservices/delete/{id}','ConnectivityServicesController@delete');
 
     //hospitals section
     Route::get('/admin/hospitals', 'HospitalController@index');

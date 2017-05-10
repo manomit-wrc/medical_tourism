@@ -116,15 +116,21 @@ class CuisineController extends Controller
      * @return Response
      */
 
-    public function destroy($id)
-    {
-        //echo $id; die;
-       // delete
+   /* public function destroy($id)
+    {        
         $procobj = Cuisine::findOrFail($id);
         $procobj->delete();
-
-        // redirect
         Session::flash('message', 'Successfully deleted');
         return Redirect::to('/admin/cuisine');
+    } */
+    public function delete(Request $request,$id) {
+        if($id) {
+            $procobj = Cuisine::find($id);
+            if($procobj) {                        
+                $procobj->delete();
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/cuisine');
+            }
+        }
     }
 }
