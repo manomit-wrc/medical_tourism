@@ -327,6 +327,12 @@ Route::group(['middleware' => ['admin']], function () {
     // home page content
     Route::get('/admin/homepagecontent','HomePageContentController@index');
     Route::patch('/admin/homepagecontent/store','HomePageContentController@store');
+    Route::get('/admin/cmspagedetail','CmspageDetailsController@index');
+    Route::get('/admin/cmspagedetail/create','CmspageDetailsController@create');
+    Route::post('/admin/cmspagedetail/store','CmspageDetailsController@store');
+    Route::get('/admin/cmspagedetail/edit/{id}','CmspageDetailsController@edit');
+    Route::patch('/admin/cmspagedetail/update/{id}','CmspageDetailsController@update');    
+    Route::get('/admin/cmspagedetail/delete/{id}','CmspageDetailsController@delete');
 
     //Immigration section
     Route::get('/admin/immigration', 'ImmigrationController@index');

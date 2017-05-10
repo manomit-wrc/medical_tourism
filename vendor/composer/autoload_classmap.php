@@ -28,6 +28,8 @@ return array(
     'CreateAccomodationsTable' => $baseDir . '/database/migrations/2017_04_21_073022_create_accomodations_table.php',
     'CreateAccrediationsTable' => $baseDir . '/database/migrations/2017_04_21_051438_create_accrediations_table.php',
     'CreateBannersTable' => $baseDir . '/database/migrations/2017_04_21_124438_create_banners_table.php',
+    'CreateCmspageDetailsTable' => $baseDir . '/database/migrations/2017_05_10_043258_create_cmspage_details_table.php',
+    'CreateCmspagesTable' => $baseDir . '/database/migrations/2017_05_10_041907_create_cmspages_table.php',
     'CreateConnectivitiesTable' => $baseDir . '/database/migrations/2017_04_26_071329_create_connectivities_table.php',
     'CreateConnectivityServicesTable' => $baseDir . '/database/migrations/2017_04_27_054504_create_connectivity_services_table.php',
     'CreateContactUsTable' => $baseDir . '/database/migrations/2017_05_08_060817_create_contact_us_table.php',
