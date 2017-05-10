@@ -15,7 +15,7 @@ use App\Faq;
 use Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\RegistrationEmail;
-
+use App\SuccessStories;
 use App\Immigration;
 use App\CountryVisa;
 
@@ -118,6 +118,13 @@ class PagesController extends Controller
      //echo "<pre>"; print_r($cntvisa_lists); die;
       return view('pages.visa')->with('cntvisa_lists',$cntvisa_lists);
 	}
+
+  public function successstory_details($id)
+  {
+      $succstory_data = SuccessStories::findOrFail($id);
+     //echo "<pre>"; print_r($succstory_data); die;
+      return view('pages.successstorydetails')->with('succstory_data',$succstory_data);
+  }
 
 
   public function check_user_exist(Request $request) {

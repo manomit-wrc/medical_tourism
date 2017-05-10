@@ -50,7 +50,7 @@ class SuccessStoryController extends Controller
         $this->validate($request, [
         'title' => 'required',
         'description' => 'required',
-        'story_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=200,min_height=200',
+        'story_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=745,min_height=214',
       ]);
 
       // Getting all data after success validation.
@@ -71,13 +71,18 @@ class SuccessStoryController extends Controller
             $fileName = time().'_'.$file->getClientOriginalName() ;
 
             //thumb destination path
-            $thumbdestinationPath = public_path().'/uploads/successstories/thumb_200_200' ;
+            $thumbdestinationPath1 = public_path().'/uploads/successstories/thumb_200_200' ;
+            $destinationPathThumb2 = public_path().'/uploads/successstories/thumb_745_214' ;
 
             $img = Image::make($file->getRealPath());
 
             $img->resize(243, 149, function ($constraint){
                 $constraint->aspectRatio();
-            })->save($thumbdestinationPath.'/'.$fileName);
+            })->save($thumbdestinationPath1.'/'.$fileName);
+
+            $img->resize(745, 214, function ($constraint){
+                    $constraint->aspectRatio();
+                })->save($destinationPathThumb2.'/'.$fileName);
 
             //original destination path
             $originaldestinationPath = public_path().'/uploads/successstories/' ;
@@ -132,7 +137,7 @@ class SuccessStoryController extends Controller
         $this->validate($request, [
         'title' => 'required',
         'description' => 'required',
-        'story_image' => 'image|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=200,min_height=200',
+        'story_image' => 'image|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=745,min_height=214',
       ]);
 
       // Getting all data after success validation.
@@ -150,13 +155,18 @@ class SuccessStoryController extends Controller
             $fileName = time().'_'.$file->getClientOriginalName() ;
 
             //thumb destination path
-            $thumbdestinationPath = public_path().'/uploads/successstories/thumb_200_200' ;
+            $thumbdestinationPath1 = public_path().'/uploads/successstories/thumb_200_200' ;
+            $destinationPathThumb2 = public_path().'/uploads/successstories/thumb_745_214' ;
 
             $img = Image::make($file->getRealPath());
 
             $img->resize(200, 200, function ($constraint){
                 $constraint->aspectRatio();
-            })->save($thumbdestinationPath.'/'.$fileName);
+            })->save($thumbdestinationPath1.'/'.$fileName);
+
+            $img->resize(745,214, function ($constraint){
+                $constraint->aspectRatio();
+            })->save($destinationPathThumb2.'/'.$fileName);
 
             //original destination path
             $originaldestinationPath = public_path().'/uploads/successstories/' ;
@@ -185,7 +195,8 @@ class SuccessStoryController extends Controller
        // delete
         $succstoryobj = SuccessStories::findOrFail($id);
         File::delete(public_path('/uploads/successstories/'. $succstoryobj->story_image));
-        File::delete(public_path('/uploads/successstories/thumb/'. $succstoryobj->story_image));
+        File::delete(public_path('/uploads/successstories/thumb_200_200/'. $succstoryobj->story_image));
+        File::delete(public_path('/uploads/successstories/thumb_745_214/'. $succstoryobj->story_image));
         $succstoryobj->delete();
 
         // redirect

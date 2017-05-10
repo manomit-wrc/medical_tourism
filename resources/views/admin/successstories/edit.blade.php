@@ -64,8 +64,8 @@
 
                         <!-- file input -->
                         <div class="form-group">
-                          {!! Html::decode(Form::label('story_image','Procedure image: <span style="color:red;">* (Image must be minimum of 200x200)</span>')) !!}
-                          <img src="{{url('/uploads/successstories/thumb_200_200/'.$succstory_data->story_image)}}" alt="Procedure Image">
+                          {!! Html::decode(Form::label('story_image','Image: <span style="color:red;">* (Image must be minimum of 745x214)</span>')) !!}
+                          <img src="{{url('/uploads/successstories/thumb_200_200/'.$succstory_data->story_image)}}" alt="Success story image">
                           {!! Form::file('story_image', null) !!}
                         </div>
                          <!-- /.file input -->
