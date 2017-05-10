@@ -48,7 +48,7 @@
             @if($user_view_composer->hasRole('admin/genericmedicine',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'genericmedicine' ? 'active' : null }}" ><a href="{!!URL::to('/admin/genericmedicine')!!}"><i class="fa fa-plus-square"></i>Generic Medicine</a></li>@endif
             @if($user_view_composer->hasRole('admin/medicaltestcategories',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'medicaltestcategories' ? 'active' : null }}" ><a href="{!!URL::to('/admin/medicaltestcategories')!!}"><i class="fa fa-plus-square"></i>Medical Test Category</a></li>@endif
             @if($user_view_composer->hasRole('admin/medicaltest',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'medicaltest' ? 'active' : null }}" ><a href="{!!URL::to('/admin/medicaltest')!!}"><i class="fa fa-plus-square"></i>Medical Test</a></li>@endif
-			@if($user_view_composer->hasRole('admin/degree',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'degree' ? 'active' : null }}" ><a href="{!!URL::to('/admin/degree')!!}"><i class="fa fa-certificate"></i>Degree master</a></li>@endif
+			      @if($user_view_composer->hasRole('admin/degree',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'degree' ? 'active' : null }}" ><a href="{!!URL::to('/admin/degree')!!}"><i class="fa fa-certificate"></i>Degree master</a></li>@endif
             @if($user_view_composer->hasRole('admin/providertype',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'providertype' ? 'active' : null }}" ><a href="{!!URL::to('/admin/providertype')!!}"><i class="fa fa-circle-o"></i>Provider type master</a></li>@endif
             @if($user_view_composer->hasRole('admin/accomodation',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'accomodation' ? 'active' : null }}" ><a href="{!!URL::to('/admin/accomodation')!!}"><i class="fa fa-bed"></i>Accomodation master</a></li>@endif
             @if($user_view_composer->hasRole('admin/cuisine',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'cuisine' ? 'active' : null }}" ><a href="{!!URL::to('/admin/cuisine')!!}"><i class="fa fa-cutlery"></i>Cuisine master</a></li>@endif
@@ -170,14 +170,14 @@
 
         <li class="treeview {{ Request::segment(2) === 'homepagecontent' ? 'active' : null || Request::segment(2) === 'cmspagedetail' ? 'active' : null }}">
           <a href="javascript:void(0)">
-            <i class="fa fa-briefcase"></i> <span>CMS Mgmt </span>
+            <i class="fa fa-file-word-o"></i> <span>CMS Management </span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            @if($user_view_composer->hasRole('admin/homepagecontent',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'homepagecontent' ? 'active' : null }}"><a href="/admin/homepagecontent"><i class="fa fa-tasks"></i>Homepage Content</a></li>@endif 
-            @if($user_view_composer->hasRole('admin/cmspagedetail',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'cmspagedetail' ? 'active' : null }}"><a href="{!!URL::to('/admin/cmspagedetail')!!}"><i class="fa fa-address-card"></i>CMS Page</a></li>@endif
+            @if($user_view_composer->hasRole('admin/homepagecontent',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'homepagecontent' ? 'active' : null }}"><a href="/admin/homepagecontent"><i class="fa fa-file-code-o"></i>Homepage Content</a></li>@endif 
+            @if($user_view_composer->hasRole('admin/cmspagedetail',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'cmspagedetail' ? 'active' : null }}"><a href="{!!URL::to('/admin/cmspagedetail')!!}"><i class="fa fa-file-code-o"></i>CMS Page</a></li>@endif
           </ul>
         </li>
 
