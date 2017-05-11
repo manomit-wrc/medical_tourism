@@ -67,7 +67,7 @@ class GenericmedicineController extends Controller
         $gems = Genericmedicine::find($id);
         // validate
         $this->validate($request, [
-        'generic_name_of_the_medicine' => 'required',
+        'generic_name_of_the_medicine' => 'required|unique:genericmedicines,generic_name_of_the_medicine,'.$id,
         'unit' => 'required',
         'price' => 'required',
         'procedure_id' => 'required'

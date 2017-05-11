@@ -64,7 +64,7 @@ class MedicaltestController extends Controller
         $medtest = Medicaltest::find($id);
         // validate
         $this->validate($request, [
-        'test_name' => 'required',
+        'test_name' => 'required|unique:medicaltests,test_name,'.$id,
         'medicaltestcategories_id' => 'required'        
       ]);
        	$medtest->test_name = $request->test_name;
