@@ -10,3 +10,15 @@ Stack trace:
 [2017-05-10 13:48:20] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected ':', expecting '('' in C:\xampp\htdocs\medical_tourism\storage\framework\views\7c74b45441aa40e7f20dce847d67cc870215d7c5.php:14
 Stack trace:
 #0 {main}  
+[2017-05-11 06:16:58] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'name' (T_STRING)' in C:\xampp\htdocs\medical_tourism\storage\framework\views\b6adfc7212be98ecff4a46e3cdca587663087a2d.php:56
+Stack trace:
+#0 {main}  
+[2017-05-11 06:18:15] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '?'' in C:\xampp\htdocs\medical_tourism\storage\framework\views\b6adfc7212be98ecff4a46e3cdca587663087a2d.php:56
+Stack trace:
+#0 {main}  
+[2017-05-11 06:18:27] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '?'' in C:\xampp\htdocs\medical_tourism\storage\framework\views\b6adfc7212be98ecff4a46e3cdca587663087a2d.php:56
+Stack trace:
+#0 {main}  
+[2017-05-11 06:18:43] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '?'' in C:\xampp\htdocs\medical_tourism\storage\framework\views\b6adfc7212be98ecff4a46e3cdca587663087a2d.php:56
+Stack trace:
+#0 {main}  
