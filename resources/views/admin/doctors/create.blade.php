@@ -134,7 +134,7 @@
                   <div class="col-md-6">
                     <div class="form-group {{ $errors->has('avators') ? 'has-error' : '' }}">
                       <label for="name">Image: <span style="color:red;">*</span></label>
-                      <input type="file" name="avators" id="avators" class="form-control"  autofocus >
+                      <input type="file" name="avators" id="avators"  autofocus >
 
                       <span class="text-danger">{{ $errors->first('avators') }}</span>
                     </div>

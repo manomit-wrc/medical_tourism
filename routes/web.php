@@ -188,8 +188,8 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/hotel/create','HotelController@create');
     Route::post('/admin/hotel/store','HotelController@store');
     Route::get('/admin/hotel/edit/{id}','HotelController@edit');
-    Route::patch('/admin/hotel/update/{id}','HotelController@update');
-    Route::delete('/admin/hotel/delete/{id}','HotelController@destroy');
+    Route::patch('/admin/hotel/update/{id}','HotelController@update');    
+    Route::get('/admin/hotel/delete/{id}','HotelController@delete');
     Route::get('/admin/hotel/show/{id}','HotelController@show');
 
     //connectivity master section
@@ -205,8 +205,8 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/news/create','NewsController@create');
     Route::post('/admin/news/store','NewsController@store');
     Route::get('/admin/news/edit/{id}','NewsController@edit');
-    Route::patch('/admin/news/update/{id}','NewsController@update');
-    Route::delete('/admin/news/delete/{id}','NewsController@destroy');
+    Route::patch('/admin/news/update/{id}','NewsController@update');    
+    Route::get('/admin/news/delete/{id}','NewsController@delete');
 
     //provider connectivitysettings master section
     Route::get('/admin/providerconnectivity', 'ProviderConnectivityController@index');

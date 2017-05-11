@@ -25,12 +25,12 @@
               <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
             </div>
 
-            <div><a href="{!!URL::to('/admin/news/create')!!}"><button type="button" class="btn bg-purple">ADD</button></a></div>
+            <div class="topbtn"><a href="{!!URL::to('/admin/news/create')!!}"><button type="button" class="btn bg-purple btn-rightad">ADD</button></a></div>
 
             <!-- /.box-header -->
             <div class="box-body">
               @if (Session::has('message'))
-                  <div class="alert alert-info">{{ Session::get('message') }}</div>
+                  <div class="alert alert-info" id="result7">{{ Session::get('message') }}</div>
               @endif
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
@@ -38,7 +38,7 @@
                     <th>Heading</th>
                     <th>Description</th>
                     <th>Image</th>
-                    <th>Actions</th>
+                    <th width="11%">Actions</th>
                   </tr>
                 </thead>
                
@@ -49,15 +49,13 @@
                         <td>{!! \Illuminate\Support\Str::words($news_data->title, 10,'....')  !!}</td>
                         <td>{!! \Illuminate\Support\Str::words($news_data->description, 10,'....')  !!}</td>
                         <td>
-                          <img src="{{url('/uploads/news/thumb_352_170/'.$news_data->news_image)}}" alt="News Image" >
+                          <img class="procedure_img" src="{{url('/uploads/news/thumb_352_170/'.$news_data->news_image)}}" alt="News Image" >
                         </td>
                         <td>
                           <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
-                            <!-- we will add this later since its a little more complicated than the other two buttons -->
-                             {!! Form::open(array('method' => 'DELETE','url' => array('admin/news/delete', $news_data->id),'class' => 'pull-right')) !!}
-                                  {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                              {!! Form::close() !!}
+                            <!-- we will add this later since its a little more complicated than the other two buttons -->                             
                           <a href="{!!URL::to('/admin/news/edit',$news_data->id)!!}" class="btn btn-primary">Edit</a>
+                          <a href="{!!URL::to('/admin/news/delete',$news_data->id)!!}" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger" >Delete</a>
                         </td>
                       </tr>
                     @endforeach

@@ -70,20 +70,27 @@
 <script>
 /*ckeditor implementation initialization*/
  //id here
-
-$(function () {
+function deldata(url){
   swal({
     title: "Are you sure?",
-    text: "You will not be able to recover this imaginary file!",
-    type: "warning",
+    text: "You want to delete this record!",
+    type: "error",
     showCancelButton: true,
-    confirmButtonColor: "#DD6B55",
-    confirmButtonText: "Yes, delete it!",
-    closeOnConfirm: false
-    },
-    function(){
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Yes",
+        cancelButtonText: "No",
+        closeOnConfirm: true,
+        closeOnCancel: true
+      }, function(isConfirm){
+        if (isConfirm){
+          window.location.href= url;
+        }       
+      });
+   /* function(){
     swal("Deleted!", "Your imaginary file has been deleted.", "success");
-    });
+    });*/
+}
+$(function () {  
     //Initialize Select2 Elements
     $(".js-example-basic-multiple").select2();
     //$("#example1").DataTable();

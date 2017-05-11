@@ -63,14 +63,15 @@
                         
                         <!-- file input -->
                         <div class="form-group">
-                          {!! Html::decode(Form::label('facility_image','News image: <span style="color:red;">* (Image must be minimum of 745x214)</span>')) !!}
+                          {!! Html::decode(Form::label('facility_image','News image: ')) !!}
                           {!! Form::file('news_image', null) !!}
+                          <span style="color:red;">* (Image must be minimum of 745x214)</span>
                         </div>
                          <!-- /.file input -->
 
                          <!-- input submit button -->
-                        <div class="box-footer">
-                           {!! Form::submit('submit',array('class'=>'btn btn-primary pull-right','id'=>'exact-submit-button'))!!}
+                        <div>
+                           {!! Form::submit('submit',array('class'=>'btn btn-primary pull-left','id'=>'exact-submit-button'))!!}
                         </div>
                         <!-- /.input submit button -->
                     </div>

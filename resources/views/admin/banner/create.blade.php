@@ -48,8 +48,9 @@
                         
                         <!-- file input -->
                         <div class="form-group">
-                          {!! Html::decode(Form::label('banner_image','Banner image: <span style="color:red;">* (Image must be 1700x601)</span>')) !!}
+                          {!! Html::decode(Form::label('banner_image','Banner image: ')) !!}
                           {!! Form::file('banner_image', null) !!}
+                          <span style="color:red;">* (Image must be 1700x601)</span>
                         </div>
                          <!-- /.file input -->
 
