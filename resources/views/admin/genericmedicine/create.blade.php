@@ -33,36 +33,38 @@
               <h3 class="box-title">General Elements</h3>
             </div> -->
             <!-- /.box-header -->
-            @if($errors->any())
+           <!-- @if($errors->any())
               <div class="alert alert-danger">
                   @foreach($errors->all() as $error)
                       <p>{{ $error }}</p>
                   @endforeach
               </div>
-            @endif
+            @endif-->
             <div class="box-body">
              
                  {!! Form::open(array('method' => 'POST','role'=>'form','url'=>'admin/genericmedicine/store','id'=>'genericmedicine_add')) !!}
                     
-                    <div class="col-md-6">
-                        
+                    <div class="col-md-6">                  
 
                         <!-- text input -->
                         <div class="form-group">
                           {!! Html::decode(Form::label('generic_name_of_the_medicine','Generic Name of the Medicine: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('generic_name_of_the_medicine','',array('class'=>'form-control','id'=>'generic_name_of_the_medicine','placeholder'=>'Enter Generic Name of the Medicine')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("generic_name_of_the_medicine").'</span>') !!}
                         </div>
                         <!-- /.text input -->
                         <!-- text input -->
                         <div class="form-group">
                           {!! Html::decode(Form::label('unit','Strip/Unit: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('unit','',array('class'=>'form-control','id'=>'unit','placeholder'=>'Enter Strip/Unit')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("unit").'</span>') !!}
                         </div>
                         <!-- /.text input -->
                          <!-- text input -->
                         <div class="form-group">
                           {!! Html::decode(Form::label('price','Price: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('price','',array('class'=>'form-control','id'=>'price','placeholder'=>'Enter Price')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("price").'</span>') !!}
                         </div>
                         <!-- /.text input -->                      
                         <div class="form-group">
@@ -71,7 +73,8 @@
                             @foreach($procedure_list as $key => $value)
                             <option value="{{ $key }}">{{$value}}</option>
                             @endforeach
-                          </select>                          
+                          </select>
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("procedure_id").'</span>') !!}                          
                         </div>              
 
                         

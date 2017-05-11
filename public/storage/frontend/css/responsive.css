@@ -70,7 +70,7 @@
 	}
 
 	.fieldbox{
-		width: 48% !important;
+		width: 31.3% !important;
 		margin-bottom: 15px;
 	}
 
@@ -126,7 +126,7 @@
 		float: none !important;
 	}
 
-	}
+}
 
 
 	@media only screen and (min-width: 320px) and (max-width: 767px) {
@@ -169,15 +169,14 @@
 
 	.fieldbox{
 		width: 90% !important;
-
-margin: 10px auto !important;
-float: none !important;
+		margin: 10px auto !important;
+		float: none !important;
 	}
 
 	.fieldsearch{
 		width: 90% !important;
 		margin: 10px auto !important;
-float: none !important;
+		float: none !important;
 	}
 
 	.jcarousel-control-prev{
@@ -278,16 +277,16 @@ float: none !important;
 
 	@media screen and (max-width: 480px) {
 
-		.category h2{
-			font-size: 30px !important;
-		}
-
-		.medicalF h2{
-			font-size: 30px !important;
-		}
-
-		.accomodation h2{
-			font-size: 30px !important;
-		}
-
+	.category h2{
+		font-size: 30px !important;
 	}
+
+	.medicalF h2{
+		font-size: 30px !important;
+	}
+
+	.accomodation h2{
+		font-size: 30px !important;
+	}
+
+}

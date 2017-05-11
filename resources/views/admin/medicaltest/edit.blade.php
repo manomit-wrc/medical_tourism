@@ -50,6 +50,7 @@
                         <div class="form-group">
                           {!! Html::decode(Form::label('test_name','Test Name: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('test_name',null,array('class'=>'form-control','id'=>'test_name','placeholder'=>'Enter Test Name')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("test_name").'</span>') !!}
                         </div>
                         <div class="form-group">
                           <label for="name">Category: <span style="color:red;">*</span></label>
@@ -57,7 +58,8 @@
                             @foreach($category_list as $key => $value)
                             <option value="{{ $key }}" {{ ($key==$medicaltest->medicaltestcategories_id)? 'selected':'' }} >{{$value}}</option>
                             @endforeach
-                          </select>                          
+                          </select>
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("medicaltestcategories_id").'</span>') !!}                          
                         </div>
                         <div class="form-group">
                           <label for="name">Status: </label>

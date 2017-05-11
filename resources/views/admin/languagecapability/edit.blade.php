@@ -33,13 +33,13 @@
              <!-- if there are creation errors, they will show here -->
              
             <!-- /.box-header -->
-            @if($errors->any())
+            <!-- @if($errors->any())
               <div class="alert alert-danger">
                   @foreach($errors->all() as $error)
                       <p>{{ $error }}</p>
                   @endforeach
               </div>
-            @endif
+            @endif -->
             <div class="box-body">
                  {{ Form::model($langcapabilites,array('method' => 'PATCH','role'=>'form','url' => array('admin/languagecapability/update', $langcapabilites->id),'id'=>'languagecapability_edit')) }}
                     
@@ -50,6 +50,14 @@
                         <div class="form-group">
                           {!! Html::decode(Form::label('name','Language capability name: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('name',null,array('class'=>'form-control','id'=>'name','placeholder'=>'Enter language capability name')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("name").'</span>') !!}
+                        </div>
+                        <div class="form-group">
+                          <label for="name">Status: </label>
+                          <select name="status" id="status" class="form-control" autofocus >
+                            <option value="1" {{ $langcapabilites->status == "1" ? 'selected' : '' }}>Active</option>
+                            <option value="0" {{ $langcapabilites->status == "0" ? 'selected' : '' }}>In-Active</option>
+                          </select>                          
                         </div>
                         <!-- /.text input -->
 

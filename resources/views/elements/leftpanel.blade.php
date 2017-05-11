@@ -20,11 +20,7 @@
                 <option value="Location">Location</option>
             </select>
 
-            <select name="" class="listtypeleft">
-                <option value="Language">Language</option>
-                <option value="Language">Language</option>
-                <option value="Language">Language</option>
-            </select>
+            <input type="text" name="" class="inputleft">  
 
             <button type="button"><i class="fa fa-search" aria-hidden="true"></i> SEARCH</button>
 

@@ -20,20 +20,8 @@
                   </div>
 
                   <div class="fieldbox">
-                    <select name="" class="listtype">
-                        <option value="Location">Location</option>
-                        <option value="Location">Location</option>
-                        <option value="Location">Location</option>
-                    </select>
-                  </div>
-
-                  <div class="fieldbox">
-                    <select name="" class="listtype">
-                        <option value="Language">Language</option>
-                        <option value="Language">Language</option>
-                        <option value="Language">Language</option>
-                    </select>
-                  </div>
+                    <input type="text" name="" class="listinput">
+                  </div>                 
                   
                   <div class="fieldsearch">
                   <button type="button"><i class="fa fa-search" aria-hidden="true"></i> SEARCH</button>

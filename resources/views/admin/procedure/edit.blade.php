@@ -48,9 +48,10 @@
 
                         <!-- text input -->
                         <div class="form-group">
-                          {!! Html::decode(Form::label('name','Procedure name: <span style="color:red;">*</span>')) !!}
-                          {!! Form::text('name',null,array('class'=>'form-control','id'=>'name','placeholder'=>'Enter procedure name')) !!}
-                        </div>
+							{!! Html::decode(Form::label('name','Procedure name: <span style="color:red;">*</span>')) !!}
+							{!! Form::text('name',null,array('class'=>'form-control','id'=>'name','placeholder'=>'Enter procedure name')) !!}
+							{!! Html::decode('<span class="text-danger">'.$errors->first("name").'</span>') !!}
+						</div>
                         <!-- /.text input -->
 
                         <!-- file input -->
@@ -59,9 +60,15 @@
 
                           <img src="{{url('/uploads/procedures/thumb/'.$procedures_data->procedure_image)}}" alt="Procedure Image" class="img_broder">
                           {!! Form::file('procedure_image', null) !!}
-
-                          <span style="color:red;">* (Image must be minimum of 243x149)</span>
-
+            							<span style="color:red;">* (Image must be minimum of 243x149)</span>
+            							{!! Html::decode('<span class="text-danger">'.$errors->first("procedure_image").'</span>') !!}
+                        </div>
+                        <div class="form-group">
+                          <label for="name">Status: </label>
+                          <select name="status" id="status" class="form-control" autofocus >
+                            <option value="1" {{ $procedures_data->status == "1" ? 'selected' : '' }}>Active</option>
+                            <option value="0" {{ $procedures_data->status == "0" ? 'selected' : '' }}>In-Active</option>
+                          </select>                          
                         </div>
                          <!-- /.file input -->
                         

@@ -33,13 +33,13 @@
               <h3 class="box-title">General Elements</h3>
             </div> -->
             <!-- /.box-header -->
-            @if($errors->any())
+            <!--@if($errors->any())
               <div class="alert alert-danger">
                   @foreach($errors->all() as $error)
                       <p>{{ $error }}</p>
                   @endforeach
               </div>
-            @endif
+            @endif-->
             <div class="box-body">
              
                  {!! Form::open(array('method' => 'POST','role'=>'form','url'=>'admin/medicaltestcategories/store','id'=>'medicaltestcategories_add')) !!}
@@ -51,6 +51,7 @@
                         <div class="form-group">
                           {!! Html::decode(Form::label('cat_name','Name: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('cat_name','',array('class'=>'form-control','id'=>'cat_name','placeholder'=>'Enter Name')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("cat_name").'</span>') !!}
                         </div>
                         <!-- /.text input -->                     
                         <!-- input submit button -->

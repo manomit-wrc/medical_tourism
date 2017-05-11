@@ -19,21 +19,19 @@ class CmspageDetailsController extends Controller
     public function index() {
         $cmspagedtl = CmsPageDetail::with('cmspage')->orderBy('cmspage_id')->get()->toArray();        
         $data['cmspagedtl'] = $cmspagedtl;
-       	/* echo "<pre>";
-        print_r($data['cmspagedtl']);       
-        die(); */
+       	/* echo "<pre>";print_r($data['cmspagedtl']);  die(); */
         return view('admin.cmspagedetail.index',$data); 
     }
     public function create()
     {
-        $cmspage_id_list = \App\Cmspage::get()->pluck('pagename','id')->toArray();
+        $cmspage_id_list = Cmspage::get()->pluck('pagename','id')->toArray();
        //   return view('admin.genericmedicine.create');
        return view('admin.cmspagedetail.create')->with(['cmspage_id_list'=>$cmspage_id_list]);
     }
     public function store(Request $request)
     {
-        $this->validate($request, [
-        'slag' => 'required|unique:cmspage_details', 
+      $this->validate($request, [
+        'slag' => 'required|unique:cmspage_details'.$request->get('id'), 
         'description' => 'required',
         'cmspage_id' => 'required'
       ]);

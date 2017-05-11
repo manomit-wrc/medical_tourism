@@ -25,7 +25,7 @@ class LanguageCapabilityController extends Controller
      * @return Response
      */
     public function index() {
-        $langcapabilites = LanguageCapability::all();
+        $langcapabilites = LanguageCapability::where('status', '!=', 2)->get();
         //echo "<pre>"; print_r($langcapbes); die;
     	return view('admin.languagecapability.index')->with('langcapabilites',$langcapabilites);
     }
@@ -98,7 +98,7 @@ class LanguageCapabilityController extends Controller
         $langcap = LanguageCapability::find($id);
         // validate
         $this->validate($request, [
-        'name' => 'required|unique:language_capabilities'
+        'name' => 'required'
         ]);
 
         // Getting all data after success validation.
