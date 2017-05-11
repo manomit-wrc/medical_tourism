@@ -18,7 +18,7 @@ class MedicaltestController extends Controller
     	
     }
 	public function index() {
-        $medicaltest = Medicaltest::with('medicaltestcategories')->orderBy('medicaltestcategories_id')->get()->toArray();
+        $medicaltest = Medicaltest::with('medicaltestcategories')->where('status', '!=', 2)->orderBy('medicaltestcategories_id')->get()->toArray();
         
         $data['medicaltest'] = $medicaltest;
         /*echo "<pre>";
@@ -74,7 +74,7 @@ class MedicaltestController extends Controller
         Session::flash('message', 'Successfully updated');
         return Redirect::to('/admin/medicaltest'); 
     }     
-    public function delete(Request $request,$id) {
+   /* public function delete(Request $request,$id) {
       if($id) {
         $medtest_details = Medicaltest::find($id);
         if($medtest_details) {          
@@ -83,5 +83,18 @@ class MedicaltestController extends Controller
           return redirect('/admin/medicaltest');
         }
       }
+    }*/
+
+    public function delete(Request $request,$id) {
+        if($id) {
+            $medtest_details = Medicaltest::find($id);
+            $status = '2';
+            $medtest_details->status = $status; 
+            $del = $medtest_details->save();
+            if($del) {      
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/medicaltest');
+            }
+        }
     }
 }

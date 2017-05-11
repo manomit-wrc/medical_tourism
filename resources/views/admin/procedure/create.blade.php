@@ -33,13 +33,13 @@
               <h3 class="box-title">General Elements</h3>
             </div> -->
             <!-- /.box-header -->
-            @if($errors->any())
+            <!--@if($errors->any())
               <div class="alert alert-danger">
                   @foreach($errors->all() as $error)
                       <p>{{ $error }}</p>
                   @endforeach
               </div>
-            @endif
+            @endif-->
             <div class="box-body">
              
                  {!! Form::open(array('method' => 'POST','role'=>'form','files' => true,'url'=>'admin/procedure/store','id'=>'procedure_add')) !!}
@@ -51,14 +51,16 @@
                         <div class="form-group">
                           {!! Html::decode(Form::label('name','Procedure name: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('name','',array('class'=>'form-control','id'=>'name','placeholder'=>'Enter procedure name')) !!}
-                        </div>
+						  {!! Html::decode('<span class="text-danger">'.$errors->first("name").'</span>') !!}
+						</div>
                         <!-- /.text input -->
 
                         <!-- file input -->
                         <div class="form-group">
                           {!! Html::decode(Form::label('procedure_image','Procedure image: ')) !!}
                           {!! Form::file('procedure_image', null) !!}
-                          <span style="color:red;">* (Image must be minimum of 243x149)</span>
+                          <span style="color:red;">* (Image must be minimum of 243x149)</span><br />
+						  {!! Html::decode('<span class="text-danger">'.$errors->first("procedure_image").'</span>') !!}
                         </div>
                          <!-- /.file input -->
 

@@ -17,7 +17,7 @@ class MedicalTestCategoriesController extends Controller
     	
     }
 	public function index() {
-        $medicaltestcategories = MedicalTestCategories::all();
+        $medicaltestcategories = MedicalTestCategories::where('status', '!=', 2)->get();
         //echo "<pre>"; print_r($langcapbes); die;
     	return view('admin.medicaltestcategories.index')->with('medicaltestcategories',$medicaltestcategories);
     }
@@ -66,7 +66,7 @@ class MedicalTestCategoriesController extends Controller
     }
 
     
-    public function delete(Request $request,$id) {
+    /*public function delete(Request $request,$id) {
       if($id) {
         $metcat = MedicalTestCategories::find($id);
         if($metcat) {          
@@ -75,5 +75,17 @@ class MedicalTestCategoriesController extends Controller
           return redirect('/admin/medicaltestcategories');
         }
       }
+    }*/
+    public function delete(Request $request,$id) {
+        if($id) {
+            $metcat = MedicalTestCategories::find($id);
+            $status = '2';
+            $metcat->status = $status; 
+            $del = $metcat->save();
+            if($del) {      
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/medicaltestcategories');
+            }
+        }
     }
 }

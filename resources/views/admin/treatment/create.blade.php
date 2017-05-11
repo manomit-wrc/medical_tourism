@@ -33,13 +33,13 @@
               <h3 class="box-title">General Elements</h3>
             </div> -->
             <!-- /.box-header -->
-            @if($errors->any())
+           <!--@if($errors->any())
               <div class="alert alert-danger">
                   @foreach($errors->all() as $error)
                       <p>{{ $error }}</p>
                   @endforeach
               </div>
-            @endif
+            @endif-->
             <div class="box-body">
              
                  {!! Form::open(array('method' => 'POST','role'=>'form','url'=>'admin/treatment/store','id'=>'treatment_add')) !!}
@@ -50,6 +50,7 @@
                         <div class="form-group">
                            {!! Html::decode(Form::label('procedure_id','Procedure: <span style="color:red;">*</span>')) !!}
                            {!! Form::select('procedure_id', $procedure_lists, null, ['class' => 'form-control select2']) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("procedure_id").'</span>') !!} 
                         </div>
                         <!-- /.form-group dropdown-->
                         
@@ -57,6 +58,7 @@
                         <div class="form-group">
                           {!! Html::decode(Form::label('name','Treatment name: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('name','',array('class'=>'form-control','id'=>'name','placeholder'=>'Enter treatment name')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("name").'</span>') !!} 
                         </div>
                         <!-- /.text input -->
 

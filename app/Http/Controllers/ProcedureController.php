@@ -25,7 +25,7 @@ class ProcedureController extends Controller
      * @return Response
      */
     public function index() {
-        $procedure_lists = Procedure::all();
+        $procedure_lists = Procedure::where('status', '!=', 2)->get();
         //echo "<pre>"; print_r($langcapbes); die;
         return view('admin.procedure.index')->with('procedure_lists',$procedure_lists);
     }
@@ -126,12 +126,13 @@ class ProcedureController extends Controller
         $procedureobj = Procedure::find($id);
         // validate
         $this->validate($request, [
-        'name' => 'required|unique:procedures',
+        'name' => 'required',
         'procedure_image' => 'image|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=243,min_height=149',
         ]);
 
         // Getting all data after success validation.
         $procedureobj->name = $request->get('name') ;
+        $procedureobj->status = $request->get('status') ;
        
 
         //echo "<pre>"; print_r($request->file('procedure_image'));die;
@@ -184,7 +185,7 @@ class ProcedureController extends Controller
         Session::flash('message', 'Successfully deleted');
         return Redirect::to('/admin/procedure');
     } */
-    public function delete(Request $request,$id) {
+	/* public function delete(Request $request,$id) {
         if($id) {
             $pro_details = Procedure::find($id);
             if($pro_details) {
@@ -192,6 +193,18 @@ class ProcedureController extends Controller
                 File::delete(public_path('/uploads/medicalfacilities/thumb/'. $pro_details->banner_image));          
                 $pro_details->delete();
              $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/procedure');
+            }
+        }
+    } */
+	public function delete(Request $request,$id) {
+        if($id) {
+            $pro_details = Procedure::find($id);
+            $status = '2';
+            $pro_details->status = $status; 
+            $del = $pro_details->save();
+            if($del) {      
+                $request->session()->flash("message", "Successfully deleted");
                 return redirect('/admin/procedure');
             }
         }
