@@ -168,15 +168,21 @@ class HotelController extends Controller
      * @return Response
      */
 
-    public function destroy($id)
-    {
-        //echo $id; die;
-       // delete
+    /* public function destroy($id)
+    {        
         $procobj = Hotel::findOrFail($id);
         $procobj->delete();
-
-        // redirect
         Session::flash('message', 'Successfully deleted');
         return Redirect::to('/admin/hotel');
+    } */
+    public function delete(Request $request,$id) {
+        if($id) {
+            $procobj = Hotel::find($id);
+            if($procobj) {                        
+                $procobj->delete();
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/hotel');
+            }
+        }
     }
 }

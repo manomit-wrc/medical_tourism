@@ -183,15 +183,21 @@ class NewsController extends Controller
      * @return Response
      */
 
-    public function destroy($id)
-    {
-        //echo $id; die;
-       // delete
+    /* public function destroy($id)
+    {        
         $trtmntobj = Treatment::findOrFail($id);
         $trtmntobj->delete();
-
-        // redirect
         Session::flash('message', 'Successfully deleted');
         return Redirect::to('/admin/treatment');
+    } */
+    public function delete(Request $request,$id) {
+        if($id) {
+            $newsobj = News::find($id);
+            if($newsobj) {                         
+                $newsobj->delete();
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/news');
+            }
+        }
     }
 }

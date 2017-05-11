@@ -62,15 +62,16 @@
 
                         <!-- file input -->
                         <div class="form-group">
-                          {!! Html::decode(Form::label('news_image','News image: <span style="color:red;">* (Image must be minimum of 745x214)</span>')) !!}
-                          <img src="{{url('/uploads/news/thumb_352_170/'.$news_data->news_image)}}" alt="Facility Image">
+                          {!! Html::decode(Form::label('news_image','News image: ')) !!}
+                          <img src="{{url('/uploads/news/thumb_352_170/'.$news_data->news_image)}}" alt="News Image" class="img_broder">
                           {!! Form::file('news_image', null) !!}
+                          <span style="color:red;">* (Image must be minimum of 745x214)</span>
                         </div>
                          <!-- /.file input -->
                         
                          <!-- input button -->
-                        <div class="box-footer">
-                           {!! Form::submit('submit',array('class'=>'btn btn-primary pull-right','id'=>'exact-submit-button'))!!}
+                        <div>
+                           {!! Form::submit('submit',array('class'=>'btn btn-primary pull-left','id'=>'exact-submit-button'))!!}
                         </div>
                         <!-- /.input button -->
                     </div>

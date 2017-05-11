@@ -117,7 +117,7 @@
                         
                         
                          <!-- input button -->
-                        <div class="box-footer">
+                        <div>
                            {!! Form::submit('submit',array('class'=>'btn btn-primary pull-right','id'=>'exact-submit-button'))!!}
                         </div>
                         <!-- /.input button -->

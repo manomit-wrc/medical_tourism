@@ -25,19 +25,19 @@
               <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
             </div>
 
-            <div><a href="{!!URL::to('/admin/hotel/create')!!}"><button type="button" class="btn bg-purple">ADD</button></a></div>
+            <div class="topbtn"><a href="{!!URL::to('/admin/hotel/create')!!}"><button type="button" class="btn bg-purple btn-rightad">ADD</button></a></div>
 
             <!-- /.box-header -->
             <div class="box-body">
               @if (Session::has('message'))
-                  <div class="alert alert-info">{{ Session::get('message') }}</div>
+                  <div class="alert alert-info" id="result7">{{ Session::get('message') }}</div>
               @endif
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                   <tr>
                     <th>Hotel name</th>
                     <th>Address</th>
-                    <th>Actions</th>
+                    <th width="15%">Actions</th>
                   </tr>
                 </thead>
                
@@ -49,12 +49,10 @@
                         <td>{{ $hotels_list->address }} , {{ $hotels_list->city->name }} , {{ $hotels_list->city->state->name }} , {{ $hotels_list->city->state->country->name }}</td>
                         <td>
                           <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
-                            <!-- we will add this later since its a little more complicated than the other two buttons -->
-                             {!! Form::open(array('method' => 'DELETE','url' => array('admin/hotel/delete', $hotels_list->id),'class' => 'pull-right')) !!}
-                                  {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                              {!! Form::close() !!}
+                            <!-- we will add this later since its a little more complicated than the other two buttons -->                            
                           <a href="{!!URL::to('/admin/hotel/show',$hotels_list->id)!!}" class="btn btn-info">view</a>   
                           <a href="{!!URL::to('/admin/hotel/edit',$hotels_list->id)!!}" class="btn btn-primary">Edit</a>
+                          <a href="{!!URL::to('/admin/hotel/delete',$hotels_list->id)!!}" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger" >Delete</a>
                         </td>
                       </tr>
                     @endforeach

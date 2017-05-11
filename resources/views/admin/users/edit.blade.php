@@ -68,8 +68,8 @@
                       <span class="text-danger">{{ $errors->first('confirm_password') }}</span>
                     </div>
 
-                    <div class="box-footer">
-                      <input type="submit" name="submit" id="exact-submit-button" class="btn btn-primary pull-right" value="Submit" >
+                    <div>
+                      <input type="submit" name="submit" id="exact-submit-button" class="btn btn-primary pull-left" value="Submit" >
                     </div>
                   </div>
                 </form>
