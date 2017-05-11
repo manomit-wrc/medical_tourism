@@ -17,7 +17,7 @@ class GenericmedicineController extends Controller
     	
     }
 	public function index() {
-        $genericmedicine = Genericmedicine::all();
+        $genericmedicine = Genericmedicine::where('status', '!=', 2)->get();
         //echo "<pre>"; print_r($langcapbes); die;
     	return view('admin.genericmedicine.index')->with('genericmedicine',$genericmedicine);
     }
@@ -98,7 +98,7 @@ class GenericmedicineController extends Controller
         	}
       	}
     } */
-    public function delete(Request $request,$id) {
+    /* public function delete(Request $request,$id) {
       if($id) {
         $genmed_details = Genericmedicine::find($id);
         if($genmed_details) { 
@@ -108,5 +108,17 @@ class GenericmedicineController extends Controller
           return redirect('/admin/genericmedicine');
         }
       }
+    }*/
+    public function delete(Request $request,$id) {
+        if($id) {
+            $genmed_details = Genericmedicine::find($id);
+            $status = '2';
+            $genmed_details->status = $status; 
+            $del = $genmed_details->save();
+            if($del) {      
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/genericmedicine');
+            }
+        }
     }
 }

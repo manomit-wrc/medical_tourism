@@ -24,7 +24,8 @@ class TreatmentController extends Controller
      * @return Response
      */
     public function index() {
-    	$treatment_datas = Treatment::all();
+    	$treatment_datas = Treatment::where('status', '!=', 2)->get();
+        
         //print_r($treatment_datas[0]->procedure->name); die;
         //echo "<pre>"; print_r($treatment_datas); die;
         return view('admin.treatment.index')->with('treatment_datas',$treatment_datas);
@@ -103,7 +104,7 @@ class TreatmentController extends Controller
         $trtmnt = Treatment::find($id);
         // validate
         $this->validate($request, [
-        'name' => 'required|unique:treatments',
+        'name' => 'required',
         'procedure_id' => 'required'
         ]);
 
@@ -134,7 +135,7 @@ class TreatmentController extends Controller
         Session::flash('message', 'Successfully deleted');
         return Redirect::to('/admin/treatment');
     } */
-    public function delete(Request $request,$id) {
+   /* public function delete(Request $request,$id) {
       if($id) {
         $tre_details = Treatment::find($id);
         if($tre_details) {          
@@ -143,5 +144,17 @@ class TreatmentController extends Controller
           return redirect('/admin/treatment');
         }
       }
+    } */
+    public function delete(Request $request,$id) {
+        if($id) {
+            $tre_details = Treatment::find($id);
+            $status = '2';
+            $tre_details->status = $status; 
+            $del = $tre_details->save();
+            if($del) {      
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/treatment');
+            }
+        }
     }
 }

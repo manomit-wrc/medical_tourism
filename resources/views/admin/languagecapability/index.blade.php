@@ -37,6 +37,7 @@
                 <thead>
                   <tr>
                     <th>Language name</th>
+                    <th>Status</th>
                     <th width="11%">Actions</th>
                   </tr>
                 </thead>
@@ -46,6 +47,7 @@
                     @foreach($langcapabilites as $langcapabi)
                       <tr>
                         <td>{{ $langcapabi->name }}</td>
+                        <td>{{ ($langcapabi->status ==1)? 'Active':'In-Active' }}</td>
                         <td>
                           <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
                             <!-- we will add this later since its a little more complicated than the other two buttons -->                           

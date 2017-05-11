@@ -44,12 +44,11 @@
                  {{ Form::model($medicaltestcategories,array('method' => 'PATCH','role'=>'form','url' => array('admin/medicaltestcategories/update', $medicaltestcategories->id),'id'=>'medicaltestcategories_edit')) }}
                     
                     <div class="col-md-6">
-                        
-
-                        <!-- text input -->
+                    <!-- text input -->
                         <div class="form-group">
                           {!! Html::decode(Form::label('cat_name','Name: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('cat_name',null,array('class'=>'form-control','id'=>'cat_name','placeholder'=>'Enter Name')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("cat_name").'</span>') !!}
                         </div>
                         <div class="form-group">
                           <label for="name">Status: </label>

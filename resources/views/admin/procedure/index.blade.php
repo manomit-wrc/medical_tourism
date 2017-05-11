@@ -35,6 +35,7 @@
                   <tr>
                     <th>Procedure name</th>
                     <th>Procedure Image</th>
+                    <th>Status</th>
                     <th width="11%">Actions</th>
                   </tr>
                 </thead>
@@ -47,12 +48,13 @@
                         <td>
                           <img src="{{url('/uploads/procedures/thumb/'.$procedure_lists->procedure_image)}}" alt="Procedure Image" class="procedure_img" >
                         </td>
+                        <td>{{ ($procedure_lists->status ==1)? 'Active':'In-Active' }}</td>
                         <td>
                           <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
                             <!-- we will add this later since its a little more complicated than the other two buttons -->
-                            <a href="{!!URL::to('/admin/procedure/edit',$procedure_lists->id)!!}" class="btn btn-primary">Edit</a>
-                            <a href="{!!URL::to('/admin/procedure/delete',$procedure_lists->id)!!}" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger" >Delete</a>
-                        </td>
+                            <a href="{!!URL::to('/admin/procedure/edit',$procedure_lists->id)!!}" class="btn btn-primary">Edit</a>                            
+							<a href="javascript:void(0)" onclick="return deldata('{!!URL::to('/admin/procedure/delete',$procedure_lists->id)!!}')" class="btn btn-danger" >Delete</a>
+						</td>
                       </tr>
                     @endforeach
                   @endif
