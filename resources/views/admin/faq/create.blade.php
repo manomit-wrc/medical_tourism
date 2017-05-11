@@ -33,13 +33,13 @@
               <h3 class="box-title">General Elements</h3>
             </div> -->
             <!-- /.box-header -->
-            @if($errors->any())
+            <!-- @if($errors->any())
               <div class="alert alert-danger">
                   @foreach($errors->all() as $error)
                       <p>{{ $error }}</p>
                   @endforeach
               </div>
-            @endif
+            @endif -->
             <div class="box-body">
              
                  {!! Form::open(array('method' => 'POST','role'=>'form','url'=>'admin/faq/store','id'=>'faq_add')) !!}
@@ -51,20 +51,20 @@
                         <div class="form-group">
                           {!! Html::decode(Form::label('title','Question: <span style="color:red;">*</span>')) !!}
                           {!!Form::text('title','',array('class'=>'form-control','id'=>'title','placeholder'=>'Enter  Question')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("title").'</span>') !!}
                         </div>
+                         <!-- /.text input -->
+                         <!-- text input -->
                         <div class="form-group">
                           {!! Html::decode(Form::label('description','Answer: <span style="color:red;">*</span>')) !!}
                           {!! Form::textarea('description','',array('class'=>'form-control ','id'=>'description','placeholder'=>'Enter Answer')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("description").'</span>') !!}
                         </div>
                         <!-- /.text input -->                                              
                         <div class="form-group">
-                          <label for="name">Faq Category: <span style="color:red;">*</span></label>
-                          <select class="form-control js-example-basic-multiple" id="faqcategory_id" 
-                          name="faqcategory_id">
-                            @foreach($category_list as $key => $value)
-                            <option value="{{ $key }}">{{$value}}</option>
-                            @endforeach
-                          </select>                          
+                          {!! Html::decode(Form::label('faqcategory_id','Faq Category: <span style="color:red;">*</span>')) !!}
+                          {!! Form::select('faqcategory_id',['' => 'Select'] +$category_list, null, ['class' => 'form-control select2']) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("faqcategory_id").'</span>') !!}                         
                         </div>             
 
                         <!-- input submit button -->
