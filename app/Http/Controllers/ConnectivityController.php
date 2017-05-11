@@ -23,7 +23,7 @@ class ConnectivityController extends Controller
      * @return Response
      */
     public function index() {
-    	$connectivity_data = Connectivity::all();
+    	$connectivity_data = Connectivity::where('status', '!=', 2)->get();
         //echo "<pre>"; print_r($connectivity_data); die;
         return view('admin.connectivity.index')->with('connectivity_data',$connectivity_data);
     }
@@ -96,7 +96,7 @@ class ConnectivityController extends Controller
         $connectivity = Connectivity::find($id);
         // validate
         $this->validate($request, [
-        'name' => 'required|unique:connectivities'
+        'name' => 'required|unique:connectivities,name,'.$id
         ]);
 
         // Getting all data after success validation.
@@ -117,12 +117,25 @@ class ConnectivityController extends Controller
      * @return Response
      */
     
-    public function delete(Request $request,$id) {
+   /* public function delete(Request $request,$id) {
         if($id) {
             $con_details = Connectivity::find($id);
             if($con_details) {                         
                 $con_details->delete();
              $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/connectivity');
+            }
+        }
+    }*/
+
+    public function delete(Request $request,$id) {
+        if($id) {
+            $con_details = Connectivity::find($id);
+            $status = '2';
+            $con_details->status = $status; 
+            $del = $con_details->save();
+            if($del) {      
+                $request->session()->flash("message", "Successfully deleted");
                 return redirect('/admin/connectivity');
             }
         }
