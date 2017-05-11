@@ -23,7 +23,7 @@ class ConnectivityServicesController extends Controller
      * @return Response
      */
     public function index() {
-    	$con_srv_data = ConnectivityServices::all();
+    	$con_srv_data = ConnectivityServices::where('status', '!=', 2)->get();
         //echo "<pre>"; print_r($con_srv_data); die;
         return view('admin.connectivityservices.index')->with('con_srv_data',$con_srv_data);
     }
@@ -96,7 +96,7 @@ class ConnectivityServicesController extends Controller
         $connectivity = ConnectivityServices::find($id);
         // validate
         $this->validate($request, [
-        'name' => 'required|unique:connectivity_services'
+        'name' => 'required|unique:connectivity_services,name,'.$id
         ]);
 
         // Getting all data after success validation.
@@ -117,11 +117,23 @@ class ConnectivityServicesController extends Controller
      * @return Response
      */
 
-    public function delete(Request $request,$id) {
+   /* public function delete(Request $request,$id) {
         if($id) {
             $con_serv_obj = ConnectivityServices::find($id);
             if($con_serv_obj) {                        
                 $con_serv_obj->delete();
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/connectivityservices');
+            }
+        }
+    }*/
+    public function delete(Request $request,$id) {
+        if($id) {
+            $con_serv_obj = ConnectivityServices::find($id);
+            $status = '2';
+            $con_serv_obj->status = $status; 
+            $del = $con_serv_obj->save();
+            if($del) {      
                 $request->session()->flash("message", "Successfully deleted");
                 return redirect('/admin/connectivityservices');
             }

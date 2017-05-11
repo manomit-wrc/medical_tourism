@@ -33,13 +33,13 @@
              <!-- if there are creation errors, they will show here -->
              
             <!-- /.box-header -->
-            @if($errors->any())
+            <!-- @if($errors->any())
               <div class="alert alert-danger">
                   @foreach($errors->all() as $error)
                       <p>{{ $error }}</p>
                   @endforeach
               </div>
-            @endif
+            @endif -->
             <div class="box-body">
                  {{ Form::model($accrediations_data,array('method' => 'PATCH','role'=>'form','files' => true,'url' => array('admin/accrediation/update', $accrediations_data->id),'id'=>'procedure_edit')) }}
                     
@@ -50,14 +50,16 @@
                         <div class="form-group">
                           {!! Html::decode(Form::label('name','Accrediation name: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('name',null,array('class'=>'form-control','id'=>'name','placeholder'=>'Enter accrediation name')) !!}
+                           {!! Html::decode('<span class="text-danger">'.$errors->first("name").'</span>') !!}
                         </div>
                         <!-- /.text input -->
 
                         <!-- file input -->
                         <div class="form-group">
                           {!! Html::decode(Form::label('accrediation_logo','Accrediation logo: <span style="color:red;">*</span>')) !!}
-                          <img src="{{url('/uploads/accrediations/thumb/'.$accrediations_data->accrediation_logo)}}" alt="Accrediation Logo" >
+                          <img src="{{url('/uploads/accrediations/thumb/'.$accrediations_data->accrediation_logo)}}" alt="Accrediation Logo" class="img_broder">
                           {!! Form::file('accrediation_logo', null) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("accrediation_logo").'</span>') !!}
                         </div>
                          <!-- /.file input -->
                         

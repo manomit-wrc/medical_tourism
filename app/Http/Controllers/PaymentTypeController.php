@@ -23,7 +23,7 @@ class PaymentTypeController extends Controller
      * @return Response
      */
     public function index() {
-        $paymnttype_lists = PaymentType::all();
+        $paymnttype_lists = PaymentType::where('status', '!=', 2)->get();
         //echo "<pre>"; print_r($paymnttype_lists); die;
         return view('admin.paymenttype.index')->with('paymnttype_lists',$paymnttype_lists);
     }
@@ -95,7 +95,7 @@ class PaymentTypeController extends Controller
         $provdrtp = PaymentType::find($id);
         // validate
         $this->validate($request, [
-        'name' => 'required|unique:payment_types'
+        'name' => 'required|unique:payment_types,name,'.$id
         ]);
 
         // Getting all data after success validation.
@@ -123,11 +123,23 @@ class PaymentTypeController extends Controller
         Session::flash('message', 'Successfully deleted');
         return Redirect::to('/admin/paymenttype');
     } */
-    public function delete(Request $request,$id) {
+    /*public function delete(Request $request,$id) {
         if($id) {
             $provdrtp = PaymentType::find($id);
             if($provdrtp) {                         
                 $provdrtp->delete();
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/paymenttype');
+            }
+        }
+    }*/
+    public function delete(Request $request,$id) {
+        if($id) {
+            $provdrtp = PaymentType::find($id);
+            $status = '2';
+            $provdrtp->status = $status; 
+            $del = $provdrtp->save();
+            if($del) {      
                 $request->session()->flash("message", "Successfully deleted");
                 return redirect('/admin/paymenttype');
             }

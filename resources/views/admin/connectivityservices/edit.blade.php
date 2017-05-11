@@ -33,13 +33,13 @@
              <!-- if there are creation errors, they will show here -->
              
             <!-- /.box-header -->
-            @if($errors->any())
+            <!-- @if($errors->any())
               <div class="alert alert-danger">
                   @foreach($errors->all() as $error)
                       <p>{{ $error }}</p>
                   @endforeach
               </div>
-            @endif
+            @endif -->
             <div class="box-body">
                  {{ Form::model($conn_srvc_data,array('method' => 'PATCH','role'=>'form','files' => true,'url' => array('admin/connectivityservices/update', $conn_srvc_data->id),'id'=>'connectivity_service_edit')) }}
                     
@@ -50,6 +50,7 @@
                         <div class="form-group">
                           {!! Html::decode(Form::label('name','Connectivity service name: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('name',null,array('class'=>'form-control','id'=>'name','placeholder'=>'Enter connectivity service name')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("name").'</span>') !!}
                         </div>
                         <!-- /.text input -->
 
