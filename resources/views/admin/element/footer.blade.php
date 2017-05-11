@@ -58,8 +58,8 @@
 <!--- {!!Html::script("js/dashboard2.js")!!}-->
 <!--- AdminLTE for demo purposes -->
 {!!Html::script("storage/admin/js/demo.js")!!}
-
-
+{!! Html::style('storage/admin/css/sweetalert.css') !!}
+{!!Html::script("storage/admin/js/sweetalert-dev.js")!!}
 
 @if((Request::segment(2) === 'package-types' && (Request::segment(3) === 'create' || Request::segment(3) === 'edit'))||(Request::segment(2) === 'successstories' && (Request::segment(3) === 'create' || Request::segment(3) === 'edit')) ||(Request::segment(2) === 'cmspagedetail' && (Request::segment(3) === 'create' || Request::segment(3) === 'edit')))
   {!!Html::script("vendor/unisharp/laravel-ckeditor/ckeditor.js")!!}
@@ -72,6 +72,18 @@
  //id here
 
 $(function () {
+  swal({
+    title: "Are you sure?",
+    text: "You will not be able to recover this imaginary file!",
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#DD6B55",
+    confirmButtonText: "Yes, delete it!",
+    closeOnConfirm: false
+    },
+    function(){
+    swal("Deleted!", "Your imaginary file has been deleted.", "success");
+    });
     //Initialize Select2 Elements
     $(".js-example-basic-multiple").select2();
     //$("#example1").DataTable();
@@ -304,7 +316,7 @@ $(function () {
 
     function submitmedicaltest(){
       var medicaltest_cat_id = $('#medicaltest_cat_id').val()
-      var test_name = $("#test_name").val();                
+      var test_name = $("#test_name").val();
         if(test_name ==''){
           document.getElementById('test_name').style.border = '1px solid red !important';
           $("#test_name_error").css("display", "block");
@@ -312,48 +324,48 @@ $(function () {
           document.getElementById('test_name').focus();
           return false
         }else{
-          $.ajax({ 
+          $.ajax({
             type:"POST",
             url:"/admin/ajaxstoremedicaltest/",
             data: {medicaltestcategories_id:$('#medicaltest_cat_id').val(),hospital_id:$('#hospital_id').val(),test_name:$('#test_name').val(),_token:"{{csrf_token()}}"},
               success:function(response) {
-                var result = $.parseJSON(response);                             
+                var result = $.parseJSON(response);
                 if(result.status == 1) {
                     $("#result").css("display", "block");
                     $("#result").removeClass("alert-danger");
-                    $("#result").addClass("alert-success");  
+                    $("#result").addClass("alert-success");
                     $("#result").html(result.msg);
                     setTimeout(function() {
                       $('#result').fadeOut('fast');
-                      $("#hosmedtest").modal('hide');                  
+                      $("#hosmedtest").modal('hide');
                       var str ='<li><input name="medicaltestArr[]" class="checkboxcatproduct'+ result.lastinsert_id+'" id="'+result.lastinsert_id+'" type="checkbox" value="'+result.lastinsert_id+'">'+ result.test_name+'</li>';
                     // $("#product_data_"+medicaltest_cat_id).append(str);
                     $(".last-child"+medicaltest_cat_id).before(str);
-                    $("#test_name").val('');                      
+                    $("#test_name").val('');
                   }, 200);
                 } else{
                     $("#result").css("display", "block");
                     $("#result").removeClass("alert-success");
-                    $("#result").addClass("alert-danger"); 
+                    $("#result").addClass("alert-danger");
                     $("#result").html(result.msg);
                     setTimeout(function() {
-                      $('#result').fadeOut('fast');                  
+                      $('#result').fadeOut('fast');
                     }, 2000);
-                }              
+                }
              }
           });
-        }         
+        }
     }
     function resetmedicaltest(){
       $("#test_name_error").hide();
-      $("#test_name").val(''); 
-    }     
+      $("#test_name").val('');
+    }
 
     $(document).ready(function(){
       setTimeout(function() {
         $('#result7').fadeOut('fast');
         $('#result8').fadeOut('fast');
-      }, 2000);             
+      }, 2000);
     });
   </script>
 <!---hospital wise medical test end-->
@@ -395,7 +407,7 @@ $(function () {
 
     function submitproceduretreatment(){
       var procedure_id = $('#procedure_id').val()
-      var name = $("#name").val();                
+      var name = $("#name").val();
         if(name ==''){
           document.getElementById('name').style.border = '1px solid red !important';
           $("#treatment_name_error").css("display", "block");
@@ -403,44 +415,44 @@ $(function () {
           document.getElementById('name').focus();
           return false
         }else{
-          $.ajax({ 
+          $.ajax({
             type:"POST",
             url:"/admin/ajaxstoretreatment/",
             data: {procedure_id:$('#procedure_id').val(),hospital_id:$('#hospital_id').val(),name:$('#name').val(),_token:"{{csrf_token()}}"},
               success:function(response) {
-                var result = $.parseJSON(response);                             
+                var result = $.parseJSON(response);
                 if(result.status == 1) {
                     $("#result").css("display", "block");
                     $("#result").removeClass("alert-danger");
-                    $("#result").addClass("alert-success");  
+                    $("#result").addClass("alert-success");
                     $("#result").html(result.msg);
                     setTimeout(function() {
                       $('#result').fadeOut('fast');
-                      $("#proceduretreatment").modal('hide');                  
+                      $("#proceduretreatment").modal('hide');
                       var str ='<li><input name="proceduretreatmentArr[]" class="checkboxprocedure'+ result.lastinsert_id+'" id="'+result.lastinsert_id+'" type="checkbox" value="'+result.lastinsert_id+'">'+ result.name+'</li>';
                     // $("#product_data_"+medicaltest_cat_id).append(str);
                     $(".last-child"+procedure_id).before(str);
                     $("#name").val('');
-                    $("#treatment_name_error").hide();                      
+                    $("#treatment_name_error").hide();
                   }, 200);
                 } else{
                     $("#result").css("display", "block");
                     $("#result").removeClass("alert-success");
-                    $("#result").addClass("alert-danger"); 
+                    $("#result").addClass("alert-danger");
                     $("#result").html(result.msg);
                     setTimeout(function() {
-                      $("#treatment_name_error").hide(); 
-                      $('#result').fadeOut('fast');                  
+                      $("#treatment_name_error").hide();
+                      $('#result').fadeOut('fast');
                     }, 2000);
-                }              
+                }
              }
           });
-        }         
+        }
     }
     function resettreatment(){
       $("#treatment_name_error").hide();
-      $("#name").val(''); 
-    } 
+      $("#name").val('');
+    }
 </script>
 <!-- hospital wise treatment end -- >
 
