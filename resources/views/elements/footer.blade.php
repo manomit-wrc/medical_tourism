@@ -108,7 +108,7 @@
 
                               <div class="col-md-4 col-sm-6">
                                   <div class="copy">
-                                   <a href="{!!URL::to('/disclaimer/')!!}">Disclaimer </a> | <a href="{!!URL::to('/privacypolicy/')!!}">Privacy Policy </a> | <a href="">Site Map </a>
+                                   <a href="{!!URL::to('/disclaimer/')!!}">Disclaimer </a> | <a href="{!!URL::to('/privacypolicy/')!!}">Privacy Policy </a> | <a href="{!!URL::to('/sitemap/')!!}">Site Map </a>
                                   </div>
                               </div>
 

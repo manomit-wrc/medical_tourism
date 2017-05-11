@@ -183,6 +183,7 @@ return [
         DougSisk\CountryState\CountryStateServiceProvider::class,
         Torann\Currency\CurrencyServiceProvider::class,
         Unisharp\Ckeditor\ServiceProvider::class,
+        Sarfraznawaz2005\VisitLog\VisitLogServiceProvider::class,
     ],
 
     /*
@@ -235,6 +236,7 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'Currency' => Torann\Currency\Facades\Currency::class,
         'Helper' => App\Helpers\Helper::class,
+        'VisitLog' => Sarfraznawaz2005\VisitLog\Facades\VisitLog::class,
     ],
 
 ];
