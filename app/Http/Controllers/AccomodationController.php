@@ -23,7 +23,7 @@ class AccomodationController extends Controller
      * @return Response
      */
     public function index() {
-        $accomodation_lists = Accomodation::all();
+        $accomodation_lists = Accomodation::where('status', '!=', 2)->get();
         //echo "<pre>"; print_r($accomodation_lists); die;
         return view('admin.accomodation.index')->with('accomodation_lists',$accomodation_lists);
     }
@@ -45,7 +45,7 @@ class AccomodationController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
+      $this->validate($request, [
         'name' => 'required|unique:accomodations'
       ]);
 
@@ -93,9 +93,10 @@ class AccomodationController extends Controller
     {
         //echo $id; die;
         $langcap = Accomodation::find($id);
+        //echo $id; die;
         // validate
         $this->validate($request, [
-        'name' => 'required|unique:accomodations'
+        'name' => 'required|unique:accomodations,name,'.$id,
         ]);
 
         // Getting all data after success validation.
