@@ -60,13 +60,19 @@ class DoctorController extends Controller
           $fileName = time().'_'.$file->getClientOriginalName() ;
 
           //thumb destination path
-          $destinationPath = public_path().'/uploads/doctors/thumb' ;
+           //thumb destination path
+            $thumbPath1 = public_path().'/uploads/doctors/thumb' ;
+            $thumbPath2 = public_path().'/uploads/doctors/thumb_250_250' ;
+            $img = Image::make($file->getRealPath());
 
-          $img = Image::make($file->getRealPath());
+            $img->resize(100, 100, function ($constraint){
+                $constraint->aspectRatio();
+            })->save($thumbPath1.'/'.$fileName);
 
-          $img->resize(100, 100, function ($constraint){
-              $constraint->aspectRatio();
-          })->save($destinationPath.'/'.$fileName);
+
+            $img->resize(250, 250, function ($constraint){
+                $constraint->aspectRatio();
+            })->save($thumbPath2.'/'.$fileName);
 
           //original destination path
           $destinationPath = public_path().'/uploads/doctors/' ;
@@ -153,13 +159,18 @@ class DoctorController extends Controller
             $fileName = time().'_'.$file->getClientOriginalName() ;
 
             //thumb destination path
-            $destinationPath = public_path().'/uploads/doctors/thumb' ;
-
+            $thumbPath1 = public_path().'/uploads/doctors/thumb' ;
+            $thumbPath2 = public_path().'/uploads/doctors/thumb_250_250' ;
             $img = Image::make($file->getRealPath());
 
             $img->resize(100, 100, function ($constraint){
                 $constraint->aspectRatio();
-            })->save($destinationPath.'/'.$fileName);
+            })->save($thumbPath1.'/'.$fileName);
+
+
+            $img->resize(250, 250, function ($constraint){
+                $constraint->aspectRatio();
+            })->save($thumbPath2.'/'.$fileName);
 
             //original destination path
             $destinationPath = public_path().'/uploads/doctors/' ;

@@ -1759,3 +1759,15 @@ label.error {
 	color: #ccc;
 	text-decoration: none;
 }
+
+.st_img{
+	height: 214px;
+	padding: 6px;
+	border: 4px solid #ccc;
+	float: left;
+	margin: 21px 30px 30px 0;
+}
+
+.arrow_M0{
+	margin-top: 0;
+}
