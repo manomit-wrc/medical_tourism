@@ -282,12 +282,12 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/providerconnectivityservices/show/{id}','ProviderConnectivityServicesController@show');
 
 	 /* genericmedicine section */
-	Route::get('/admin/genericmedicine','genericmedicineController@index');
-    Route::get('/admin/genericmedicine/create','genericmedicineController@create');
-    Route::post('/admin/genericmedicine/store','genericmedicineController@store');
-    Route::get('/admin/genericmedicine/edit/{id}','genericmedicineController@edit');
-    Route::patch('/admin/genericmedicine/update/{id}','genericmedicineController@update');    
-	Route::get('/admin/genericmedicine/delete/{id}','genericmedicineController@delete');
+	Route::get('/admin/genericmedicine','GenericmedicineController@index');
+    Route::get('/admin/genericmedicine/create','GenericmedicineController@create');
+    Route::post('/admin/genericmedicine/store','GenericmedicineController@store');
+    Route::get('/admin/genericmedicine/edit/{id}','GenericmedicineController@edit');
+    Route::patch('/admin/genericmedicine/update/{id}','GenericmedicineController@update');    
+	Route::get('/admin/genericmedicine/delete/{id}','GenericmedicineController@delete');
 
      /* medical test categories section */
     Route::get('/admin/medicaltestcategories','MedicalTestCategoriesController@index');
