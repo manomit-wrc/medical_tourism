@@ -11,10 +11,10 @@
                     <div class="row">
                       @if(Request::segment(1) == 'doctordetail')
                           @include('elements.leftpaneldoctor')
-                      @else  
+                      @elseif(Request::segment(1) != 'profile' && Request::segment(1) != 'upload-documents' && Request::segment(1) != 'change-password')
                           @include('elements.leftpanel')
                       @endif
-                     
+
       	               @yield('content')
                     </div>
                 </div>
