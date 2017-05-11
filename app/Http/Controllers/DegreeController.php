@@ -23,7 +23,7 @@ class DegreeController extends Controller
      * @return Response
      */
     public function index() {
-        $deg_lists = Degree::all();
+        $deg_lists = Degree::where('status', '!=', 2)->get();
         //echo "<pre>"; print_r($langcapbes); die;
         return view('admin.degree.index')->with('deg_lists',$deg_lists);
     }
@@ -95,7 +95,7 @@ class DegreeController extends Controller
         $langcap = Degree::find($id);
         // validate
         $this->validate($request, [
-        'name' => 'required|unique:degrees'
+        'name' => 'required|unique:degrees,name,'.$id
         ]);
 
         // Getting all data after success validation.
@@ -116,11 +116,23 @@ class DegreeController extends Controller
      * @return Response
      */
    
-    public function delete(Request $request,$id) {
+    /*public function delete(Request $request,$id) {
         if($id) {
             $procobj = Degree::find($id);
             if($procobj) {                         
                 $procobj->delete();
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/degree');
+            }
+        }
+    }*/
+    public function delete(Request $request,$id) {
+        if($id) {
+            $procobj = Degree::find($id);
+            $status = '2';
+            $procobj->status = $status; 
+            $del = $procobj->save();
+            if($del) {      
                 $request->session()->flash("message", "Successfully deleted");
                 return redirect('/admin/degree');
             }
