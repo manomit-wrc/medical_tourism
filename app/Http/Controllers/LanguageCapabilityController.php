@@ -118,7 +118,7 @@ class LanguageCapabilityController extends Controller
      * @param  int  $id
      * @return Response
      */    
-    public function delete(Request $request,$id) {
+    /* public function delete(Request $request,$id) {
         if($id) {
             $lng_details = LanguageCapability::find($id);
             if($lng_details) {          
@@ -127,5 +127,18 @@ class LanguageCapabilityController extends Controller
             return redirect('/admin/languagecapability');
             }
         }
-    }
+    } */
+    public function delete(Request $request,$id) {
+        if($id) {
+            $lng_details = LanguageCapability::find($id);
+            $status = '2';
+            $lng_details->status = $status; 
+            $del = $lng_details->save();
+            if($del) {      
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/languagecapability');
+            }
+        }
+    } 
+    
 }

@@ -59,7 +59,8 @@
                         <td>
 
                           <a href="{!!URL::to('/admin/doctors/edit',$dd->id)!!}" class="btn btn-primary">Edit</a>&nbsp;|&nbsp;
-                          <a href="/admin/doctors/delete/{{$dd->id}}" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger" >Delete</a>
+                          <!--<a href="/admin/doctors/delete/{{$dd->id}}" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger" >Delete</a>-->
+                          <a href="javascript:void(0)" onclick="return deldata('{!!URL::to('/admin/doctors/delete',$dd->id)!!}')" class="btn btn-danger" >Delete</a>
                         </td>
                       </tr>
                     @endforeach
