@@ -40,7 +40,7 @@
                 <thead>
                   <tr>
                     <th>Page Name</th>
-                    <th>Slag</th>                                       
+                    <th>Slug</th>                                       
                     <th>status</th>
                     <th width="11%">Actions</th>
                   </tr>

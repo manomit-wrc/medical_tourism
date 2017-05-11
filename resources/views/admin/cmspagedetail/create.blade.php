@@ -33,13 +33,13 @@
               <h3 class="box-title">General Elements</h3>
             </div> -->
             <!-- /.box-header -->
-            @if($errors->any())
+           <!--  @if($errors->any())
               <div class="alert alert-danger">
                   @foreach($errors->all() as $error)
                       <p>{{ $error }}</p>
                   @endforeach
               </div>
-            @endif
+            @endif -->
             <div class="box-body">
              
                  {!! Form::open(array('method' => 'POST','role'=>'form','url'=>'admin/cmspagedetail/store','id'=>'cmspagedetail_add')) !!}
@@ -49,23 +49,27 @@
 
                         <!-- text input -->
                         <div class="form-group">
-                          {!! Html::decode(Form::label('slag','Slag: <span style="color:red;">*</span>')) !!}
-                          {!!Form::text('slag','',array('class'=>'form-control','id'=>'slag','placeholder'=>'Enter  Slag')) !!}
+                          {!! Html::decode(Form::label('slag','Slug: <span style="color:red;">*</span>')) !!}
+                          {!!Form::text('slag','',array('class'=>'form-control','id'=>'slag','placeholder'=>'Enter slug')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("slag").'</span>') !!}
                         </div>
+                        <!-- /.text input -->
+
+                        <!-- textarea input -->
                         <div class="form-group">
                           {!! Html::decode(Form::label('description','Description: <span style="color:red;">*</span>')) !!}
                           {!! Form::textarea('description','',array('class'=>'form-control ','id'=>'textarea_id','placeholder'=>'Enter Description')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("description").'</span>') !!}
                         </div>
-                        <!-- /.text input -->                                              
+                        <!-- /.textarea input --> 
+
+                         <!-- form-group dropdown-->
                         <div class="form-group">
-                          <label for="name">CMS Page: <span style="color:red;">*</span></label>
-                          <select class="form-control" id="cmspage_id" 
-                          name="cmspage_id">
-                            @foreach($cmspage_id_list as $key => $value)
-                            <option value="{{ $key }}">{{$value}}</option>
-                            @endforeach
-                          </select>                          
-                        </div>             
+                          {!! Html::decode(Form::label('cmspage_id','CMS Page: <span style="color:red;">*</span>')) !!}
+                          {!! Form::select('cmspage_id',['' => 'Select'] +$cmspage_id_list, null, ['class' => 'form-control select2']) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("cmspage_id").'</span>') !!}                         
+                        </div> 
+                          <!-- /.form-group dropdown-->           
 
                         <!-- input submit button -->
                         <div>
