@@ -141,7 +141,10 @@ class PagesController extends Controller
         //return view('pages.faqs')->with('faqs_lists',$faqs_lists);
         return view('pages.privacypolicy');
   }
-
+  public function sitemap()
+  {
+    return view('pages.sitemap');
+  }
   public function check_user_exist(Request $request) {
     $email_id = $request->input('email_id');
     $patient = \App\Patient::where('email_id',$email_id)->first();

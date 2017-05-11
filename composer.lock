@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6fcfa31ed40c3f975debb23509fc40c2",
+    "content-hash": "3a4b5fc06b3ac7721d722d4b90791afa",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -1783,6 +1783,49 @@
                 "uuid"
             ],
             "time": "2017-03-26T20:37:53+00:00"
+        },
+        {
+            "name": "sarfraznawaz2005/visitlog",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sarfraznawaz2005/visitlog.git",
+                "reference": "b4b4655863831228edd025647e8e4ab258f85208"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sarfraznawaz2005/visitlog/zipball/b4b4655863831228edd025647e8e4ab258f85208",
+                "reference": "b4b4655863831228edd025647e8e4ab258f85208",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5",
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Sarfraznawaz2005\\VisitLog\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sarfraz Ahmed",
+                    "email": "sarfraznawaz2005@gmail.com"
+                }
+            ],
+            "description": "Laravel package to log visitor information into database.",
+            "keywords": [
+                "IP",
+                "laravel",
+                "log",
+                "visitor"
+            ],
+            "time": "2016-09-17 11:18:12"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -4365,7 +4408,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "sarfraznawaz2005/visitlog": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

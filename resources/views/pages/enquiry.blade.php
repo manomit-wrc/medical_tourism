@@ -16,7 +16,7 @@
                       <div class="col-md-6 col-md-offset-3">
 
                           <div class="qtbox">
-                            <h3><img src="images/ql.jpg" alt=""> REQUEST A <strong>QUOTE</strong> <img src="images/qr.jpg" alt=""></h3>
+                            <h3><img src="{!!URL::to('storage/frontend/images/ql.jpg')!!}" alt=""> REQUEST A <strong>QUOTE</strong> <img src="{!!URL::to('storage/frontend/images/qr.jpg')!!}" alt=""></h3>
                             
                             <label>
                             Full Name
@@ -75,7 +75,7 @@
                             
                             </label>
 
-                            <button type="button">INQUIRY NOW</button>
+                            <button type="button">ENQUIRY NOW</button>
 
                           </div>
                           

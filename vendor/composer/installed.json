@@ -4504,5 +4504,50 @@
             "text",
             "wysiwyg"
         ]
+    },
+    {
+        "name": "sarfraznawaz2005/visitlog",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sarfraznawaz2005/visitlog.git",
+            "reference": "b4b4655863831228edd025647e8e4ab258f85208"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sarfraznawaz2005/visitlog/zipball/b4b4655863831228edd025647e8e4ab258f85208",
+            "reference": "b4b4655863831228edd025647e8e4ab258f85208",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/support": "~5",
+            "php": ">=5.5.9"
+        },
+        "time": "2016-09-17T11:18:12+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Sarfraznawaz2005\\VisitLog\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Sarfraz Ahmed",
+                "email": "sarfraznawaz2005@gmail.com"
+            }
+        ],
+        "description": "Laravel package to log visitor information into database.",
+        "keywords": [
+            "IP",
+            "laravel",
+            "log",
+            "visitor"
+        ]
     }
 ]

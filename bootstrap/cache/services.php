@@ -33,6 +33,7 @@
     29 => 'DougSisk\\CountryState\\CountryStateServiceProvider',
     30 => 'Torann\\Currency\\CurrencyServiceProvider',
     31 => 'Unisharp\\Ckeditor\\ServiceProvider',
+    32 => 'Sarfraznawaz2005\\VisitLog\\VisitLogServiceProvider',
   ),
   'eager' => 
   array (
@@ -55,6 +56,7 @@
     16 => 'DougSisk\\CountryState\\CountryStateServiceProvider',
     17 => 'Torann\\Currency\\CurrencyServiceProvider',
     18 => 'Unisharp\\Ckeditor\\ServiceProvider',
+    19 => 'Sarfraznawaz2005\\VisitLog\\VisitLogServiceProvider',
   ),
   'deferred' => 
   array (
