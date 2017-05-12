@@ -33,24 +33,24 @@
               <h3 class="box-title">General Elements</h3>
             </div> -->
             <!-- /.box-header -->
-            @if($errors->any())
+            <!-- @if($errors->any())
               <div class="alert alert-danger">
                   @foreach($errors->all() as $error)
                       <p>{{ $error }}</p>
                   @endforeach
               </div>
-            @endif
+            @endif -->
             <div class="box-body">
              
                  {!! Form::open(array('method' => 'POST','role'=>'form','url'=>'admin/specificservice/store','id'=>'specificservice_add')) !!}
                     
-                    <div class="col-md-6">
-                        
+                    <div class="col-md-6">                
 
                         <!-- text input -->
                         <div class="form-group">
                           {!! Html::decode(Form::label('name','Specific service name: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('name','',array('class'=>'form-control','id'=>'name','placeholder'=>'Enter specific service name')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("name").'</span>') !!}
                         </div>
                         <!-- /.text input -->
 

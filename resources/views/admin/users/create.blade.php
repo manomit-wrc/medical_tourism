@@ -1,4 +1,5 @@
 @extends('admin.layouts.dashboard_layout')
+@section('title', 'Add User')
 @section('content')
  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">

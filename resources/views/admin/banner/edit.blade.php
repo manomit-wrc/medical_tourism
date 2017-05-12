@@ -33,13 +33,13 @@
              <!-- if there are creation errors, they will show here -->
              
             <!-- /.box-header -->
-            @if($errors->any())
+            <!-- @if($errors->any())
               <div class="alert alert-danger">
                   @foreach($errors->all() as $error)
                       <p>{{ $error }}</p>
                   @endforeach
               </div>
-            @endif
+            @endif -->
             <div class="box-body">
                  {{ Form::model($banners_data,array('method' => 'PATCH','role'=>'form','files' => true,'url' => array('admin/banner/update', $banners_data->id),'id'=>'banner_edit')) }}
                     
@@ -51,6 +51,7 @@
                           <img src="{{url('/uploads/banners/thumb/'.$banners_data->banner_image)}}" alt="Banner Image" class="img_broder">
                           {!! Form::file('banner_image', null) !!}
                           <span style="color:red;">* (Image must be 1700x601)</span>
+                          {!! Html::decode('<br /><span class="text-danger">'.$errors->first("banner_image").'</span>') !!}
                         </div>
                          <!-- /.file input -->
                          
@@ -58,6 +59,7 @@
                         <div class="form-group">
                           {!! Html::decode(Form::label('banner_heading','Banner heading: <span style="color:red;">* </span>')) !!}
                           {!! Form::text('banner_heading',null,array('class'=>'form-control','id'=>'banner_heading','placeholder'=>'Enter banner heading')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("banner_heading").'</span>') !!}
                         </div>
                         <!-- /.text input -->
 
@@ -72,6 +74,7 @@
                         <div class="form-group">
                           {!! Html::decode(Form::label('banner_url','Youtube video url: <span style="color:red;">* </span>')) !!}
                           {!! Form::text('banner_url',null,array('class'=>'form-control','id'=>'banner_url','placeholder'=>'Enter youtube video url')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("banner_url").'</span>') !!}
                         </div>
                         <!-- /.text input -->
                        

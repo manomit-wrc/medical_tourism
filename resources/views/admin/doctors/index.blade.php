@@ -32,7 +32,7 @@
             <!-- /.box-header -->
             <div class="box-body">
               @if (Session::has('message'))
-                  <div class="alert alert-info">{{ Session::get('message') }}</div>
+                  <div class="alert alert-info" id="result7">{{ Session::get('message') }}</div>
               @endif
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
@@ -57,9 +57,7 @@
                         <td>{{ $dd->mobile_no }}</td>
                         <td>{{ $dd->cities->name }}</td>
                         <td>
-
-                          <a href="{!!URL::to('/admin/doctors/edit',$dd->id)!!}" class="btn btn-primary">Edit</a>&nbsp;|&nbsp;
-                          <!--<a href="/admin/doctors/delete/{{$dd->id}}" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger" >Delete</a>-->
+                          <a href="{!!URL::to('/admin/doctors/edit',$dd->id)!!}" class="btn btn-primary">Edit</a>
                           <a href="javascript:void(0)" onclick="return deldata('{!!URL::to('/admin/doctors/delete',$dd->id)!!}')" class="btn btn-danger" >Delete</a>
                         </td>
                       </tr>

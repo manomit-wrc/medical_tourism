@@ -23,7 +23,7 @@ class SpecificServiceController extends Controller
      * @return Response
      */
     public function index() {
-        $langcapabilites = SpecificService::all();
+        $langcapabilites = SpecificService::where('status', '!=', 2)->get();
         //echo "<pre>"; print_r($langcapbes); die;
     	return view('admin.specificservice.index')->with('langcapabilites',$langcapabilites);
     }
@@ -96,7 +96,7 @@ class SpecificServiceController extends Controller
         $specserv = SpecificService::find($id);
         // validate
         $this->validate($request, [
-        'name' => 'required|unique:specific_services'
+        'name' => 'required|unique:specific_services,name,'.$id
         ]);
 
         // Getting all data after success validation.
@@ -117,12 +117,24 @@ class SpecificServiceController extends Controller
      * @return Response
      */
    
-    public function delete(Request $request,$id) {
+   /* public function delete(Request $request,$id) {
         if($id) {
             $specserv = SpecificService::find($id);
             if($specserv) {                          
                 $specserv->delete();
                 $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/specificservice');
+            }
+        }
+    } */
+     public function delete(Request $request,$id) {
+        if($id) {
+            $specserv = SpecificService::find($id);            
+            $status = '2';
+            $specserv->status = $status; 
+            $del = $specserv->save();
+            if($del) {                       
+                 $request->session()->flash("message", "Successfully deleted");
                 return redirect('/admin/specificservice');
             }
         }

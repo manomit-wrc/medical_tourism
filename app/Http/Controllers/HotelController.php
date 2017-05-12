@@ -28,7 +28,7 @@ class HotelController extends Controller
      * @return Response
      */
     public function index() {
-        $hotels_list = Hotel::all();
+        $hotels_list = Hotel::where('status', '!=', 2)->get();
         //echo "<pre>"; print_r($hotels_list); die; //print_r($hotels_list[0]->city->state->country); die;
         return view('admin.hotel.index')->with('hotels_list',$hotels_list);
     }
@@ -52,7 +52,7 @@ class HotelController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
+        Validator::make($request->all(), [
             'name' => 'required',
             'address' => 'required',
             'country_id' => 'required',
@@ -63,7 +63,13 @@ class HotelController extends Controller
             'min_price_per_night' => 'required|numeric',
             'max_price_per_night' => 'required|numeric',
             'booking_url' => 'required|url',
-       ]);
+       ],[
+        'country_id.required' => 'country field is required',
+        'state_id.required' => 'state field is required',
+        'city_id.required' => 'city field is required',
+        'hotel_class_id.required' => 'hotel class field is required',
+        'no_of_rooms.required' => 'rooms field is required'
+        ])->validate();
 
       // Getting all data after success validation.
       /*$input = $request->all();
@@ -128,7 +134,7 @@ class HotelController extends Controller
         //echo $id; die;
         $htlobj = Hotel::find($id);
         // validate
-        $this->validate($request, [
+        Validator::make($request->all(), [
             'name' => 'required',
             'address' => 'required',
             'country_id' => 'required',
@@ -139,7 +145,13 @@ class HotelController extends Controller
             'min_price_per_night' => 'required|numeric',
             'max_price_per_night' => 'required|numeric',
             'booking_url' => 'required|url',
-        ]);
+       ],[
+        'country_id.required' => 'country field is required',
+        'state_id.required' => 'state field is required',
+        'city_id.required' => 'city field is required',
+        'hotel_class_id.required' => 'hotel class field is required',
+        'no_of_rooms.required' => 'rooms field is required'
+        ])->validate();
 
         // Getting all data after success validation.        
         //echo "<pre>"; print_r($request->all()); die;
@@ -175,11 +187,23 @@ class HotelController extends Controller
         Session::flash('message', 'Successfully deleted');
         return Redirect::to('/admin/hotel');
     } */
-    public function delete(Request $request,$id) {
+    /* public function delete(Request $request,$id) {
         if($id) {
             $procobj = Hotel::find($id);
             if($procobj) {                        
                 $procobj->delete();
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/hotel');
+            }
+        }
+    }*/
+    public function delete(Request $request,$id) {
+        if($id) {
+            $procobj = Hotel::find($id);
+            $status = '2';
+            $procobj->status = $status; 
+            $del = $procobj->save();
+            if($del) {      
                 $request->session()->flash("message", "Successfully deleted");
                 return redirect('/admin/hotel');
             }

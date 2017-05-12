@@ -17,7 +17,7 @@ class DoctorController extends Controller
 
     public function index() {
 
-      $doctor_data = Doctor::all();
+      $doctor_data = Doctor::where('status', '!=', 2)->get();
       return view('admin.doctors.index')->with('doctor_data',$doctor_data);
     }
 
@@ -206,7 +206,7 @@ class DoctorController extends Controller
         }
     }
 
-    public function delete(Request $request,$id) {
+    /* public function delete(Request $request,$id) {
       if($id) {
         $doctor_details = Doctor::find($id);
         if($doctor_details) {
@@ -217,6 +217,18 @@ class DoctorController extends Controller
           return redirect('/admin/doctors');
         }
       }
+    } */
+    public function delete(Request $request,$id) {
+        if($id) {
+            $doctor_details = Doctor::find($id);
+            $status = '2';
+            $doctor_details->status = $status; 
+            $del = $doctor_details->save();
+            if($del) {      
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/doctors');
+            }
+        }
     }
     public function get_state_list(Request $request) {
       if($request->ajax()) {
@@ -246,7 +258,5 @@ class DoctorController extends Controller
           }
         }
       }
-    }
-
-    
+    }    
 }

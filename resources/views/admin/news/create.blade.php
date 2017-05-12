@@ -33,24 +33,24 @@
               <h3 class="box-title">General Elements</h3>
             </div> -->
             <!-- /.box-header -->
-            @if($errors->any())
+            <!-- @if($errors->any())
               <div class="alert alert-danger">
                   @foreach($errors->all() as $error)
                       <p>{{ $error }}</p>
                   @endforeach
               </div>
-            @endif
+            @endif -->
             <div class="box-body">
              
                  {!! Form::open(array('method' => 'POST','role'=>'form','files' => true,'url'=>'admin/news/store','id'=>'news_add')) !!}
                     
-                    <div class="col-md-6">
-                        
+                    <div class="col-md-6">                      
 
                         <!-- text input -->
                         <div class="form-group">
                           {!! Html::decode(Form::label('title','News title: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('title','',array('class'=>'form-control','id'=>'title','placeholder'=>'Enter news title')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("title").'</span>') !!}
                         </div>
                         <!-- /.text input -->
 
@@ -58,14 +58,16 @@
                         <div class="form-group">
                           {!! Html::decode(Form::label('description','Description: <span style="color:red;">*</span>')) !!}
                           {!! Form::textarea('description','',array('class'=>'form-control','id'=>'description','placeholder'=>'Enter news')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("description").'</span>') !!}
                         </div>
                         <!-- /.text input -->
                         
                         <!-- file input -->
                         <div class="form-group">
-                          {!! Html::decode(Form::label('facility_image','News image: ')) !!}
+                          {!! Html::decode(Form::label('news_image','News image: ')) !!}
                           {!! Form::file('news_image', null) !!}
                           <span style="color:red;">* (Image must be minimum of 745x214)</span>
+                          {!! Html::decode('<br /><span class="text-danger">'.$errors->first("news_image").'</span>') !!}
                         </div>
                          <!-- /.file input -->
 

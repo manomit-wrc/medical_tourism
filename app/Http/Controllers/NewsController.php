@@ -25,7 +25,7 @@ class NewsController extends Controller
      * @return Response
      */
     public function index() {
-    	$news_data = News::all();
+    	$news_data = News::where('status', '!=', 2)->get();
         //echo "<pre>"; print_r($news_data); die;
         return view('admin.news.index')->with('news_data',$news_data);
     }
@@ -129,7 +129,7 @@ class NewsController extends Controller
         $nws = News::find($id);
         // validate
         $this->validate($request, [
-        'title' => 'required|unique:news',
+        'title' => 'required|unique:news,title,'.$id,
         'description' => 'required',
         'news_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=745,min_height=214',
         ]);
@@ -190,11 +190,24 @@ class NewsController extends Controller
         Session::flash('message', 'Successfully deleted');
         return Redirect::to('/admin/treatment');
     } */
-    public function delete(Request $request,$id) {
+    /*public function delete(Request $request,$id) {
         if($id) {
             $newsobj = News::find($id);
             if($newsobj) {                         
                 $newsobj->delete();
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/news');
+            }
+        }
+    } */
+
+    public function delete(Request $request,$id) {
+        if($id) {
+            $newsobj = News::find($id);
+            $status = '2';
+            $newsobj->status = $status; 
+            $del = $newsobj->save();
+            if($del) {      
                 $request->session()->flash("message", "Successfully deleted");
                 return redirect('/admin/news');
             }

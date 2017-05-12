@@ -49,8 +49,8 @@
                         <td>
                           <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
                             <!-- we will add this later since its a little more complicated than the other two buttons -->                             
-                          <a href="{!!URL::to('/admin/specificservice/edit',$langcapabi->id)!!}" class="btn btn-primary">Edit</a>
-                          <a href="{!!URL::to('/admin/specificservice/delete',$langcapabi->id)!!}" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger" >Delete</a>
+                          <a href="{!!URL::to('/admin/specificservice/edit',$langcapabi->id)!!}" class="btn btn-primary">Edit</a>                          
+                          <a href="javascript:void(0)" onclick="return deldata('{!!URL::to('/admin/specificservice/delete',$langcapabi->id)!!}')" class="btn btn-danger" >Delete</a>
                         </td>
                       </tr>
                     @endforeach
