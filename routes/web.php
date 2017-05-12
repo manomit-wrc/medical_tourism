@@ -345,7 +345,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('/admin/immigration/store','ImmigrationController@store');
     Route::get('/admin/immigration/edit/{id}','ImmigrationController@edit');
     Route::patch('/admin/immigration/update/{id}','ImmigrationController@update');
-    Route::delete('/admin/immigration/delete/{id}','ImmigrationController@destroy');
+    Route::get('/admin/immigration/delete/{id}','ImmigrationController@delete');
 
      //Visa section
     Route::get('/admin/countryvisa', 'CountryVisaController@index');
@@ -353,6 +353,6 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('/admin/countryvisa/store','CountryVisaController@store');
     Route::get('/admin/countryvisa/edit/{id}','CountryVisaController@edit');
     Route::patch('/admin/countryvisa/update/{id}','CountryVisaController@update');
-    Route::delete('/admin/countryvisa/delete/{id}','CountryVisaController@destroy');
+    Route::get('/admin/countryvisa/delete/{id}','CountryVisaController@delete');
 
 });

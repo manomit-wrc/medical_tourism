@@ -163,8 +163,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            @if($user_view_composer->hasRole('admin/immigration',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'immigration' ? 'active' : null }}"><a href="{!!URL::to('/admin/immigration')!!}"><i class="fa fa-address-card"></i>Immigration</a></li>@endif
-            @if($user_view_composer->hasRole('admin/countryvisa',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'countryvisa' ? 'active' : null }}"><a href="{!!URL::to('/admin/countryvisa')!!}"><i class="fa fa-address-card"></i>Visa</a></li>@endif
+            @if($user_view_composer->hasRole('admin/immigration',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'immigration' ? 'active' : null }}"><a href="{!!URL::to('/admin/immigration')!!}"><i class="fa fa-sticky-note"></i>Immigration</a></li>@endif
+            @if($user_view_composer->hasRole('admin/countryvisa',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'countryvisa' ? 'active' : null }}"><a href="{!!URL::to('/admin/countryvisa')!!}"><i class="fa fa-sticky-note"></i>Visa</a></li>@endif
           </ul>
         </li>
 

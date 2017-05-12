@@ -33,13 +33,13 @@
              <!-- if there are creation errors, they will show here -->
              
             <!-- /.box-header -->
-            @if($errors->any())
+            <!-- @if($errors->any())
               <div class="alert alert-danger">
                   @foreach($errors->all() as $error)
                       <p>{{ $error }}</p>
                   @endforeach
               </div>
-            @endif
+            @endif -->
             <div class="box-body">
                  {{ Form::model($faqdata,array('method' => 'PATCH','role'=>'form','url' => array('admin/faq/update', $faqdata->id),'id'=>'faq_edit')) }}
                     
@@ -50,19 +50,24 @@
                         <div class="form-group">
                           {!! Html::decode(Form::label('title','Question: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('title',null,array('class'=>'form-control','id'=>'title','placeholder'=>'Enter Question')) !!}
-                        </div>                        
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("title").'</span>') !!}
+                        </div>  
+                         <!-- /.text input -->
+                        
+                        <!-- text input -->
                         <div class="form-group">
                           {!! Html::decode(Form::label('description','Answer: <span style="color:red;">*</span>')) !!}
                           {!! Form::textarea('description',null,array('class'=>'form-control','id'=>'description','placeholder'=>'Enter description')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("description").'</span>') !!}
                         </div>
+                         <!-- /.text input -->
+
                         <div class="form-group">
-                          <label for="name">Category: <span style="color:red;">*</span></label>
-                          <select class="form-control js-example-basic-multiple" id="faqcategory_id" name="faqcategory_id">
-                            @foreach($category_list as $key => $value)
-                            <option value="{{ $key }}" {{ ($key==$faqdata->faqcategory_id)? 'selected':'' }} >{{$value}}</option>
-                            @endforeach
-                          </select>                          
+                          {!! Html::decode(Form::label('faqcategory_id','Category: <span style="color:red;">*</span>')) !!}
+                          {!! Form::select('faqcategory_id',['' => 'Select'] +$category_list, null, ['class' => 'form-control select2']) !!}                         
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("faqcategory_id").'</span>') !!}
                         </div>
+
                         <div class="form-group">
                           <label for="name">Status: </label>
                           <select name="status" id="status" class="form-control" autofocus >

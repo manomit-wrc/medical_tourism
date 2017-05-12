@@ -33,13 +33,13 @@
               <h3 class="box-title">General Elements</h3>
             </div> -->
             <!-- /.box-header -->
-            @if($errors->any())
+           <!--  @if($errors->any())
               <div class="alert alert-danger">
                   @foreach($errors->all() as $error)
                       <p>{{ $error }}</p>
                   @endforeach
               </div>
-            @endif
+            @endif -->
             <div class="box-body">
              
                  {!! Form::open(array('method' => 'POST','role'=>'form','files' => true,'url'=>'admin/countryvisa/store','id'=>'countryvisa_add')) !!}
@@ -49,6 +49,7 @@
                         <div class="form-group">
                            {!! Html::decode(Form::label('country_id','Country: <span style="color:red;">*</span>')) !!}
                            {!! Form::select('country_id',['' => 'Select'] +$countries, null, ['class' => 'form-control select2']) !!}
+                           {!! Html::decode('<span class="text-danger">'.$errors->first("country_id").'</span>') !!}
                         </div>
                         <!-- /.form-group dropdown-->
 
@@ -56,6 +57,7 @@
                         <div class="form-group">
                           {!! Html::decode(Form::label('upload_pdf','Upload pdf: <span style="color:red;">* (Please upload pdf only)</span>')) !!}
                           {!! Form::file('upload_pdf', null) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("upload_pdf").'</span>') !!}
                         </div>
                          <!-- /.file input -->
 

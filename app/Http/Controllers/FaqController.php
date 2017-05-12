@@ -39,7 +39,7 @@ class FaqController extends Controller
      */
     public function create()
     {
-        $category_list = \App\FaqCategory::get()->pluck('name','id')->toArray();
+        $category_list = FaqCategory::get()->pluck('name','id')->toArray();
        //   return view('admin.genericmedicine.create');
        return view('admin.faq.create')->with(['category_list'=>$category_list]);
     }
@@ -53,7 +53,8 @@ class FaqController extends Controller
     {
         $this->validate($request, [
         'title' => 'required|unique:faqs', 
-        'description' => 'required'
+        'description' => 'required',
+        'faqcategory_id' => 'required'
       ]);
 
       // Getting all data after success validation.
@@ -86,7 +87,7 @@ class FaqController extends Controller
     {
        // get the Connectivity
        $faqdata = Faq::findOrFail($id);       
-       $category_list = \App\FaqCategory::get()->pluck('name','id')->toArray();      
+       $category_list = FaqCategory::get()->pluck('name','id')->toArray();      
        return view('admin.faq.edit')->with(array('faqdata'=> $faqdata,'category_list'=> $category_list));
     }
 
@@ -103,8 +104,9 @@ class FaqController extends Controller
         $faq = Faq::find($id);
         // validate
         $this->validate($request, [
-        'title' => 'required',
-        'description' => 'required'
+        'title' => 'required|unique:faqs,title,'.$id,
+        'description' => 'required',
+        'faqcategory_id' => 'required'
         ]);
 
         // Getting all data after success validation.
