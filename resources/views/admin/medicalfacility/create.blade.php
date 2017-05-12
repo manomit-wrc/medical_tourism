@@ -33,13 +33,13 @@
               <h3 class="box-title">General Elements</h3>
             </div> -->
             <!-- /.box-header -->
-            @if($errors->any())
+            <!-- @if($errors->any())
               <div class="alert alert-danger">
                   @foreach($errors->all() as $error)
                       <p>{{ $error }}</p>
                   @endforeach
               </div>
-            @endif
+            @endif -->
             <div class="box-body">
              
                  {!! Form::open(array('method' => 'POST','role'=>'form','files' => true,'url'=>'admin/medicalfacility/store','id'=>'medicalfacility_add')) !!}
@@ -52,6 +52,7 @@
                         <div class="form-group">
                           {!! Html::decode(Form::label('name','Facility name: <span style="color:red;">* </span>')) !!}
                           {!! Form::text('name','',array('class'=>'form-control','id'=>'name','placeholder'=>'Enter facility name')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("name").'</span>') !!}
                         </div>
                         <!-- /.text input -->
 
@@ -59,6 +60,7 @@
                         <div class="form-group">
                           {!! Html::decode(Form::label('description','Facility description: <span style="color:red;">* </span>')) !!}
                           {!! Form::textarea('description','',array('class'=>'form-control','id'=>'description','placeholder'=>'Enter facility description')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("description").'</span>') !!}
                         </div>
                         <!-- /.text input -->
 
@@ -66,6 +68,7 @@
                         <div class="form-group">
                           {!! Html::decode(Form::label('facility_image','Facility image: <span style="color:red;">* (Image must be minimum of 745x214)</span>')) !!}
                           {!! Form::file('facility_image', null) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("facility_image").'</span>') !!}
                         </div>
                          <!-- /.file input -->
                         

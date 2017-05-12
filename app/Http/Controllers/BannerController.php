@@ -25,7 +25,7 @@ class BannerController extends Controller
      * @return Response
      */
     public function index() {
-        $banner_lists = Banner::all();
+        $banner_lists = Banner::where('status', '!=', 2)->get();
         //echo "<pre>"; print_r($banner_lists); die;
         return view('admin.banner.index')->with('banner_lists',$banner_lists);
     }
@@ -50,7 +50,7 @@ class BannerController extends Controller
 	      //print_r($request->input()); die;
           $this->validate($request, [
             'banner_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|dimensions:width=1700,height=601',
-            'banner_heading' => 'required',
+            'banner_heading' => 'required|unique:banners',
             'banner_url' => 'required|url',
           ]);
 
@@ -129,7 +129,7 @@ class BannerController extends Controller
         // validate
         $this->validate($request, [
             'banner_image' => 'image|mimes:jpeg,png,jpg,gif,svg|dimensions:width=1700,height=601',
-            'banner_heading' => 'required',
+            'banner_heading' => 'required|unique:banners,banner_heading,'.$id,
             'banner_url' => 'required|url',
         ]);
 
@@ -178,13 +178,26 @@ class BannerController extends Controller
      * @return Response
      */
     
-    public function delete(Request $request,$id) {
+   /* public function delete(Request $request,$id) {
         if($id) {
             $bannobj = Banner::find($id);
             if($bannobj) {
                 File::delete(public_path('/uploads/banners/'. $bannobj->banner_image));
                 File::delete(public_path('/uploads/banners/thumb/'. $bannobj->banner_image));          
                 $bannobj->delete();
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/banner');
+            }
+        }
+    } */
+
+    public function delete(Request $request,$id) {
+        if($id) {
+            $bannobj = Banner::find($id);
+            $status = '2';
+            $bannobj->status = $status; 
+            $del = $bannobj->save();
+            if($del) {      
                 $request->session()->flash("message", "Successfully deleted");
                 return redirect('/admin/banner');
             }

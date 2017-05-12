@@ -33,13 +33,13 @@
              <!-- if there are creation errors, they will show here -->
              
             <!-- /.box-header -->
-            @if($errors->any())
-              <div class="alert alert-danger">
-                  @foreach($errors->all() as $error)
-                      <p>{{ $error }}</p>
-                  @endforeach
-              </div>
-            @endif
+           <!--  @if($errors->any())
+             <div class="alert alert-danger">
+                 @foreach($errors->all() as $error)
+                     <p>{{ $error }}</p>
+                 @endforeach
+             </div>
+           @endif -->
             <div class="box-body">
                  {{ Form::model($news_data,array('method' => 'PATCH','role'=>'form','files' => true,'url' => array('admin/news/update', $news_data->id),'id'=>'news_edit')) }}
                     
@@ -50,6 +50,7 @@
                         <div class="form-group">
                           {!! Html::decode(Form::label('title','News title: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('title',null,array('class'=>'form-control','id'=>'title','placeholder'=>'Enter news title')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("title").'</span>') !!}
                         </div>
                         <!-- /.text input -->
 
@@ -57,6 +58,7 @@
                         <div class="form-group">
                           {!! Html::decode(Form::label('description','Description: <span style="color:red;">*</span>')) !!}
                           {!! Form::textarea('description',null,array('class'=>'form-control','id'=>'description','placeholder'=>'Enter news')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("description").'</span>') !!}
                         </div>
                         <!-- /.text input -->
 
@@ -66,6 +68,7 @@
                           <img src="{{url('/uploads/news/thumb_352_170/'.$news_data->news_image)}}" alt="News Image" class="img_broder">
                           {!! Form::file('news_image', null) !!}
                           <span style="color:red;">* (Image must be minimum of 745x214)</span>
+                          {!! Html::decode('<br /><span class="text-danger">'.$errors->first("news_image").'</span>') !!}
                         </div>
                          <!-- /.file input -->
                         

@@ -33,45 +33,44 @@
               <h3 class="box-title">General Elements</h3>
             </div> -->
             <!-- /.box-header -->
-            @if($errors->any())
-              <div class="alert alert-danger">
-                  @foreach($errors->all() as $error)
-                      <p>{{ $error }}</p>
-                  @endforeach
-              </div>
-            @endif
+           <!--  @if($errors->any())
+             <div class="alert alert-danger">
+                 @foreach($errors->all() as $error)
+                     <p>{{ $error }}</p>
+                 @endforeach
+             </div>
+           @endif -->
             <div class="box-body">
              
                  {!! Form::open(array('method' => 'POST','role'=>'form','files' => true,'url'=>'admin/banner/store','id'=>'banner_add')) !!}
                     
-                    <div class="col-md-6">
-                        
+                    <div class="col-md-6">                        
                         <!-- file input -->
                         <div class="form-group">
                           {!! Html::decode(Form::label('banner_image','Banner image: ')) !!}
                           {!! Form::file('banner_image', null) !!}
                           <span style="color:red;">* (Image must be 1700x601)</span>
+                          {!! Html::decode('<br /><span class="text-danger">'.$errors->first("banner_image").'</span>') !!}
                         </div>
                          <!-- /.file input -->
-
                         <!-- text input -->
                         <div class="form-group">
                           {!! Html::decode(Form::label('banner_heading','Banner heading: <span style="color:red;">* </span>')) !!}
                           {!! Form::text('banner_heading','',array('class'=>'form-control','id'=>'banner_heading','placeholder'=>'Enter banner heading')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("banner_heading").'</span>') !!}
                         </div>
                         <!-- /.text input -->
-
                         <!-- text input -->
                         <div class="form-group">
                           {!! Form::label('banner_sub_heading', 'Banner sub heading:') !!}
                           {!! Form::text('banner_sub_heading','',array('class'=>'form-control','id'=>'banner_sub_heading','placeholder'=>'Enter banner sub heading')) !!}
                         </div>
                         <!-- /.text input -->
-
                         <!-- text input -->
                         <div class="form-group">
                           {!! Html::decode(Form::label('banner_url','Youtube video url: <span style="color:red;">* </span>')) !!}
                           {!! Form::text('banner_url','',array('class'=>'form-control','id'=>'banner_url','placeholder'=>'Enter youtube video url')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("banner_url").'</span>') !!}
                         </div>
                         <!-- /.text input -->                     
                         <!-- input submit button -->
