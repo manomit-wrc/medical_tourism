@@ -32,6 +32,7 @@ Route::get('/disclaimer','PagesController@disclaimer');
 Route::get('/privacypolicy','PagesController@privacypolicy');
 Route::get('/sitemap','PagesController@sitemap');
 Route::get('/successstory_details/{id}','PagesController@successstory_details');
+Route::get('/searchdetails/{id}','PagesController@searchdetails');
 Route::get('/frontend/check_user_exist','PagesController@check_user_exist');
 Route::post('/patient-registration','PagesController@patient_registration');
 Route::post('/patient-login','PagesController@patient_login');
