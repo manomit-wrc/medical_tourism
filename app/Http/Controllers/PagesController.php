@@ -185,7 +185,18 @@ class PagesController extends Controller
   }
   public function sitemap()
   {
-    return view('pages.sitemap');
+        $cmspage_data = Cmspage::select(['id'])->where('pagename', '=', 'sitemap')->get();
+        //echo "<pre>"; echo $cmspage_data[0]->id; die;
+        $cmspagedtls_data = CmsPageDetail::where('cmspage_id', '=',$cmspage_data[0]->id)->get();
+        //echo "<pre>"; print_r($cmspagedtls_data); die;
+        $sitemap_data=array();
+        foreach($cmspagedtls_data as $key=>$value)
+        {
+          $sitemap_data[$value->slag]=$value->description;
+        }  
+        //echo "<pre>"; print_r($sitemap_data); die;
+        
+        return view('pages.sitemap',compact('sitemap_data'));
   }
   public function check_user_exist(Request $request) {
     $email_id = $request->input('email_id');
