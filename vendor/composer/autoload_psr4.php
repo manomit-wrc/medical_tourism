@@ -39,6 +39,8 @@ return array(
     'Intervention\\Image\\' => array($vendorDir . '/intervention/image/src/Intervention/Image'),
     'Illuminate\\' => array($vendorDir . '/laravel/framework/src/Illuminate'),
     'GuzzleHttp\\Psr7\\' => array($vendorDir . '/guzzlehttp/psr7/src'),
+    'GoogleMaps\\' => array($vendorDir . '/alexpechkarev/google-maps/src'),
+    'GeometryLibrary\\' => array($vendorDir . '/alexpechkarev/geometry-library'),
     'Faker\\' => array($vendorDir . '/fzaninotto/faker/src/Faker'),
     'DougSisk\\CountryState\\' => array($vendorDir . '/dougsisk/laravel-country-state/src'),
     'Dotenv\\' => array($vendorDir . '/vlucas/phpdotenv/src'),

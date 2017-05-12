@@ -44,31 +44,31 @@
                  {{ Form::model($cmspagedata,array('method' => 'PATCH','role'=>'form','url' => array('admin/cmspagedetail/update', $cmspagedata->id),'id'=>'cmspage_edit')) }}
                     
                     <div class="col-md-6">
-                        
-
-                        <!-- text input -->
-                        <div class="form-group">
-                          {!! Html::decode(Form::label('slag','Slug: <span style="color:red;">*</span>')) !!}
-                          {!! Form::text('slag',null,array('class'=>'form-control','id'=>'slag', 'readonly'=>'readonly','placeholder'=>'Enter Slug')) !!}
-                        </div>                        
-                        <!-- /.text input -->
-
-                        <!-- textarea input -->
-                        <div class="form-group">
-                          {!! Html::decode(Form::label('description','Description: <span style="color:red;">*</span>')) !!}
-                          {!! Form::textarea('description',null,array('class'=>'form-control','id'=>'textarea_id','placeholder'=>'Enter description')) !!}
-                          {!! Html::decode('<span class="text-danger">'.$errors->first("description").'</span>') !!}
-                        </div>
-                        <!-- /.textarea input -->
-                       
-                         
-                        <!-- form-group dropdown-->
+                         <!-- form-group dropdown-->
                         <div class="form-group">
                            {!! Html::decode(Form::label('cmspage_id','CMS Page: <span style="color:red;">*</span>')) !!}
                            {!! Form::select('cmspage_id',['' => 'Select'] +$cmspage_id_list, null, ['class' => 'form-control select2']) !!}
                            {!! Html::decode('<span class="text-danger">'.$errors->first("cmspage_id").'</span>') !!} 
                         </div>
                         <!-- /.form-group dropdown-->
+
+                        <!-- text input -->
+                        <div class="form-group">
+                          {!! Html::decode(Form::label('slag','Page variable: <span style="color:red;">*</span>')) !!}
+                          {!! Form::text('slag',null,array('class'=>'form-control','id'=>'slag', 'readonly'=>'readonly','placeholder'=>'Enter Slug')) !!}
+                        </div>                        
+                        <!-- /.text input -->
+
+                        <!-- textarea input -->
+                        <div class="form-group">
+                          {!! Html::decode(Form::label('description','Variable\'s value: <span style="color:red;">*</span>')) !!}
+                          {!! Form::textarea('description',null,array('class'=>'form-control','id'=>'textarea_id','placeholder'=>'Enter description')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("description").'</span>') !!}
+                        </div>
+                        <!-- /.textarea input -->
+                       
+                         
+                       
 
                         <div class="form-group">
                           <label for="name">Status: </label>

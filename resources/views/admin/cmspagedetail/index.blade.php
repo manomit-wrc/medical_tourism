@@ -40,7 +40,8 @@
                 <thead>
                   <tr>
                     <th>Page Name</th>
-                    <th>Slug</th>                                       
+                    <th>Page Variable</th>
+                    <th>Variable's Value</th>                                       
                     <th>status</th>
                     <th width="11%">Actions</th>
                   </tr>
@@ -53,7 +54,8 @@
                     
                       <tr>
                         <td>{{ $cmsval['cmspage']['pagename'] }}</td>
-                        <td>{{ $cmsval['slag'] }}</td>                        
+                        <td>{{ $cmsval['slag'] }}</td> 
+                        <td>{!! \Illuminate\Support\Str::words($cmsval['description'], 10,'....') !!}</td>                        
                         <td>{{ ($cmsval['status'] ==1)? 'Active':'In-Active' }}</td>
                         <td>
                           <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
