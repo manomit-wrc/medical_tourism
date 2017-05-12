@@ -46,10 +46,17 @@
                     
                     <div class="col-md-6">
                         
+                         <!-- form-group dropdown-->
+                        <div class="form-group">
+                          {!! Html::decode(Form::label('cmspage_id','CMS Page: <span style="color:red;">*</span>')) !!}
+                          {!! Form::select('cmspage_id',['' => 'Select'] +$cmspage_id_list, null, ['class' => 'form-control select2']) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("cmspage_id").'</span>') !!}                         
+                        </div> 
+                          <!-- /.form-group dropdown--> 
 
                         <!-- text input -->
                         <div class="form-group">
-                          {!! Html::decode(Form::label('slag','Slug: <span style="color:red;">*</span>')) !!}
+                          {!! Html::decode(Form::label('slag','Page variable: <span style="color:red;">*</span>(Give variable name with "-" separated with words)')) !!}
                           {!!Form::text('slag','',array('class'=>'form-control','id'=>'slag','placeholder'=>'Enter slug')) !!}
                           {!! Html::decode('<span class="text-danger">'.$errors->first("slag").'</span>') !!}
                         </div>
@@ -57,19 +64,13 @@
 
                         <!-- textarea input -->
                         <div class="form-group">
-                          {!! Html::decode(Form::label('description','Description: <span style="color:red;">*</span>')) !!}
+                          {!! Html::decode(Form::label('description','Variable\'s value: <span style="color:red;">*</span>')) !!}
                           {!! Form::textarea('description','',array('class'=>'form-control ','id'=>'textarea_id','placeholder'=>'Enter Description')) !!}
                           {!! Html::decode('<span class="text-danger">'.$errors->first("description").'</span>') !!}
                         </div>
                         <!-- /.textarea input --> 
 
-                         <!-- form-group dropdown-->
-                        <div class="form-group">
-                          {!! Html::decode(Form::label('cmspage_id','CMS Page: <span style="color:red;">*</span>')) !!}
-                          {!! Form::select('cmspage_id',['' => 'Select'] +$cmspage_id_list, null, ['class' => 'form-control select2']) !!}
-                          {!! Html::decode('<span class="text-danger">'.$errors->first("cmspage_id").'</span>') !!}                         
-                        </div> 
-                          <!-- /.form-group dropdown-->           
+                                  
 
                         <!-- input submit button -->
                         <div>
