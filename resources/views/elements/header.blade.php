@@ -28,7 +28,7 @@
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel"><i class="fa fa-user" aria-hidden="true"></i> USER LOGIN</h4>
-                    <h4 class="login" style="display:none;"></h4>
+                    <div class="login">Email ID or Password is invalid</div>
                   </div>
                   <form name="frmLogin" id="frmLogin" method="post">
                   <div class="modal-body">
@@ -64,7 +64,7 @@
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel"><i class="fa fa-lock" aria-hidden="true"></i> Patient Registration</h4>
-                    <h4 class="registration" style="display:none;"></h4>
+                    <div class="registration">Registration successfully done. Email activation link is sent to your email</div>
                   </div>
                   <form name="frmRegistration" id="frmRegistration" method="post" >
                   <div class="modal-body">

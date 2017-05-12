@@ -1616,7 +1616,8 @@ text-align: center;
 }
 label.error {
 	color:#ff0000;
-	font-weight: bold;
+	font-weight: normal;
+	font-size: 12px;
 }
 .registration-success {
 	color:#00ff00;
@@ -1770,4 +1771,31 @@ label.error {
 
 .arrow_M0{
 	margin-top: 0;
+}
+
+.registration{
+	border: 1px solid #00b930;
+	padding: 8px 0;
+	text-align: center;
+	width: 100%;
+	margin-top: 10px;
+	font-size: 14px;
+	color:#00b930;
+}
+
+.login {
+    border: 1px solid #f00;
+    color: #f00;
+    font-size: 14px;
+    margin: 10px auto;
+    padding: 8px 0;
+    text-align: center;
+    width: 70%;
+}
+
+.ui-widget.ui-widget-content {
+	border:1px solid #691134!important;
+}
+.ui-widget-content {
+	color:#691134!important;
 }

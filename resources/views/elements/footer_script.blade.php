@@ -299,3 +299,48 @@
         $(this).find('.col-sm-11').remove();
       });
     </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+      function BindControls() {
+        var Countries = ['ARGENTINA', 
+            'AUSTRALIA', 
+            'BRAZIL', 
+            'BELARUS', 
+            'BHUTAN',
+            'CHILE', 
+            'CAMBODIA', 
+            'CANADA', 
+            'CHILE', 
+            'DENMARK', 
+            'DOMINICA'];
+
+        $('#txt_search').autocomplete({
+            minLength: 0,
+            source: function(request, response) {
+            $.ajax({
+                url: "/search-place",
+                dataType: "json",
+                data: {
+                    term : request.term
+                },
+                success: function(data) {
+                    response(data);
+                   
+                }
+            });
+        },
+            scroll: true,
+            select: function(e, ui) {
+              
+              $(this).val(ui.item.value);
+              e.preventDefault();
+          }
+        }).focus(function() {
+            $(this).autocomplete("search", "");
+        });
+    }
+      $(document).ready(function(e){
+        BindControls();
+      });
+    </script>

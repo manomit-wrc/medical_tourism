@@ -18,6 +18,7 @@ class GeneralServiceProvider extends ServiceProvider
         View::composer('*', 'App\Http\ViewComposers\ProvidertypeComposer');
         View::composer('*', 'App\Http\ViewComposers\TreatmentComposer');
         View::composer('*', 'App\Http\ViewComposers\CityComposer');
+        View::composer('*', 'App\Http\ViewComposers\GeneralComposer');
     }
 
     /**

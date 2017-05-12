@@ -34,6 +34,8 @@ Route::get('/successstory_details/{id}','PagesController@successstory_details');
 Route::get('/frontend/check_user_exist','PagesController@check_user_exist');
 Route::post('/patient-registration','PagesController@patient_registration');
 Route::post('/patient-login','PagesController@patient_login');
+Route::get('/search-place','SearchController@search_place');
+Route::post('search-data','SearchController@search_data');
 
 Route::group(['middleware' => ['front']], function() {
 	Route::get('/profile','PagesController@patient_profile');
@@ -44,6 +46,7 @@ Route::group(['middleware' => ['front']], function() {
 	Route::get('/change-password','PagesController@change_password');
 	Route::post('update-password','PagesController@update_password');
     Route::get('/upload-documents','PagesController@upload_documents');
+    
 });
 //Route::get('/successstory','HelperController@successstory');
 
