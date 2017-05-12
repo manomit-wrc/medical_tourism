@@ -15,7 +15,7 @@ class PackageTypeController extends Controller
     }
 
     public function index() {
-      $package_type_list = PackageType::all();
+      $package_type_list = PackageType::where('status', '!=', 2)->get();
       return view('admin.package_types.index')->with('package_type_list',$package_type_list);
     }
     public function create() {
@@ -62,6 +62,7 @@ class PackageTypeController extends Controller
       if($package_details) {
         $package_details->name = $request->name;
         $package_details->description = $request->ckeditor;
+        $package_details->status = $request->status;
         $package_details->user_id = Auth::guard('admin')->user()->id;
 
         $package_details->save();
@@ -71,12 +72,24 @@ class PackageTypeController extends Controller
       }
     }
 
-    public function delete(Request $request, $id) {
+    /*public function delete(Request $request, $id) {
       if($id) {
         if(PackageType::find($id)->delete()) {
           $request->session()->flash("message", "Package type deleted successfully");
           return redirect('/admin/package-types');
         }
       }
+    }*/
+    public function delete(Request $request,$id) {
+        if($id) {
+            $PackageType = PackageType::find($id);
+            $status = '2';
+            $PackageType->status = $status; 
+            $del = $PackageType->save();
+            if($del) {      
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/package-types');
+            }
+        }
     }
 }

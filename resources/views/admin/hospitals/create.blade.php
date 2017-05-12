@@ -33,13 +33,13 @@
               <h3 class="box-title">General Elements</h3>
             </div> -->
             <!-- /.box-header -->
-            @if($errors->any())
+            <!-- @if($errors->any())
               <div class="alert alert-danger">
                   @foreach($errors->all() as $error)
                       <p>{{ $error }}</p>
                   @endforeach
               </div>
-            @endif
+            @endif -->
             <div class="box-body">
              
                  {!! Form::open(array('method' => 'POST','role'=>'form','files' => true,'url'=>'admin/hospitals/store','id'=>'hospital_add')) !!}
@@ -51,6 +51,7 @@
                         <div class="form-group">
                           {!! Html::decode(Form::label('name','Hospital name: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('name','',array('class'=>'form-control','id'=>'name','placeholder'=>'Enter hospital name')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("name").'</span>') !!}
                         </div>
                         <!-- /.text input -->
 
@@ -58,6 +59,7 @@
                         <div class="form-group">
                           {!! Html::decode(Form::label('description','Hospital description: <span style="color:red;">*</span>')) !!}
                           {!! Form::textarea('description','',array('class'=>'form-control','id'=>'description','placeholder'=>'Enter hospital description')) !!}
+                           {!! Html::decode('<span class="text-danger">'.$errors->first("description").'</span>') !!}
                         </div>
                         <!-- /.text input -->
 
@@ -65,6 +67,7 @@
                         <div class="form-group">
                           {!! Html::decode(Form::label('email','Email: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('email','',array('class'=>'form-control','id'=>'email','placeholder'=>'Enter email')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("email").'</span>') !!}
                         </div>
                         <!-- /.text input -->
 
@@ -72,6 +75,7 @@
                         <div class="form-group">
                           {!! Html::decode(Form::label('phone','Phone: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('phone','',array('class'=>'form-control','id'=>'phone','placeholder'=>'Enter phone')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("phone").'</span>') !!}
                         </div>
                         <!-- /.text input -->
 
@@ -79,13 +83,16 @@
                         <div class="form-group">
                           {!! Html::decode(Form::label('website','Website: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('website','',array('class'=>'form-control','id'=>'website','placeholder'=>'Enter website')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("website").'</span>') !!}
                         </div>
                         <!-- /.text input -->
 
                         <!-- file input -->
                         <div class="form-group">
-                          {!! Html::decode(Form::label('avators','Image: <span style="color:red;">* (Image must be minimum of 745x214)</span>')) !!}
+                          {!! Html::decode(Form::label('avators','Image: ')) !!}
                           {!! Form::file('avators', null) !!}
+                          <span style="color:red;">* (Image must be minimum of 745x214)</span>
+                          {!! Html::decode('<br /><span class="text-danger">'.$errors->first("avators").'</span>') !!}
                         </div>
                          <!-- /.file input -->
 
@@ -95,6 +102,7 @@
                         <div class="form-group">
                           {!! Html::decode(Form::label('street_address','Address: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('street_address','',array('class'=>'form-control','id'=>'street_address','placeholder'=>'Enter hospital address')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("street_address").'</span>') !!}
                         </div>
                         <!-- /.text input -->
 
@@ -102,6 +110,7 @@
                         <div class="form-group">
                            {!! Html::decode(Form::label('country_id','Country: <span style="color:red;">*</span>')) !!}
                            {!! Form::select('country_id',['' => 'Select'] +$countries, null, ['class' => 'form-control select2']) !!}
+                           {!! Html::decode('<span class="text-danger">'.$errors->first("country_id").'</span>') !!}
                         </div>
                         <!-- /.form-group dropdown-->
 
@@ -109,6 +118,7 @@
                         <div class="form-group">
                            {!! Html::decode(Form::label('state_id','State: <span style="color:red;">*</span>')) !!}
                            <select name="state_id" id="state_id" class="form-control select2" ></select>
+                           {!! Html::decode('<span class="text-danger">'.$errors->first("state_id").'</span>') !!}
                         </div>
                         <!-- /.form-group dropdown-->
 
@@ -116,6 +126,7 @@
                         <div class="form-group">
                            {!! Html::decode(Form::label('city_id','City: <span style="color:red;">*</span>')) !!}
                            <select name="city_id" id="city_id" class="form-control select2" ></select>
+                            {!! Html::decode('<span class="text-danger">'.$errors->first("city_id").'</span>') !!}
                         </div>
                         <!-- /.form-group dropdown-->
 
@@ -123,6 +134,7 @@
                         <div class="form-group">
                           {!! Html::decode(Form::label('zipcode','Zipcode: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('zipcode','',array('class'=>'form-control','id'=>'zipcode','placeholder'=>'Enter zipcode')) !!}
+                           {!! Html::decode('<span class="text-danger">'.$errors->first("zipcode").'</span>') !!}
                         </div>
                         <!-- /.text input -->
 
@@ -132,6 +144,7 @@
                         <div class="form-group">
                           {!! Html::decode(Form::label('number_of_beds','Number of beds: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('number_of_beds','',array('class'=>'form-control','id'=>'number_of_beds','placeholder'=>'Enter number of beds')) !!}
+                           {!! Html::decode('<span class="text-danger">'.$errors->first("number_of_beds").'</span>') !!}
                         </div>
                         <!-- /.text input -->
 
@@ -139,6 +152,7 @@
                         <div class="form-group">
                           {!! Html::decode(Form::label('number_of_icu_beds','Number of icu beds: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('number_of_icu_beds','',array('class'=>'form-control','id'=>'number_of_icu_beds','placeholder'=>'Enter number of icu beds')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("number_of_icu_beds").'</span>') !!}
                         </div>
                         <!-- /.text input -->
 
@@ -146,6 +160,7 @@
                         <div class="form-group">
                           {!! Html::decode(Form::label('number_of_operating_rooms','Number of operating rooms: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('number_of_operating_rooms','',array('class'=>'form-control','id'=>'number_of_operating_rooms','placeholder'=>'Enter number of operating rooms')) !!}
+                           {!! Html::decode('<span class="text-danger">'.$errors->first("number_of_operating_rooms").'</span>') !!}
                         </div>
                         <!-- /.text input -->
                        
@@ -153,12 +168,13 @@
                         <div class="form-group">
                           {!! Html::decode(Form::label('number_of_avg_international_patients','Number of average international patients: <span style="color:red;">* </span>')) !!}
                           {!! Form::text('number_of_avg_international_patients','',array('class'=>'form-control','id'=>'number_of_avg_international_patients','placeholder'=>'Enter number of average internatinal patients')) !!}
+                           {!! Html::decode('<span class="text-danger">'.$errors->first("number_of_avg_international_patients").'</span>') !!}
                         </div>
                         <!-- /.text input -->
 
                          <!-- input submit button -->
-                        <div class="box-footer">
-                           {!! Form::submit('submit',array('class'=>'btn btn-primary pull-right','id'=>'exact-submit-button'))!!}
+                        <div>
+                           {!! Form::submit('submit',array('class'=>'btn btn-primary pull-left','id'=>'exact-submit-button'))!!}
                         </div>
                         <!-- /.input submit button -->
                     </div>

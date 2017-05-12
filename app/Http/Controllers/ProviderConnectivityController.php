@@ -25,7 +25,7 @@ class ProviderConnectivityController extends Controller
      * @return Response
      */
     public function index() {
-        $conn_lists = ProviderConnectivity::all();
+        $conn_lists = ProviderConnectivity::where('status', '!=', 2)->get();
         //echo "<pre>"; print_r($conn_lists[0]->connectivity); die;
         return view('admin.providerconnectivity.index')->with('conn_lists',$conn_lists);
     }
@@ -132,15 +132,24 @@ class ProviderConnectivityController extends Controller
      * @return Response
      */
 
-    public function destroy($id)
+   /* public function destroy($id)
     {
-        //echo $id; die;
-       // delete
         $procobj = ProviderConnectivity::findOrFail($id);
         $procobj->delete();
-
-        // redirect
         Session::flash('message', 'Successfully deleted');
         return Redirect::to('/admin/providerconnectivity');
+    }*/
+
+    public function delete(Request $request,$id) {
+        if($id) {
+            $procobj = ProviderConnectivity::find($id);
+            $status = '2';
+            $procobj->status = $status; 
+            $del = $procobj->save();
+            if($del) {      
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/providerconnectivity');
+            }
+        }
     }
 }

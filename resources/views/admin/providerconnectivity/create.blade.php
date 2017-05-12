@@ -33,13 +33,13 @@
               <h3 class="box-title">General Elements</h3>
             </div> -->
             <!-- /.box-header -->
-            @if($errors->any())
+            <!-- @if($errors->any())
               <div class="alert alert-danger">
                   @foreach($errors->all() as $error)
                       <p>{{ $error }}</p>
                   @endforeach
               </div>
-            @endif
+            @endif -->
             <div class="box-body">
              
                  {!! Form::open(array('method' => 'POST','role'=>'form','url'=>'admin/providerconnectivity/store','id'=>'providerconnectivity_add')) !!}
@@ -50,6 +50,7 @@
                         <div class="form-group">
                            {!! Html::decode(Form::label('connectivity_id','Connectivity: <span style="color:red;">*</span>')) !!}
                            {!! Form::select('connectivity_id',[''=>'select']+$connectivity_data, null, ['class' => 'form-control select2']) !!}
+                           {!! Html::decode('<span class="text-danger">'.$errors->first("connectivity_id").'</span>') !!}
                         </div>
                         <!-- /.form-group dropdown-->
                         
@@ -57,13 +58,15 @@
                         <div class="form-group">
                           {!! Html::decode(Form::label('name','Name: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('name','',array('class'=>'form-control','id'=>'name','placeholder'=>'Enter treatment name')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("name").'</span>') !!}
                         </div>
                         <!-- /.text input -->
 
                         <!-- text input -->
                         <div class="form-group">
-                          {!! Html::decode(Form::label('name','Distance: <span style="color:red;">* (please add unit)</span>')) !!}
+                          {!! Html::decode(Form::label('distance','Distance: <span style="color:red;">* (please add unit)</span>')) !!}
                           {!! Form::text('distance','',array('class'=>'form-control','id'=>'distance','placeholder'=>'Enter distance with variable')) !!}
+                           {!! Html::decode('<span class="text-danger">'.$errors->first("distance").'</span>') !!}
                         </div>
                         <!-- /.text input -->
 

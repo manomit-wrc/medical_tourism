@@ -216,6 +216,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/providerconnectivity/edit/{id}','ProviderConnectivityController@edit');
     Route::patch('/admin/providerconnectivity/update/{id}','ProviderConnectivityController@update');
     Route::delete('/admin/providerconnectivity/delete/{id}','ProviderConnectivityController@destroy');
+    Route::get('/admin/providerconnectivity/delete/{id}','ProviderConnectivityController@delete');
 
     //Doctor section
     Route::get('/admin/doctors','DoctorController@index');
@@ -241,8 +242,8 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/hospitals/create','HospitalController@create');
     Route::post('/admin/hospitals/store','HospitalController@store');
     Route::get('/admin/hospitals/edit/{id}','HospitalController@edit');
-    Route::patch('/admin/hospitals/update/{id}','HospitalController@update');
-    Route::delete('/admin/hospitals/delete/{id}','HospitalController@destroy');
+    Route::patch('/admin/hospitals/update/{id}','HospitalController@update');   
+    Route::get('/admin/hospitals/delete/{id}','HospitalController@delete');
     Route::get('/admin/hospitals/show/{id}','HospitalController@show');
     Route::get('/admin/hospitals/treatment/{id}','HospitalController@treatment');
     Route::post('/admin/hospitals/store_treatment/', 'HospitalController@store_treatment');
