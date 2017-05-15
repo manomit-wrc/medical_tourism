@@ -15,7 +15,11 @@
         
       </ol>
     </section>
-
+    <style>
+        .toggle2 {
+          height: 23px !important;
+        }
+    </style>
     <!-- Main content -->
     <section class="content">
       <div class="row">
@@ -30,6 +34,7 @@
 
             <!-- /.box-header -->
             <div class="box-body">
+              <div class="alert alert-info" id="result77" style="display:none;"></div>
               @if (Session::has('message'))
                   <div class="alert alert-info" id="result7">{{ Session::get('message') }}</div>
               @endif
@@ -52,7 +57,19 @@
                       <tr>
                         <td>{{$medtval['test_name']}}</td>
                         <td>{{ $medtval['medicaltestcategories']['cat_name'] }}</td>
-                        <td>{{ ($medtval['status'] ==1)? 'Active':'In-Active' }}</td>
+                       <!--  <td>{{ ($medtval['status'] ==1)? 'Active':'In-Active' }}</td> -->
+                       <td>
+                          @if($medtval['status'] ==1)
+                            <span data-toggle="tooltip" data-original-title="Click here to change status">
+                            <input type="checkbox" checked id="tog{{ $medtval['id'] }}" onchange="return changeStatus('/admin/ajaxmedichangestatus',{{ $medtval['id'] }})" value="1"  data-toggle="toggle2">
+                            </span>
+                          @endif
+                          @if($medtval['status'] ==0)
+                          <span data-toggle="tooltip" data-original-title="Click here to change status">
+                            <input type="checkbox" id="tog{{ $medtval['id'] }}"  onchange="return changeStatus('/admin/ajaxmedichangestatus',{{ $medtval['id'] }})" value="0" data-toggle="toggle2">
+                          </span>
+                          @endif
+                        </td>
                         <td>
                           <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
                             <!-- we will add this later since its a little more complicated than the other two buttons -->

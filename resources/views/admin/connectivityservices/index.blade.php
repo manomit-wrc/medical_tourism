@@ -14,7 +14,11 @@
         <li class="active">Connectivity services</li>
       </ol>
     </section>
-
+    <style>
+        .toggle2 {
+          height: 23px !important;
+        }
+    </style>
     <!-- Main content -->
     <section class="content">
       <div class="row">
@@ -29,6 +33,7 @@
 
             <!-- /.box-header -->
             <div class="box-body">
+              <div class="alert alert-info" id="result77" style="display:none;"></div>
               @if (Session::has('message'))
                   <div class="alert alert-info" id="result7">{{ Session::get('message') }}</div>
               @endif
@@ -36,6 +41,7 @@
                 <thead>
                   <tr>
                     <th>Connectivity service name</th>
+                    <th>Status</th>
                     <th width="11%">Actions</th>
                   </tr>
                 </thead>
@@ -45,7 +51,18 @@
                     @foreach($con_srv_data as $con_srv_data)
                       <tr>
                         <td>{{ $con_srv_data->name }}</td>
-                        
+                        <td>
+                          @if($con_srv_data->status ==1)
+                            <span data-toggle="tooltip" data-original-title="Click here to change status">
+                            <input type="checkbox" checked id="tog{{ $con_srv_data->id }}" onchange="return changeStatus('/admin/ajaxconserchangestatus',{{ $con_srv_data->id }})" value="1"  data-toggle="toggle2">
+                            </span>
+                          @endif
+                          @if($con_srv_data->status ==0)
+                          <span data-toggle="tooltip" data-original-title="Click here to change status">
+                            <input type="checkbox" id="tog{{ $con_srv_data->id }}"  onchange="return changeStatus('/admin/ajaxconserchangestatus',{{ $con_srv_data->id }})" value="0" data-toggle="toggle2">
+                          </span>
+                          @endif
+                        </td>
                         <td>
                           <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
                             <!-- we will add this later since its a little more complicated than the other two buttons -->                           

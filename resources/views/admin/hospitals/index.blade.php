@@ -14,7 +14,11 @@
         <li class="active">Hospital</li>
       </ol>
     </section>
-
+    <style>
+        .toggle2 {
+          height: 23px !important;
+        }
+    </style>
     <!-- Main content -->
     <section class="content">
       <div class="row">
@@ -29,6 +33,7 @@
 
             <!-- /.box-header -->
             <div class="box-body">
+              <div class="alert alert-info" id="result77" style="display:none;"></div>
               @if (Session::has('message'))
                   <div class="alert alert-info" id="result7">{{ Session::get('message') }}</div>
               @endif
@@ -37,6 +42,7 @@
                   <tr>
                     <th>Hospital name</th>
                     <th>Address</th>
+                    <th>Status</th>
                     <th width="35%">Actions</th>
                   </tr>
                 </thead>
@@ -47,6 +53,18 @@
                       <tr>
                         <td>{{ $hospitals_list->name }}</td>
                         <td>{{ $hospitals_list->street_address }} , {{ $hospitals_list->city->name }} , {{ $hospitals_list->city->state->name }} , {{ $hospitals_list->city->state->country->name }}</td>
+                        <td>
+                          @if($hospitals_list->status ==1)
+                            <span data-toggle="tooltip" data-original-title="Click here to change status">
+                            <input type="checkbox" checked id="tog{{ $hospitals_list->id }}" onchange="return changeStatus('/admin/ajaxhoschangestatus',{{ $hospitals_list->id }})" value="1"  data-toggle="toggle2">
+                            </span>
+                          @endif
+                          @if($hospitals_list->status ==0)
+                          <span data-toggle="tooltip" data-original-title="Click here to change status">
+                            <input type="checkbox" id="tog{{ $hospitals_list->id }}"  onchange="return changeStatus('/admin/ajaxhoschangestatus',{{ $hospitals_list->id }})" value="0" data-toggle="toggle2">
+                          </span>
+                          @endif
+                        </td>
                         <td>
                           <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
                             <!-- we will add this later since its a little more complicated than the other two buttons -->                             

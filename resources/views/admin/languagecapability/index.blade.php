@@ -35,7 +35,7 @@
 
             <!-- /.box-header -->
             <div class="box-body">
-            <div class="alert alert-info" id="result77" style="display:none;"></div>
+              <div class="alert alert-info" id="result77" style="display:none;"></div>
               @if (Session::has('message'))
                   <div class="alert alert-info" id="result7">{{ Session::get('message') }}</div>
               @endif
