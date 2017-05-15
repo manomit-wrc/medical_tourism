@@ -66,6 +66,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/languagecapability/edit/{id}','LanguageCapabilityController@edit');
     Route::patch('/admin/languagecapability/update/{id}','LanguageCapabilityController@update');   
 	Route::get('/admin/languagecapability/delete/{id}','LanguageCapabilityController@delete');
+    Route::post('/admin/ajaxlangchangestatus/','LanguageCapabilityController@ajaxlangchangestatus');
 
     //Procedure section
     Route::get('/admin/procedure', 'ProcedureController@index');
@@ -74,6 +75,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/procedure/edit/{id}','ProcedureController@edit');
     Route::patch('/admin/procedure/update/{id}','ProcedureController@update');    
 	Route::get('/admin/procedure/delete/{id}','ProcedureController@delete');
+    Route::post('/admin/ajaxprocchangestatus/','ProcedureController@ajaxprocchangestatus');
 
     //Treatment section
     Route::get('/admin/treatment', 'TreatmentController@index');
@@ -82,6 +84,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/treatment/edit/{id}','TreatmentController@edit');
     Route::patch('/admin/treatment/update/{id}','TreatmentController@update');   
 	Route::get('/admin/treatment/delete/{id}','TreatmentController@delete');
+    Route::post('/admin/ajaxtreatchangestatus/','TreatmentController@ajaxtreatchangestatus');
 
     //Accrediation section
     Route::get('/admin/accrediation', 'AccrediationController@index');
@@ -272,8 +275,8 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/successstories/create','SuccessStoryController@create');
     Route::post('/admin/successstories/store','SuccessStoryController@store');
     Route::get('/admin/successstories/edit/{id}','SuccessStoryController@edit');
-    Route::patch('/admin/successstories/update/{id}','SuccessStoryController@update');
-    Route::delete('/admin/successstories/delete/{id}','SuccessStoryController@destroy');
+    Route::patch('/admin/successstories/update/{id}','SuccessStoryController@update');    
+    Route::get('/admin/successstories/delete/{id}','SuccessStoryController@delete');
     Route::get('/admin/successstories/show/{id}','SuccessStoryController@show');
 
     //Provider connectivity services section
@@ -319,9 +322,9 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/faqcategories/create','FaqCategoryController@create');
     Route::post('/admin/faqcategories/store','FaqCategoryController@store');
     Route::get('/admin/faqcategories/edit/{id}','FaqCategoryController@edit');
-    Route::patch('/admin/faqcategories/update/{id}','FaqCategoryController@update');
-    Route::delete('/admin/faqcategories/delete/{id}','FaqCategoryController@destroy');
+    Route::patch('/admin/faqcategories/update/{id}','FaqCategoryController@update');    
     Route::get('/admin/faqcategories/show/{id}','FaqCategoryController@show');
+    Route::get('/admin/faqcategories/delete/{id}','FaqCategoryController@delete');
 
     //faqs  section
     Route::get('/admin/faq','FaqController@index');

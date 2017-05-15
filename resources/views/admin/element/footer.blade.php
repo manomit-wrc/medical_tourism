@@ -60,6 +60,8 @@
 {!!Html::script("storage/admin/js/demo.js")!!}
 {!! Html::style('storage/admin/css/sweetalert.css') !!}
 {!!Html::script("storage/admin/js/sweetalert-dev.js")!!}
+{!! Html::style('storage/admin/css/bootstrap-toggle.min.css') !!}
+{!!Html::script("storage/admin/js/bootstrap-toggle.min.js")!!}
 
 @if((Request::segment(2) === 'package-types' && (Request::segment(3) === 'create' || Request::segment(3) === 'edit'))||(Request::segment(2) === 'successstories' && (Request::segment(3) === 'create' || Request::segment(3) === 'edit')) ||(Request::segment(2) === 'cmspagedetail' && (Request::segment(3) === 'create' || Request::segment(3) === 'edit')))
   {!!Html::script("vendor/unisharp/laravel-ckeditor/ckeditor.js")!!}
@@ -90,6 +92,43 @@ function deldata(url){
     swal("Deleted!", "Your imaginary file has been deleted.", "success");
     });*/
 }
+  function changeStatus(url,id){
+      var id = id;                               
+      var status = $('#tog'+id).val();                              
+      if(status == 1){
+        var value= 0;
+        $('#tog'+id).val('0');
+      } else {
+        var value= 1; 
+        $('#tog'+id).val('1');
+      }
+      var datastring="id="+id+"&status="+value+"&_token="+'{{csrf_token()}}';
+      $.ajax({
+        type:"POST",
+        url:url,
+        data: datastring,
+          success:function(response) {
+            var result = $.parseJSON(response);            
+                if(result.status == 1) {
+                    $("#result77").css("display", "block");
+                    $("#result77").removeClass("alert-danger");
+                    $("#result77").addClass("alert-success");
+                    $("#result77").html(result.msg);
+                    setTimeout(function() {
+                      $('#result77').fadeOut('fast');
+                    }, 2000);
+                } else{
+                    $("#result77").css("display", "block");
+                    $("#result77").removeClass("alert-success");
+                    $("#result77").addClass("alert-danger");
+                    $("#result77").html(result.msg);
+                    setTimeout(function() {
+                      $('#result77').fadeOut('fast');
+                    }, 2000);
+                }            
+          }
+      });
+  }
 $(function () {  
     //Initialize Select2 Elements
     $(".js-example-basic-multiple").select2();

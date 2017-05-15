@@ -14,7 +14,11 @@
         <li class="active">Procedure</li>
       </ol>
     </section>
-
+   <style>
+        .toggle2 {
+          height: 23px !important;
+        }
+    </style>
     <!-- Main content -->
     <section class="content">
       <div class="row">
@@ -27,6 +31,7 @@
             <div class="topbtn"><a href="{!!URL::to('/admin/procedure/create')!!}"><button type="button" class="btn bg-purple btn-rightad">ADD</button></a></div>
             <!-- /.box-header -->
             <div class="box-body">
+            <div class="alert alert-info" id="result77" style="display:none;"></div>
               @if (Session::has('message'))
                   <div class="alert alert-info" id="result7">{{ Session::get('message') }}</div>
               @endif
@@ -48,7 +53,19 @@
                         <td>
                           <img src="{{url('/uploads/procedures/thumb/'.$procedure_lists->procedure_image)}}" alt="Procedure Image" class="procedure_img" >
                         </td>
-                        <td>{{ ($procedure_lists->status ==1)? 'Active':'In-Active' }}</td>
+                        <!-- <td>{{ ($procedure_lists->status ==1)? 'Active':'In-Active' }}</td> -->
+                        <td>
+                          @if($procedure_lists->status ==1)
+                            <span data-toggle="tooltip" data-original-title="Click here to change status">
+                            <input type="checkbox" checked id="tog{{ $procedure_lists->id }}" onchange="return changeStatus('/admin/ajaxprocchangestatus',{{ $procedure_lists->id }})" value="1"  data-toggle="toggle2">
+                            </span>
+                          @endif
+                          @if($procedure_lists->status ==0)
+                          <span data-toggle="tooltip" data-original-title="Click here to change status">
+                            <input type="checkbox" id="tog{{ $procedure_lists->id }}"  onchange="return changeStatus('/admin/ajaxprocchangestatus',{{ $procedure_lists->id }})" value="0" data-toggle="toggle2">
+                          </span>
+                          @endif
+                        </td>
                         <td>
                           <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
                             <!-- we will add this later since its a little more complicated than the other two buttons -->

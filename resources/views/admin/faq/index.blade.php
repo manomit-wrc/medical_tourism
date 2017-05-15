@@ -43,7 +43,7 @@
                     <th>Question</th>
                     <th>Answer</th>                    
                     <th>status</th>
-                    <th>Actions</th>
+                    <th width="11%">Actions</th>
                   </tr>
                 </thead>
                

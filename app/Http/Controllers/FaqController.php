@@ -14,7 +14,7 @@ use Validator;
 
 class FaqController extends Controller
 {
-     public function __construct() {
+    public function __construct() {
 
     }
 
@@ -24,7 +24,7 @@ class FaqController extends Controller
      * @return Response
      */
     public function index() {
-        $faqlist = Faq::with('faqcategory')->orderBy('faqcategory_id')->get()->toArray();        
+        $faqlist = Faq::with('faqcategory')->orderBy('faqcategory_id')->where('status', '!=', 2)->get()->toArray();     
         $data['faqlist'] = $faqlist;
        /* echo "<pre>";
         print_r($data['faqlist']);       
@@ -125,7 +125,7 @@ class FaqController extends Controller
      * @return Response
      */ 
 
-   public function delete(Request $request,$id) {
+   /* public function delete(Request $request,$id) {
       if($id) {
         $faq_details = Faq::find($id);
         if($faq_details) {          
@@ -134,5 +134,17 @@ class FaqController extends Controller
           return redirect('/admin/faq');
         }
       }
+    } */
+    public function delete(Request $request,$id) {
+        if($id) {
+            $faq_details = Faq::find($id);
+            $status = '2';
+            $faq_details->status = $status; 
+            $del = $faq_details->save();
+            if($del) {      
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/faq');
+            }
+        }
     }
 }

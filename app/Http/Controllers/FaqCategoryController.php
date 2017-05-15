@@ -24,7 +24,7 @@ class FaqCategoryController extends Controller
      * @return Response
      */
     public function index() {
-    	$faq_cat_data = FaqCategory::all();
+    	$faq_cat_data = FaqCategory::where('status', '!=', 2)->get();
         //echo "<pre>"; print_r($faq_cat_data); die;
         return view('admin.faqcategories.index')->with('faq_cat_data',$faq_cat_data);
     }
@@ -97,7 +97,7 @@ class FaqCategoryController extends Controller
         $faqcat = FaqCategory::find($id);
         // validate
         $this->validate($request, [
-        'name' => 'required|unique:faq_categories'
+        'name' => 'required|unique:faq_categories,name,'.$id
         ]);
 
         // Getting all data after success validation.
@@ -118,15 +118,23 @@ class FaqCategoryController extends Controller
      * @return Response
      */
 
-    public function destroy($id)
-    {
-        //echo $id; die;
-       // delete
+    /*public function destroy($id)
+    {      
         $faq_cat = FaqCategory::findOrFail($id);
         $faq_cat->delete();
-
-        // redirect
         Session::flash('message', 'Successfully deleted');
         return Redirect::to('/admin/faqcategories');
+    }*/
+    public function delete(Request $request,$id) {
+        if($id) {
+            $faq_cat = FaqCategory::find($id);
+            $status = '2';
+            $faq_cat->status = $status; 
+            $del = $faq_cat->save();
+            if($del) {      
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/faqcategories');
+            }
+        }
     }
 }
