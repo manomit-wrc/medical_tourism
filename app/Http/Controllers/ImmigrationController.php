@@ -139,13 +139,10 @@ class ImmigrationController extends Controller
         $immgi->state_id = $request->get('state_id') ;
         $immgi->city_id = $request->get('city_id') ;
         $immgi->telephone = $request->get('telephone') ;
-        $immgi->email = $request->get('email') ;
-
-        
+        $immgi->status = $request->get('status') ;
+        $immgi->email = $request->get('email') ;    
 
         $immgi->save() ;
-
-
         // redirect
         Session::flash('message', 'Successfully updated');
         return Redirect::to('/admin/immigration');

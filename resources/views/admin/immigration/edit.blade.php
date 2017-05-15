@@ -108,7 +108,13 @@
                           {!! Html::decode('<span class="text-danger">'.$errors->first("email").'</span>') !!}
                         </div>
                         <!-- /.text input -->
-
+                        <div class="form-group">
+                          <label for="name">Status: </label>
+                          <select name="status" id="status" class="form-control" autofocus >
+                            <option value="1" {{ $immigration_data->status == "1" ? 'selected' : '' }}>Active</option>
+                            <option value="0" {{ $immigration_data->status == "0" ? 'selected' : '' }}>In-Active</option>
+                          </select>                          
+                        </div>
                        
                         
                          <!-- input button -->

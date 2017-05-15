@@ -15,6 +15,11 @@
         
       </ol>
     </section>
+    <style>
+        .toggle2 {
+          height: 23px !important;
+        }
+    </style>
 
     <!-- Main content -->
     <section class="content">
@@ -30,6 +35,7 @@
 
             <!-- /.box-header -->
             <div class="box-body">
+            <div class="alert alert-info" id="result77" style="display:none;"></div>
               @if (Session::has('message'))
                   <div class="alert alert-info" id="result7">{{ Session::get('message') }}</div>
               @endif
@@ -47,7 +53,19 @@
                     @foreach($langcapabilites as $langcapabi)
                       <tr>
                         <td>{{ $langcapabi->name }}</td>
-                        <td>{{ ($langcapabi->status ==1)? 'Active':'In-Active' }}</td>
+                        <!-- <td>{{ ($langcapabi->status ==1)? 'Active':'In-Active' }}</td> -->
+                        <td>
+                          @if($langcapabi->status ==1)
+                            <span data-toggle="tooltip" data-original-title="Click here to change status">
+                            <input type="checkbox" checked id="tog{{ $langcapabi->id }}" onchange="return changeStatus('/admin/ajaxlangchangestatus',{{ $langcapabi->id }})" value="1"  data-toggle="toggle2">
+                            </span>
+                          @endif
+                          @if($langcapabi->status ==0)
+                          <span data-toggle="tooltip" data-original-title="Click here to change status">
+                            <input type="checkbox" id="tog{{ $langcapabi->id }}"  onchange="return changeStatus('/admin/ajaxlangchangestatus',{{ $langcapabi->id }})" value="0" data-toggle="toggle2">
+                          </span>
+                          @endif
+                        </td>
                         <td>
                           <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
                             <!-- we will add this later since its a little more complicated than the other two buttons -->                           

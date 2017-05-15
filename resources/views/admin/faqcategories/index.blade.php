@@ -39,7 +39,8 @@
                 <thead>
                   <tr>
                     <th>Category name</th>
-                    <th>Actions</th>
+                    <th>Status</th>
+                    <th width="11%">Actions</th>
                   </tr>
                 </thead>
                
@@ -48,14 +49,12 @@
                     @foreach($faq_cat_data as $faq_cat_data)
                       <tr>
                         <td>{{ $faq_cat_data->name }}</td>
-                        
+                        <td>{{ ($faq_cat_data->status ==1)? 'Active':'In-Active' }}</td>                        
                         <td>
                           <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
-                            <!-- we will add this later since its a little more complicated than the other two buttons -->
-                             {!! Form::open(array('method' => 'DELETE','url' => array('admin/faqcategories/delete', $faq_cat_data->id),'class' => 'pull-right')) !!}
-                                  {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                              {!! Form::close() !!}
+                            <!-- we will add this later since its a little more complicated than the other two buttons -->                             
                           <a href="{!!URL::to('/admin/faqcategories/edit',$faq_cat_data->id)!!}" class="btn btn-primary">Edit</a>
+                          <a href="javascript:void(0)" onclick="return deldata('{!!URL::to('/admin/faqcategories/delete',$faq_cat_data->id)!!}')" class="btn btn-danger" >Delete</a>
                         </td>
                       </tr>
                     @endforeach

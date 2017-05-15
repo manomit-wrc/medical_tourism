@@ -33,27 +33,31 @@
              <!-- if there are creation errors, they will show here -->
              
             <!-- /.box-header -->
-            @if($errors->any())
+            <!-- @if($errors->any())
               <div class="alert alert-danger">
                   @foreach($errors->all() as $error)
                       <p>{{ $error }}</p>
                   @endforeach
               </div>
-            @endif
+            @endif -->
             <div class="box-body">
-                 {{ Form::model($faq_cat_data,array('method' => 'PATCH','role'=>'form','files' => true,'url' => array('admin/faqcategories/update', $faq_cat_data->id),'id'=>'faqcategory_edit')) }}
-                    
-                    <div class="col-md-6">
-                        
+                 {{ Form::model($faq_cat_data,array('method' => 'PATCH','role'=>'form','files' => true,'url' => array('admin/faqcategories/update', $faq_cat_data->id),'id'=>'faqcategory_edit')) }}                    
+                    <div class="col-md-6">                  
 
                         <!-- text input -->
                         <div class="form-group">
                           {!! Html::decode(Form::label('name','Category Name: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('name',null,array('class'=>'form-control','id'=>'name','placeholder'=>'Enter name')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("name").'</span>') !!}
                         </div>
                         <!-- /.text input -->
-
-                        
+                        <div class="form-group">
+                          <label for="name">Status: </label>
+                          <select name="status" id="status" class="form-control" autofocus >
+                            <option value="1" {{ $faq_cat_data->status == "1" ? 'selected' : '' }}>Active</option>
+                            <option value="0" {{ $faq_cat_data->status == "0" ? 'selected' : '' }}>In-Active</option>
+                          </select>                          
+                        </div>                        
                          <!-- input button -->
                         <div class="box-footer">
                            {!! Form::submit('submit',array('class'=>'btn btn-primary pull-right','id'=>'exact-submit-button'))!!}

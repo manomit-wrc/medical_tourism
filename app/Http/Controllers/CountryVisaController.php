@@ -124,7 +124,7 @@ class CountryVisaController extends Controller
 
         // Getting all data after success validation.
         $cntvisa->country_id = $request->get('country_id') ;
-        
+        $cntvisa->status = $request->get('status') ;
 
         //echo "<pre>"; print_r($request->file('upload_pdf'));die;
 
