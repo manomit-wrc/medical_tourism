@@ -15,6 +15,11 @@
 
       </ol>
     </section>
+    <style>
+        .toggle2 {
+          height: 23px !important;
+        }
+    </style>
 
     <!-- Main content -->
      <section class="content">
@@ -31,6 +36,7 @@
 
             <!-- /.box-header -->
             <div class="box-body">
+              <div class="alert alert-info" id="result77" style="display:none;"></div>
               @if (Session::has('message'))
                   <div class="alert alert-info" id="result7">{{ Session::get('message') }}</div>
               @endif
@@ -42,6 +48,7 @@
                     <th>Email</th>
                     <th>Mobile No</th>
                     <th>City</th>
+                    <th>Status</th>
                     <th width="11%">Actions</th>
                   </tr>
                 </thead>
@@ -56,6 +63,18 @@
                         <td>{{ $dd->email }}</td>
                         <td>{{ $dd->mobile_no }}</td>
                         <td>{{ $dd->cities->name }}</td>
+                        <td>
+                          @if($dd->status ==1)
+                            <span data-toggle="tooltip" data-original-title="Click here to change status">
+                            <input type="checkbox" checked id="tog{{ $dd->id }}" onchange="return changeStatus('/admin/ajaxdoctorchangestatus',{{ $dd->id }})" value="1"  data-toggle="toggle2">
+                            </span>
+                          @endif
+                          @if($dd->status ==0)
+                          <span data-toggle="tooltip" data-original-title="Click here to change status">
+                            <input type="checkbox" id="tog{{ $dd->id }}"  onchange="return changeStatus('/admin/ajaxdoctorchangestatus',{{ $dd->id }})" value="0" data-toggle="toggle2">
+                          </span>
+                          @endif
+                        </td>
                         <td>
                           <a href="{!!URL::to('/admin/doctors/edit',$dd->id)!!}" class="btn btn-primary">Edit</a>
                           <a href="javascript:void(0)" onclick="return deldata('{!!URL::to('/admin/doctors/delete',$dd->id)!!}')" class="btn btn-danger" >Delete</a>

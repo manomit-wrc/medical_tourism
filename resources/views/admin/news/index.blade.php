@@ -14,7 +14,11 @@
         <li class="active">News</li>
       </ol>
     </section>
-
+    <style>
+        .toggle2 {
+          height: 23px !important;
+        }
+    </style>
     <!-- Main content -->
     <section class="content">
       <div class="row">
@@ -29,6 +33,7 @@
 
             <!-- /.box-header -->
             <div class="box-body">
+               <div class="alert alert-info" id="result77" style="display:none;"></div>
               @if (Session::has('message'))
                   <div class="alert alert-info" id="result7">{{ Session::get('message') }}</div>
               @endif
@@ -38,6 +43,7 @@
                     <th>Heading</th>
                     <th>Description</th>
                     <th>Image</th>
+                    <th>Status</th>
                     <th width="11%">Actions</th>
                   </tr>
                 </thead>
@@ -50,6 +56,18 @@
                         <td>{!! \Illuminate\Support\Str::words($news_data->description, 10,'....')  !!}</td>
                         <td>
                           <img class="procedure_img" src="{{url('/uploads/news/thumb_352_170/'.$news_data->news_image)}}" alt="News Image" >
+                        </td>
+                        <td>
+                          @if($news_data->status ==1)
+                            <span data-toggle="tooltip" data-original-title="Click here to change status">
+                            <input type="checkbox" checked id="tog{{ $news_data->id }}" onchange="return changeStatus('/admin/ajaxnewschangestatus',{{ $news_data->id }})" value="1"  data-toggle="toggle2">
+                            </span>
+                          @endif
+                          @if($news_data->status ==0)
+                          <span data-toggle="tooltip" data-original-title="Click here to change status">
+                            <input type="checkbox" id="tog{{ $news_data->id }}"  onchange="return changeStatus('/admin/ajaxnewschangestatus',{{ $news_data->id }})" value="0" data-toggle="toggle2">
+                          </span>
+                          @endif
                         </td>
                         <td>
                           <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->

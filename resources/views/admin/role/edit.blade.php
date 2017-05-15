@@ -33,11 +33,11 @@
                 <form method="post" name="frmRole" action="/admin/role/update/{{$role_details[0]->id}}" >
                   {{ csrf_field() }}
                   <div class="col-md-6">
-                    <div class="form-group {{ $errors->has('role_name') ? 'has-error' : '' }}">
+                    <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                       <label for="name">Role Name: <span style="color:red;">*</span></label>
-                      <input type="text" name="role_name" id="role_name" class="form-control" value="{{ $role_details[0]->name }}" autofocus >
+                      <input type="text" name="name" id="name" class="form-control" value="{{ $role_details[0]->name }}" autofocus >
 
-                      <span class="text-danger">{{ $errors->first('role_name') }}</span>
+                      <span class="text-danger">{{ $errors->first('name') }}</span>
                     </div>
                     <div class="form-group {{ $errors->has('status') ? 'has-error' : '' }}">
                       <label for="name">Status: <span style="color:red;">*</span></label>

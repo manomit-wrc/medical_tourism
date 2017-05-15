@@ -15,6 +15,11 @@
 
       </ol>
     </section>
+    <style>
+        .toggle2 {
+          height: 23px !important;
+        }
+    </style>
 
     <!-- Main content -->
      <section class="content">
@@ -30,6 +35,7 @@
 
             <!-- /.box-header -->
             <div class="box-body">
+              <div class="alert alert-info" id="result77" style="display:none;"></div>
               @if (Session::has('message'))
                   <div class="alert alert-info" id="result7">{{ Session::get('message') }}</div>
               @endif
@@ -47,7 +53,19 @@
                     @foreach($data as $d)
                       <tr>
                         <td>{{ $d->name }}</td>
-                        <td>{{ $d->status == '1' ? 'Active' : 'Inactive'}}</td>
+                        <!-- <td>{{ $d->status == '1' ? 'Active' : 'Inactive'}}</td> -->
+                        <td>
+                          @if($d->status ==1)
+                            <span data-toggle="tooltip" data-original-title="Click here to change status">
+                            <input type="checkbox" checked id="tog{{ $d->id }}" onchange="return changeStatus('/admin/ajaxrolechangestatus',{{ $d->id }})" value="1"  data-toggle="toggle2">
+                            </span>
+                          @endif
+                          @if($d->status ==0)
+                          <span data-toggle="tooltip" data-original-title="Click here to change status">
+                            <input type="checkbox" id="tog{{ $d->id }}"  onchange="return changeStatus('/admin/ajaxrolechangestatus',{{ $d->id }})" value="0" data-toggle="toggle2">
+                          </span>
+                          @endif
+                        </td>
                         <td>
 
                           <a href="{!!URL::to('/admin/role/edit',$d->id)!!}" class="btn btn-primary">Edit</a>

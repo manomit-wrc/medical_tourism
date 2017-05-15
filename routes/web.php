@@ -94,6 +94,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::patch('/admin/accrediation/update/{id}','AccrediationController@update');
     Route::delete('/admin/accrediation/delete/{id}','AccrediationController@destroy');
     Route::get('/admin/accrediation/delete/{id}','AccrediationController@delete');
+    Route::post('/admin/ajaxaccerchangestatus/','AccrediationController@ajaxaccerchangestatus');
 
     //Accomodation section
     Route::get('/admin/accomodation', 'AccomodationController@index');
@@ -102,6 +103,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/accomodation/edit/{id}','AccomodationController@edit');
     Route::patch('/admin/accomodation/update/{id}','AccomodationController@update');    
     Route::get('/admin/accomodation/delete/{id}','AccomodationController@delete');
+    Route::post('/admin/ajaxaccomchangestatus/','AccomodationController@ajaxaccomchangestatus');
 
     //Cuisine section
     Route::get('/admin/cuisine', 'CuisineController@index');
@@ -110,6 +112,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/cuisine/edit/{id}','CuisineController@edit');
     Route::patch('/admin/cuisine/update/{id}','CuisineController@update');    
     Route::get('/admin/cuisine/delete/{id}','CuisineController@delete');
+    Route::post('/admin/ajaxcuisinechangestatus/','CuisineController@ajaxcuisinechangestatus');
 
     //Specific Service section
     Route::get('/admin/specificservice', 'SpecificServiceController@index');
@@ -118,6 +121,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/specificservice/edit/{id}','SpecificServiceController@edit');
     Route::patch('/admin/specificservice/update/{id}','SpecificServiceController@update');    
     Route::get('/admin/specificservice/delete/{id}','SpecificServiceController@delete');
+    Route::post('/admin/ajaxspeserchangestatus/','SpecificServiceController@ajaxspeserchangestatus');
 
     //Banner section
     Route::get('/admin/banner', 'BannerController@index');
@@ -126,6 +130,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/banner/edit/{id}','BannerController@edit');
     Route::patch('/admin/banner/update/{id}','BannerController@update');    
     Route::get('/admin/banner/delete/{id}','BannerController@delete');
+    Route::post('/admin/ajaxbannerchangestatus/','BannerController@ajaxbannerchangestatus');
 
     //Role section
     Route::get('/admin/role', 'RoleController@index');
@@ -134,6 +139,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/role/edit/{id}', 'RoleController@edit');
     Route::post('admin/role/update/{id}', 'RoleController@update');
     Route::get('/admin/role/delete/{id}','RoleController@delete');
+    Route::post('/admin/ajaxrolechangestatus/','RoleController@ajaxrolechangestatus');
 
     //Degree section
     Route::get('/admin/degree', 'DegreeController@index');
@@ -142,6 +148,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/degree/edit/{id}','DegreeController@edit');
     Route::patch('/admin/degree/update/{id}','DegreeController@update');  
     Route::get('/admin/degree/delete/{id}','DegreeController@delete');
+    Route::post('/admin/ajaxdegreechangestatus/','DegreeController@ajaxdegreechangestatus');
 
     //Medical Facility section
     Route::get('/admin/medicalfacility', 'MedicalFacilityController@index');
@@ -150,6 +157,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/medicalfacility/edit/{id}','MedicalFacilityController@edit');
     Route::patch('/admin/medicalfacility/update/{id}','MedicalFacilityController@update');    
     Route::get('/admin/medicalfacility/delete/{id}','MedicalFacilityController@delete');
+    Route::post('/admin/ajaxmedfacichangestatus/','MedicalFacilityController@ajaxmedfacichangestatus');
 
 
     //Admin user section
@@ -171,6 +179,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/providertype/edit/{id}','ProviderTypeController@edit');
     Route::patch('/admin/providertype/update/{id}','ProviderTypeController@update');    
     Route::get('/admin/providertype/delete/{id}','ProviderTypeController@delete');
+    Route::post('/admin/ajaxprotypechangestatus/','ProviderTypeController@ajaxprotypechangestatus');
 
     //Payment type section
     Route::get('/admin/paymenttype', 'PaymentTypeController@index');
@@ -179,6 +188,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/paymenttype/edit/{id}','PaymentTypeController@edit');
     Route::patch('/admin/paymenttype/update/{id}','PaymentTypeController@update');    
     Route::get('/admin/paymenttype/delete/{id}','PaymentTypeController@delete');
+    Route::post('/admin/ajaxpaymenttypechangestatus/','PaymentTypeController@ajaxpaymenttypechangestatus');
 
     //Country State city
     /*Route::get('/admin/api/dependent-dropdown','APIController@index');
@@ -197,6 +207,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::patch('/admin/hotel/update/{id}','HotelController@update');    
     Route::get('/admin/hotel/delete/{id}','HotelController@delete');
     Route::get('/admin/hotel/show/{id}','HotelController@show');
+    Route::post('/admin/ajaxhotelchangestatus/','HotelController@ajaxhotelchangestatus');
 
     //connectivity master section
     Route::get('/admin/connectivity', 'ConnectivityController@index');
@@ -205,6 +216,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/connectivity/edit/{id}','ConnectivityController@edit');
     Route::patch('/admin/connectivity/update/{id}','ConnectivityController@update');   
     Route::get('/admin/connectivity/delete/{id}','ConnectivityController@delete');
+    Route::post('/admin/ajaxconchangestatus/','ConnectivityController@ajaxconchangestatus');
 
     //news section
     Route::get('/admin/news','NewsController@index');
@@ -213,6 +225,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/news/edit/{id}','NewsController@edit');
     Route::patch('/admin/news/update/{id}','NewsController@update');    
     Route::get('/admin/news/delete/{id}','NewsController@delete');
+    Route::post('/admin/ajaxnewschangestatus/','NewsController@ajaxnewschangestatus');
 
     //provider connectivitysettings master section
     Route::get('/admin/providerconnectivity', 'ProviderConnectivityController@index');
@@ -222,6 +235,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::patch('/admin/providerconnectivity/update/{id}','ProviderConnectivityController@update');
     Route::delete('/admin/providerconnectivity/delete/{id}','ProviderConnectivityController@destroy');
     Route::get('/admin/providerconnectivity/delete/{id}','ProviderConnectivityController@delete');
+    Route::post('/admin/ajaxproviconchangestatus/','ProviderConnectivityController@ajaxproviconchangestatus');
 
     //Doctor section
     Route::get('/admin/doctors','DoctorController@index');
@@ -233,6 +247,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/doctors/delete/{id}','DoctorController@delete');
     Route::post('/admin/doctors/get_state_list','DoctorController@get_state_list');
     Route::post('/admin/doctors/get_city_list','DoctorController@get_city_list');
+    Route::post('/admin/ajaxdoctorchangestatus/','DoctorController@ajaxdoctorchangestatus');
 
     //connectivityservices master section
     Route::get('/admin/connectivityservices', 'ConnectivityServicesController@index');
@@ -241,6 +256,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/connectivityservices/edit/{id}','ConnectivityServicesController@edit');
     Route::patch('/admin/connectivityservices/update/{id}','ConnectivityServicesController@update');    
     Route::get('/admin/connectivityservices/delete/{id}','ConnectivityServicesController@delete');
+    Route::post('/admin/ajaxconserchangestatus/','ConnectivityServicesController@ajaxconserchangestatus');
 
     //hospitals section
     Route::get('/admin/hospitals', 'HospitalController@index');
@@ -258,6 +274,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('/admin/hospitals/gettestarr/','HospitalController@gettestarr');
     Route::post('/admin/ajaxstoretreatment/','HospitalController@ajaxstoretreatment');
     Route::post('/admin/hospitals/gettreatarr/','HospitalController@gettreatarr');
+    Route::post('/admin/ajaxhoschangestatus/','HospitalController@ajaxhoschangestatus');
 
 
     //package type section
@@ -267,7 +284,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/package-types/edit/{id}', 'PackageTypeController@edit');
     Route::post('/admin/package-types/update/{id}','PackageTypeController@update');
     Route::get('/admin/package-types/delete/{id}','PackageTypeController@delete');
-
+    Route::post('/admin/ajaxpacktypechangestatus/','PackageTypeController@ajaxpacktypechangestatus');
 
 
     //success story section
@@ -278,6 +295,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::patch('/admin/successstories/update/{id}','SuccessStoryController@update');    
     Route::get('/admin/successstories/delete/{id}','SuccessStoryController@delete');
     Route::get('/admin/successstories/show/{id}','SuccessStoryController@show');
+    Route::post('/admin/ajaxsuccchangestatus/','SuccessStoryController@ajaxsuccchangestatus');
 
     //Provider connectivity services section
     Route::get('/admin/providerconnectivityservices','ProviderConnectivityServicesController@index');
@@ -295,6 +313,8 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/genericmedicine/edit/{id}','GenericmedicineController@edit');
     Route::patch('/admin/genericmedicine/update/{id}','GenericmedicineController@update');    
 	Route::get('/admin/genericmedicine/delete/{id}','GenericmedicineController@delete');
+    Route::post('/admin/ajaxgenechangestatus/','GenericmedicineController@ajaxgenechangestatus');
+
 
      /* medical test categories section */
     Route::get('/admin/medicaltestcategories','MedicalTestCategoriesController@index');
@@ -304,6 +324,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::patch('/admin/medicaltestcategories/update/{id}','MedicalTestCategoriesController@update');
     Route::delete('/admin/medicaltestcategories/delete/{id}','MedicalTestCategoriesController@destroy');
 	Route::get('/admin/medicaltestcategories/delete/{id}','MedicalTestCategoriesController@delete');
+    Route::post('/admin/ajaxmcatchangestatus/','MedicalTestCategoriesController@ajaxmcatchangestatus');
 
      /* medical test section */
     Route::get('/admin/medicaltest','MedicaltestController@index');
@@ -312,6 +333,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/medicaltest/edit/{id}','MedicaltestController@edit');
     Route::patch('/admin/medicaltest/update/{id}','MedicaltestController@update');    
 	Route::get('/admin/medicaltest/delete/{id}','MedicaltestController@delete');
+    Route::post('/admin/ajaxmedichangestatus/','MedicaltestController@ajaxmedichangestatus');
 
      /* contact section */
     Route::get('/admin/contact','ContactUSController@index');
@@ -325,6 +347,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::patch('/admin/faqcategories/update/{id}','FaqCategoryController@update');    
     Route::get('/admin/faqcategories/show/{id}','FaqCategoryController@show');
     Route::get('/admin/faqcategories/delete/{id}','FaqCategoryController@delete');
+    Route::post('/admin/ajaxfaqcatchangestatus/','FaqCategoryController@ajaxfaqcatchangestatus');
 
     //faqs  section
     Route::get('/admin/faq','FaqController@index');
@@ -334,6 +357,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::patch('/admin/faq/update/{id}','FaqController@update');    
     Route::get('/admin/faq/show/{id}','FaqController@show');
     Route::get('/admin/faq/delete/{id}','FaqController@delete');
+    Route::post('/admin/ajaxfaqchangestatus/','FaqController@ajaxfaqchangestatus');
 
     // home page content
     Route::get('/admin/homepagecontent','HomePageContentController@index');
@@ -352,6 +376,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/immigration/edit/{id}','ImmigrationController@edit');
     Route::patch('/admin/immigration/update/{id}','ImmigrationController@update');
     Route::get('/admin/immigration/delete/{id}','ImmigrationController@delete');
+    Route::post('/admin/ajaximmchangestatus/','ImmigrationController@ajaximmchangestatus');
 
     //Visa section
     Route::get('/admin/countryvisa', 'CountryVisaController@index');
@@ -360,6 +385,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/countryvisa/edit/{id}','CountryVisaController@edit');
     Route::patch('/admin/countryvisa/update/{id}','CountryVisaController@update');
     Route::get('/admin/countryvisa/delete/{id}','CountryVisaController@delete');
+    Route::post('/admin/ajaxcouvisachangestatus/','CountryVisaController@ajaxcouvisachangestatus');
 
     //Patient section
     Route::get('/admin/patients', 'PatientController@index');

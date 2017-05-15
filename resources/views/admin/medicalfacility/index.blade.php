@@ -14,7 +14,11 @@
         <li class="active">Medical Facility</li>
       </ol>
     </section>
-
+    <style>
+        .toggle2 {
+          height: 23px !important;
+        }
+    </style>
     <!-- Main content -->
     <section class="content">
       <div class="row">
@@ -29,6 +33,7 @@
 
             <!-- /.box-header -->
             <div class="box-body">
+              <div class="alert alert-info" id="result77" style="display:none;"></div>
               @if (Session::has('message'))
                   <div class="alert alert-info" id="result7">{{ Session::get('message') }}</div>
               @endif
@@ -38,6 +43,7 @@
                     <th>Facility image</th>
                     <th>Facility name</th>
                     <th>Description</th>
+                    <th>Status</th>
                     <th width="11%">Actions</th>
                   </tr>
                 </thead>
@@ -51,6 +57,18 @@
                         </td>
                         <td>{{ $medfac_lists->name }}</td>
                         <td>{!! \Illuminate\Support\Str::words($medfac_lists->description, 10,'....')  !!}</td>
+                        <td>
+                          @if($medfac_lists->status ==1)
+                            <span data-toggle="tooltip" data-original-title="Click here to change status">
+                            <input type="checkbox" checked id="tog{{ $medfac_lists->id }}" onchange="return changeStatus('/admin/ajaxmedfacichangestatus',{{ $medfac_lists->id }})" value="1"  data-toggle="toggle2">
+                            </span>
+                          @endif
+                          @if($medfac_lists->status ==0)
+                          <span data-toggle="tooltip" data-original-title="Click here to change status">
+                            <input type="checkbox" id="tog{{ $medfac_lists->id }}"  onchange="return changeStatus('/admin/ajaxmedfacichangestatus',{{ $medfac_lists->id }})" value="0" data-toggle="toggle2">
+                          </span>
+                          @endif
+                        </td>
                         <td>
                           <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
                             <!-- we will add this later since its a little more complicated than the other two buttons -->                             
