@@ -270,8 +270,8 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/successstories/create','SuccessStoryController@create');
     Route::post('/admin/successstories/store','SuccessStoryController@store');
     Route::get('/admin/successstories/edit/{id}','SuccessStoryController@edit');
-    Route::patch('/admin/successstories/update/{id}','SuccessStoryController@update');
-    Route::delete('/admin/successstories/delete/{id}','SuccessStoryController@destroy');
+    Route::patch('/admin/successstories/update/{id}','SuccessStoryController@update');    
+    Route::get('/admin/successstories/delete/{id}','SuccessStoryController@delete');
     Route::get('/admin/successstories/show/{id}','SuccessStoryController@show');
 
     //Provider connectivity services section

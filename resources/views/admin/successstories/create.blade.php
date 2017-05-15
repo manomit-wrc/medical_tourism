@@ -33,13 +33,13 @@
               <h3 class="box-title">General Elements</h3>
             </div> -->
             <!-- /.box-header -->
-            @if($errors->any())
+            <!-- @if($errors->any())
               <div class="alert alert-danger">
                   @foreach($errors->all() as $error)
                       <p>{{ $error }}</p>
                   @endforeach
               </div>
-            @endif
+            @endif -->
             <div class="box-body">
              
                  {!! Form::open(array('method' => 'POST','role'=>'form','files' => true,'url'=>'admin/successstories/store','id'=>'success_story_add')) !!}
@@ -51,6 +51,7 @@
                         <div class="form-group">
                           {!! Html::decode(Form::label('title','Title: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('title','',array('class'=>'form-control','id'=>'title','placeholder'=>'Enter title')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("title").'</span>') !!}
                         </div>
                         <!-- /.text input -->
 
@@ -58,19 +59,22 @@
                         <div class="form-group">
                           {!! Html::decode(Form::label('description','Description: <span style="color:red;">*</span>')) !!}
                           {!! Form::textarea('description','',array('class'=>'form-control ','id'=>'textarea_id','placeholder'=>'Enter description')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("description").'</span>') !!}
                         </div>
                         <!-- /.text input -->
 
                         <!-- file input -->
                         <div class="form-group">
-                          {!! Html::decode(Form::label('story_image','Image: <span style="color:red;">* (Image must be minimum of 745x214)</span>')) !!}
+                          {!! Html::decode(Form::label('story_image','Image: ')) !!}
                           {!! Form::file('story_image', null) !!}
+                          <span style="color:red;">* (Image must be minimum of 745x214)</span>
+                          {!! Html::decode('<br /><span class="text-danger">'.$errors->first("story_image").'</span>') !!}
                         </div>
                          <!-- /.file input -->
 
                          <!-- input submit button -->
-                        <div class="box-footer">
-                           {!! Form::submit('submit',array('class'=>'btn btn-primary pull-right','id'=>'exact-submit-button'))!!}
+                        <div>
+                           {!! Form::submit('submit',array('class'=>'btn btn-primary pull-left','id'=>'exact-submit-button'))!!}
                         </div>
                         <!-- /.input submit button -->
                     </div>

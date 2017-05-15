@@ -27,7 +27,7 @@ class ProviderConnectivityServicesController extends Controller
      * @return Response
      */
     public function index() {
-        $conn_lists = ProviderConnectivityServices::all();
+        $conn_lists = ProviderConnectivityServices::where('status', '!=', 2)->get();
         //echo "<pre>"; print_r($conn_lists); die;
         return view('admin.providerconnectivityservices.index')->with('conn_lists',$conn_lists);
     }
@@ -56,7 +56,7 @@ class ProviderConnectivityServicesController extends Controller
     public function store(Request $request)
     {
       //echo "<pre>"; print_r($request->all()); die;
-    	echo "<pre>"; print_r($request->get('connectivity_service_id')); die;
+    	/*echo "<pre>"; print_r($request->get('connectivity_service_id')); die;*/
       $this->validate($request, [
         'provider_connectivity_id' => 'required',
         'connectivity_service_id' => 'required',
