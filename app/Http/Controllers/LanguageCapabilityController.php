@@ -25,7 +25,7 @@ class LanguageCapabilityController extends Controller
      * @return Response
      */
     public function index() {
-        $langcapabilites = LanguageCapability::where('status', '!=', 2)->get();
+        $langcapabilites = LanguageCapability::where('status', '!=', 2)->orderBy('id','desc')->get();
         //echo "<pre>"; print_r($langcapbes); die;
     	return view('admin.languagecapability.index')->with('langcapabilites',$langcapabilites);
     }

@@ -44,6 +44,7 @@
                     <th>Name</th>
                     <th>Status</th>                    
                     <th width="11%">Actions</th>
+                    <th style="display:none;"></th>
                   </tr>
                 </thead>
                
@@ -71,6 +72,7 @@
                           <a href="{!!URL::to('/admin/medicaltestcategories/edit',$medtescatval->id)!!}" class="btn btn-primary">Edit</a>
                           <a href="javascript:void(0)" onclick="return deldata('{!!URL::to('/admin/medicaltestcategories/delete',$medtescatval->id)!!}')" class="btn btn-danger" >Delete</a>
                         </td>
+                        <td style="display:none;"><input type="hidden" value="{{ $medtescatval->id }}"></td>
                       </tr>
                     @endforeach
                   @endif

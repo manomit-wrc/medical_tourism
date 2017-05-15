@@ -48,11 +48,11 @@
 
      <!--//language capability, medical test category datatables section ///////////-->
      //Three column section 
-     $('#datatbl_langcapability_id,#datatbl_mdcltest_id').DataTable({
+     $('#datatbl_langcapability_id,#datatbl_mdcltest_id,#datatbl_degree_id').DataTable({
         "paging": true,
         "lengthChange": true,
         "searching": true,
-        /*"order": [[ 0, "desc" ]],*/
+        "order": [[ 3, "desc" ]],
         "columnDefs": [
           { "targets": [1,2], "orderable": false }
         ],
@@ -60,7 +60,8 @@
         "autoWidth": false
      });
 
-      //Four column section 
+      //Four display column section 
+      //For Procedure section
      $('#datatbl_procedure_id').DataTable({
         "paging": true,
         "lengthChange": true,
@@ -68,6 +69,30 @@
         "order": [[ 4, "desc" ]],
         "columnDefs": [
           { "targets": [1,2,3], "orderable": false }
+        ],
+        "info": true,
+        "autoWidth": false
+     });
+     //For treatments ,medicaltest section
+     $('#datatbl_trtmnt_id,#datatbl_medicaltest_id').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "order": [[ 4, "desc" ]],
+        "columnDefs": [
+          { "targets": [2,3], "orderable": false }
+        ],
+        "info": true,
+        "autoWidth": false
+     });
+     //For generic medicine section
+     $('#datatbl_genmed_id').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "order": [[ 0, "desc" ]],
+        "columnDefs": [
+          { "targets": [4,5], "orderable": false }
         ],
         "info": true,
         "autoWidth": false

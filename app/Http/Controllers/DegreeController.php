@@ -23,9 +23,9 @@ class DegreeController extends Controller
      * @return Response
      */
     public function index() {
-        $deg_lists = Degree::where('status', '!=', 2)->get();
+        $deg_lists = Degree::where('status', '!=', 2)->orderBy('id','desc')->get();
         //echo "<pre>"; print_r($langcapbes); die;
-        return view('admin.degree.index')->with('deg_lists',$deg_lists);
+        return view('admin.degree.index',compact('deg_lists'));
     }
 
     /**

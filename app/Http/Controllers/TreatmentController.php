@@ -24,8 +24,7 @@ class TreatmentController extends Controller
      * @return Response
      */
     public function index() {
-    	$treatment_datas = Treatment::where('status', '!=', 2)->get();
-        
+    	$treatment_datas = Treatment::where('status', '!=', 2)->orderBy('id','desc')->get();
         //print_r($treatment_datas[0]->procedure->name); die;
         //echo "<pre>"; print_r($treatment_datas); die;
         return view('admin.treatment.index')->with('treatment_datas',$treatment_datas);
@@ -104,7 +103,7 @@ class TreatmentController extends Controller
         $trtmnt = Treatment::find($id);
         // validate
         $this->validate($request, [
-        'name' => 'required',
+        'name' => 'required|unique:treatments,name,'.$id,
         'procedure_id' => 'required'
         ]);
 

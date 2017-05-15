@@ -42,9 +42,11 @@
               <table id="datatbl_langcapability_id" class="table table-bordered table-striped">
                 <thead>
                   <tr>
+
                     <th>Language name</th>
                     <th>Status</th>
                     <th width="11%">Actions</th>
+                    <th style="display:none;"></th>
                   </tr>
                 </thead>
                
@@ -52,6 +54,7 @@
                   @if (count($langcapabilites) > 0)
                     @foreach($langcapabilites as $langcapabi)
                       <tr>
+                       
                         <td>{{ $langcapabi->name }}</td>
                         <!-- <td>{{ ($langcapabi->status ==1)? 'Active':'In-Active' }}</td> -->
                         <td>
@@ -72,6 +75,7 @@
                           <a href="{!!URL::to('/admin/languagecapability/edit',$langcapabi->id)!!}" class="btn btn-primary">Edit</a>
                           <a href="javascript:void(0)" onclick="return deldata('{!!URL::to('/admin/languagecapability/delete',$langcapabi->id)!!}')" class="btn btn-danger" >Delete</a>
                         </td>
+                         <td style="display:none;"><input type="hidden" value="{{ $langcapabi->id }}"></td>
                       </tr>
                     @endforeach
                   @endif

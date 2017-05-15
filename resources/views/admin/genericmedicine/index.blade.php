@@ -38,9 +38,10 @@
               @if (Session::has('message'))
                   <div class="alert alert-info" id="result7">{{ Session::get('message') }}</div>
               @endif
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="datatbl_genmed_id" class="table table-bordered table-striped">
                 <thead>
                   <tr>
+                    <th style="display:none;"></th>
                     <th>Generic Name of the Medicine</th>
                     <th>Strip/Unit</th>
                     <th>MRP</th>
@@ -53,6 +54,7 @@
                   @if (count($genericmedicine) > 0)
                     @foreach($genericmedicine as $genmedval)
                       <tr>
+                        <td style="display:none;"><input type="hidden" value="{{ $genmedval->id }}"></td>
                         <td>{{ $genmedval->generic_name_of_the_medicine }}</td>
                         <td>{{ $genmedval->unit }}</td>
                         <td>{{ $genmedval->price }}</td>

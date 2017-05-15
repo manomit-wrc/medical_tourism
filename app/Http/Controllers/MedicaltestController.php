@@ -38,7 +38,7 @@ class MedicaltestController extends Controller
     public function store(Request $request)
     {
       $this->validate($request, [
-        'test_name' => 'required',
+        'test_name' => 'required|unique:medicaltests',
         'medicaltestcategories_id' => 'required'
       ]);
 
