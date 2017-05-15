@@ -32,7 +32,7 @@
 
                 
                 {!! Form::open(array('method' => 'POST','role'=>'form','files' => true,'url'=>'/admin/patients/store','id'=>'patient_add')) !!}
-                 
+                 {!! csrf_field() !!}
                 <div class="col-md-6">
 
                   <div class="form-group">
@@ -73,7 +73,7 @@
                     </div>
                   <!-- /.input submit button -->
                 </div>
-                 {!! Form::token()!!}
+                 
                 {!! Form::close() !!}
 
             </div>

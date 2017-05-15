@@ -41,6 +41,8 @@
           <b>Country</b> : {{ $patient_data->countries->name }}<br/>
           <b>Pincode</b> : {{ $patient_data->pincode }}<br/>
           <b>Date of birth</b> : {{ $patient_data->date_of_birth }}<br/>
+          <b>Biography</b> : {{ $patient_data->biography }}<br/>
+          <b>Image</b> : <img src="{{url('/uploads/patients/thumb/'.$patient_data->avators)}}" alt="Hospital Image"><br/>
         </div>
         <!-- /.box-body -->
         <!-- <div class="box-footer">
