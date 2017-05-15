@@ -149,13 +149,14 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/medicalfacility/delete/{id}','MedicalFacilityController@delete');
 
 
-
+    //Admin user section
     Route::get('/admin/adminuser','AdminUserController@index');
     Route::get('/admin/adminuser/create', 'AdminUserController@create');
     Route::post('/admin/adminuser/add', 'AdminUserController@add');
     Route::get('/admin/adminuser/edit/{id}','AdminUserController@edit');
     Route::post('/admin/adminuser/update/{id}', 'AdminUserController@update');
     Route::get('/admin/adminuser/delete/{id}','AdminUserController@delete');
+    //Admin role section
     Route::get('/admin/permission/','AdminUserController@permission');
     Route::post('/admin/store_permission/', 'AdminUserController@store_permission');
     Route::post('/admin/get_permission/','AdminUserController@get_permission');
@@ -349,12 +350,21 @@ Route::group(['middleware' => ['admin']], function () {
     Route::patch('/admin/immigration/update/{id}','ImmigrationController@update');
     Route::get('/admin/immigration/delete/{id}','ImmigrationController@delete');
 
-     //Visa section
+    //Visa section
     Route::get('/admin/countryvisa', 'CountryVisaController@index');
     Route::get('/admin/countryvisa/create','CountryVisaController@create');
     Route::post('/admin/countryvisa/store','CountryVisaController@store');
     Route::get('/admin/countryvisa/edit/{id}','CountryVisaController@edit');
     Route::patch('/admin/countryvisa/update/{id}','CountryVisaController@update');
     Route::get('/admin/countryvisa/delete/{id}','CountryVisaController@delete');
+
+    //Patient section
+    Route::get('/admin/patients', 'PatientController@index');
+    Route::get('/admin/patients/create','PatientController@create');
+    Route::post('/admin/patients/store','PatientController@store');
+    Route::get('/admin/patients/edit/{id}','PatientController@edit');
+    Route::patch('/admin/patients/update/{id}','PatientController@update');
+    Route::get('/admin/patients/delete/{id}','PatientController@delete');
+    Route::get('/admin/patients/show/{id}','PatientController@show');
 
 });

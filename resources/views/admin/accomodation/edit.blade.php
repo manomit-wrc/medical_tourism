@@ -42,7 +42,7 @@
             @endif -->
             <div class="box-body">
                  {{ Form::model($accomodations_data,array('method' => 'PATCH','role'=>'form','url' => array('admin/accomodation/update', $accomodations_data->id),'id'=>'accomodation_edit')) }}
-                    
+                    {{ csrf_field() }}
                     <div class="col-md-6">
                         
 
