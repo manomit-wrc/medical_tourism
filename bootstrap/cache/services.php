@@ -35,6 +35,7 @@
     31 => 'Unisharp\\Ckeditor\\ServiceProvider',
     32 => 'Sarfraznawaz2005\\VisitLog\\VisitLogServiceProvider',
     33 => 'GoogleMaps\\ServiceProvider\\GoogleMapsServiceProvider',
+    34 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
   ),
   'eager' => 
   array (
@@ -58,6 +59,7 @@
     17 => 'Torann\\Currency\\CurrencyServiceProvider',
     18 => 'Unisharp\\Ckeditor\\ServiceProvider',
     19 => 'Sarfraznawaz2005\\VisitLog\\VisitLogServiceProvider',
+    20 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
   ),
   'deferred' => 
   array (

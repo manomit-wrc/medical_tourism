@@ -185,6 +185,7 @@ return [
         Unisharp\Ckeditor\ServiceProvider::class,
         Sarfraznawaz2005\VisitLog\VisitLogServiceProvider::class,
         GoogleMaps\ServiceProvider\GoogleMapsServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
     ],
 
     /*
@@ -239,6 +240,7 @@ return [
         'Helper' => App\Helpers\Helper::class,
         'VisitLog' => Sarfraznawaz2005\VisitLog\Facades\VisitLog::class,
         'GoogleMaps' => GoogleMaps\Facade\GoogleMapsFacade::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];
