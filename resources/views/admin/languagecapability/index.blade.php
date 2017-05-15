@@ -39,7 +39,7 @@
               @if (Session::has('message'))
                   <div class="alert alert-info" id="result7">{{ Session::get('message') }}</div>
               @endif
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="datatbl_langcapability_id" class="table table-bordered table-striped">
                 <thead>
                   <tr>
                     <th>Language name</th>

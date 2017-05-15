@@ -46,5 +46,32 @@
       }
     });
 
+     <!--//language capability, medical test category datatables section ///////////-->
+     //Three column section 
+     $('#datatbl_langcapability_id,#datatbl_mdcltest_id').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        /*"order": [[ 0, "desc" ]],*/
+        "columnDefs": [
+          { "targets": [1,2], "orderable": false }
+        ],
+        "info": true,
+        "autoWidth": false
+     });
+
+      //Four column section 
+     $('#datatbl_procedure_id').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "order": [[ 4, "desc" ]],
+        "columnDefs": [
+          { "targets": [1,2,3], "orderable": false }
+        ],
+        "info": true,
+        "autoWidth": false
+     });
+
   });
 </script>

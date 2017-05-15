@@ -17,9 +17,9 @@ class MedicalTestCategoriesController extends Controller
     	
     }
 	public function index() {
-        $medicaltestcategories = MedicalTestCategories::where('status', '!=', 2)->get();
-        //echo "<pre>"; print_r($langcapbes); die;
-    	return view('admin.medicaltestcategories.index')->with('medicaltestcategories',$medicaltestcategories);
+      $medicaltestcategories = MedicalTestCategories::where('status', '!=', 2)->orderBy('id','desc')->get();
+        //echo "<pre>"; print_r($medicaltestcategories); die;
+    	return view('admin.medicaltestcategories.index',compact('medicaltestcategories'));
     }
 
    	public function create()
@@ -55,7 +55,7 @@ class MedicalTestCategoriesController extends Controller
         $medtestcat = MedicalTestCategories::find($id);
         // validate
         $this->validate($request, [
-        'cat_name' => 'required'        
+        'cat_name' => 'required|unique:medical_test_categories,cat_name,'.$id,        
       ]);
        	$medtestcat->cat_name = $request->cat_name;
         $medtestcat->status = $request->status;       	

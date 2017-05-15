@@ -98,7 +98,7 @@ class LanguageCapabilityController extends Controller
         $langcap = LanguageCapability::find($id);
         // validate
         $this->validate($request, [
-        'name' => 'required'
+        'name' => 'required|unique:language_capabilities,name,'.$id,  
         ]);
 
         // Getting all data after success validation.

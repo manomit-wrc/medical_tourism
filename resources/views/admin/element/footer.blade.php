@@ -137,7 +137,7 @@ $(function () {
       "paging": true,
       "lengthChange": true,
       "searching": true,
-      "ordering": true,
+      /*"ordering": true,*/
       "info": true,
       "autoWidth": false
     });

@@ -35,13 +35,14 @@
               @if (Session::has('message'))
                   <div class="alert alert-info" id="result7">{{ Session::get('message') }}</div>
               @endif
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="datatbl_procedure_id" class="table table-bordered table-striped">
                 <thead>
                   <tr>
                     <th>Procedure name</th>
                     <th>Procedure Image</th>
                     <th>Status</th>
                     <th width="11%">Actions</th>
+                    <th style="display:none;"></th>
                   </tr>
                 </thead>
                
@@ -69,9 +70,11 @@
                         <td>
                           <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
                             <!-- we will add this later since its a little more complicated than the other two buttons -->
-                            <a href="{!!URL::to('/admin/procedure/edit',$procedure_lists->id)!!}" class="btn btn-primary">Edit</a>                            
-							<a href="javascript:void(0)" onclick="return deldata('{!!URL::to('/admin/procedure/delete',$procedure_lists->id)!!}')" class="btn btn-danger" >Delete</a>
-						</td>
+                          <a href="{!!URL::to('/admin/procedure/edit',$procedure_lists->id)!!}" class="btn btn-primary">Edit</a>                            
+							            <a href="javascript:void(0)" onclick="return deldata('{!!URL::to('/admin/procedure/delete',$procedure_lists->id)!!}')" class="btn btn-danger" >Delete</a>
+						              
+                        </td>
+                        <td style="display:none;"><input type="hidden" value="{{ $procedure_lists->id }}"></td>
                       </tr>
                     @endforeach
                   @endif
