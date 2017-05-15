@@ -9,7 +9,7 @@ class Patient extends Authenticatable
 {
 
     use Notifiable;
-
+    protected $table = 'patients';
     protected $hidden = [
         'password'
     ];

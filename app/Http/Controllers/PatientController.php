@@ -50,7 +50,7 @@ class PatientController extends Controller
 
       // Getting all data after success validation.
       
-      $pat = new Patient($request->input()) ;
+      $pat = new Patient($request->except('address'),$request->except('avators'),$request->except('pincode'));
       $pat->first_name = $request->get('first_name') ;
       $pat->last_name = $request->get('last_name') ;
       $pat->email_id = $request->get('email_id') ;
@@ -109,5 +109,18 @@ class PatientController extends Controller
         // redirect
         Session::flash('message', 'Successfully updated');
         return Redirect::to('/admin/patients');
+    }
+
+    public function delete(Request $request,$id) {
+        if($id) {
+            $patobj = Patient::find($id);
+            $status = '2';
+            $patobj->status = $status; 
+            $del = $patobj->save();
+            if($del) {      
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/patients');
+            }
+        }
     }
 }

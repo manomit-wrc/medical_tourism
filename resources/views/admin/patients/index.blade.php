@@ -26,7 +26,7 @@
               <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
             </div>
 
-            <div class="topbtn"><a href="{{ url('/admin/patients/create') }}"><button type="button" class="btn bg-purple btn-rightad">ADD</button></a></div>
+            <div class="topbtn"><!-- <a href="{{ url('/admin/patients/create') }}"><button type="button" class="btn bg-purple btn-rightad">ADD</button></a> --></div>
 
             <!-- /.box-header -->
             <div class="box-body">
@@ -54,7 +54,7 @@
                         <td>{{ $data->mobile_no }}</td>
                         <td>
                           <a href="{!!URL::to('/admin/patients/show',$data->id)!!}" class="btn btn-info">view</a> 
-                          <a href="{!!URL::to('/admin/patients/edit',$data->id)!!}" class="btn btn-primary">Edit</a>
+                         <!--  <a href="{!!URL::to('/admin/patients/edit',$data->id)!!}" class="btn btn-primary">Edit</a> -->
                           <a href="javascript:void(0)" onclick="return deldata('{!!URL::to('/admin/patients/delete',$data->id)!!}')" class="btn btn-danger" >Delete</a>
                         </td>
                       </tr>
