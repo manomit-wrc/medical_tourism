@@ -24,11 +24,11 @@ class HomeController extends Controller
     public function index() {
         $homepagecondata = HomePageContent::all();
         //echo "<pre>"; print_r($homepagecondata[0]->medical_category_description); die;
-        $banner_lists = Banner::all();
+        $banner_lists = Banner::where('status', '=', 1)->orderBy('id','desc')->get();
         //echo "<pre>"; print_r($banner_lists); die;
-        $procedure_lists = Procedure::all();
+        $procedure_lists = Procedure::where('status', '=', 1)->orderBy('id','desc')->get();
         //echo "<pre>"; print_r($langcapbes); die;
-        $medicalfacility_lists = MedicalFacility::all();
+        $medicalfacility_lists = MedicalFacility::where('status', '=', 1)->orderBy('id','desc')->get();
         //echo "<pre>"; print_r($medicalfacility_lists); die;
         return view('pages.home', compact('banner_lists', 'procedure_lists','medicalfacility_lists','homepagecondata'));
     }
