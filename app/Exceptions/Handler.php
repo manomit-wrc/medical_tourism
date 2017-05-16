@@ -44,6 +44,15 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if($request->input('_token'))
+          {
+            if ( \Session::getToken() != $request->input('_token'))
+            {
+              return redirect()->guest('/admin')
+              ->with('login-status', 'Expired token found.');
+
+            }
+          }
         return parent::render($request, $exception);
     }
 
