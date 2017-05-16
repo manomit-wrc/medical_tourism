@@ -398,5 +398,5 @@ Route::group(['middleware' => ['admin']], function () {
     Route::patch('/admin/patients/update/{id}','PatientController@update');
     Route::get('/admin/patients/delete/{id}','PatientController@delete');
     Route::get('/admin/patients/show/{id}','PatientController@show');
-
+    Route::post('/admin/ajaxpatientchangestatus/','PatientController@ajaxpatientchangestatus');
 });

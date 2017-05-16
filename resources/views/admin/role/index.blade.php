@@ -39,9 +39,10 @@
               @if (Session::has('message'))
                   <div class="alert alert-info" id="result7">{{ Session::get('message') }}</div>
               @endif
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="datatbl_role_id" class="table table-bordered table-striped">
                 <thead>
                   <tr>
+                    <th style="display:none;"></th>
                     <th>Role name</th>
                     <th>Status</th>
                     <th width="11%">Actions</th>
@@ -52,6 +53,7 @@
                   @if (count($data) > 0)
                     @foreach($data as $d)
                       <tr>
+                        <td style="display:none;"><input type="hidden" value="{{ $d->id }}"></td>
                         <td>{{ $d->name }}</td>
                         <!-- <td>{{ $d->status == '1' ? 'Active' : 'Inactive'}}</td> -->
                         <td>

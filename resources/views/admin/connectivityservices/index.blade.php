@@ -37,9 +37,10 @@
               @if (Session::has('message'))
                   <div class="alert alert-info" id="result7">{{ Session::get('message') }}</div>
               @endif
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="datatbl_consrv_id" class="table table-bordered table-striped">
                 <thead>
                   <tr>
+                    <th style="display:none;"></th>
                     <th>Connectivity service name</th>
                     <th>Status</th>
                     <th width="11%">Actions</th>
@@ -50,6 +51,7 @@
                   @if (count($con_srv_data) > 0)
                     @foreach($con_srv_data as $con_srv_data)
                       <tr>
+                        <td style="display:none;"><input type="hidden" value="{{ $con_srv_data->id }}"></td>
                         <td>{{ $con_srv_data->name }}</td>
                         <td>
                           @if($con_srv_data->status ==1)

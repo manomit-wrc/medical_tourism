@@ -37,9 +37,10 @@
               @if (Session::has('message'))
                   <div class="alert alert-info" id="result7">{{ Session::get('message') }}</div>
               @endif
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="datatbl_news_id" class="table table-bordered table-striped">
                 <thead>
                   <tr>
+                    <th style="display:none;"></th>
                     <th>Heading</th>
                     <th>Description</th>
                     <th>Image</th>
@@ -52,6 +53,7 @@
                   @if (count($news_data) > 0)
                     @foreach($news_data as $news_data)
                       <tr>
+                        <td style="display:none;"><input type="hidden" value="{{ $news_data->id }}"></td>
                         <td>{!! \Illuminate\Support\Str::words($news_data->title, 10,'....')  !!}</td>
                         <td>{!! \Illuminate\Support\Str::words($news_data->description, 10,'....')  !!}</td>
                         <td>

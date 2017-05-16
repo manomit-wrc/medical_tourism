@@ -20,8 +20,8 @@ class PatientController extends Controller
      * @return Response
      */
     public function index() {
-        $patient_data = Patient::where('status', '!=', 2)->get();
-        return view('admin.patients.index')->with('patient_data',$patient_data);
+        $patient_data = Patient::where('status', '!=', 2)->orderBy('id','desc')->get();
+        return view('admin.patients.index',compact('patient_data'));
     }
     /**
      * Show the form for creating a new resource.
@@ -122,5 +122,25 @@ class PatientController extends Controller
                 return redirect('/admin/patients');
             }
         }
+    }
+    public function ajaxpatientchangestatus(Request $request) { 
+        $id = $request->id;
+        $status = $request->status;     
+        $mt = Patient::find($id);
+       /* if ($status == 1){
+            $stat = 0;
+        }
+        if ($status == 0){
+            $stat = 1;
+        } */      
+        $mt->status = $status; 
+        $upd = $mt->save();        
+        if($upd) {              
+          $returnArr = array('status'=>'1','msg'=>'Updateed Successfully');
+        }else{
+          $returnArr = array('status'=>'0','msg'=>'Inserted Faliure');
+        }          
+        echo json_encode($returnArr);
+        die();
     }
 }

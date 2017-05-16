@@ -23,9 +23,9 @@ class ProviderTypeController extends Controller
      * @return Response
      */
     public function index() {
-        $providertype_data = ProviderType::where('status', '!=',2)->get();
+        $providertype_data = ProviderType::where('status', '!=',2)->orderBy('id','desc')->get();
         //echo "<pre>"; print_r($providertype_lists); die;
-        return view('admin.providertype.index')->with('providertype_data',$providertype_data);
+        return view('admin.providertype.index',compact('providertype_data'));
     }
 
      /**

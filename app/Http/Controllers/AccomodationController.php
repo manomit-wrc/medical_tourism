@@ -23,9 +23,9 @@ class AccomodationController extends Controller
      * @return Response
      */
     public function index() {
-        $accomodation_lists = Accomodation::where('status', '!=', 2)->get();
+        $accomodation_lists = Accomodation::where('status', '!=', 2)->orderBy('id','desc')->get();
         //echo "<pre>"; print_r($accomodation_lists); die;
-        return view('admin.accomodation.index')->with('accomodation_lists',$accomodation_lists);
+        return view('admin.accomodation.index',compact('accomodation_lists'));
     }
 
     /**

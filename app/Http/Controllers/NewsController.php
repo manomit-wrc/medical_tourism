@@ -25,9 +25,9 @@ class NewsController extends Controller
      * @return Response
      */
     public function index() {
-    	$news_data = News::where('status', '!=', 2)->get();
+    	$news_data = News::where('status', '!=', 2)->orderBy('id','desc')->get();
         //echo "<pre>"; print_r($news_data); die;
-        return view('admin.news.index')->with('news_data',$news_data);
+        return view('admin.news.index',compact('news_data'));
     }
 
     /**

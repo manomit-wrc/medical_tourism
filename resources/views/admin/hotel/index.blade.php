@@ -37,9 +37,10 @@
               @if (Session::has('message'))
                   <div class="alert alert-info" id="result7">{{ Session::get('message') }}</div>
               @endif
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="datatbl_hotel_id" class="table table-bordered table-striped">
                 <thead>
                   <tr>
+                    <th style="display:none;"></th>
                     <th>Hotel name</th>
                     <th>Address</th>
                     <th>Status</th>
@@ -51,6 +52,7 @@
                   @if (count($hotels_list) > 0)
                     @foreach($hotels_list as $hotels_list)
                       <tr>
+                        <td style="display:none;"><input type="hidden" value="{{ $hotels_list->id }}"></td>
                         <td>{{ $hotels_list->name }}</td>
                         <td>{{ $hotels_list->address }} , {{ $hotels_list->city->name }} , {{ $hotels_list->city->state->name }} , {{ $hotels_list->city->state->country->name }}</td>
                         <td>

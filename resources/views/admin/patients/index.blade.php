@@ -33,12 +33,14 @@
               @if (Session::has('message'))
                   <div class="alert alert-info" id="result7">{{ Session::get('message') }}</div>
               @endif
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="datatbl_patient_id" class="table table-bordered table-striped">
                 <thead>
                   <tr>
+                    <th style="display:none;"></th>
                     <th>Name</th>
                     <th>Sex</th>
                     <th>Mobile</th>
+                    <th>Status</th>
                     <th width="15%">Actions</th>
                   </tr>
                 </thead>
@@ -49,9 +51,22 @@
                   
                     @foreach($patient_data as $data)
                       <tr>
+                        <td style="display:none;"><input type="hidden" value="{{ $data->id }}"></td>
                         <td>{{ $data->first_name.' '.$data->last_name}}</td>
                         <td>{{ $data->sex }}</td>
                         <td>{{ $data->mobile_no }}</td>
+                         <td>
+                          @if($data->status ==1)
+                            <span data-toggle="tooltip" data-original-title="Click here to change status">
+                            <input type="checkbox" checked id="tog{{ $data->id }}" onchange="return changeStatus('/admin/ajaxpatientchangestatus',{{ $data->id }})" value="1"  data-toggle="toggle2">
+                            </span>
+                          @endif
+                          @if($data->status ==0)
+                          <span data-toggle="tooltip" data-original-title="Click here to change status">
+                            <input type="checkbox" id="tog{{ $data->id }}"  onchange="return changeStatus('/admin/ajaxpatientchangestatus',{{ $data->id }})" value="0" data-toggle="toggle2">
+                          </span>
+                          @endif
+                        </td>
                         <td>
                           <a href="{!!URL::to('/admin/patients/show',$data->id)!!}" class="btn btn-info">view</a> 
                          <!--  <a href="{!!URL::to('/admin/patients/edit',$data->id)!!}" class="btn btn-primary">Edit</a> -->

@@ -37,9 +37,10 @@
               @if (Session::has('message'))
                   <div class="alert alert-info" id="result7">{{ Session::get('message') }}</div>
               @endif
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="datatbl_accr_id" class="table table-bordered table-striped">
                 <thead>
                   <tr>
+                    <th style="display:none;"></th>
                     <th>Accrediation name</th>
                     <th>Logo</th>
                     <th>Status</th>
@@ -51,6 +52,7 @@
                   @if (count($accrediation_lists) > 0)
                     @foreach($accrediation_lists as $accrediation_lists)
                       <tr>
+                        <td style="display:none;"><input type="hidden" value="{{ $accrediation_lists->id }}"></td>
                         <td>{{ $accrediation_lists->name }}</td>
                         <td>
                           <img src="{{url('/uploads/accrediations/thumb/'.$accrediation_lists->accrediation_logo)}}" alt="Accrediation Logo" class="procedure_img" >
