@@ -37,9 +37,10 @@
               @if (Session::has('message'))
                   <div class="alert alert-info" id="result7">{{ Session::get('message') }}</div>
               @endif
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="datatbl_medcal_id" class="table table-bordered table-striped">
                 <thead>
                   <tr>
+                    <th style="display:none;"></th>
                     <th>Facility image</th>
                     <th>Facility name</th>
                     <th>Description</th>
@@ -52,6 +53,7 @@
                   @if (count($medfac_lists) > 0)
                     @foreach($medfac_lists as $medfac_lists)
                       <tr>
+                        <td style="display:none;"><input type="hidden" value="{{ $medfac_lists->id }}"></td>
                         <td>
                           <img class="procedure_img" src="{{url('/uploads/medicalfacilities/thumb_243_149/'.$medfac_lists->facility_image)}}" alt="Facility Image" >
                         </td>

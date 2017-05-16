@@ -25,9 +25,9 @@ class MedicalFacilityController extends Controller
      * @return Response
      */
     public function index() {
-        $medfac_lists = MedicalFacility::where('status', '!=', 2)->get();
+        $medfac_lists = MedicalFacility::where('status', '!=', 2)->orderBy('id','desc')->get();
         //echo "<pre>"; print_r($medfac_lists); die;
-        return view('admin.medicalfacility.index')->with('medfac_lists',$medfac_lists);
+        return view('admin.medicalfacility.index',compact('medfac_lists'));
     }
 
     /**

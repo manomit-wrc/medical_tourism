@@ -25,9 +25,9 @@ class BannerController extends Controller
      * @return Response
      */
     public function index() {
-        $banner_lists = Banner::where('status', '!=', 2)->get();
+        $banner_lists = Banner::where('status', '!=', 2)->orderBy('id','desc')->get();
         //echo "<pre>"; print_r($banner_lists); die;
-        return view('admin.banner.index')->with('banner_lists',$banner_lists);
+        return view('admin.banner.index',compact('banner_lists'));
     }
 
     /**

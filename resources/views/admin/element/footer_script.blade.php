@@ -98,5 +98,201 @@
         "autoWidth": false
      });
 
+     //Banner section 
+      $('#datatbl_banner_id').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "order": [[ 6, "desc" ]],
+        "columnDefs": [
+          { "targets": [0,4,5], "orderable": false }
+        ],
+        "info": true,
+        "autoWidth": false
+     });
+
+      //Provider type section 
+      $('#datatbl_provtype_id').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "order": [[ 3, "desc" ]],
+        "columnDefs": [
+          { "targets": [1,2], "orderable": false }
+        ],
+        "info": true,
+        "autoWidth": false
+     });
+
+      //Accomodation section 
+      $('#datatbl_accomodation_id').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "order": [[ 3, "desc" ]],
+        "columnDefs": [
+          { "targets": [1,2], "orderable": false }
+        ],
+        "info": true,
+        "autoWidth": false
+     });
+
+       //Cuisine section 
+      $('#datatbl_cuisine_id').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "order": [[ 0, "desc" ]],
+        "columnDefs": [
+          { "targets": [2,3], "orderable": false }
+        ],
+        "info": true,
+        "autoWidth": false
+     });
+
+       //Payment type section 
+      $('#datatbl_paymenttype_id').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "order": [[ 0, "desc" ]],
+        "columnDefs": [
+          { "targets": [2,3], "orderable": false }
+        ],
+        "info": true,
+        "autoWidth": false
+     });
+
+       //Connectivity section 
+      $('#datatbl_connectivity_id').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "order": [[ 0, "desc" ]],
+        "columnDefs": [
+          { "targets": [2,3], "orderable": false }
+        ],
+        "info": true,
+        "autoWidth": false
+     });
+
+       //Connectivity services section 
+      $('#datatbl_consrv_id').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "order": [[ 0, "desc" ]],
+        "columnDefs": [
+          { "targets": [2,3], "orderable": false }
+        ],
+        "info": true,
+        "autoWidth": false
+     });
+
+       //accrediation section 
+      $('#datatbl_accr_id').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "order": [[ 0, "desc" ]],
+        "columnDefs": [
+          { "targets": [2,3,4], "orderable": false }
+        ],
+        "info": true,
+        "autoWidth": false
+     });
+
+       //Specific services section 
+      $('#datatbl_spfcserv_id').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "order": [[ 0, "desc" ]],
+        "columnDefs": [
+          { "targets": [2,3], "orderable": false }
+        ],
+        "info": true,
+        "autoWidth": false
+     });
+
+       //Medical facility section 
+      $('#datatbl_medcal_id').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "order": [[ 0, "desc" ]],
+        "columnDefs": [
+          { "targets": [1,4,5], "orderable": false }
+        ],
+        "info": true,
+        "autoWidth": false
+     });
+
+       //Role section 
+      $('#datatbl_role_id').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "order": [[ 0, "desc" ]],
+        "columnDefs": [
+          { "targets": [2,3], "orderable": false }
+        ],
+        "info": true,
+        "autoWidth": false
+     });
+
+       //hotel section 
+      $('#datatbl_hotel_id').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "order": [[ 0, "desc" ]],
+        "columnDefs": [
+          { "targets": [3,4], "orderable": false }
+        ],
+        "info": true,
+        "autoWidth": false
+     });
+
+        //News section 
+      $('#datatbl_news_id').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "order": [[ 0, "desc" ]],
+        "columnDefs": [
+          { "targets": [3,4,5], "orderable": false }
+        ],
+        "info": true,
+        "autoWidth": false
+     });
+
+        //Adminuser section 
+      $('#datatbl_admnusr_id').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "order": [[ 0, "desc" ]],
+        "columnDefs": [
+          { "targets": [3], "orderable": false }
+        ],
+        "info": true,
+        "autoWidth": false
+     });
+
+        //Patient section 
+      $('#datatbl_patient_id').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "order": [[ 0, "desc" ]],
+        "columnDefs": [
+          { "targets": [3,4], "orderable": false }
+        ],
+        "info": true,
+        "autoWidth": false
+     });
+
+
   });
 </script>

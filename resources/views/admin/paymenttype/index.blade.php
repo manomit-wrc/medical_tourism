@@ -37,9 +37,10 @@
               @if (Session::has('message'))
                   <div class="alert alert-info" id="result7">{{ Session::get('message') }}</div>
               @endif
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="datatbl_paymenttype_id" class="table table-bordered table-striped">
                 <thead>
                   <tr>
+                    <th style="display:none;"></th>
                     <th>Payment type</th>
                     <th>Status</th>
                     <th width="11%">Actions</th>
@@ -50,6 +51,7 @@
                   @if (count($paymnttype_lists) > 0)
                     @foreach($paymnttype_lists as $paymnttype_lists)
                       <tr>
+                        <td style="display:none;"><input type="hidden" value="{{ $paymnttype_lists->id }}"></td>
                         <td>{{ $paymnttype_lists->name }}</td>
                         <td>
                           @if($paymnttype_lists->status ==1)

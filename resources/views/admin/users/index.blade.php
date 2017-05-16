@@ -6,7 +6,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Role
+        Users
        <!--  <small>advanced tables</small> -->
       </h1>
       <ol class="breadcrumb">
@@ -33,9 +33,10 @@
               @if (Session::has('message'))
                   <div class="alert alert-info" id="result7">{{ Session::get('message') }}</div>
               @endif
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="datatbl_admnusr_id" class="table table-bordered table-striped">
                 <thead>
                   <tr>
+                    <th style="display:none;"></th>
                     <th>Role name</th>
                     <th>User name</th>
                     <th width="11%">Actions</th>
@@ -48,6 +49,7 @@
                   
                     @foreach($user_data as $d)
                       <tr>
+                        <td style="display:none;"><input type="hidden" value="{{ $d->id }}"></td>
                         <td>{{ !empty($d->roles[0]) ? $d->roles[0]->name : 'N/A' }}</td>
                         <td>{{ $d->name }}</td>
                         <td>

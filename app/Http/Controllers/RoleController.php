@@ -12,9 +12,9 @@ class RoleController extends Controller
     }
 
     public function index() {
-      $data = \App\Role::where('status', '!=', 2)->get();
+      $data = \App\Role::where('status', '!=', 2)->orderBy('id','desc')->get();
 
-      return view('admin.role.index')->with('data',$data);
+      return view('admin.role.index',compact('data'));
     }
 
     public function create() {
@@ -49,7 +49,7 @@ class RoleController extends Controller
     public function update(Request $request, $id) {
       if($id) {
         $this->validate($request,[
-          'name' => 'required|max:25|unique:language_capabilities,name,'.$id,
+          'name' => 'required|max:25|unique:roles,name,'.$id,
           'status' => 'required'
         ],[
           'name.required' => 'Please enter role name',

@@ -38,9 +38,10 @@
               @if (Session::has('message'))
                   <div class="alert alert-info" id="result7">{{ Session::get('message') }}</div>
               @endif
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="datatbl_spfcserv_id" class="table table-bordered table-striped">
                 <thead>
                   <tr>
+                    <th style="display:none;"></th>
                     <th>Service name</th>
                     <th>Status</th>
                     <th width="11%">Actions</th>
@@ -51,6 +52,7 @@
                   @if (count($langcapabilites) > 0)
                     @foreach($langcapabilites as $langcapabi)
                       <tr>
+                        <td style="display:none;"><input type="hidden" value="{{ $langcapabi->id }}"></td>
                         <td>{{ $langcapabi->name }}</td>
                         <td>
                           @if($langcapabi->status ==1)

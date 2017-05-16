@@ -37,15 +37,16 @@
               @if (Session::has('message'))
                   <div class="alert alert-info" id="result7">{{ Session::get('message') }}</div>
               @endif
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="datatbl_banner_id" class="table table-bordered table-striped">
                 <thead>
                   <tr>
                     <th>Banner image</th>
                     <th>Banner heading</th>
                     <th>Banner sub heading</th>
                     <th>Youtube url</th>
-                     <th>Status</th>
+                    <th>Status</th>
                     <th width="11%">Actions</th>
+                    <th style="display:none;"></th>
                   </tr>
                 </thead>
                
@@ -77,6 +78,7 @@
                           <a href="{!!URL::to('/admin/banner/edit',$banner_lists->id)!!}" class="btn btn-primary">Edit</a>                         
                           <a href="javascript:void(0)" onclick="return deldata('{!!URL::to('/admin/banner/delete',$banner_lists->id)!!}')" class="btn btn-danger" >Delete</a>
                         </td>
+                        <td style="display:none;"><input type="hidden" value="{{ $banner_lists->id }}"></td>
                       </tr>
                     @endforeach
                   @endif

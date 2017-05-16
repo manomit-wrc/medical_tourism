@@ -28,9 +28,9 @@ class HotelController extends Controller
      * @return Response
      */
     public function index() {
-        $hotels_list = Hotel::where('status', '!=', 2)->get();
+        $hotels_list = Hotel::where('status', '!=', 2)->orderBy('id','desc')->get();
         //echo "<pre>"; print_r($hotels_list); die; //print_r($hotels_list[0]->city->state->country); die;
-        return view('admin.hotel.index')->with('hotels_list',$hotels_list);
+        return view('admin.hotel.index',compact('hotels_list'));
     }
 
     /**

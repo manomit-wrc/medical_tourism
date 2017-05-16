@@ -16,8 +16,8 @@ class AdminUserController extends Controller
     }
 
     public function index() {
-      $user_data = User::with('roles')->where('status', '!=', 2)->get();     
-      return view('admin.users.index')->with('user_data',$user_data);
+      $user_data = User::with('roles')->where('status', '!=', 2)->orderBy('id','desc')->get();     
+      return view('admin.users.index',compact('user_data'));
     }
 
     public function create() {
