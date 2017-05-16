@@ -341,6 +341,8 @@ Route::group(['middleware' => ['admin']], function () {
      /* contact section */
     Route::get('/admin/contact','ContactUSController@index');
     Route::get('/admin/contact/details/{id}','ContactUSController@details');
+    Route::get('/admin/contact/sendmail/{id}','ContactUSController@sendmail');
+    Route::patch('/admin/contact/send/{id}','ContactUSController@send');
 
     //faq category section
     Route::get('/admin/faqcategories','FaqCategoryController@index');

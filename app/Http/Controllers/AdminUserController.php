@@ -111,7 +111,7 @@ class AdminUserController extends Controller
     }
 
     public function permission() {
-      $routeCollection = Route::getRoutes();
+      $routeCollection = Route::getRoutes();      
       $role_list = Role::get()->pluck('name','id');
       return view('admin.users.permission')->with(['routeCollection' => $routeCollection,'role_list' => $role_list]);
     }
