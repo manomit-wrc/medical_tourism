@@ -60,11 +60,15 @@
                           {!! Html::decode('<span class="text-danger">'.$errors->first("upload_pdf").'</span>') !!}
                         </div>
                          <!-- /.file input -->
-                         
-                        
+                        <div class="form-group">
+                          <label for="name">Status: </label>
+                          <select name="status" id="status" class="form-control" autofocus >
+                            <option value="1" {{ $cntvisa_data->status == "1" ? 'selected' : '' }}>Active</option>
+                            <option value="0" {{ $cntvisa_data->status == "0" ? 'selected' : '' }}>In-Active</option>
+                          </select>                          
+                        </div>                       
                        
-                        
-                         <!-- input button -->
+                        <!-- input button -->
                         <div class="box-footer">
                            {!! Form::submit('submit',array('class'=>'btn btn-primary pull-right','id'=>'exact-submit-button'))!!}
                         </div>

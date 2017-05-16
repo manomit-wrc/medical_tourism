@@ -17,9 +17,9 @@ class MedicalTestCategoriesController extends Controller
     	
     }
 	public function index() {
-        $medicaltestcategories = MedicalTestCategories::where('status', '!=', 2)->get();
-        //echo "<pre>"; print_r($langcapbes); die;
-    	return view('admin.medicaltestcategories.index')->with('medicaltestcategories',$medicaltestcategories);
+      $medicaltestcategories = MedicalTestCategories::where('status', '!=', 2)->orderBy('id','desc')->get();
+        //echo "<pre>"; print_r($medicaltestcategories); die;
+    	return view('admin.medicaltestcategories.index',compact('medicaltestcategories'));
     }
 
    	public function create()
@@ -55,7 +55,7 @@ class MedicalTestCategoriesController extends Controller
         $medtestcat = MedicalTestCategories::find($id);
         // validate
         $this->validate($request, [
-        'cat_name' => 'required'        
+        'cat_name' => 'required|unique:medical_test_categories,cat_name,'.$id,        
       ]);
        	$medtestcat->cat_name = $request->cat_name;
         $medtestcat->status = $request->status;       	
@@ -87,5 +87,25 @@ class MedicalTestCategoriesController extends Controller
                 return redirect('/admin/medicaltestcategories');
             }
         }
+    }
+    public function ajaxmcatchangestatus(Request $request) { 
+        $id = $request->id;
+        $status = $request->status;     
+        $mt = MedicalTestCategories::find($id);
+       /* if ($status == 1){
+            $stat = 0;
+        }
+        if ($status == 0){
+            $stat = 1;
+        } */      
+        $mt->status = $status; 
+        $upd = $mt->save();        
+        if($upd) {              
+          $returnArr = array('status'=>'1','msg'=>'Updateed Successfully');
+        }else{
+          $returnArr = array('status'=>'0','msg'=>'Inserted Faliure');
+        }          
+        echo json_encode($returnArr);
+        die();
     }
 }

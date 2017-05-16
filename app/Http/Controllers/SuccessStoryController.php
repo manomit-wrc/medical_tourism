@@ -25,7 +25,7 @@ class SuccessStoryController extends Controller
      * @return Response
      */
     public function index() {
-        $succstory_lists = SuccessStories::all();
+        $succstory_lists = SuccessStories::where('status', '!=', 2)->get();
         //echo "<pre>"; print_r($succstory_lists); die;
         return view('admin.successstories.index')->with('succstory_lists',$succstory_lists);
     }
@@ -189,18 +189,46 @@ class SuccessStoryController extends Controller
      * @return Response
      */
 
-    public function destroy($id)
-    {
-        //echo $id; die;
-       // delete
+    /*public function destroy($id)
+    {        
         $succstoryobj = SuccessStories::findOrFail($id);
         File::delete(public_path('/uploads/successstories/'. $succstoryobj->story_image));
         File::delete(public_path('/uploads/successstories/thumb_200_200/'. $succstoryobj->story_image));
         File::delete(public_path('/uploads/successstories/thumb_745_214/'. $succstoryobj->story_image));
         $succstoryobj->delete();
-
-        // redirect
         Session::flash('message', 'Successfully deleted');
         return Redirect::to('/admin/successstories');
+    }*/
+    public function delete(Request $request,$id) {
+        if($id) {
+            $succstoryobj = SuccessStories::find($id);
+            $status = '2';
+            $succstoryobj->status = $status; 
+            $del = $succstoryobj->save();
+            if($del) {      
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/successstories');
+            }
+        }
+    }
+    public function ajaxsuccchangestatus(Request $request) { 
+        $id = $request->id;
+        $status = $request->status;     
+        $mt = SuccessStories::find($id);
+       /* if ($status == 1){
+            $stat = 0;
+        }
+        if ($status == 0){
+            $stat = 1;
+        } */      
+        $mt->status = $status; 
+        $upd = $mt->save();        
+        if($upd) {              
+          $returnArr = array('status'=>'1','msg'=>'Updateed Successfully');
+        }else{
+          $returnArr = array('status'=>'0','msg'=>'Inserted Faliure');
+        }          
+        echo json_encode($returnArr);
+        die();
     }
 }

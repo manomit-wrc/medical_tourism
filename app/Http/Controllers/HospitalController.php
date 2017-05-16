@@ -36,7 +36,7 @@ class HospitalController extends Controller
      * @return Response
      */
     public function index() {
-        $hospitals_list = Hospital::all();
+        $hospitals_list = Hospital::where('status', '!=', 2)->get();
         return view('admin.hospitals.index')->with('hospitals_list',$hospitals_list);
     }
 
@@ -59,7 +59,7 @@ class HospitalController extends Controller
     public function store(Request $request)
     {
         //echo "<pre>"; print_r($request->all()); die;
-        $this->validate($request, [
+        Validator::make($request->all(), [
             'name' => 'required',
             'description' => 'required',
             'email' => 'required',
@@ -76,7 +76,11 @@ class HospitalController extends Controller
             'number_of_operating_rooms' => 'required|numeric',
             'number_of_avg_international_patients' => 'required|numeric',
             'avators' => 'required|image|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=745,min_height=214'
-       ]);
+       ],[
+        'country_id.required' => 'country field is required',
+        'state_id.required' => 'state field is required',
+        'city_id.required' => 'city field is required'
+        ])->validate();
 
       // Getting all data after success validation.
       
@@ -266,7 +270,7 @@ class HospitalController extends Controller
         $hptl = Hospital::find($id);
         // validate
         //echo "<pre>"; print_r($request->all()); die;
-        $this->validate($request, [
+        Validator::make($request->all(), [
             'name' => 'required',
             'description' => 'required',
             'email' => 'required',
@@ -282,8 +286,12 @@ class HospitalController extends Controller
             'number_of_icu_beds' => 'required|numeric',
             'number_of_operating_rooms' => 'required|numeric',
             'number_of_avg_international_patients' => 'required|numeric',
-            'avators' => 'image|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=745,min_height=214'
-       ]);
+            'avators' => 'required|image|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=745,min_height=214'
+       ],[
+        'country_id.required' => 'country field is required',
+        'state_id.required' => 'state field is required',
+        'city_id.required' => 'city field is required'
+        ])->validate();
 
       // Getting all data after success validation.
       $hptl->name = $request->get('name') ;
@@ -460,15 +468,44 @@ class HospitalController extends Controller
      * @return Response
      */
 
-    public function destroy($id)
-    {
-        //echo $id; die;
-       // delete
+   /* public function destroy($id)
+    {       
         $hosobj = Hospital::findOrFail($id);
-        $hosobj->delete();
-
-        // redirect
+        $hosobj->delete();        
         Session::flash('message', 'Successfully deleted');
         return Redirect::to('/admin/hospitals');
+    }*/
+    public function delete(Request $request,$id) {
+        if($id) {
+            $hosobj = Hospital::find($id);
+            $status = '2';
+            $hosobj->status = $status; 
+            $del = $hosobj->save();
+            if($del) {      
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/hospitals');
+            }
+        }
+    }
+
+    public function ajaxhoschangestatus(Request $request) { 
+        $id = $request->id;
+        $status = $request->status;     
+        $mt = Hospital::find($id);
+       /* if ($status == 1){
+            $stat = 0;
+        }
+        if ($status == 0){
+            $stat = 1;
+        } */      
+        $mt->status = $status; 
+        $upd = $mt->save();        
+        if($upd) {              
+          $returnArr = array('status'=>'1','msg'=>'Updateed Successfully');
+        }else{
+          $returnArr = array('status'=>'0','msg'=>'Inserted Faliure');
+        }          
+        echo json_encode($returnArr);
+        die();
     }
 }

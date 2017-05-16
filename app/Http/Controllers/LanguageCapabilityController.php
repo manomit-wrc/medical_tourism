@@ -25,7 +25,7 @@ class LanguageCapabilityController extends Controller
      * @return Response
      */
     public function index() {
-        $langcapabilites = LanguageCapability::where('status', '!=', 2)->get();
+        $langcapabilites = LanguageCapability::where('status', '!=', 2)->orderBy('id','desc')->get();
         //echo "<pre>"; print_r($langcapbes); die;
     	return view('admin.languagecapability.index')->with('langcapabilites',$langcapabilites);
     }
@@ -98,7 +98,7 @@ class LanguageCapabilityController extends Controller
         $langcap = LanguageCapability::find($id);
         // validate
         $this->validate($request, [
-        'name' => 'required'
+        'name' => 'required|unique:language_capabilities,name,'.$id,  
         ]);
 
         // Getting all data after success validation.
@@ -139,6 +139,26 @@ class LanguageCapabilityController extends Controller
                 return redirect('/admin/languagecapability');
             }
         }
+    }
+    public function ajaxlangchangestatus(Request $request) { 
+        $id = $request->id;
+        $status = $request->status;     
+        $mt = LanguageCapability::find($id);
+       /* if ($status == 1){
+            $stat = 0;
+        }
+        if ($status == 0){
+            $stat = 1;
+        } */      
+        $mt->status = $status; 
+        $upd = $mt->save();        
+        if($upd) {              
+          $returnArr = array('status'=>'1','msg'=>'Updateed Successfully');
+        }else{
+          $returnArr = array('status'=>'0','msg'=>'Inserted Faliure');
+        }          
+        echo json_encode($returnArr);
+        die();
     } 
     
 }

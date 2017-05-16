@@ -38,7 +38,7 @@ class MedicaltestController extends Controller
     public function store(Request $request)
     {
       $this->validate($request, [
-        'test_name' => 'required',
+        'test_name' => 'required|unique:medicaltests',
         'medicaltestcategories_id' => 'required'
       ]);
 
@@ -96,5 +96,25 @@ class MedicaltestController extends Controller
                 return redirect('/admin/medicaltest');
             }
         }
+    }
+    public function ajaxmedichangestatus(Request $request) { 
+        $id = $request->id;
+        $status = $request->status;     
+        $mt = Medicaltest::find($id);
+       /* if ($status == 1){
+            $stat = 0;
+        }
+        if ($status == 0){
+            $stat = 1;
+        } */      
+        $mt->status = $status; 
+        $upd = $mt->save();        
+        if($upd) {              
+          $returnArr = array('status'=>'1','msg'=>'Updateed Successfully');
+        }else{
+          $returnArr = array('status'=>'0','msg'=>'Inserted Faliure');
+        }          
+        echo json_encode($returnArr);
+        die();
     }
 }

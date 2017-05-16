@@ -33,13 +33,13 @@
              <!-- if there are creation errors, they will show here -->
              
             <!-- /.box-header -->
-            @if($errors->any())
-              <div class="alert alert-danger">
-                  @foreach($errors->all() as $error)
-                      <p>{{ $error }}</p>
-                  @endforeach
-              </div>
-            @endif
+           <!--  @if($errors->any())
+             <div class="alert alert-danger">
+                 @foreach($errors->all() as $error)
+                     <p>{{ $error }}</p>
+                 @endforeach
+             </div>
+           @endif -->
             <div class="box-body">
                  {{ Form::model($provconn_data,array('method' => 'PATCH','role'=>'form','url' => array('admin/providerconnectivity/update', $provconn_data->id),'id'=>'providerconnectivity_edit')) }}
                     
@@ -50,6 +50,7 @@
                         <div class="form-group">
                            {!! Html::decode(Form::label('connectivity_id','Connectivity: <span style="color:red;">*</span>')) !!}
                            {!! Form::select('connectivity_id',[''=>'select']+$connectivity_data, null, ['class' => 'form-control select2']) !!}
+                           {!! Html::decode('<span class="text-danger">'.$errors->first("connectivity_id").'</span>') !!}
                         </div>
                         <!-- /.form-group dropdown-->
                         
@@ -57,13 +58,15 @@
                         <div class="form-group">
                           {!! Html::decode(Form::label('name','Name: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('name',null,array('class'=>'form-control','id'=>'name','placeholder'=>'Enter treatment name')) !!}
+                           {!! Html::decode('<span class="text-danger">'.$errors->first("name").'</span>') !!}
                         </div>
                         <!-- /.text input -->
 
                         <!-- text input -->
                         <div class="form-group">
-                          {!! Html::decode(Form::label('name','Distance: <span style="color:red;">* (please add unit)</span>')) !!}
+                          {!! Html::decode(Form::label('distance','Distance: <span style="color:red;">* (please add unit)</span>')) !!}
                           {!! Form::text('distance',null,array('class'=>'form-control','id'=>'distance','placeholder'=>'Enter distance with variable')) !!}
+                           {!! Html::decode('<span class="text-danger">'.$errors->first("distance").'</span>') !!}
                         </div>
                         <!-- /.text input -->
                         

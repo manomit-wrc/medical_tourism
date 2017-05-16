@@ -15,7 +15,11 @@
         
       </ol>
     </section>
-
+    <style>
+        .toggle2 {
+          height: 23px !important;
+        }
+    </style>
     <!-- Main content -->
     <section class="content">
       <div class="row">
@@ -30,12 +34,14 @@
 
             <!-- /.box-header -->
             <div class="box-body">
+            <div class="alert alert-info" id="result77" style="display:none;"></div>
               @if (Session::has('message'))
                   <div class="alert alert-info" id="result7">{{ Session::get('message') }}</div>
               @endif
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="datatbl_genmed_id" class="table table-bordered table-striped">
                 <thead>
                   <tr>
+                    <th style="display:none;"></th>
                     <th>Generic Name of the Medicine</th>
                     <th>Strip/Unit</th>
                     <th>MRP</th>
@@ -48,10 +54,23 @@
                   @if (count($genericmedicine) > 0)
                     @foreach($genericmedicine as $genmedval)
                       <tr>
+                        <td style="display:none;"><input type="hidden" value="{{ $genmedval->id }}"></td>
                         <td>{{ $genmedval->generic_name_of_the_medicine }}</td>
                         <td>{{ $genmedval->unit }}</td>
                         <td>{{ $genmedval->price }}</td>
-                        <td>{{ ($genmedval->status ==1)? 'Active':'In-Active' }}</td>
+                       <!--  <td>{{ ($genmedval->status ==1)? 'Active':'In-Active' }}</td> -->
+                       <td>
+                          @if($genmedval->status ==1)
+                            <span data-toggle="tooltip" data-original-title="Click here to change status">
+                            <input type="checkbox" checked id="tog{{ $genmedval->id }}" onchange="return changeStatus('/admin/ajaxgenechangestatus',{{ $genmedval->id }})" value="1"  data-toggle="toggle2">
+                            </span>
+                          @endif
+                          @if($genmedval->status ==0)
+                          <span data-toggle="tooltip" data-original-title="Click here to change status">
+                            <input type="checkbox" id="tog{{ $genmedval->id }}"  onchange="return changeStatus('/admin/ajaxgenechangestatus',{{ $genmedval->id }})" value="0" data-toggle="toggle2">
+                          </span>
+                          @endif
+                        </td>
                         <td>
                           <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
                             <!-- we will add this later since its a little more complicated than the other two buttons -->

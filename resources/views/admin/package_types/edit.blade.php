@@ -1,4 +1,5 @@
 @extends('admin.layouts.dashboard_layout')
+@section('title', 'Edit PackageType')
 @section('content')
  <!-- Content Wrapper. Contains page content -->
 
@@ -44,10 +45,17 @@
                       <textarea name="ckeditor" id="textarea_id" class="form-control ckeditor" >{{ $package_details->description }}</textarea>
                       <span class="text-danger">{{ $errors->first('ckeditor') }}</span>
                     </div>
+                    <div class="form-group">
+                          <label for="name">Status: </label>
+                          <select name="status" id="status" class="form-control" autofocus >
+                            <option value="1" {{ $package_details->status == "1" ? 'selected' : '' }}>Active</option>
+                            <option value="0" {{ $package_details->status == "0" ? 'selected' : '' }}>In-Active</option>
+                          </select>                          
+                        </div>
                   </div>
 
-                    <div class="box-footer">
-                      <input type="submit" name="submit" id="exact-submit-button" class="btn btn-primary pull-right" value="Submit" >
+                    <div>
+                      <input type="submit" name="submit" id="exact-submit-button" class="btn btn-primary pull-left" value="Submit" >
                     </div>
 
                 </form>

@@ -89,7 +89,7 @@
 
 
 
-        <li class="treeview {{ Request::segment(2) === 'adminuser' || Request::segment(2) === 'permission' ? 'active' : null }}">
+        <li class="treeview {{ Request::segment(2) === 'adminuser' || Request::segment(2) === 'permission' || Request::segment(2) === 'patients'? 'active' : null }}">
           <a href="javascript:void(0)">
             <i class="fa fa-users"></i> <span>User management</span>
             <span class="pull-right-container">
@@ -99,6 +99,7 @@
           <ul class="treeview-menu">
             @if($user_view_composer->hasRole('admin/adminuser',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'adminuser' ? 'active' : null }}" ><a href="{{ url('/admin/adminuser')}}"><i class="fa fa-group"></i>Manage user</a></li>@endif
             @if($user_view_composer->hasRole('admin/permission',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'permission' ? 'active' : null }}" ><a href="{{ url('/admin/permission')}}"><i class="fa fa-key"></i>Manage permission</a></li>@endif
+            @if($user_view_composer->hasRole('admin/patients',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'patients' ? 'active' : null }}" ><a href="{{ url('/admin/patients')}}"><i class="fa fa-group"></i>Manage patient</a></li>@endif
           </ul>
         </li>
 

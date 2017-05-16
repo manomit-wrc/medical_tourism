@@ -15,7 +15,11 @@
         
       </ol>
     </section>
-
+    <style>
+        .toggle2 {
+          height: 23px !important;
+        }
+    </style>
     <!-- Main content -->
      <section class="content">
       <div class="row">
@@ -30,6 +34,7 @@
 
             <!-- /.box-header -->
             <div class="box-body">
+              <div class="alert alert-info" id="result77" style="display:none;"></div>
               @if (Session::has('message'))
                   <div class="alert alert-info" id="result7">{{ Session::get('message') }}</div>
               @endif              
@@ -37,6 +42,7 @@
                 <thead>
                   <tr>
                     <th>Cuisine name</th>
+                    <th>Status</th>
                     <th width="11%">Actions</th>
                   </tr>
                 </thead>
@@ -46,6 +52,18 @@
                     @foreach($cuisine_lists as $cuisine_lists)
                       <tr>
                         <td>{{ $cuisine_lists->name }}</td>
+                        <td>
+                          @if($cuisine_lists->status ==1)
+                            <span data-toggle="tooltip" data-original-title="Click here to change status">
+                            <input type="checkbox" checked id="tog{{ $cuisine_lists->id }}" onchange="return changeStatus('/admin/ajaxcuisinechangestatus',{{ $cuisine_lists->id }})" value="1"  data-toggle="toggle2">
+                            </span>
+                          @endif
+                          @if($cuisine_lists->status ==0)
+                          <span data-toggle="tooltip" data-original-title="Click here to change status">
+                            <input type="checkbox" id="tog{{ $cuisine_lists->id }}"  onchange="return changeStatus('/admin/ajaxcuisinechangestatus',{{ $cuisine_lists->id }})" value="0" data-toggle="toggle2">
+                          </span>
+                          @endif
+                        </td>
                         <td>
                           <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
                             <!-- we will add this later since its a little more complicated than the other two buttons -->                             

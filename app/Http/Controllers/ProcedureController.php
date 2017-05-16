@@ -25,9 +25,9 @@ class ProcedureController extends Controller
      * @return Response
      */
     public function index() {
-        $procedure_lists = Procedure::where('status', '!=', 2)->get();
+        $procedure_lists = Procedure::where('status', '!=', 2)->orderBy('id','desc')->get();
         //echo "<pre>"; print_r($langcapbes); die;
-        return view('admin.procedure.index')->with('procedure_lists',$procedure_lists);
+        return view('admin.procedure.index',compact('procedure_lists'));
     }
 
     /**
@@ -126,7 +126,7 @@ class ProcedureController extends Controller
         $procedureobj = Procedure::find($id);
         // validate
         $this->validate($request, [
-        'name' => 'required',
+        'name' => 'required|unique:procedures,name,'.$id,  
         'procedure_image' => 'image|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=243,min_height=149',
         ]);
 
@@ -208,5 +208,25 @@ class ProcedureController extends Controller
                 return redirect('/admin/procedure');
             }
         }
+    }
+    public function ajaxprocchangestatus(Request $request) { 
+        $id = $request->id;
+        $status = $request->status;     
+        $mt = Procedure::find($id);
+       /* if ($status == 1){
+            $stat = 0;
+        }
+        if ($status == 0){
+            $stat = 1;
+        } */      
+        $mt->status = $status; 
+        $upd = $mt->save();        
+        if($upd) {              
+          $returnArr = array('status'=>'1','msg'=>'Updateed Successfully');
+        }else{
+          $returnArr = array('status'=>'0','msg'=>'Inserted Faliure');
+        }          
+        echo json_encode($returnArr);
+        die();
     }
 }

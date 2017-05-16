@@ -20,14 +20,15 @@ use App\Immigration;
 use App\CountryVisa;
 use App\Cmspage;
 use App\CmsPageDetail;
+use App\Hospital;
 
 
 class PagesController extends Controller
 {
-    public function __construct()
-    {
+  public function __construct()
+  {
 
-    }
+  }
 
 	public function about()
 	{
@@ -50,12 +51,14 @@ class PagesController extends Controller
       //echo "<pre>"; print_r($service_lists); die;
       return view('pages.services')->with('service_lists',$service_lists);
 	}
+
 	public function servicedetails($id)
 	{
 		  $service_data = MedicalFacility::findOrFail($id);
 		  //echo "<pre>"; print_r($service_data); die;
       return view('pages.servicedetails')->with('service_data', $service_data);
 	}
+
 	public function enquiry()
 	{
 		return view('pages.enquiry');
@@ -197,6 +200,13 @@ class PagesController extends Controller
         //echo "<pre>"; print_r($sitemap_data); die;
         
         return view('pages.sitemap',compact('sitemap_data'));
+  }
+
+  public function searchdetails($id)
+  {
+      $hospital_data = Hospital::findOrFail($id);
+      //echo "<pre>"; print_r($hospital_data); die;
+      return view('pages.searchdetails',compact('hospital_data'));
   }
   public function check_user_exist(Request $request) {
     $email_id = $request->input('email_id');

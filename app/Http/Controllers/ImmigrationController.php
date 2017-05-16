@@ -139,13 +139,10 @@ class ImmigrationController extends Controller
         $immgi->state_id = $request->get('state_id') ;
         $immgi->city_id = $request->get('city_id') ;
         $immgi->telephone = $request->get('telephone') ;
-        $immgi->email = $request->get('email') ;
-
-        
+        $immgi->status = $request->get('status') ;
+        $immgi->email = $request->get('email') ;    
 
         $immgi->save() ;
-
-
         // redirect
         Session::flash('message', 'Successfully updated');
         return Redirect::to('/admin/immigration');
@@ -181,4 +178,24 @@ class ImmigrationController extends Controller
             }
         }
     } 
+    public function ajaximmchangestatus(Request $request) { 
+        $id = $request->id;
+        $status = $request->status;     
+        $mt = Immigration::find($id);
+       /* if ($status == 1){
+            $stat = 0;
+        }
+        if ($status == 0){
+            $stat = 1;
+        } */      
+        $mt->status = $status; 
+        $upd = $mt->save();        
+        if($upd) {              
+          $returnArr = array('status'=>'1','msg'=>'Updateed Successfully');
+        }else{
+          $returnArr = array('status'=>'0','msg'=>'Inserted Faliure');
+        }          
+        echo json_encode($returnArr);
+        die();
+    }
 }

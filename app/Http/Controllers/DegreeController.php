@@ -23,9 +23,9 @@ class DegreeController extends Controller
      * @return Response
      */
     public function index() {
-        $deg_lists = Degree::where('status', '!=', 2)->get();
+        $deg_lists = Degree::where('status', '!=', 2)->orderBy('id','desc')->get();
         //echo "<pre>"; print_r($langcapbes); die;
-        return view('admin.degree.index')->with('deg_lists',$deg_lists);
+        return view('admin.degree.index',compact('deg_lists'));
     }
 
     /**
@@ -137,5 +137,26 @@ class DegreeController extends Controller
                 return redirect('/admin/degree');
             }
         }
+    }
+
+    public function ajaxdegreechangestatus(Request $request) { 
+        $id = $request->id;
+        $status = $request->status;     
+        $mt = Degree::find($id);
+       /* if ($status == 1){
+            $stat = 0;
+        }
+        if ($status == 0){
+            $stat = 1;
+        } */      
+        $mt->status = $status; 
+        $upd = $mt->save();        
+        if($upd) {              
+          $returnArr = array('status'=>'1','msg'=>'Updateed Successfully');
+        }else{
+          $returnArr = array('status'=>'0','msg'=>'Inserted Faliure');
+        }          
+        echo json_encode($returnArr);
+        die();
     }
 }

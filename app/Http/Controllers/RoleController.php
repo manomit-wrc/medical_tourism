@@ -23,15 +23,15 @@ class RoleController extends Controller
 
     public function add(Request $request) {
       $this->validate($request,[
-        'role_name' => 'required|max:25|unique:roles',
+        'name' => 'required|max:25|unique:roles',
         'status' => 'required'
       ],[
-        'role_name.required' => 'Please enter role name',
+        'name.required' => 'Please enter role name',
         'status.required' => 'Please enter status'
       ]);
 
       $role = new \App\Role();
-      $role->name = $request->role_name;
+      $role->name = $request->name;
       $role->status = $request->status;
       if($role->save()) {
         $request->session()->flash("message", "Role addedd successfully");
@@ -49,16 +49,16 @@ class RoleController extends Controller
     public function update(Request $request, $id) {
       if($id) {
         $this->validate($request,[
-          'role_name' => 'required|max:25|unique:language_capabilities,role_name,'.$id,
+          'name' => 'required|max:25|unique:language_capabilities,name,'.$id,
           'status' => 'required'
         ],[
-          'role_name.required' => 'Please enter role name',
+          'name.required' => 'Please enter role name',
           'status.required' => 'Please enter status'
         ]);
 
         $role_update = \App\Role::find($id);
         if($role_update) {
-          $role_update->name = $request->role_name;
+          $role_update->name = $request->name;
           $role_update->status = $request->status;
           $role_update->save();
           $request->session()->flash("message", "Role updated successfully");
@@ -85,5 +85,25 @@ class RoleController extends Controller
                 return redirect('/admin/role');
             }
         }
+    }
+    public function ajaxrolechangestatus(Request $request) { 
+        $id = $request->id;
+        $status = $request->status;     
+        $mt = \App\Role::find($id);
+       /* if ($status == 1){
+            $stat = 0;
+        }
+        if ($status == 0){
+            $stat = 1;
+        } */      
+        $mt->status = $status; 
+        $upd = $mt->save();        
+        if($upd) {              
+          $returnArr = array('status'=>'1','msg'=>'Updateed Successfully');
+        }else{
+          $returnArr = array('status'=>'0','msg'=>'Inserted Faliure');
+        }          
+        echo json_encode($returnArr);
+        die();
     }
 }
