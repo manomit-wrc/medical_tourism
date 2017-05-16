@@ -50,6 +50,8 @@
                         <td>{{ $contactval->subject }}</td>
                         <td>                       
                          <a href="{!!URL::to('/admin/contact/details',$contactval->id)!!}" class="btn btn-success">View</a>
+                         <a href="{!!URL::to('/admin/contact/sendmail',$contactval->id)!!}" class="btn btn-warning">
+                         {{ ($contactval->send_status==1) ? 'Send' : 'Resend' }}</a>
                         </td>
                       </tr>
                     @endforeach
