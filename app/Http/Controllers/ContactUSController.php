@@ -65,7 +65,8 @@ class ContactUSController extends Controller
                 $contactdata = ContactUS::where('id',$id)->get()->toArray();
                 /*print_r($contactdata[0]['email']); die();*/
                 $sendmail = $contactdata[0]['email'];
-                Mail::to($sendmail)->send(new ContactSendMail($sendmessage));
+                $name = $contactdata[0]['name'];
+                Mail::to($sendmail)->send(new ContactSendMail($sendmessage,$name));
                 Session::flash('message', 'Successfully updated');
                 return Redirect::to('/admin/contact');
             }

@@ -17,9 +17,11 @@ class ContactSendMail extends Mailable
      * @return void
      */
     public $sendmessage;
-    public function __construct($sendmessage)
+    public $name;
+    public function __construct($sendmessage,$name)
     {
         $this->sendmessage = $sendmessage;
+        $this->name = $name;
     }
 
     /**

@@ -121,7 +121,7 @@ class PagesController extends Controller
 
 	public function faqs()
 	{  
-      $faq_data = Faq::has('FaqCategory')->orderBy('faqcategory_id')->get();
+      $faq_data = Faq::has('FaqCategory')->where('status', '=', 1)->orderBy('faqcategory_id')->get();
       //echo "<pre>"; print_r($faq_data); die;
       return view('pages.faqs')->with('faq_data',$faq_data);
 	}
