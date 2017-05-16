@@ -1661,3 +1661,9 @@ Stack trace:
 #46 C:\xampp\htdocs\medical_tourism\public\index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #47 C:\xampp\htdocs\medical_tourism\server.php(21): require_once('C:\\xampp\\htdocs...')
 #48 {main}  
+[2017-05-16 09:53:55] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'App\Exceptions\Session' not found' in C:\xampp\htdocs\medical_tourism\app\Exceptions\Handler.php:52
+Stack trace:
+#0 {main}  
+[2017-05-16 09:54:46] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'App\Exceptions\Session' not found' in C:\xampp\htdocs\medical_tourism\app\Exceptions\Handler.php:52
+Stack trace:
+#0 {main}  

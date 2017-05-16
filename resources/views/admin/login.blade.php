@@ -5,7 +5,7 @@
   </div>
   <div class="login-box-body">
     @if(Session::has('login-status'))
-      <p class="login-box-msg">{{ Session::get('login-status') }}</p>
+      <p class="login-box-msg" style="color:#f00;font-weight:bold;">{{ Session::get('login-status') }}</p>
     @else
       <p class="login-box-msg">Sign in to start your session</p>
     @endif
