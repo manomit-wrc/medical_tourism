@@ -33,6 +33,8 @@
     29 => 'DougSisk\\CountryState\\CountryStateServiceProvider',
     30 => 'Torann\\Currency\\CurrencyServiceProvider',
     31 => 'Unisharp\\Ckeditor\\ServiceProvider',
+    32 => 'Sarfraznawaz2005\\VisitLog\\VisitLogServiceProvider',
+    33 => 'GoogleMaps\\ServiceProvider\\GoogleMapsServiceProvider',
   ),
   'eager' => 
   array (
@@ -55,6 +57,7 @@
     16 => 'DougSisk\\CountryState\\CountryStateServiceProvider',
     17 => 'Torann\\Currency\\CurrencyServiceProvider',
     18 => 'Unisharp\\Ckeditor\\ServiceProvider',
+    19 => 'Sarfraznawaz2005\\VisitLog\\VisitLogServiceProvider',
   ),
   'deferred' => 
   array (
@@ -149,6 +152,7 @@
     'form' => 'Collective\\Html\\HtmlServiceProvider',
     'Collective\\Html\\HtmlBuilder' => 'Collective\\Html\\HtmlServiceProvider',
     'Collective\\Html\\FormBuilder' => 'Collective\\Html\\HtmlServiceProvider',
+    'GoogleMaps' => 'GoogleMaps\\ServiceProvider\\GoogleMapsServiceProvider',
   ),
   'when' => 
   array (
@@ -189,6 +193,9 @@
     array (
     ),
     'Collective\\Html\\HtmlServiceProvider' => 
+    array (
+    ),
+    'GoogleMaps\\ServiceProvider\\GoogleMapsServiceProvider' => 
     array (
     ),
   ),

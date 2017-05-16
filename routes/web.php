@@ -30,6 +30,7 @@ Route::get('/immigration','PagesController@immigration');
 Route::get('/visa','PagesController@visa');
 Route::get('/disclaimer','PagesController@disclaimer');
 Route::get('/privacypolicy','PagesController@privacypolicy');
+Route::get('/sitemap','PagesController@sitemap');
 Route::get('/successstory_details/{id}','PagesController@successstory_details');
 Route::get('/frontend/check_user_exist','PagesController@check_user_exist');
 Route::post('/patient-registration','PagesController@patient_registration');
@@ -285,12 +286,12 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/providerconnectivityservices/show/{id}','ProviderConnectivityServicesController@show');
 
 	 /* genericmedicine section */
-	Route::get('/admin/genericmedicine','genericmedicineController@index');
-    Route::get('/admin/genericmedicine/create','genericmedicineController@create');
-    Route::post('/admin/genericmedicine/store','genericmedicineController@store');
-    Route::get('/admin/genericmedicine/edit/{id}','genericmedicineController@edit');
-    Route::patch('/admin/genericmedicine/update/{id}','genericmedicineController@update');    
-	Route::get('/admin/genericmedicine/delete/{id}','genericmedicineController@delete');
+	Route::get('/admin/genericmedicine','GenericmedicineController@index');
+    Route::get('/admin/genericmedicine/create','GenericmedicineController@create');
+    Route::post('/admin/genericmedicine/store','GenericmedicineController@store');
+    Route::get('/admin/genericmedicine/edit/{id}','GenericmedicineController@edit');
+    Route::patch('/admin/genericmedicine/update/{id}','GenericmedicineController@update');    
+	Route::get('/admin/genericmedicine/delete/{id}','GenericmedicineController@delete');
 
      /* medical test categories section */
     Route::get('/admin/medicaltestcategories','MedicalTestCategoriesController@index');
@@ -347,7 +348,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('/admin/immigration/store','ImmigrationController@store');
     Route::get('/admin/immigration/edit/{id}','ImmigrationController@edit');
     Route::patch('/admin/immigration/update/{id}','ImmigrationController@update');
-    Route::delete('/admin/immigration/delete/{id}','ImmigrationController@destroy');
+    Route::get('/admin/immigration/delete/{id}','ImmigrationController@delete');
 
      //Visa section
     Route::get('/admin/countryvisa', 'CountryVisaController@index');
@@ -355,6 +356,6 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('/admin/countryvisa/store','CountryVisaController@store');
     Route::get('/admin/countryvisa/edit/{id}','CountryVisaController@edit');
     Route::patch('/admin/countryvisa/update/{id}','CountryVisaController@update');
-    Route::delete('/admin/countryvisa/delete/{id}','CountryVisaController@destroy');
+    Route::get('/admin/countryvisa/delete/{id}','CountryVisaController@delete');
 
 });

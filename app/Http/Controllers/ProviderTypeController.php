@@ -23,9 +23,9 @@ class ProviderTypeController extends Controller
      * @return Response
      */
     public function index() {
-        $providertype_lists = ProviderType::all();
+        $providertype_data = ProviderType::where('status', '!=',2)->get();
         //echo "<pre>"; print_r($providertype_lists); die;
-        return view('admin.providertype.index')->with('providertype_lists',$providertype_lists);
+        return view('admin.providertype.index')->with('providertype_data',$providertype_data);
     }
 
      /**
@@ -95,7 +95,7 @@ class ProviderTypeController extends Controller
         $provdrtp = ProviderType::find($id);
         // validate
         $this->validate($request, [
-        'name' => 'required|unique:provider_types'
+        'name' => 'required|unique:provider_types,name,'.$id
         ]);
 
         // Getting all data after success validation.
@@ -125,11 +125,23 @@ class ProviderTypeController extends Controller
         Session::flash('message', 'Successfully deleted');
         return Redirect::to('/admin/providertype');
     }*/
-    public function delete(Request $request,$id) {
+   /* public function delete(Request $request,$id) {
         if($id) {
             $provdrtp = ProviderType::find($id);
             if($provdrtp) {                         
                 $provdrtp->delete();
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/providertype');
+            }
+        }
+    } */
+    public function delete(Request $request,$id) {
+        if($id) {
+            $provdrtp = ProviderType::find($id);
+            $status = '2';
+            $provdrtp->status = $status; 
+            $del = $provdrtp->save();
+            if($del) {      
                 $request->session()->flash("message", "Successfully deleted");
                 return redirect('/admin/providertype');
             }

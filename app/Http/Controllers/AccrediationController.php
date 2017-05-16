@@ -25,7 +25,7 @@ class AccrediationController extends Controller
      * @return Response
      */
     public function index() {
-        $accrediation_lists = Accrediation::all();
+        $accrediation_lists = Accrediation::where('status', '!=', 2)->get();
         //echo "<pre>"; print_r($accrediation_lists); die;
         return view('admin.accrediation.index')->with('accrediation_lists',$accrediation_lists);
     }
@@ -118,7 +118,7 @@ class AccrediationController extends Controller
         $accd = Accrediation::find($id);
         // validate
         $this->validate($request, [
-        'name' => 'required|unique:accrediations',
+        'name' => 'required|unique:accrediations,name,'.$id,
         'accrediation_logo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:1024'
         ]);
 
@@ -168,13 +168,25 @@ class AccrediationController extends Controller
         Session::flash('message', 'Successfully deleted');
         return Redirect::to('/admin/accrediation');
     }*/
-    public function delete(Request $request,$id) {
+    /* public function delete(Request $request,$id) {
         if($id) {
             $accobj = Accrediation::find($id);
             if($accobj) {
                 File::delete(public_path('/uploads/accrediations/'. $accobj->accrediation_logo));
                 File::delete(public_path('/uploads/accrediations/thumb/'. $accobj->accrediation_logo));
                 $accobj->delete();
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/accrediation');
+            }
+        }
+    }*/
+    public function delete(Request $request,$id) {
+        if($id) {
+            $accobj = Accrediation::find($id);
+            $status = '2';
+            $accobj->status = $status; 
+            $del = $accobj->save();
+            if($del) {      
                 $request->session()->flash("message", "Successfully deleted");
                 return redirect('/admin/accrediation');
             }

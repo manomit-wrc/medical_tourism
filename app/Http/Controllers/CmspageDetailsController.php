@@ -31,7 +31,7 @@ class CmspageDetailsController extends Controller
     public function store(Request $request)
     {
       $this->validate($request, [
-        'slag' => 'required|unique:cmspage_details'.$request->get('id'), 
+        'slag' => 'required|unique:cmspage_details', 
         'description' => 'required',
         'cmspage_id' => 'required'
       ]);

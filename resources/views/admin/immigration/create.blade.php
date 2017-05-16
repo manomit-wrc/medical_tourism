@@ -33,13 +33,13 @@
               <h3 class="box-title">General Elements</h3>
             </div> -->
             <!-- /.box-header -->
-            @if($errors->any())
+            <!-- @if($errors->any())
               <div class="alert alert-danger">
                   @foreach($errors->all() as $error)
                       <p>{{ $error }}</p>
                   @endforeach
               </div>
-            @endif
+            @endif -->
             <div class="box-body">
              
                  {!! Form::open(array('method' => 'POST','role'=>'form','url'=>'admin/immigration/store','id'=>'immigration_add')) !!}
@@ -50,6 +50,7 @@
                         <div class="form-group">
                           {!! Html::decode(Form::label('name','Name: <span style="color:red;">* </span>')) !!}
                           {!! Form::text('name','',array('class'=>'form-control','id'=>'name','placeholder'=>'Enter name')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("name").'</span>') !!}
                         </div>
                         <!-- /.text input -->
 
@@ -57,6 +58,7 @@
                         <div class="form-group">
                           {!! Html::decode(Form::label('designation', 'Designation: <span style="color:red;">* </span>')) !!}
                           {!! Form::text('designation','',array('class'=>'form-control','id'=>'designation','placeholder'=>'Enter designation')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("designation").'</span>') !!}
                         </div>
                         <!-- /.text input -->
 
@@ -64,6 +66,7 @@
                         <div class="form-group">
                           {!! Html::decode(Form::label('address','Office address: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('address','',array('class'=>'form-control','id'=>'address','placeholder'=>'Enter office address')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("address").'</span>') !!}
                         </div>
                         <!-- /.text input -->
                         
@@ -71,6 +74,7 @@
                         <div class="form-group">
                            {!! Html::decode(Form::label('country_id','Country: <span style="color:red;">*</span>')) !!}
                            {!! Form::select('country_id',['' => 'Select'] +$countries, null, ['class' => 'form-control select2']) !!}
+                           {!! Html::decode('<span class="text-danger">'.$errors->first("country_id").'</span>') !!}
                         </div>
                         <!-- /.form-group dropdown-->
 
@@ -78,6 +82,7 @@
                         <div class="form-group">
                            {!! Html::decode(Form::label('state_id','State: <span style="color:red;">*</span>')) !!}
                            <select name="state_id" id="state_id" class="form-control select2" ></select>
+                           {!! Html::decode('<span class="text-danger">'.$errors->first("state_id").'</span>') !!}
                         </div>
                         <!-- /.form-group dropdown-->
 
@@ -85,6 +90,7 @@
                         <div class="form-group">
                            {!! Html::decode(Form::label('city_id','City: <span style="color:red;">*</span>')) !!}
                            <select name="city_id" id="city_id" class="form-control select2" ></select>
+                           {!! Html::decode('<span class="text-danger">'.$errors->first("city_id").'</span>') !!}
                         </div>
                         <!-- /.form-group dropdown-->
 
@@ -92,6 +98,7 @@
                         <div class="form-group">
                           {!! Html::decode(Form::label('telephone','Telephone: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('telephone','',array('class'=>'form-control','id'=>'telephone','placeholder'=>'Enter telephone')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("telephone").'</span>') !!}
                         </div>
                         <!-- /.text input -->
 
@@ -99,6 +106,7 @@
                         <div class="form-group">
                           {!! Html::decode(Form::label('email','Email: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('email','',array('class'=>'form-control','id'=>'email','placeholder'=>'Enter email')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("email").'</span>') !!}
                         </div>
                         <!-- /.text input -->
 

@@ -33,23 +33,23 @@
              <!-- if there are creation errors, they will show here -->
              
             <!-- /.box-header -->
-            @if($errors->any())
+            <!-- @if($errors->any())
               <div class="alert alert-danger">
                   @foreach($errors->all() as $error)
                       <p>{{ $error }}</p>
                   @endforeach
               </div>
-            @endif
+            @endif -->
             <div class="box-body">
                  {{ Form::model($specificsrves,array('method' => 'PATCH','role'=>'form','url' => array('admin/specificservice/update', $specificsrves->id),'id'=>'specificservice_edit')) }}
                     
-                    <div class="col-md-6">
-                        
+                    <div class="col-md-6">                    
 
                         <!-- text input -->
                         <div class="form-group">
                           {!! Html::decode(Form::label('name','Specific service name: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('name',null,array('class'=>'form-control','id'=>'name','placeholder'=>'Enter specific service name')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("name").'</span>') !!}
                         </div>
                         <!-- /.text input -->
 

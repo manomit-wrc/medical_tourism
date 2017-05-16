@@ -33,24 +33,22 @@
              <!-- if there are creation errors, they will show here -->
              
             <!-- /.box-header -->
-            @if($errors->any())
+            <!-- @if($errors->any())
               <div class="alert alert-danger">
                   @foreach($errors->all() as $error)
                       <p>{{ $error }}</p>
                   @endforeach
               </div>
-            @endif
+            @endif -->
             <div class="box-body">
                  {{ Form::model($medfac_data,array('method' => 'PATCH','role'=>'form','url' => array('admin/medicalfacility/update', $medfac_data->id),'id'=>'medical_facility_edit')) }}
                     
-                    <div class="col-md-6">
-                        
-                         
-                         
-                          <!-- text input -->
+                    <div class="col-md-6">                     
+                        <!-- text input -->
                         <div class="form-group">
                           {!! Html::decode(Form::label('name','Facility name: <span style="color:red;">* </span>')) !!}
                           {!! Form::text('name',null,array('class'=>'form-control','id'=>'name','placeholder'=>'Enter facility name')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("name").'</span>') !!}
                         </div>
                         <!-- /.text input -->
 
@@ -58,6 +56,7 @@
                         <div class="form-group">
                          {!! Html::decode(Form::label('description','Facility description: <span style="color:red;">* </span>')) !!}
                           {!! Form::textarea('description',null,array('class'=>'form-control','id'=>'description','placeholder'=>'Enter facility description')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("description").'</span>') !!}
                         </div>
                         <!-- /.text input -->
 
@@ -66,8 +65,9 @@
                         <!-- file input -->
                         <div class="form-group">
                           {!! Html::decode(Form::label('facility_image','Facility image: <span style="color:red;">* (Image must be minimum of 745x214)</span>')) !!}
-                          <img src="{{url('/uploads/medicalfacilities/thumb_243_149/'.$medfac_data->facility_image)}}" alt="Facility Image">
+                          <img class="img_broder" src="{{url('/uploads/medicalfacilities/thumb_243_149/'.$medfac_data->facility_image)}}" alt="Facility Image">
                           {!! Form::file('facility_image', null) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("facility_image").'</span>') !!}
                         </div>
                          <!-- /.file input -->
 

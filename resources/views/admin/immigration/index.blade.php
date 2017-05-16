@@ -25,7 +25,7 @@
               <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
             </div>
 
-            <div><a href="{!!URL::to('/admin/immigration/create')!!}"><button type="button" class="btn bg-purple">ADD</button></a></div>
+            <div><a href="{!!URL::to('/admin/immigration/create')!!}"><button type="button" class="btn bg-purple btn-rightad">ADD</button></a></div>
 
             <!-- /.box-header -->
             <div class="box-body">
@@ -56,10 +56,11 @@
                         <td>
                           <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
                             <!-- we will add this later since its a little more complicated than the other two buttons -->
-                             {!! Form::open(array('method' => 'DELETE','url' => array('admin/immigration/delete', $immigration_lists->id),'class' => 'pull-right')) !!}
+                             <!-- {!! Form::open(array('method' => 'DELETE','url' => array('admin/immigration/delete', $immigration_lists->id),'class' => 'pull-right')) !!}
                                   {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                              {!! Form::close() !!}
+                              {!! Form::close() !!} -->
                           <a href="{!!URL::to('/admin/immigration/edit',$immigration_lists->id)!!}" class="btn btn-primary">Edit</a>
+                          <a href="javascript:void(0)" onclick="return deldata('{!!URL::to('/admin/immigration/delete',$immigration_lists->id)!!}')" class="btn btn-danger" >Delete</a>
                         </td>
                       </tr>
                     @endforeach

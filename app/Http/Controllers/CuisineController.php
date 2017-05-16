@@ -23,7 +23,7 @@ class CuisineController extends Controller
      * @return Response
      */
     public function index() {
-        $cuisine_lists = Cuisine::all();
+        $cuisine_lists = Cuisine::where('status', '!=', 2)->get();
         //echo "<pre>"; print_r($cuisine_lists); die;
         return view('admin.cuisine.index')->with('cuisine_lists',$cuisine_lists);
     }
@@ -95,7 +95,7 @@ class CuisineController extends Controller
         $langcap = Cuisine::find($id);
         // validate
         $this->validate($request, [
-        'name' => 'required|unique:accomodations'
+        'name' => 'required|unique:cuisines,name,'.$id
         ]);
 
         // Getting all data after success validation.
@@ -123,11 +123,24 @@ class CuisineController extends Controller
         Session::flash('message', 'Successfully deleted');
         return Redirect::to('/admin/cuisine');
     } */
-    public function delete(Request $request,$id) {
+   /* public function delete(Request $request,$id) {
         if($id) {
             $procobj = Cuisine::find($id);
             if($procobj) {                        
                 $procobj->delete();
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/cuisine');
+            }
+        }
+    }*/
+
+    public function delete(Request $request,$id) {
+        if($id) {
+            $procobj = Cuisine::find($id);
+            $status = '2';
+            $procobj->status = $status; 
+            $del = $procobj->save();
+            if($del) {      
                 $request->session()->flash("message", "Successfully deleted");
                 return redirect('/admin/cuisine');
             }

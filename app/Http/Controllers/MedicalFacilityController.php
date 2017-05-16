@@ -25,7 +25,7 @@ class MedicalFacilityController extends Controller
      * @return Response
      */
     public function index() {
-        $medfac_lists = MedicalFacility::all();
+        $medfac_lists = MedicalFacility::where('status', '!=', 2)->get();
         //echo "<pre>"; print_r($medfac_lists); die;
         return view('admin.medicalfacility.index')->with('medfac_lists',$medfac_lists);
     }
@@ -49,7 +49,7 @@ class MedicalFacilityController extends Controller
     {
 	      //print_r($request->input()); die;
           $this->validate($request, [
-          	'name' => 'required',
+          	'name' => 'required|unique:medical_facilities',
             'description' => 'required',
             'facility_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=745,min_height=214',
           ]);
@@ -136,7 +136,7 @@ class MedicalFacilityController extends Controller
         $facmedobj = MedicalFacility::find($id);
         // validate
         $this->validate($request, [
-          	'name' => 'required',
+          	'name' => 'required|unique:medical_facilities,name,'.$id,
             'description' => 'required',
             'facility_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=745,min_height=214',
         ]);
@@ -203,13 +203,25 @@ class MedicalFacilityController extends Controller
         Session::flash('message', 'Successfully deleted');
         return Redirect::to('/admin/medicalfacility');
     }*/
-    public function delete(Request $request,$id) {
+    /*public function delete(Request $request,$id) {
         if($id) {
             $medfacobj = MedicalFacility::find($id);
             if($medfacobj) {
                 File::delete(public_path('/uploads/medicalfacilities/'. $medfacobj->banner_image));
                 File::delete(public_path('/uploads/medicalfacilities/thumb/'. $medfacobj->banner_image));          
                 $medfacobj->delete();
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/medicalfacility');
+            }
+        }
+    }*/
+    public function delete(Request $request,$id) {
+        if($id) {
+            $medfacobj = MedicalFacility::find($id);
+            $status = '2';
+            $medfacobj->status = $status; 
+            $del = $medfacobj->save();
+            if($del) {      
                 $request->session()->flash("message", "Successfully deleted");
                 return redirect('/admin/medicalfacility');
             }

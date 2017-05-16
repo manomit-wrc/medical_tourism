@@ -26,7 +26,7 @@ class ImmigrationController extends Controller
      * @return Response
      */
     public function index() {
-        $immigration_lists = Immigration::all();
+        $immigration_lists = Immigration::where('status', '!=', 2)->get();
         //echo "<pre>"; print_r($immigration_lists); die;
         return view('admin.immigration.index')->with('immigration_lists',$immigration_lists);
     }
@@ -158,7 +158,7 @@ class ImmigrationController extends Controller
      * @return Response
      */
 
-    public function destroy($id)
+   /* public function destroy($id)
     {
         //echo $id; die;
        // delete
@@ -168,5 +168,17 @@ class ImmigrationController extends Controller
         // redirect
         Session::flash('message', 'Successfully deleted');
         return Redirect::to('/admin/immigration');
-    }
+    }*/
+    public function delete(Request $request,$id) {
+        if($id) {
+            $immigrationobj = Immigration::find($id);
+            $status = '2';
+            $immigrationobj->status = $status; 
+            $del = $immigrationobj->save();
+            if($del) {      
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/immigration');
+            }
+        }
+    } 
 }

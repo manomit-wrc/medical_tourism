@@ -16,7 +16,7 @@ class AdminUserController extends Controller
     }
 
     public function index() {
-      $user_data = User::with('roles')->get();
+      $user_data = User::with('roles')->where('status', '!=', 2)->get();     
       return view('admin.users.index')->with('user_data',$user_data);
     }
 
@@ -89,13 +89,25 @@ class AdminUserController extends Controller
       return redirect('/admin/adminuser');
     }
 
-    public function delete(Request $request, $id) {
+    /*public function delete(Request $request, $id) {
        $user_details = User::find($id);
       if($user_details->delete()) {
         $user_details->roles()->wherePivot('user_id', '=', $id)->detach();
         $request->session()->flash("message", "Role deleted successfully");
         return redirect('/admin/adminuser');
       }
+    }*/
+    public function delete(Request $request,$id) {
+        if($id) {
+            $user_details = User::find($id);
+            $status = '2';
+            $user_details->status = $status; 
+            $del = $user_details->save();
+            if($del) {      
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/adminuser');
+            }
+        }
     }
 
     public function permission() {

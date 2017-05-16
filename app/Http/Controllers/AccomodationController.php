@@ -124,11 +124,23 @@ class AccomodationController extends Controller
         Session::flash('message', 'Successfully deleted');
         return Redirect::to('/admin/accomodation');
     } */
-    public function delete(Request $request,$id) {
+   /* public function delete(Request $request,$id) {
         if($id) {
             $procobj = Accomodation::find($id);
             if($procobj) {                        
                 $procobj->delete();
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/accomodation');
+            }
+        }
+    }*/
+    public function delete(Request $request,$id) {
+        if($id) {
+            $procobj = Accomodation::find($id);
+            $status = '2';
+            $procobj->status = $status; 
+            $del = $procobj->save();
+            if($del) {      
                 $request->session()->flash("message", "Successfully deleted");
                 return redirect('/admin/accomodation');
             }

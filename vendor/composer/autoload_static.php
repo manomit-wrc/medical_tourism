@@ -14,9 +14,9 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
         'bd9634f2d41831496de0d3dfe4c94881' => __DIR__ . '/..' . '/symfony/polyfill-php56/bootstrap.php',
         'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
-        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
+        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
         '377d15ea71be0306a9829d9f78207a1c' => __DIR__ . '/..' . '/torann/currency/src/helpers.php',
     );
@@ -61,6 +61,7 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
             'SuperClosure\\' => 13,
+            'Sarfraznawaz2005\\VisitLog\\' => 26,
         ),
         'R' => 
         array (
@@ -89,6 +90,8 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         'G' => 
         array (
             'GuzzleHttp\\Psr7\\' => 16,
+            'GoogleMaps\\' => 11,
+            'GeometryLibrary\\' => 16,
         ),
         'F' => 
         array (
@@ -208,6 +211,10 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         array (
             0 => __DIR__ . '/..' . '/jeremeamia/SuperClosure/src',
         ),
+        'Sarfraznawaz2005\\VisitLog\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sarfraznawaz2005/visitlog/src',
+        ),
         'Ramsey\\Uuid\\' => 
         array (
             0 => __DIR__ . '/..' . '/ramsey/uuid/src',
@@ -247,6 +254,14 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         'GuzzleHttp\\Psr7\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
+        ),
+        'GoogleMaps\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/alexpechkarev/google-maps/src',
+        ),
+        'GeometryLibrary\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/alexpechkarev/geometry-library',
         ),
         'Faker\\' => 
         array (
@@ -368,6 +383,7 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         'AddRememberTokenToPatientsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_08_073932_add_remember_token_to_patients_table.php',
         'AddStatusContactusTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_08_102311_add_status_contactus_table.php',
         'AddStatusToProceduresTables' => __DIR__ . '/../..' . '/database/migrations/2017_04_13_074936_add_status_to_procedures_tables.php',
+        'AddStatusUsersTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_12_095833_add_status_users_table.php',
         'AddUserIdToDoctorsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_26_083459_add_user_id_to_doctors_table.php',
         'AddUserIdToPackageTypesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_27_132153_add_user_id_to_package_types_table.php',
         'AddUsernameToPatientsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_08_091825_add_username_to_patients_table.php',
@@ -423,6 +439,7 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         'CreateTreatmentsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_13_094025_create_treatments_table.php',
         'CreateUserRoleTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_24_132948_create_user_role_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
+        'CreateVisitLogsTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_12_99999_create_visitlogs_table.php',
         'CreateWmAttachmentsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_11_044915_create_wm_attachments_table.php',
         'CreateWmDomainsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_11_042624_create_wm_domains_table.php',
         'CreateWmEmailUserMapTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_11_043434_create_wm_email_user_map_table.php',

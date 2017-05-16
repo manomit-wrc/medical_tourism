@@ -33,13 +33,13 @@
               <h3 class="box-title">General Elements</h3>
             </div> -->
             <!-- /.box-header -->
-            @if($errors->any())
-              <div class="alert alert-danger">
-                  @foreach($errors->all() as $error)
-                      <p>{{ $error }}</p>
-                  @endforeach
-              </div>
-            @endif
+           <!--  @if($errors->any())
+             <div class="alert alert-danger">
+                 @foreach($errors->all() as $error)
+                     <p>{{ $error }}</p>
+                 @endforeach
+             </div>
+           @endif -->
             <div class="box-body">
              
                  {!! Form::open(array('method' => 'POST','role'=>'form','files' => true,'url'=>'admin/accrediation/store','id'=>'accrediation_add')) !!}
@@ -51,6 +51,7 @@
                         <div class="form-group">
                           {!! Html::decode(Form::label('name','Accrediation name: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('name','',array('class'=>'form-control','id'=>'name','placeholder'=>'Enter accrediation name')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("name").'</span>') !!}
                         </div>
                         <!-- /.text input -->
                         
@@ -58,6 +59,7 @@
                         <div class="form-group">
                           {!! Html::decode(Form::label('accrediation_logo','Accrediation logo: <span style="color:red;">*</span>')) !!}
                           {!! Form::file('accrediation_logo', null) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("accrediation_logo").'</span>') !!}
                         </div>
                          <!-- /.file input -->
 

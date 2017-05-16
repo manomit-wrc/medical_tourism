@@ -50,8 +50,8 @@
                         <td>{{ $d->status == '1' ? 'Active' : 'Inactive'}}</td>
                         <td>
 
-                          <a href="{!!URL::to('/admin/role/edit',$d->id)!!}" class="btn btn-primary">Edit</a>&nbsp;|&nbsp;
-                          <a href="/admin/role/delete/{{$d->id}}" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger" >Delete</a>
+                          <a href="{!!URL::to('/admin/role/edit',$d->id)!!}" class="btn btn-primary">Edit</a>
+                          <a href="javascript:void(0)" onclick="return deldata('{!!URL::to('/admin/role/delete',$d->id)!!}')" class="btn btn-danger" >Delete</a>
                         </td>
                       </tr>
                     @endforeach

@@ -33,13 +33,13 @@
              <!-- if there are creation errors, they will show here -->
              
             <!-- /.box-header -->
-            @if($errors->any())
-              <div class="alert alert-danger">
-                  @foreach($errors->all() as $error)
-                      <p>{{ $error }}</p>
-                  @endforeach
-              </div>
-            @endif
+           <!--  @if($errors->any())
+             <div class="alert alert-danger">
+                 @foreach($errors->all() as $error)
+                     <p>{{ $error }}</p>
+                 @endforeach
+             </div>
+           @endif -->
             <div class="box-body">
                  {{ Form::model($cuisines_data,array('method' => 'PATCH','role'=>'form','url' => array('admin/cuisine/update', $cuisines_data->id),'id'=>'cuisine_edit')) }}
                     
@@ -49,6 +49,7 @@
                         <div class="form-group">
                           {!! Html::decode(Form::label('name','Cuisine name: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('name',null,array('class'=>'form-control','id'=>'name','placeholder'=>'Enter cuisine name')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("name").'</span>') !!}
                         </div>
                         <!-- /.text input -->
                         

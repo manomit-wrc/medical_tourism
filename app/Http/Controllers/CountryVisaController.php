@@ -26,7 +26,7 @@ class CountryVisaController extends Controller
      * @return Response
      */
     public function index() {
-        $counvisa_lists = CountryVisa::all();
+        $counvisa_lists = CountryVisa::where('status', '!=', 2)->get();
         //echo "<pre>"; print_r($counvisa_lists); die;
         return view('admin.countryvisa.index')->with('counvisa_lists',$counvisa_lists);
     }
@@ -156,7 +156,7 @@ class CountryVisaController extends Controller
      * @return Response
      */
 
-    public function destroy($id)
+   /* public function destroy($id)
     {
         //echo $id; die;
        // delete
@@ -167,5 +167,17 @@ class CountryVisaController extends Controller
         // redirect
         Session::flash('message', 'Successfully deleted');
         return Redirect::to('/admin/countryvisa');
+    }*/
+     public function delete(Request $request,$id) {
+        if($id) {
+            $cntvisaobj = CountryVisa::find($id);
+            $status = '2';
+            $cntvisaobj->status = $status; 
+            $del = $cntvisaobj->save();
+            if($del) {      
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/countryvisa');
+            }
+        }
     }
 }

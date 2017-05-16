@@ -1,8 +1,11 @@
 <div class="col-md-4">
          <div class="qtbox">
             <div class="dr_img">
-               
-                <img src="{{url('/uploads/doctors/thumb/'.$doctor_details->avators)}}" alt="doctor Image">
+               @if (!empty($doctor_details->avators))
+                <img src="{{url('/uploads/doctors/thumb_250_250/'.$doctor_details->avators)}}" alt="doctor Image">
+               @else
+                <img src="{{url('/uploads/doctors/noimage_user.jpg')}}" alt="No Image">
+               @endif
             </div>
 
             <h4 class="user_name">{{ $doctor_details->first_name.' '.$doctor_details->last_name }}</h4>

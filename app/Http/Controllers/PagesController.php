@@ -18,6 +18,8 @@ use App\Mail\RegistrationEmail;
 use App\SuccessStories;
 use App\Immigration;
 use App\CountryVisa;
+use App\Cmspage;
+use App\CmsPageDetail;
 
 
 class PagesController extends Controller
@@ -29,20 +31,30 @@ class PagesController extends Controller
 
 	public function about()
 	{
-		return view('pages.about');
+    $cmspage_data = Cmspage::select(['id'])->where('pagename', '=', 'aboutus')->get();
+    //echo "<pre>"; echo $cmspage_data[0]->id; die;
+    $cmspagedtls_data = CmsPageDetail::where('cmspage_id', '=',$cmspage_data[0]->id)->get();
+    //echo "<pre>"; print_r($cmspagedtls_data); die;
+    $aboutpage_data=array();
+    foreach($cmspagedtls_data as $key=>$value)
+    {
+      $aboutpage_data[$value->slag]=$value->description;
+    }  
+    //echo "<pre>"; print_r($aboutpage_data); die;
+		return view('pages.about',compact('aboutpage_data'));
 	}
 
 	public function services()
 	{
-        $service_lists = MedicalFacility::all();
-        //echo "<pre>"; print_r($service_lists); die;
-        return view('pages.services')->with('service_lists',$service_lists);
+      $service_lists = MedicalFacility::all();
+      //echo "<pre>"; print_r($service_lists); die;
+      return view('pages.services')->with('service_lists',$service_lists);
 	}
 	public function servicedetails($id)
 	{
-		$service_data = MedicalFacility::findOrFail($id);
-		//echo "<pre>"; print_r($service_data); die;
-        return view('pages.servicedetails')->with('service_data', $service_data);
+		  $service_data = MedicalFacility::findOrFail($id);
+		  //echo "<pre>"; print_r($service_data); die;
+      return view('pages.servicedetails')->with('service_data', $service_data);
 	}
 	public function enquiry()
 	{
@@ -58,7 +70,7 @@ class PagesController extends Controller
 	{
 		$doctor_data = Doctor::all();
 		//echo "<pre>"; print_r($doctor_data); die;
-        return view('pages.doctors')->with('doctor_data',$doctor_data);
+    return view('pages.doctors')->with('doctor_data',$doctor_data);
 		//return view('pages.doctors');
 	}
 
@@ -73,21 +85,35 @@ class PagesController extends Controller
 
 	public function contact()
 	{
-		return view('pages.contact');
+    $cmspage_data = Cmspage::select(['id'])->where('pagename', '=', 'contactus')->get();
+    //echo "<pre>"; echo $cmspage_data[0]->id; die;
+    $cmspagedtls_data = CmsPageDetail::where('cmspage_id', '=',$cmspage_data[0]->id)->get();
+    //echo "<pre>"; print_r($cmspagedtls_data); die;
+    $contactpage_data=array();
+    foreach($cmspagedtls_data as $key=>$value)
+    {
+      $contactpage_data[$value->slag]=$value->description;
+    }  
+    //echo "<pre>"; print_r($contactpage_data); die;
+    /* $response = \GoogleMaps::load('geocoding')
+          ->setParam (['address' =>'santa cruz'])
+          ->get(); 
+      echo "<pre>"; print_r($response); die;*/
+    return view('pages.contact',compact('contactpage_data'));
 	}
 
   public function news()
 	{
-        $news_lists = News::all();
+      $news_lists = News::all();
         //echo "<pre>"; print_r($news_lists); die;
-        return view('pages.news')->with('news_lists',$news_lists);
+      return view('pages.news')->with('news_lists',$news_lists);
 	}
 
 	public function newsdetails($id)
 	{
-		$news_data = News::findOrFail($id);
-		//echo "<pre>"; print_r($news_data); die;
-    return view('pages.newsdetails')->with('news_data',$news_data);
+		  $news_data = News::findOrFail($id);
+		  //echo "<pre>"; print_r($news_data); die;
+      return view('pages.newsdetails')->with('news_data',$news_data);
 	}
 
 	public function faqs()
@@ -99,17 +125,17 @@ class PagesController extends Controller
 
 	public function connectivity()
 	{
-        //$faqs_lists = Faq::all();
-        //echo "<pre>"; print_r($faqs_lists); die;
-        //return view('pages.faqs')->with('faqs_lists',$faqs_lists);
-        return view('pages.connectivity');
+      //$faqs_lists = Faq::all();
+      //echo "<pre>"; print_r($faqs_lists); die;
+      //return view('pages.faqs')->with('faqs_lists',$faqs_lists);
+      return view('pages.connectivity');
 	}
 
 	public function immigration()
 	{
-    $immigration_lists = Immigration::all();
-    //echo "<pre>"; print_r($immigration_lists); die;
-    return view('pages.immigration')->with('immigration_lists',$immigration_lists);
+      $immigration_lists = Immigration::all();
+      //echo "<pre>"; print_r($immigration_lists); die;
+      return view('pages.immigration')->with('immigration_lists',$immigration_lists);
 	}
 
 	public function visa()
@@ -128,20 +154,50 @@ class PagesController extends Controller
 
   public function disclaimer()
   {
-        //$faqs_lists = Faq::all();
-        //echo "<pre>"; print_r($faqs_lists); die;
-        //return view('pages.faqs')->with('faqs_lists',$faqs_lists);
-        return view('pages.disclaimer');
+        $cmspage_data = Cmspage::select(['id'])->where('pagename', '=', 'disclaimer')->get();
+        //echo "<pre>"; echo $cmspage_data[0]->id; die;
+        $cmspagedtls_data = CmsPageDetail::where('cmspage_id', '=',$cmspage_data[0]->id)->get();
+        //echo "<pre>"; print_r($cmspagedtls_data); die;
+        $disclaimer_data=array();
+        foreach($cmspagedtls_data as $key=>$value)
+        {
+          $disclaimer_data[$value->slag]=$value->description;
+        }  
+        //echo "<pre>"; print_r($disclaimer_data); die;
+        
+        return view('pages.disclaimer',compact('disclaimer_data'));
   }
 
   public function privacypolicy()
   {
-        //$faqs_lists = Faq::all();
-        //echo "<pre>"; print_r($faqs_lists); die;
-        //return view('pages.faqs')->with('faqs_lists',$faqs_lists);
-        return view('pages.privacypolicy');
+       $cmspage_data = Cmspage::select(['id'])->where('pagename', '=', 'privacypolicy')->get();
+        //echo "<pre>"; echo $cmspage_data[0]->id; die;
+        $cmspagedtls_data = CmsPageDetail::where('cmspage_id', '=',$cmspage_data[0]->id)->get();
+        //echo "<pre>"; print_r($cmspagedtls_data); die;
+        $privacy_policy_data=array();
+        foreach($cmspagedtls_data as $key=>$value)
+        {
+          $privacy_policy_data[$value->slag]=$value->description;
+        }  
+        //echo "<pre>"; print_r($privacy_policy_data); die;
+        
+        return view('pages.privacypolicy',compact('privacy_policy_data'));
   }
-
+  public function sitemap()
+  {
+        $cmspage_data = Cmspage::select(['id'])->where('pagename', '=', 'sitemap')->get();
+        //echo "<pre>"; echo $cmspage_data[0]->id; die;
+        $cmspagedtls_data = CmsPageDetail::where('cmspage_id', '=',$cmspage_data[0]->id)->get();
+        //echo "<pre>"; print_r($cmspagedtls_data); die;
+        $sitemap_data=array();
+        foreach($cmspagedtls_data as $key=>$value)
+        {
+          $sitemap_data[$value->slag]=$value->description;
+        }  
+        //echo "<pre>"; print_r($sitemap_data); die;
+        
+        return view('pages.sitemap',compact('sitemap_data'));
+  }
   public function check_user_exist(Request $request) {
     $email_id = $request->input('email_id');
     $patient = \App\Patient::where('email_id',$email_id)->first();

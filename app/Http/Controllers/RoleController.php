@@ -12,7 +12,7 @@ class RoleController extends Controller
     }
 
     public function index() {
-      $data = \App\Role::all();
+      $data = \App\Role::where('status', '!=', 2)->get();
 
       return view('admin.role.index')->with('data',$data);
     }
@@ -23,7 +23,7 @@ class RoleController extends Controller
 
     public function add(Request $request) {
       $this->validate($request,[
-        'role_name' => 'required|max:25',
+        'role_name' => 'required|max:25|unique:roles',
         'status' => 'required'
       ],[
         'role_name.required' => 'Please enter role name',
@@ -49,7 +49,7 @@ class RoleController extends Controller
     public function update(Request $request, $id) {
       if($id) {
         $this->validate($request,[
-          'role_name' => 'required|max:25',
+          'role_name' => 'required|max:25|unique:language_capabilities,role_name,'.$id,
           'status' => 'required'
         ],[
           'role_name.required' => 'Please enter role name',
@@ -67,10 +67,23 @@ class RoleController extends Controller
       }
     }
 
-    public function delete(Request $request, $id) {
+    /* public function delete(Request $request, $id) {
       if(\App\Role::find($id)->delete()) {
         $request->session()->flash("message", "Role deleted successfully");
         return redirect('/admin/role');
       }
+    } */
+
+    public function delete(Request $request,$id) {
+        if($id) {
+            $roleobj = \App\Role::find($id);
+            $status = '2';
+            $roleobj->status = $status; 
+            $del = $roleobj->save();
+            if($del) {      
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/role');
+            }
+        }
     }
 }

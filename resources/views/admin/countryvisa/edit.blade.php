@@ -33,13 +33,13 @@
              <!-- if there are creation errors, they will show here -->
              
             <!-- /.box-header -->
-            @if($errors->any())
+            <!-- @if($errors->any())
               <div class="alert alert-danger">
                   @foreach($errors->all() as $error)
                       <p>{{ $error }}</p>
                   @endforeach
               </div>
-            @endif
+            @endif -->
             <div class="box-body">
                  {{ Form::model($cntvisa_data,array('method' => 'PATCH','role'=>'form','files' => true,'url' => array('admin/countryvisa/update', $cntvisa_data->id),'id'=>'countryvisa_edit')) }}
                     
@@ -48,6 +48,7 @@
                         <div class="form-group">
                            {!! Html::decode(Form::label('country_id','Country: <span style="color:red;">*</span>')) !!}
                            {!! Form::select('country_id',['' => 'Select'] +$countries, null, ['class' => 'form-control select2']) !!}
+                           {!! Html::decode('<span class="text-danger">'.$errors->first("country_id").'</span>') !!}
                         </div>
                         <!-- /.form-group dropdown-->
 
@@ -56,6 +57,7 @@
                           {!! Html::decode(Form::label('upload_pdf','Upload pdf: <span style="color:red;">* (Please upload pdf only)</span>')) !!}
                          <a href="{{url('/uploads/countryvisa/'.$cntvisa_data->upload_pdf)}}" target="_blank">PDF LINK</a>
                           {!! Form::file('upload_pdf', null) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("upload_pdf").'</span>') !!}
                         </div>
                          <!-- /.file input -->
                          

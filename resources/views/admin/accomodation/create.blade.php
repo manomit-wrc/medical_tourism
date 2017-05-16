@@ -33,28 +33,26 @@
               <h3 class="box-title">General Elements</h3>
             </div> -->
             <!-- /.box-header -->
-            @if($errors->any())
+            <!-- @if($errors->any())
               <div class="alert alert-danger">
                   @foreach($errors->all() as $error)
                       <p>{{ $error }}</p>
                   @endforeach
               </div>
-            @endif
+            @endif -->
             <div class="box-body">
              
                  {!! Form::open(array('method' => 'POST','role'=>'form','url'=>'admin/accomodation/store','id'=>'accomodation_add')) !!}
                     
-                    <div class="col-md-6">
-                        
+                    <div class="col-md-6">                 
 
                         <!-- text input -->
                         <div class="form-group">
                           {!! Html::decode(Form::label('name','Accomodation name: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('name','',array('class'=>'form-control','id'=>'name','placeholder'=>'Enter accomodation name')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("name").'</span>') !!}
                         </div>
-                        <!-- /.text input -->
-
-                        
+                        <!-- /.text input -->                        
                          <!-- input submit button -->
                         <div>
                            {!! Form::submit('submit',array('class'=>'btn btn-primary pull-left','id'=>'exact-submit-button'))!!}

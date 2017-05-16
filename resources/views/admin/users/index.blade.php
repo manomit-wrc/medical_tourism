@@ -1,4 +1,5 @@
 @extends('admin.layouts.dashboard_layout')
+@section('title', 'User')
 @section('content')
  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -42,15 +43,16 @@
                 </thead>
 
                 <tbody>
+               
                   @if (count($user_data) > 0)
                   
                     @foreach($user_data as $d)
                       <tr>
-                        <td>{{ $d->roles[0]->name }}</td>
+                        <td>{{ !empty($d->roles[0]) ? $d->roles[0]->name : 'N/A' }}</td>
                         <td>{{ $d->name }}</td>
                         <td>
-                          <a href="{!!URL::to('/admin/adminuser/edit',$d->id)!!}" class="btn btn-primary">Edit</a>&nbsp;|&nbsp;
-                          <a href="/admin/adminuser/delete/{{$d->id}}" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger" >Delete</a>
+                          <a href="{!!URL::to('/admin/adminuser/edit',$d->id)!!}" class="btn btn-primary">Edit</a>
+                          <a href="javascript:void(0)" onclick="return deldata('{!!URL::to('/admin/adminuser/delete',$d->id)!!}')" class="btn btn-danger" >Delete</a>
                         </td>
                       </tr>
                     @endforeach
