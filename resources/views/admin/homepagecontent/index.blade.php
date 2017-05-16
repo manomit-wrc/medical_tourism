@@ -50,7 +50,7 @@
 
                         <div class="form-group">
                           {!! Html::decode(Form::label('accomodation_left_image','Accomodation Left Image: <span style="color:red;">* (Image must be minimum of 360x167)</span>')) !!}
-                          <img src="{{url('/uploads/homepagecontent/thumb_360_167/'.$homepagecondata[0]->accomodation_left_image)}}" alt="Accomodation Left Image"><br />
+                          <img src="{{url('/uploads/homepagecontent/thumb_360_167/'.$homepagecondata[0]->accomodation_left_image)}}" alt="Accomodation Left Image" class="img_broder"><br />
                           {!! Form::file('accomodation_left_image', null) !!}
                         </div>
 
@@ -67,7 +67,7 @@
                         </div>
                         <div class="form-group">
                           {!! Html::decode(Form::label('accomodation_middle_image','Accomodation Middle Image: <span style="color:red;">* (Image must be minimum of 360x167)</span>')) !!}
-                          <img src="{{url('/uploads/homepagecontent/thumb_360_167/'.$homepagecondata[0]->accomodation_middle_image)}}" alt="Accomodation Left Image"><br />
+                          <img src="{{url('/uploads/homepagecontent/thumb_360_167/'.$homepagecondata[0]->accomodation_middle_image)}}" alt="Accomodation Left Image" class="img_broder"><br />
                           {!! Form::file('accomodation_middle_image', null) !!}
                         </div>
                         <div class="form-group">
@@ -83,7 +83,7 @@
                         </div>
                         <div class="form-group">
                           {!! Html::decode(Form::label('accomodation_right_image','Accomodation Right Image: <span style="color:red;">* (Image must be minimum of 360x167)</span>')) !!}
-                          <img src="{{url('/uploads/homepagecontent/thumb_360_167/'.$homepagecondata[0]->accomodation_right_image)}}" alt="Accomodation Left Image"><br />
+                          <img src="{{url('/uploads/homepagecontent/thumb_360_167/'.$homepagecondata[0]->accomodation_right_image)}}" alt="Accomodation Left Image" class="img_broder"><br />
                           {!! Form::file('accomodation_right_image', null) !!}
                         </div>
                         <div class="form-group">
