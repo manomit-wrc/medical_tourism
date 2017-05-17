@@ -37,12 +37,13 @@ class User extends Authenticatable
     {
       $user_details = User::find($user_id);
       $roles =   $user_details->roles()->wherePivot('user_id', '=', $user_id)->first();
+      //echo "<pre>"; print_r($roles); die;
       if($roles) {
         if(\App\Permission::where([['permission_name', 'like', '%' . $action . '%'],'role_id'=>$roles->id])->first()) {
   	       return true;
         }
         else {
-         return true;
+         return false;
         }
       }
       else {

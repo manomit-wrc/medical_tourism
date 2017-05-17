@@ -205,7 +205,7 @@ $(function () {
 
     });
 
-    $("#role").change(function(e){
+    $("#role").change(function(e){ //alert();
       var value = $(this).val();
       $(".chk-route-list").prop('checked',false);
       if(value) {
@@ -213,7 +213,7 @@ $(function () {
           type:"POST",
           url: "/admin/permission/get_permission/",
           data: {role_id:value,_token:"{{csrf_token()}}"},
-          success:function(response) {
+          success:function(response) { //alert(response);
             if(response.status == 1) {
               for(var i=0;i<response.data.length;i++) {
                 $("#"+response.data[i].permission_id).prop('checked',true);
