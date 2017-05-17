@@ -22,7 +22,7 @@
                                 </div>
 
 
-                                <img src="{!! Auth::guard('front')->user()->photo() !!}" alt="">
+                                <img src="{!! Auth::guard('front')->user()->photo() !!}" alt="image">
                             </div>
 
                             <h5 class="user_name">{{Auth::guard('front')->user()->first_name}}&nbsp;{{Auth::guard('front')->user()->last_name}}</h5>
