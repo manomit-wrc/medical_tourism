@@ -9,7 +9,8 @@
             <div class="col-md-5">
                  <div class="rightlinks">
                    @if(Auth::guard('front')->check())
-                     <img src="{!! Auth::guard('front')->user()->thumb() !!}" alt=""> Welcome Mr. {{ Auth::guard('front')->user()->last_name }},
+                    <span id="profileheaderimg">
+                     <img src="{!! Auth::guard('front')->user()->thumb() !!}" alt=""></span><a href="{!!URL::to('/profile')!!}" style="color:#000"> Welcome {{ (Auth::guard('front')->user()->title)?Auth::guard('front')->user()->title:'' }}{{ Auth::guard('front')->user()->last_name }},</a>
                      <a href="/patient-logout" class="logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
                    @else
                      <ul>
@@ -26,9 +27,9 @@
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal" onclick="loginrefresh()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel"><i class="fa fa-user" aria-hidden="true"></i> USER LOGIN</h4>
-                    <div class="login">Email ID or Password is invalid</div>
+                    <div class="login" style="display:none;"></div>
                   </div>
                   <form name="frmLogin" id="frmLogin" method="post">
                   <div class="modal-body">
@@ -62,9 +63,9 @@
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal" onclick="signuprefresh()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel"><i class="fa fa-lock" aria-hidden="true"></i> Patient Registration</h4>
-                    <div class="registration">Registration successfully done. Email activation link is sent to your email</div>
+                    <h4 class="registration" style="display:none;"></h4>
                   </div>
                   <form name="frmRegistration" id="frmRegistration" method="post" >
                   <div class="modal-body">

@@ -243,7 +243,6 @@ class PagesController extends Controller
 
   public function patient_login(Request $request) {
     if($request->ajax()) {
-
       if(Auth::guard('front')->attempt(['email_id'=>$request->email_id, 'password'=>$request->password, 'status'=> '1'], $request->remember_me)) {
     		return response()->json(['status'=>'1']);
     	}
@@ -431,8 +430,57 @@ class PagesController extends Controller
     $country_details = \App\Patient::with('countries')->find(Auth::guard('front')->user()->id)->toArray();
     $state_details = \App\Patient::with('states')->find(Auth::guard('front')->user()->id)->toArray();
     $city_details = \App\Patient::with('cities')->find(Auth::guard('front')->user()->id)->toArray();
-    return view('pages.upload_document')->with(['country_details'=>$country_details,'state_details'=>$state_details,'city_details'=>$city_details]);
-    
+    return view('pages.upload_document')->with(['country_details'=>$country_details,'state_details'=>$state_details,'city_details'=>$city_details]);    
+  }
+
+  public function profile_image_upload(Request $request) {   
+    $fielava = $_FILES['avators']['name']; 
+    $arr = explode('.',$fielava);
+    $end = end($arr);       
+    $patients = \App\Patient::find(Auth::guard('front')->user()->id);    
+    if($patients) {
+      if($fielava !=''){
+      $allowed2 = array('bmp','gif','jpg','jpeg','png');
+      if (!in_array($end, $allowed2)) {        
+        $returnArr = array('status'=>'2','msg'=>'The type of file you are trying to upload is not allowed');
+      } else {
+      if($request->hasFile('avators')) {
+        $file = $request->file('avators');
+        $fileName = time().'_'.$file->getClientOriginalName();
+        //thumb destination path
+        $destinationPath = public_path().'/uploads/patients/thumb';
+        $img = Image::make($file->getRealPath());
+        $img->resize(25, 25, function ($constraint){
+            $constraint->aspectRatio();
+        })->save($destinationPath.'/'.$fileName);
+
+        //original destination path
+        $destinationPath = public_path().'/uploads/patients/' ;
+        $img = Image::make($file->getRealPath());
+
+        $img->resize(150, 150, function ($constraint){
+            $constraint->aspectRatio();
+        })->save($destinationPath.'/'.$fileName);
+        unlink(public_path().'/uploads/patients/thumb'.'/'.$patients->avators);
+        unlink(public_path().'/uploads/patients'.'/'.$patients->avators);
+      }
+      else {
+        $fileName = $patients->avators;
+      }      
+      $patients->avators = $fileName;
+      $save= $patients->save();
+      if($save) {              
+          $returnArr = array('status'=>'1','image_name'=>$fileName,'msg'=>'Inserted Successfully');
+      }else{
+          $returnArr = array('status'=>'0','msg'=>'Inserted Faliure');
+      }
+    }
+  }else{
+    $returnArr = array('status'=>'3','msg'=>'Please select an image');
+  }
+  }
+    echo json_encode($returnArr);
+    die(); 
   }
 
 }

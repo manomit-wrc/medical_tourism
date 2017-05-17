@@ -12,10 +12,8 @@
                       <div class="col-md-4">
                           <div class="qtbox">
                             <div class="user_img">
-                                <div class="editP"><a href="javascript:void(0)"><i class="fa fa-pencil" aria-hidden="true"></i></a></div>
-
-
-                                <img src="{!! Auth::guard('front')->user()->photo() !!}" alt="">
+                                <div class="editP"><a href="javascript:void(0)" data-toggle="modal" data-target="#profileimage_modal"><i class="fa fa-pencil" aria-hidden="true"></i></a></div>
+                                <span id="upload"><img src="{!! Auth::guard('front')->user()->photo() !!}" alt=""></span>
                             </div>
 
                             <h4 class="user_name">{{Auth::guard('front')->user()->first_name}}&nbsp;{{Auth::guard('front')->user()->last_name}}</h4>

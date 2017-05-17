@@ -38,6 +38,7 @@ Route::post('/patient-registration','PagesController@patient_registration');
 Route::post('/patient-login','PagesController@patient_login');
 Route::get('/search-place','SearchController@search_place');
 Route::post('search-data','SearchController@search_data');
+ Route::post('/profile_image_upload','PagesController@profile_image_upload');
 
 Route::group(['middleware' => ['front']], function() {
 	Route::get('/profile','PagesController@patient_profile');
