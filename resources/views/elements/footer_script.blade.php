@@ -161,6 +161,11 @@
                   success:function(response) {
                     if(response.status == 1)
                     {
+                      $("#first_name").val(''),
+                      $("#last_name").val(''),
+                      $("#email_id").val(''),
+                      $("#mobile_no").val(''),
+                      $("#password").val('')
                       $(".registration").html(response.msg);
                       $(".registration").addClass('registration-success');
                       $(".registration").removeClass('registration-error');
@@ -219,16 +224,18 @@
                   success:function(response) {
                     if(response.status == 1)
                     {
-                      $(".login").html("");
+                      $(".login").css("display","none");
+                      $(".login").html(""); 
                       window.location.href="/profile";
                     }
                     else {
-
+                      $(".login").show();
+                      $(".login").css("display","block"); 
                       $(".login").html("Email ID or Password is invalid");
                       $(".login").addClass('registration-error');
                       $(".login").removeClass('registration-success');
                     }
-                    $(".login").show();
+                    /*$(".login").show();*/
                     $("#btnLogin").prop('disabled', false);
 
                   },
