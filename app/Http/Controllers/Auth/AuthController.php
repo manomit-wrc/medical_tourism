@@ -48,7 +48,7 @@ class AuthController extends Controller
         ]);
     }
 
-    /**
+    /*
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
