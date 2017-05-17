@@ -51,20 +51,26 @@
                     @php
                      $chkvar=''; 
                     @endphp
+                    
                     @foreach($routeCollection as $key => $rc)
-                    @php
-                     //print_r(explode("/",$rc->getPath()));
-                     $var=explode("/",$rc->getPath()); 
-                    @endphp
-                    @if($var[0]=='admin')
-                      <div class="col-xs-6">
-                        <p><b>{{ (!empty($var[1]) && $chkvar!=$var[1])?$var[1]:"" }}</b></p>
-                         <input type="checkbox" id="ch{{ $key }}"  class="chk-route-list" value="{{ $rc->getPath() }}" autofocus > {{ $rc->getPath() }}
-                      </div>
-                      @php 
-                      $chkvar=!empty($var[1])?$var[1]:"";
-                      @endphp
-                    @endif
+                    
+                        @php
+                         //print_r(explode("/",$rc->getPath()));
+                         $var=explode("/",$rc->getPath()); 
+                        @endphp
+                        
+                        @if($var[0]=='admin')
+                         <div class="col-xs-12">
+                          <p><b>{{ (!empty($var[1]) && $chkvar!=$var[1])?$var[1]:"" }}</b></p>
+                          
+                          <div class="col-xs-6">
+                             <input type="checkbox" id="ch{{ $key }}"  class="chk-route-list" value="{{ $rc->getPath() }}" autofocus > {{ $rc->getPath() }}
+                          </div>
+                        </div>
+                          @php 
+                          $chkvar=!empty($var[1])?$var[1]:"";
+                          @endphp
+                        @endif
                     @endforeach
                     <div class="box-footer">
                       <input type="button" name="submit" id="exact-submit-button" class="btn btn-primary pull-right exact-submit-button" value="Submit" >

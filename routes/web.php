@@ -38,7 +38,7 @@ Route::post('/patient-registration','PagesController@patient_registration');
 Route::post('/patient-login','PagesController@patient_login');
 Route::get('/search-place','SearchController@search_place');
 Route::post('search-data','SearchController@search_data');
- Route::post('/profile_image_upload','PagesController@profile_image_upload');
+Route::post('/profile_image_upload','PagesController@profile_image_upload');
 
 Route::group(['middleware' => ['front']], function() {
 	Route::get('/profile','PagesController@patient_profile');
@@ -257,11 +257,11 @@ Route::group(['middleware' => ['admin']], function () {
 
     //Admin permission section
     Route::get('/admin/permission/','AdminUserController@permission');
-    Route::post('/admin/store_permission/', 'AdminUserController@store_permission');
-    Route::post('/admin/get_permission/','AdminUserController@get_permission');
+    Route::post('/admin/permission/store_permission/', 'AdminUserController@store_permission');
+    Route::post('/admin/permission/get_permission/','AdminUserController@get_permission');
 
     //Patient section
-    Route::get('/admin/patients', 'PatientController@index');
+    Route::get('/admin/patients','PatientController@index');
     Route::get('/admin/patients/create','PatientController@create');
     Route::post('/admin/patients/store','PatientController@store');
     Route::get('/admin/patients/edit/{id}','PatientController@edit');
@@ -313,9 +313,9 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('/admin/hospitals/store_treatment/', 'HospitalController@store_treatment');
     Route::get('/admin/hospitals/medicaltest/{id}','HospitalController@medicaltest');
     Route::post('/admin/hospitals/store_medicaltest/','HospitalController@store_medicaltest');
-    Route::post('/admin/ajaxstoremedicaltest/','HospitalController@ajaxstoremedicaltest');
+    Route::post('/admin/hospitals/ajaxstoremedicaltest/','HospitalController@ajaxstoremedicaltest');
     Route::post('/admin/hospitals/gettestarr/','HospitalController@gettestarr');
-    Route::post('/admin/ajaxstoretreatment/','HospitalController@ajaxstoretreatment');
+    Route::post('/admin/hospitals/ajaxstoretreatment/','HospitalController@ajaxstoretreatment');
     Route::post('/admin/hospitals/gettreatarr/','HospitalController@gettreatarr');
     Route::post('/admin/hospitals/changestatus/','HospitalController@ajaxhoschangestatus');
 
