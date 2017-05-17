@@ -97,6 +97,7 @@ class AdminUserController extends Controller
         return redirect('/admin/adminuser');
       }
     }*/
+    
     public function delete(Request $request,$id) {
         if($id) {
             $user_details = User::find($id);
@@ -111,7 +112,8 @@ class AdminUserController extends Controller
     }
 
     public function permission() {
-      $routeCollection = Route::getRoutes();      
+      $routeCollection = Route::getRoutes(); 
+      //echo "<pre>"; print_r($routeCollection); die;   
       $role_list = Role::get()->pluck('name','id');
       return view('admin.users.permission')->with(['routeCollection' => $routeCollection,'role_list' => $role_list]);
     }
