@@ -1,0 +1,292 @@
+
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+
+	.nav > li > a{
+		padding: 13px 10px !important;
+		font-size: 12px !important;
+	}
+
+	.carousel-caption{
+		right: 12% !important;
+	}
+
+	.jcarousel-control-prev{
+		left: -3px !important;
+	}
+
+	.jcarousel-control-next{
+		right: -3px !important;
+	}
+
+
+	.jcarousel-control-prev, .jcarousel-control-next{
+		margin-top: -25px !important;
+	}
+
+	.footer h3{
+		font-size: 15px !important;
+	}
+
+	.socialF{
+		width: 36px !important;
+		height: 36px !important;
+		line-height: 36px !important;
+	}
+
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+	.logo{
+		position: static !important;
+		margin-top: 20px;
+	}
+
+	.call{
+		text-align: center;
+		margin: 12px 0 !important;
+	}
+
+	.rightlinks{
+		margin: 0 !important;
+		text-align: center !important;
+	}
+
+	.navbar-default .navbar-nav > li > a{
+		font-size: 12px !important;
+	}
+
+	.navbar-right li a{
+		padding: 13px 16px  !important;
+	}
+
+	.banner_text{
+		display: none  !important;
+	}
+
+	.carousel-caption{
+		text-align: center !important;
+	}
+
+	.fieldbox{
+		width: 31.3% !important;
+		margin-bottom: 15px;
+	}
+
+	.fieldsearch{
+		width: 98% !important;
+	}
+
+	.jcarousel-control-prev{
+		display: none;
+	}
+
+	.jcarousel-control-next{
+		display: none;
+	}
+
+	.pagimob{
+		display: block !important;
+	}
+
+	.rightP{
+		text-align: center;
+		margin-top: 30px;
+	}
+
+	.rightP h3{
+		text-align: center !important;
+	}
+
+	.rightP p{
+		text-align: center !important;
+	}
+
+	.footer{
+		text-align: center;
+	}
+
+	.socialF{
+		display: inline-block !important;
+		float: none !important;
+		margin: 0 5px !important;
+	}
+
+	.copy{
+		text-align: left;
+	}
+
+	.viewdetails{
+		float: none !important;
+	}
+
+	.socialD{
+		display: inline-block !important;
+		float: none !important;
+	}
+
+}
+
+
+	@media only screen and (min-width: 320px) and (max-width: 767px) {
+
+	.logo{
+		position: static !important;
+		margin-top: 20px;
+	}
+
+	.call{
+		text-align: center;
+		margin: 12px 0 !important;
+	}
+
+	.rightlinks{
+		margin: 0 !important;
+		text-align: center !important;
+	}
+
+	.navbar-default .navbar-nav > li > a{
+		font-size: 12px !important;
+	}
+
+	.navbar-default .active::after{
+		display: none;
+	}
+
+	.navbar-right li a{
+		padding: 13px 16px  !important;
+	}
+
+	.banner_text{
+		display: none  !important;
+	}
+
+	.carousel-caption{
+		text-align: center !important;
+		display: none;
+	}
+
+	.fieldbox{
+		width: 90% !important;
+		margin: 10px auto !important;
+		float: none !important;
+	}
+
+	.fieldsearch{
+		width: 90% !important;
+		margin: 10px auto !important;
+		float: none !important;
+	}
+
+	.jcarousel-control-prev{
+		display: none;
+	}
+
+	.jcarousel-control-next{
+		display: none;
+	}
+
+	.pagimob{
+		display: block !important;
+	}
+
+	.carousel-control img{
+		width: 30px !important;
+	}
+
+	.description{
+		text-align: center;
+	}
+
+	.owl-theme .owl-controls{
+		margin: 0 !important;
+		text-align: center !important;
+	}
+
+	.ssbg h2{
+		text-align: center !important;
+		font-size: 33px !important;
+	}
+
+	.copy{
+		text-align: center;
+		padding-bottom: 10px;
+	}
+
+	.designby{
+		text-align: center !important;
+	}
+
+	.footer{
+		text-align: center;
+	}
+
+	.socialF{
+		display: inline-block !important;
+		float: none !important;
+		margin: 0 5px !important;
+	}
+
+	.rightP{
+		text-align: center;
+		margin-top: 30px;
+	}
+
+	.rightP h3{
+		text-align: center !important;
+	}
+
+	.rightP p{
+		text-align: center !important;
+	}
+
+	.viewdetails{
+		float: none !important;
+	}
+
+	.socialD{
+		display: inline-block !important;
+		float: none !important;
+	}
+
+	.map{
+		margin-bottom: 30px;
+	}
+
+	.nav-tabs li{
+		width: 100%;
+	}
+
+	.listtypeleft2{
+		margin-right: 0 !important;
+		width: 100% !important;
+	}
+
+	.on767{
+		margin: 0px auto;
+		width: 200px;
+		text-align: center;
+	}
+
+	.address li strong{
+		width: 60% !important;
+	}
+
+}
+
+	@media screen and (max-width: 480px) {
+
+	.category h2{
+		font-size: 30px !important;
+	}
+
+	.medicalF h2{
+		font-size: 30px !important;
+	}
+
+	.accomodation h2{
+		font-size: 30px !important;
+	}
+
+}
