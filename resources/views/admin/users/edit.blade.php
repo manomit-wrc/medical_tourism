@@ -45,12 +45,13 @@
 
                       <span class="text-danger">{{ $errors->first('email') }}</span>
                     </div>
+                   
                     <div class="form-group {{ $errors->has('role') ? 'has-error' : '' }}">
                       <label for="name">Role: <span style="color:red;">*</span></label>
                       <select name="role" id="role" class="form-control" autofocus >
                         <option value="">Select Any</option>
                         @foreach($role_list as $key => $value)
-                        <option value="{{ $key }}" {{ $key == $user_data[0]->roles[0]->id? 'selected': '' }}>{{$value}}</option>
+                        <option value="{{ $key }}" {{ count($user_data[0]->roles)>0 ? $key == $user_data[0]->roles[0]->id? 'selected': '':'' }}>{{$value}}</option>
                         @endforeach
                       </select>
 
