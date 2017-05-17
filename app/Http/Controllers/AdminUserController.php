@@ -16,7 +16,7 @@ class AdminUserController extends Controller
     }
 
     public function index() {
-      $user_data = User::with('roles')->where('status', '!=', 2)->orderBy('id','desc')->get();     
+      $user_data = User::with('roles')->where('status', '!=', 2)->where('id', '!=', 1)->orderBy('id','desc')->get(); //Admin user will not be displayed    
       return view('admin.users.index',compact('user_data'));
     }
 
@@ -109,6 +109,21 @@ class AdminUserController extends Controller
                 return redirect('/admin/adminuser');
             }
         }
+    }
+
+    public function ajaxadminuserchangestatus(Request $request) { 
+        $id = $request->id;
+        $status = $request->status;     
+        $mt = User::find($id);  
+        $mt->status = $status; 
+        $upd = $mt->save();        
+        if($upd) {              
+          $returnArr = array('status'=>'1','msg'=>'Updated Successfully');
+        }else{
+          $returnArr = array('status'=>'0','msg'=>'Updated Faliure');
+        }          
+        echo json_encode($returnArr);
+        die();
     }
 
     public function permission() {

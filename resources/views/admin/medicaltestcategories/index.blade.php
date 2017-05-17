@@ -57,12 +57,12 @@
                         <td>
                           @if($medtescatval->status ==1)
                             <span data-toggle="tooltip" data-original-title="Click here to change status">
-                            <input type="checkbox" checked id="tog{{ $medtescatval->id }}" onchange="return changeStatus('/admin/ajaxmcatchangestatus',{{ $medtescatval->id }})" value="1"  data-toggle="toggle2">
+                            <input type="checkbox" checked id="tog{{ $medtescatval->id }}" onchange="return changeStatus('/admin/medicaltestcategories/changestatus',{{ $medtescatval->id }})" value="1"  data-toggle="toggle2">
                             </span>
                           @endif
                           @if($medtescatval->status ==0)
                           <span data-toggle="tooltip" data-original-title="Click here to change status">
-                            <input type="checkbox" id="tog{{ $medtescatval->id }}"  onchange="return changeStatus('/admin/ajaxmcatchangestatus',{{ $medtescatval->id }})" value="0" data-toggle="toggle2">
+                            <input type="checkbox" id="tog{{ $medtescatval->id }}"  onchange="return changeStatus('/admin/medicaltestcategories/changestatus',{{ $medtescatval->id }})" value="0" data-toggle="toggle2">
                           </span>
                           @endif
                         </td>                       

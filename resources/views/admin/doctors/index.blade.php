@@ -66,12 +66,12 @@
                         <td>
                           @if($dd->status ==1)
                             <span data-toggle="tooltip" data-original-title="Click here to change status">
-                            <input type="checkbox" checked id="tog{{ $dd->id }}" onchange="return changeStatus('/admin/ajaxdoctorchangestatus',{{ $dd->id }})" value="1"  data-toggle="toggle2">
+                            <input type="checkbox" checked id="tog{{ $dd->id }}" onchange="return changeStatus('/admin/doctors/changestatus',{{ $dd->id }})" value="1"  data-toggle="toggle2">
                             </span>
                           @endif
                           @if($dd->status ==0)
                           <span data-toggle="tooltip" data-original-title="Click here to change status">
-                            <input type="checkbox" id="tog{{ $dd->id }}"  onchange="return changeStatus('/admin/ajaxdoctorchangestatus',{{ $dd->id }})" value="0" data-toggle="toggle2">
+                            <input type="checkbox" id="tog{{ $dd->id }}"  onchange="return changeStatus('/admin/doctors/changestatus',{{ $dd->id }})" value="0" data-toggle="toggle2">
                           </span>
                           @endif
                         </td>

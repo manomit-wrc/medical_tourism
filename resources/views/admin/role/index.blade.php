@@ -59,12 +59,12 @@
                         <td>
                           @if($d->status ==1)
                             <span data-toggle="tooltip" data-original-title="Click here to change status">
-                            <input type="checkbox" checked id="tog{{ $d->id }}" onchange="return changeStatus('/admin/ajaxrolechangestatus',{{ $d->id }})" value="1"  data-toggle="toggle2">
+                            <input type="checkbox" checked id="tog{{ $d->id }}" onchange="return changeStatus('/admin/role/changestatus',{{ $d->id }})" value="1"  data-toggle="toggle2">
                             </span>
                           @endif
                           @if($d->status ==0)
                           <span data-toggle="tooltip" data-original-title="Click here to change status">
-                            <input type="checkbox" id="tog{{ $d->id }}"  onchange="return changeStatus('/admin/ajaxrolechangestatus',{{ $d->id }})" value="0" data-toggle="toggle2">
+                            <input type="checkbox" id="tog{{ $d->id }}"  onchange="return changeStatus('/admin/role/changestatus',{{ $d->id }})" value="0" data-toggle="toggle2">
                           </span>
                           @endif
                         </td>

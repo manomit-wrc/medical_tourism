@@ -15,6 +15,11 @@
 
       </ol>
     </section>
+     <style>
+        .toggle2 {
+          height: 23px !important;
+        }
+    </style>
 
     <!-- Main content -->
      <section class="content">
@@ -39,6 +44,7 @@
                     <th style="display:none;"></th>
                     <th>Role name</th>
                     <th>User name</th>
+                    <th>Status</th>
                     <th width="11%">Actions</th>
                   </tr>
                 </thead>
@@ -52,6 +58,18 @@
                         <td style="display:none;"><input type="hidden" value="{{ $d->id }}"></td>
                         <td>{{ !empty($d->roles[0]) ? $d->roles[0]->name : 'N/A' }}</td>
                         <td>{{ $d->name }}</td>
+                        <td>
+                          @if($d->status ==1)
+                            <span data-toggle="tooltip" data-original-title="Click here to change status">
+                            <input type="checkbox" checked id="tog{{ $d->id }}" onchange="return changeStatus('/admin/adminuser/changestatus',{{ $d->id }})" value="1"  data-toggle="toggle2">
+                            </span>
+                          @endif
+                          @if($d->status ==0)
+                          <span data-toggle="tooltip" data-original-title="Click here to change status">
+                            <input type="checkbox" id="tog{{ $d->id }}"  onchange="return changeStatus('/admin/adminuser/changestatus',{{ $d->id }})" value="0" data-toggle="toggle2">
+                          </span>
+                          @endif
+                        </td>
                         <td>
                           <a href="{!!URL::to('/admin/adminuser/edit',$d->id)!!}" class="btn btn-primary">Edit</a>
                           <a href="javascript:void(0)" onclick="return deldata('{!!URL::to('/admin/adminuser/delete',$d->id)!!}')" class="btn btn-danger" >Delete</a>

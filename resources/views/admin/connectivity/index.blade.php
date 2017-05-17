@@ -56,12 +56,12 @@
                         <td>
                           @if($connectivity_data->status ==1)
                             <span data-toggle="tooltip" data-original-title="Click here to change status">
-                            <input type="checkbox" checked id="tog{{ $connectivity_data->id }}" onchange="return changeStatus('/admin/ajaxconchangestatus',{{ $connectivity_data->id }})" value="1"  data-toggle="toggle2">
+                            <input type="checkbox" checked id="tog{{ $connectivity_data->id }}" onchange="return changeStatus('/admin/connectivity/changestatus',{{ $connectivity_data->id }})" value="1"  data-toggle="toggle2">
                             </span>
                           @endif
                           @if($connectivity_data->status ==0)
                           <span data-toggle="tooltip" data-original-title="Click here to change status">
-                            <input type="checkbox" id="tog{{ $connectivity_data->id }}"  onchange="return changeStatus('/admin/ajaxconchangestatus',{{ $connectivity_data->id }})" value="0" data-toggle="toggle2">
+                            <input type="checkbox" id="tog{{ $connectivity_data->id }}"  onchange="return changeStatus('/admin/connectivity/changestatus',{{ $connectivity_data->id }})" value="0" data-toggle="toggle2">
                           </span>
                           @endif
                         </td>

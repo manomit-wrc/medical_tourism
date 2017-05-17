@@ -48,10 +48,23 @@
                       <input type="button" name="btn_check_all" id="btn_check_all" class="btn btn-info pull-right" value="Check All" >
                       <input type="button" name="btn_uncheck_all" id="btn_uncheck_all" class="btn btn-info pull-right" value="Un-Check All" >
                     </div>
+                    @php
+                     $chkvar=''; 
+                    @endphp
                     @foreach($routeCollection as $key => $rc)
-                    <div class="col-xs-6">
-                    <input type="checkbox" id="ch{{ $key }}"  class="chk-route-list" value="{{ $rc->getPath() }}" autofocus >{{ $rc->getPath() }}
-                    </div>
+                    @php
+                     //print_r(explode("/",$rc->getPath()));
+                     $var=explode("/",$rc->getPath()); 
+                    @endphp
+                    @if($var[0]=='admin')
+                      <div class="col-xs-6">
+                        <p><b>{{ (!empty($var[1]) && $chkvar!=$var[1])?$var[1]:"" }}</b></p>
+                         <input type="checkbox" id="ch{{ $key }}"  class="chk-route-list" value="{{ $rc->getPath() }}" autofocus > {{ $rc->getPath() }}
+                      </div>
+                      @php 
+                      $chkvar=!empty($var[1])?$var[1]:"";
+                      @endphp
+                    @endif
                     @endforeach
                     <div class="box-footer">
                       <input type="button" name="submit" id="exact-submit-button" class="btn btn-primary pull-right exact-submit-button" value="Submit" >

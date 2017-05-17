@@ -144,9 +144,8 @@ $(function () {
   });
 </script>
 
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.2.0/jquery-confirm.min.css" >
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.2.0/jquery-confirm.min.js"></script>
+{!! Html::style('storage/admin/css/jquery-confirm.min.css') !!}
+{!!Html::script("storage/admin/js/jquery-confirm.min.js")!!}
 <script type="text/javascript">
   $(document).ready(function(e){
     var permissionArr = new Array();

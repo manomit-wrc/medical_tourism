@@ -62,12 +62,12 @@
                        <td>
                           @if($genmedval->status ==1)
                             <span data-toggle="tooltip" data-original-title="Click here to change status">
-                            <input type="checkbox" checked id="tog{{ $genmedval->id }}" onchange="return changeStatus('/admin/ajaxgenechangestatus',{{ $genmedval->id }})" value="1"  data-toggle="toggle2">
+                            <input type="checkbox" checked id="tog{{ $genmedval->id }}" onchange="return changeStatus('/admin/genericmedicine/changestatus',{{ $genmedval->id }})" value="1"  data-toggle="toggle2">
                             </span>
                           @endif
                           @if($genmedval->status ==0)
                           <span data-toggle="tooltip" data-original-title="Click here to change status">
-                            <input type="checkbox" id="tog{{ $genmedval->id }}"  onchange="return changeStatus('/admin/ajaxgenechangestatus',{{ $genmedval->id }})" value="0" data-toggle="toggle2">
+                            <input type="checkbox" id="tog{{ $genmedval->id }}"  onchange="return changeStatus('/admin/genericmedicine/changestatus',{{ $genmedval->id }})" value="0" data-toggle="toggle2">
                           </span>
                           @endif
                         </td>

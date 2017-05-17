@@ -58,12 +58,12 @@
                         <td>
                           @if($faq_cat_data->status ==1)
                             <span data-toggle="tooltip" data-original-title="Click here to change status">
-                            <input type="checkbox" checked id="tog{{ $faq_cat_data->id }}" onchange="return changeStatus('/admin/ajaxfaqcatchangestatus',{{ $faq_cat_data->id }})" value="1"  data-toggle="toggle2">
+                            <input type="checkbox" checked id="tog{{ $faq_cat_data->id }}" onchange="return changeStatus('/admin/faqcategories/changestatus',{{ $faq_cat_data->id }})" value="1"  data-toggle="toggle2">
                             </span>
                           @endif
                           @if($faq_cat_data->status ==0)
                           <span data-toggle="tooltip" data-original-title="Click here to change status">
-                            <input type="checkbox" id="tog{{ $faq_cat_data->id }}"  onchange="return changeStatus('/admin/ajaxfaqcatchangestatus',{{ $faq_cat_data->id }})" value="0" data-toggle="toggle2">
+                            <input type="checkbox" id="tog{{ $faq_cat_data->id }}"  onchange="return changeStatus('/admin/faqcategories/changestatus',{{ $faq_cat_data->id }})" value="0" data-toggle="toggle2">
                           </span>
                           @endif
                         </td>                      
