@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AddAboutToDoctors' => $baseDir . '/database/migrations/2017_05_08_042422_add_about_to_doctors.php',
+    'AddAddedByUsersTable' => $baseDir . '/database/migrations/2017_05_18_071731_add_added_by_users_table.php',
     'AddCountryIdCityIdImmigrationsTable' => $baseDir . '/database/migrations/2017_05_09_085912_add_country_id_city_id_immigrations_table.php',
     'AddCurrencyIdColumsToHotelsTable' => $baseDir . '/database/migrations/2017_04_25_091752_add_currency_id_colums_to_hotels_table.php',
     'AddNewsImageToNewsTable' => $baseDir . '/database/migrations/2017_05_05_113435_add_news_image_to_news_table.php',
@@ -14,6 +15,7 @@ return array(
     'AddPermissionIdToPermissions' => $baseDir . '/database/migrations/2017_04_25_125438_add_permission_id_to_permissions.php',
     'AddProcedureImageColumsToProceduresTable' => $baseDir . '/database/migrations/2017_04_24_130154_add_procedure_image_colums_to_procedures_table.php',
     'AddRememberTokenToPatientsTable' => $baseDir . '/database/migrations/2017_05_08_073932_add_remember_token_to_patients_table.php',
+    'AddSecurityCodePatientsTable' => $baseDir . '/database/migrations/2017_05_18_084353_add_security_code_patients_table.php',
     'AddSendMessageSendStatusContactusTable' => $baseDir . '/database/migrations/2017_05_16_062102_add_send_message_send_status_contactus_table.php',
     'AddStatusContactusTable' => $baseDir . '/database/migrations/2017_05_08_102311_add_status_contactus_table.php',
     'AddStatusToProceduresTables' => $baseDir . '/database/migrations/2017_04_13_074936_add_status_to_procedures_tables.php',

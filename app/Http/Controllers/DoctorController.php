@@ -16,8 +16,15 @@ class DoctorController extends Controller
     }
 
     public function index() {
-
-      $doctor_data = Doctor::where('status', '!=', 2)->get();
+      $login_user_id=Auth::guard('admin')->user()->id; 
+      if($login_user_id==1)//If admin login
+      {
+        $doctor_data = Doctor::where('status', '!=', 2)->get();
+      }
+      else//If login others
+      {
+        $doctor_data = Doctor::where('status', '!=', 2)->where('user_id','=',$login_user_id)->get();
+      }
       return view('admin.doctors.index')->with('doctor_data',$doctor_data);
     }
 

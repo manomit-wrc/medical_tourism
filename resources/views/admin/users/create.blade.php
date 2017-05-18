@@ -45,6 +45,7 @@
 
                       <span class="text-danger">{{ $errors->first('email') }}</span>
                     </div>
+
                     <div class="form-group {{ $errors->has('role') ? 'has-error' : '' }}">
                       <label for="name">Role: <span style="color:red;">*</span></label>
                       <select name="role" id="role" class="form-control" autofocus >
@@ -53,15 +54,16 @@
                         <option value="{{ $key }}">{{$value}}</option>
                         @endforeach
                       </select>
-
                       <span class="text-danger">{{ $errors->first('role') }}</span>
                     </div>
+
                     <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
                       <label for="name">Password: <span style="color:red;">*</span></label>
                       <input type="password" name="password" id="password" class="form-control" autofocus >
 
                       <span class="text-danger">{{ $errors->first('password') }}</span>
                     </div>
+                    
                     <div class="form-group {{ $errors->has('confirm_password') ? 'has-error' : '' }}">
                       <label for="name">Confirm Password: <span style="color:red;">*</span></label>
                       <input type="password" name="confirm_password" id="confirm_password" class="form-control" autofocus >
