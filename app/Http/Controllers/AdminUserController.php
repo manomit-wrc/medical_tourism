@@ -7,16 +7,25 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Role;
 use Illuminate\Support\Facades\Route;
+use Auth;
 
 
 class AdminUserController extends Controller
 {
     public function __construct(Request $request) {
-
+     
     }
 
     public function index() {
-      $user_data = User::with('roles')->where('status', '!=', 2)->where('id', '!=', 1)->orderBy('id','desc')->get(); //Admin user will not be displayed    
+      $login_user_id=Auth::guard('admin')->user()->id;
+      if($login_user_id==1)//If admin login
+      {
+       $user_data = User::with('roles')->where('status', '!=', 2)->where('id', '!=', 1)->orderBy('id','desc')->get(); //Admin user will not be displayed    
+      }
+      else
+      {
+       $user_data = User::with('roles')->where('status', '!=', 2)->where('id', '!=', 1)->where('added_by','=',$login_user_id)->orderBy('id','desc')->get(); //Admin user will not be displayed     
+      }
       return view('admin.users.index',compact('user_data'));
     }
 
@@ -30,20 +39,27 @@ class AdminUserController extends Controller
       $this->validate($request,[
         'name' => 'required|max:50',
         'email' => 'required|email|unique:users,email',
-        'password' => ['required','max:32','min:6','regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/'],
+        'password' => ['required','max:32','min:6','regex:/^(?=.*[a-z|A-Z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/'],
         'confirm_password' => 'same:password',
         'role' => 'required'
       ],[
         'name.required' => 'Please enter name',
         'name.max' => 'Name maximum have 50 characters',
-        'password.regex' => 'Password least one uppercase/lowercase letters and one number',
+        'password.required' => 'Please enter password',
+        'password.regex' => 'Password should contain atleast one uppercase/lowercase letter,one number and one special character',
         'role.required' => 'Please select role'
       ]);
+      
+      $login_user_id=Auth::guard('admin')->user()->id; //Login user id
 
       $user = new User();
       $user->name = $request->name;
       $user->email = $request->email;
       $user->password = bcrypt($request->password);
+      if($login_user_id!=1)//Login user other than super admin
+      {
+        $user->added_by =$login_user_id;
+      }  
       $user->save();
       $role_user = Role::where('id',$request->role)->first();
 
@@ -62,13 +78,13 @@ class AdminUserController extends Controller
       $this->validate($request,[
         'name' => 'required|max:50',
         'email' => 'required|email|unique:users,email,'.$request->id,
-        'password' => ['max:32','min:6','regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/'],
+        'password' => ['max:32','min:6','regex:/^(?=.*[a-z|A-Z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/'],
         'confirm_password' => 'same:password',
         'role' => 'required'
       ],[
         'name.required' => 'Please enter name',
         'name.max' => 'Name maximum have 50 characters',
-        'password.regex' => 'Password least one uppercase/lowercase letters and one number',
+        'password.regex' => 'Password should contain atleast one uppercase/lowercase letter,one number and one special character',
         'role.required' => 'Please select role'
       ]);
 
@@ -127,9 +143,18 @@ class AdminUserController extends Controller
     }
 
     public function permission() {
+      //echo "<pre>"; print_r(Auth::guard('admin')->user()); die;
+      $login_user_id=Auth::guard('admin')->user()->id; 
       $routeCollection = Route::getRoutes(); 
-      //echo "<pre>"; print_r($routeCollection); die;   
-      $role_list = Role::get()->pluck('name','id');
+      //echo "<pre>"; print_r($routeCollection); die; 
+
+      if($login_user_id==1)//If admin login
+      {  
+        $role_list = Role::get()->pluck('name','id');
+      }else{
+        $role_list = Role::where('id','!=',1)->get()->pluck('name','id');
+      } 
+      //echo "<pre>"; print_r($role_list); die; 
       return view('admin.users.permission')->with(['routeCollection' => $routeCollection,'role_list' => $role_list]);
     }
 

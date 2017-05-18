@@ -57,21 +57,30 @@
                         <td>{{ $d->name }}</td>
                         <!-- <td>{{ $d->status == '1' ? 'Active' : 'Inactive'}}</td> -->
                         <td>
-                          @if($d->status ==1)
-                            <span data-toggle="tooltip" data-original-title="Click here to change status">
-                            <input type="checkbox" checked id="tog{{ $d->id }}" onchange="return changeStatus('/admin/role/changestatus',{{ $d->id }})" value="1"  data-toggle="toggle2">
-                            </span>
-                          @endif
-                          @if($d->status ==0)
-                          <span data-toggle="tooltip" data-original-title="Click here to change status">
-                            <input type="checkbox" id="tog{{ $d->id }}"  onchange="return changeStatus('/admin/role/changestatus',{{ $d->id }})" value="0" data-toggle="toggle2">
-                          </span>
-                          @endif
+                         @if($d->id==1)<!--////Role 1 is for super admin do not active/deactivate it////--> 
+                            <div class="status-on">
+                              <span>On</span>
+                            </div>
+                         @else   
+                              @if($d->status ==1)
+                                <span data-toggle="tooltip" data-original-title="Click here to change status">
+                                <input type="checkbox" checked id="tog{{ $d->id }}" onchange="return changeStatus('/admin/role/changestatus',{{ $d->id }})" value="1"  data-toggle="toggle2">
+                                </span>
+                              @endif
+                              @if($d->status ==0)
+                              <span data-toggle="tooltip" data-original-title="Click here to change status">
+                                <input type="checkbox" id="tog{{ $d->id }}"  onchange="return changeStatus('/admin/role/changestatus',{{ $d->id }})" value="0" data-toggle="toggle2">
+                              </span>
+                              @endif
+                         @endif
                         </td>
                         <td>
-
-                          <a href="{!!URL::to('/admin/role/edit',$d->id)!!}" class="btn btn-primary">Edit</a>
-                          <a href="javascript:void(0)" onclick="return deldata('{!!URL::to('/admin/role/delete',$d->id)!!}')" class="btn btn-danger" >Delete</a>
+                          @if($d->id!=1)<!--////Role 1 is for super admin do not edit/delete it////--> 
+                             <a href="{!!URL::to('/admin/role/edit',$d->id)!!}" class="btn btn-primary">Edit</a>
+                             <a href="javascript:void(0)" onclick="return deldata('{!!URL::to('/admin/role/delete',$d->id)!!}')" class="btn btn-danger" >Delete</a>
+                          @else
+                          <span style="text-align: center;"> N/A</span>
+                          @endif 
                         </td>
                       </tr>
                     @endforeach
