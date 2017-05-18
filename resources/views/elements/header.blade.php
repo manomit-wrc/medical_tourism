@@ -45,13 +45,40 @@
                       <br clear="all">
                       <div class="remindbox">
                           <input name="remember_me" type="checkbox" value="1" /> &nbsp; Remember Me
-                          <span><a href="javascript:void(0)">Forgot Password?</a></span>
+                          <span><a href="javascript:void(0)" onclick="forgotpassword()">Forgot Password?</a></span>
                       </div>
-
                   </div>
                 </form>
                   <div class="modal-footer">
                     <button type="button" class="viewmoreBTN" id="btnLogin">SIGNIN</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- forgot pass Modal -->
+            <div class="modal fade" id="foggotPassModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" onclick="loginrefresh()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel"><i class="fa fa-user" aria-hidden="true"></i> Forgot Password</h4>
+                    <div class="login" style="display:none;"></div>
+                  </div>
+                  <form name="frmLogin" id="frmforgot" method="post">
+                  <div class="modal-body">
+                      <div class="infbox">
+                        <div class="userid"><i class="fa fa-user" aria-hidden="true"></i></div>
+                        <input name="forgot_email_id" id="forgot_email_id" type="text" class="loginuser" placeholder="Enter Email ID" />
+                      </div>                      
+                      <br clear="all">
+                      <div class="remindbox">                          
+                          <span><a href="javascript:void(0)" onclick="signin()">Sign in</a></span>
+                      </div>
+                  </div>
+                </form>
+                  <div class="modal-footer">
+                    <button type="button" class="viewmoreBTN" id="btnforgot">Recover</button>
                   </div>
                 </div>
               </div>
@@ -96,7 +123,6 @@
                         <div class="userid"><i class="fa fa-key" aria-hidden="true"></i></div>
                         <input name="password" id="password" type="password" class="loginuser" placeholder="Enter Password" />
                       </div>
-
                   </div>
                 </form>
                   <div class="modal-footer">

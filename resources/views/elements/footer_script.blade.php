@@ -20,6 +20,14 @@
         }
         $('#dob_days option[value="'+dob_days+'"]').attr('selected', true);
       }
+      function signin(){
+        $('#foggotPassModel').modal('hide');       
+        $("#LoginModal").modal('show');
+      }
+      function forgotpassword(){
+        $('#LoginModal').modal('hide');       
+        $("#foggotPassModel").modal('show');
+      }
       $(document).ready(function(){
           get_select_birthday();
           $("#dob_year").change(function(e){
@@ -83,8 +91,47 @@
             $("#btnRegistration").click(function(e){
               $("#frmRegistration").submit();
             });
+            $(document).ready(function() {
+              $('#first_name').keydown(function(event) {
+                if (event.keyCode == 13) {            
+                  $("#frmRegistration").submit();                   
+                }
+              });
+              $('#last_name').keydown(function(event) {
+                if (event.keyCode == 13) {            
+                  $("#frmRegistration").submit();                   
+                }
+              });
+              $('#email_id').keydown(function(event) {
+                if (event.keyCode == 13) {            
+                  $("#frmRegistration").submit();                   
+                }
+              });
+              $('#mobile_no').keydown(function(event) {
+                if (event.keyCode == 13) {            
+                  $("#frmRegistration").submit();                   
+                }
+              });
+              $('#password').keydown(function(event) {
+                if (event.keyCode == 13) {            
+                  $("#frmRegistration").submit();                   
+                }
+              });  
+            });
             $("#btnLogin").click(function(e){
               $("#frmLogin").submit();
+            });
+            $(document).ready(function() {
+              $('#login_email_id').keydown(function(event) {
+                if (event.keyCode == 13) {            
+                  $("#frmLogin").submit();                   
+                }
+              });
+              $('#login_password').keydown(function(event) {
+                if (event.keyCode == 13) {            
+                  $("#frmLogin").submit();                   
+                }
+              });  
             });
             $.validator.addMethod("pwcheck", function(value) {
                return /[A-Z]/.test(value) // has a uppercase letter
