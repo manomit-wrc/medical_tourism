@@ -5,8 +5,9 @@
     {!!Html::script("storage/frontend/js/owl.carousel.min.js")!!}
     {!!Html::script("storage/frontend/js/custom-file-input.js")!!}
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/additional-methods.min.js"></script>
+
+    {!!Html::script("storage/frontend/js/jquery.validate.min.js")!!}
+    {!!Html::script("storage/frontend/js/additional-methods.min.js")!!}
     <script type="text/javascript">
       function get_select_birthday() {
         var dob_days = "{{$dob_days}}";
