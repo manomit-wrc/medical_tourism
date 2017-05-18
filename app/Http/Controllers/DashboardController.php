@@ -14,12 +14,8 @@ class DashboardController extends Controller
     public function __construct() {
 
     }
-<<<<<<< HEAD
-    public function index() {
-=======
     public function index() 
     {
->>>>>>> 94a310c7fd4711e29808e0f7a3a82dc089bd5a59
     	$hospital_data = Hospital::all();
     	$total_hospital_count = Hospital::where('status','=','1')->count();
 
@@ -29,9 +25,5 @@ class DashboardController extends Controller
     	$patient_data = Patient::all();
     	$total_patient_count = Patient::where('status','=','1')->count();
     	return view('admin.dashboard', compact('total_hospital_count','hospital_data','doctor_data','total_doctor_count','total_patient_count','patient_data'));
-<<<<<<< HEAD
-    	
-=======
->>>>>>> 94a310c7fd4711e29808e0f7a3a82dc089bd5a59
     }
 }
