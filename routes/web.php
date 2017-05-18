@@ -41,13 +41,13 @@ Route::post('search-data','SearchController@search_data');
 Route::post('/profile_image_upload','PagesController@profile_image_upload');
 
 Route::group(['middleware' => ['front']], function() {
-	Route::get('/profile','PagesController@patient_profile');
-	Route::post('/update-profile','PagesController@update_profile');
-	Route::get('/patient-logout','PagesController@patient_logout');
-	Route::post('/get_state_list','PagesController@get_state_list');
-	Route::post('/get_city_list','PagesController@get_city_list');
-	Route::get('/change-password','PagesController@change_password');
-	Route::post('update-password','PagesController@update_password');
+    Route::get('/profile','PagesController@patient_profile');
+    Route::post('/update-profile','PagesController@update_profile');
+    Route::get('/patient-logout','PagesController@patient_logout');
+    Route::post('/get_state_list','PagesController@get_state_list');
+    Route::post('/get_city_list','PagesController@get_city_list');
+    Route::get('/change-password','PagesController@change_password');
+    Route::post('update-password','PagesController@update_password');
     Route::get('/upload-documents','PagesController@upload_documents');
     
 });
@@ -60,7 +60,7 @@ Route::post('/admin/login', 'LoginController@checkLogin');
 //Route::get('/admin/dashboard', 'DashboardController@index')->middleware('web');
 Route::group(['middleware' => ['admin']], function () {
 
-	Route::get('/admin/logout', array('uses' => 'LoginController@logout'));
+    Route::get('/admin/logout', array('uses' => 'LoginController@logout'));
     Route::get('/admin/dashboard', 'DashboardController@index');
 
     //Language capability section
@@ -69,7 +69,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('/admin/languagecapability/store','LanguageCapabilityController@store');
     Route::get('/admin/languagecapability/edit/{id}','LanguageCapabilityController@edit');
     Route::patch('/admin/languagecapability/update/{id}','LanguageCapabilityController@update');   
-	Route::get('/admin/languagecapability/delete/{id}','LanguageCapabilityController@delete');
+    Route::get('/admin/languagecapability/delete/{id}','LanguageCapabilityController@delete');
     Route::post('/admin/languagecapability/changestatus/','LanguageCapabilityController@ajaxlangchangestatus');
 
     //Procedure section
@@ -78,7 +78,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('/admin/procedure/store','ProcedureController@store');
     Route::get('/admin/procedure/edit/{id}','ProcedureController@edit');
     Route::patch('/admin/procedure/update/{id}','ProcedureController@update');    
-	Route::get('/admin/procedure/delete/{id}','ProcedureController@delete');
+    Route::get('/admin/procedure/delete/{id}','ProcedureController@delete');
     Route::post('/admin/procedure/changestatus/','ProcedureController@ajaxprocchangestatus');
 
     //Treatment section
@@ -87,7 +87,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('/admin/treatment/store','TreatmentController@store');
     Route::get('/admin/treatment/edit/{id}','TreatmentController@edit');
     Route::patch('/admin/treatment/update/{id}','TreatmentController@update');   
-	Route::get('/admin/treatment/delete/{id}','TreatmentController@delete');
+    Route::get('/admin/treatment/delete/{id}','TreatmentController@delete');
     Route::post('/admin/treatment/changestatus/','TreatmentController@ajaxtreatchangestatus');
 
     //genericmedicine section

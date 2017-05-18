@@ -161,11 +161,6 @@
                   success:function(response) {
                     if(response.status == 1)
                     {
-                      $("#first_name").val(''),
-                      $("#last_name").val(''),
-                      $("#email_id").val(''),
-                      $("#mobile_no").val(''),
-                      $("#password").val('')
                       $(".registration").html(response.msg);
                       $(".registration").addClass('registration-success');
                       $(".registration").removeClass('registration-error');
@@ -224,18 +219,16 @@
                   success:function(response) {
                     if(response.status == 1)
                     {
-                      $(".login").css("display","none");
-                      $(".login").html(""); 
+                      $(".login").html("");
                       window.location.href="/profile";
                     }
                     else {
-                      $(".login").show();
-                      $(".login").css("display","block"); 
+
                       $(".login").html("Email ID or Password is invalid");
                       $(".login").addClass('registration-error');
                       $(".login").removeClass('registration-success');
                     }
-                    /*$(".login").show();*/
+                    $(".login").show();
                     $("#btnLogin").prop('disabled', false);
 
                   },
@@ -297,7 +290,7 @@
             });
 
             $(".plus-button").click(function(e){
-              $(".upload-field").append('<div class="col-sm-11"><label class="on768"><div class="upload_profile1"><input type="file" name="upload_documents[]" id="file-1" class="inputfile on768"  /><label for="file-1" style="padding:12px;"><i class="fa fa-cloud-upload" aria-hidden="true"></i> <span>Choose a file&hellip;</span></label></div></label></div><div class="col-sm-1"><button type="button" class="plusbtn cross-button">x</button></div>');
+              $(".upload-field").append('<div class="col-sm-11"><label class="on768"><div class="upload_profile1"><input type="file" name="upload_documents[]" id="file-1" class="inputfile on768"  /><label for="file-1" style="padding:12px;"><i class="fa fa-cloud-upload" aria-hidden="true"></i> <span>Choose a file&hellip;</span></label></div></label></div><div class="col-sm-1"><button type="button" class="plusbtn cross-button" style="margin-top:0;">x</button></div>');
             });
       });
 
@@ -351,3 +344,12 @@
         BindControls();
       });
     </script>
+
+  
+ <!-- {!!Html::script("storage/frontend/js/jquery.sticky.js")!!} -->
+  <script>
+    $(window).load(function(){
+      $("#sticker").sticky({ topSpacing: 0, center:true, className:"hey" });
+    });
+  </script>
+  

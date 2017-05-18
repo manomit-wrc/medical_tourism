@@ -280,8 +280,7 @@ class PagesController extends Controller
       'email_id' => 'required|email|unique:patients,email_id,'.Auth::guard('front')->user()->id,
       'username' => 'required|unique:patients,username,'.Auth::guard('front')->user()->id,
       'title' => 'required',
-      'mobile_no' => ['required','max:10','min:10'],
-      'avators' => 'required_with|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+      'mobile_no' => ['required','max:10','min:10'],      
       'sex' => 'required',
       'country_id' => 'required',
       'state_id' => 'required',
@@ -293,51 +292,27 @@ class PagesController extends Controller
     ]);
 
     $patients = \App\Patient::find(Auth::guard('front')->user()->id);
-    if($patients) {
-      if($request->hasFile('avators')) {
-        $file = $request->file('avators') ;
-
-        $fileName = time().'_'.$file->getClientOriginalName() ;
-
-        //thumb destination path
-        $destinationPath = public_path().'/uploads/patients/thumb' ;
-
-        $img = Image::make($file->getRealPath());
-
-        $img->resize(25, 25, function ($constraint){
-            $constraint->aspectRatio();
-        })->save($destinationPath.'/'.$fileName);
-
-        //original destination path
-        $destinationPath = public_path().'/uploads/patients/' ;
-        $img = Image::make($file->getRealPath());
-
-        $img->resize(150, 150, function ($constraint){
-            $constraint->aspectRatio();
-        })->save($destinationPath.'/'.$fileName);
-
+    if($patients) {     
+      if(($request->title =='Mr.' && $request->sex=='F') || ($request->title !='Mr.' && $request->sex=='M')){       
+        $request->session()->flash('error_message', 'Please select your sex as per title!');
+        return redirect('/profile'); 
+      }else{        
+        $patients->first_name = $request->first_name;
+        $patients->last_name = $request->last_name;
+        $patients->username = $request->username;
+        $patients->mobile_no = $request->mobile_no;
+        $patients->email_id = $request->email_id;
+        $patients->title = $request->title;
+        $patients->biography = $request->biography;
+        $patients->sex = $request->sex;
+        $patients->country_id = $request->country_id;
+        $patients->state_id = $request->state_id;
+        $patients->city_id = $request->city_id;
+        $patients->date_of_birth = $request->dob_days."-".$request->dob_month."-".$request->dob_year;     
+        $patients->save();
+        $request->session()->flash("message", "Profile updated successfully");
+        return redirect('/profile');
       }
-      else {
-        $fileName = $patients->avators;
-      }
-
-      $patients->first_name = $request->first_name;
-      $patients->last_name = $request->last_name;
-      $patients->username = $request->username;
-      $patients->mobile_no = $request->mobile_no;
-      $patients->email_id = $request->email_id;
-      $patients->title = $request->title;
-      $patients->biography = $request->biography;
-      $patients->sex = $request->sex;
-      $patients->country_id = $request->country_id;
-      $patients->state_id = $request->state_id;
-      $patients->city_id = $request->city_id;
-      $patients->date_of_birth = $request->dob_days."-".$request->dob_month."-".$request->dob_year;
-      $patients->avators = $fileName;
-      $patients->save();
-
-      $request->session()->flash("message", "Profile updated successfully");
-      return redirect('/profile');
     }
   }
 
@@ -461,8 +436,10 @@ class PagesController extends Controller
         $img->resize(150, 150, function ($constraint){
             $constraint->aspectRatio();
         })->save($destinationPath.'/'.$fileName);
-        unlink(public_path().'/uploads/patients/thumb'.'/'.$patients->avators);
-        unlink(public_path().'/uploads/patients'.'/'.$patients->avators);
+        if($patients->avators !=''){
+          unlink(public_path().'/uploads/patients/thumb'.'/'.$patients->avators);
+          unlink(public_path().'/uploads/patients'.'/'.$patients->avators);
+        }
       }
       else {
         $fileName = $patients->avators;
