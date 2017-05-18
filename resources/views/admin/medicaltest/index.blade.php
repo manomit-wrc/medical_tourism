@@ -62,12 +62,12 @@
                        <td>
                           @if($medtval['status'] ==1)
                             <span data-toggle="tooltip" data-original-title="Click here to change status">
-                            <input type="checkbox" checked id="tog{{ $medtval['id'] }}" onchange="return changeStatus('/admin/ajaxmedichangestatus',{{ $medtval['id'] }})" value="1"  data-toggle="toggle2">
+                            <input type="checkbox" checked id="tog{{ $medtval['id'] }}" onchange="return changeStatus('/admin/medicaltest/changestatus',{{ $medtval['id'] }})" value="1"  data-toggle="toggle2">
                             </span>
                           @endif
                           @if($medtval['status'] ==0)
                           <span data-toggle="tooltip" data-original-title="Click here to change status">
-                            <input type="checkbox" id="tog{{ $medtval['id'] }}"  onchange="return changeStatus('/admin/ajaxmedichangestatus',{{ $medtval['id'] }})" value="0" data-toggle="toggle2">
+                            <input type="checkbox" id="tog{{ $medtval['id'] }}"  onchange="return changeStatus('/admin/medicaltest/changestatus',{{ $medtval['id'] }})" value="0" data-toggle="toggle2">
                           </span>
                           @endif
                         </td>

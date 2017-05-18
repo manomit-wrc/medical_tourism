@@ -16,7 +16,11 @@ class AdminUserController extends Controller
     }
 
     public function index() {
+<<<<<<< HEAD
       $user_data = User::with('roles')->where('status', '!=', 2)->orderBy('id','desc')->get();     
+=======
+      $user_data = User::with('roles')->where('status', '!=', 2)->where('id', '!=', 1)->orderBy('id','desc')->get(); //Admin user will not be displayed    
+>>>>>>> 94a310c7fd4711e29808e0f7a3a82dc089bd5a59
       return view('admin.users.index',compact('user_data'));
     }
 
@@ -97,6 +101,10 @@ class AdminUserController extends Controller
         return redirect('/admin/adminuser');
       }
     }*/
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 94a310c7fd4711e29808e0f7a3a82dc089bd5a59
     public function delete(Request $request,$id) {
         if($id) {
             $user_details = User::find($id);
@@ -110,8 +118,29 @@ class AdminUserController extends Controller
         }
     }
 
+<<<<<<< HEAD
     public function permission() {
       $routeCollection = Route::getRoutes();      
+=======
+    public function ajaxadminuserchangestatus(Request $request) { 
+        $id = $request->id;
+        $status = $request->status;     
+        $mt = User::find($id);  
+        $mt->status = $status; 
+        $upd = $mt->save();        
+        if($upd) {              
+          $returnArr = array('status'=>'1','msg'=>'Updated Successfully');
+        }else{
+          $returnArr = array('status'=>'0','msg'=>'Updated Faliure');
+        }          
+        echo json_encode($returnArr);
+        die();
+    }
+
+    public function permission() {
+      $routeCollection = Route::getRoutes(); 
+      //echo "<pre>"; print_r($routeCollection); die;   
+>>>>>>> 94a310c7fd4711e29808e0f7a3a82dc089bd5a59
       $role_list = Role::get()->pluck('name','id');
       return view('admin.users.permission')->with(['routeCollection' => $routeCollection,'role_list' => $role_list]);
     }

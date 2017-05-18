@@ -62,12 +62,12 @@
                         <td>
                           @if($immigration_lists->status ==1)
                             <span data-toggle="tooltip" data-original-title="Click here to change status">
-                            <input type="checkbox" checked id="tog{{ $immigration_lists->id }}" onchange="return changeStatus('/admin/ajaximmchangestatus',{{ $immigration_lists->id }})" value="1"  data-toggle="toggle2">
+                            <input type="checkbox" checked id="tog{{ $immigration_lists->id }}" onchange="return changeStatus('/admin/immigration/changestatus',{{ $immigration_lists->id }})" value="1"  data-toggle="toggle2">
                             </span>
                           @endif
                           @if($immigration_lists->status ==0)
                           <span data-toggle="tooltip" data-original-title="Click here to change status">
-                            <input type="checkbox" id="tog{{ $immigration_lists->id }}"  onchange="return changeStatus('/admin/ajaximmchangestatus',{{ $immigration_lists->id }})" value="0" data-toggle="toggle2">
+                            <input type="checkbox" id="tog{{ $immigration_lists->id }}"  onchange="return changeStatus('/admin/immigration/changestatus',{{ $immigration_lists->id }})" value="0" data-toggle="toggle2">
                           </span>
                           @endif
                         </td>

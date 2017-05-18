@@ -31,8 +31,12 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
        <!--  <li class="header">MAIN NAVIGATION</li> -->
+        @if($user_view_composer->hasRole('admin/dashboard',Auth::guard('admin')->user()->id))
         <li><a href="{!!URL::to('/admin/dashboard')!!}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+        @endif
 
+        
+        @if($user_view_composer->hasRole('admin/languagecapability',Auth::guard('admin')->user()->id) || $user_view_composer->hasRole('admin/procedure',Auth::guard('admin')->user()->id) || $user_view_composer->hasRole('admin/treatment',Auth::guard('admin')->user()->id) || $user_view_composer->hasRole('admin/genericmedicine',Auth::guard('admin')->user()->id) || $user_view_composer->hasRole('admin/medicaltestcategories',Auth::guard('admin')->user()->id) || $user_view_composer->hasRole('admin/medicaltest',Auth::guard('admin')->user()->id) || $user_view_composer->hasRole('admin/degree',Auth::guard('admin')->user()->id) || $user_view_composer->hasRole('admin/providertype',Auth::guard('admin')->user()->id)|| $user_view_composer->hasRole('admin/accomodation',Auth::guard('admin')->user()->id) || $user_view_composer->hasRole('admin/cuisine',Auth::guard('admin')->user()->id) || $user_view_composer->hasRole('admin/paymenttype',Auth::guard('admin')->user()->id) || $user_view_composer->hasRole('admin/connectivity',Auth::guard('admin')->user()->id) ||$user_view_composer->hasRole('admin/connectivityservices',Auth::guard('admin')->user()->id) || $user_view_composer->hasRole('admin/accrediation',Auth::guard('admin')->user()->id)|| $user_view_composer->hasRole('admin/specificservice',Auth::guard('admin')->user()->id) || $user_view_composer->hasRole('admin/medicalfacility',Auth::guard('admin')->user()->id) || $user_view_composer->hasRole('admin/banner',Auth::guard('admin')->user()->id) || $user_view_composer->hasRole('admin/role',Auth::guard('admin')->user()->id))
         <li class="treeview {{ Request::segment(2) === 'languagecapability' || Request::segment(2) === 'procedure' || Request::segment(2) === 'treatment' || Request::segment(2) === 'genericmedicine' || Request::segment(2) === 'medicaltestcategories' || Request::segment(2) === 'medicaltest' || Request::segment(2) === 'degree' || Request::segment(2) === 'providertype' || Request::segment(2) === 'accomodation' || Request::segment(2) === 'cuisine' || Request::segment(2) === 'paymenttype' || Request::segment(2) === 'connectivity' || Request::segment(2) === 'connectivityservices' || Request::segment(2) === 'accrediation' || Request::segment(2) === 'specificservice' || Request::segment(2) === 'medicalfacility' || Request::segment(2) === 'banner' || Request::segment(2) === 'role'  ? 'active' : null }}">
           <a href="javascript:void(0)">
             <i class="fa fa-cog"></i> <span>Settings management</span>
@@ -41,7 +45,6 @@
             </span>
           </a>
           <ul class="treeview-menu">
-
             @if($user_view_composer->hasRole('admin/languagecapability',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'languagecapability' ? 'active' : null }}"><a href="{!!URL::to('/admin/languagecapability')!!}"><i class="fa fa-language"></i>Language capability master</a></li>@endif
             @if($user_view_composer->hasRole('admin/procedure',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'procedure' ? 'active' : null }}"><a href="{!!URL::to('/admin/procedure')!!}"><i class="fa fa-medkit"></i>Procedure master</a></li>@endif
             @if($user_view_composer->hasRole('admin/treatment',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'treatment' ? 'active' : null }}" ><a href="{!!URL::to('/admin/treatment')!!}"><i class="fa fa-stethoscope"></i>Treatment master</a></li>@endif
@@ -62,7 +65,9 @@
             @if($user_view_composer->hasRole('admin/role',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'role' ? 'active' : null }}"><a href="/admin/role"><i class="fa fa-tasks"></i>Role management</a></li>@endif                     
           </ul>
         </li>
+        @endif
 
+        @if($user_view_composer->hasRole('admin/hotel',Auth::guard('admin')->user()->id))
         <li class="treeview {{ Request::segment(2) === 'hotel' ? 'active' : null }}">
           <a href="javascript:void(0)">
             <i class="fa fa-hotel"></i> <span>Hotel management</span>
@@ -74,7 +79,9 @@
              @if($user_view_composer->hasRole('admin/hotel',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'hotel' ? 'active' : null }}"><a href="{!!URL::to('/admin/hotel')!!}"><i class="fa fa-bars"></i>hotel list</a></li>@endif
           </ul>
         </li>
+        @endif
 
+        @if($user_view_composer->hasRole('admin/news',Auth::guard('admin')->user()->id))
         <li class="treeview {{ Request::segment(2) === 'news' ? 'active' : null }}">
           <a href="javascript:void(0)">
             <i class="fa fa-newspaper-o"></i> <span>News & Events management</span>
@@ -86,9 +93,10 @@
             @if($user_view_composer->hasRole('admin/news',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'news' ? 'active' : null }}"><a href="{!!URL::to('/admin/news')!!}"><i class="fa fa-newspaper-o"></i>News management</a></li>@endif
           </ul>
         </li>
+        @endif
 
-
-
+        
+        @if($user_view_composer->hasRole('admin/adminuser',Auth::guard('admin')->user()->id) || $user_view_composer->hasRole('admin/permission',Auth::guard('admin')->user()->id) || $user_view_composer->hasRole('admin/patients',Auth::guard('admin')->user()->id))
         <li class="treeview {{ Request::segment(2) === 'adminuser' || Request::segment(2) === 'permission' || Request::segment(2) === 'patients'? 'active' : null }}">
           <a href="javascript:void(0)">
             <i class="fa fa-users"></i> <span>User management</span>
@@ -102,7 +110,7 @@
             @if($user_view_composer->hasRole('admin/patients',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'patients' ? 'active' : null }}" ><a href="{{ url('/admin/patients')}}"><i class="fa fa-group"></i>Manage patient</a></li>@endif
           </ul>
         </li>
-
+        @endif
 
         <li class="treeview {{ Request::segment(2) === 'doctors' || Request::segment(2) === 'providerconnectivity' || Request::segment(2) === 'providerconnectivityservices' || Request::segment(2) === 'hospitals' || Request::segment(2) === 'package-types'  ? 'active' : null }}">
           <a href="javascript:void(0)">
@@ -119,7 +127,8 @@
             @if($user_view_composer->hasRole('admin/package-types',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'package-types' ? 'active' : null }}" ><a href="{{ url('/admin/package-types')}}"><i class="fa fa-credit-card-alt"></i>Manage package types</a></li>@endif
           </ul>
         </li>
-
+        
+        @if($user_view_composer->hasRole('admin/successstories',Auth::guard('admin')->user()->id))
         <li class="treeview {{ Request::segment(2) === 'successstories' ? 'active' : null }}">
           <a href="javascript:void(0)">
             <i class="fa fa-thumbs-up"></i> <span>Success story management</span>
@@ -131,6 +140,9 @@
             @if($user_view_composer->hasRole('admin/successstories',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'successstories' ? 'active' : null }}"><a href="{!!URL::to('/admin/successstories')!!}"><i class="fa fa-thumbs-up"></i>Success story</a></li>@endif
           </ul>
         </li>
+        @endif
+        
+        @if($user_view_composer->hasRole('admin/contact',Auth::guard('admin')->user()->id))
         <li class="treeview {{ Request::segment(2) === 'contact' ? 'active' : null }}">
           <a href="javascript:void(0)">
             <i class="fa fa-envelope"></i> <span>Contact</span>
@@ -142,7 +154,9 @@
              @if($user_view_composer->hasRole('admin/contact',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'contact' ? 'active' : null }}"><a href="{!!URL::to('/admin/contact')!!}"><i class="fa fa-envelope"></i>Contact list</a></li>@endif
           </ul>
         </li>
+         @endif
 
+        @if($user_view_composer->hasRole('admin/faqcategories',Auth::guard('admin')->user()->id) || $user_view_composer->hasRole('admin/faqs',Auth::guard('admin')->user()->id))
         <li class="treeview {{ Request::segment(2) === 'faqcategories' || Request::segment(2) === 'faq' ? 'active' : null }}">
           <a href="javascript:void(0)">
             <i class="fa fa-question"></i> <span>FAQ </span>
@@ -155,7 +169,9 @@
             @if($user_view_composer->hasRole('admin/faqs',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'faqs' ? 'active' : null }}"><a href="{!!URL::to('/admin/faq')!!}"><i class="fa fa-question"></i>FAQs</a></li>@endif
           </ul>
         </li>
+         @endif
 
+        @if($user_view_composer->hasRole('admin/immigration',Auth::guard('admin')->user()->id) || $user_view_composer->hasRole('admin/countryvisa',Auth::guard('admin')->user()->id))
         <li class="treeview {{ Request::segment(2) === 'immigration' ? 'active' : null || Request::segment(2) === 'countryvisa' ? 'active' : null }}">
           <a href="javascript:void(0)">
             <i class="fa fa-briefcase"></i> <span>Accomodation </span>
@@ -168,7 +184,10 @@
             @if($user_view_composer->hasRole('admin/countryvisa',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'countryvisa' ? 'active' : null }}"><a href="{!!URL::to('/admin/countryvisa')!!}"><i class="fa fa-sticky-note"></i>Visa</a></li>@endif
           </ul>
         </li>
+         @endif
 
+        
+         @if($user_view_composer->hasRole('admin/homepagecontent',Auth::guard('admin')->user()->id) || $user_view_composer->hasRole('admin/cmspagedetail',Auth::guard('admin')->user()->id))
         <li class="treeview {{ Request::segment(2) === 'homepagecontent' ? 'active' : null || Request::segment(2) === 'cmspagedetail' ? 'active' : null }}">
           <a href="javascript:void(0)">
             <i class="fa fa-file-word-o"></i> <span>CMS Management </span>
@@ -181,7 +200,7 @@
             @if($user_view_composer->hasRole('admin/cmspagedetail',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'cmspagedetail' ? 'active' : null }}"><a href="{!!URL::to('/admin/cmspagedetail')!!}"><i class="fa fa-file-code-o"></i>CMS Page</a></li>@endif
           </ul>
         </li>
-
+         @endif
       </ul>
     </section>
     <!-- /.sidebar -->

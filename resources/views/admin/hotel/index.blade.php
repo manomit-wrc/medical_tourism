@@ -58,12 +58,12 @@
                         <td>
                           @if($hotels_list->status ==1)
                             <span data-toggle="tooltip" data-original-title="Click here to change status">
-                            <input type="checkbox" checked id="tog{{ $hotels_list->id }}" onchange="return changeStatus('/admin/ajaxhotelchangestatus',{{ $hotels_list->id }})" value="1"  data-toggle="toggle2">
+                            <input type="checkbox" checked id="tog{{ $hotels_list->id }}" onchange="return changeStatus('/admin/hotel/changestatus',{{ $hotels_list->id }})" value="1"  data-toggle="toggle2">
                             </span>
                           @endif
                           @if($hotels_list->status ==0)
                           <span data-toggle="tooltip" data-original-title="Click here to change status">
-                            <input type="checkbox" id="tog{{ $hotels_list->id }}"  onchange="return changeStatus('/admin/ajaxhotelchangestatus',{{ $hotels_list->id }})" value="0" data-toggle="toggle2">
+                            <input type="checkbox" id="tog{{ $hotels_list->id }}"  onchange="return changeStatus('/admin/hotel/changestatus',{{ $hotels_list->id }})" value="0" data-toggle="toggle2">
                           </span>
                           @endif
                         </td>

@@ -9,6 +9,7 @@
             </div>
 
             <h5 class="user_name">{{ $doctor_details->first_name.' '.$doctor_details->last_name }}</h5>
+
             <hr>
             @php
                 $doctor_degrees_var = '';
