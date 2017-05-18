@@ -29,7 +29,7 @@
               <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
             </div>
 
-            <div><a href="{!!URL::to('/admin/faqcategories/create')!!}"><button type="button" class="btn bg-purple">ADD</button></a></div>
+            <div class="topbtn"><a href="{!!URL::to('/admin/faqcategories/create')!!}"><button type="button" class="btn bg-purple btn-rightad">ADD</button></a></div>
 
             <!-- /.box-header -->
             <div class="box-body">

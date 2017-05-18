@@ -27,7 +27,7 @@
                             <button type="button" class="qtboxbtn" onclick="window.location.href = '/change-password'"><i class="fa fa-lock" aria-hidden="true"></i> Change Password</button>
                             <button type="button" class="qtboxbtn" onclick="window.location.href = '/profile'"><i class="fa fa-user" aria-hidden="true"></i> Profile</button>
                             <button type="button" class="active_btn" onclick="window.location.href = '/upload-documents'"><i class="fa fa-cog" aria-hidden="true"></i> Documents</button>
-                            <button type="button" class="qtboxbtn" onclick="window.location.href = '/patient-logout'"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</button>
+                            <button type="button" class="qtboxbtn" onclick="window.location.href = '/my-enquiry'"><i class="fa fa-file" aria-hidden="true"></i> My Enquiry</button>
                           </div>
                       </div>
 
@@ -37,7 +37,7 @@
 
                       <div class="col-md-8">
                           <div class="rightP">
-                              <h3><b>Change Password</b></h3>
+                              <h3><b>Upload Documents</b></h3>
 
                               <div>&nbsp;</div>
                               @if (Session::has('message'))

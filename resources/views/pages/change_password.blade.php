@@ -6,9 +6,7 @@
           <div class="category">
               <div class="container">
                   <div class="row">
-
                       <!--Left panel start here-->
-
                       <div class="col-md-4">
                           <div class="qtbox">
                             <div class="user_img">
@@ -26,7 +24,7 @@
                             <button type="button" class="active_btn" onclick="window.location.href = '/change-password'"><i class="fa fa-lock" aria-hidden="true"></i> Change Password</button>
                             <button type="button" class="qtboxbtn" onclick="window.location.href = '/profile'"><i class="fa fa-user" aria-hidden="true"></i> Profile</button>
                             <button type="button" class="qtboxbtn" onclick="window.location.href = '/upload-documents'"><i class="fa fa-cog" aria-hidden="true"></i> Documents</button>
-                            <button type="button" class="qtboxbtn" onclick="window.location.href = '/patient-logout'"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</button>
+                            <button type="button" class="qtboxbtn" onclick="window.location.href = '/my-enquiry'"><i class="fa fa-file" aria-hidden="true"></i> My Enquiry</button>
                           </div>
                       </div>
 

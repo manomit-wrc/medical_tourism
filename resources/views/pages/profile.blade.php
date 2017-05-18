@@ -44,8 +44,10 @@
                               <div>&nbsp;</div>
                               @if (Session::has('message'))
                                   <div class="alert alert-info">{{ Session::get('message') }}</div>
-                                  <a class="close" href="#" data-dismiss="alert" aria-label="close" title="close">×</a>
                               @endif
+                              @if (Session::has('error_message'))
+                                  <div class="alert alert-warning">{{ Session::get('error_message') }}</div>
+                                @endif
                               <div class="row">
                                 <form name="frmProfile" id="frmProfile" method="post" action="/update-profile" enctype="multipart/form-data">
                                   {{csrf_field()}}
