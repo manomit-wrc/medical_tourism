@@ -15,13 +15,13 @@ use App\Faq;
 use Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\RegistrationEmail;
+use App\Mail\ForgotPasswordMail;
 use App\SuccessStories;
 use App\Immigration;
 use App\CountryVisa;
 use App\Cmspage;
 use App\CmsPageDetail;
 use App\Hospital;
-
 
 class PagesController extends Controller
 {
@@ -459,5 +459,77 @@ class PagesController extends Controller
     echo json_encode($returnArr);
     die(); 
   }
+  public function patient_forgotpass(Request $request){
+      $email_id = $request->email_id;
+      $existRows = \App\Patient::where('email_id', '=', $email_id)->get();      
+       if(count($existRows)== 0)
+        {
+          $returnArr = array('status'=>'3','msg'=>'Invalid Email');
+        } else{        
+          $security_code = $this->securitycode($email_id);
+          $url = $security_code.time();
+          $getpassword_link = config('app.url').'changepassword/'.base64_encode($security_code.time());
+          $name = $existRows[0]['first_name'].' '.$existRows[0]['last_name'];
+          Mail::to($email_id)->send(new ForgotPasswordMail($name,$getpassword_link));
+          $returnArr = array('status'=>'1','msg'=>'Your request successfully sent. Please check mail.');
+        }
+    echo json_encode($returnArr);
+    die();
+  }
+  public function securitycode($email_id) {            
+      do{
+        $sec_code = rand(10000000, 99999999);
+        $seccode = base64_encode($sec_code.time());       
+        $r = \App\Patient::where('security_code',$seccode)->get()->toArray();       
+        if(count($r)== 0) 
+        {
+          break;  
+        }
+        }while(1);     
+        $rr = \App\Patient::where('email_id',$email_id)->get()->toArray();
+        $patobj = \App\Patient::find($rr[0]['id']);            
+        $patobj->security_code = $seccode; 
+        $patobj->save();        
+        return $sec_code;
+  }
 
+  public function changepassword($url) {
+    $existRows = \App\Patient::where('security_code', '=', $url)->get();     
+     if(count($existRows)== 0)
+        {                
+          return redirect('/');
+        } else{    
+          return view('pages.forgot_password')->with('url',$url);
+        }
+  }
+  public function reset_password($security_code,Request $request) {   
+  $this->validate($request,[      
+      'new_password' => 'required',
+      'confirm_password' => 'required|same:new_password'
+    ],[           
+      'new_password.required' => 'Please enter new password',
+      'confirm_password.required' => 'Please enter confirm password',
+      'confirm_password.same' => 'New password and confirm password should matched'
+    ]); 
+    $existRows = \App\Patient::where('security_code', '=', $security_code)->get();     
+     
+       if(count($existRows)== 0)
+        {                
+         $request->session()->flash('error_message', 'Security code not match!');
+          return redirect('/successreset');
+        } else{ 
+      $patients = \App\Patient::find($existRows[0]->id);
+    if($patients) {
+      $patients->password = bcrypt($request->new_password);
+      $patients->security_code = '';
+      $patients->save();           
+     $request->session()->flash("message", "Password updated successfully. please login");
+      return redirect('/successreset');
+    }
+  }
+
+}
+public function successreset() {    
+    return view('pages.reset');
+  }
 }

@@ -200,11 +200,49 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#691134', end
 	margin-left: 1%;
 }
 
+.fieldboxD{
+	width: 27%;
+	float: left;
+	margin-right:1%;
+	margin-left:15px;
+}
+
 .fieldsearch{
 	width: 10%;
 	float: left;
 	margin-right: 1%;
 	margin-left: 1%;
+}
+
+.fieldsearchD{
+	width: 9%;
+	float: left;
+	margin-right:0;
+	margin-left: 1%;
+}
+
+.fieldsearchD button{
+	font-size: 16px;
+	color: #fff;
+	font-weight: 400;
+	text-align: center;
+	width: 100%;
+	background: #ce4c7d;
+	border:0;
+	height: 42px;
+	margin-top: 20px;
+}
+
+.fieldsearchD button:hover{
+	font-size: 16px;
+	color: #fff;
+	font-weight: 400;
+	text-align: center;
+	width: 100%;
+	background: #691134;
+	border:0;
+	height: 42px;
+	margin-top: 20px;
 }
 
 .listtype{
@@ -815,6 +853,7 @@ p{
 	background: #fff;
 	padding: 20px;
 	border-top: 6px solid #691134;
+	min-height: 465px;
 }
 
 .qtbox h3{
@@ -827,6 +866,15 @@ p{
 	background-repeat: no-repeat;
 	background-position: center bottom;
 	padding-bottom: 20px;
+}
+
+.qtbox h4{
+	text-align: left;
+	font-size: 22px;
+	font-weight: 300;
+	text-transform: uppercase;
+	color: #000;
+
 }
 
 
@@ -889,7 +937,7 @@ p{
 	width: 100%;
 	float: left;
 	background: #691134;
-	padding: 24px 0;
+	
 	text-align: center;
 	font-size: 32px;
 	color: #fff;
@@ -903,6 +951,8 @@ p{
 .qc a{
 	color: #fff;
 	text-decoration: none;
+	padding: 24px 0;
+	display: block;
 }
 
 .qc:hover{
@@ -1063,7 +1113,7 @@ p{
 }
 
 .listtypeleft2{
-	width: 30%;
+	width: 31.6%;
 	padding: 10px;
 	border: 1px solid #8e8e8e;
 	background: #fff url(../images/arrowleft.jpg) 95% center no-repeat;
@@ -1126,7 +1176,7 @@ label{
 }
 
 .qtbox label{
-	margin-top: 10px;
+	/* margin-top: 10px; */
 }
 
 .listtypeI{
@@ -1145,19 +1195,19 @@ label{
 }
 
 .rightP .collapsed{
-	background: #ce4c7d !important;
+	background: #ce4c7d url(../images/min.png) 98% center no-repeat !important;
 	padding: 10px 15px !important;
 	display: block !important;
 	text-decoration: none !important;
 }
 
 .rightP .collapsed:hover{
-	background: #691134 !important;
+	background: #691134 url(../images/min.png) 98% center no-repeat !important;
 	text-decoration: none;
 }
 
 .rightP .panel-title a{
-	background: #691134;
+	background: #691134 url(../images/plus.png) 98% center no-repeat;
 	padding: 10px 15px;
 	display: block;
 	text-decoration: none;
@@ -1298,6 +1348,7 @@ label{
 
 .user_name{
 	text-align: center;
+	font-weight: bold;
 }
 
 .user_address{
@@ -1342,8 +1393,8 @@ text-align: center;
 }
 
 .upload_profile{
-	width: 200px;
-	height: 200px;
+	width: 30px;
+	height: 30px;
 }
 
 .upload_profile1{
@@ -1393,7 +1444,7 @@ text-align: center;
     cursor: pointer;
     display: inline-block;
     overflow: hidden;
-    padding: 0.625rem 1.25rem;
+   /*padding: 0.625rem 1.25rem; */
     /* 10px 20px */
 }
 
@@ -1428,20 +1479,20 @@ text-align: center;
 
 .inputfile-1 + label {
     color: #000;
-    background-color: #fff;
+    /* background-color: #fff;
     border: 2px solid #ccc;
     width: 100%;
-    height: 100%;
+    height: 100%; */
     text-align: center;
     font-size: 16px;
-    line-height: 12;
-    margin-top: 8px;
+    /* line-height: 12;
+    margin-top: 8px; */
 }
 
 .inputfile-1:focus + label,
 .inputfile-1.has-focus + label,
 .inputfile-1 + label:hover {
-    background-color: #ccc;
+    /* background-color: #ccc; */
 }
 
 
@@ -1721,7 +1772,7 @@ label.error {
 }
 
 .on768{
-	line-height: 2;
+	line-height: 1.8;
 	width: 100%;
 }
 
@@ -1733,6 +1784,10 @@ label.error {
 	font-size: 18px;
 	color: #333;
 	font-family: 'Roboto', sans-serif;
+}
+
+.Cbtn{
+	margin-top: 0;
 }
 
 .loop_field{
@@ -1798,4 +1853,9 @@ label.error {
 }
 .ui-widget-content {
 	color:#691134!important;
+}
+
+#sticker {
+	z-index: 50 !important;
+      
 }

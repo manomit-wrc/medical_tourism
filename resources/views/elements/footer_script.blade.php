@@ -23,10 +23,17 @@
       function signin(){
         $('#foggotPassModel').modal('hide');       
         $("#LoginModal").modal('show');
+        $("#forgot_email_id").val('');
+        $("#forgot_email_id-error").hide();
       }
       function forgotpassword(){
         $('#LoginModal').modal('hide');       
         $("#foggotPassModel").modal('show');
+        $("#login_email_id").val('');
+        $("#login_password").val('');
+        $("#login_email_id-error").hide();
+        $("#login_password-error").hide();
+        $(".registration-error").hide(); 
       }
       $(document).ready(function(){
           get_select_birthday();
@@ -133,6 +140,16 @@
                 }
               });  
             });
+            $("#btnforgot").click(function(e){
+              $("#frmForgot").submit();
+            });
+            $(document).ready(function() {
+              $('#forgot_email_id').keydown(function(event) {
+                if (event.keyCode == 13) {            
+                  $("#frmForgot").submit();                   
+                }
+              });               
+            });
             $.validator.addMethod("pwcheck", function(value) {
                return /[A-Z]/.test(value) // has a uppercase letter
                    && /[a-z]/.test(value) // has a lowercase letter
@@ -208,11 +225,11 @@
                   success:function(response) {
                     if(response.status == 1)
                     {
-                      $("#first_name").val(''),
-                      $("#last_name").val(''),
-                      $("#email_id").val(''),
-                      $("#mobile_no").val(''),
-                      $("#password").val('')
+                      $("#first_name").val('');
+                      $("#last_name").val('');
+                      $("#email_id").val('');
+                      $("#mobile_no").val('');
+                      $("#password").val('');
                       $(".registration").html(response.msg);
                       $(".registration").addClass('registration-success');
                       $(".registration").removeClass('registration-error');
@@ -296,6 +313,57 @@
               }
             });
 
+            $("#frmForgot").validate({
+              rules: {
+                forgot_email_id: {
+                  required: true,
+                  email: true
+                }
+              },
+              messages: {
+                forgot_email_id: {
+                  required: "Please enter email id",
+                  email: "Please enter valid email format"
+                }
+              },
+              submitHandler:function(form) {
+                $.ajax({
+                  type: "POST",
+                  url: "/patient-forgotpass",
+                  data: {
+                    email_id: $("#forgot_email_id").val(),                    
+                    _token: "{{csrf_token()}}"
+                  },
+                  beforeSend:function() {
+                    $("#btnforgot").prop('disabled', false);
+                  },
+                  success:function(response) {
+                    var result = $.parseJSON(response);
+                    if(result.status == 1) {                     
+                      $("#result").css("display", "block");
+                      $("#result").removeClass("alert-danger");
+                      $("#result").addClass("alert-success");
+                      $("#result").html(result.msg);
+                      setTimeout(function() {
+                        $("#forgot_email_id").val('') 
+                        $('#result').fadeOut('fast');
+                      }, 2000);
+                    }else{
+                      $("#result").css("display", "block");
+                      $("#result").removeClass("alert-success");
+                      $("#result").addClass("alert-danger");
+                      $("#result").html(result.msg);
+                      setTimeout(function() { 
+                        $("#forgot_email_id").val('');                    
+                        $('#result').fadeOut('fast');
+                      }, 2000);
+                    }
+
+                  }
+                });
+              }
+            });
+
 
             $("#country_id").change(function(e){
               var value = $(this).val();
@@ -344,7 +412,7 @@
             });
 
             $(".plus-button").click(function(e){
-              $(".upload-field").append('<div class="col-sm-11"><label class="on768"><div class="upload_profile1"><input type="file" name="upload_documents[]" id="file-1" class="inputfile on768"  /><label for="file-1" style="padding:12px;"><i class="fa fa-cloud-upload" aria-hidden="true"></i> <span>Choose a file&hellip;</span></label></div></label></div><div class="col-sm-1"><button type="button" class="plusbtn cross-button">x</button></div>');
+              $(".upload-field").append('<div class="col-sm-11"><label class="on768"><div class="upload_profile1"><input type="file" name="upload_documents[]" id="file-1" class="inputfile on768"  /><label for="file-1" style="padding:12px;"><i class="fa fa-cloud-upload" aria-hidden="true"></i> <span>Choose a file&hellip;</span></label></div></label></div><div class="col-sm-1"><button type="button" class="plusbtn cross-button" style="margin-top:0;">x</button></div>');
             });
       });
 
@@ -398,3 +466,12 @@
         BindControls();
       });
     </script>
+
+  
+ <!-- {!!Html::script("storage/frontend/js/jquery.sticky.js")!!} -->
+  <script>
+    $(window).load(function(){
+      $("#sticker").sticky({ topSpacing: 0, center:true, className:"hey" });
+    });
+  </script>
+  

@@ -5,6 +5,32 @@
     <div class="rightP">
         <h3>Our <b>Doctors</b></h3>
         <div class="row">
+
+              <div class="fieldboxD">
+                <select name="" class="listtypeleft">
+                    <option value="Specility">Specility</option>
+                    <option value="Specility">Specility</option>
+                    <option value="Specility">Specility</option>
+                </select>
+              </div>
+
+              <div class="fieldboxD">
+                <select name="" class="listtypeleft">
+                    <option value="Procedure">Procedure</option>
+                    <option value="Procedure">Procedure</option>
+                    <option value="Procedure">Procedure</option>
+                </select>
+              </div>
+
+              <div class="fieldboxD">
+                <input type="text" name="" class="inputleft"> 
+              </div>                 
+                  
+              <div class="fieldsearchD">
+                  <button type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+              </div>
+              <br clear="all"> 
+
          @if (count($doctor_data) > 0)
             @foreach($doctor_data as $doctor_data)
             <div class="col-sm-6 col-md-4">

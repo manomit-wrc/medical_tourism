@@ -13,6 +13,8 @@
                           @include('elements.leftpaneldoctor')
                       @elseif(Request::segment(1) != 'profile' && Request::segment(1) != 'upload-documents' && Request::segment(1) != 'change-password' && Request::segment(1) != 'activate'  && Request::segment(1) != 'enquiry')
                           @include('elements.leftpanel')
+                      @else
+                          @include('elements.leftpanelpatient')    
                       @endif
 
       	               @yield('content')

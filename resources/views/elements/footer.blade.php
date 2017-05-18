@@ -137,7 +137,7 @@
             <strong>Upload Profile Image</strong></h4>
           </div>
           <div class="modal-body">
-            <div class="alert alert-success fade in alert-dismissable" id="result" style="display:none"></div>
+            <div class="alert alert-success fade in alert-dismissable" id="resultimage" style="display:none"></div>
             <label class="custom-upload">
               <input name="avators" id="avators" type="file" value=""/>  
             </label>
@@ -175,13 +175,13 @@
                     $("#avators").val('');  
                     
                   }else{
-                    $("#result").css("display", "block");
-                    $("#result").removeClass("alert-success");
-                    $("#result").addClass("alert-danger");
-                    $("#result").html(result.msg);
+                    $("#resultimage").css("display", "block");
+                    $("#resultimage").removeClass("alert-success");
+                    $("#resultimage").addClass("alert-danger");
+                    $("#resultimage").html(result.msg);
                     setTimeout(function() {
                       $("#avators").val('');
-                      $('#result').fadeOut('fast');
+                      $('#resultimage').fadeOut('fast');
                     }, 2000);
                 }
                 }                
@@ -202,5 +202,9 @@
             $("#login_email_id-error").hide();
             $("#login_password-error").hide();
             $(".registration-error").hide();                        
+          }
+          function forgotrefresh(){
+            $("#forgot_email_id").val('');
+            $("#forgot_email_id-error").hide();
           }           
         </script>

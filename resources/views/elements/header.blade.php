@@ -10,7 +10,7 @@
                  <div class="rightlinks">
                    @if(Auth::guard('front')->check())
                     <span id="profileheaderimg">
-                     <img src="{!! Auth::guard('front')->user()->thumb() !!}" alt=""></span><a href="{!!URL::to('/profile')!!}" style="color:#691134"  onmouseover="this.style.color='#cf4d7e';" onmouseout="this.style.color='#691134';"> Welcome {{ (Auth::guard('front')->user()->title)?Auth::guard('front')->user()->title:'' }}{!! \Illuminate\Support\Str::words(Auth::guard('front')->user()->last_name, 1,'..')  !!},</a>
+                     <img src="{!! Auth::guard('front')->user()->thumb() !!}" alt=""></span> Welcome <a href="{!!URL::to('/profile')!!}" style="color:#691134"  onmouseover="this.style.color='#cf4d7e';" onmouseout="this.style.color='#691134';">{{ (Auth::guard('front')->user()->title)?Auth::guard('front')->user()->title:'' }}{!! \Illuminate\Support\Str::words(Auth::guard('front')->user()->last_name, 1,'..')  !!},</a>                     
                      <a href="/patient-logout" class="logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
                    @else
                      <ul>
@@ -61,12 +61,13 @@
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" onclick="loginrefresh()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal" onclick="forgotrefresh()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel"><i class="fa fa-user" aria-hidden="true"></i> Forgot Password</h4>
-                    <div class="login" style="display:none;"></div>
+                    <div class="forgot" style="display:none;"></div>
                   </div>
-                  <form name="frmLogin" id="frmforgot" method="post">
+                  <form name="frmForgot" id="frmForgot" method="post">
                   <div class="modal-body">
+                      <div class="alert alert-success fade in alert-dismissable" id="result" style="display:none"></div>
                       <div class="infbox">
                         <div class="userid"><i class="fa fa-user" aria-hidden="true"></i></div>
                         <input name="forgot_email_id" id="forgot_email_id" type="text" class="loginuser" placeholder="Enter Email ID" />
@@ -92,7 +93,7 @@
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" onclick="signuprefresh()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel"><i class="fa fa-lock" aria-hidden="true"></i> Patient Registration</h4>
-                    <h4 class="registration" style="display:none;"></h4>
+                    <div class="registration" style="display:none;"></div>
                   </div>
                   <form name="frmRegistration" id="frmRegistration" method="post" >
                   <div class="modal-body">

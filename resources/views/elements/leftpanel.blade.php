@@ -1,4 +1,5 @@
 <div class="col-md-4">
+    <div  id="sticker">
         <div class="qtbox">
             <h3><img src="{!!URL::to('storage/frontend/images/ql.jpg')!!}" alt=""> REQUEST A <strong>QUOTE</strong> <img src="{!!URL::to('storage/frontend/images/qr.jpg')!!}" alt=""></h3>
 
@@ -33,5 +34,5 @@
                 </a>
             </div>
         @endif
-
+    </div>
 </div>
