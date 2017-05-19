@@ -1457,3 +1457,15 @@ Stack trace:
 [2017-05-19 07:23:21] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'App\Http\Controllers\Mail' not found' in C:\xampp\htdocs\medical_tourism\app\Http\Controllers\AdminUserController.php:74
 Stack trace:
 #0 {main}  
+[2017-05-19 07:33:34] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'App\Http\Controllers\Mail' not found' in C:\xampp\htdocs\medical_tourism\app\Http\Controllers\AdminUserController.php:75
+Stack trace:
+#0 {main}  
+[2017-05-19 08:35:05] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'App\Http\Controllers\Mail' not found' in C:\xampp\htdocs\medical_tourism\app\Http\Controllers\AdminUserController.php:78
+Stack trace:
+#0 {main}  
+[2017-05-19 08:36:46] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'App\Http\Controllers\Mail' not found' in C:\xampp\htdocs\medical_tourism\app\Http\Controllers\AdminUserController.php:78
+Stack trace:
+#0 {main}  
+[2017-05-19 08:39:27] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'App\Http\Controllers\Mail' not found' in C:\xampp\htdocs\medical_tourism\app\Http\Controllers\AdminUserController.php:78
+Stack trace:
+#0 {main}  

@@ -51,11 +51,15 @@ class AdminUserController extends Controller
       ]);
       
       $login_user_id=Auth::guard('admin')->user()->id; //Login user id
+      $namevar=$request->name;
+      $emailvar=$request->email;
+      $passvar=$request->password;
 
       $user = new User();
       $user->name = $request->name;
       $user->email = $request->email;
       $user->password = bcrypt($request->password);
+
       if($login_user_id!=1)//Login user other than super admin
       {
         $user->added_by =$login_user_id;
@@ -70,8 +74,8 @@ class AdminUserController extends Controller
       $user->save();
       $role_user = Role::where('id',$request->role)->first();
       $user->roles()->attach($role_user);
-
-      Mail::to($request->email)->send(new AdminUserRegistrationMail($request->name,$adminname,$role_user,$request->email,$request->password));
+      $rolename=$role_user->name;
+      Mail::to($emailvar)->send(new AdminUserRegistrationMail($namevar,$adminname,$rolename,$emailvar,$passvar));
       $request->session()->flash("message", "User addedd successfully");
       return redirect('/admin/adminuser');
     }
