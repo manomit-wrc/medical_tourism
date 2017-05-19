@@ -210,7 +210,7 @@ $(function () {
       $(".chk-route-list").prop('checked',false);
       if(value) {
         $.ajax({
-          type:"POST",
+          type:"GET",
           url: "/admin/permission/get_permission/",
           data: {role_id:value,_token:"{{csrf_token()}}"},
           success:function(response) { //alert(response);
