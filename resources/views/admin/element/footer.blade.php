@@ -178,7 +178,7 @@ $(function () {
         });
 
         $.ajax({
-          type:"POST",
+          type:"GET",
           url:"/admin/permission/store_permission/",
           data: {role:$("#role").val(),permissionArr:permissionArr,_token:"{{csrf_token()}}"},
           success:function(response) {

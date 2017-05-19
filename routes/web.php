@@ -264,7 +264,7 @@ Route::group(['middleware' => ['admin']], function () {
 
     //Admin permission section
     Route::get('/admin/permission/','AdminUserController@permission');
-    Route::post('/admin/permission/store_permission/', 'AdminUserController@store_permission');
+    Route::get('/admin/permission/store_permission/', 'AdminUserController@store_permission');
     Route::get('/admin/permission/get_permission/','AdminUserController@get_permission');
 
     //Patient section
