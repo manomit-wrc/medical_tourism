@@ -16,6 +16,9 @@ class DashboardController extends Controller
     }
     public function index() 
     {
+      $login_user_id=Auth::guard('admin')->user()->id;
+      if($login_user_id==1)//If admin login
+      {
        	$hospital_data = Hospital::all();
     	$total_hospital_count = Hospital::where('status','=','1')->count();
 
@@ -25,5 +28,16 @@ class DashboardController extends Controller
     	$patient_data = Patient::all();
     	$total_patient_count = Patient::where('status','=','1')->count();
     	return view('admin.dashboard', compact('total_hospital_count','hospital_data','doctor_data','total_doctor_count','total_patient_count','patient_data'));
+      }else{
+        $hospital_data = Hospital::all();
+        $total_hospital_count = Hospital::where('status','=','1')->count();
+
+        $doctor_data = Doctor::all();
+        $total_doctor_count = Doctor::where('status','=','1')->count();
+        
+        $patient_data = Patient::all();
+        $total_patient_count = Patient::where('status','=','1')->count();
+        return view('admin.hospital_dashboard', compact('total_hospital_count','hospital_data','doctor_data','total_doctor_count','total_patient_count','patient_data'));
+      }
     }
 }
