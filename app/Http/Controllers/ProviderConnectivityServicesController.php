@@ -27,9 +27,9 @@ class ProviderConnectivityServicesController extends Controller
      * @return Response
      */
     public function index() {
-        $conn_lists = ProviderConnectivityServices::where('status', '!=', 2)->get();
+        $conn_services_lists = ProviderConnectivityServices::where('status', '!=', 2)->get();
         //echo "<pre>"; print_r($conn_lists); die;
-        return view('admin.providerconnectivityservices.index')->with('conn_lists',$conn_lists);
+        return view('admin.providerconnectivityservices.index')->with('conn_services_lists',$conn_services_lists);
     }
 
     /**
@@ -139,15 +139,37 @@ class ProviderConnectivityServicesController extends Controller
      * @return Response
      */
 
-    public function destroy($id)
-    {
-        //echo $id; die;
-       // delete
-        $procobj = ProviderConnectivity::findOrFail($id);
-        $procobj->delete();
+    public function delete(Request $request,$id) {
+        if($id) {
+            $procobj = ProviderConnectivityServices::find($id);
+            $status = '2';
+            $procobj->status = $status; 
+            $del = $procobj->save();
+            if($del) {      
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/admin/providerconnectivityservices');
+            }
+        }
+    }
 
-        // redirect
-        Session::flash('message', 'Successfully deleted');
-        return Redirect::to('/admin/providerconnectivity');
+     public function ajaxproviconservchangestatus(Request $request) { 
+        $id = $request->id;
+        $status = $request->status;     
+        $mt = ProviderConnectivityServices::find($id);
+       /* if ($status == 1){
+            $stat = 0;
+        }
+        if ($status == 0){
+            $stat = 1;
+        } */      
+        $mt->status = $status; 
+        $upd = $mt->save();        
+        if($upd) {              
+          $returnArr = array('status'=>'1','msg'=>'Updateed Successfully');
+        }else{
+          $returnArr = array('status'=>'0','msg'=>'Inserted Faliure');
+        }          
+        echo json_encode($returnArr);
+        die();
     }
 }

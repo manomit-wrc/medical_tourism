@@ -26,7 +26,7 @@
               <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
             </div>
 
-            <div><a href="{!!URL::to('/admin/providerconnectivityservices/create')!!}"><button type="button" class="btn bg-purple">ADD</button></a></div>
+            <div class="topbtn"><a href="{!!URL::to('/admin/providerconnectivityservices/create')!!}"><button type="button" class="btn bg-purple btn-rightad">ADD</button></a></div>
 
             <!-- /.box-header -->
             <div class="box-body">
@@ -36,27 +36,36 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                   <tr>
-                    <th></th>
                     <th>Connectivity name</th>
                     <th>Service name</th>
-                    <th>Actions</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th width="11%">Actions</th>
                   </tr>
                 </thead>
                
                 <tbody>
-                  @if (count($conn_lists) > 0)
-                    @foreach($conn_lists as $conn_lists)
+                  @if (count($conn_services_lists) > 0)
+                    @foreach($conn_services_lists as $conn_services_lists)
                       <tr>
-                        <td>{{ $conn_lists->connectivity->name }}</td>
-                        <td>{{ $conn_lists->name }}</td>
-                        <td>{{ $conn_lists->distance }}</td>
+                        <td>{{ $conn_services_lists->provider_connectivity_id }}</td>
+                        <td>{{ $conn_services_lists->connectivity_service_id }}</td>
+                        <td>{{ $conn_services_lists->description }}</td>
                         <td>
-                          <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
-                            <!-- we will add this later since its a little more complicated than the other two buttons -->
-                             {!! Form::open(array('method' => 'DELETE','url' => array('admin/providerconnectivity/delete', $conn_lists->id),'class' => 'pull-right')) !!}
-                                  {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                              {!! Form::close() !!}
-                          <a href="{!!URL::to('/admin/providerconnectivity/edit',$conn_lists->id)!!}" class="btn btn-primary">Edit</a>
+                          @if($conn_services_lists->status ==1)
+                            <span data-toggle="tooltip" data-original-title="Click here to change status">
+                            <input type="checkbox" checked id="tog{{ $conn_services_lists->id }}" onchange="return changeStatus('/admin/providerconnectivityservices/changestatus',{{ $conn_services_lists->id }})" value="1"  data-toggle="toggle2">
+                            </span>
+                          @endif
+                          @if($conn_services_lists->status ==0)
+                          <span data-toggle="tooltip" data-original-title="Click here to change status">
+                            <input type="checkbox" id="tog{{ $conn_services_lists->id }}"  onchange="return changeStatus('/admin/providerconnectivityservices/changestatus',{{ $conn_services_lists->id }})" value="0" data-toggle="toggle2">
+                          </span>
+                          @endif
+                        </td>
+                        <td>
+                          <a href="{!!URL::to('/admin/providerconnectivityservices/edit',$conn_services_lists->id)!!}" class="btn btn-primary">Edit</a>
+                          <a href="javascript:void(0)" onclick="return deldata('{!!URL::to('/admin/providerconnectivityservices/delete',$conn_services_lists->id)!!}')" class="btn btn-danger" >Delete</a>
                         </td>
                       </tr>
                     @endforeach

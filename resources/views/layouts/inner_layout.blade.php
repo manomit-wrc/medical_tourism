@@ -11,9 +11,9 @@
                     <div class="row">
                       @if(Request::segment(1) == 'doctordetail')
                           @include('elements.leftpaneldoctor')
-                      @elseif(Request::segment(1) != 'profile' && Request::segment(1) != 'upload-documents' && Request::segment(1) != 'change-password' && Request::segment(1) != 'activate'  && Request::segment(1) != 'enquiry')
+                      @elseif(Request::segment(1) != 'profile' && Request::segment(1) != 'upload-documents' && Request::segment(1) != 'change-password' && Request::segment(1) != 'activate'  && Request::segment(1) != 'my-enquiry' && Request::segment(1) != 'enquiry')
                           @include('elements.leftpanel')
-                      @else
+                      @elseif(Request::segment(1) != 'enquiry')
                           @include('elements.leftpanelpatient')    
                       @endif
 

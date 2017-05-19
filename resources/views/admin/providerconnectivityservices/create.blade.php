@@ -6,12 +6,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Connectivity
+         Connectivity Services
        <!--  <small>advanced tables</small> -->
       </h1>
       <ol class="breadcrumb">
         <li><a href="{!!URL::to('/admin/dashboard')!!}">Home</a></li>
-        <li><a href="{!!URL::to('/admin/providerconnectivity')!!}">Connectivity</a></li>
+        <li><a href="{!!URL::to('/admin/providerconnectivityservices')!!}">Connectivity services </a></li>
         <li class="active">Add</li>
       </ol>
     </section>

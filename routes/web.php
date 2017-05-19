@@ -53,6 +53,7 @@ Route::group(['middleware' => ['front']], function() {
     Route::get('/change-password','PagesController@change_password');
     Route::post('update-password','PagesController@update_password');
     Route::get('/upload-documents','PagesController@upload_documents');
+    Route::get('/my-enquiry','PagesController@my_enquiry');
     
 });
 //Route::get('/successstory','HelperController@successstory');
@@ -292,7 +293,6 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('/admin/providerconnectivity/store','ProviderConnectivityController@store');
     Route::get('/admin/providerconnectivity/edit/{id}','ProviderConnectivityController@edit');
     Route::patch('/admin/providerconnectivity/update/{id}','ProviderConnectivityController@update');
-    Route::delete('/admin/providerconnectivity/delete/{id}','ProviderConnectivityController@destroy');
     Route::get('/admin/providerconnectivity/delete/{id}','ProviderConnectivityController@delete');
     Route::post('/admin/providerconnectivity/changestatus/','ProviderConnectivityController@ajaxproviconchangestatus');
 
@@ -302,8 +302,9 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('/admin/providerconnectivityservices/store','ProviderConnectivityServicesController@store');
     Route::get('/admin/providerconnectivityservices/edit/{id}','ProviderConnectivityServicesController@edit');
     Route::patch('/admin/providerconnectivityservices/update/{id}','ProviderConnectivityServicesController@update');
-    Route::delete('/admin/providerconnectivityservices/delete/{id}','ProviderConnectivityServicesController@destroy');
+    Route::get('/admin/providerconnectivityservices/delete/{id}','ProviderConnectivityServicesController@delete');
     Route::get('/admin/providerconnectivityservices/show/{id}','ProviderConnectivityServicesController@show');
+    Route::post('/admin/providerconnectivityservices/changestatus/','ProviderConnectivityServicesController@ajaxproviconservchangestatus');
 
     //hospitals section
     Route::get('/admin/hospitals', 'HospitalController@index');
