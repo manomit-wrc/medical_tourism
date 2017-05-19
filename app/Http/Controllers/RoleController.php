@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Route;
 
 class RoleController extends Controller
 {
@@ -33,7 +34,36 @@ class RoleController extends Controller
       $role = new \App\Role();
       $role->name = $request->name;
       $role->status = $request->status;
-      if($role->save()) {
+
+      if($role->save())
+      { 
+        //when new role is inserted by default admin login logout dashboard permission will be inserted(start here)
+        $last_insert_role_id=$role->id;
+        $routeCollection = Route::getRoutes();
+        $i=0;
+        foreach($routeCollection as $key => $rc)
+        {
+
+          $var=explode("/",$rc->getPath()); 
+         
+          if($var[0]=='admin')
+          {
+            if($i<=3)//Only four rows of admin permission will be inserted
+            {  
+              $data[]=[
+                'role_id' => $last_insert_role_id,
+                'permission_id' => 'ch'.$key,
+                'permission_name' => $rc->getPath(),
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+              ];
+              $i++;
+            }
+          }  
+        }  
+        $result = \App\Permission::insert($data);
+        //logic end here
+        
         $request->session()->flash("message", "Role addedd successfully");
         return redirect('/admin/role');
       }
