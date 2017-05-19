@@ -208,3 +208,12 @@
             $("#forgot_email_id-error").hide();
           }           
         </script>
+        <script type="text/javascript">
+                Dropzone.options.imageUpload = {
+                    maxFilesize         :       1,
+                    acceptedFiles: ".jpeg,.jpg,.png,.gif,.txt"
+                };
+                function reload() {
+                  location.reload();
+                }
+        </script>
