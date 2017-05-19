@@ -1859,3 +1859,44 @@ label.error {
 	z-index: 50 !important;
       
 }
+
+/*---------------19-05-2017-----------------*/
+
+.afterimgbox{
+	width: 140px;
+	height: 140px;
+	margin: 16px;
+	position: relative;
+	background: #ccc;
+	border-radius:15px;
+	float: left; 
+}
+
+.afterimgbox span{
+	position: absolute;;
+	width: 25px;
+	height: 25px;
+	background: #ccc;
+	line-height: 25px;
+	text-align: center;
+	color: #000;
+	right: -10px;
+	top: -10px;
+	border-radius:50%; 
+}
+
+.afterimgbox span a{
+	color: #000;
+	text-decoration: none;
+}
+
+.afterimgbox span a:hover{
+	color: #000;
+	text-decoration: none;
+}
+
+.afterimgbox img{
+	width: 140px;
+	height: 140px;
+	border-radius:15px;
+}

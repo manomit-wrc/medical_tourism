@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 use Image;
 use App\Http\Controllers\Controller;
 use App\MedicalFacility;
@@ -402,10 +403,11 @@ class PagesController extends Controller
   }
 
   public function upload_documents() {
+    $documentdata = \App\Document::where('status', '!=', 2)->get();
     $country_details = \App\Patient::with('countries')->find(Auth::guard('front')->user()->id)->toArray();
     $state_details = \App\Patient::with('states')->find(Auth::guard('front')->user()->id)->toArray();
     $city_details = \App\Patient::with('cities')->find(Auth::guard('front')->user()->id)->toArray();
-    return view('pages.upload_document')->with(['country_details'=>$country_details,'state_details'=>$state_details,'city_details'=>$city_details]);    
+    return view('pages.upload_document')->with(['country_details'=>$country_details,'state_details'=>$state_details,'city_details'=>$city_details,'documentdata'=>$documentdata]);    
   }
   public function my_enquiry() {
     $country_details = \App\Patient::with('countries')->find(Auth::guard('front')->user()->id)->toArray();
@@ -533,9 +535,33 @@ class PagesController extends Controller
       return redirect('/successreset');
     }
   }
+}
 
+public function documentupload(Request $request) {    
+    $documents = new \App\Document(); 
+    $image = $request->file('file');
+    $imageName = time().$image->getClientOriginalName();
+    $image->move(public_path('/uploads/drop'),$imageName);
+    $documents->document = $imageName; 
+    $documents->patient_id = Auth::guard('front')->user()->id;
+    $save= $documents->save();
+    if($save) {
+      return response()->json(['success'=>$imageName]);
+    }      
 }
 public function successreset() {    
     return view('pages.reset');
-  }
+}
+public function document_delete(Request $request,$id) {
+        if($id) {
+            $docu_cat = \App\Document::find($id);
+            $status = '2';
+            $docu_cat->status = $status; 
+            $del = $docu_cat->save();
+            if($del) {      
+                $request->session()->flash("message", "Successfully deleted");
+                return redirect('/upload-documents');
+            }
+        }
+    }
 }

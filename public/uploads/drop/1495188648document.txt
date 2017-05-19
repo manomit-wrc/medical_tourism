@@ -1,0 +1,93 @@
+https://www.base64decode.org/
+https://login.bluehost.com/box748.bluehost.com/webmail
+www.login.bluehost.com
+username : sujit@wrctechnologies.com
+password : gwf-sf9-UWz-XyL
+
+https://web.skype.com/en/
+
+http://localhost/niceling/interface/admin/privacyPolicy
+kasturi.wrc@gmail.com
+1234567
+
+
+
+
+
+
+http://www.wrctechnologies.in/efforttracker/
+username : sujit@wrctechnologies.com
+password : sujit@wrc
+
+
+
+
+
+Attorney :
+Username: harry.potter@hogwarts.com
+Password:12345678
+
+Firm Admin : 
+Username: albus.dumbledore@hogwarts.com
+Password:12345678
+
+################################ select data between seven days  #########################################
+
+SELECT * FROM `admin_users` WHERE `DOB` >= DATE(NOW()) - INTERVAL 7 DAY
+SELECT * FROM `plma_approval_level` WHERE `created_date` >= UNIX_TIMESTAMP(DATE(NOW()) - INTERVAL 7 DAY) ORDER BY `approval_level_seq_no` DESC 
+
+################################ select data between seven days  ######################################### 
+
+################################  the value store in a variable in comma saperated    #########################################
+$tempp = '';
+
+foreach($rowtag as $key => $val){
+
+$tempp .= "'" . implode ( "', '", $val ) . "',";
+	
+}
+
+$temp = substr($tempp, 0, -1);	
+################################  the value store in a variable in comma saperated     #########################################
+
+
+############################### get data from database ##############################################
+
+$sql = "select pfirm.firm_seq_no from plma_firm pfirm where pfirm.firm_admin_seq_no=$admin_id";
+ 
+$res = $this->db->query($sql);
+
+  // echo $this->db->last_query(); exit;
+                
+ $row =$res->result_array();
+
+ $firm_seq_no = $row[0]['firm_seq_no'];
+
+ $cond = "AND practice_area_seq_no = '" . $value . "'";
+$prac_area = $this->practice_area_model->fetch($cond);
+###############################  get data from database  ##############################################
+
+
+
+http://www.pomerac.com/dev3/
+	http://concretetrucks.com.au/
+	http://demo.livedemoproject.com/secretlegacy/
+	http://demo.livedemoproject.com/msawer/
+	http://youelist.com/
+	http://musicfreelancer.net/		
+		http://www.itamica.com/
+		https://www.mercbytetechnology.com/			
+		http://www.ditomart.com/
+		http://www.rhinoservices.in/
+		http://www.sibangienterprise.com
+		http://www.iplanschool.com/
+		http://www.convenientholidays.com/
+		http://www.catholidays.com/
+		http://www.fsui.org/
+		http://www.amazingbuddhatours.com/
+		http://gleanburnieschool.com/
+		fastmanagement.in
+		http://www.royaltrack.com/
+
+
+

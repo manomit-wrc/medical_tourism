@@ -43,6 +43,8 @@ Route::post('/profile_image_upload','PagesController@profile_image_upload');
 Route::get('/changepassword/{url}','PagesController@changepassword');
 Route::post('/reset-password/{security_code}','PagesController@reset_password');
 Route::get('/successreset','PagesController@successreset');
+Route::post('/documentupload','PagesController@documentupload');
+Route::get('/document-delete/{id}','PagesController@document_delete');
 
 Route::group(['middleware' => ['front']], function() {
     Route::get('/profile','PagesController@patient_profile');

@@ -1,4 +1,7 @@
+    
     {!!Html::script("storage/frontend/js/jquery.min.js")!!}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     {!!Html::script("storage/frontend/js/bootstrap.min.js")!!}
     {!!Html::script("storage/frontend/js/jquery.jcarousel.min.js")!!}
     {!!Html::script("storage/frontend/js/jcarousel.responsive.js")!!}
@@ -8,6 +11,12 @@
 
     {!!Html::script("storage/frontend/js/jquery.validate.min.js")!!}
     {!!Html::script("storage/frontend/js/additional-methods.min.js")!!}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/min/dropzone.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/min/dropzone.min.js"></script>
+
+    <script type="text/javascript">
+    $(function () {$('[data-toggle="tooltip"]').tooltip()})
+  </script>
     <script type="text/javascript">
       function get_select_birthday() {
         var dob_days = "{{$dob_days}}";
@@ -38,6 +47,9 @@
       }
       $(document).ready(function(){
           get_select_birthday();
+          setTimeout(function() {            
+            $('#resultdocumentmsg').fadeOut('fast');
+          }, 2000);
           $("#dob_year").change(function(e){
 
             if($(this).val() && $("#dob_month").val() !="") {
@@ -413,7 +425,10 @@
             });
 
             $(".plus-button").click(function(e){
-              $(".upload-field").append('<div class="col-sm-11"><label class="on768"><div class="upload_profile1"><input type="file" name="upload_documents[]" id="file-1" class="inputfile on768"  /><label for="file-1" style="padding:12px;"><i class="fa fa-cloud-upload" aria-hidden="true"></i> <span>Choose a file&hellip;</span></label></div></label></div><div class="col-sm-1"><button type="button" class="plusbtn cross-button" style="margin-top:0;">x</button></div>');
+              var val = $("#plus_count").val();
+              var value = parseInt(val) + 1;
+              $("#plus_count").val(value);
+              $(".upload-field").append('<div class="col-sm-11"><label class="on768"><div class="upload_profile1"><input type="file" multiple="" name="upload_documents[]" id="file-'+value+'" class="inputfile on768"  /><label for="file-'+value+'" style="padding:12px;"><i class="fa fa-cloud-upload" aria-hidden="true"></i> <span>Choose a file&hellip;</span></label></div></label></div><div class="col-sm-1"><button type="button" class="plusbtn cross-button" style="margin-top:0;">x</button></div>');
             });
       });
 
@@ -422,8 +437,7 @@
         $(this).find('.col-sm-11').remove();
       });
     </script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    
     <script type="text/javascript">
       function BindControls() {
         var Countries = ['ARGENTINA', 
@@ -474,5 +488,7 @@
     $(window).load(function(){
       $("#sticker").sticky({ topSpacing: 0, center:true, className:"hey" });
     });
+
   </script>
+  
   
