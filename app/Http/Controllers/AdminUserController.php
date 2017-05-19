@@ -1,11 +1,11 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Role;
+use App\Mail\AdminUserRegistrationMail;
 use Illuminate\Support\Facades\Route;
 use Auth;
 
@@ -59,17 +59,26 @@ class AdminUserController extends Controller
       if($login_user_id!=1)//Login user other than super admin
       {
         $user->added_by =$login_user_id;
+        $added_user_data = User::with('roles')->where('id',$id)->get();
+        //echo "<pre>"; print_r($added_user_data[0]->name); die;
+        //echo "<pre>"; print_r($added_user_data[0]->roles[0]->name); die;
+        $adminname=$added_user_data[0]->roles[0]->name.'('.$added_user_data[0]->name.')';
+      }else{
+        $adminname='Swasthya Bandhav Admin';
       }  
+      
       $user->save();
       $role_user = Role::where('id',$request->role)->first();
-
       $user->roles()->attach($role_user);
+
+      Mail::to($request->email)->send(new AdminUserRegistrationMail($request->name,$adminname,$role_user,$request->email,$request->password));
       $request->session()->flash("message", "User addedd successfully");
       return redirect('/admin/adminuser');
     }
 
     public function edit($id) {
       $user_data = User::with('roles')->where('id',$id)->get();
+      //echo "<pre>"; print_r($user_data[0]->roles[0]->name); die;
       $role_list = Role::get()->pluck('name','id');
       return view('admin.users.edit')->with(['role_list'=> $role_list,'user_data' => $user_data]);
     }

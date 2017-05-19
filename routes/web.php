@@ -67,7 +67,7 @@ Route::group(['middleware' => ['admin']], function () {
 
     Route::get('/admin/logout', array('uses' => 'LoginController@logout'));
     Route::get('/admin/dashboard', 'DashboardController@index');
-
+    //Write all other routing related admin after these two roouting
     //Language capability section
     Route::get('/admin/languagecapability', 'LanguageCapabilityController@index');
     Route::get('/admin/languagecapability/create','LanguageCapabilityController@create');

@@ -16,7 +16,7 @@ class DashboardController extends Controller
     }
     public function index() 
     {
-    	$hospital_data = Hospital::all();
+       	$hospital_data = Hospital::all();
     	$total_hospital_count = Hospital::where('status','=','1')->count();
 
     	$doctor_data = Doctor::all();
