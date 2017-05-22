@@ -36,6 +36,7 @@
     32 => 'Sarfraznawaz2005\\VisitLog\\VisitLogServiceProvider',
     33 => 'GoogleMaps\\ServiceProvider\\GoogleMapsServiceProvider',
     34 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
+    35 => 'Cmgmyr\\Messenger\\MessengerServiceProvider',
   ),
   'eager' => 
   array (
@@ -60,6 +61,7 @@
     18 => 'Unisharp\\Ckeditor\\ServiceProvider',
     19 => 'Sarfraznawaz2005\\VisitLog\\VisitLogServiceProvider',
     20 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
+    21 => 'Cmgmyr\\Messenger\\MessengerServiceProvider',
   ),
   'deferred' => 
   array (

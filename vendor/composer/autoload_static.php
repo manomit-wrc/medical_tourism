@@ -383,6 +383,13 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
                 0 => __DIR__ . '/..' . '/doctrine/collections/lib',
             ),
         ),
+        'C' => 
+        array (
+            'Cmgmyr\\Messenger\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/cmgmyr/messenger/src',
+            ),
+        ),
     );
 
     public static $classMap = array (
@@ -397,11 +404,16 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         'AddRememberTokenToPatientsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_08_073932_add_remember_token_to_patients_table.php',
         'AddSecurityCodePatientsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_18_084353_add_security_code_patients_table.php',
         'AddSendMessageSendStatusContactusTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_16_062102_add_send_message_send_status_contactus_table.php',
+        'AddSoftDeletesToMessagesTable' => __DIR__ . '/../..' . '/database/migrations/2017_03_30_152742_add_soft_deletes_to_messages_table.php',
+        'AddSoftDeletesToParticipantsTable' => __DIR__ . '/../..' . '/database/migrations/2014_11_03_154831_add_soft_deletes_to_participants_table.php',
+        'AddSoftdeletesToThreadsTable' => __DIR__ . '/../..' . '/database/migrations/2014_12_04_124531_add_softdeletes_to_threads_table.php',
         'AddStatusContactusTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_08_102311_add_status_contactus_table.php',
         'AddStatusToProceduresTables' => __DIR__ . '/../..' . '/database/migrations/2017_04_13_074936_add_status_to_procedures_tables.php',
         'AddStatusUsersTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_12_095833_add_status_users_table.php',
         'AddUserIdToDoctorsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_26_083459_add_user_id_to_doctors_table.php',
         'AddUserIdToPackageTypesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_27_132153_add_user_id_to_package_types_table.php',
+        'AddUserTypeMessagesTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_22_103305_add_user_type_messages_table.php',
+        'AddUserTypeParticipantsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_22_103914_add_user_type_participants_table.php',
         'AddUsernameToPatientsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_08_091825_add_username_to_patients_table.php',
         'AlterTableDoctorsChangeAbout' => __DIR__ . '/../..' . '/database/migrations/2017_05_08_050127_alter_table_doctors_change_about.php',
         'AlterTableFaqsChangeFaqCategoryId' => __DIR__ . '/../..' . '/database/migrations/2017_05_08_131634_alter_table_faqs_change_faq_category_id.php',
@@ -409,6 +421,8 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         'AlterTableMedicalFacilitiesChangeDescription' => __DIR__ . '/../..' . '/database/migrations/2017_04_24_121844_alter_table_medical_facilities_change_description.php',
         'AlterTableMedicalTestCategoriesChangeCatId' => __DIR__ . '/../..' . '/database/migrations/2017_05_03_062700_alter_table_medical_test_categories_change_cat_id.php',
         'AlterTableMedicalTestCategoriesChangeCatName' => __DIR__ . '/../..' . '/database/migrations/2017_05_03_054857_alter_table_medical_test_categories_change_cat_name.php',
+        'AlterTableMessagesChangeBody' => __DIR__ . '/../..' . '/database/migrations/2017_05_22_110349_alter_table_messages_change_body.php',
+        'AlterTableMessagesChangeUserType' => __DIR__ . '/../..' . '/database/migrations/2017_05_22_104825_alter_table_messages_change_user_type.php',
         'CreateAccomodationsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_21_073022_create_accomodations_table.php',
         'CreateAccrediationsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_21_051438_create_accrediations_table.php',
         'CreateBannersTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_21_124438_create_banners_table.php',
@@ -425,6 +439,7 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         'CreateDoctorDegreeTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_26_082652_create_doctor_degree_table.php',
         'CreateDoctorProcedureTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_26_082629_create_doctor_procedure_table.php',
         'CreateDoctorsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_26_071406_create_doctors_table.php',
+        'CreateDocumentsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_19_093033_create_documents_table.php',
         'CreateFaqCategoriesTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_08_085507_create_faq_categories_table.php',
         'CreateFaqsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_08_093445_create_faqs_table.php',
         'CreateGenericmedicineCategoriesTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_02_085242_create_genericmedicine_categories_table.php',
@@ -439,8 +454,10 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         'CreateLanguageCapabilitiesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_13_104412_create_language_capabilities_table.php',
         'CreateMedicalFacilitiesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_24_105551_create_medical_facilities_table.php',
         'CreateMedicalTestCategoriesTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_03_051552_create_medical_test_categories_table.php',
+        'CreateMessagesTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_28_175710_create_messages_table.php',
         'CreateNewsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_26_091813_create_news_table.php',
         'CreatePackageTypesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_27_125305_create_package_types_table.php',
+        'CreateParticipantsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_28_180224_create_participants_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreatePatientsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_05_092313_create_patients_table.php',
         'CreatePaymentTypesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_25_054933_create_payment_types_table.php',
@@ -452,6 +469,7 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         'CreateRolesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_24_085106_create_roles_table.php',
         'CreateSpecificServiceTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_21_092026_create_specific_service_table.php',
         'CreateSuccessStoriesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_28_052704_create_success_stories_table.php',
+        'CreateThreadsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_28_175635_create_threads_table.php',
         'CreateTreatmentsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_13_094025_create_treatments_table.php',
         'CreateUserRoleTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_24_132948_create_user_role_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',

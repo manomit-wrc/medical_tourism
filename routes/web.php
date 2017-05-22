@@ -70,6 +70,8 @@ Route::group(['middleware' => ['admin']], function () {
 
     Route::get('/admin/logout', array('uses' => 'LoginController@logout'));
     Route::get('/admin/dashboard', 'DashboardController@index');
+    Route::get('/admin/profile','AdminUserController@profile');
+    Route::post('/admin/update-profile','AdminUserController@update_profile');
     //Write all other routing related admin after these two roouting
     //Language capability section
     Route::get('/admin/languagecapability', 'LanguageCapabilityController@index');
@@ -265,7 +267,7 @@ Route::group(['middleware' => ['admin']], function () {
 
     //Admin permission section
     Route::get('/admin/permission/','AdminUserController@permission');
-    Route::get('/admin/permission/store_permission/', 'AdminUserController@store_permission');
+    Route::post('/admin/permission/store_permission/', 'AdminUserController@store_permission');
     Route::get('/admin/permission/get_permission/','AdminUserController@get_permission');
 
     //Patient section
@@ -277,6 +279,17 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/patients/delete/{id}','PatientController@delete');
     Route::get('/admin/patients/show/{id}','PatientController@show');
     Route::post('/admin/patients/changestatus/','PatientController@ajaxpatientchangestatus');
+
+    //Message section
+    Route::get('/admin/messages','MessagesController@index');
+    Route::get('/admin/messages/create','MessagesController@create');
+    Route::post('/admin/messages/store','MessagesController@store');
+    //Route::get('/admin/messages/edit/{id}','PatientController@edit');
+    Route::get('/admin/messages/show/{id}','MessagesController@show');
+    Route::put('/admin/messages/update/{id}','MessagesController@update');
+    //Route::get('/admin/messages/delete/{id}','PatientController@delete');
+   
+    //Route::post('/admin/messages/changestatus/','PatientController@ajaxpatientchangestatus');
 
     //Doctor section
     Route::get('/admin/doctors','DoctorController@index');

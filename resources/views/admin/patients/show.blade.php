@@ -43,9 +43,9 @@
           <b>Date of birth</b> : {{ $patient_data->date_of_birth }}<br/>
           <b>Biography</b> : {{ $patient_data->biography }}<br/>
           @if(!empty($patient_data->avators))
-            <b>Image</b> : <img src="{{url('/uploads/patients/thumb/'.$patient_data->avators)}}" alt="Hospital Image"><br/>
+            <b>Image</b> : <img src="{{url('/uploads/patients/thumb/'.$patient_data->avators)}}" alt="Patient Image"><br/>
           @else
-            <b>Image</b> : <img src="{{url('/uploads/patients/patient.jpg')}}" alt="Hospital Image"><br/>
+            <b>Image</b> : <img src="{{url('/uploads/patients/patient.jpg')}}" alt="Patient Image"><br/>
           @endif
         </div>
         <!-- /.box-body -->
