@@ -134,7 +134,7 @@ class MessagesController extends Controller
         } catch (ModelNotFoundException $e) {
             Session::flash('error_message', 'The thread with ID: ' . $id . ' was not found.');
 
-            return redirect('messages');
+            return redirect('admin/messages');
         }
 
         $thread->activateAllParticipants();
@@ -154,6 +154,7 @@ class MessagesController extends Controller
             [
                 'thread_id' => $thread->id,
                 'user_id'   => Auth::guard('admin')->user()->id,
+                'user_type' => 'A',
             ]
         );
         $participant->last_read = new Carbon;
