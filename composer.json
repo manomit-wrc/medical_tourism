@@ -15,7 +15,8 @@
         "sarfraznawaz2005/visitlog": "dev-master",
         "torann/currency": "^1.0",
         "unisharp/laravel-ckeditor": "^4.6",
-        "maatwebsite/excel": "~2.1.0"
+        "maatwebsite/excel": "~2.1.0",
+        "cmgmyr/messenger": "~2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

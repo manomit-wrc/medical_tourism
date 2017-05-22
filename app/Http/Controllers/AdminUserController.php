@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Role;
+use Illuminate\Support\Facades\Mail;
 use App\Mail\AdminUserRegistrationMail;
 use Illuminate\Support\Facades\Route;
 use Auth;
@@ -216,4 +217,52 @@ class AdminUserController extends Controller
         }
       }
     }
+    public function profile(Request $request) 
+    {
+      $login_user_id=Auth::guard('admin')->user()->id;
+      $user_data = User::findOrFail($login_user_id);
+      return view('admin.users.profile')->with('user_data', $user_data);
+    }
+    public function update_profile(Request $request) {
+    $this->validate($request,[
+      'first_name' => 'required|max:50',
+      'last_name' => 'required|max:50',
+      'email_id' => 'required|email|unique:patients,email_id,'.Auth::guard('front')->user()->id,
+      'username' => 'required|unique:patients,username,'.Auth::guard('front')->user()->id,
+      'title' => 'required',
+      'mobile_no' => ['required','max:10','min:10'],      
+      'sex' => 'required',
+      'country_id' => 'required',
+      'state_id' => 'required',
+      'city_id' => 'required',
+      'dob_year' => 'required',
+      'dob_month' => 'required',
+      'dob_days' => 'required',
+      'biography' => 'required'
+    ]);
+
+    $patients = \App\Patient::find(Auth::guard('front')->user()->id);
+    if($patients) {     
+      if(($request->title =='Mr.' && $request->sex=='F') || ($request->title !='Mr.' && $request->sex=='M')){       
+        $request->session()->flash('error_message', 'Please select your sex as per title!');
+        return redirect('/profile'); 
+      }else{        
+        $patients->first_name = $request->first_name;
+        $patients->last_name = $request->last_name;
+        $patients->username = $request->username;
+        $patients->mobile_no = $request->mobile_no;
+        $patients->email_id = $request->email_id;
+        $patients->title = $request->title;
+        $patients->biography = $request->biography;
+        $patients->sex = $request->sex;
+        $patients->country_id = $request->country_id;
+        $patients->state_id = $request->state_id;
+        $patients->city_id = $request->city_id;
+        $patients->date_of_birth = $request->dob_days."-".$request->dob_month."-".$request->dob_year;     
+        $patients->save();
+        $request->session()->flash("message", "Profile updated successfully");
+        return redirect('/profile');
+      }
+    }
+  }
 }

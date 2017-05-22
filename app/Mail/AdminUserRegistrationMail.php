@@ -38,7 +38,7 @@ class AdminUserRegistrationMail extends Mailable
     public function build()
     {
         return $this->from('partho@wrctechnologies.com', 'Swasthya Bandhav')
-        ->subject('Password Link send from Swasthya Bandhav!')
+        ->subject('Registration from Swasthya Bandhav!')
         ->view('emails.adminuserregistrationdmail');
     }
 }
