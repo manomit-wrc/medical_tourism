@@ -10,6 +10,7 @@ return array(
     'AddAddedByUsersTable' => $baseDir . '/database/migrations/2017_05_18_071731_add_added_by_users_table.php',
     'AddCountryIdCityIdImmigrationsTable' => $baseDir . '/database/migrations/2017_05_09_085912_add_country_id_city_id_immigrations_table.php',
     'AddCurrencyIdColumsToHotelsTable' => $baseDir . '/database/migrations/2017_04_25_091752_add_currency_id_colums_to_hotels_table.php',
+    'AddFileNameDocumentsTable' => $baseDir . '/database/migrations/2017_05_22_063046_add_file_name_documents_table.php',
     'AddNewsImageToNewsTable' => $baseDir . '/database/migrations/2017_05_05_113435_add_news_image_to_news_table.php',
     'AddPasswordToPatientsTable' => $baseDir . '/database/migrations/2017_05_05_102509_add_password_to_patients_table.php',
     'AddPermissionIdToPermissions' => $baseDir . '/database/migrations/2017_04_25_125438_add_permission_id_to_permissions.php',

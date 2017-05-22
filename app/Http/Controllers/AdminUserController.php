@@ -75,7 +75,7 @@ class AdminUserController extends Controller
       $role_user = Role::where('id',$request->role)->first();
       $user->roles()->attach($role_user);
       $rolename=$role_user->name;
-      Mail::to($emailvar)->send(new AdminUserRegistrationMail($namevar,$adminname,$rolename,$emailvar,$passvar));
+      Mail::to($p)->send(new AdminUserRegistrationMail($namevar,$adminname,$rolename,$emailvar,$passvar));
       $request->session()->flash("message", "User addedd successfully");
       return redirect('/admin/adminuser');
     }

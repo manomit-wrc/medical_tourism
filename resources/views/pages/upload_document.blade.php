@@ -24,8 +24,6 @@
                 <br clear="all">
                 <div>&nbsp;</div>
                 <div>&nbsp;</div>
-
-
                 <div class="col-md-12">
                     @if (count($documentdata) > 0)
                         @foreach($documentdata as $doc_data) 
@@ -40,7 +38,7 @@
                         @endphp
                         <div class="afterimgbox">
                             <span><a href="{!!URL::to('/document-delete',$doc_data->id)!!}" >x</a></span>
-                            <img alt="{{ $doc_data->document }}" data-toggle="tooltip" data-placement="top" title="{{ $doc_data->document }}" src="http://localhost:8000/uploads/drop/{{ $imgfile }}">
+                            <a href="{!!URL::to('/document-download',$doc_data->id)!!}" ><img alt="{{ $doc_data->file_name }}" data-toggle="tooltip" data-placement="top" title="{{ $doc_data->file_name }}" src="http://localhost:8000/uploads/drop/{{ $imgfile }}"></a>
                         </div>
 
 
