@@ -542,7 +542,8 @@ public function documentupload(Request $request) {
     $image = $request->file('file');
     $imageName = time().$image->getClientOriginalName();
     $image->move(public_path('/uploads/drop'),$imageName);
-    $documents->document = $imageName; 
+    $documents->document = $imageName;
+    $documents->file_name = $image->getClientOriginalName(); 
     $documents->patient_id = Auth::guard('front')->user()->id;
     $save= $documents->save();
     if($save) {
@@ -552,16 +553,23 @@ public function documentupload(Request $request) {
 public function successreset() {    
     return view('pages.reset');
 }
-public function document_delete(Request $request,$id) {
+  public function document_delete(Request $request,$id) {
+      if($id) {
+          $docu_cat = \App\Document::find($id);
+          $status = '2';
+          $docu_cat->status = $status; 
+          $del = $docu_cat->save();
+          if($del) {      
+              $request->session()->flash("message", "Successfully deleted");
+              return redirect('/upload-documents');
+          }
+      }
+  }
+    public function document_download(Request $request,$id) {
         if($id) {
             $docu_cat = \App\Document::find($id);
-            $status = '2';
-            $docu_cat->status = $status; 
-            $del = $docu_cat->save();
-            if($del) {      
-                $request->session()->flash("message", "Successfully deleted");
-                return redirect('/upload-documents');
-            }
+            $file_path = public_path('/uploads/drop').'/'.$docu_cat->document;
+            return response()->download($file_path); 
         }
     }
 }
