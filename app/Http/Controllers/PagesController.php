@@ -546,17 +546,43 @@ class PagesController extends Controller
 }
 
 public function documentupload(Request $request) {    
-    $documents = new \App\Document(); 
-    $image = $request->file('file');
-    $imageName = time().$image->getClientOriginalName();
-    $image->move(public_path('/uploads/drop'),$imageName);
-    $documents->document = $imageName;
-    $documents->file_name = $image->getClientOriginalName(); 
-    $documents->patient_id = Auth::guard('front')->user()->id;
-    $save= $documents->save();
-    if($save) {
-      return response()->json(['success'=>$imageName]);
-    }      
+    $fielava = $_FILES['document']['name']; 
+    $arr = explode('.',$fielava);
+    $end = end($arr);       
+    $documents = new \App\Document();   
+    if($documents) {
+      if($fielava !=''){
+      $allowed2 = array('bmp','gif','jpg','jpeg','png');
+      if (!in_array($end, $allowed2)) {        
+        $returnArr = array('status'=>'2','msg'=>'The type of file you are trying to upload is not allowed');
+      } else {
+      if($request->hasFile('document')) {
+        $file = $request->file('document');
+        $fileName = time().'_'.$file->getClientOriginalName();
+
+        //original destination path
+        $destinationPath = public_path().'/uploads/drop/' ;       
+        $file->move($destinationPath,$fileName);
+      }
+      else {
+        $fileName = $documents->document;
+      }      
+      $documents->document = $fileName;
+      $documents->file_name = $request->file_name;
+      $documents->patient_id = Auth::guard('front')->user()->id;
+      $save= $documents->save();
+      if($save) {              
+          $returnArr = array('status'=>'1','image_name'=>$fileName,'msg'=>'Inserted Successfully');
+      }else{
+          $returnArr = array('status'=>'0','msg'=>'Inserted Faliure');
+      }
+    }
+  }else{
+    $returnArr = array('status'=>'3','msg'=>'Please select an image');
+  }
+  }
+    echo json_encode($returnArr);
+    die();      
 }
 public function successreset() {    
     return view('pages.reset');
