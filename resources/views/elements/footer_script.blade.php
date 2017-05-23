@@ -187,7 +187,11 @@
                 mobile_no: {
                   required: true,
                   maxlength: 10,
-                  minlength: 10
+                  minlength: 10,
+                  remote: {
+                    url: "/frontend/check_mobile_exist",
+                    type: "GET"
+                  }
                 },
                 password: {
                   required: true,
@@ -212,7 +216,8 @@
                 mobile_no: {
                   required: "Enter Mobile No",
                   maxlength: "Mobile no must have 10 digits",
-                  minlength: "Mobile no must have 10 digits"
+                  minlength: "Mobile no must have 10 digits",
+                  remote: $.validator.format("{0} is already in use")
                 },
                 password: {
                   required: "Please Enter Password",
@@ -270,8 +275,7 @@
             $("#frmLogin").validate({
               rules: {
                 login_email_id: {
-                  required: true,
-                  email: true
+                  required: true
                 },
                 login_password: {
                   required: true
@@ -279,8 +283,7 @@
               },
               messages: {
                 login_email_id: {
-                  required: "Please enter email id",
-                  email: "Please enter valid email format"
+                  required: "Please enter email id"
                 },
                 login_password: {
                   required: "Please enter password"

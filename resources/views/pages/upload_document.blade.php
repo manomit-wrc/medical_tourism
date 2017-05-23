@@ -30,7 +30,7 @@
                         @php                        
                         $arr = explode('.',$doc_data->document);
                         $end = end($arr);
-                        if($end=='jpeg' || $end=='jpg' || $end=='png' || $end=='gif' || $end=='bmp'){
+                        if($end=='jpeg' || $end=='jpg' || $end=='png' || $end=='gif' || $end=='bmp' || $end=='mp4' || $end=='flv' || $end=='avi' || $end=='wmv' || $end=='asf' || $end=='webm' || $end=='ogv'){
                             $imgfile = $doc_data->document;
                         }else{
                             $imgfile = 'default.jpg';
@@ -38,7 +38,22 @@
                         @endphp
                         <div class="afterimgbox">
                             <span><a href="{!!URL::to('/document-delete',$doc_data->id)!!}" >x</a></span>
-                            <a href="{!!URL::to('/document-download',$doc_data->id)!!}" ><img alt="{{ $doc_data->file_name }}" data-toggle="tooltip" data-placement="top" title="{{ $doc_data->file_name }}" src="http://localhost:8000/uploads/drop/{{ $imgfile }}"></a>
+                            <a href="{!!URL::to('/document-download',$doc_data->id)!!}" >
+                            @php
+                            if($end=='mp4' || $end=='flv' || $end=='avi' || $end=='wmv' || $end=='asf' || $end=='ogv' || $end=='webm'){
+                            @endphp
+                                <video height="140" width="140" controls>
+                                      <source src="http://localhost:8000/uploads/drop/{{ $imgfile }}"  type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                            @php
+                            }else { 
+                            @endphp
+                            <img alt="{{ $doc_data->file_name }}" data-toggle="tooltip" data-placement="top" title="{{ $doc_data->file_name }}" src="http://localhost:8000/uploads/drop/{{ $imgfile }}">
+                            @php
+                            }
+                            @endphp
+                            </a>
                         </div>
 
 

@@ -211,7 +211,7 @@
         <script type="text/javascript">
                 Dropzone.options.imageUpload = {
                     maxFilesize         :       1,
-                    acceptedFiles: ".jpeg,.jpg,.png,.gif,.txt"
+                    acceptedFiles: ".jpeg,.jpg,.png,.gif,.mp4,.flv,.avi,.wmv,.asf,.webm,.ogv,.txt,.pdf,.psd,.doc,.rtf,.ppt,.docx",
                 };
                 function reload() {
                   location.reload();

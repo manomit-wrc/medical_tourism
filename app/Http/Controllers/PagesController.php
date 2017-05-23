@@ -219,6 +219,16 @@ class PagesController extends Controller
       return json_encode(true);
     }
   }
+  public function check_mobile_exist(Request $request) {
+    $mobile_no = $request->input('mobile_no');
+    $patient = \App\Patient::where('mobile_no',$mobile_no)->first();
+    if($patient) {
+      return json_encode(false);
+    }
+    else {
+      return json_encode(true);
+    }
+  }
 
   public function patient_registration(Request $request) {
     if($request->ajax()) {
@@ -246,7 +256,9 @@ class PagesController extends Controller
     if($request->ajax()) {
       if(Auth::guard('front')->attempt(['email_id'=>$request->email_id, 'password'=>$request->password, 'status'=> '1'], $request->remember_me)) {
     		return response()->json(['status'=>'1']);
-    	}
+    	}else if(Auth::guard('front')->attempt(['mobile_no'=>$request->email_id, 'password'=>$request->password, 'status'=> '1'], $request->remember_me)) {
+        return response()->json(['status'=>'1']);
+      }
     	else {
     		return response()->json(['status'=>'0']);
     	}
@@ -279,8 +291,8 @@ class PagesController extends Controller
       'first_name' => 'required|max:50',
       'last_name' => 'required|max:50',
       'email_id' => 'required|email|unique:patients,email_id,'.Auth::guard('front')->user()->id,
-      'username' => 'required|unique:patients,username,'.Auth::guard('front')->user()->id,
-      'title' => 'required',
+      /*'username' => 'required|unique:patients,username,'.Auth::guard('front')->user()->id,
+      'title' => 'required',*/
       'mobile_no' => ['required','max:10','min:10'],      
       'sex' => 'required',
       'country_id' => 'required',
@@ -293,17 +305,13 @@ class PagesController extends Controller
     ]);
 
     $patients = \App\Patient::find(Auth::guard('front')->user()->id);
-    if($patients) {     
-      if(($request->title =='Mr.' && $request->sex=='F') || ($request->title !='Mr.' && $request->sex=='M')){       
-        $request->session()->flash('error_message', 'Please select your sex as per title!');
-        return redirect('/profile'); 
-      }else{        
+    if($patients) { 
         $patients->first_name = $request->first_name;
         $patients->last_name = $request->last_name;
-        $patients->username = $request->username;
+       /* $patients->username = $request->username; */
         $patients->mobile_no = $request->mobile_no;
         $patients->email_id = $request->email_id;
-        $patients->title = $request->title;
+       /* $patients->title = $request->title;*/
         $patients->biography = $request->biography;
         $patients->sex = $request->sex;
         $patients->country_id = $request->country_id;
@@ -313,7 +321,7 @@ class PagesController extends Controller
         $patients->save();
         $request->session()->flash("message", "Profile updated successfully");
         return redirect('/profile');
-      }
+      
     }
   }
 
