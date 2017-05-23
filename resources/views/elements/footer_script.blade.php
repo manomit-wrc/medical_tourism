@@ -10,10 +10,7 @@
 
 
     {!!Html::script("storage/frontend/js/jquery.validate.min.js")!!}
-    {!!Html::script("storage/frontend/js/additional-methods.min.js")!!}
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/min/dropzone.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/min/dropzone.min.js"></script>
-
+    {!!Html::script("storage/frontend/js/additional-methods.min.js")!!} 
     <script type="text/javascript">
     $(function () {$('[data-toggle="tooltip"]').tooltip()})
   </script>
@@ -187,7 +184,11 @@
                 mobile_no: {
                   required: true,
                   maxlength: 10,
-                  minlength: 10
+                  minlength: 10,
+                  remote: {
+                    url: "/frontend/check_mobile_exist",
+                    type: "GET"
+                  }
                 },
                 password: {
                   required: true,
@@ -212,7 +213,8 @@
                 mobile_no: {
                   required: "Enter Mobile No",
                   maxlength: "Mobile no must have 10 digits",
-                  minlength: "Mobile no must have 10 digits"
+                  minlength: "Mobile no must have 10 digits",
+                  remote: $.validator.format("{0} is already in use")
                 },
                 password: {
                   required: "Please Enter Password",
@@ -270,8 +272,7 @@
             $("#frmLogin").validate({
               rules: {
                 login_email_id: {
-                  required: true,
-                  email: true
+                  required: true
                 },
                 login_password: {
                   required: true
@@ -279,8 +280,7 @@
               },
               messages: {
                 login_email_id: {
-                  required: "Please enter email id",
-                  email: "Please enter valid email format"
+                  required: "Please enter email id"
                 },
                 login_password: {
                   required: "Please enter password"

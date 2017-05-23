@@ -1,0 +1,63 @@
+IMPORATANT LINK
+http://www.expertphp.in/tutorials/8/php-framework-laravel
+
+
+
+https://laravel.com/docs/5.1/migrations#creating-columns
+
+https://selftaughtcoders.com/from-idea-to-launch/lesson-17/laravel-5-mvc-application-in-10-minutes/
+
+http://www.expertphp.in/article/submit-contact-form-in-php-laravel-5-with-toastr-notifications-jquery
+ 
+
+http://tutsnare.com/laravel-5-form-validation/
+
+
+For migration use this--------------------
+https://scotch.io/tutorials/simple-laravel-crud-with-resource-controllers
+
+http://itsolutionstuff.com/post/crud-create-read-update-delete-example-in-laravel-52-from-scratchexample.html
+
+use this link---------------
+https://www.sitepoint.com/crud-create-read-update-delete-laravel-app/
+
+image upload------------
+http://itsolutionstuff.com/post/laravel-5-image-upload-and-resize-example-using-intervention-image-packageexample.html
+
+image size validation------------
+https://mattstauffer.co/blog/image-dimension-validation-rules-in-laravel-5-3
+
+
+http://tutsnare.com/upload-files-in-laravel/
+
+http://itsolutionstuff.com/post/laravel-5-image-upload-and-resize-example-using-intervention-image-packageexample.html
+
+http://www.phpgang.com/image-upload-and-resize-using-image-intervention-in-laravel_889.html
+
+http://www.expertphp.in/article/php-laravel-5-intervention-image-upload-and-resize-tutorial
+
+
+validation----------------
+http://laravelbook.com/laravel-input-validation/
+
+
+
+country state city----
+https://packagist.org/packages/dougsisk/laravel-country-state
+
+http://www.expertphp.in/article/dependent-country-state-city-dropdown-using-jquery-ajax-in-laravel-5-example
+
+currency--------------------------------
+http://lyften.com/projects/laravel-currency/doc/
+
+
+ckeditor-----------------------------
+https://github.com/UniSharp/laravel-ckeditor
+
+generic medicines names-------------------
+http://janaushadhi.gov.in/list_of_medicines.html
+
+migration----------
+https://laravel.com/docs/5.4/migrations
+
+https://www.youtube.com/watch?v=LPkOYU1Nkk8

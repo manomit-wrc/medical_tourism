@@ -10,7 +10,7 @@
                  <div class="rightlinks">
                    @if(Auth::guard('front')->check())
                     <span id="profileheaderimg">
-                     <img src="{!! Auth::guard('front')->user()->thumb() !!}" alt=""></span> Welcome <a href="{!!URL::to('/profile')!!}" style="color:#691134"  onmouseover="this.style.color='#cf4d7e';" onmouseout="this.style.color='#691134';">{{ (Auth::guard('front')->user()->title)?Auth::guard('front')->user()->title:'' }}{!! \Illuminate\Support\Str::words(Auth::guard('front')->user()->last_name, 1,'..')  !!},</a>                     
+                     <img src="{!! Auth::guard('front')->user()->thumb() !!}" alt=""></span> Welcome <a href="{!!URL::to('/profile')!!}" style="color:#691134"  onmouseover="this.style.color='#cf4d7e';" onmouseout="this.style.color='#691134';">{!! \Illuminate\Support\Str::words(Auth::guard('front')->user()->first_name, 1,'..')  !!}</a>                     
                      <a href="/patient-logout" class="logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
                    @else
                      <ul>

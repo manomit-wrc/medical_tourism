@@ -1,9 +1,6 @@
 @extends('layouts.inner_layout')
 @section('title', 'Change Password')
 @section('content') 
-<!--  <script src="http://demo.itsolutionstuff.com/plugin/jquery.js"></script>
- <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/min/dropzone.min.css" rel="stylesheet">
- <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/min/dropzone.min.js"></script>  --> 
     <!--Right panel start here-->
     <div class="col-md-8">                  
         <div class="qtbox">
@@ -13,38 +10,57 @@
                 <div class="alert alert-info" id="resultdocumentmsg">{{ Session::get('message') }}</div>
             @endif            
             <div class="row">
-                <div class="col-md-12">                                       
-                {!! Form::open(array('method' => 'POST','role'=>'form','files' => true,'url'=>'documentupload', 'enctype' => 'multipart/form-data', 'class' => 'dropzone', 'id' => 'image-upload')) !!}                    
-                    {!! Form::close() !!}
-                </div>
-                
-                <div class="col-md-4 col-md-offset-4">
-                <input id="exact-submit-button" class="button" onclick="reload()" type="submit" value="UPDATE">
-                </div>
-                <br clear="all">
-                <div>&nbsp;</div>
-                <div>&nbsp;</div>
+            <div class="col-md-10"> </div>
+            <div class="col-md-2"> 
+            <div><a href="javascript:void(0)" data-toggle="modal" data-target="#uploaddocument_modal"><button type="button" class="btn bg-purple">ADD</button></a></div></div>
                 <div class="col-md-12">
-                    @if (count($documentdata) > 0)
+                <div class = "table-responsive">                                       
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Prescription</th>
+                            <th>Documents</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        @if (count($documentdata) > 0)
                         @foreach($documentdata as $doc_data) 
                         @php                        
                         $arr = explode('.',$doc_data->document);
                         $end = end($arr);
-                        if($end=='jpeg' || $end=='jpg' || $end=='png' || $end=='gif' || $end=='bmp'){
+                        if($end=='jpeg' || $end=='jpg' || $end=='png' || $end=='gif' || $end=='bmp' || $end=='mp4' || $end=='flv' || $end=='avi' || $end=='wmv' || $end=='asf' || $end=='webm' || $end=='ogv'){
                             $imgfile = $doc_data->document;
                         }else{
                             $imgfile = 'default.jpg';
                         }
                         @endphp
-                        <div class="afterimgbox">
-                            <span><a href="{!!URL::to('/document-delete',$doc_data->id)!!}" >x</a></span>
-                            <a href="{!!URL::to('/document-download',$doc_data->id)!!}" ><img alt="{{ $doc_data->file_name }}" data-toggle="tooltip" data-placement="top" title="{{ $doc_data->file_name }}" src="http://localhost:8000/uploads/drop/{{ $imgfile }}"></a>
-                        </div>
-
-
-                      @endforeach
-                  @endif                    
+                          <tr>
+                            <td>{{ $doc_data->file_name }}</td>
+                            <td><a href="{!!URL::to('/document-download',$doc_data->id)!!}" >
+                            @php
+                            if($end=='mp4' || $end=='flv' || $end=='avi' || $end=='wmv' || $end=='asf' || $end=='ogv' || $end=='webm'){
+                            @endphp
+                                <video height="40" width="40" controls data-toggle="tooltip" data-placement="top" title="{{ $doc_data->file_name }}">
+                                      <source src="http://localhost:8000/uploads/drop/{{ $imgfile }}"  type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                            @php
+                            }else { 
+                            @endphp
+                            <img height="40" width="40" alt="{{ $doc_data->file_name }}" data-toggle="tooltip" data-placement="top" title="{{ $doc_data->file_name }}" src="http://localhost:8000/uploads/drop/{{ $imgfile }}">
+                            @php
+                            }
+                            @endphp
+                            </a></td>
+                            <td><a href="{!!URL::to('/document-delete',$doc_data->id)!!}" ><i class="fa fa-times" style="color:red;" aria-hidden="true"></i></a></td>
+                          </tr>
+                              @endforeach
+                  @endif       
+                        </tbody>
+                    </table>
                 </div>
+                </div>             
             </div>
             <!-- <div class="row">
                <div class="loop_field">
