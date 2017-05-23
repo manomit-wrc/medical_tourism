@@ -14,7 +14,7 @@ class AddFileNameDocumentsTable extends Migration
     public function up()
     {
         Schema::table('documents', function (Blueprint $table) {
-           $table->string('file_name')->after('document');
+           //$table->string('file_name')->after('document');
         });
     }
 
@@ -26,7 +26,7 @@ class AddFileNameDocumentsTable extends Migration
     public function down()
     {
         Schema::table('documents', function (Blueprint $table) {
-            //
+           $table->dropColumn('file_name');
         });
     }
 }

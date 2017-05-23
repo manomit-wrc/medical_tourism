@@ -29,17 +29,7 @@
           <div class="box box-warning">
              <!-- if there are creation errors, they will show here -->
             
-            <!-- <div class="box-header with-border">
-              <h3 class="box-title">General Elements</h3>
-            </div> -->
-            <!-- /.box-header -->
-            <!-- @if($errors->any())
-              <div class="alert alert-danger">
-                  @foreach($errors->all() as $error)
-                      <p>{{ $error }}</p>
-                  @endforeach
-              </div>
-            @endif -->
+           
             <div class="box-body">
              
                 <form action="{!!URL::to('/admin/messages/store')!!}" method="post">
@@ -59,16 +49,30 @@
                         </div>
 
                         @if($users->count() > 0)
+                          <div class="form-group">
+                            <label class="control-label">Patients:</label>
                             <div class="checkbox">
                                 @foreach($users as $key=>$user)
-                                    <label title="{{ $user->first_name.' '.$user->last_name }}"><input type="checkbox" name="recipients[]" value="{{ $user->id }}">{!! $user->first_name.' '.$user->last_name !!}</label>
+                                    <label title="{{ $user->first_name.' '.$user->last_name }}"><input type="checkbox" name="recipients[]" value="{{ $user->id }}">{!! $user->first_name.' '.$user->last_name !!}</label><br/>
                                 @endforeach
                             </div>
+                          </div>
+                        @endif
+
+                        @if($adminusers->count() > 0)
+                          <div class="form-group">
+                            <label class="control-label">Hospital Admin:</label>
+                            <div class="checkbox">
+                                @foreach($adminusers as $key=>$adminuser)
+                                    <label title="{{ $adminuser->name }}"><input type="checkbox" name="recipients_admin[]" value="{{ $adminuser->id }}">{!! $adminuser->name !!}</label><br/>
+                                @endforeach
+                            </div>
+                          </div>
                         @endif
                 
                         <!-- Submit Form Input -->
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary form-control">Submit</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </div>
                 </form>

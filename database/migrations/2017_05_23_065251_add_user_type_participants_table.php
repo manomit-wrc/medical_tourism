@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AlterTableMessagesChangeUserType extends Migration
+class AddUserTypeParticipantsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AlterTableMessagesChangeUserType extends Migration
      */
     public function up()
     {
-        Schema::table('messages', function (Blueprint $table) {
-            $table->text('user_type')->change();
+        Schema::table('participants', function (Blueprint $table) {
+            $table->char('user_type',1)->after('user_id')->default('A');
         });
     }
 
@@ -25,8 +25,8 @@ class AlterTableMessagesChangeUserType extends Migration
      */
     public function down()
     {
-        Schema::table('messages', function (Blueprint $table) {
-             $table->dropColumn('user_type');
+        Schema::table('participants', function (Blueprint $table) {
+            $table->dropColumn('user_type');
         });
     }
 }

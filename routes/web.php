@@ -281,7 +281,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('/admin/patients/changestatus/','PatientController@ajaxpatientchangestatus');
 
     //Message section
-    Route::get('/admin/messages','MessagesController@index');
+    Route::get('/admin/messages/{id}','MessagesController@index');
     Route::get('/admin/messages/create','MessagesController@create');
     Route::post('/admin/messages/store','MessagesController@store');
     //Route::get('/admin/messages/edit/{id}','PatientController@edit');

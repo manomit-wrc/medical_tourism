@@ -116,9 +116,9 @@ class Thread extends Model
      *
      * @return mixed
      */
-    public static function getAllLatest()
+    public static function getAllLatest($patId)
     {
-        return self::latest('updated_at');
+        return self::where('user_id', '=', $patId)->latest('updated_at');
     }
 
     /**
@@ -216,7 +216,7 @@ class Thread extends Model
      *
      * @param array|mixed $userId
      */
-    public function addParticipant($userId)
+    public function addParticipant($userId,$userType)
     {
         $userIds = is_array($userId) ? $userId : (array) func_get_args();
 

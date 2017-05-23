@@ -41,7 +41,7 @@
                     <th>Sex</th>
                     <th>Mobile</th>
                     <th>Status</th>
-                    <th width="15%">Actions</th>
+                    <th width="18%">Actions</th>
                   </tr>
                 </thead>
 
@@ -71,6 +71,14 @@
                           <a href="{!!URL::to('/admin/patients/show',$data->id)!!}" class="btn btn-info">view</a> 
                          <!--  <a href="{!!URL::to('/admin/patients/edit',$data->id)!!}" class="btn btn-primary">Edit</a> -->
                           <a href="javascript:void(0)" onclick="return deldata('{!!URL::to('/admin/patients/delete',$data->id)!!}')" class="btn btn-danger" >Delete</a>
+                          
+                          @if (count($data->participants) > 0)
+                           @foreach($data->participants as $pdata)
+                            @if($pdata->user_type =='P')
+                             <a href="{!!URL::to('/admin/messages',$data->id)!!}" class="btn btn-warning">messages</a>
+                            @endif 
+                           @endforeach
+                          @endif
                         </td>
                       </tr>
                     @endforeach
