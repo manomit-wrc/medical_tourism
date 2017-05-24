@@ -1095,7 +1095,7 @@ textarea {
     line-height: inherit
 }
 a {
-    color: #ce4c7d;
+    color: #0157a7;
     text-decoration: none
 }
 a:focus,
@@ -2597,7 +2597,7 @@ legend {
 label {
     display: inline-block;
     max-width: 100%;
-    margin-bottom: 5px;
+    margin-bottom: 12px;
     font-weight: 700
 }
 input[type=search] {
@@ -4604,13 +4604,13 @@ textarea.input-group-sm>.input-group-btn>.btn {
 .navbar-default .navbar-nav>li>a:focus,
 .navbar-default .navbar-nav>li>a:hover {
     color: #fff;
-    background-color: #ce4c7d
+    background-color: #038dd5
 }
 .navbar-default .navbar-nav>.active>a,
 .navbar-default .navbar-nav>.active>a:focus,
 .navbar-default .navbar-nav>.active>a:hover {
     color: #fff;
-    background-color: #ce4c7d
+    background-color: #038dd5
 }
 .navbar-default .navbar-nav>.disabled>a,
 .navbar-default .navbar-nav>.disabled>a:focus,

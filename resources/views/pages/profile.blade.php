@@ -7,7 +7,6 @@
         <div class="qtbox">
             <h4><b>Edit Profile</b></h4>
 
-            <div>&nbsp;</div>
             @if (Session::has('message'))
                 <div class="alert alert-info">{{ Session::get('message') }}</div>
             @endif
