@@ -31,7 +31,7 @@
             <div class="box-body">
               <div class="alert alert-info" id="result77" style="display:none;"></div>
               @include('admin.messenger.partials.flash')
-              @each('admin.messenger.partials.thread', $threads, 'thread', 'admin.messenger.partials.no-threads')
+              @each('admin.messenger.partials.thread',$threads,$patient_id, 'thread', 'admin.messenger.partials.no-threads')
              
             </div>
             <!-- /.box-body -->

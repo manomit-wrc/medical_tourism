@@ -2,7 +2,7 @@
 
 <div class="media alert {{ $class }}">
     <h4 class="media-heading">
-        <a href="{!!URL::to('/admin/messages/show',$thread->id)!!}"  style="color: #3c8dbc !important">{{ $thread->subject }}</a>
+        <a href="{!!URL::to('/admin/messages/show',$patient_id,$thread->id)!!}"  style="color: #3c8dbc !important">{{ $thread->subject }}</a>
         ({{ $thread->userUnreadMessagesCount(Auth::guard('admin')->user()->id) }} unread)</h4>
     <p>
         
