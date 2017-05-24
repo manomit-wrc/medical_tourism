@@ -96,8 +96,8 @@
         @endif
 
         
-        @if($user_view_composer->hasRole('admin/adminuser',Auth::guard('admin')->user()->id) || $user_view_composer->hasRole('admin/permission',Auth::guard('admin')->user()->id) || $user_view_composer->hasRole('admin/patients',Auth::guard('admin')->user()->id))
-        <li class="treeview {{ Request::segment(2) === 'adminuser' || Request::segment(2) === 'permission' || Request::segment(2) === 'patients'? 'active' : null }}">
+        @if($user_view_composer->hasRole('admin/adminuser',Auth::guard('admin')->user()->id) || $user_view_composer->hasRole('admin/permission',Auth::guard('admin')->user()->id) || $user_view_composer->hasRole('admin/patients',Auth::guard('admin')->user()->id)|| $user_view_composer->hasRole('admin/messages',Auth::guard('admin')->user()->id))
+        <li class="treeview {{ Request::segment(2) === 'adminuser' || Request::segment(2) === 'permission' || Request::segment(2) === 'patients'? 'active' : null || Request::segment(2) === 'messages'? 'active' : null }}">
           <a href="javascript:void(0)">
             <i class="fa fa-users"></i> <span>User management</span>
             <span class="pull-right-container">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 use Image;
 use App\Http\Controllers\Controller;
 use App\MedicalFacility;
@@ -218,6 +219,16 @@ class PagesController extends Controller
       return json_encode(true);
     }
   }
+  public function check_mobile_exist(Request $request) {
+    $mobile_no = $request->input('mobile_no');
+    $patient = \App\Patient::where('mobile_no',$mobile_no)->first();
+    if($patient) {
+      return json_encode(false);
+    }
+    else {
+      return json_encode(true);
+    }
+  }
 
   public function patient_registration(Request $request) {
     if($request->ajax()) {
@@ -245,7 +256,9 @@ class PagesController extends Controller
     if($request->ajax()) {
       if(Auth::guard('front')->attempt(['email_id'=>$request->email_id, 'password'=>$request->password, 'status'=> '1'], $request->remember_me)) {
     		return response()->json(['status'=>'1']);
-    	}
+    	}else if(Auth::guard('front')->attempt(['mobile_no'=>$request->email_id, 'password'=>$request->password, 'status'=> '1'], $request->remember_me)) {
+        return response()->json(['status'=>'1']);
+      }
     	else {
     		return response()->json(['status'=>'0']);
     	}
@@ -278,8 +291,8 @@ class PagesController extends Controller
       'first_name' => 'required|max:50',
       'last_name' => 'required|max:50',
       'email_id' => 'required|email|unique:patients,email_id,'.Auth::guard('front')->user()->id,
-      'username' => 'required|unique:patients,username,'.Auth::guard('front')->user()->id,
-      'title' => 'required',
+      /*'username' => 'required|unique:patients,username,'.Auth::guard('front')->user()->id,
+      'title' => 'required',*/
       'mobile_no' => ['required','max:10','min:10'],      
       'sex' => 'required',
       'country_id' => 'required',
@@ -292,17 +305,13 @@ class PagesController extends Controller
     ]);
 
     $patients = \App\Patient::find(Auth::guard('front')->user()->id);
-    if($patients) {     
-      if(($request->title =='Mr.' && $request->sex=='F') || ($request->title !='Mr.' && $request->sex=='M')){       
-        $request->session()->flash('error_message', 'Please select your sex as per title!');
-        return redirect('/profile'); 
-      }else{        
+    if($patients) { 
         $patients->first_name = $request->first_name;
         $patients->last_name = $request->last_name;
-        $patients->username = $request->username;
+       /* $patients->username = $request->username; */
         $patients->mobile_no = $request->mobile_no;
         $patients->email_id = $request->email_id;
-        $patients->title = $request->title;
+       /* $patients->title = $request->title;*/
         $patients->biography = $request->biography;
         $patients->sex = $request->sex;
         $patients->country_id = $request->country_id;
@@ -312,7 +321,7 @@ class PagesController extends Controller
         $patients->save();
         $request->session()->flash("message", "Profile updated successfully");
         return redirect('/profile');
-      }
+      
     }
   }
 
@@ -402,10 +411,11 @@ class PagesController extends Controller
   }
 
   public function upload_documents() {
+    $documentdata = \App\Document::where('status', '!=', 2)->get();
     $country_details = \App\Patient::with('countries')->find(Auth::guard('front')->user()->id)->toArray();
     $state_details = \App\Patient::with('states')->find(Auth::guard('front')->user()->id)->toArray();
     $city_details = \App\Patient::with('cities')->find(Auth::guard('front')->user()->id)->toArray();
-    return view('pages.upload_document')->with(['country_details'=>$country_details,'state_details'=>$state_details,'city_details'=>$city_details]);    
+    return view('pages.upload_document')->with(['country_details'=>$country_details,'state_details'=>$state_details,'city_details'=>$city_details,'documentdata'=>$documentdata]);    
   }
   public function my_enquiry() {
     $country_details = \App\Patient::with('countries')->find(Auth::guard('front')->user()->id)->toArray();
@@ -533,9 +543,67 @@ class PagesController extends Controller
       return redirect('/successreset');
     }
   }
+}
 
+public function documentupload(Request $request) {    
+    $fielava = $_FILES['document']['name']; 
+    $arr = explode('.',$fielava);
+    $end = end($arr);       
+    $documents = new \App\Document();   
+    if($documents) {
+      if($fielava !=''){
+      $allowed2 = array('bmp','gif','jpg','jpeg','png');
+      if (!in_array($end, $allowed2)) {        
+        $returnArr = array('status'=>'2','msg'=>'The type of file you are trying to upload is not allowed');
+      } else {
+      if($request->hasFile('document')) {
+        $file = $request->file('document');
+        $fileName = time().'_'.$file->getClientOriginalName();
+
+        //original destination path
+        $destinationPath = public_path().'/uploads/drop/' ;       
+        $file->move($destinationPath,$fileName);
+      }
+      else {
+        $fileName = $documents->document;
+      }      
+      $documents->document = $fileName;
+      $documents->file_name = $request->file_name;
+      $documents->patient_id = Auth::guard('front')->user()->id;
+      $save= $documents->save();
+      if($save) {              
+          $returnArr = array('status'=>'1','image_name'=>$fileName,'msg'=>'Inserted Successfully');
+      }else{
+          $returnArr = array('status'=>'0','msg'=>'Inserted Faliure');
+      }
+    }
+  }else{
+    $returnArr = array('status'=>'3','msg'=>'Please select an image');
+  }
+  }
+    echo json_encode($returnArr);
+    die();      
 }
 public function successreset() {    
     return view('pages.reset');
+}
+  public function document_delete(Request $request,$id) {
+      if($id) {
+          $docu_cat = \App\Document::find($id);
+          $status = '2';
+          $docu_cat->status = $status; 
+          $del = $docu_cat->save();
+          if($del) {      
+              $request->session()->flash("message", "Successfully deleted");
+              return redirect('/upload-documents');
+          }
+      }
   }
+    public function document_download(Request $request,$id) {
+        if($id) {
+            $docu_cat = \App\Document::find($id);
+            $file_path = public_path('/uploads/drop').'/'.$docu_cat->document;
+            return response()->download($file_path); 
+        }
+    }
 }

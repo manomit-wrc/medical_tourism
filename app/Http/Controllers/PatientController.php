@@ -20,7 +20,10 @@ class PatientController extends Controller
      * @return Response
      */
     public function index() {
-        $patient_data = Patient::where('status', '!=', 2)->orderBy('id','desc')->get();
+        $patient_data = Patient::with('participants')->where('status', '!=', 2)->orderBy('id','desc')->get();
+        //echo "<pre>"; print_r($patient_data[3]['participants']);
+        //echo "<pre>"; print_r($patient_data[3]['participants']);
+        //die;
         return view('admin.patients.index',compact('patient_data'));
     }
     /**

@@ -111,14 +111,12 @@
                                    <a href="{!!URL::to('/disclaimer/')!!}">Disclaimer </a> | <a href="{!!URL::to('/privacypolicy/')!!}">Privacy Policy </a> | <a href="{!!URL::to('/sitemap/')!!}">Site Map </a>
                                   </div>
                               </div>
-
                               <div class="col-md-4  col-sm-6">
                                   <div class="designby">
                                   Powered by<a href="http://www.wrctechnologies.com/" target="_blank"> WRC Technologies</a>
                                   </div>
                               </div>
                               </div>
-
                           </div>
                       </div>
                   </div>
@@ -209,3 +207,95 @@
             $("#forgot_email_id-error").hide();
           }           
         </script>
+
+        <div class="modal fade" id="uploaddocument_modal" role="dialog">
+          <div class="modal-dialog">            
+            <form class="form-horizontal" action="" id="documentUploadForm" method="post" enctype="multipart/form-data">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" onclick="refreshdocument()">&times;</button>
+                  <h4 style="font-family: Open Sans,sans-serif; font-size:18px; color: #78A100;">
+                  <strong>Upload Document</strong></h4>
+                </div>
+                <div class="modal-body">
+                  <div class="alert alert-success fade in alert-dismissable" id="resultdocument" style="display:none"></div>
+                  <div class="col-md-12">
+                      <label>
+                          Prescription Title
+                          <input type="test" name="file_name" id="file_name" class="Cinput"  value="">
+                          <div class="alert alert-danger fade in alert-dismissable" id="file_name_error" style="display:none; margin-top:5px;">
+                          </div>
+                      </label>
+                  </div>
+                  <div class="col-md-12">
+                  <label class="custom-upload">
+                    <input name="document" id="document" type="file" value=""/>  
+                  </label>                
+                  </div> 
+                </div>
+                <div class="modal-footer">
+                  <input type="hidden" name="_token" value="{{csrf_token()}}">
+                  <input class="btn btn-success btn-block" type="submit" onclick="return uploaddocument();" value="Update"><div>&nbsp;</div>
+                  <button type="button" class="btn btn-default" onclick="refreshdocument()" data-dismiss="modal">CLOSE</button>
+                </div>
+              </div>
+            </form>
+          </div>
+      </div>
+      <script>
+          function uploaddocument(){
+            var file_name = $("#file_name").val();                
+              if(file_name ==''){
+                document.getElementById('file_name').style.border = '1px solid red !important';
+                $("#file_name_error").css("display", "block");
+                document.getElementById("file_name_error").innerHTML = "Please enter prescription title";
+                document.getElementById('file_name').focus();
+                return false
+              }else{
+                $("#file_name_error").css("display", "none");     
+                document.getElementById('file_name').style.border = '';
+                document.getElementById("file_name_error").innerHTML = "";
+              }
+
+            $("#documentUploadForm").unbind('submit').submit(function (event) {
+              event.preventDefault();   
+              var formData = new FormData($(this)[0]);
+              $.ajax({
+                url: "/documentupload/",
+                type: 'POST',
+                data: formData,
+                async: false,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (return_data) 
+                { 
+                var result = $.parseJSON(return_data);
+                  if(result.status == 1) {
+                    setTimeout(function() {
+                      $('#uploaddocument_modal').modal('hide');  
+                      $("#document").val('');
+                      $("#file_name").val('');
+                      location.reload();
+                    }, 2000); 
+                  }else{
+                      $("#resultdocument").css("display", "block");
+                      $("#resultdocument").removeClass("alert-success");
+                      $("#resultdocument").addClass("alert-danger");
+                      $("#resultdocument").html(result.msg);
+                      setTimeout(function() {
+                        $("#document").val('');
+                        $("#file_name").val('');
+                        $('#resultdocument').fadeOut('fast');
+                      }, 2000);
+                  }
+                }                
+              });
+            });
+          }
+           function refreshdocument(){
+            $("#document").val('');
+            $("#file_name").val('');
+            $("#file_name_error").hide();
+          }
+          </script>        

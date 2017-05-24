@@ -1,11 +1,12 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Role;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\AdminUserRegistrationMail;
 use Illuminate\Support\Facades\Route;
 use Auth;
 
@@ -51,25 +52,38 @@ class AdminUserController extends Controller
       ]);
       
       $login_user_id=Auth::guard('admin')->user()->id; //Login user id
+      $namevar=$request->name;
+      $emailvar=$request->email;
+      $passvar=$request->password;
 
       $user = new User();
       $user->name = $request->name;
       $user->email = $request->email;
       $user->password = bcrypt($request->password);
+
       if($login_user_id!=1)//Login user other than super admin
       {
         $user->added_by =$login_user_id;
+        $added_user_data = User::with('roles')->where('id',$id)->get();
+        //echo "<pre>"; print_r($added_user_data[0]->name); die;
+        //echo "<pre>"; print_r($added_user_data[0]->roles[0]->name); die;
+        $adminname=$added_user_data[0]->roles[0]->name.'('.$added_user_data[0]->name.')';
+      }else{
+        $adminname='Swasthya Bandhav Admin';
       }  
+      
       $user->save();
       $role_user = Role::where('id',$request->role)->first();
-
       $user->roles()->attach($role_user);
+      $rolename=$role_user->name;
+      Mail::to($p)->send(new AdminUserRegistrationMail($namevar,$adminname,$rolename,$emailvar,$passvar));
       $request->session()->flash("message", "User addedd successfully");
       return redirect('/admin/adminuser');
     }
 
     public function edit($id) {
       $user_data = User::with('roles')->where('id',$id)->get();
+      //echo "<pre>"; print_r($user_data[0]->roles[0]->name); die;
       $role_list = Role::get()->pluck('name','id');
       return view('admin.users.edit')->with(['role_list'=> $role_list,'user_data' => $user_data]);
     }
@@ -203,4 +217,52 @@ class AdminUserController extends Controller
         }
       }
     }
+    public function profile(Request $request) 
+    {
+      $login_user_id=Auth::guard('admin')->user()->id;
+      $user_data = User::findOrFail($login_user_id);
+      return view('admin.users.profile')->with('user_data', $user_data);
+    }
+    public function update_profile(Request $request) {
+    $this->validate($request,[
+      'first_name' => 'required|max:50',
+      'last_name' => 'required|max:50',
+      'email_id' => 'required|email|unique:patients,email_id,'.Auth::guard('front')->user()->id,
+      'username' => 'required|unique:patients,username,'.Auth::guard('front')->user()->id,
+      'title' => 'required',
+      'mobile_no' => ['required','max:10','min:10'],      
+      'sex' => 'required',
+      'country_id' => 'required',
+      'state_id' => 'required',
+      'city_id' => 'required',
+      'dob_year' => 'required',
+      'dob_month' => 'required',
+      'dob_days' => 'required',
+      'biography' => 'required'
+    ]);
+
+    $patients = \App\Patient::find(Auth::guard('front')->user()->id);
+    if($patients) {     
+      if(($request->title =='Mr.' && $request->sex=='F') || ($request->title !='Mr.' && $request->sex=='M')){       
+        $request->session()->flash('error_message', 'Please select your sex as per title!');
+        return redirect('/profile'); 
+      }else{        
+        $patients->first_name = $request->first_name;
+        $patients->last_name = $request->last_name;
+        $patients->username = $request->username;
+        $patients->mobile_no = $request->mobile_no;
+        $patients->email_id = $request->email_id;
+        $patients->title = $request->title;
+        $patients->biography = $request->biography;
+        $patients->sex = $request->sex;
+        $patients->country_id = $request->country_id;
+        $patients->state_id = $request->state_id;
+        $patients->city_id = $request->city_id;
+        $patients->date_of_birth = $request->dob_days."-".$request->dob_month."-".$request->dob_year;     
+        $patients->save();
+        $request->session()->flash("message", "Profile updated successfully");
+        return redirect('/profile');
+      }
+    }
+  }
 }

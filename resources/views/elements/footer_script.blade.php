@@ -1,4 +1,7 @@
+    
     {!!Html::script("storage/frontend/js/jquery.min.js")!!}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     {!!Html::script("storage/frontend/js/bootstrap.min.js")!!}
     {!!Html::script("storage/frontend/js/jquery.jcarousel.min.js")!!}
     {!!Html::script("storage/frontend/js/jcarousel.responsive.js")!!}
@@ -7,7 +10,10 @@
 
 
     {!!Html::script("storage/frontend/js/jquery.validate.min.js")!!}
-    {!!Html::script("storage/frontend/js/additional-methods.min.js")!!}
+    {!!Html::script("storage/frontend/js/additional-methods.min.js")!!} 
+    <script type="text/javascript">
+    $(function () {$('[data-toggle="tooltip"]').tooltip()})
+  </script>
     <script type="text/javascript">
       function get_select_birthday() {
         var dob_days = "{{$dob_days}}";
@@ -38,6 +44,9 @@
       }
       $(document).ready(function(){
           get_select_birthday();
+          setTimeout(function() {            
+            $('#resultdocumentmsg').fadeOut('fast');
+          }, 2000);
           $("#dob_year").change(function(e){
 
             if($(this).val() && $("#dob_month").val() !="") {
@@ -175,7 +184,11 @@
                 mobile_no: {
                   required: true,
                   maxlength: 10,
-                  minlength: 10
+                  minlength: 10,
+                  remote: {
+                    url: "/frontend/check_mobile_exist",
+                    type: "GET"
+                  }
                 },
                 password: {
                   required: true,
@@ -200,7 +213,8 @@
                 mobile_no: {
                   required: "Enter Mobile No",
                   maxlength: "Mobile no must have 10 digits",
-                  minlength: "Mobile no must have 10 digits"
+                  minlength: "Mobile no must have 10 digits",
+                  remote: $.validator.format("{0} is already in use")
                 },
                 password: {
                   required: "Please Enter Password",
@@ -258,8 +272,7 @@
             $("#frmLogin").validate({
               rules: {
                 login_email_id: {
-                  required: true,
-                  email: true
+                  required: true
                 },
                 login_password: {
                   required: true
@@ -267,8 +280,7 @@
               },
               messages: {
                 login_email_id: {
-                  required: "Please enter email id",
-                  email: "Please enter valid email format"
+                  required: "Please enter email id"
                 },
                 login_password: {
                   required: "Please enter password"
@@ -413,7 +425,10 @@
             });
 
             $(".plus-button").click(function(e){
-              $(".upload-field").append('<div class="col-sm-11"><label class="on768"><div class="upload_profile1"><input type="file" name="upload_documents[]" id="file-1" class="inputfile on768"  /><label for="file-1" style="padding:12px;"><i class="fa fa-cloud-upload" aria-hidden="true"></i> <span>Choose a file&hellip;</span></label></div></label></div><div class="col-sm-1"><button type="button" class="plusbtn cross-button" style="margin-top:0;">x</button></div>');
+              var val = $("#plus_count").val();
+              var value = parseInt(val) + 1;
+              $("#plus_count").val(value);
+              $(".upload-field").append('<div class="col-sm-11"><label class="on768"><div class="upload_profile1"><input type="file" multiple="" name="upload_documents[]" id="file-'+value+'" class="inputfile on768"  /><label for="file-'+value+'" style="padding:12px;"><i class="fa fa-cloud-upload" aria-hidden="true"></i> <span>Choose a file&hellip;</span></label></div></label></div><div class="col-sm-1"><button type="button" class="plusbtn cross-button" style="margin-top:0;">x</button></div>');
             });
       });
 
@@ -422,8 +437,7 @@
         $(this).find('.col-sm-11').remove();
       });
     </script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    
     <script type="text/javascript">
       function BindControls() {
         var Countries = ['ARGENTINA', 
@@ -474,5 +488,7 @@
     $(window).load(function(){
       $("#sticker").sticky({ topSpacing: 0, center:true, className:"hey" });
     });
+
   </script>
+  
   

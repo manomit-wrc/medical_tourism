@@ -148,7 +148,6 @@
                             <option value="9" {{$dob_month == "9"?'selected':''}}>Oct</option>
                             <option value="10" {{$dob_month == "10"?'selected':''}}>Nov</option>
                             <option value="11" {{$dob_month == "11"?'selected':''}}>Dec</option>
-
                         </select>
 
                         <select name="dob_days" id="dob_days" class="listtypeleft2" style="{{$errors->has('dob_days')?'border:1px solid #f00':''}}">

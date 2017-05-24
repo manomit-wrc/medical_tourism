@@ -34,6 +34,7 @@ Route::get('/sitemap','PagesController@sitemap');
 Route::get('/successstory_details/{id}','PagesController@successstory_details');
 Route::get('/searchdetails/{id}','PagesController@searchdetails');
 Route::get('/frontend/check_user_exist','PagesController@check_user_exist');
+Route::get('/frontend/check_mobile_exist','PagesController@check_mobile_exist');
 Route::post('/patient-registration','PagesController@patient_registration');
 Route::post('/patient-login','PagesController@patient_login');
 Route::post('/patient-forgotpass','PagesController@patient_forgotpass');
@@ -43,6 +44,9 @@ Route::post('/profile_image_upload','PagesController@profile_image_upload');
 Route::get('/changepassword/{url}','PagesController@changepassword');
 Route::post('/reset-password/{security_code}','PagesController@reset_password');
 Route::get('/successreset','PagesController@successreset');
+Route::post('/documentupload','PagesController@documentupload');
+Route::get('/document-delete/{id}','PagesController@document_delete');
+Route::get('/document-download/{id}','PagesController@document_download');
 
 Route::group(['middleware' => ['front']], function() {
     Route::get('/profile','PagesController@patient_profile');
@@ -67,7 +71,9 @@ Route::group(['middleware' => ['admin']], function () {
 
     Route::get('/admin/logout', array('uses' => 'LoginController@logout'));
     Route::get('/admin/dashboard', 'DashboardController@index');
-
+    Route::get('/admin/profile','AdminUserController@profile');
+    Route::post('/admin/update-profile','AdminUserController@update_profile');
+    //Write all other routing related admin after these two roouting
     //Language capability section
     Route::get('/admin/languagecapability', 'LanguageCapabilityController@index');
     Route::get('/admin/languagecapability/create','LanguageCapabilityController@create');
@@ -263,7 +269,7 @@ Route::group(['middleware' => ['admin']], function () {
     //Admin permission section
     Route::get('/admin/permission/','AdminUserController@permission');
     Route::post('/admin/permission/store_permission/', 'AdminUserController@store_permission');
-    Route::post('/admin/permission/get_permission/','AdminUserController@get_permission');
+    Route::get('/admin/permission/get_permission/','AdminUserController@get_permission');
 
     //Patient section
     Route::get('/admin/patients','PatientController@index');
@@ -274,6 +280,17 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/patients/delete/{id}','PatientController@delete');
     Route::get('/admin/patients/show/{id}','PatientController@show');
     Route::post('/admin/patients/changestatus/','PatientController@ajaxpatientchangestatus');
+
+    //Message section
+    Route::get('/admin/messages/{id}','MessagesController@index');
+    Route::get('/admin/messages/create','MessagesController@create');
+    Route::post('/admin/messages/store','MessagesController@store');
+    //Route::get('/admin/messages/edit/{id}','PatientController@edit');
+    Route::get('/admin/messages/show/{id}','MessagesController@show');
+    Route::put('/admin/messages/update/{id}','MessagesController@update');
+    //Route::get('/admin/messages/delete/{id}','PatientController@delete');
+   
+    //Route::post('/admin/messages/changestatus/','PatientController@ajaxpatientchangestatus');
 
     //Doctor section
     Route::get('/admin/doctors','DoctorController@index');

@@ -186,6 +186,7 @@ return [
         Sarfraznawaz2005\VisitLog\VisitLogServiceProvider::class,
         GoogleMaps\ServiceProvider\GoogleMapsServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        Cmgmyr\Messenger\MessengerServiceProvider::class,
     ],
 
     /*

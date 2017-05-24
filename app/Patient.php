@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Cmgmyr\Messenger\Models\Participant;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\Patient as Authenticatable;
 use Auth;
@@ -39,5 +40,9 @@ class Patient extends Authenticatable
   }
   public function cities() {
     return $this->belongsTo('\App\City','city_id');
+  }
+  public function participants()
+  {
+      return $this->hasMany('\Cmgmyr\Messenger\Models\Participant', 'user_id');
   }
 }
