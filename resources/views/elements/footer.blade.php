@@ -143,8 +143,7 @@
           </div>
           <div class="modal-footer">
             <input type="hidden" name="_token" value="{{csrf_token()}}">
-            <input class="btn btn-success btn-block" type="submit" onclick="return uploadimage();" value="Update"><div>&nbsp;</div>
-            <button type="button" class="btn btn-default" onclick="refresh()" data-dismiss="modal">CLOSE</button>
+            <input class="btn btn-success btn-block" type="submit" onclick="return uploadimage();" value="Update"><div>&nbsp;</div>            
           </div>
         </div>
       </form>
@@ -220,22 +219,34 @@
                   <div class="alert alert-success fade in alert-dismissable" id="resultdocument" style="display:none"></div>
                   <div class="col-md-12">
                       <label>
-                          Prescription Title
-                          <input type="test" name="file_name" id="file_name" class="Cinput"  value="">
+                          Document Title :<span style="color:red;">*</span>
+                          <input type="test" name="file_name" id="file_name" class="Cinput" onkeyup="return documentname(this.value)" value="">
                           <div class="alert alert-danger fade in alert-dismissable" id="file_name_error" style="display:none; margin-top:5px;">
                           </div>
                       </label>
                   </div>
                   <div class="col-md-12">
-                  <label class="custom-upload">
-                    <input name="document" id="document" type="file" value=""/>  
+                       <label>
+                          Tags :<span style="color:red;">*</span>
+                          <div class="example example_markup">
+                            <div class="bs-example">
+                              <input type="text" style="text-align:left;" class="pro_opt" placeholder="Tag_name" value="" data-role="tagsinput" />
+                            </div>    
+                          </div>
+                      </label>
+                  </div>
+                  <div class="col-md-12">
+                  <label>
+                    Document :<span style="color:red;">*</span>
+                    <input name="document" id="document" style="margin-top:10px;" type="file" value=""/>
+                    <div style="margin-top:10px;"><span style="color:red;">Note : </span>Please upload bmp, gif, jpg, jpeg, png, mp4, flv, avi, wmv, asf, webm, ogv, txt, pdf, psd, doc, rtf, ppt, docx extension file.
+                    </div>   
                   </label>                
                   </div> 
                 </div>
                 <div class="modal-footer">
-                  <input type="hidden" name="_token" value="{{csrf_token()}}">
-                  <input class="btn btn-success btn-block" type="submit" onclick="return uploaddocument();" value="Update"><div>&nbsp;</div>
-                  <button type="button" class="btn btn-default" onclick="refreshdocument()" data-dismiss="modal">CLOSE</button>
+                  <input type="hidden" name="_token" value="{{csrf_token()}}">                 
+                  <input class="btn btn-success btn-block" type="submit" onclick="return uploaddocument();" value="Update"><div>&nbsp;</div>                  
                 </div>
               </div>
             </form>
@@ -271,10 +282,14 @@
                 { 
                 var result = $.parseJSON(return_data);
                   if(result.status == 1) {
+                    $("#resultdocument").css("display", "block");
+                      $("#resultdocument").removeClass("alert-danger");
+                      $("#resultdocument").addClass("alert-success");
+                      $("#resultdocument").html(result.msg);
                     setTimeout(function() {
                       $('#uploaddocument_modal').modal('hide');  
                       $("#document").val('');
-                      $("#file_name").val('');
+                      $("#file_name").val('');                      
                       location.reload();
                     }, 2000); 
                   }else{
@@ -292,9 +307,22 @@
               });
             });
           }
-           function refreshdocument(){
+          function refreshdocument(){
             $("#document").val('');
             $("#file_name").val('');
             $("#file_name_error").hide();
           }
-          </script>        
+          function documentname(val)
+          {                                       
+            if(val == '')
+            {
+              $("#file_name_error").show();
+              $("#file_name_error").html("Please enter prescription title");
+            }
+            else
+            {                     
+              $("#file_name_error").hide();
+            }                     
+          }
+          </script> 
+                 

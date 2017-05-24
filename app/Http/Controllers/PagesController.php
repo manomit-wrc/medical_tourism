@@ -411,7 +411,7 @@ class PagesController extends Controller
   }
 
   public function upload_documents() {
-    $documentdata = \App\Document::where('status', '!=', 2)->get();
+    $documentdata = \App\Document::where('status', '!=', 2)->orderBy('id','desc')->get();
     $country_details = \App\Patient::with('countries')->find(Auth::guard('front')->user()->id)->toArray();
     $state_details = \App\Patient::with('states')->find(Auth::guard('front')->user()->id)->toArray();
     $city_details = \App\Patient::with('cities')->find(Auth::guard('front')->user()->id)->toArray();
@@ -546,13 +546,14 @@ class PagesController extends Controller
 }
 
 public function documentupload(Request $request) {    
-    $fielava = $_FILES['document']['name']; 
+    $fielava = $_FILES['document']['name'];
+    $file_name = $request->file_name.' on '.date('Y-m-d'); 
     $arr = explode('.',$fielava);
     $end = end($arr);       
     $documents = new \App\Document();   
     if($documents) {
       if($fielava !=''){
-      $allowed2 = array('bmp','gif','jpg','jpeg','png');
+      $allowed2 =array('bmp','gif','jpg','jpeg','png','mp4','flv','avi','wmv','asf','webm','ogv','txt','pdf','psd','doc','rtf','ppt','docx');
       if (!in_array($end, $allowed2)) {        
         $returnArr = array('status'=>'2','msg'=>'The type of file you are trying to upload is not allowed');
       } else {
@@ -568,11 +569,12 @@ public function documentupload(Request $request) {
         $fileName = $documents->document;
       }      
       $documents->document = $fileName;
-      $documents->file_name = $request->file_name;
+      $documents->file_name = $file_name;
       $documents->patient_id = Auth::guard('front')->user()->id;
       $save= $documents->save();
+     /* $lastinsert_id = $documents->id; */
       if($save) {              
-          $returnArr = array('status'=>'1','image_name'=>$fileName,'msg'=>'Inserted Successfully');
+          $returnArr = array('status'=>'1','msg'=>'Inserted Successfully');
       }else{
           $returnArr = array('status'=>'0','msg'=>'Inserted Faliure');
       }
@@ -606,4 +608,38 @@ public function successreset() {
             return response()->download($file_path); 
         }
     }
+
+    function getattdocumenttags(){
+      $data = array();
+      $documenttag_list = \App\DocumentTag::where('status', '!=', 2)->get();
+      if(count($documenttag_list)>0)
+      {
+        foreach ($documenttag_list as $key => $value) {       
+           $data[] = array(
+            'value' => $value->tag_name,
+            'text' => $value->tag_name
+          );
+        }
+      }else{
+        $data[] = array();
+      } 
+      echo json_encode($data);
+    /*$json = '[ { "value": 1 , "text": "Amsterdam"},
+      { "value": 2 , "text": "London"},
+      { "value": 3 , "text": "Paris"},
+      { "value": 4 , "text": "Washington"},
+      { "value": 5 , "text": "Mexico City"},
+      { "value": 6 , "text": "Buenos Aires"},
+      { "value": 7 , "text": "Sydney"},
+      { "value": 8 , "text": "Wellington"},
+      { "value": 9 , "text": "Canberra"},
+      { "value": 10, "text": "Beijing"},
+      { "value": 11, "text": "New Delhi"},
+      { "value": 12, "text": "Kathmandu"},
+      { "value": 13, "text": "Cairo"},
+      { "value": 14, "text": "Cape Town"},
+      { "value": 15, "text": "Kinshasa"}
+    ]';
+    echo  $json; */
+  }
 }
