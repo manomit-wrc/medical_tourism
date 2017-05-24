@@ -9,13 +9,25 @@
     </div>
 
     @if($users->count() > 0)
+        <div class="form-group">
+            <label class="control-label">Patients:</label>
+            <div class="checkbox">
+                @foreach($users as $user)
+                    <label title="{{ $user->first_name.' '.$user->last_name }}"><input type="checkbox" name="recipients[]" value="{{ $user->id }}">{{ $user->first_name.' '.$user->last_name }}</label><br/>
+                @endforeach
+            </div>
+        </div>  
+    @endif
+
+    @if($adminusers->count() > 0)
+      <div class="form-group">
+        <label class="control-label">Hospital Admin:</label>
         <div class="checkbox">
-            @foreach($users as $user)
-                <label title="{{ $user->first_name.' '.$user->last_name }}">
-                    <input type="checkbox" name="recipients[]" value="{{ $user->id }}">{{ $user->first_name.' '.$user->last_name }}
-                </label>
+            @foreach($adminusers as $key=>$adminuser)
+                <label title="{{ $adminuser->name }}"><input type="checkbox" name="recipients_admin[]" value="{{ $adminuser->id }}">{!! $adminuser->name !!}</label><br/>
             @endforeach
         </div>
+      </div>
     @endif
 
     <!-- Submit Form Input -->

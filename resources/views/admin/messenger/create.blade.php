@@ -11,7 +11,7 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="{!!URL::to('/admin/dashboard')!!}">Home</a></li>
-        <li><a href="{!!URL::to('/admin/messages')!!}">Messages</a></li>
+        <li><a href="{!!URL::to('/admin/messages',$patient_id)!!}">Messages</a></li>
         <li class="active">Add</li>
       </ol>
     </section>
@@ -32,7 +32,7 @@
            
             <div class="box-body">
              
-                <form action="{!!URL::to('/admin/messages/store')!!}" method="post">
+                <form action="{!!URL::to('/admin/messages/store',$patient_id)!!}" method="post">
                     {{ csrf_field() }}
                     <div class="col-md-6">
                         <!-- Subject Form Input -->

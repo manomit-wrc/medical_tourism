@@ -5,12 +5,24 @@
         <a href="{!!URL::to('/admin/messages/show',$thread->id)!!}"  style="color: #3c8dbc !important">{{ $thread->subject }}</a>
         ({{ $thread->userUnreadMessagesCount(Auth::guard('admin')->user()->id) }} unread)</h4>
     <p>
+        
         {{ $thread->latestMessage->body }}
     </p>
+   
     <p>
-        <small><strong>Creator:</strong> {{ $thread->creator()->name }}</small>
+        <small><strong>Creator:</strong> {{ (isset($thread->creator()->first_name)&&!empty($thread->creator()->first_name))?$thread->creator()->first_name:$thread->creator()->name }}</small>
     </p>
     <p>
-        <small><strong>Participants:</strong> {{ $thread->participantsString(Auth::guard('admin')->user()->id) }}</small>
+    @php 
+     //echo "<pre>"; print_r($thread->latestMessage); die;
+    @endphp
+
+        <small><strong>Participants:</strong>
+        @if($thread->latestMessage->user_type=='P')
+         {{ $thread->participantsString($thread->latestMessage->id,$thread->latestMessage->user_type,['first_name']) }}
+        @elseif($thread->latestMessage->user_type=='A')
+         {{ $thread->participantsString($thread->latestMessage->id,$thread->latestMessage->user_type,['name']) }}
+        @endif 
+       </small>
     </p>
 </div>

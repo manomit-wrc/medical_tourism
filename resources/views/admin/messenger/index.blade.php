@@ -25,7 +25,7 @@
               <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
             </div>
 
-            <div class="topbtn"><a href="{!!URL::to('/admin/messages/create')!!}"><button type="button" class="btn bg-purple btn-rightad">ADD</button></a></div>
+            <div class="topbtn"><a href="{!!URL::to('/admin/messages/create',$patient_id)!!}"><button type="button" class="btn bg-purple btn-rightad">ADD</button></a></div>
 
             <!-- /.box-header -->
             <div class="box-body">

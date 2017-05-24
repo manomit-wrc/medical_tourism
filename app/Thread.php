@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Thread extends Model
+class Thread extends Eloquent
 {
-     use SoftDeletes;
+    use SoftDeletes;
 
     /**
      * The database table used by the model.
@@ -87,7 +87,7 @@ class Thread extends Model
     {
         return $this->belongsToMany(Models::classname('User'), Models::table('participants'), 'thread_id', 'user_id');
     }
-    /**
+     /**
      * Patient's relationship.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
@@ -106,9 +106,13 @@ class Thread extends Model
      */
     public function creator()
     {
-        $firstMessage = $this->messages()->withTrashed()->oldest()->first();
-
-        return $firstMessage ? $firstMessage->user : null;
+        $firstMessage = $this->messages()->withTrashed()->oldest()->first(); //echo "<pre>"; print_r($firstMessage->patient); die;
+        if($firstMessage->user_type=='P')
+        {
+          return $firstMessage ? $firstMessage->patient : null;
+        }else{
+          return $firstMessage ? $firstMessage->user : null;  
+        } 
     }
 
     /**
@@ -116,9 +120,9 @@ class Thread extends Model
      *
      * @return mixed
      */
-    public static function getAllLatest($patId)
+    public static function getAllLatest()
     {
-        return self::where('user_id', '=', $patId)->latest('updated_at');
+        return self::latest('updated_at');
     }
 
     /**
@@ -223,7 +227,7 @@ class Thread extends Model
         collect($userIds)->each(function ($userId) {
             Models::participant()->firstOrCreate([
                 'user_id' => $userId,
-                'user_type' => 'P',
+                'user_type' => $userType,
                 'thread_id' => $this->id,
             ]);
         });
@@ -312,22 +316,37 @@ class Thread extends Model
      *
      * @return string
      */
-    public function participantsString($userId = null, $columns = ['name'])
+    public function participantsString($userId = null,$userType = null, $columns = null)
     {
+       // echo $userId;  echo $userType; print_r($columns); die;
         $participantsTable = Models::table('participants');
-        $usersTable = Models::table('users');
-        $userPrimaryKey = Models::user()->getKeyName();
-
-        $selectString = $this->createSelectString($columns);
+        if($userType=='A')
+        {
+           $usersTable = Models::table('users'); 
+           $userPrimaryKey = Models::user()->getKeyName();
+           $columns=$columns;
+           $selectString = $this->createSelectString($userType,$columns);
+           
+           //echo "<pre>"; print_r($userPrimaryKey); die;
+        }else{
+           $usersTable = Models::table('patients'); 
+           $userPrimaryKey = 'id';
+           $columns=$columns;
+           $selectString = $this->createSelectString($userType,$columns);
+          
+        }  
+       // echo $userPrimaryKey; die;
+         //echo "<pre>"; print_r($selectString); die;
+       
 
         $participantNames = $this->getConnection()->table($usersTable)
             ->join($participantsTable, $usersTable . '.' . $userPrimaryKey, '=', $participantsTable . '.user_id')
             ->where($participantsTable . '.thread_id', $this->id)
             ->select($this->getConnection()->raw($selectString));
 
-        if ($userId !== null) {
+        /*if ($userId !== null) {
             $participantNames->where($usersTable . '.' . $userPrimaryKey, '!=', $userId);
-        }
+        }*/
 
         return $participantNames->implode('name', ', ');
     }
@@ -356,11 +375,17 @@ class Thread extends Model
      *
      * @return string
      */
-    protected function createSelectString($columns)
+    protected function createSelectString($userType = null,$columns)
     {
         $dbDriver = $this->getConnection()->getDriverName();
         $tablePrefix = $this->getConnection()->getTablePrefix();
-        $usersTable = Models::table('users');
+        if($userType=='A')
+        {
+            $usersTable = Models::table('users');
+        }else{
+            $usersTable = Models::table('patients'); 
+        }   
+        
 
         switch ($dbDriver) {
         case 'pgsql':

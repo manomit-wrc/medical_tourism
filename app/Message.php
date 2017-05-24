@@ -5,9 +5,9 @@ namespace Cmgmyr\Messenger\Models;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Message extends Model
+class Message extends Eloquent
 {
-   use SoftDeletes;
+    use SoftDeletes;
 
     /**
      * The database table used by the model.
@@ -71,6 +71,18 @@ class Message extends Model
     public function user()
     {
         return $this->belongsTo(Models::user(), 'user_id');
+    }
+     /**
+     * Patient relationship.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     *
+     * @codeCoverageIgnore
+     */
+    public function patient()
+    {
+        //return $this->belongsTo(Models::patient(), 'user_id');
+        return $this->belongsTo('\App\Patient','user_id');
     }
 
     /**
