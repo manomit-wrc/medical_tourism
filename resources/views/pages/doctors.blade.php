@@ -34,15 +34,14 @@
          @if (count($doctor_data) > 0)
             @foreach($doctor_data as $doctor_data)
             <div class="col-sm-6 col-md-4">
-                <div class="servicesbox">
-                    <img src="{{url('/uploads/doctors/thumb/'.$doctor_data->avators)}}" alt="doctor Image">
+                <div class="servicesboxN">
+                    <a href="{!!URL::to('/doctordetail/'.$doctor_data->id)!!}"><img src="{{url('/uploads/doctors/thumb/'.$doctor_data->avators)}}" alt="doctor Image"></a>
                     <h4>{{ $doctor_data->first_name.' '.$doctor_data->last_name }}</h4>
                     <p>{!! \Illuminate\Support\Str::words($doctor_data->about, 8,'....')  !!}</p>
-                    <!--<a class="viewdetails" href="details.html">VIEW MORE</a>-->
-                    <a href="#" class="socialD"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                    <a href="#" class="socialD"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                    <a href="#" class="socialD"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                    <a class="viewdetails" href="{!!URL::to('/doctordetail/'.$doctor_data->id)!!}">VIEW MORE</a>
+                    <a href="#" class="socialD1"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    <a href="#" class="socialD2"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    <a href="#" class="socialD3"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                    <!-- <a class="viewdetails" href="{!!URL::to('/doctordetail/'.$doctor_data->id)!!}">VIEW MORE</a> -->
                 </div>
             </div>
             @endforeach

@@ -275,6 +275,8 @@
 
 }
 
+
+
 	@media screen and (max-width: 480px) {
 
 	.category h2{
@@ -290,3 +292,14 @@
 	}
 
 }
+
+@media screen and (max-width: 760px) {
+	.fieldboxD{
+		width: 96% !important;
+		margin: 1% 2% !important;
+	}
+	.fieldsearchD{
+		width: 96% !important;
+		margin: 1% 2% !important;
+	}
+	}
