@@ -284,8 +284,8 @@ Route::group(['middleware' => ['admin']], function () {
 
     //Message section
     Route::get('/admin/messages/{id}','MessagesController@index');
-    Route::get('/admin/messages/create','MessagesController@create');
-    Route::post('/admin/messages/store','MessagesController@store');
+    Route::get('/admin/messages/create/{id}','MessagesController@create');
+    Route::post('/admin/messages/store/{id}','MessagesController@store');
     //Route::get('/admin/messages/edit/{id}','PatientController@edit');
     Route::get('/admin/messages/show/{id}','MessagesController@show');
     Route::put('/admin/messages/update/{id}','MessagesController@update');

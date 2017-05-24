@@ -23,17 +23,18 @@ class MessagesController extends Controller
      * @return mixed
      */
     public function index($patid)
-    {  echo $patid; die;
+    {  //echo $patid; die;
+        $patient_id=$patid;
         // All threads, ignore deleted/archived participants
-        $threads = Thread::getAllLatest($patid)->get();
-        //echo "<pre>"; print_r($threads); die;
+        //$threads = Thread::getAllLatest()->get();
+       
         // All threads that user is participating in
-        // $threads = Thread::forUser(Auth::id())->latest('updated_at')->get();
+        $threads = Thread::forUser($patid)->latest('updated_at')->get();
 
         // All threads that user is participating in, with new messages
-        // $threads = Thread::forUserWithNewMessages(Auth::id())->latest('updated_at')->get();
-
-        return view('admin.messenger.index', compact('threads'));
+        //$threads = Thread::forUserWithNewMessages($patid)->latest('updated_at')->get();
+        //echo "<pre>"; print_r($threads); die;
+        return view('admin.messenger.index', compact('threads','patient_id'));
     }
 
     /**
@@ -51,18 +52,19 @@ class MessagesController extends Controller
 
             return redirect('messages');
         }
-
+        //echo "<pre>"; print_r($thread); die;
         // show current user in list if not a current participant
         // $users = User::whereNotIn('id', $thread->participantsUserIds())->get();
 
         // don't show the current user in list
         $userId = Auth::guard('admin')->user()->id;
+        $adminusers = User::where('id', '!=', $userId)->get();
         //$users = User::whereNotIn('id', $thread->participantsUserIds($userId))->get();
         $users=Patient::where('status', '!=', 2)->orderBy('id','desc')->get();
         //echo "<pre>"; print_r($users); die;
         $thread->markAsRead($userId);
 
-        return view('admin.messenger.show', compact('thread', 'users'));
+        return view('admin.messenger.show', compact('thread','adminusers', 'users'));
     }
 
     /**
@@ -70,14 +72,15 @@ class MessagesController extends Controller
      *
      * @return mixed
      */
-    public function create()
+    public function create($patid)
     {
+        $patient_id=$patid;
         $adminusers = User::where('id', '!=', Auth::guard('admin')->user()->id)->get();
         //echo "<pre>"; print_r($adminusers); die;
         //$users = User::where('id', '!=', Auth::id())->get();
-        $users=Patient::where('status', '!=', 2)->orderBy('id','desc')->get();
+        $users=Patient::where('status', '!=', 2)->where('id', '=',$patient_id)->orderBy('id','desc')->get();
         //echo "<pre>"; print_r($users); die;
-        return view('admin.messenger.create', compact('users','adminusers'));
+        return view('admin.messenger.create', compact('users','adminusers','patient_id'));
     }
 
     /**
@@ -85,7 +88,7 @@ class MessagesController extends Controller
      *
      * @return mixed
      */
-    public function store()
+    public function store($patid)
     {
         $input = Input::all();
 
@@ -121,10 +124,10 @@ class MessagesController extends Controller
         }
         // Recipients is admin
         if (Input::has('recipients_admin')) {
-            $thread->addParticipant($input['recipients'],'A');
+            $thread->addParticipant($input['recipients_admin'],'A');
         }
 
-        return redirect('admin/messages');
+        return redirect('admin/messages/'.$patid);
     }
 
     /**

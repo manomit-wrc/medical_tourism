@@ -72,6 +72,18 @@ class Message extends Eloquent
     {
         return $this->belongsTo(Models::user(), 'user_id');
     }
+     /**
+     * Patient relationship.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     *
+     * @codeCoverageIgnore
+     */
+    public function patient()
+    {
+        //return $this->belongsTo(Models::patient(), 'user_id');
+        return $this->belongsTo('\App\Patient','user_id');
+    }
 
     /**
      * Participants relationship.
