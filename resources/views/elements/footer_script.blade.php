@@ -1,7 +1,7 @@
     
-    {!!Html::script("storage/frontend/js/jquery.min.js")!!}
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    {!!Html::script("storage/frontend/js/jquery.min.js")!!}    
+    {!! Html::style('storage/frontend/css/jquery-ui.min.css') !!}
+    {!!Html::script("storage/frontend/js/jquery-ui.min.js")!!}
     {!!Html::script("storage/frontend/js/bootstrap.min.js")!!}
     {!!Html::script("storage/frontend/js/jquery.jcarousel.min.js")!!}
     {!!Html::script("storage/frontend/js/jcarousel.responsive.js")!!}
@@ -581,8 +581,14 @@
         name: 'docutag',
         displayKey: 'text',
         source: docutag.ttAdapter()
+
       }
     }); */
+
+      },
+      freeInput: true
+    }); 
+
   
    $(function() {
       $('.pro_opt').on('change', function(event) {
@@ -591,12 +597,20 @@
       if (!$element.data('tagsinput'))
       return;
       var val = $element.val();
-      /*alert(val);  */    
-      
+     /* alert(val);*/      
+      $("#existings_tag_name").val(val);
       if (val === null)
       val = "null";    
       }).trigger('change');
-    });  
+    });
+    function addnewtag(){
+      if(document.getElementById("add_new_tag").checked == true){        
+        $("#new_tag_name").show();
+      }else{
+        $("#new_tag").val('');
+        $("#new_tag_name").hide();
+      }
+    }  
   </script>
   
   
