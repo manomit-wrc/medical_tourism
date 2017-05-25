@@ -540,7 +540,7 @@
       if (!$element.data('tagsinput'))
       return;
       var val = $element.val();
-      alert(val);      
+      /*alert(val);  */    
       
       if (val === null)
       val = "null";    
