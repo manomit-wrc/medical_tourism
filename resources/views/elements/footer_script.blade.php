@@ -565,7 +565,7 @@
     });
   </script>
   <script>    
-    /*var docutag = new Bloodhound({
+    var docutag = new Bloodhound({
       datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
       queryTokenizer: Bloodhound.tokenizers.whitespace,
       prefetch: '/getattdocumenttags/'
@@ -581,13 +581,9 @@
         name: 'docutag',
         displayKey: 'text',
         source: docutag.ttAdapter()
-
       }
-    }); */
-
-      },
-      freeInput: true
-    }); 
+    });
+ 
 
   
    $(function() {
