@@ -144,10 +144,7 @@
             <br /><br /><span style="color:red; width: 100%; text-align: center; display: block;">Please upload bmp,gif,jpg,jpeg,png extension file</span> 
           </div>
           <div class="modal-footer">
-            <input type="hidden" name="_token" value="{{csrf_token()}}">
-
-            <input class="btn btn-success btn-block" type="submit" onclick="return uploadimage();" value="Update"><div>&nbsp;</div>            
-
+            <input type="hidden" name="_token" value="{{csrf_token()}}">          
             <input class="viewmoreBTN" type="submit" onclick="return uploadimage();" value="Update"><div>&nbsp;</div>
 
           </div>
@@ -233,26 +230,40 @@
                   </div>
                   <div class="col-md-12">
                        <label>
-                          Tags :<span style="color:red;">*</span>
+                          Existing Tags :
                           <div class="example example_markup">
                             <div class="bs-example">
-                              <input type="text" style="text-align:left;" class="pro_opt" placeholder="Tag_name" value="" data-role="tagsinput" />
+                              <input type="text" class="Cinput pro_opt" placeholder="Tag_name" value="" />
                             </div>    
                           </div>
                       </label>
                   </div>
                   <div class="col-md-12">
-                  <label>
-                    Document :<span style="color:red;">*</span>
-                    <input name="document" id="document" style="margin-top:10px;" type="file" value=""/>
-                    <div style="margin-top:10px;"><span style="color:red;">Note : </span>Please upload bmp, gif, jpg, jpeg, png, mp4, flv, avi, wmv, asf, webm, ogv, txt, pdf, psd, doc, rtf, ppt, docx extension file.
-                    </div>   
-                  </label>                
+                       <label>                           
+                          <input type="checkbox" value="Customer" class="te_fr feild_right required" id="add_new_tag" onclick="addnewtag()" name="user_type"> Add New Tags
+                      </label>
+                  </div>
+                  <div class="col-md-12" style="display:none;" id="new_tag_name">
+                       <label>
+                          New Tags Name:<span style="color:red;">*</span>
+                          <input type="test" name="new_tag" id="new_tag" class="Cinput" onkeyup="return newtagname(this.value)" value="">
+                          <div class="alert alert-danger fade in alert-dismissable" id="new_tag_error" style="display:none; margin-top:5px;">
+                          </div>
+                      </label>
+                  </div>
+                  <div class="col-md-12">
+                    <label>
+                      Document :<span style="color:red;">*</span>
+                      <input name="document" id="document" style="margin-top:10px;" type="file" value=""/>
+                      <div style="margin-top:10px;"><span style="color:red;">Note : </span>Please upload bmp, gif, jpg, jpeg, png, mp4, flv, avi, wmv, asf, webm, ogv, txt, pdf, psd, doc, rtf, ppt, docx extension file.
+                      </div>   
+                    </label>                
                   </div> 
                 </div>
                 <div class="modal-footer">
-                  <input type="hidden" name="_token" value="{{csrf_token()}}">                 
-                  <input class="btn btn-success btn-block" type="submit" onclick="return uploaddocument();" value="Update"><div>&nbsp;</div>                  
+                   <input type="hidden" name="_token" value="{{csrf_token()}}">
+                   <input type="hidden" name="existings_tag_name" id="existings_tag_name" value="">
+                   <input class="btn btn-success btn-block" type="submit" onclick="return uploaddocument();" value="Update"><div>&nbsp;</div>                  
                 </div>
               </div>
             </form>
@@ -271,6 +282,25 @@
                 $("#file_name_error").css("display", "none");     
                 document.getElementById('file_name').style.border = '';
                 document.getElementById("file_name_error").innerHTML = "";
+              }
+              if(document.getElementById("add_new_tag").checked == true){
+                var new_tag = $("#new_tag").val();                
+                if(new_tag ==''){
+                  document.getElementById('new_tag').style.border = '1px solid red !important';
+                  $("#new_tag_error").css("display", "block");
+                  document.getElementById("new_tag_error").innerHTML = "Please enter new tag";
+                  document.getElementById('new_tag').focus();
+                  return false
+                }else{
+                  $("#new_tag_error").css("display", "none");     
+                  document.getElementById('new_tag').style.border = '';
+                  document.getElementById("new_tag_error").innerHTML = "";
+                }
+              }else{
+                $("#new_tag").val('');
+                $("#new_tag_error").css("display", "none");     
+                document.getElementById('new_tag').style.border = '';
+                document.getElementById("new_tag_error").innerHTML = "";
               }
 
             $("#documentUploadForm").unbind('submit').submit(function (event) {
@@ -295,7 +325,12 @@
                     setTimeout(function() {
                       $('#uploaddocument_modal').modal('hide');  
                       $("#document").val('');
-                      $("#file_name").val('');                      
+                      $("#file_name").val('');
+                      $("#new_tag").val(''); 
+                      $("#existings_tag_name").val('');
+                      if(document.getElementById("add_new_tag").checked == true){
+                        $('#add_new_tag').prop('checked',false);
+                      }                      
                       location.reload();
                     }, 2000); 
                   }else{
@@ -306,6 +341,7 @@
                       setTimeout(function() {
                         $("#document").val('');
                         $("#file_name").val('');
+                        $("#new_tag").val('');
                         $('#resultdocument').fadeOut('fast');
                       }, 2000);
                   }
