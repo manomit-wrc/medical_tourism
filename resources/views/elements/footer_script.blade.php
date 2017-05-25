@@ -7,14 +7,38 @@
     {!!Html::script("storage/frontend/js/jcarousel.responsive.js")!!}
     {!!Html::script("storage/frontend/js/owl.carousel.min.js")!!}
     {!!Html::script("storage/frontend/js/custom-file-input.js")!!}
-
+    {!! Html::style('storage/frontend/css/sweetalert.css') !!}
+    {!!Html::script("storage/frontend/js/sweetalert-dev.js")!!}
 
     {!!Html::script("storage/frontend/js/jquery.validate.min.js")!!}
-    {!!Html::script("storage/frontend/js/additional-methods.min.js")!!} 
+    {!!Html::script("storage/frontend/js/additional-methods.min.js")!!}
+
+    {!! Html::style('storage/frontend/tag/dist/bootstrap-tagsinput.css') !!}
+    {!! Html::style('storage/frontend/tag/app.css') !!}
+    {!!Html::script("storage/frontend/tag/typeahead.bundle.min.js")!!}
+    {!!Html::script("storage/frontend/tag/dist/bootstrap-tagsinput.min.js")!!} 
+   
     <script type="text/javascript">
     $(function () {$('[data-toggle="tooltip"]').tooltip()})
   </script>
     <script type="text/javascript">
+    function deldata(url){
+      swal({
+        title: "Are you sure?",
+        text: "You want to delete this record!",
+        type: "error",
+        showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes",
+            cancelButtonText: "No",
+            closeOnConfirm: true,
+            closeOnCancel: true
+          }, function(isConfirm){
+            if (isConfirm){
+              window.location.href= url;
+            }       
+          });   
+    }
       function get_select_birthday() {
         var dob_days = "{{$dob_days}}";
 
@@ -488,7 +512,40 @@
     $(window).load(function(){
       $("#sticker").sticky({ topSpacing: 0, center:true, className:"hey" });
     });
+  </script>
+  <script>    
+    var docutag = new Bloodhound({
+      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+      queryTokenizer: Bloodhound.tokenizers.whitespace,
+      prefetch: '/getattdocumenttags/'
+    });
 
+    elt = $(".example_markup >> input");
+    docutag.clearPrefetchCache();
+    docutag.initialize();
+    elt.tagsinput({
+      itemValue: 'value',
+      itemText: 'text',      
+      typeaheadjs: {
+        name: 'docutag',
+        displayKey: 'text',
+        source: docutag.ttAdapter()
+      }
+    }); 
+  
+   $(function() {
+      $('.pro_opt').on('change', function(event) {
+      var $element = $(event.target),
+      $container = $element.closest('.example');      
+      if (!$element.data('tagsinput'))
+      return;
+      var val = $element.val();
+      /*alert(val);  */    
+      
+      if (val === null)
+      val = "null";    
+      }).trigger('change');
+    });  
   </script>
   
   

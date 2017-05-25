@@ -47,6 +47,7 @@ Route::get('/successreset','PagesController@successreset');
 Route::post('/documentupload','PagesController@documentupload');
 Route::get('/document-delete/{id}','PagesController@document_delete');
 Route::get('/document-download/{id}','PagesController@document_download');
+Route::get('/getattdocumenttags','PagesController@getattdocumenttags');
 
 Route::group(['middleware' => ['front']], function() {
     Route::get('/profile','PagesController@patient_profile');

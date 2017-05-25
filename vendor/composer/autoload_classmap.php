@@ -51,6 +51,7 @@ return array(
     'CreateDoctorDegreeTable' => $baseDir . '/database/migrations/2017_04_26_082652_create_doctor_degree_table.php',
     'CreateDoctorProcedureTable' => $baseDir . '/database/migrations/2017_04_26_082629_create_doctor_procedure_table.php',
     'CreateDoctorsTable' => $baseDir . '/database/migrations/2017_04_26_071406_create_doctors_table.php',
+    'CreateDocumentTagsTable' => $baseDir . '/database/migrations/2017_05_24_091310_create_document_tags_table.php',
     'CreateDocumentsTable' => $baseDir . '/database/migrations/2017_05_19_093033_create_documents_table.php',
     'CreateFaqCategoriesTable' => $baseDir . '/database/migrations/2017_05_08_085507_create_faq_categories_table.php',
     'CreateFaqsTable' => $baseDir . '/database/migrations/2017_05_08_093445_create_faqs_table.php',
