@@ -366,5 +366,17 @@
               $("#file_name_error").hide();
             }                     
           }
+          function newtagname(val)
+          {                                       
+            if(val == '')
+            {
+              $("#new_tag_error").show();
+              $("#new_tag_error").html("Please enter new tag");
+            }
+            else
+            {                     
+              $("#new_tag_error").hide();
+            }                     
+          } 
           </script> 
                  

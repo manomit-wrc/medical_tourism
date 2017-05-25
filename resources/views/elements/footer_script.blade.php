@@ -553,6 +553,7 @@
       }else{
         $("#new_tag").val('');
         $("#new_tag_name").hide();
+         $("#new_tag_error").hide();
       }
     }  
   </script>
