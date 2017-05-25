@@ -35,13 +35,17 @@ class EnquiryController extends Controller
      */
     public function enquiryPost(Request $request)
     {
-        echo "<pre>"; print_r($request); die;
+        //echo "<pre>"; print_r($request); die;
         $this->validate($request, [
         		'full_name' => 'required',
         		'email' => 'required|email',
         		'mobile_no' => 'required',
-        		'subject' => 'required',
-        		'message' => 'required'
+        		'treatment_id' => 'required',
+        		'procedure_id' => 'required',
+                'country_id' => 'required',
+                'state_id' => 'required',
+                'city_id' => 'required',
+                'comments' => 'required'
         	]);
 
 

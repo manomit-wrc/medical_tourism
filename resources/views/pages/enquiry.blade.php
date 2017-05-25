@@ -14,13 +14,13 @@
                       <div>&nbsp;</div>
 
                       <div class="col-md-6 col-md-offset-3">
-                          @if($errors->any())
+                          <!-- @if($errors->any())
                               <div class="alert alert-danger">
                                   @foreach($errors->all() as $error)
                                       <p>{{ $error }}</p>
                                   @endforeach
                               </div>
-                          @endif
+                          @endif -->
 
                           @if (Session::has('message'))
                             <div class="alert alert-info">{{ Session::get('message') }}</div>
@@ -33,42 +33,50 @@
                            
                             <label>
                              Full Name <span style="color:red;">* </span>
-                             {!! Form::text('full_name','',array('class'=>'Iinput','id'=>'name','placeholder'=>'Enter full name')) !!}
+                             {!! Form::text('full_name','',array('class'=>'Iinput','id'=>'full_name','placeholder'=>'Enter full name')) !!}
+                             {!! Html::decode('<span class="text-danger">'.$errors->first("full_name").'</span>') !!}
                             </label>
                             
                             <label>
                              Email <span style="color:red;">* </span>
                              {!! Form::text('email','',array('class'=>'Iinput','id'=>'email','placeholder'=>'Enter email address')) !!}
+                             {!! Html::decode('<span class="text-danger">'.$errors->first("email").'</span>') !!}
                             </label>
 
                             <label>
                               Mobile number<span style="color:red;">* </span>
                               {!! Form::text('mobile_no','',array('class'=>'Iinput','id'=>'mobile_no','placeholder'=>'Enter mobile number')) !!}
+                              {!! Html::decode('<span class="text-danger">'.$errors->first("mobile_no").'</span>') !!}
                             </label>
                             
                             <label>
                              Specility <span style="color:red;">* </span>
                              {!! Form::select('treatment_id', $treat_list, null, ['class' => 'listtypeI']) !!}
+                             {!! Html::decode('<span class="text-danger">'.$errors->first("treatment_id").'</span>') !!}
                             </label>
                             
                             <label>
                               Procedure <span style="color:red;">* </span>
                               {!! Form::select('procedure_id', $proc_list, null, ['class' => 'listtypeI']) !!}
+                              {!! Html::decode('<span class="text-danger">'.$errors->first("procedure_id").'</span>') !!}
                             </label>
                             
                             <label>
                             Country <span style="color:red;">* </span>
                                {!! Form::select('country_id',['' => 'Select'] +$countries, null, ['id'=>'country_id','class' => 'listtypeI select2']) !!}
+                                {!! Html::decode('<span class="text-danger">'.$errors->first("country_id").'</span>') !!}
                             </label>
 
                             <label>
                             State <span style="color:red;">* </span>
                                <select name="state_id" id="state_id" class="listtypeI select2" ></select>
+                               {!! Html::decode('<span class="text-danger">'.$errors->first("state_id").'</span>') !!}
                             </label>
 
                             <label>
                             City <span style="color:red;">* </span>
-                               <select name="city_id" id="state_id" class="listtypeI select2" ></select>
+                               <select name="city_id" id="city_id" class="listtypeI select2" ></select>
+                               {!! Html::decode('<span class="text-danger">'.$errors->first("city_id").'</span>') !!}
                             </label>
                             
                             
@@ -76,6 +84,7 @@
                             <label>
                             Comments <span style="color:red;">* </span>
                             {!! Form::textarea('comments','',array('class'=>'Cinput','id'=>'comments_id','placeholder'=>'Enter comments')) !!}
+                            {!! Html::decode('<span class="text-danger">'.$errors->first("comments").'</span>') !!}
                             </label>
 
 
