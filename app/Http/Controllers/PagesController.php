@@ -12,6 +12,11 @@ use App\News;
 use App\Doctor;
 use App\FaqCategory;
 use App\Faq;
+use App\Procedure;
+use App\Treatment;
+use App\Country;
+use App\State;
+use App\City;
 
 use Hash;
 use Illuminate\Support\Facades\Mail;
@@ -62,7 +67,13 @@ class PagesController extends Controller
 
 	public function enquiry()
 	{
-		return view('pages.enquiry');
+   
+    $treat_list= Treatment::where('status', 1)->orderBy('name')->pluck('name', 'id');
+    //echo "<pre>"; print_r($treat_list); die;
+    $proc_list = Procedure::where('status', 1)->orderBy('name')->pluck('name', 'id');
+    //echo "<pre>"; print_r($proc_list); die;
+    $countries = Country::orderBy('name')->pluck('name', 'id')->all();
+    return view('pages.enquiry',compact('treat_list','proc_list','countries'));
 	}
 
 	public function facilities()

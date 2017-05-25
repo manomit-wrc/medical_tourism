@@ -1,5 +1,7 @@
-<?php $class = $thread->isUnread(Auth::guard('admin')->user()->id) ? 'alert-info' : '';  ?>
-{{Request::segment(3)}}
+<?php $class = $thread->isUnread(Auth::guard('admin')->user()->id) ? 'alert-info' : ''; ?>
+
+<!-- {{ collect(request()->segments())->last() }} -->
+
 <div class="media alert {{ $class }}">
     <h4 class="media-heading">
         <a href="{!!URL::to('/admin/messages/show',$thread->id)!!}"  style="color: #3c8dbc !important">{{ $thread->subject }}</a>

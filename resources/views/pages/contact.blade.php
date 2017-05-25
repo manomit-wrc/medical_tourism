@@ -59,7 +59,7 @@
                   <div class="alert alert-info">{{ Session::get('message') }}</div>
                 @endif
 
-                {!! Form::open(array('method' => 'POST','role'=>'form','files' => true,'route'=>'contactus.store','id'=>'banner_add')) !!}
+                {!! Form::open(array('method' => 'POST','role'=>'form','files' => true,'route'=>'contactus.store','id'=>'contact_add')) !!}
                     <label>
                         Name <span style="color:red;">* </span>
                         {!! Form::text('name','',array('class'=>'Cinput','id'=>'name','placeholder'=>'Enter name')) !!}

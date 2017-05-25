@@ -231,6 +231,7 @@
                           </div>
                       </label>
                   </div>
+                  
                   <div class="col-md-12">
                        <label>
                           Tags :<span style="color:red;">*</span>
@@ -241,6 +242,7 @@
                           </div>
                       </label>
                   </div>
+                  
                   <div class="col-md-12">
                   <label>
                     Document :<span style="color:red;">*</span>
