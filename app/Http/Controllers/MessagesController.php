@@ -30,9 +30,10 @@ class MessagesController extends Controller
        
         // All threads that user is participating in
         $threads = Thread::forUser($patid)->latest('updated_at')->get();
-
+        
         // All threads that user is participating in, with new messages
         //$threads = Thread::forUserWithNewMessages($patid)->latest('updated_at')->get();
+       
         //echo "<pre>"; print_r($threads); die;
         return view('admin.messenger.index', compact('threads','patient_id'));
     }

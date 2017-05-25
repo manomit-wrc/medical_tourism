@@ -17,6 +17,7 @@ Route::get('/about','PagesController@about');
 Route::get('/services','PagesController@services');
 Route::get('/servicedetails/{id}','PagesController@servicedetails');
 Route::get('/enquiry','PagesController@enquiry');
+Route::post('/enquiry-us', ['as'=>'enquiry.store','uses'=>'EnquiryController@enquiryPost']);
 Route::get('/facilities','PagesController@facilities');
 Route::get('/doctors','PagesController@doctors');
 Route::get('/doctordetail/{id}','PagesController@doctordetail');
@@ -48,6 +49,9 @@ Route::post('/documentupload','PagesController@documentupload');
 Route::get('/document-delete/{id}','PagesController@document_delete');
 Route::get('/document-download/{id}','PagesController@document_download');
 Route::get('/getattdocumenttags','PagesController@getattdocumenttags');
+
+Route::get('/api/get-state-list','CountryStateCityController@getStateList');
+Route::get('/api/get-city-list','CountryStateCityController@getCityList');
 
 Route::group(['middleware' => ['front']], function() {
     Route::get('/profile','PagesController@patient_profile');

@@ -19,8 +19,9 @@
     {!!Html::script("storage/frontend/tag/dist/bootstrap-tagsinput.min.js")!!} 
    
     <script type="text/javascript">
-    $(function () {$('[data-toggle="tooltip"]').tooltip()})
-  </script>
+       $(function () {$('[data-toggle="tooltip"]').tooltip()})
+    </script>
+
     <script type="text/javascript">
     function deldata(url){
       swal({
@@ -461,7 +462,57 @@
         $(this).find('.col-sm-11').remove();
       });
     </script>
-    
+     <!--State/city/dropdown start-->
+<script type="text/javascript">
+    $('#country_id').change(function(){ 
+    var countryID = $(this).val();
+    if(countryID){
+        $.ajax({
+           type:"GET",
+           url:"{{url('/api/get-state-list')}}?country_id="+countryID,
+           success:function(res){ //alert(res);
+            if(res){ 
+                $("#state_id").empty();
+                $("#state_id").append('<option>Select</option>');
+                $.each(res,function(key,value){
+                    $("#state_id").append('<option value="'+key+'">'+value+'</option>');
+                });
+
+            }else{
+               $("#state_id").empty();
+            }
+           }
+        });
+    }else{
+        $("#state_id").empty();
+        $("#city_id").empty();
+    }
+   });
+    $('#state_id').on('change',function(){
+    var stateID = $(this).val();
+    if(stateID){
+        $.ajax({
+           type:"GET",
+           url:"{{url('/api/get-city-list')}}?state_id="+stateID,
+           success:function(res){
+            if(res){
+                $("#city_id").empty();
+                $.each(res,function(key,value){
+                    $("#city_id").append('<option value="'+key+'">'+value+'</option>');
+                });
+
+            }else{
+               $("#city_id").empty();
+            }
+           }
+        });
+    }else{
+        $("#city_id").empty();
+    }
+
+   });
+</script>
+<!--State/city/dropdown end-->
     <script type="text/javascript">
       function BindControls() {
         var Countries = ['ARGENTINA', 
@@ -514,7 +565,7 @@
     });
   </script>
   <script>    
-    var docutag = new Bloodhound({
+    /*var docutag = new Bloodhound({
       datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
       queryTokenizer: Bloodhound.tokenizers.whitespace,
       prefetch: '/getattdocumenttags/'
@@ -530,9 +581,14 @@
         name: 'docutag',
         displayKey: 'text',
         source: docutag.ttAdapter()
+
+      }
+    }); */
+
       },
       freeInput: true
     }); 
+
   
    $(function() {
       $('.pro_opt').on('change', function(event) {

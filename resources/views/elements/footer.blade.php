@@ -228,6 +228,7 @@
                           </div>
                       </label>
                   </div>
+                  
                   <div class="col-md-12">
                        <label>
                           Existing Tags :
@@ -238,6 +239,7 @@
                           </div>
                       </label>
                   </div>
+                  
                   <div class="col-md-12">
                        <label>                           
                           <input type="checkbox" value="Customer" class="te_fr feild_right required" id="add_new_tag" onclick="addnewtag()" name="user_type"> Add New Tags
