@@ -1,8 +1,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="headerbottom">
-            <form name="frmSearch" id="frmSearch" method="post" action="/search-data">
-
+            <form name="frmSearch" id="frmSearch" method="get" action="/search-data">
             {{csrf_field()}}
             <div class="container">
                 <div class="row">

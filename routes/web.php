@@ -40,7 +40,7 @@ Route::post('/patient-registration','PagesController@patient_registration');
 Route::post('/patient-login','PagesController@patient_login');
 Route::post('/patient-forgotpass','PagesController@patient_forgotpass');
 Route::get('/search-place','SearchController@search_place');
-Route::post('search-data','SearchController@search_data');
+Route::get('search-data','SearchController@search_data');
 Route::post('/profile_image_upload','PagesController@profile_image_upload');
 Route::get('/changepassword/{url}','PagesController@changepassword');
 Route::post('/reset-password/{security_code}','PagesController@reset_password');
@@ -429,7 +429,14 @@ Route::group(['middleware' => ['admin']], function () {
     Route::patch('/admin/cmspagedetail/update/{id}','CmspageDetailsController@update');    
     Route::get('/admin/cmspagedetail/delete/{id}','CmspageDetailsController@delete');
 
-   
+   //document tag categories section
+    Route::get('/admin/documenttag','DocumentTagController@index');
+    Route::get('/admin/documenttag/create','DocumentTagController@create');
+    Route::post('/admin/documenttag/store','DocumentTagController@store');
+    Route::get('/admin/documenttag/edit/{id}','DocumentTagController@edit');
+    Route::patch('/admin/documenttag/update/{id}','DocumentTagController@update');    
+    Route::get('/admin/documenttag/delete/{id}','DocumentTagController@delete');
+    Route::post('/admin/documenttag/changestatus/','DocumentTagController@ajaxtagchangestatus');
 
     
 });

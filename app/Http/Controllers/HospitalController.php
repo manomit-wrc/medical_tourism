@@ -384,6 +384,7 @@ class HospitalController extends Controller
     public function gettestarr($cat_id) {
       $medicaltest = Medicaltest::where('medicaltestcategories_id',$cat_id)->get()->toArray();
         //echo "<pre>"; print_r($medicaltest); die;
+        $data = array();
         foreach($medicaltest as $keyy => $vall)
         {      
           $data[] = array(
