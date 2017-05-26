@@ -10,7 +10,7 @@
             </div>
             <div class="col-lg-8 col-md-8 col-sm-8">
               <ul class="list-inline">
-                  <li><a href="#">About</a></li>
+                    <li><a href="#">About</a></li>
                     <li><a href="#">Mobile</a></li>
                     <li><a href="#">Terms</a></li>
                     <li><a href="#">Privacy</a></li>
