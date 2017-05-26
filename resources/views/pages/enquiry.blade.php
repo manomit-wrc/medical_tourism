@@ -50,7 +50,7 @@
                             </label>
                             
                             <label>
-                             Specility <span style="color:red;">* </span>
+                             Speciality <span style="color:red;">* </span>
                              {!! Form::select('treatment_id', $treat_list, null, ['class' => 'listtypeI']) !!}
                              {!! Html::decode('<span class="text-danger">'.$errors->first("treatment_id").'</span>') !!}
                             </label>
