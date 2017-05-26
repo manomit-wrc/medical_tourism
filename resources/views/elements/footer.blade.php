@@ -265,7 +265,7 @@
                 <div class="modal-footer">
                    <input type="hidden" name="_token" value="{{csrf_token()}}">
                    <input type="hidden" name="existings_tag_name" id="existings_tag_name" value="">
-                   <input class="btn btn-success btn-block" type="submit" onclick="return uploaddocument();" value="Update"><div>&nbsp;</div>                  
+                   <input class="viewmoreBTN" type="submit" onclick="return uploaddocument();" value="Update"><div>&nbsp;</div>                  
                 </div>
               </div>
             </form>
@@ -277,7 +277,7 @@
               if(file_name ==''){
                 document.getElementById('file_name').style.border = '1px solid red !important';
                 $("#file_name_error").css("display", "block");
-                document.getElementById("file_name_error").innerHTML = "Please enter prescription title";
+                document.getElementById("file_name_error").innerHTML = "Please enter document title";
                 document.getElementById('file_name').focus();
                 return false
               }else{

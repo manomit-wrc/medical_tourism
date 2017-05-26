@@ -218,6 +218,11 @@ class PagesController extends Controller
   {
       $hospital_data = Hospital::findOrFail($id);
       //echo "<pre>"; print_r($hospital_data); die;
+      /* if(isset($hospital_data) && count($hospital_data) > 0){
+        $hospital_data = $hospital_data;
+      }else{
+          return redirect('/');
+      }*/
       return view('pages.searchdetails',compact('hospital_data'));
   }
   public function check_user_exist(Request $request) {

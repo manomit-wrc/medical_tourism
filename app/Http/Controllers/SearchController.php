@@ -54,7 +54,7 @@ class SearchController extends Controller
     			$res->where('procedures.id',$select_procedure);
     		});
     	})->orderBy('hospitals.name')->get()->toArray();
-    	
-    	return view('pages.searchdetails')->with('search_data',$search_data);
+    	/* print_r($search_data); die();*/
+    	return view('pages.searchdata')->with('search_data',$search_data);
     }
 }

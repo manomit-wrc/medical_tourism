@@ -13,6 +13,12 @@ class Hospital extends Model
     public function city() {
        return $this->belongsTo('\App\City');
     }
+    public function country() {
+       return $this->belongsTo('\App\Country');
+    }
+    public function state() {
+       return $this->belongsTo('\App\State');
+    }
     public function treatments()
     {
       return $this->belongsToMany('\App\Treatment','hospital_treatment','hospital_id','treatment_id');

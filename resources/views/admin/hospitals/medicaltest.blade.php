@@ -34,6 +34,13 @@
                @if (Session::has('error_message'))
                   <div class="alert alert-danger" id="result8">{{ Session::get('error_message') }}</div>
               @endif
+              @php
+              if (isset($medicaltest_array) && !empty($medicaltest_array)){
+                  $medicaltest_array = $medicaltest_array;
+              }else{
+                  $medicaltest_array =array();
+              }                  
+              @endphp
                 {!! Form::open(array('method' => 'POST','role'=>'form','url'=>'admin/hospitals/store_medicaltest/','id'=>'medicaltest_add')) !!}
                   <input id="hospital_id" name="hospital_id" type="hidden" value="{{Request::segment(4)}}">                
                   <div class="col-md-6">                  
