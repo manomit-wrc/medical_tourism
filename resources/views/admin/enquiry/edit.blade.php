@@ -59,15 +59,39 @@
                       </div>
                      
                       <div class="form-group">
-                        {!! Html::decode(Form::label('treatment','Mobile No: ')) !!}
+                        {!! Html::decode(Form::label('treatment','Speciality: ')) !!}
                         {{ ($enqdata->treatment->name)? $enqdata->treatment->name:'' }}
                       </div> 
+                      
+                       <div class="form-group">
+                        {!! Html::decode(Form::label('procedure','Procedure: ')) !!}
+                        {{ ($enqdata->procedure->name)? $enqdata->procedure->name:'' }}
+                      </div> 
 
+                      <div class="form-group">
+                        {!! Html::decode(Form::label('country','Country: ')) !!}
+                        {{ ($enqdata->country->name)? $enqdata->country->name:'' }}
+                      </div> 
+
+                      <div class="form-group">
+                        {!! Html::decode(Form::label('state','State: ')) !!}
+                        {{ ($enqdata->state->name)? $enqdata->state->name:'' }}
+                      </div>
+
+                      <div class="form-group">
+                        {!! Html::decode(Form::label('city','City: ')) !!}
+                        {{ ($enqdata->city->name)? $enqdata->city->name:'' }}
+                      </div>
                                      
                        
                       <div class="form-group">
                           {!! Html::decode(Form::label('comments','Message: ')) !!}
                           {{ ($enqdata->comments)? $enqdata->comments:'' }}
+                      </div>
+
+                      <div class="form-group">
+                          {!! Html::decode(Form::label('created_at','Created date: ')) !!}
+                          {{ ($enqdata->created_at)? $enqdata->created_at:'' }}
                       </div>   
 
                     </div>             
