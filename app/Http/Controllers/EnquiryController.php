@@ -21,13 +21,33 @@ class EnquiryController extends Controller
     public function index() {
         $enqdata = Enquiry::all();
         /* echo "<pre>"; print_r($enqdata); die;*/
-        return view('admin.contact.index')->with('enqdata',$enqdata);
+        return view('admin.enquiry.index')->with('enqdata',$enqdata);
     }
     public function enquiry()
     {
         return view('pages.enquiry');
 
     }
+     /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function details($id)
+    {
+        $enqobj = Enquiry::find($id);
+        $enqobj->status = 2; //Status 2 for viewed
+        $enqobj->save();
+
+        $data['enqdata'] = Enquiry::find($id);
+        
+        //echo "<pre>"; print_r($enqobj->procedure); die();
+        //echo "<pre>"; print_r($enqobj->treatment->name); die();    
+        return view('admin.enquiry.edit',$data);      
+    }
+
+
     /**
      * Show the application dashboard.
      *
