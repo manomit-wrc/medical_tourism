@@ -50,8 +50,8 @@
                         <td>{{ $enqval->city->name }}</td>
                         <td>                       
                          <a href="{!!URL::to('/admin/enquiry/details',$enqval->id)!!}" class="btn btn-success">View</a>
-                         <a href="{!!URL::to('/admin/enquiry/sendmail',$enqval->id)!!}" class="btn btn-warning">
-                         {{ ($enqval->send_status==1) ? 'Send' : 'Resend' }}</a>
+                        <!--  <a href="{!!URL::to('/admin/enquiry/sendmail',$enqval->id)!!}" class="btn btn-warning">
+                         {{ ($enqval->send_status==1) ? 'Send' : 'Resend' }}</a> -->
                         </td>
                       </tr>
                     @endforeach
