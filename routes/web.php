@@ -364,6 +364,12 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/successstories/delete/{id}','SuccessStoryController@delete');
     Route::get('/admin/successstories/show/{id}','SuccessStoryController@show');
     Route::post('/admin/successstories/changestatus/','SuccessStoryController@ajaxsuccchangestatus');
+    
+    //Enquiry section
+    Route::get('/admin/enquiry','EnquiryController@index');
+    Route::get('/admin/enquiry/details/{id}','EnquiryController@details');
+    Route::get('/admin/enquiry/sendmail/{id}','EnquiryController@sendmail');
+    Route::patch('/admin/enquiry/send/{id}','EnquiryController@send');
 
     //contact section
     Route::get('/admin/contact','ContactUSController@index');

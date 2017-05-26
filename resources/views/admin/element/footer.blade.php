@@ -32,39 +32,39 @@
     </footer>
 </div>
 <!-- jQuery 2.2.3 -->
-{!!Html::script("storage/admin/js/jquery-2.2.3.min.js")!!}
+{!! Html::script("storage/admin/js/jquery-2.2.3.min.js") !!}
 <!-- Bootstrap 3.3.6 -->
-{!!Html::script("storage/admin/js/bootstrap.min.js")!!}
+{!! Html::script("storage/admin/js/bootstrap.min.js") !!}
 <!-- Select2 -->
-{!!Html::script("storage/admin/js/select2.full.min.js")!!}
+{!! Html::script("storage/admin/js/select2.full.min.js") !!}
 <!-- DataTables -->
-{!!Html::script("storage/admin/js/jquery.dataTables.min.js")!!}
-{!!Html::script("storage/admin/js/dataTables.bootstrap.min.js")!!}
+{!! Html::script("storage/admin/js/jquery.dataTables.min.js") !!}
+{!! Html::script("storage/admin/js/dataTables.bootstrap.min.js") !!}
 <!-- SlimScroll 1.3.0 -->
-{!!Html::script("storage/admin/js/jquery.slimscroll.min.js")!!}
+{!! Html::script("storage/admin/js/jquery.slimscroll.min.js") !!}
 <!-- FastClick -->
-{!!Html::script("storage/admin/js/fastclick.js")!!}
+{!! Html::script("storage/admin/js/fastclick.js") !!}
 <!-- AdminLTE App -->
-{!!Html::script("storage/admin/js/app.min.js")!!}
+{!! Html::script("storage/admin/js/app.min.js") !!}
 <!-- Sparkline -->
-{!!Html::script("storage/admin/js/jquery.sparkline.min.js")!!}
+{!! Html::script("storage/admin/js/jquery.sparkline.min.js") !!}
 <!-- jvectormap -->
-{!!Html::script("storage/admin/js/jquery-jvectormap-1.2.2.min.js")!!}
-{!!Html::script("storage/admin/js/jquery-jvectormap-world-mill-en.js")!!}
+{!! Html::script("storage/admin/js/jquery-jvectormap-1.2.2.min.js") !!}
+{!! Html::script("storage/admin/js/jquery-jvectormap-world-mill-en.js") !!}
 
 <!-- ChartJS 1.0.1 -->
-{!!Html::script("storage/admin/js/Chart.min.js")!!}
+{!! Html::script("storage/admin/js/Chart.min.js") !!}
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <!--- {!!Html::script("js/dashboard2.js")!!}-->
 <!--- AdminLTE for demo purposes -->
-{!!Html::script("storage/admin/js/demo.js")!!}
+{!! Html::script("storage/admin/js/demo.js") !!}
 {!! Html::style('storage/admin/css/sweetalert.css') !!}
-{!!Html::script("storage/admin/js/sweetalert-dev.js")!!}
+{!! Html::script("storage/admin/js/sweetalert-dev.js")!!}
 {!! Html::style('storage/admin/css/bootstrap-toggle.min.css') !!}
-{!!Html::script("storage/admin/js/bootstrap-toggle.min.js")!!}
+{!! Html::script("storage/admin/js/bootstrap-toggle.min.js")!!}
 
 @if((Request::segment(2) === 'package-types' && (Request::segment(3) === 'create' || Request::segment(3) === 'edit'))||(Request::segment(2) === 'successstories' && (Request::segment(3) === 'create' || Request::segment(3) === 'edit')) ||(Request::segment(2) === 'cmspagedetail' && (Request::segment(3) === 'create' || Request::segment(3) === 'edit')))
-  {!!Html::script("vendor/unisharp/laravel-ckeditor/ckeditor.js")!!}
+  {!! Html::script("vendor/unisharp/laravel-ckeditor/ckeditor.js")!!}
   <script type="text/javascript">
       CKEDITOR.replace('textarea_id');
   </script>
@@ -145,7 +145,7 @@ $(function () {
 </script>
 
 {!! Html::style('storage/admin/css/jquery-confirm.min.css') !!}
-{!!Html::script("storage/admin/js/jquery-confirm.min.js")!!}
+{!! Html::script("storage/admin/js/jquery-confirm.min.js") !!}
 <script type="text/javascript">
   $(document).ready(function(e){
     var permissionArr = new Array();
@@ -518,19 +518,19 @@ $(function () {
         <div class="modal-body">
             <div class="form-group">
               <label>Email</label>
-              {!!Form::email('email', '',['class'=>'form-control','placeholder'=>'Enter email address','required'=>'required','id'=>'email'])!!}
+              {!! Form::email('email', '',['class'=>'form-control','placeholder'=>'Enter email address','required'=>'required','id'=>'email'])!!}
             </div>
         </div>
         <div class="modal-body">
 
             <div class="form-group">
               <label>Text</label>
-              {!!Form::textarea('subject','invite to friends',['class'=>'form-control','required'=>'required','id'=>'subject'])!!}
+              {!! Form::textarea('subject','invite to friends',['class'=>'form-control','required'=>'required','id'=>'subject'])!!}
             </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-           {!!Form::submit('Submit',["class"=>"btn btn-primary",'id'=>'invite_friends_button'])!!}
+           {!! Form::submit('Submit',["class"=>"btn btn-primary",'id'=>'invite_friends_button']) !!}
         </div>
       </div>
 

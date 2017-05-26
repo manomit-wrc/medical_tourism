@@ -143,6 +143,20 @@
         </li>
         @endif
         
+        @if($user_view_composer->hasRole('admin/enquiry',Auth::guard('admin')->user()->id))
+        <li class="treeview {{ Request::segment(2) === 'enquiry' ? 'active' : null }}">
+          <a href="javascript:void(0)">
+            <i class="fa fa-pencil-square-o"></i> <span>Enquiry</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+             @if($user_view_composer->hasRole('admin/enquiry',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'enquiry' ? 'active' : null }}"><a href="{!!URL::to('/admin/enquiry')!!}"><i class="fa fa-pencil-square-o"></i>Enquiry list</a></li>@endif
+          </ul>
+        </li>
+         @endif
+
         @if($user_view_composer->hasRole('admin/contact',Auth::guard('admin')->user()->id))
         <li class="treeview {{ Request::segment(2) === 'contact' ? 'active' : null }}">
           <a href="javascript:void(0)">
