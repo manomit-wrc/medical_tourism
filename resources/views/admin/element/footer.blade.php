@@ -179,7 +179,7 @@ $(function () {
 
         $.ajax({
           type:"POST",
-          url:"/admin/permission/store_permission/",
+          url:"/admin/permission/store_permission",
           data: {role:$("#role").val(),permissionArr:permissionArr,_token:"{{csrf_token()}}"},
           success:function(response) {
             if(response.status == 1) {
@@ -211,7 +211,7 @@ $(function () {
       if(value) {
         $.ajax({
           type:"GET",
-          url: "/admin/permission/get_permission/",
+          url: "/admin/permission/get_permission",
           data: {role_id:value,_token:"{{csrf_token()}}"},
           success:function(response) { //alert(response);
             if(response.status == 1) {
@@ -246,7 +246,7 @@ $(function () {
 
         $.ajax({
           type:"POST",
-          url:"/admin/store_treatment/",
+          url:"/admin/store_treatment",
           data: {hospital_id:$('#hospital_id').val(),treatmentArr:treatmentArr,_token:"{{csrf_token()}}"},
           success:function(response) { //alert(response);
             if(response.status == 1) {
@@ -371,7 +371,7 @@ $(function () {
         }else{
           $.ajax({
             type:"POST",
-            url:"/admin/hospitals/ajaxstoremedicaltest/",
+            url:"/admin/hospitals/ajaxstoremedicaltest",
             data: {medicaltestcategories_id:$('#medicaltest_cat_id').val(),hospital_id:$('#hospital_id').val(),test_name:$('#test_name').val(),_token:"{{csrf_token()}}"},
               success:function(response) {
                 var result = $.parseJSON(response);
@@ -462,7 +462,7 @@ $(function () {
         }else{
           $.ajax({
             type:"POST",
-            url:"/admin/hospitals/ajaxstoretreatment/",
+            url:"/admin/hospitals/ajaxstoretreatment",
             data: {procedure_id:$('#procedure_id').val(),hospital_id:$('#hospital_id').val(),name:$('#name').val(),_token:"{{csrf_token()}}"},
               success:function(response) {
                 var result = $.parseJSON(response);

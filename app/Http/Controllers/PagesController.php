@@ -427,7 +427,7 @@ class PagesController extends Controller
   }
 
   public function upload_documents() {
-    $documentdata = \App\Document::where('status', '!=', 2)->orderBy('id','desc')->get();
+    $documentdata = \App\Document::where('status', '!=', 2)->where('patient_id', '=', Auth::guard('front')->user()->id)->orderBy('id','desc')->get();
     $country_details = \App\Patient::with('countries')->find(Auth::guard('front')->user()->id)->toArray();
     $state_details = \App\Patient::with('states')->find(Auth::guard('front')->user()->id)->toArray();
     $city_details = \App\Patient::with('cities')->find(Auth::guard('front')->user()->id)->toArray();
