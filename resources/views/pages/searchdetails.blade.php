@@ -59,8 +59,7 @@
                             <li>
                               <strong>Avg. International Patients</strong>
                               <span>:  {{ $hospital_data->number_of_avg_international_patients }}</span>
-                            </li>
-                                                               
+                            </li>                                                               
                           </ul>
                         </div>
 

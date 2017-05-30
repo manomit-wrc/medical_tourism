@@ -20,31 +20,30 @@
               }                  
               @endphp
             <form name="frmSearch1" id="frmSearch1" method="get" action="/search-data">
-            {{csrf_field()}}
-            <select name="select_treatment" class="listtypeleft">
-                <option value="">Specility</option>
-                @foreach($treatment_list as $key=>$value)
-                    <option value="{{$key}}" {{ ($select_treatment == $key)? 'selected':'' }}>{{$value}}</option>
-                @endforeach
-            </select>
+                {{csrf_field()}}
+                <select name="select_treatment" class="listtypeleft">
+                    <option value="">Specility</option>
+                    @foreach($treatment_list as $key=>$value)
+                        <option value="{{$key}}" {{ ($select_treatment == $key)? 'selected':'' }}>{{$value}}</option>
+                    @endforeach
+                </select>
 
-            <select name="select_procedure" class="listtypeleft" id="select_procedure">
-                <option value="">Procedure</option>
-                @foreach($procedure_list as $key=>$value)
-                  <option value="{{$key}}" {{ ($select_procedure == $key)? 'selected':'' }}>{{$value}}</option>
-                @endforeach
-            </select>
+                <select name="select_procedure" class="listtypeleft" id="select_procedure">
+                    <option value="">Procedure</option>
+                    @foreach($procedure_list as $key=>$value)
+                      <option value="{{$key}}" {{ ($select_procedure == $key)? 'selected':'' }}>{{$value}}</option>
+                    @endforeach
+                </select>
 
-           <!--  <select name="" class="listtypeleft">
-               <option value="Location">Location</option>
-               <option value="Location">Location</option>
-               <option value="Location">Location</option>
-           </select> -->
+               <!--  <select name="" class="listtypeleft">
+                   <option value="Location">Location</option>
+                   <option value="Location">Location</option>
+                   <option value="Location">Location</option>
+               </select> -->
 
-            <input type="text" name="txt_search" value="{{ $txt_search }}" id="txt_search" class="inputleft">  
-
-            <button type="submit" id="btn-search"><i class="fa fa-search" aria-hidden="true"></i> SEARCH</button>
-        </form>
+                <input type="text" name="txt_search" value="{{ $txt_search }}" id="txt_search" class="inputleft">
+                <button type="submit" id="btn-search"><i class="fa fa-search" aria-hidden="true"></i> SEARCH</button>
+            </form>
         </div>
         @if(Request::segment(1) != 'contact')
             <div class="qc">
