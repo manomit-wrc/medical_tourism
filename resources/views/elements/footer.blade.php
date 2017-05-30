@@ -310,7 +310,7 @@
               event.preventDefault();   
               var formData = new FormData($(this)[0]);
               $.ajax({
-                url: "/documentupload/",
+                url: "/documentupload",
                 type: 'POST',
                 data: formData,
                 async: false,
