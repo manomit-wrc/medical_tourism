@@ -156,9 +156,9 @@
           function uploadimage(){   
             $("#imageUploadForm").unbind('submit').submit(function (event) {
               event.preventDefault();   
-              var formData = new FormData($(this)[0]);
+              var formData = new FormData($("#imageUploadForm")[0]);
               $.ajax({
-                url: "/profile_image_upload/",
+                url: "/profile_image_upload",
                 type: 'POST',
                 data: formData,
                 async: false,
@@ -167,6 +167,7 @@
                 processData: false,
                 success: function (return_data) 
                 { 
+                  console.log(return_data);
                 var result = $.parseJSON(return_data);
                   if(result.status == 1) {
                     $('#profileimage_modal').modal('hide');    
