@@ -68,14 +68,14 @@
                           @endif
                         </td>
                         <td>
-                          <a href="{!!URL::to('/admin/patients/show',$data->id)!!}" class="btn btn-info">view</a> 
+                          <a href="{!!URL::to('/admin/patients/show',$data->id)!!}" data-toggle="tooltip" data-original-title="View"><i class="fa fa-eye-slash" aria-hidden="true"></i></a>&nbsp; 
                          <!--  <a href="{!!URL::to('/admin/patients/edit',$data->id)!!}" class="btn btn-primary">Edit</a> -->
-                          <a href="javascript:void(0)" onclick="return deldata('{!!URL::to('/admin/patients/delete',$data->id)!!}')" class="btn btn-danger" >Delete</a>
+                          <a href="javascript:void(0)" onclick="return deldata('{!!URL::to('/admin/patients/delete',$data->id)!!}')" data-toggle="tooltip" data-original-title="Delete" ><i class="fa fa-times" style="color:red;" aria-hidden="true"></i></a>&nbsp;
                           
                           @if (count($data->participants) > 0)
                            @foreach($data->participants as $pdata)
                             @if($pdata->user_type =='P')
-                             <a href="{!!URL::to('/admin/messages',$data->id)!!}" class="btn btn-warning">messages</a>
+                             <a href="{!!URL::to('/admin/messages',$data->id)!!}" style="color:green;" data-toggle="tooltip" data-original-title="Message"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
                             @endif 
                            @endforeach
                           @endif

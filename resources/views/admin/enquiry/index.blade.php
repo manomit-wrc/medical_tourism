@@ -49,7 +49,7 @@
                         <td>{{ $enqval->mobile_no }}</td>
                         <td>{{ $enqval->city->name }}</td>
                         <td>                       
-                         <a href="{!!URL::to('/admin/enquiry/details',$enqval->id)!!}" class="btn btn-success">View</a>
+                         <a href="{!!URL::to('/admin/enquiry/details',$enqval->id)!!}" data-toggle="tooltip" style="color:green;" data-original-title="View"><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
                         <!--  <a href="{!!URL::to('/admin/enquiry/sendmail',$enqval->id)!!}" class="btn btn-warning">
                          {{ ($enqval->send_status==1) ? 'Send' : 'Resend' }}</a> -->
                         </td>

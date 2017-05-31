@@ -20,7 +20,6 @@
     <section class="content">
       <div class="row">
         <div class="col-xs-12">
-
           <div class="box">
             <div class="box-header">
               <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
@@ -60,7 +59,7 @@
                         <td>
                           <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
                             <!-- we will add this later since its a little more complicated than the other two buttons -->                                                         
-                          <a href="{!!URL::to('/admin/cmspagedetail/edit',$cmsval['id'])!!}" class="btn btn-primary">Edit</a>
+                          <a href="{!!URL::to('/admin/cmspagedetail/edit',$cmsval['id'])!!}" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" style="color:green;" aria-hidden="true"></i></a>
                           <!--<a href="{!!URL::to('/admin/cmspagedetail/delete',$cmsval['id'])!!}" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger" >Delete</a>-->
                         </td>
                       </tr>

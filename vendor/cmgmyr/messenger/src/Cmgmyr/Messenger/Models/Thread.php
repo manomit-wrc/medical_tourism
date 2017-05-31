@@ -221,7 +221,7 @@ class Thread extends Eloquent
      * @param array|mixed $userId
      */
     public function addParticipant($userId,$userType)
-    {
+    {        
         $userIds = is_array($userId) ? $userId : (array) func_get_args();
 
         collect($userIds)->each(function ($userId) {

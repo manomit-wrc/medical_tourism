@@ -120,11 +120,11 @@ class MessagesController extends Controller
         );
 
         // Recipients is patient
-        if (Input::has('recipients')) {
+        if (Input::has('recipients')) {            
             $thread->addParticipant($input['recipients'],'P');
         }
         // Recipients is admin
-        if (Input::has('recipients_admin')) {
+        if (Input::has('recipients_admin')) {            
             $thread->addParticipant($input['recipients_admin'],'A');
         }
 

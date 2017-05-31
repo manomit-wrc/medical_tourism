@@ -29,7 +29,7 @@
               <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
             </div>
 
-            <div class="topbtn"><a href="{!!URL::to('/admin/hotel/create')!!}"><button type="button" class="btn bg-purple btn-rightad">ADD</button></a></div>
+            <div class="topbtn"><a href="{!!URL::to('/admin/hotel/create')!!}"><button type="button" class="btn bg-purple btn-rightad" data-toggle="tooltip" data-original-title="Add"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;ADD</button></a></div>
 
             <!-- /.box-header -->
             <div class="box-body">
@@ -70,9 +70,9 @@
                         <td>
                           <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
                             <!-- we will add this later since its a little more complicated than the other two buttons -->                            
-                          <a href="{!!URL::to('/admin/hotel/show',$hotels_list->id)!!}" class="btn btn-info">view</a>   
-                          <a href="{!!URL::to('/admin/hotel/edit',$hotels_list->id)!!}" class="btn btn-primary">Edit</a>
-                          <a href="javascript:void(0)" onclick="return deldata('{!!URL::to('/admin/hotel/delete',$hotels_list->id)!!}')" class="btn btn-danger" >Delete</a>
+                          <a href="{!!URL::to('/admin/hotel/show',$hotels_list->id)!!}" data-toggle="tooltip" data-original-title="View" ><i class="fa fa-eye-slash" aria-hidden="true"></i></a>&nbsp;   
+                          <a href="{!!URL::to('/admin/hotel/edit',$hotels_list->id)!!}" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" style="color:green;" aria-hidden="true"></i></a>&nbsp;
+                          <a href="javascript:void(0)" onclick="return deldata('{!!URL::to('/admin/hotel/delete',$hotels_list->id)!!}')" data-toggle="tooltip" data-original-title="Delete" ><i class="fa fa-times" style="color:red;" aria-hidden="true"></i></a>
                         </td>
                       </tr>
                     @endforeach

@@ -29,7 +29,7 @@
               <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
             </div>
 
-            <div class="topbtn"><a href="{!!URL::to('/admin/connectivity/create')!!}"><button type="button" class="btn bg-purple btn-rightad">ADD</button></a></div>
+            <div class="topbtn"><a href="{!!URL::to('/admin/connectivity/create')!!}"><button type="button" class="btn bg-purple btn-rightad" data-toggle="tooltip" data-original-title="Add"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;ADD</button></a></div>
 
             <!-- /.box-header -->
             <div class="box-body">
@@ -68,8 +68,8 @@
                         <td>
                           <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
                             <!-- we will add this later since its a little more complicated than the other two buttons -->                             
-                          <a href="{!!URL::to('/admin/connectivity/edit',$connectivity_data->id)!!}" class="btn btn-primary">Edit</a>                        
-                          <a href="javascript:void(0)" onclick="return deldata('{!!URL::to('/admin/connectivity/delete',$connectivity_data->id)!!}')" class="btn btn-danger" >Delete</a>
+                          <a href="{!!URL::to('/admin/connectivity/edit',$connectivity_data->id)!!}" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" style="color:green;" aria-hidden="true"></i></a>&nbsp;                        
+                          <a href="javascript:void(0)" onclick="return deldata('{!!URL::to('/admin/connectivity/delete',$connectivity_data->id)!!}')" data-toggle="tooltip" data-original-title="Delete" ><i class="fa fa-times" style="color:red;" aria-hidden="true"></i></a>
                         </td>
                       </tr>
                     @endforeach

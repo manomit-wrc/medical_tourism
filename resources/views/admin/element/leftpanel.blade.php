@@ -181,7 +181,7 @@
           </a>
           <ul class="treeview-menu">
             @if($user_view_composer->hasRole('admin/faqcategories',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'faqcategories' ? 'active' : null }}"><a href="{!!URL::to('/admin/faqcategories')!!}"><i class="fa fa-question"></i>Faq category</a></li>@endif
-            @if($user_view_composer->hasRole('admin/faqs',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'faqs' ? 'active' : null }}"><a href="{!!URL::to('/admin/faq')!!}"><i class="fa fa-question"></i>FAQs</a></li>@endif
+            @if($user_view_composer->hasRole('admin/faq',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'faq' ? 'active' : null }}"><a href="{!!URL::to('/admin/faq')!!}"><i class="fa fa-question"></i>FAQs</a></li>@endif
           </ul>
         </li>
          @endif
