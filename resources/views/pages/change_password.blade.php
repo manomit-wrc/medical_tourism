@@ -8,7 +8,7 @@
             <h3><b>Change Password</b></h3>
             <div>&nbsp;</div>
             @if (Session::has('message'))
-                <div class="alert alert-info">{{ Session::get('message') }}</div>
+                <div class="alert alert-info" id="resultdocumentmsg">{{ Session::get('message') }}</div>
             @endif
             <div class="row">
               <div class="col-md-8 col-md-offset-2">

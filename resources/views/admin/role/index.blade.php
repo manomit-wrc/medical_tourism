@@ -31,7 +31,7 @@
               <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
             </div>
 
-            <div class="topbtn"><a href="{{ route('create-role') }}"><button type="button" class="btn bg-purple btn-rightad">ADD</button></a></div>
+            <div class="topbtn"><a href="{{ route('create-role') }}"><button type="button" class="btn bg-purple btn-rightad" data-toggle="tooltip" data-original-title="Add"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;ADD</button></a></div>
 
             <!-- /.box-header -->
             <div class="box-body">
@@ -76,8 +76,8 @@
                         </td>
                         <td>
                           @if($d->id!=1)<!--////Role 1 is for super admin do not edit/delete it////--> 
-                             <a href="{!!URL::to('/admin/role/edit',$d->id)!!}" class="btn btn-primary">Edit</a>
-                             <a href="javascript:void(0)" onclick="return deldata('{!!URL::to('/admin/role/delete',$d->id)!!}')" class="btn btn-danger" >Delete</a>
+                             <a href="{!!URL::to('/admin/role/edit',$d->id)!!}" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" style="color:green;" aria-hidden="true"></i></a>&nbsp;
+                             <a href="javascript:void(0)" onclick="return deldata('{!!URL::to('/admin/role/delete',$d->id)!!}')" data-toggle="tooltip" data-original-title="Delete" ><i class="fa fa-times" style="color:red;" aria-hidden="true"></i></a>
                           @else
                           <span style="text-align: center;"> N/A</span>
                           @endif 

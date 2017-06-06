@@ -17,6 +17,7 @@ Route::get('/about','PagesController@about');
 Route::get('/services','PagesController@services');
 Route::get('/servicedetails/{id}','PagesController@servicedetails');
 Route::get('/enquiry','PagesController@enquiry');
+Route::post('/enquiry-us', ['as'=>'enquiry.store','uses'=>'EnquiryController@enquiryPost']);
 Route::get('/facilities','PagesController@facilities');
 Route::get('/doctors','PagesController@doctors');
 Route::get('/doctordetail/{id}','PagesController@doctordetail');
@@ -39,7 +40,7 @@ Route::post('/patient-registration','PagesController@patient_registration');
 Route::post('/patient-login','PagesController@patient_login');
 Route::post('/patient-forgotpass','PagesController@patient_forgotpass');
 Route::get('/search-place','SearchController@search_place');
-Route::post('search-data','SearchController@search_data');
+Route::get('search-data','SearchController@search_data');
 Route::post('/profile_image_upload','PagesController@profile_image_upload');
 Route::get('/changepassword/{url}','PagesController@changepassword');
 Route::post('/reset-password/{security_code}','PagesController@reset_password');
@@ -48,6 +49,9 @@ Route::post('/documentupload','PagesController@documentupload');
 Route::get('/document-delete/{id}','PagesController@document_delete');
 Route::get('/document-download/{id}','PagesController@document_download');
 Route::get('/getattdocumenttags','PagesController@getattdocumenttags');
+
+Route::get('/api/get-state-list','CountryStateCityController@getStateList');
+Route::get('/api/get-city-list','CountryStateCityController@getCityList');
 
 Route::group(['middleware' => ['front']], function() {
     Route::get('/profile','PagesController@patient_profile');
@@ -360,6 +364,12 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/successstories/delete/{id}','SuccessStoryController@delete');
     Route::get('/admin/successstories/show/{id}','SuccessStoryController@show');
     Route::post('/admin/successstories/changestatus/','SuccessStoryController@ajaxsuccchangestatus');
+    
+    //Enquiry section
+    Route::get('/admin/enquiry','EnquiryController@index');
+    Route::get('/admin/enquiry/details/{id}','EnquiryController@details');
+    Route::get('/admin/enquiry/sendmail/{id}','EnquiryController@sendmail');
+    Route::patch('/admin/enquiry/send/{id}','EnquiryController@send');
 
     //contact section
     Route::get('/admin/contact','ContactUSController@index');
@@ -425,7 +435,14 @@ Route::group(['middleware' => ['admin']], function () {
     Route::patch('/admin/cmspagedetail/update/{id}','CmspageDetailsController@update');    
     Route::get('/admin/cmspagedetail/delete/{id}','CmspageDetailsController@delete');
 
-   
+   //document tag categories section
+    Route::get('/admin/documenttag','DocumentTagController@index');
+    Route::get('/admin/documenttag/create','DocumentTagController@create');
+    Route::post('/admin/documenttag/store','DocumentTagController@store');
+    Route::get('/admin/documenttag/edit/{id}','DocumentTagController@edit');
+    Route::patch('/admin/documenttag/update/{id}','DocumentTagController@update');    
+    Route::get('/admin/documenttag/delete/{id}','DocumentTagController@delete');
+    Route::post('/admin/documenttag/changestatus/','DocumentTagController@ajaxtagchangestatus');
 
     
 });

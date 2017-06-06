@@ -29,7 +29,7 @@
               <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
             </div>
 
-            <div><a href="{!!URL::to('/admin/countryvisa/create')!!}"><button type="button" class="btn bg-purple btn-rightad">ADD</button></a></div>
+            <div><a href="{!!URL::to('/admin/countryvisa/create')!!}"><button type="button" class="btn bg-purple btn-rightad" data-toggle="tooltip" data-original-title="Add"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;ADD</button></a></div>
 
             <!-- /.box-header -->
             <div class="box-body">
@@ -71,8 +71,8 @@
                               <!-- {!! Form::open(array('method' => 'DELETE','url' => array('admin/countryvisa/delete', $counvisa_lists->id),'class' => 'pull-right')) !!}
                                   {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                               {!! Form::close() !!} -->
-                          <a href="{!!URL::to('/admin/countryvisa/edit',$counvisa_lists->id)!!}" class="btn btn-primary">Edit</a>
-                          <a href="javascript:void(0)" onclick="return deldata('{!!URL::to('/admin/countryvisa/delete',$counvisa_lists->id)!!}')" class="btn btn-danger" >Delete</a>
+                          <a href="{!!URL::to('/admin/countryvisa/edit',$counvisa_lists->id)!!}"  data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" style="color:green;" aria-hidden="true"></i></a>&nbsp;
+                          <a href="javascript:void(0)" onclick="return deldata('{!!URL::to('/admin/countryvisa/delete',$counvisa_lists->id)!!}')" data-toggle="tooltip" data-original-title="Delete" ><i class="fa fa-times" style="color:red;" aria-hidden="true"></i></a>
                         </td>
                       </tr>
                     @endforeach

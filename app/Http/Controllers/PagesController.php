@@ -12,6 +12,11 @@ use App\News;
 use App\Doctor;
 use App\FaqCategory;
 use App\Faq;
+use App\Procedure;
+use App\Treatment;
+use App\Country;
+use App\State;
+use App\City;
 
 use Hash;
 use Illuminate\Support\Facades\Mail;
@@ -62,7 +67,13 @@ class PagesController extends Controller
 
 	public function enquiry()
 	{
-		return view('pages.enquiry');
+   
+    $treat_list= Treatment::where('status', 1)->orderBy('name')->pluck('name', 'id');
+    //echo "<pre>"; print_r($treat_list); die;
+    $proc_list = Procedure::where('status', 1)->orderBy('name')->pluck('name', 'id');
+    //echo "<pre>"; print_r($proc_list); die;
+    $countries = Country::orderBy('name')->pluck('name', 'id')->all();
+    return view('pages.enquiry',compact('treat_list','proc_list','countries'));
 	}
 
 	public function facilities()
@@ -207,6 +218,11 @@ class PagesController extends Controller
   {
       $hospital_data = Hospital::findOrFail($id);
       //echo "<pre>"; print_r($hospital_data); die;
+      /* if(isset($hospital_data) && count($hospital_data) > 0){
+        $hospital_data = $hospital_data;
+      }else{
+          return redirect('/');
+      }*/
       return view('pages.searchdetails',compact('hospital_data'));
   }
   public function check_user_exist(Request $request) {
@@ -411,7 +427,7 @@ class PagesController extends Controller
   }
 
   public function upload_documents() {
-    $documentdata = \App\Document::where('status', '!=', 2)->orderBy('id','desc')->get();
+    $documentdata = \App\Document::where('status', '!=', 2)->where('patient_id', '=', Auth::guard('front')->user()->id)->orderBy('id','desc')->get();
     $country_details = \App\Patient::with('countries')->find(Auth::guard('front')->user()->id)->toArray();
     $state_details = \App\Patient::with('states')->find(Auth::guard('front')->user()->id)->toArray();
     $city_details = \App\Patient::with('cities')->find(Auth::guard('front')->user()->id)->toArray();
@@ -546,42 +562,67 @@ class PagesController extends Controller
 }
 
 public function documentupload(Request $request) {    
-    $fielava = $_FILES['document']['name'];
+    $fielava = $_FILES['document']['name'];    
+    if($request->existings_tag_name !=''){
+      $existings_tag_name = $request->existings_tag_name;
+    }
+    if($request->new_tag !=''){
+      $new_tag = $request->new_tag;
+      $objtag = new \App\DocumentTag();
+      $objtag->tag_name = $new_tag;
+      $objtag->save();
+      $insert_id = $objtag->id; 
+    } 
     $file_name = $request->file_name.' on '.date('Y-m-d'); 
     $arr = explode('.',$fielava);
     $end = end($arr);       
     $documents = new \App\Document();   
     if($documents) {
       if($fielava !=''){
-      $allowed2 =array('bmp','gif','jpg','jpeg','png','mp4','flv','avi','wmv','asf','webm','ogv','txt','pdf','psd','doc','rtf','ppt','docx');
-      if (!in_array($end, $allowed2)) {        
-        $returnArr = array('status'=>'2','msg'=>'The type of file you are trying to upload is not allowed');
-      } else {
-      if($request->hasFile('document')) {
-        $file = $request->file('document');
-        $fileName = time().'_'.$file->getClientOriginalName();
+        $allowed2 =array('bmp','gif','jpg','jpeg','png','mp4','flv','avi','wmv','asf','webm','ogv','txt','pdf','psd','doc','rtf','ppt','docx');
+        if (!in_array($end, $allowed2)) {        
+          $returnArr = array('status'=>'2','msg'=>'The type of file you are trying to upload is not allowed');
+        } else {
+        if($request->hasFile('document')) {
+          $file = $request->file('document');
+          $fileName = time().'_'.$file->getClientOriginalName();
 
-        //original destination path
-        $destinationPath = public_path().'/uploads/drop/' ;       
-        $file->move($destinationPath,$fileName);
+          //original destination path
+          $destinationPath = public_path().'/uploads/drop/' ;       
+          $file->move($destinationPath,$fileName);
+        }else {
+          $fileName = $documents->document;
+        }      
+        $documents->document = $fileName;
+        $documents->file_name = $file_name;
+        $documents->patient_id = Auth::guard('front')->user()->id;
+        $save= $documents->save();
+        $lastinsert_id = $documents->id;
+
+        if($save) {           
+            if(isset($existings_tag_name) && !empty($existings_tag_name)){
+              $objdoctag = new \App\DocumentdocumentTag();
+              $extagarr = explode(',',$existings_tag_name);
+              foreach($extagarr as $key => $val ){              
+                $objdoctag->document_id = $lastinsert_id;
+                $objdoctag->documenttag_id = $val;
+                $objdoctag->save();
+              }
+            }
+            if(isset($insert_id) && !empty($insert_id)){            
+                $objdtag = new \App\DocumentdocumentTag();          
+                $objdtag->document_id = $lastinsert_id;
+                $objdtag->documenttag_id = $insert_id;
+                $objdtag->save();            
+            }              
+            $returnArr = array('status'=>'1','msg'=>'Inserted Successfully');
+        }else{
+            $returnArr = array('status'=>'0','msg'=>'Inserted Faliure');
+        }
       }
-      else {
-        $fileName = $documents->document;
-      }      
-      $documents->document = $fileName;
-      $documents->file_name = $file_name;
-      $documents->patient_id = Auth::guard('front')->user()->id;
-      $save= $documents->save();
-     /* $lastinsert_id = $documents->id; */
-      if($save) {              
-          $returnArr = array('status'=>'1','msg'=>'Inserted Successfully');
-      }else{
-          $returnArr = array('status'=>'0','msg'=>'Inserted Faliure');
-      }
+    }else{
+      $returnArr = array('status'=>'3','msg'=>'Please select an image');
     }
-  }else{
-    $returnArr = array('status'=>'3','msg'=>'Please select an image');
-  }
   }
     echo json_encode($returnArr);
     die();      
@@ -616,7 +657,7 @@ public function successreset() {
       {
         foreach ($documenttag_list as $key => $value) {       
            $data[] = array(
-            'value' => $value->tag_name,
+            'value' => $value->id,
             'text' => $value->tag_name
           );
         }

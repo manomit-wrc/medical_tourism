@@ -96,5 +96,6 @@
                  </form>
              </div> --> 
         </div>
+        </div>
     <!--Right panel end-->                
 @stop

@@ -8,10 +8,10 @@
             <h4><b>Edit Profile</b></h4>
 
             @if (Session::has('message'))
-                <div class="alert alert-info">{{ Session::get('message') }}</div>
+                <div class="alert alert-info" id="resultdocumentmsg">{{ Session::get('message') }}</div>
             @endif
             @if (Session::has('error_message'))
-                <div class="alert alert-warning">{{ Session::get('error_message') }}</div>
+                <div class="alert alert-warning" id="resultdocumentmsg">{{ Session::get('error_message') }}</div>
               @endif
             <div class="row">
               <form name="frmProfile" id="frmProfile" method="post" action="/update-profile" enctype="multipart/form-data">

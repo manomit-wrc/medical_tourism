@@ -1,7 +1,7 @@
     
-    {!!Html::script("storage/frontend/js/jquery.min.js")!!}
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    {!!Html::script("storage/frontend/js/jquery.min.js")!!}    
+    {!! Html::style('storage/frontend/css/jquery-ui.min.css') !!}
+    {!!Html::script("storage/frontend/js/jquery-ui.min.js")!!}
     {!!Html::script("storage/frontend/js/bootstrap.min.js")!!}
     {!!Html::script("storage/frontend/js/jquery.jcarousel.min.js")!!}
     {!!Html::script("storage/frontend/js/jcarousel.responsive.js")!!}
@@ -19,8 +19,9 @@
     {!!Html::script("storage/frontend/tag/dist/bootstrap-tagsinput.min.js")!!} 
    
     <script type="text/javascript">
-    $(function () {$('[data-toggle="tooltip"]').tooltip()})
-  </script>
+       $(function () {$('[data-toggle="tooltip"]').tooltip()})
+    </script>
+
     <script type="text/javascript">
     function deldata(url){
       swal({
@@ -461,7 +462,57 @@
         $(this).find('.col-sm-11').remove();
       });
     </script>
-    
+     <!--State/city/dropdown start-->
+<script type="text/javascript">
+    $('#country_id').change(function(){ 
+    var countryID = $(this).val();
+    if(countryID){
+        $.ajax({
+           type:"GET",
+           url:"{{url('/api/get-state-list')}}?country_id="+countryID,
+           success:function(res){ //alert(res);
+            if(res){ 
+                $("#state_id").empty();
+                $("#state_id").append('<option>Select</option>');
+                $.each(res,function(key,value){
+                    $("#state_id").append('<option value="'+key+'">'+value+'</option>');
+                });
+
+            }else{
+               $("#state_id").empty();
+            }
+           }
+        });
+    }else{
+        $("#state_id").empty();
+        $("#city_id").empty();
+    }
+   });
+    $('#state_id').on('change',function(){
+    var stateID = $(this).val();
+    if(stateID){
+        $.ajax({
+           type:"GET",
+           url:"{{url('/api/get-city-list')}}?state_id="+stateID,
+           success:function(res){
+            if(res){
+                $("#city_id").empty();
+                $.each(res,function(key,value){
+                    $("#city_id").append('<option value="'+key+'">'+value+'</option>');
+                });
+
+            }else{
+               $("#city_id").empty();
+            }
+           }
+        });
+    }else{
+        $("#city_id").empty();
+    }
+
+   });
+</script>
+<!--State/city/dropdown end-->
     <script type="text/javascript">
       function BindControls() {
         var Countries = ['ARGENTINA', 
@@ -531,7 +582,9 @@
         displayKey: 'text',
         source: docutag.ttAdapter()
       }
-    }); 
+    });
+ 
+
   
    $(function() {
       $('.pro_opt').on('change', function(event) {
@@ -540,12 +593,21 @@
       if (!$element.data('tagsinput'))
       return;
       var val = $element.val();
-      /*alert(val);  */    
-      
+     /* alert(val);*/      
+      $("#existings_tag_name").val(val);
       if (val === null)
       val = "null";    
       }).trigger('change');
-    });  
+    });
+    function addnewtag(){
+      if(document.getElementById("add_new_tag").checked == true){        
+        $("#new_tag_name").show();
+      }else{
+        $("#new_tag").val('');
+        $("#new_tag_name").hide();
+         $("#new_tag_error").hide();
+      }
+    }  
   </script>
   
   

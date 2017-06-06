@@ -63,18 +63,22 @@ class HospitalController extends Controller
             'name' => 'required',
             'description' => 'required',
             'email' => 'required',
-            'phone' => 'required',
-            'website' => 'required|url',
-            'street_address' => 'required',
-            'phone' => 'required',
+            /*'phone' => 'required',
+            'website' => 'required|url',*/
+            'website' => 'url',
+            'street_address' => 'required',            
             'country_id' => 'required',
             'state_id' => 'required',
             'city_id' => 'required',
             'zipcode' => 'required',
-            'number_of_beds' => 'required|numeric',
+            'number_of_beds' => 'numeric',
+            'number_of_icu_beds' => 'numeric',
+            'number_of_operating_rooms' => 'numeric',
+            'number_of_avg_international_patients' => 'numeric',
+            /*'number_of_beds' => 'required|numeric',
             'number_of_icu_beds' => 'required|numeric',
             'number_of_operating_rooms' => 'required|numeric',
-            'number_of_avg_international_patients' => 'required|numeric',
+            'number_of_avg_international_patients' => 'required|numeric',*/
             'avators' => 'required|image|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=745,min_height=214'
        ],[
         'country_id.required' => 'country field is required',
@@ -274,18 +278,22 @@ class HospitalController extends Controller
             'name' => 'required',
             'description' => 'required',
             'email' => 'required',
-            'phone' => 'required',
-            'website' => 'required|url',
-            'street_address' => 'required',
-            'phone' => 'required',
+            /*'phone' => 'required',
+            'website' => 'required|url',*/
+            'website' => 'url',
+            'street_address' => 'required',            
             'country_id' => 'required',
             'state_id' => 'required',
             'city_id' => 'required',
             'zipcode' => 'required',
-            'number_of_beds' => 'required|numeric',
+            /*'number_of_beds' => 'required|numeric',
             'number_of_icu_beds' => 'required|numeric',
             'number_of_operating_rooms' => 'required|numeric',
-            'number_of_avg_international_patients' => 'required|numeric',
+            'number_of_avg_international_patients' => 'required|numeric',*/
+            'number_of_beds' => 'numeric',
+            'number_of_icu_beds' => 'numeric',
+            'number_of_operating_rooms' => 'numeric',
+            'number_of_avg_international_patients' => 'numeric',
             'avators' => 'required|image|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=745,min_height=214'
        ],[
         'country_id.required' => 'country field is required',
@@ -384,6 +392,7 @@ class HospitalController extends Controller
     public function gettestarr($cat_id) {
       $medicaltest = Medicaltest::where('medicaltestcategories_id',$cat_id)->get()->toArray();
         //echo "<pre>"; print_r($medicaltest); die;
+		$data = array();
         foreach($medicaltest as $keyy => $vall)
         {      
           $data[] = array(

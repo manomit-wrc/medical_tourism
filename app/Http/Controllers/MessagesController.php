@@ -30,9 +30,10 @@ class MessagesController extends Controller
        
         // All threads that user is participating in
         $threads = Thread::forUser($patid)->latest('updated_at')->get();
-
+        
         // All threads that user is participating in, with new messages
         //$threads = Thread::forUserWithNewMessages($patid)->latest('updated_at')->get();
+       
         //echo "<pre>"; print_r($threads); die;
         return view('admin.messenger.index', compact('threads','patient_id'));
     }
@@ -89,9 +90,8 @@ class MessagesController extends Controller
      * @return mixed
      */
     public function store($patid)
-    {
-        $input = Input::all();
-
+    {        
+        $input = Input::all();        
         $thread = Thread::create(
             [
                 'subject' => $input['subject'],
@@ -119,11 +119,11 @@ class MessagesController extends Controller
         );
 
         // Recipients is patient
-        if (Input::has('recipients')) {
+        if (Input::has('recipients')) {            
             $thread->addParticipant($input['recipients'],'P');
         }
         // Recipients is admin
-        if (Input::has('recipients_admin')) {
+        if (Input::has('recipients_admin')) {            
             $thread->addParticipant($input['recipients_admin'],'A');
         }
 
@@ -171,7 +171,7 @@ class MessagesController extends Controller
 
         // Recipients
         if (Input::has('recipients')) {
-            $thread->addParticipant(Input::get('recipients'));
+            $thread->addParticipant(Input::get('recipients'),'A');
         }
 
         return redirect('admin/messages/show/' . $id);

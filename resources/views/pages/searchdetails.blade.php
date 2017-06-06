@@ -5,12 +5,11 @@
     <div class="rightP">
         <!--<h3>Our <b>Services</b></h3>-->
         <div class="row">
-
             <div class="col-sm-12">
                 <div class="detailsP">
-                    <img src="{{url('/uploads/hospitals/thumb/'.$hospital_data->avators)}}" alt="Hospital Image">
+                    <img src="{{url('/uploads/hospitals/'.$hospital_data->avators)}}" alt="Hospital Image">
                     <h4><b>{{ $hospital_data->name }}</b></h4>
-                    <p><i class="fa fa-map-marker" aria-hidden="true"></i>{{ $hospital_data->city->name }}, Kolkata</p>
+                    <p><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;{{ $hospital_data->country->name }}, {{ $hospital_data->state->name }},, {{ $hospital_data->city->name }}</p>
                      <p><i class="fa fa-globe" aria-hidden="true"></i> <a href="">{{ $hospital_data->website }}</a></p>
 
                     <div class="row">
@@ -22,7 +21,7 @@
                             </li>
                             <li>
                               <strong>City</strong>
-                              <span><em>:</em>   Panchkula - 134112 </span>
+                              <span><em>:</em>   {{ $hospital_data->city->name }} - {{ $hospital_data->zipcode }} </span>
                             </li>
                             <li>
                               <strong>Phone no</strong>
@@ -60,8 +59,7 @@
                             <li>
                               <strong>Avg. International Patients</strong>
                               <span>:  {{ $hospital_data->number_of_avg_international_patients }}</span>
-                            </li>
-                                                               
+                            </li>                                                               
                           </ul>
                         </div>
 
