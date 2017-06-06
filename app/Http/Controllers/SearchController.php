@@ -51,10 +51,18 @@ class SearchController extends Controller
     	->orWhereHas('treatments',function($res) use($select_treatment,$select_procedure){
     		$res->where('treatments.id',$select_treatment);
     		$res->whereHas('procedure', function($res) use($select_procedure){
-    			$res->where('procedures.id',$select_procedure);
+    		$res->where('procedures.id',$select_procedure);
     		});
-    	})->orderBy('hospitals.name')->get()->toArray();
-    	/* print_r($search_data); die();*/
-    	return view('pages.searchdata')->with('search_data',$search_data);
+    	})->orderBy('hospitals.name')->get();
+    	 //echo "<pre>"; print_r($search_data[0]->country->name); die();
+        $locations=array
+                      (
+                      array('lat'=>"21.170240",'lng'=>"72.831061",'city'=>'kolkata'),
+                      array('lat'=>"21.170240",'lng'=>"72.831061",'city'=>'kolkata'),
+                      array('lat'=>"21.170240",'lng'=>"72.831061",'city'=>'kolkata'),
+                      array('lat'=>"21.170240",'lng'=>"72.831061",'city'=>'kolkata')
+                      );
+    	//return view('pages.searchdata')->with('search_data',$search_data);
+        return view('pages.searchdata',compact('search_data','locations'));
     }
 }
