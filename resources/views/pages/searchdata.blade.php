@@ -78,7 +78,5 @@
 
     <div class="scrollbar"></div>
 
-  
-
 </div>
 @stop
