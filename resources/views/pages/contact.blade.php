@@ -16,7 +16,7 @@
                      <!--////////////////////////////////////////////google map section start////////////////////////////////////////////////////////-->
                     <div id="map" class="map" style="width: 100%; height: 300px;"></div>
 
-                    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
+                    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4eCXS81oEuOHH9BJ_vOVvqQL1qY90kIA&sensor=false&libraries=places"></script>
                         <script type="text/javascript">
                             function initialize() {
                                 
