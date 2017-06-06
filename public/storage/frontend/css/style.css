@@ -2058,7 +2058,11 @@ label.error {
 	float: left;
 	padding: 15px;
 	background: #fff;
-	margin-bottom: 12px;
+	margin-bottom: 15px;
+}
+
+.filterbox:last-child{
+	margin-bottom: 0;
 }
 
 .filterbox img{
@@ -2080,4 +2084,29 @@ label.error {
 	margin-top: 8px;
 	margin-bottom: 0;
 	color: #929292;
+}
+
+
+
+
+div#myScrollWrapper {
+    height: 560px;
+    width: 100%;
+    padding-right: 0;
+    overflow: hidden;
+}
+
+.space {
+    margin-top: 30px;
+    font-size: 30px;
+}
+
+.scrollbar {
+    border: 2px solid #038dd5;
+    height: 75px;
+    width: 10px;
+    border-radius: 15px;
+    background-color: #fff;
+    margin-left: 10px;
+    display: none;
 }

@@ -13,6 +13,10 @@
         <input type="text" name="" placeholder="Search">
         <button type="button"></button>
     </div>
+    
+    <div id="myScrollWrapper">
+
+   
 
     <div class="filterbox">
       <img src="http://localhost:8000/storage/frontend/images/host.jpg" alt="">
@@ -20,6 +24,61 @@
       <h4>India, West Bengal, Kolkata</h4>
     </div>
 
+    <div class="filterbox">
+      <img src="http://localhost:8000/storage/frontend/images/host.jpg" alt="">
+      <h3>Apollo Hospitals</h3>
+      <h4>India, West Bengal, Kolkata</h4>
+    </div>
+
+    <div class="filterbox">
+      <img src="http://localhost:8000/storage/frontend/images/host.jpg" alt="">
+      <h3>Apollo Hospitals</h3>
+      <h4>India, West Bengal, Kolkata</h4>
+    </div>
+
+    <div class="filterbox">
+      <img src="http://localhost:8000/storage/frontend/images/host.jpg" alt="">
+      <h3>Apollo Hospitals</h3>
+      <h4>India, West Bengal, Kolkata</h4>
+    </div>
+
+    <div class="filterbox">
+      <img src="http://localhost:8000/storage/frontend/images/host.jpg" alt="">
+      <h3>Apollo Hospitals</h3>
+      <h4>India, West Bengal, Kolkata</h4>
+    </div>
+
+    <div class="filterbox">
+      <img src="http://localhost:8000/storage/frontend/images/host.jpg" alt="">
+      <h3>Apollo Hospitals</h3>
+      <h4>India, West Bengal, Kolkata</h4>
+    </div>
+
+    <div class="filterbox">
+      <img src="http://localhost:8000/storage/frontend/images/host.jpg" alt="">
+      <h3>Apollo Hospitals</h3>
+      <h4>India, West Bengal, Kolkata</h4>
+    </div>
+
+    <div class="filterbox">
+      <img src="http://localhost:8000/storage/frontend/images/host.jpg" alt="">
+      <h3>Apollo Hospitals</h3>
+      <h4>India, West Bengal, Kolkata</h4>
+    </div>
+
+    <div class="filterbox">
+      <img src="http://localhost:8000/storage/frontend/images/host.jpg" alt="">
+      <h3>Apollo Hospitals</h3>
+      <h4>India, West Bengal, Kolkata</h4>
+    </div>
+
+
+
+    </div>
+
+    <div class="scrollbar"></div>
+
+  
 
 </div>
 @stop

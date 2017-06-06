@@ -16,7 +16,10 @@
     {!! Html::style('storage/frontend/tag/dist/bootstrap-tagsinput.css') !!}
     {!! Html::style('storage/frontend/tag/app.css') !!}
     {!!Html::script("storage/frontend/tag/typeahead.bundle.min.js")!!}
-    {!!Html::script("storage/frontend/tag/dist/bootstrap-tagsinput.min.js")!!} 
+    {!!Html::script("storage/frontend/tag/dist/bootstrap-tagsinput.min.js")!!}
+
+    {!!Html::script("storage/frontend/js/jquery.do.scroll.js")!!}
+    {!!Html::script("storage/frontend/js/script.js")!!}
    
     <script type="text/javascript">
        $(function () {$('[data-toggle="tooltip"]').tooltip()})
