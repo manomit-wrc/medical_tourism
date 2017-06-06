@@ -1980,7 +1980,7 @@ label.error {
     cursor: pointer;
 }
 }
-=======
+
 /*---------------19-05-2017-----------------*/
 
 .afterimgbox{
@@ -2021,4 +2021,63 @@ label.error {
 	height: 140px;
 	border-radius:15px;
 }
->>>>>>> 8c57d471d3df4633bc4a0599c94e1669ef581ca1
+
+.mapbg{
+	background: #fff;
+	padding: 10px;
+	width: 100%;
+}
+
+.filtersearch{
+	width: 100%;
+	float: left;
+	height: 53px;
+	background: #fff;
+	margin-bottom: 12px;
+}
+
+.filtersearch input{
+	line-height: 53px;
+	height: 53px;
+	border: 0;
+	padding: 0 15px;
+	width: 80%;
+	float: left;
+}
+
+.filtersearch button{
+	background:url(../images/snew.jpg) left center no-repeat;
+	border: 0;
+	float: right;
+	width: 39px;
+	height: 53px;
+}
+
+.filterbox{
+	width: 100%;
+	float: left;
+	padding: 15px;
+	background: #fff;
+	margin-bottom: 12px;
+}
+
+.filterbox img{
+	width: 70px;
+	height: 70px;
+	float: left;
+	border: 5px solid #cccccc;
+	margin-right: 25px;
+}
+
+.filterbox h3{
+	font-size: 18px;
+	margin-top: 8px;
+	margin-bottom: 0;
+}
+
+.filterbox h4{
+	font-size: 16px;
+	margin-top: 8px;
+	margin-bottom: 0;
+	color: #929292;
+}
