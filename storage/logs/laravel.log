@@ -266,3 +266,6 @@ Stack trace:
 #43 D:\medical_tourism\public\index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #44 D:\medical_tourism\server.php(21): require_once('D:\\medical_tour...')
 #45 {main}  
+[2017-06-06 07:32:04] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'Sarfraznawaz2005\VisitLog\VisitLogServiceProvider' not found' in C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Foundation\ProviderRepository.php:146
+Stack trace:
+#0 {main}  
