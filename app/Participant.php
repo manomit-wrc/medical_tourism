@@ -21,7 +21,7 @@ class Participant extends Model
      *
      * @var array
      */
-    protected $fillable = ['thread_id', 'user_id', 'last_read'];
+    protected $fillable = ['thread_id', 'user_id', 'user_type', 'last_read'];
 
     /**
      * The attributes that should be mutated to dates.

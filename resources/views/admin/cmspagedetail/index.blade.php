@@ -11,8 +11,7 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#">Home</a></li>
-        <li class="active">CMS List</li>
-        
+        <li class="active">CMS List</li>        
       </ol>
     </section>
 
@@ -25,7 +24,7 @@
               <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
             </div>
 
-            <div class="topbtn"><a href="{!!URL::to('/admin/cmspagedetail/create')!!}"><button type="button" class="btn bg-purple btn-rightad">ADD</button></a></div>
+            <div class="topbtn"><a href="{!!URL::to('/admin/cmspagedetail/create')!!}"><button type="button" class="btn bg-purple btn-rightad" data-toggle="tooltip" data-original-title="Add"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;ADD</button></a></div>
 
             <!-- /.box-header -->
             <div class="box-body">

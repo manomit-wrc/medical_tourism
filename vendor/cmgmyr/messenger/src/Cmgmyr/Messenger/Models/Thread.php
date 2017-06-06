@@ -221,16 +221,15 @@ class Thread extends Eloquent
      * @param array|mixed $userId
      */
     public function addParticipant($userId,$userType)
-    {        
-        $userIds = is_array($userId) ? $userId : (array) func_get_args();
-
-        collect($userIds)->each(function ($userId) {
+    {       
+        $userIds = is_array($userId) ? $userId : (array) func_get_args();           
+        foreach ($userIds as $key => $value) {           
             Models::participant()->firstOrCreate([
-                'user_id' => $userId,
+                'user_id' => $value,
                 'user_type' => $userType,
                 'thread_id' => $this->id,
             ]);
-        });
+        }
     }
 
     /**
@@ -271,7 +270,7 @@ class Thread extends Eloquent
     public function isUnread($userId)
     {
         try {
-            $participant = $this->getParticipantFromUser($userId);
+            $participant = $this->getParticipantFromUser($userId);           
 
             if ($participant->last_read === null || $this->updated_at->gt($participant->last_read)) {
                 return true;

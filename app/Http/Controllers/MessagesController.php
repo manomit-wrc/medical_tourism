@@ -90,9 +90,8 @@ class MessagesController extends Controller
      * @return mixed
      */
     public function store($patid)
-    {
-        $input = Input::all();
-
+    {        
+        $input = Input::all();        
         $thread = Thread::create(
             [
                 'subject' => $input['subject'],
@@ -172,7 +171,7 @@ class MessagesController extends Controller
 
         // Recipients
         if (Input::has('recipients')) {
-            $thread->addParticipant(Input::get('recipients'));
+            $thread->addParticipant(Input::get('recipients'),'A');
         }
 
         return redirect('admin/messages/show/' . $id);

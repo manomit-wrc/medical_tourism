@@ -48,8 +48,7 @@
                     <th>Status</th>
                     <th width="11%">Actions</th>
                   </tr>
-                </thead>
-               
+                </thead>               
                 <tbody>
                   @if (count($genericmedicine) > 0)
                     @foreach($genericmedicine as $genmedval)

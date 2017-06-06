@@ -70,7 +70,7 @@
 
                         <!-- text input -->
                         <div class="form-group">
-                          {!! Html::decode(Form::label('phone','Phone: <span style="color:red;">*</span>')) !!}
+                          {!! Html::decode(Form::label('phone','Phone: ')) !!}
                           {!! Form::text('phone',null,array('class'=>'form-control','id'=>'phone','placeholder'=>'Enter phone')) !!}
                           {!! Html::decode('<span class="text-danger">'.$errors->first("phone").'</span>') !!}
                         </div>
@@ -78,17 +78,18 @@
 
                         <!-- text input -->
                         <div class="form-group">
-                          {!! Html::decode(Form::label('website','Website: <span style="color:red;">*</span>')) !!}
+                          {!! Html::decode(Form::label('website','Website: ')) !!}
                           {!! Form::text('website',null,array('class'=>'form-control','id'=>'website','placeholder'=>'Enter website')) !!}
-                          {!! Html::decode('<span class="text-danger">'.$errors->first("website").'</span>') !!}
+                          <!-- {!! Html::decode('<span class="text-danger">'.$errors->first("website").'</span>') !!} -->
                         </div>
                         <!-- /.text input -->
 
                         <!-- file input -->
                         <div class="form-group">
-                          {!! Html::decode(Form::label('avators','Image: <span style="color:red;">* (Image must be minimum of 745x214)</span>')) !!}
-                           <img src="{{url('/uploads/hospitals/thumb/'.$hosptl_data->avators)}}" alt="Hospital Image">
+                          {!! Html::decode(Form::label('avators','Image: ')) !!}
+                           <img src="{{url('/uploads/hospitals/thumb/'.$hosptl_data->avators)}}" alt="Hospital Image" class="img_broder">
                           {!! Form::file('avators', null) !!}
+                          <span style="color:red;">* (Image must be minimum of 745x214)</span>
                           {!! Html::decode('<br /><span class="text-danger">'.$errors->first("avators").'</span>') !!}
                         </div>
                          <!-- /.file input -->
@@ -139,33 +140,33 @@
                         
                          <!-- text input -->
                         <div class="form-group">
-                          {!! Html::decode(Form::label('number_of_beds','Number of beds: <span style="color:red;">*</span>')) !!}
+                          {!! Html::decode(Form::label('number_of_beds','Number of beds: ')) !!}
                           {!! Form::text('number_of_beds',null,array('class'=>'form-control','id'=>'number_of_beds','placeholder'=>'Enter number of beds')) !!}
-                          {!! Html::decode('<span class="text-danger">'.$errors->first("number_of_beds").'</span>') !!}
+                          <!-- {!! Html::decode('<span class="text-danger">'.$errors->first("number_of_beds").'</span>') !!} -->
                         </div>
                         <!-- /.text input -->
 
                          <!-- text input -->
                         <div class="form-group">
-                          {!! Html::decode(Form::label('number_of_icu_beds','Number of icu beds: <span style="color:red;">*</span>')) !!}
-                          {!! Form::text('number_of_icu_beds',null,array('class'=>'form-control','id'=>'number_of_icu_beds','placeholder'=>'Enter number of icu beds')) !!}
-                          {!! Html::decode('<span class="text-danger">'.$errors->first("number_of_icu_beds").'</span>') !!}
+                          {!! Html::decode(Form::label('number_of_icu_beds','Number of ICU beds: ')) !!}
+                          {!! Form::text('number_of_icu_beds',null,array('class'=>'form-control','id'=>'number_of_icu_beds','placeholder'=>'Enter number of ICU beds')) !!}
+                          <!-- {!! Html::decode('<span class="text-danger">'.$errors->first("number_of_icu_beds").'</span>') !!} -->
                         </div>
                         <!-- /.text input -->
 
                         <!-- text input -->
                         <div class="form-group">
-                          {!! Html::decode(Form::label('number_of_operating_rooms','Number of operating rooms: <span style="color:red;">*</span>')) !!}
+                          {!! Html::decode(Form::label('number_of_operating_rooms','Number of operating rooms: ')) !!}
                           {!! Form::text('number_of_operating_rooms',null,array('class'=>'form-control','id'=>'number_of_operating_rooms','placeholder'=>'Enter number of operating rooms')) !!}
-                          {!! Html::decode('<span class="text-danger">'.$errors->first("number_of_operating_rooms").'</span>') !!}
+                          <!-- {!! Html::decode('<span class="text-danger">'.$errors->first("number_of_operating_rooms").'</span>') !!} -->
                         </div>
                         <!-- /.text input -->
                        
                         <!-- text input -->
                         <div class="form-group">
-                          {!! Html::decode(Form::label('number_of_avg_international_patients','Number of average international patients: <span style="color:red;">* </span>')) !!}
+                          {!! Html::decode(Form::label('number_of_avg_international_patients','Number of average international patients: ')) !!}
                           {!! Form::text('number_of_avg_international_patients',null,array('class'=>'form-control','id'=>'number_of_avg_international_patients','placeholder'=>'Enter number of average internatinal patients')) !!}
-                           {!! Html::decode('<span class="text-danger">'.$errors->first("number_of_avg_international_patients").'</span>') !!}
+                           <!-- {!! Html::decode('<span class="text-danger">'.$errors->first("number_of_avg_international_patients").'</span>') !!} -->
                         </div>
                         <!-- /.text input -->
 
