@@ -19,7 +19,5 @@
       <h3>Apollo Hospitals</h3>
       <h4>India, West Bengal, Kolkata</h4>
     </div>
-
-
 </div>
 @stop
