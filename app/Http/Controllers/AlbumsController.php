@@ -67,36 +67,31 @@ class AlbumsController extends Controller
 	   return view('admin.albums.updatealbum',compact('albums'));
 	}
 	
-	public function postUpdate(Request $request)
+	public function postUpdate($id,Request $request)
 	{
-		/*$rules = array(
-		'name' => 'required',
-		'cover_image'=>'required|image'
-		);
-		$validator = Validator::make(Input::all(), $rules);
-		if($validator->fails()){
-		   return Redirect::route('create_album_form')->withErrors($validator)->withInput();
-		}*/
+		$album = Album::find($id);
         
         $this->validate($request, [
             'name' => 'required',
-            'cover_image' => 'required|image'
+            'cover_image' => 'image'
           ]);
-
-
-		$file = $request->file('cover_image');
-		$random_name = str_random(8);
-		$destinationPath = public_path().'/uploads/albums/';
-		$extension = $file->getClientOriginalExtension();
-		$filename=$random_name.'_cover.'.$extension;
-		$uploadSuccess = $request->file('cover_image')->move($destinationPath, $filename);
-		$album = Album::create(array(
-		'name' => $request->get('name'),
-		'description' => $request->get('description'),
-		'cover_image' => $filename,
-		));
+        // Getting all data after success validation.
+        $album->name = $request->get('name') ;
+        $album->description = $request->get('description') ;
+        
+        if($request->hasFile('cover_image')) {
+			$file = $request->file('cover_image');
+			$random_name = str_random(8);
+			$destinationPath = public_path().'/uploads/albums/';
+			$extension = $file->getClientOriginalExtension();
+			$filename=$random_name.'_cover.'.$extension;
+			$uploadSuccess = $request->file('cover_image')->move($destinationPath, $filename);
+			
+			$album->cover_image = $filename ;
+	    }
+		$album->save() ;
 	    //return Redirect::route('show_album',array('id'=>$album->id));
-	    Session::flash('message', 'Successfully added!');
+	    Session::flash('message', 'Successfully updated!');
         return Redirect::to('/admin/albums');
    }
 	public function getDelete($id)

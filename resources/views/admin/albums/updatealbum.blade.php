@@ -31,9 +31,7 @@
             
            
             <div class="box-body">
-             
-                 {!! Form::open(array('method' => 'POST','role'=>'form','files' => true,'url'=>array('admin/albums/createalbum', $albums->id),'id'=>'banner_add')) !!}
-                    
+                  {{ Form::model($albums,array('method' => 'POST','role'=>'form','files' => true,'url' => array('admin/albums/updatealbumpost', $albums->id),'id'=>'banner_edit')) }}  
                     <div class="col-md-6">                        
                         
                         <!-- text input -->
@@ -47,7 +45,7 @@
                         <!-- textarea input -->
                         <div class="form-group">
                           {!! Html::decode(Form::label('description','Description: <span style="color:red;">*</span>')) !!}
-                          {!! Form::textarea('description','',array('class'=>'form-control','id'=>'description','placeholder'=>'Enter description')) !!}
+                          {!! Form::textarea('description',null,array('class'=>'form-control','id'=>'description','placeholder'=>'Enter description')) !!}
                           {!! Html::decode('<span class="text-danger">'.$errors->first("description").'</span>') !!}
                         </div>
                         <!-- /.textarea input -->
@@ -55,6 +53,7 @@
                         <!-- file input -->
                         <div class="form-group">
                           {!! Html::decode(Form::label('cover_image','Cover image: <span style="color:red;">*</span>')) !!}
+                           <img src="{{url('/uploads/albums/'.$albums->cover_image)}}" alt="Cover Image" class="img_broder">
                           {!! Form::file('cover_image', null) !!}
                          <!--  <span style="color:red;">* (Image must be 1700x601)</span> -->
                           {!! Html::decode('<br /><span class="text-danger">'.$errors->first("cover_image").'</span>') !!}

@@ -450,7 +450,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/albums/createalbum', array('as' => 'create_album_form','uses' => 'AlbumsController@getForm'));
     Route::post('/admin/albums/createalbum', array('as' => 'create_album','uses' => 'AlbumsController@postCreate'));
     Route::get('/admin/albums/updatealbum/{id}', array('as' => 'update_album_form','uses' => 'AlbumsController@getUpdateForm'));
-    Route::post('/admin/albums/updatealbum', array('as' => 'update_album','uses' => 'AlbumsController@postUpdate'));
+    Route::post('/admin/albums/updatealbumpost/{id}', array('as' => 'update_album','uses' => 'AlbumsController@postUpdate'));
     Route::get('/admin/albums/deletealbum/{id}', array('as' => 'delete_album','uses' => 'AlbumsController@getDelete'));
     Route::get('/admin/albums/showalbum/{id}', array('as' => 'show_album','uses' => 'AlbumsController@getAlbum'));
 
