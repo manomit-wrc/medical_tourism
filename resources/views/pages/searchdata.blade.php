@@ -5,7 +5,7 @@
 <div class="col-md-8">
    
     <div class="mapbg"><?php // "<pre>"; print_r($locations); die; ?>
-       <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d471219.7256039201!2d88.36825265!3d22.6759958!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1496723901569" width="100%" height="600" frameborder="0" style="border:0" allowfullscreen></iframe> -->
+       <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d471219.7256039201!2d88.36825265!3d22.6759958!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1496723901569" width="100%" height="600" frameborder="0" style="border:0" "allowfullscreen"></iframe> -->
        <div id="hospitallistingmap" style="width:100%;height:600px;"></div>
     </div>
   

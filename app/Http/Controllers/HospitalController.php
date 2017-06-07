@@ -70,6 +70,8 @@ class HospitalController extends Controller
             'country_id' => 'required',
             'state_id' => 'required',
             'city_id' => 'required',
+            'hosp_latitude' => 'required',
+            'hosp_longitude' => 'required',
             'zipcode' => 'required',
             'number_of_beds' => 'numeric',
             'number_of_icu_beds' => 'numeric',
@@ -83,7 +85,9 @@ class HospitalController extends Controller
        ],[
         'country_id.required' => 'country field is required',
         'state_id.required' => 'state field is required',
-        'city_id.required' => 'city field is required'
+        'city_id.required' => 'city field is required',
+        'hosp_latitude.required' => 'latitude field is required',
+        'hosp_longitude.required' => 'longitude field is required'
         ])->validate();
 
       // Getting all data after success validation.
@@ -98,6 +102,8 @@ class HospitalController extends Controller
       $hptl->phone = $request->get('phone') ;
       $hptl->country_id = $request->get('country_id') ;
       $hptl->state_id = $request->get('state_id') ;
+      $hptl->hosp_latitude = $request->get('hosp_latitude') ;
+      $hptl->hosp_longitude = $request->get('hosp_longitude') ;
       $hptl->zipcode = $request->get('zipcode') ;
       $hptl->number_of_beds = $request->get('number_of_beds') ;
       $hptl->number_of_icu_beds = $request->get('number_of_icu_beds') ;
@@ -285,6 +291,8 @@ class HospitalController extends Controller
             'country_id' => 'required',
             'state_id' => 'required',
             'city_id' => 'required',
+            'hosp_latitude' => 'required',
+            'hosp_longitude' => 'required',
             'zipcode' => 'required',
             /*'number_of_beds' => 'required|numeric',
             'number_of_icu_beds' => 'required|numeric',
@@ -293,12 +301,13 @@ class HospitalController extends Controller
             'number_of_beds' => 'numeric',
             'number_of_icu_beds' => 'numeric',
             'number_of_operating_rooms' => 'numeric',
-            'number_of_avg_international_patients' => 'numeric',
-            'avators' => 'required|image|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=745,min_height=214'
+            'number_of_avg_international_patients' => 'numeric'            
        ],[
         'country_id.required' => 'country field is required',
         'state_id.required' => 'state field is required',
-        'city_id.required' => 'city field is required'
+        'city_id.required' => 'city field is required',
+        'hosp_latitude.required' => 'latitude field is required',
+        'hosp_longitude.required' => 'longitude field is required'
         ])->validate();
 
       // Getting all data after success validation.
@@ -311,6 +320,8 @@ class HospitalController extends Controller
       $hptl->phone = $request->get('phone') ;
       $hptl->country_id = $request->get('country_id') ;
       $hptl->state_id = $request->get('state_id') ;
+      $hptl->hosp_latitude = $request->get('hosp_latitude') ;
+      $hptl->hosp_longitude = $request->get('hosp_longitude') ;
       $hptl->zipcode = $request->get('zipcode') ;
       $hptl->number_of_beds = $request->get('number_of_beds') ;
       $hptl->number_of_icu_beds = $request->get('number_of_icu_beds') ;
@@ -517,4 +528,22 @@ class HospitalController extends Controller
         echo json_encode($returnArr);
         die();
     }
+  public function getLnt(Request $request)
+  {
+    $address = trim($request->address);    
+    $url = "http://maps.googleapis.com/maps/api/geocode/json?address=".urlencode($address)."&sensor=false";    
+    $result_string = file_get_contents($url);
+    /*print_r($result_string); die();*/
+    $result = json_decode($result_string, true);
+    if($result['status'] != 'ZERO_RESULTS'){
+      $result1[]=$result['results'][0];
+      $result2[]=$result1[0]['geometry'];
+      $result3[]=$result2[0]['location'];
+    }else{
+      $result3[0] = 'ZERO_RESULTS';
+    }
+    
+    echo json_encode($result3[0]);
+    //return $result3[0];
+  }
 }
