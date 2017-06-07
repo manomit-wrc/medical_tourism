@@ -345,6 +345,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('/admin/hospitals/ajaxstoretreatment/','HospitalController@ajaxstoretreatment');
     Route::post('/admin/hospitals/gettreatarr/','HospitalController@gettreatarr');
     Route::post('/admin/hospitals/changestatus/','HospitalController@ajaxhoschangestatus');
+    Route::post('/admin/hospitals/getLnt/','HospitalController@getLnt');
 
     //package type section
     Route::get('/admin/package-types/', 'PackageTypeController@index');
