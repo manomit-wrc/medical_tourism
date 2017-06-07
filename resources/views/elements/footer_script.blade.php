@@ -1,5 +1,5 @@
     
-    {!!Html::script("storage/frontend/js/jquery.min.js")!!}    
+      
     {!! Html::style('storage/frontend/css/jquery-ui.min.css') !!}
     {!!Html::script("storage/frontend/js/jquery-ui.min.js")!!}
     {!!Html::script("storage/frontend/js/bootstrap.min.js")!!}
@@ -20,6 +20,8 @@
 
     {!!Html::script("storage/frontend/js/jquery.do.scroll.js")!!}
     {!!Html::script("storage/frontend/js/script.js")!!}
+
+    {!!Html::script("storage/frontend/js/jquery.sticky.js")!!}
    
     <script type="text/javascript">
        $(function () {$('[data-toggle="tooltip"]').tooltip()})
@@ -613,34 +615,4 @@
     }  
   </script>
  
-   <!--  <script src="http://maps.google.com/maps/api/js"></script> -->
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4eCXS81oEuOHH9BJ_vOVvqQL1qY90kIA&callback=initMap" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gmaps.js/0.4.24/gmaps.js"></script>
-  <script type="text/javascript">
-    var locations = <?php print_r(json_encode($locations)) ?>;
-    var hospitallistingmap = new GMaps({
-      el: '#hospitallistingmap',
-      lat: 21.170240,
-      lng: 72.831061,
-      zoom:6
-    });
-
-
-    $.each( locations, function( index, value ){
-      alert(value.lat);
-      hospitallistingmap.addMarker({
-        lat: value.lat,
-        lng: value.lng,
-        title: value.city,
-        click: function(e) {
-          alert('This is '+value.city+', gujarat from India.');
-
-        }
-
-      });
-
-   });
-
-  </script>
-  
   

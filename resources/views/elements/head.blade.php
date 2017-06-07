@@ -16,7 +16,8 @@
 
     {!! Html::style('storage/frontend/css/owl.carousel.min.css') !!}
     {!! Html::style('storage/frontend/css/owl.theme.min.css') !!}
-
+     
+    {!!Html::script("storage/frontend/js/jquery.min.js")!!}  
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>

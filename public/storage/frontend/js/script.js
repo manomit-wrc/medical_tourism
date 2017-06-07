@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    //var $input = $('input');
+    var $input ='';
     $('.space').each(function() {
         var $space = $(this);
         $space.css({
