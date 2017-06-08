@@ -26,6 +26,7 @@ Route::post('contact-us', ['as'=>'contactus.store','uses'=>'ContactUSController@
 Route::get('/news','PagesController@news');
 Route::get('/newsdetails/{id}','PagesController@newsdetails');
 Route::get('/faqs','PagesController@faqs');
+Route::get('/gallery','PagesController@gallery');
 Route::get('/connectivity','PagesController@connectivity');
 Route::get('/immigration','PagesController@immigration');
 Route::get('/visa','PagesController@visa');

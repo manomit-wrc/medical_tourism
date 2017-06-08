@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
     var $input = null;
     $('.space').each(function() {
         var $space = $(this);
