@@ -2094,6 +2094,7 @@ div#myScrollWrapper {
     width: 100%;
     padding-right: 0;
     overflow: hidden;
+    -moz-user-select:all !important;
 }
 
 .space {

@@ -19,9 +19,11 @@
    
 
     <div class="filterbox">
+      <a href="#">
       <img src="http://localhost:8000/storage/frontend/images/host.jpg" alt="">
       <h3>Apollo Hospitals</h3>
       <h4>India, West Bengal, Kolkata</h4>
+      </a>
     </div>
 
     <div class="filterbox">
