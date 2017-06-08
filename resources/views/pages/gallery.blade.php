@@ -1,5 +1,5 @@
 @extends('layouts.gallery_layout')
-@section('title', 'Enquiry')
+@section('title', 'Gallery')
 @section('content')
 
 
@@ -240,10 +240,4 @@ function gallerysearch(){
       });
 }
 </script>
-
-
-
-
-
-          
 @stop

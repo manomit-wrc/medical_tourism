@@ -570,11 +570,11 @@
 
   
  <!-- {!!Html::script("storage/frontend/js/jquery.sticky.js")!!} -->
-  <script>
+  <!---<script>
     $(window).load(function(){
       $("#sticker").sticky({ topSpacing: 0, center:true, className:"hey" });
     });
-  </script>
+  </script>-->
   <script>    
     var docutag = new Bloodhound({
       datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
