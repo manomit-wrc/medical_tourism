@@ -29,7 +29,6 @@
       {!! Html::style('storage/frontend/css/gallery/plugins.css') !!}
       {!! Html::style('storage/frontend/css/gallery/forest.css') !!}
       {!! Html::style('storage/frontend/css/gallery/type/icons.css') !!}
-      
     @endif
      <script type="text/javascript">
           var base_url = "{!! URL::to('/')!!}";

@@ -15,21 +15,11 @@ $(document).ready(function() {
             $($.SmartMenus.Bootstrap.init);
         }
     };
-    var banner = new Headhesive('.navbar', options);
-    $('.offset').css('padding-top', $('.navbar').height() + 'px');
-    $(window).resize(function() {
-        $('.offset').css('padding-top', $('.navbar').height() + 'px');
-    });
-    $('.onepage .navbar .nav li a').on('click', function() {
-        $('.navbar .navbar-collapse.in').collapse('hide');
-        $('.nav-bars').removeClass('is-active');
-    });
+    
     /*-----------------------------------------------------------------------------------*/
     /*  HAMBURGER MENU ICON
     /*-----------------------------------------------------------------------------------*/
-    $(".nav-bars").on( "click", function() {
-        $(".nav-bars").toggleClass("is-active");
-    });
+    
     /*-----------------------------------------------------------------------------------*/
     /*  CUBE PORTFOLIO
     /*-----------------------------------------------------------------------------------*/
@@ -366,7 +356,7 @@ $(document).ready(function() {
     collage();
     function collage() {
         $('.collage').removeWhitespace().collagePlus({
-            'fadeSpeed': 5000,
+            'fadeSpeed': 15000,
             'targetHeight': 300,
             'effect': 'effect-2',
             'direction': 'vertical',

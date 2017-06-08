@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+/*<!DOCTYPE html>
 <html style="height:100%">
 <head><title> 404 Not Found
 </title></head>
@@ -8,4 +8,4 @@
 <h2 style="margin-top:20px;font-size: 30px;">Not Found
 </h2>
 <p>The resource requested could not be found on this server!</p>
-</div></div></body></html>
+</div></div></body></html>*/
