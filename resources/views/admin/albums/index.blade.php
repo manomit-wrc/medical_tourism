@@ -46,7 +46,7 @@
                     <th>Images</th>
                     <th>Created date</th>
                   <!--   <th>Status</th> -->
-                    <th width="11%">Actions</th>
+                    <th width="15%">Actions</th>
                     <th style="display:none;"></th>
                   </tr>
                 </thead>
@@ -60,7 +60,7 @@
                         </td>
                         <td>{{$album->name}}</td>
                         <td>{{$album->description}}</td>
-                        <td>{{count($album->Photos)}} image(s).</td>
+                        <td><a href="{!!URL::to('/admin/albums/showalbum',$album->id)!!}" data-toggle="tooltip" data-original-title="Show Gallery">{{count($album->Photos)}} image(s).</a></td>
                          <td>{{ date("d F Y",strtotime($album->created_at)) }} at {{date("g:ha",strtotime($album->created_at)) }}</td>
                        <!--  <td>
                           @if($album->status ==1)
@@ -76,10 +76,9 @@
                         </td> -->
                         <td>
                           <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
-                          <a href="{!!URL::to('/admin/albums/showalbum',$album->id)!!}" class="btn btn-info">Show Gallery</a>
-                          
+                          <a href="{!!URL::to('/admin/albums/showalbum',$album->id)!!}" data-toggle="tooltip" data-original-title="Show Gallery"><i class="fa fa-eye" style="color:blue;" aria-hidden="true"></i></a>&nbsp;
                           <a href="{!!URL::to('/admin/albums/updatealbum',$album->id)!!}" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" style="color:green;" aria-hidden="true"></i></a>&nbsp;                         
-                          <a href="{{URL::route('delete_album',array('id'=>$album->id))}}" onclick="return confirm('Are yousure?')"><i class="fa fa-times" style="color:red;" aria-hidden="true"></i></a>
+                          <a href="{{URL::route('delete_album',array('id'=>$album->id))}}" onclick="return confirm('Are yousure?')" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-times" style="color:red;" aria-hidden="true"></i></a>
                         </td>
                         <td style="display:none;"><input type="hidden" value="{{ $album->id }}"></td>
                       </tr>
