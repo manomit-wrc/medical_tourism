@@ -4,7 +4,6 @@
   	<body>
     	@include('elements.header')
     	@include('elements.headernav')
-      @include('elements.innersubheader')
       <div class="container-fluid">
         <div class="row">
             <div class="category">

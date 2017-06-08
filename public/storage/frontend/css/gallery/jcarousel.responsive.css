@@ -1,6 +1,8 @@
 .jcarousel-wrapper {
     margin: 20px auto;
     position: relative;
+    width: 100%;
+    float: left;
 }
 
 /** Carousel **/
@@ -122,6 +124,6 @@
 
 
 .cbp-popup-navigation{
-    background: #000 !important;
+    background: #000 url(../../images/gallery/close.png) center center no-repeat !important; 
     opacity:.5 !important;
   }

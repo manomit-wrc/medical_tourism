@@ -1,7 +1,7 @@
 $(document).ready(function() {
     'use strict';
-	/*-----------------------------------------------------------------------------------*/
-    /*	STICKY HEADER
+    /*-----------------------------------------------------------------------------------*/
+    /*  STICKY HEADER
     /*-----------------------------------------------------------------------------------*/
     var options = {
         offset: 350,
@@ -25,13 +25,13 @@ $(document).ready(function() {
         $('.nav-bars').removeClass('is-active');
     });
     /*-----------------------------------------------------------------------------------*/
-    /*	HAMBURGER MENU ICON
+    /*  HAMBURGER MENU ICON
     /*-----------------------------------------------------------------------------------*/
     $(".nav-bars").on( "click", function() {
         $(".nav-bars").toggleClass("is-active");
     });
-	/*-----------------------------------------------------------------------------------*/
-    /*	CUBE PORTFOLIO
+    /*-----------------------------------------------------------------------------------*/
+    /*  CUBE PORTFOLIO
     /*-----------------------------------------------------------------------------------*/
     $('#js-grid-inline').cubeportfolio({
         filters: '#js-inline-filter',
@@ -123,22 +123,22 @@ $(document).ready(function() {
         $('.light-gallery').data('lightGallery').destroy(true);
 
         // reinit the gallery
-	    $('.light-gallery').lightGallery({
-	        thumbnail: false,
-	        selector: '.lgitem',
-	        animateThumb: true,
-	        showThumbByDefault: false,
-	        download: false,
-	        autoplayControls: false,
-	        zoom: false,
-	        videoAutoplay: false,
-	        fullScreen: false,
-	        thumbWidth: 100,
-	        thumbContHeight: 80,
-	        hash: false,
-	        videoMaxWidth: '1000px'
-	    });
-	});
+        $('.light-gallery').lightGallery({
+            thumbnail: false,
+            selector: '.lgitem',
+            animateThumb: true,
+            showThumbByDefault: false,
+            download: false,
+            autoplayControls: false,
+            zoom: false,
+            videoAutoplay: false,
+            fullScreen: false,
+            thumbWidth: 100,
+            thumbContHeight: 80,
+            hash: false,
+            videoMaxWidth: '1000px'
+        });
+    });
     $('#js-grid-slider-testimonials').cubeportfolio({
         layoutMode: 'slider',
         drag: true,
@@ -160,8 +160,8 @@ $(document).ready(function() {
         displayType: 'default',
     });
     /*-----------------------------------------------------------------------------------*/
-    /*	LIGHTGALLERY
-	/*-----------------------------------------------------------------------------------*/
+    /*  LIGHTGALLERY
+    /*-----------------------------------------------------------------------------------*/
     $('.light-gallery').lightGallery({
         thumbnail: false,
         selector: '.lgitem',
@@ -170,18 +170,18 @@ $(document).ready(function() {
         download: false,
         autoplayControls: false,
         zoom: false,
-	    fullScreen: false,
+        fullScreen: false,
         thumbWidth: 100,
         thumbContHeight: 80,
         hash: false,
         videoMaxWidth: '1000px'
     });
     /*-----------------------------------------------------------------------------------*/
-    /*	IMAGE ICON HOVER
+    /*  IMAGE ICON HOVER
     /*-----------------------------------------------------------------------------------*/
     $('.overlay a').prepend('<span class="over"><span></span></span>');
     /*-----------------------------------------------------------------------------------*/
-    /*	INSTAGRAM
+    /*  INSTAGRAM
     /*-----------------------------------------------------------------------------------*/
     var instagramFeed = new Instafeed({
         target: 'instafeed-widget',
@@ -214,20 +214,20 @@ $(document).ready(function() {
         instagramFeed2.run();
     });
     /*-----------------------------------------------------------------------------------*/
-    /*	COUNTER UP
+    /*  COUNTER UP
     /*-----------------------------------------------------------------------------------*/
     $('.fcounter').counterUp({
         delay: 50,
         time: 1000
     });
     /*-----------------------------------------------------------------------------------*/
-    /*	PARALLAX MOBILE
+    /*  PARALLAX MOBILE
     /*-----------------------------------------------------------------------------------*/
     if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i)) {
         $('.parallax').addClass('mobile');
     }
     /*-----------------------------------------------------------------------------------*/
-    /*	BACKGROUND VIDEO PARALLAX
+    /*  BACKGROUND VIDEO PARALLAX
     /*-----------------------------------------------------------------------------------*/
     $('#video-fish').backgroundVideo({
         $outerWrap: $('.outer-wrap'),
@@ -237,7 +237,7 @@ $(document).ready(function() {
         }
     });
     /*-----------------------------------------------------------------------------------*/
-    /*	TAB COLLAPSE
+    /*  TAB COLLAPSE
     /*-----------------------------------------------------------------------------------*/
     $('#tab1').tabCollapse({
         tabsClass: 'hidden-sm hidden-xs',
@@ -252,7 +252,7 @@ $(document).ready(function() {
         });
     });
     /*-----------------------------------------------------------------------------------*/
-    /*	TOGGLE
+    /*  TOGGLE
     /*-----------------------------------------------------------------------------------*/
     $('.panel-group').find('.panel-default:has(".in")').addClass('panel-active');
     $('.panel-group').on('shown.bs.collapse', function(e) {
@@ -261,7 +261,7 @@ $(document).ready(function() {
         $(e.target).closest('.panel-default').removeClass(' panel-active');
     });
     /*-----------------------------------------------------------------------------------*/
-    /*	PROGRESS BAR
+    /*  PROGRESS BAR
     /*-----------------------------------------------------------------------------------*/
     $('.progress-list .progress .bar').progressBar({
         shadow: false,
@@ -270,23 +270,23 @@ $(document).ready(function() {
         height: 12
     });
     /*-----------------------------------------------------------------------------------*/
-    /*	DATA REL
+    /*  DATA REL
     /*-----------------------------------------------------------------------------------*/
     $('a[data-rel]').each(function() {
         $(this).attr('rel', $(this).data('rel'));
     });
     /*-----------------------------------------------------------------------------------*/
-    /*	TOOLTIP
+    /*  TOOLTIP
     /*-----------------------------------------------------------------------------------*/
     if ($("[rel=tooltip]").length) {
         $("[rel=tooltip]").tooltip();
     }
     /*-----------------------------------------------------------------------------------*/
-    /*	PRETTIFY
+    /*  PRETTIFY
     /*-----------------------------------------------------------------------------------*/
     window.prettyPrint && prettyPrint();
     /*-----------------------------------------------------------------------------------*/
-    /*	LAZY LOAD GOOGLE MAPS
+    /*  LAZY LOAD GOOGLE MAPS
     /*-----------------------------------------------------------------------------------*/
     ;
     (function($, window, document, undefined) {
@@ -343,7 +343,7 @@ $(document).ready(function() {
 
     })(jQuery, window, document);
     /*-----------------------------------------------------------------------------------*/
-    /*	LOADER
+    /*  LOADER
     /*-----------------------------------------------------------------------------------*/
     $(".pageloader").lsPreloader({
 
@@ -356,12 +356,12 @@ $(document).ready(function() {
 
     });
     /*-----------------------------------------------------------------------------------*/
-    /*	VANILLA
+    /*  VANILLA
     /*-----------------------------------------------------------------------------------*/
     var myForm;
     myForm = new VanillaForm($("form.vanilla-form"));
     /*-----------------------------------------------------------------------------------*/
-    /*	COLLAGEPLUS
+    /*  COLLAGEPLUS
     /*-----------------------------------------------------------------------------------*/
     collage();
     function collage() {

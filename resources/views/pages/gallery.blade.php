@@ -6,13 +6,13 @@
 
     <div class="container-fluid inner tp60 bp0">
           
-      <div id="js-inline-filter" class="cbp-filter-container text-center">
+      <!-- <div id="js-inline-filter" class="cbp-filter-container text-center">
         <div data-filter="*" class="cbp-filter-item-active cbp-filter-item"><span>All</span></div>
         <div data-filter=".nature" class="cbp-filter-item"><span>Nature</span></div>
         <div data-filter=".conceptual" class="cbp-filter-item"><span>Conceptual</span></div>
         <div data-filter=".food-drink" class="cbp-filter-item"><span>Food & Drink</span></div>
         <div data-filter=".portrait" class="cbp-filter-item"><span>Portrait</span></div>
-      </div>
+      </div> -->
       <div class="clearfix"></div>
       <div class="divide25"></div>
       <div id="js-grid-inline" class="cbp cbp-l-grid-inline">
