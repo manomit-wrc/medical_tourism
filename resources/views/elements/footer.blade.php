@@ -53,6 +53,7 @@
                               <li><a href="{!!URL::to('/news')!!}">News</a></li>
                               <li><a href="{!!URL::to('/contact')!!}">Contact Us</a></li>
                               <li><a href="{!!URL::to('/faqs')!!}">FAQ</a></li>
+                              <li><a href="{!!URL::to('/gallery')!!}">Photo Gallery</a></li>
                           </ul>
                       </div>
                       

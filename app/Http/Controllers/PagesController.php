@@ -117,6 +117,21 @@ class PagesController extends Controller
     return view('pages.contact',compact('contactpage_data'));
 	}
 
+  public function gallery()
+  {
+    $cmspage_data = Cmspage::select(['id'])->where('pagename', '=', 'contactus')->get();
+    //echo "<pre>"; echo $cmspage_data[0]->id; die;
+    $cmspagedtls_data = CmsPageDetail::where('cmspage_id', '=',$cmspage_data[0]->id)->get();
+    //echo "<pre>"; print_r($cmspagedtls_data); die;
+    $contactpage_data=array();
+    foreach($cmspagedtls_data as $key=>$value)
+    {
+      $contactpage_data[$value->slag]=$value->description;
+    }  
+    //echo "<pre>"; print_r($contactpage_data); die;
+    return view('pages.gallery',compact('contactpage_data'));
+  }
+
   public function news()
 	{
       $news_lists = News::all();
