@@ -109,68 +109,30 @@
         <input type="text" name="searchname" id="searchname" placeholder="Search" >
         <button type="button" onclick="getsearchval(); getsearchvalmap();"></button>
     </div>   
-    <div id="myScrollWrapper"> 
+
+
+    <div id="vertical-scrollbar-demo" class="gray-skin demo"> 
 	@if (count($search_data) > 0)
             @foreach($search_data as $searchval)
+
     <div class="filterbox">
     <a href="{!!URL::to('/searchdetails/'.$searchval->id)!!}">
       <img src="{{url('/uploads/hospitals/thumb/'.$searchval->avators)}}" alt="{{ $searchval->name }}"></a>
       <h3>{{ $searchval->name }}</h3>
       <h4>{{ $searchval->country->name }}, {{ $searchval->state->name }}, {{ $searchval->city->name }}</h4>
     </div>
+
 	@endforeach
 	@endif
-    <!-- <div class="filterbox">
-      <img src="http://localhost:8000/storage/frontend/images/host.jpg" alt="">
-      <h3>Apollo Hospitals</h3>
-      <h4>India, West Bengal, Kolkata</h4>
-    </div>
-    
-    <div class="filterbox">
-      <img src="http://localhost:8000/storage/frontend/images/host.jpg" alt="">
-      <h3>Apollo Hospitals</h3>
-      <h4>India, West Bengal, Kolkata</h4>
-    </div>
-    
-    <div class="filterbox">
-      <img src="http://localhost:8000/storage/frontend/images/host.jpg" alt="">
-      <h3>Apollo Hospitals</h3>
-      <h4>India, West Bengal, Kolkata</h4>
-    </div>
-    
-    <div class="filterbox">
-      <img src="http://localhost:8000/storage/frontend/images/host.jpg" alt="">
-      <h3>Apollo Hospitals</h3>
-      <h4>India, West Bengal, Kolkata</h4>
-    </div>
-    
-    <div class="filterbox">
-      <img src="http://localhost:8000/storage/frontend/images/host.jpg" alt="">
-      <h3>Apollo Hospitals</h3>
-      <h4>India, West Bengal, Kolkata</h4>
-    </div>
-    
-    <div class="filterbox">
-      <img src="http://localhost:8000/storage/frontend/images/host.jpg" alt="">
-      <h3>Apollo Hospitals</h3>
-      <h4>India, West Bengal, Kolkata</h4>
-    </div>
-    
-    <div class="filterbox">
-      <img src="http://localhost:8000/storage/frontend/images/host.jpg" alt="">
-      <h3>Apollo Hospitals</h3>
-      <h4>India, West Bengal, Kolkata</h4>
-    </div>
-    
-    <div class="filterbox">
-      <img src="http://localhost:8000/storage/frontend/images/host.jpg" alt="">
-      <h3>Apollo Hospitals</h3>
-      <h4>India, West Bengal, Kolkata</h4>
-    </div> -->
-
     </div>
 
-    <div class="scrollbar"></div>
+<script type="text/javascript">
+    $(window).load(function () {
+        $(".demo").customScrollbar();
+        $("#fixed-thumb-size-demo").customScrollbar({fixedThumbHeight: 50, fixedThumbWidth: 60});
+    });
+</script>
+
 <script>
 function getsearchval(){
   var val = $("#searchname").val();
