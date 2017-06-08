@@ -132,6 +132,12 @@ class PagesController extends Controller
     return view('pages.gallery',compact('contactpage_data'));
   }
 
+  public function gallerysearch(Request $request)
+  {   
+    
+        return view('pages.ajaxgallerydata');
+  }
+
   public function news()
 	{
       $news_lists = News::all();
