@@ -7,12 +7,11 @@
     <div class="jcarousel-wrapper">
                 <div class="jcarousel">
                     <ul>
-                        <li><img src="{!!URL::to('storage/frontend/images/gallery/m20.jpg')!!}" alt="Image 1"></li>
-                        <li><img src="{!!URL::to('storage/frontend/images/gallery/m20.jpg')!!}" alt="Image 2"></li>
-                        <li><img src="{!!URL::to('storage/frontend/images/gallery/m20.jpg')!!}" alt="Image 3"></li>
-                        <li><img src="{!!URL::to('storage/frontend/images/gallery/m20.jpg')!!}" alt="Image 4"></li>
-                        <li><img src="{!!URL::to('storage/frontend/images/gallery/m20.jpg')!!}" alt="Image 5"></li>
-                        <li><img src="{!!URL::to('storage/frontend/images/gallery/m20.jpg')!!}" alt="Image 6"></li>
+                        @if (count($album->Photos) > 0)
+                            @foreach($album->Photos as $photo)
+                              <li><img src="{{url('/uploads/albums/'.$photo->image)}}" alt="{{ $photo->description }}"></li>
+                            @endforeach
+                        @endif
                     </ul>
                 </div>
                 <p class="jcarousel-pagination" data-jcarouselpagination="true"></p>

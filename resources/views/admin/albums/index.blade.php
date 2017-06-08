@@ -46,7 +46,7 @@
                     <th>Images</th>
                     <th>Created date</th>
                   <!--   <th>Status</th> -->
-                    <th width="15%">Actions</th>
+                    <th width="11%">Actions</th>
                     <th style="display:none;"></th>
                   </tr>
                 </thead>

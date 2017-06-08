@@ -28,6 +28,8 @@ use App\CountryVisa;
 use App\Cmspage;
 use App\CmsPageDetail;
 use App\Hospital;
+use App\Album;
+use App\Images;
 
 class PagesController extends Controller
 {
@@ -119,23 +121,17 @@ class PagesController extends Controller
 
   public function gallery()
   {
-    $cmspage_data = Cmspage::select(['id'])->where('pagename', '=', 'contactus')->get();
-    //echo "<pre>"; echo $cmspage_data[0]->id; die;
-    $cmspagedtls_data = CmsPageDetail::where('cmspage_id', '=',$cmspage_data[0]->id)->get();
-    //echo "<pre>"; print_r($cmspagedtls_data); die;
-    $contactpage_data=array();
-    foreach($cmspagedtls_data as $key=>$value)
-    {
-      $contactpage_data[$value->slag]=$value->description;
-    }  
-    //echo "<pre>"; print_r($contactpage_data); die;
-    return view('pages.gallery',compact('contactpage_data'));
+    $albums = Album::with('Photos')->get();
+    //echo "<pre>"; print_r($albums); die;
+    return view('pages.gallery',compact('albums'));
   }
 
   public function gallerysearch(Request $request)
   {   
-    
-        return view('pages.ajaxgallerydata');
+       $gallery_id = $request->galid;
+       $album = Album::with('Photos')->find($gallery_id);
+       //echo "<pre>"; print_r($album); die;
+       return view('pages.ajaxgallerydata',compact('album'));
   }
 
   public function news()
