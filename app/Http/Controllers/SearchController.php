@@ -75,4 +75,40 @@ class SearchController extends Controller
     	//return view('pages.searchdata')->with('search_data',$search_data);
         return view('pages.searchdata',compact('search_data','locations'));
     }
+    public function hospitalsearch_res(Request $request) {
+        $search_val = $request->search_val;
+        $select_treatment = $request->select_treatment;
+        $select_procedure = $request->select_procedure;
+        $txt_search = $request->txt_search;
+        /*echo $select_treatment." ".$select_procedure." ".$txt_search;
+        die();*/
+        $search_data = \App\Hospital::whereHas('city',function($res) use($txt_search) {
+            $res->where('name','like','%'.$txt_search.'%');
+
+        })->where('hospitals.name','like','%'.$search_val.'%')->orderBy('hospitals.name')->get();
+        $locations = array();
+         $i=1;
+         foreach($search_data as $key=>$value) {
+            //echo $value->country->name; die;
+            $locations[] = array('city'=>$value->name,'lat'=>$value->hosp_latitude,'longi'=>$value->hosp_longitude,'ord'=> $i);
+            $i++;
+         }
+        return view('pages.ajaxsearchdata',compact('search_data'));
+    }
+    public function hospitalsearch_resmap(Request $request) {
+        $search_val = $request->search_val;
+        $txt_search = $request->txt_search;       
+        $search_data = \App\Hospital::whereHas('city',function($res) use($txt_search) {
+            $res->where('name','like','%'.$txt_search.'%');
+
+        })->where('hospitals.name','like','%'.$search_val.'%')->orderBy('hospitals.name')->get();
+        $locations = array();
+         $i=1;
+         foreach($search_data as $key=>$value) {
+            //echo $value->country->name; die;
+            $locations[] = array('city'=>$value->name,'lat'=>$value->hosp_latitude,'longi'=>$value->hosp_longitude,'ord'=> $i);
+            $i++;
+         }
+        return view('pages.ajaxsearchmap',compact('locations'));
+    }
 }

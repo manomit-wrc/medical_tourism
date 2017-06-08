@@ -4,14 +4,10 @@
 
 <div class="col-md-8">
    
-    <div class="mapbg"><?php // "<pre>"; print_r($locations); die; ?>
+    <div class="mapbg" id="searmap"><?php // "<pre>"; print_r($locations); die; ?>
        <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d471219.7256039201!2d88.36825265!3d22.6759958!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1496723901569" width="100%" height="600" frameborder="0" style="border:0" "allowfullscreen"></iframe> -->
        <div id="hospitallistingmap" style="width:100%;height:600px;"></div>
-    </div>
-  
- 
-  
-   <script type="text/javascript">
+       <script type="text/javascript">
     jQuery(function($) {
         <!-- Asynchronously Load the map API  -->
         var script = document.createElement('script');
@@ -93,20 +89,25 @@
         }
         <!-- Override our map zoom level once our fitBounds function runs (Make sure it only runs once) -->
         var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
-            this.setZoom(10);
+            this.setZoom(3);
             google.maps.event.removeListener(boundsListener);
         });
         
     }
 
   </script>
+    </div>
+  
+ 
+  
+   
   
 </div>
 
 <div class="col-md-4">
     <div class="filtersearch">
-        <input type="text" name="" placeholder="Search" >
-        <button type="button"></button>
+        <input type="text" name="searchname" id="searchname" placeholder="Search" >
+        <button type="button" onclick="getsearchval(); getsearchvalmap();"></button>
     </div>   
     <div id="myScrollWrapper"> 
 	@if (count($search_data) > 0)
@@ -170,6 +171,35 @@
     </div>
 
     <div class="scrollbar"></div>
-
+<script>
+function getsearchval(){
+  var val = $("#searchname").val();
+     $.ajax({
+        type:"POST",
+        url: "/hospitalsearch-res",
+        data: {
+          search_val: val,                    
+          _token: "{{csrf_token()}}"
+        },
+          success:function(response) {
+            $("#myScrollWrapper").html(response);                        
+          }
+      });
+}
+function getsearchvalmap(){
+  var val = $("#searchname").val();
+     $.ajax({
+        type:"POST",
+        url: "/hospitalsearch-resmap",
+        data: {
+          search_val: val,                    
+          _token: "{{csrf_token()}}"
+        },
+          success:function(response) {
+            $("#searmap").html(response);                        
+          }
+      });
+}
+</script>
 </div>
 @stop

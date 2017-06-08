@@ -42,6 +42,8 @@ Route::post('/patient-login','PagesController@patient_login');
 Route::post('/patient-forgotpass','PagesController@patient_forgotpass');
 Route::get('/search-place','SearchController@search_place');
 Route::get('search-data','SearchController@search_data');
+Route::post('/hospitalsearch-res','SearchController@hospitalsearch_res');
+Route::post('/hospitalsearch-resmap','SearchController@hospitalsearch_resmap');
 Route::post('/profile_image_upload','PagesController@profile_image_upload');
 Route::get('/changepassword/{url}','PagesController@changepassword');
 Route::post('/reset-password/{security_code}','PagesController@reset_password');
