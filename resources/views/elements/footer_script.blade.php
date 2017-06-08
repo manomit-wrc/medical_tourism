@@ -15,14 +15,19 @@
 
     {!! Html::style('storage/frontend/tag/dist/bootstrap-tagsinput.css') !!}
     {!! Html::style('storage/frontend/tag/app.css') !!}
-    {!!Html::script("storage/frontend/tag/typeahead.bundle.min.js")!!}
-    {!!Html::script("storage/frontend/tag/dist/bootstrap-tagsinput.min.js")!!}
+    {!! Html::script("storage/frontend/tag/typeahead.bundle.min.js") !!}
+    {!! Html::script("storage/frontend/tag/dist/bootstrap-tagsinput.min.js") !!}
 
     <!-- {!!Html::script("storage/frontend/js/jquery.do.scroll.js")!!}
     {!!Html::script("storage/frontend/js/script.js")!!} 
-
     {!!Html::script("storage/frontend/js/jquery.sticky.js")!!}-->
     {!!Html::script("storage/frontend/js/jquery.custom-scrollbar.js")!!}
+
+    @if(Request::segment(1) == 'gallery')
+      {!! Html::script("storage/frontend/js/gallery/plugins.js") !!}
+      {!! Html::script("storage/frontend/js/gallery/scripts.js") !!}
+      {!! Html::script("storage/frontend/js/gallery/scripts-single.js") !!}
+    @endif
    
     <script type="text/javascript">
        $(function () {$('[data-toggle="tooltip"]').tooltip()})
