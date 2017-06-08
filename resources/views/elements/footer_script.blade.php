@@ -1,5 +1,5 @@
     
-    {!!Html::script("storage/frontend/js/jquery.min.js")!!}    
+      
     {!! Html::style('storage/frontend/css/jquery-ui.min.css') !!}
     {!!Html::script("storage/frontend/js/jquery-ui.min.js")!!}
     {!!Html::script("storage/frontend/js/bootstrap.min.js")!!}
@@ -18,8 +18,10 @@
     {!!Html::script("storage/frontend/tag/typeahead.bundle.min.js")!!}
     {!!Html::script("storage/frontend/tag/dist/bootstrap-tagsinput.min.js")!!}
 
-    {!!Html::script("storage/frontend/js/jquery.do.scroll.js")!!}
-    {!!Html::script("storage/frontend/js/script.js")!!}
+    <!-- {!!Html::script("storage/frontend/js/jquery.do.scroll.js")!!}
+    {!!Html::script("storage/frontend/js/script.js")!!} -->
+
+    {!!Html::script("storage/frontend/js/jquery.sticky.js")!!}
    
     <script type="text/javascript">
        $(function () {$('[data-toggle="tooltip"]').tooltip()})
@@ -612,5 +614,5 @@
       }
     }  
   </script>
-  
+ 
   

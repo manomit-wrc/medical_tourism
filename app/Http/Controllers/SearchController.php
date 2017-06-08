@@ -51,10 +51,64 @@ class SearchController extends Controller
     	->orWhereHas('treatments',function($res) use($select_treatment,$select_procedure){
     		$res->where('treatments.id',$select_treatment);
     		$res->whereHas('procedure', function($res) use($select_procedure){
-    			$res->where('procedures.id',$select_procedure);
+    		$res->where('procedures.id',$select_procedure);
     		});
-    	})->orderBy('hospitals.name')->get()->toArray();
-    	/* print_r($search_data); die();*/
-    	return view('pages.searchdata')->with('search_data',$search_data);
+    	})->orderBy('hospitals.name')->get();
+    	 //echo "<pre>"; print_r($search_data[0]->country->name); die();
+        //echo "<pre>"; print_r($search_data); die();
+        /*$locations=[
+            ['city'=>'kolkata','lat'=> -33.890542,'longi'=> 151.274856,'ord'=> 4],
+            ['city'=>'Durgapur','lat'=> -33.923036,'longi'=> 151.259052, 'ord'=> 5],
+            ['city'=>'Murarai','lat'=> -34.028249,'longi'=> 151.157507, 'ord'=> 3],
+            ['city'=>'Manly Beach','lat'=> -33.80010128657071,'longi'=> 151.28747820854187,'ord'=>  2],
+            ['city'=>'Maroubra Beach','lat'=> -33.950198, 'longi'=>151.259302, 'ord'=> 1]
+        ];*/
+
+         $locations = array();
+         $i=1;
+         foreach($search_data as $key=>$value) {
+            //echo $value->country->name; die;
+            $locations[] = array('city'=>$value->name,'lat'=>$value->hosp_latitude,'longi'=>$value->hosp_longitude,'ord'=> $i);
+            $i++;
+         }
+        //echo "<pre>"; print_r($locations); die();
+    	//return view('pages.searchdata')->with('search_data',$search_data);
+        return view('pages.searchdata',compact('search_data','locations'));
+    }
+    public function hospitalsearch_res(Request $request) {
+        $search_val = $request->search_val;
+        $select_treatment = $request->select_treatment;
+        $select_procedure = $request->select_procedure;
+        $txt_search = $request->txt_search;
+        /*echo $select_treatment." ".$select_procedure." ".$txt_search;
+        die();*/
+        $search_data = \App\Hospital::whereHas('city',function($res) use($txt_search) {
+            $res->where('name','like','%'.$txt_search.'%');
+
+        })->where('hospitals.name','like','%'.$search_val.'%')->orderBy('hospitals.name')->get();
+        $locations = array();
+         $i=1;
+         foreach($search_data as $key=>$value) {
+            //echo $value->country->name; die;
+            $locations[] = array('city'=>$value->name,'lat'=>$value->hosp_latitude,'longi'=>$value->hosp_longitude,'ord'=> $i);
+            $i++;
+         }
+        return view('pages.ajaxsearchdata',compact('search_data'));
+    }
+    public function hospitalsearch_resmap(Request $request) {
+        $search_val = $request->search_val;
+        $txt_search = $request->txt_search;       
+        $search_data = \App\Hospital::whereHas('city',function($res) use($txt_search) {
+            $res->where('name','like','%'.$txt_search.'%');
+
+        })->where('hospitals.name','like','%'.$search_val.'%')->orderBy('hospitals.name')->get();
+        $locations = array();
+         $i=1;
+         foreach($search_data as $key=>$value) {
+            //echo $value->country->name; die;
+            $locations[] = array('city'=>$value->name,'lat'=>$value->hosp_latitude,'longi'=>$value->hosp_longitude,'ord'=> $i);
+            $i++;
+         }
+        return view('pages.ajaxsearchmap',compact('locations'));
     }
 }

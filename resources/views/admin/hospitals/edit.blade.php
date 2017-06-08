@@ -99,7 +99,7 @@
                         <!-- text input -->
                         <div class="form-group">
                           {!! Html::decode(Form::label('street_address','Address: <span style="color:red;">*</span>')) !!}
-                          {!! Form::text('street_address',null,array('class'=>'form-control','id'=>'street_address','placeholder'=>'Enter hospital address')) !!}
+                          {!! Form::text('street_address',null,array('class'=>'form-control','id'=>'street_address','onBlur'=>'return last_seen_pin(this.value)','placeholder'=>'Enter hospital address')) !!}
                           {!! Html::decode('<span class="text-danger">'.$errors->first("street_address").'</span>') !!}
                         </div>
                         <!-- /.text input -->
@@ -127,7 +127,23 @@
                            {!! Html::decode('<span class="text-danger">'.$errors->first("city_id").'</span>') !!}
                         </div>
                         <!-- /.form-group dropdown-->
+                        
+                         <!-- text input -->
+                        <div class="form-group">
+                          {!! Html::decode(Form::label('hosp_latitude','Latitude: <span style="color:red;">*</span>')) !!}
+                          {!! Form::text('hosp_latitude',null,array('class'=>'form-control','id'=>'hosp_latitude','placeholder'=>'Enter Latitude')) !!}
+                           {!! Html::decode('<span class="text-danger">'.$errors->first("hosp_latitude").'</span>') !!}
+                        </div>
+                        <!-- /.text input -->
 
+                         <!-- text input -->
+                        <div class="form-group">
+                          {!! Html::decode(Form::label('hosp_longitude','Longitude: <span style="color:red;">*</span>')) !!}
+                          {!! Form::text('hosp_longitude',null,array('class'=>'form-control','id'=>'hosp_longitude','placeholder'=>'Enter Longitude')) !!}
+                           {!! Html::decode('<span class="text-danger">'.$errors->first("hosp_longitude").'</span>') !!}
+                        </div>
+                        <!-- /.text input -->
+                        
                          <!-- text input -->
                         <div class="form-group">
                           {!! Html::decode(Form::label('zipcode','Zipcode: <span style="color:red;">*</span>')) !!}

@@ -498,6 +498,33 @@ $(function () {
       $("#treatment_name_error").hide();
       $("#name").val('');
     }
+
+
+function last_seen_pin(address)
+{
+  
+  dataString = "address=" + address;  
+  $.ajax
+  ({
+    type: "POST",
+    url: "/admin/hospitals/getLnt",
+    data: {address:address,_token:"{{csrf_token()}}"},
+    cache: false,
+    success: function(html)
+    {      
+      var a = JSON.parse(html);
+      if(a!='ZERO_RESULTS') {   
+      var lat = a.lat;     
+      var lng = a.lng;          
+      $('#hosp_latitude').val(lat);
+      $('#hosp_longitude').val(lng);
+    }else{
+      $('#hosp_latitude').val('');
+      $('#hosp_longitude').val('');
+    }
+    }
+  });
+}
 </script>
 <!-- hospital wise treatment end -- >
 

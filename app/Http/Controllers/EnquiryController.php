@@ -71,7 +71,7 @@ class EnquiryController extends Controller
 
         Enquiry::create($request->all());
 
-        Session::flash('message', 'Thanks for enquiry through Swasthya Bandhav!');
+        Session::flash('message', 'Thanks for enquiry through Swaasthya Bandhav!');
         return Redirect::to('/enquiry');
         //return back()->with('success', 'Thanks for contacting us!');
 

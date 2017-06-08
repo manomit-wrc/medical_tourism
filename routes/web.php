@@ -26,6 +26,7 @@ Route::post('contact-us', ['as'=>'contactus.store','uses'=>'ContactUSController@
 Route::get('/news','PagesController@news');
 Route::get('/newsdetails/{id}','PagesController@newsdetails');
 Route::get('/faqs','PagesController@faqs');
+Route::get('/gallery','PagesController@gallery');
 Route::get('/connectivity','PagesController@connectivity');
 Route::get('/immigration','PagesController@immigration');
 Route::get('/visa','PagesController@visa');
@@ -41,6 +42,8 @@ Route::post('/patient-login','PagesController@patient_login');
 Route::post('/patient-forgotpass','PagesController@patient_forgotpass');
 Route::get('/search-place','SearchController@search_place');
 Route::get('search-data','SearchController@search_data');
+Route::post('/hospitalsearch-res','SearchController@hospitalsearch_res');
+Route::post('/hospitalsearch-resmap','SearchController@hospitalsearch_resmap');
 Route::post('/profile_image_upload','PagesController@profile_image_upload');
 Route::get('/changepassword/{url}','PagesController@changepassword');
 Route::post('/reset-password/{security_code}','PagesController@reset_password');
@@ -345,6 +348,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('/admin/hospitals/ajaxstoretreatment/','HospitalController@ajaxstoretreatment');
     Route::post('/admin/hospitals/gettreatarr/','HospitalController@gettreatarr');
     Route::post('/admin/hospitals/changestatus/','HospitalController@ajaxhoschangestatus');
+    Route::post('/admin/hospitals/getLnt/','HospitalController@getLnt');
 
     //package type section
     Route::get('/admin/package-types/', 'PackageTypeController@index');
@@ -443,6 +447,19 @@ Route::group(['middleware' => ['admin']], function () {
     Route::patch('/admin/documenttag/update/{id}','DocumentTagController@update');    
     Route::get('/admin/documenttag/delete/{id}','DocumentTagController@delete');
     Route::post('/admin/documenttag/changestatus/','DocumentTagController@ajaxtagchangestatus');
+
+    //Album section
+    Route::get('/admin/albums', array('as' => 'index','uses' => 'AlbumsController@getList'));
+    Route::get('/admin/albums/createalbum', array('as' => 'create_album_form','uses' => 'AlbumsController@getForm'));
+    Route::post('/admin/albums/createalbum', array('as' => 'create_album','uses' => 'AlbumsController@postCreate'));
+    Route::get('/admin/albums/updatealbum/{id}', array('as' => 'update_album_form','uses' => 'AlbumsController@getUpdateForm'));
+    Route::post('/admin/albums/updatealbumpost/{id}', array('as' => 'update_album','uses' => 'AlbumsController@postUpdate'));
+    Route::get('/admin/albums/deletealbum/{id}', array('as' => 'delete_album','uses' => 'AlbumsController@getDelete'));
+    Route::get('/admin/albums/showalbum/{id}', array('as' => 'show_album','uses' => 'AlbumsController@getAlbum'));
+
+    Route::get('/admin/images/addimage/{id}', array('as' => 'add_image','uses' => 'ImageController@getForm'));
+    Route::post('/admin/images/addimage', array('as' => 'add_image_to_album','uses' => 'ImageController@postAdd'));
+    Route::get('/admin/images/deleteimage/{id}', array('as' => 'delete_image','uses' => 'ImageController@getDelete'));
 
     
 });
