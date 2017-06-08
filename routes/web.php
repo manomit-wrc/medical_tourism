@@ -447,5 +447,18 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/documenttag/delete/{id}','DocumentTagController@delete');
     Route::post('/admin/documenttag/changestatus/','DocumentTagController@ajaxtagchangestatus');
 
+    //Album section
+    Route::get('/admin/albums', array('as' => 'index','uses' => 'AlbumsController@getList'));
+    Route::get('/admin/albums/createalbum', array('as' => 'create_album_form','uses' => 'AlbumsController@getForm'));
+    Route::post('/admin/albums/createalbum', array('as' => 'create_album','uses' => 'AlbumsController@postCreate'));
+    Route::get('/admin/albums/updatealbum/{id}', array('as' => 'update_album_form','uses' => 'AlbumsController@getUpdateForm'));
+    Route::post('/admin/albums/updatealbumpost/{id}', array('as' => 'update_album','uses' => 'AlbumsController@postUpdate'));
+    Route::get('/admin/albums/deletealbum/{id}', array('as' => 'delete_album','uses' => 'AlbumsController@getDelete'));
+    Route::get('/admin/albums/showalbum/{id}', array('as' => 'show_album','uses' => 'AlbumsController@getAlbum'));
+
+    Route::get('/admin/images/addimage/{id}', array('as' => 'add_image','uses' => 'ImageController@getForm'));
+    Route::post('/admin/images/addimage', array('as' => 'add_image_to_album','uses' => 'ImageController@postAdd'));
+    Route::get('/admin/images/deleteimage/{id}', array('as' => 'delete_image','uses' => 'ImageController@getDelete'));
+
     
 });

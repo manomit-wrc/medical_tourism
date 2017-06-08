@@ -202,7 +202,7 @@
          @endif
 
         
-         @if($user_view_composer->hasRole('admin/homepagecontent',Auth::guard('admin')->user()->id) || $user_view_composer->hasRole('admin/cmspagedetail',Auth::guard('admin')->user()->id))
+        @if($user_view_composer->hasRole('admin/homepagecontent',Auth::guard('admin')->user()->id) || $user_view_composer->hasRole('admin/cmspagedetail',Auth::guard('admin')->user()->id))
         <li class="treeview {{ Request::segment(2) === 'homepagecontent' ? 'active' : null || Request::segment(2) === 'cmspagedetail' ? 'active' : null }}">
           <a href="javascript:void(0)">
             <i class="fa fa-file-word-o"></i> <span>CMS Management </span>
@@ -215,7 +215,23 @@
             @if($user_view_composer->hasRole('admin/cmspagedetail',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'cmspagedetail' ? 'active' : null }}"><a href="{!!URL::to('/admin/cmspagedetail')!!}"><i class="fa fa-file-code-o"></i>CMS Page</a></li>@endif
           </ul>
         </li>
-         @endif
+        @endif
+
+        @if($user_view_composer->hasRole('admin/albums',Auth::guard('admin')->user()->id) || $user_view_composer->hasRole('admin/images',Auth::guard('admin')->user()->id))
+        <li class="treeview {{ Request::segment(2) === 'albums' ? 'active' : null || Request::segment(2) === 'images' ? 'active' : null }}">
+          <a href="javascript:void(0)">
+            <i class="fa fa-picture-o"></i> <span>Photo Gallery </span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            @if($user_view_composer->hasRole('admin/albums',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'albums' ? 'active' : null }}"><a href="/admin/albums"><i class="fa fa-picture-o"></i>Photo Gallery</a></li>@endif 
+          </ul>
+        </li>
+        @endif
+
+
       </ul>
     </section>
     <!-- /.sidebar -->
