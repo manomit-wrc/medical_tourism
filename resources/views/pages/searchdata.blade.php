@@ -14,8 +14,8 @@
         script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyB4eCXS81oEuOHH9BJ_vOVvqQL1qY90kIA&sensor=false&callback=initialize";
         document.body.appendChild(script);
     });
-	var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
-	var icon = iconBase + 'info-i_maps.png';
+	var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+	
     function initialize() {
         var map;
         var bounds = new google.maps.LatLngBounds();
@@ -76,7 +76,7 @@
             marker = new google.maps.Marker({
                 position: position,
                 map: map,
-				icon: icon,
+				icon: image,				
                 title: markers[i][0]
             });
             
