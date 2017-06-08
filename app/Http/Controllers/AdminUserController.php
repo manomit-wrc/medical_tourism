@@ -69,7 +69,7 @@ class AdminUserController extends Controller
         //echo "<pre>"; print_r($added_user_data[0]->roles[0]->name); die;
         $adminname=$added_user_data[0]->roles[0]->name.'('.$added_user_data[0]->name.')';
       }else{
-        $adminname='Swasthya Bandhav Admin';
+        $adminname='Swaasthya Bandhav Admin';
       }  
       
       $user->save();
