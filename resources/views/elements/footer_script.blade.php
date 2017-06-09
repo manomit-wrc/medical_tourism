@@ -541,17 +541,19 @@
         $('#txt_search').autocomplete({
             minLength: 0,
             source: function(request, response) {
-            $.ajax({
-                url: "/search-place",
-                dataType: "json",
-                data: {
-                    term : request.term
-                },
-                success: function(data) {
-                    response(data);
-                   
-                }
-            });
+              if(request.term !=''){
+                $.ajax({
+                    url: "/search-place",
+                    dataType: "json",
+                    data: {
+                        term : request.term
+                    },
+                    success: function(data) {
+                        response(data);
+                       
+                    }
+                });
+              }
         },
             scroll: true,
             select: function(e, ui) {

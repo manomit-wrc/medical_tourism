@@ -22,7 +22,7 @@ class SearchController extends Controller
 	        		->orWhereHas('state', function ($res) use ($query) {
         				$res->where('name', 'like', '%'.$query.'%');
         				$res->orWhereHas('country',function($res) use ($query){
-        					$res->where('name', 'like', '%'.$query.'%');
+        					$res->where('name', 'like', '%'.$query.'%');                           
         				});
 					})
     				->orderBy('name')->get();
