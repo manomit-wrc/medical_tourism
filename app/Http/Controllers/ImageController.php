@@ -8,6 +8,7 @@ use App\Album;
 use App\Images;
 use Redirect;
 use Session;
+use Image;
 
 class ImageController extends Controller
 {
