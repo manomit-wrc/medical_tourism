@@ -539,7 +539,7 @@
             'DOMINICA'];
 
         $('#txt_search').autocomplete({
-            minLength: 0,
+            minLength: 3,
             source: function(request, response) {
               if(request.term !=''){
                 $.ajax({
