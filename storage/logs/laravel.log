@@ -151,3 +151,53 @@ Stack trace:
 #45 C:\medical_tourism\public\index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #46 C:\medical_tourism\server.php(21): require_once('C:\\medical_tour...')
 #47 {main}  
+[2017-06-09 05:18:50] local.ERROR: exception 'Symfony\Component\Console\Exception\CommandNotFoundException' with message 'Command "make:migrate" is not defined.
+
+Did you mean one of these?
+    make:migration
+    make:policy
+    make:notification
+    make:provider
+    make:seeder
+    make:test
+    make:model
+    make:request
+    make:middleware
+    make:controller
+    make:command
+    make:event
+    make:job
+    make:mail
+    make:listener
+    make:auth' in C:\xampp\htdocs\medical_tourism\vendor\symfony\console\Application.php:534
+Stack trace:
+#0 C:\xampp\htdocs\medical_tourism\vendor\symfony\console\Application.php(182): Symfony\Component\Console\Application->find('make:migrate')
+#1 C:\xampp\htdocs\medical_tourism\vendor\symfony\console\Application.php(116): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#2 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(121): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#3 C:\xampp\htdocs\medical_tourism\artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#4 {main}  
+[2017-06-09 05:31:15] local.ERROR: exception 'Symfony\Component\Console\Exception\CommandNotFoundException' with message 'Command "make:migrate" is not defined.
+
+Did you mean one of these?
+    make:migration
+    make:policy
+    make:notification
+    make:provider
+    make:seeder
+    make:test
+    make:model
+    make:request
+    make:middleware
+    make:controller
+    make:command
+    make:event
+    make:job
+    make:mail
+    make:listener
+    make:auth' in C:\xampp\htdocs\medical_tourism\vendor\symfony\console\Application.php:534
+Stack trace:
+#0 C:\xampp\htdocs\medical_tourism\vendor\symfony\console\Application.php(182): Symfony\Component\Console\Application->find('make:migrate')
+#1 C:\xampp\htdocs\medical_tourism\vendor\symfony\console\Application.php(116): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#2 C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(121): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#3 C:\xampp\htdocs\medical_tourism\artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#4 {main}  
