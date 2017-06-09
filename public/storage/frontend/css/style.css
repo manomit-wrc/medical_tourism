@@ -2125,10 +2125,12 @@ div#myScrollWrapper {
 .scrollable .viewport {
   position: relative;
   overflow: hidden;
+  width: 100% !important;
 }
 
 .scrollable .viewport .overview {
   position: absolute;
+  width: 100%;
 }
 
 .scrollable .scroll-bar {
@@ -2139,6 +2141,7 @@ div#myScrollWrapper {
   position: absolute;
   right: 0;
   height: 100%;
+  z-index: 5;
 }
 
 .scrollable .scroll-bar.horizontal {
@@ -2200,7 +2203,7 @@ div#myScrollWrapper {
 /*Gray skin*/
 
 .scrollable.gray-skin {
-  padding-right: 8px;
+  /* padding-right: 8px; */
 }
 
 .scrollable.gray-skin .scroll-bar {
