@@ -23,6 +23,8 @@ Route::get('/doctors','PagesController@doctors');
 Route::get('/doctordetail/{id}','PagesController@doctordetail');
 Route::get('/contact','PagesController@contact');
 Route::post('contact-us', ['as'=>'contactus.store','uses'=>'ContactUSController@contactUSPost']);
+Route::get('/suggestion','PagesController@suggestion');
+Route::post('suggestion-us', ['as'=>'suggestion.store','uses'=>'SuggestionUSController@suggestionUSPost']);
 Route::get('/news','PagesController@news');
 Route::get('/newsdetails/{id}','PagesController@newsdetails');
 Route::get('/faqs','PagesController@faqs');
@@ -381,6 +383,12 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/contact/details/{id}','ContactUSController@details');
     Route::get('/admin/contact/sendmail/{id}','ContactUSController@sendmail');
     Route::patch('/admin/contact/send/{id}','ContactUSController@send');
+
+    //suggestion section
+    Route::get('/admin/suggestion','SuggestionUSController@index');
+    Route::get('/admin/suggestion/details/{id}','SuggestionUSController@details');
+    //Route::get('/admin/suggestion/sendmail/{id}','SuggestionUSController@sendmail');
+    //Route::patch('/admin/suggestion/send/{id}','SuggestionUSController@send');
 
     //faq category section
     Route::get('/admin/faqcategories','FaqCategoryController@index');

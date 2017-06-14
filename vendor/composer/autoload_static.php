@@ -481,6 +481,7 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         'CreateRolesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_24_085106_create_roles_table.php',
         'CreateSpecificServiceTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_21_092026_create_specific_service_table.php',
         'CreateSuccessStoriesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_28_052704_create_success_stories_table.php',
+        'CreateSuggestionUsTable' => __DIR__ . '/../..' . '/database/migrations/2017_06_12_091101_create_suggestion_us_table.php',
         'CreateThreadsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_28_175635_create_threads_table.php',
         'CreateTreatmentsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_13_094025_create_treatments_table.php',
         'CreateUserRoleTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_24_132948_create_user_role_table.php',

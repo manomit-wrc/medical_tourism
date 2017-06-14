@@ -171,6 +171,20 @@
         </li>
          @endif
 
+        @if($user_view_composer->hasRole('admin/suggestion',Auth::guard('admin')->user()->id))
+        <li class="treeview {{ Request::segment(2) === 'suggestion' ? 'active' : null }}">
+          <a href="javascript:void(0)">
+            <i class="fa fa-envelope"></i> <span>Suggestions</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+             @if($user_view_composer->hasRole('admin/suggestion',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'suggestion' ? 'active' : null }}"><a href="{!!URL::to('/admin/suggestion')!!}"><i class="fa fa-envelope"></i>Suggestions</a></li>@endif
+          </ul>
+        </li>
+        @endif
+
         @if($user_view_composer->hasRole('admin/faqcategories',Auth::guard('admin')->user()->id) || $user_view_composer->hasRole('admin/faqs',Auth::guard('admin')->user()->id))
         <li class="treeview {{ Request::segment(2) === 'faqcategories' || Request::segment(2) === 'faq' ? 'active' : null }}">
           <a href="javascript:void(0)">
