@@ -25,6 +25,9 @@ class Immigration extends Model
      *
      * @var array
      */
+    public function country() {
+       return $this->belongsTo('\App\Country');
+    }
     public function city() {
        return $this->belongsTo('\App\City');
     }

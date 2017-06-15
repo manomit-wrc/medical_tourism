@@ -40,6 +40,7 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                   <tr>
+                    <th>Country</th>
                     <th>Place</th>
                     <th>Name and Designation</th>
                     <th>Office address</th>
@@ -54,6 +55,7 @@
                   @if (count($immigration_lists) > 0)
                     @foreach($immigration_lists as $immigration_lists)
                       <tr>
+                        <td>{{ $immigration_lists->country->name }}</td>
                         <td>{{ $immigration_lists->city->name }}</td>
                         <td>{{ $immigration_lists->name }}<br/>{{ $immigration_lists->designation }}</td>
                         <td>{{ $immigration_lists->address }} {{ $immigration_lists->city->name }} <br/>{{ $immigration_lists->city->name }}</td>
