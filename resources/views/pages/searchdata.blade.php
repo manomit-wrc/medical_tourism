@@ -74,7 +74,7 @@
             marker = new google.maps.Marker({
                 position: position,
                 map: map,
-				        icon: map,				
+				        icon: image,				
                 title: markers[i][0]
             });
             
@@ -97,12 +97,7 @@
     }
 
   </script>
-    </div>
-  
- 
-  
-   
-  
+    </div>  
 </div>
 
 <div class="col-md-4">
