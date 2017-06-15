@@ -113,7 +113,7 @@ class SearchController extends Controller
         }else{
             $cityid ='';
         }
-        $search_data = \App\Hospital::whereHas('city',function($res) use($txt_search) {
+        $search_data = \App\Hospital::('city',function($res) use($txt_search) {
             $res->where('name','like','%'.$txt_search.'%');
 
         })->where('hospitals.name','like','%'.$search_val.'%')->where('hospitals.city_id',$cityid)->orderBy('hospitals.name')->get();

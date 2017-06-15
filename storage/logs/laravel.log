@@ -271,3 +271,27 @@ Stack trace:
 #51 C:\xampp\htdocs\medical_tourism\public\index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #52 C:\xampp\htdocs\medical_tourism\server.php(21): require_once('C:\\xampp\\htdocs...')
 #53 {main}  
+[2017-06-15 05:56:42] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '('' in C:\medical_tourism\app\Http\Controllers\SearchController.php:116
+Stack trace:
+#0 {main}  
+[2017-06-15 05:57:02] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '('' in C:\medical_tourism\app\Http\Controllers\SearchController.php:116
+Stack trace:
+#0 {main}  
+[2017-06-15 05:57:05] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '('' in C:\medical_tourism\app\Http\Controllers\SearchController.php:116
+Stack trace:
+#0 {main}  
+[2017-06-15 05:57:08] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '('' in C:\medical_tourism\app\Http\Controllers\SearchController.php:116
+Stack trace:
+#0 {main}  
+[2017-06-15 05:57:16] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '('' in C:\medical_tourism\app\Http\Controllers\SearchController.php:116
+Stack trace:
+#0 {main}  
+[2017-06-15 05:57:43] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '('' in C:\medical_tourism\app\Http\Controllers\SearchController.php:116
+Stack trace:
+#0 {main}  
+[2017-06-15 05:58:37] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '('' in C:\medical_tourism\app\Http\Controllers\SearchController.php:116
+Stack trace:
+#0 {main}  
+[2017-06-15 05:59:35] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '('' in C:\medical_tourism\app\Http\Controllers\SearchController.php:116
+Stack trace:
+#0 {main}  

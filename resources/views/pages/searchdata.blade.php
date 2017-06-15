@@ -74,7 +74,7 @@
             marker = new google.maps.Marker({
                 position: position,
                 map: map,
-				        icon: image,				
+				        icon: map,				
                 title: markers[i][0]
             });
             
