@@ -43,6 +43,7 @@
                   <tr>
                     <th style="display:none;"></th>
                     <th>Generic Name of the Medicine</th>
+                    <th>Brand Name</th>
                     <th>Strip/Unit</th>
                     <th>MRP</th>
                     <th>Status</th>
@@ -55,6 +56,7 @@
                       <tr>
                         <td style="display:none;"><input type="hidden" value="{{ $genmedval->id }}"></td>
                         <td>{{ $genmedval->generic_name_of_the_medicine }}</td>
+                        <td>{{ $genmedval->brand_name }}</td>
                         <td>{{ $genmedval->unit }}</td>
                         <td>{{ $genmedval->price }}</td>
                        <!--  <td>{{ ($genmedval->status ==1)? 'Active':'In-Active' }}</td> -->

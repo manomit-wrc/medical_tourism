@@ -52,13 +52,23 @@
                           {!! Form::text('generic_name_of_the_medicine',null,array('class'=>'form-control','id'=>'generic_name_of_the_medicine','placeholder'=>'Enter Generic Name of the Medicine')) !!}
                           {!! Html::decode('<span class="text-danger">'.$errors->first("generic_name_of_the_medicine").'</span>') !!}
                         </div>
+                         <!-- /.text input -->
 
+                         <!-- text input -->
+                        <div class="form-group">
+                          {!! Html::decode(Form::label('generic_name_of_the_medicine','Brand Name: <span style="color:red;">*</span>')) !!}
+                          {!! Form::text('brand_name',null,array('class'=>'form-control','id'=>'brand_name','placeholder'=>'Enter Brand Name')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("brand_name").'</span>') !!}
+                        </div>
+                        <!-- /.text input -->
+                        <!-- text input -->
+                        
                         <div class="form-group">
                           {!! Html::decode(Form::label('unit','Strip/Unit: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('unit',null,array('class'=>'form-control','id'=>'unit','placeholder'=>'Enter Strip/Unit')) !!}
                           {!! Html::decode('<span class="text-danger">'.$errors->first("unit").'</span>') !!}
                         </div>
-
+                         <!-- /.text input -->
                         <div class="form-group">
                           {!! Html::decode(Form::label('price','Price: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('price',null,array('class'=>'form-control','id'=>'price','placeholder'=>'Enter Price')) !!}

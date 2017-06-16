@@ -37,7 +37,7 @@ class DoctorController extends Controller
 
     public function store(Request $request) {
 
-        Validator::make($request->all(), [
+        /*Validator::make($request->all(), [
           'first_name' => 'required|max:32',
           'last_name' => 'required|max:32',
           'about' => 'required',
@@ -50,6 +50,26 @@ class DoctorController extends Controller
           'mobile_no' => 'required|regex:/[0-9]{10}/',
           'phone_no' => 'required',
           'avators' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+          'degree_id' => 'required|array',
+          'procedure_id' => 'required|array'
+      ],[
+        'country_id.required' => 'country field is required',
+        'state_id.required' => 'state field is required',
+        'city_id.required' => 'city field is required',
+        'degree_id.required' => 'degree field is required',
+        'procedure_id.required' => 'procedure field is required'
+        ])->validate();*/
+
+         Validator::make($request->all(), [
+          'first_name' => 'required|max:32',
+          'last_name' => 'required|max:32',
+          'country_id' => 'required',
+          'state_id' => 'required',
+          'city_id' => 'required',
+          'zipcode' => 'min:6|max:6',
+          'email' => 'email|unique:doctors,email',
+          'mobile_no' => 'regex:/[0-9]{10}/',
+          'avators' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
           'degree_id' => 'required|array',
           'procedure_id' => 'required|array'
       ],[
@@ -134,7 +154,7 @@ class DoctorController extends Controller
     }
 
     public function update(Request $request, $id) {
-      Validator::make($request->all(), [
+     /* Validator::make($request->all(), [
         'first_name' => 'required|max:32',
         'last_name' => 'required|max:32',
         'about' => 'required',
@@ -147,6 +167,26 @@ class DoctorController extends Controller
         'mobile_no' => 'required|regex:/[0-9]{10}/',
         'phone_no' => 'required',
         'avators' => 'required_with|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'degree_id' => 'required|array',
+        'procedure_id' => 'required|array'
+      ],[
+        'country_id.required' => 'country field is required',
+        'state_id.required' => 'state field is required',
+        'city_id.required' => 'city field is required',
+        'degree_id.required' => 'degree field is required',
+        'procedure_id.required' => 'procedure field is required'
+        ])->validate();*/
+        
+        Validator::make($request->all(), [
+        'first_name' => 'required|max:32',
+        'last_name' => 'required|max:32',
+        'country_id' => 'required',
+        'state_id' => 'required',
+        'city_id' => 'required',
+        'zipcode' => 'min:6|max:6',
+        'email' => 'email|unique:doctors,email,'.$request->id,
+        'mobile_no' => 'regex:/[0-9]{10}/',
+        'avators' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         'degree_id' => 'required|array',
         'procedure_id' => 'required|array'
       ],[

@@ -33,6 +33,7 @@ class GenericmedicineController extends Controller
     {
       $this->validate($request, [
         'generic_name_of_the_medicine' => 'required|unique:genericmedicines',
+        'brand_name' => 'required',
         'unit' => 'required',
         'price' => 'required',
         'procedure_id' => 'required'
@@ -40,6 +41,7 @@ class GenericmedicineController extends Controller
 
        	$gems = new Genericmedicine();
        	$gems->generic_name_of_the_medicine = $request->generic_name_of_the_medicine;
+        $gems->brand_name = $request->brand_name;
        	$gems->unit = $request->unit;
        	$gems->price = $request->price;
        	$gems->save();
@@ -68,11 +70,13 @@ class GenericmedicineController extends Controller
         // validate
         $this->validate($request, [
         'generic_name_of_the_medicine' => 'required|unique:genericmedicines,generic_name_of_the_medicine,'.$id,
+        'brand_name' => 'required',
         'unit' => 'required',
         'price' => 'required',
         'procedure_id' => 'required'
       ]);
        	$gems->generic_name_of_the_medicine = $request->generic_name_of_the_medicine;
+        $gems->brand_name = $request->brand_name;
        	$gems->unit = $request->unit;
        	$gems->price = $request->price;
         $gems->status = $request->status; 

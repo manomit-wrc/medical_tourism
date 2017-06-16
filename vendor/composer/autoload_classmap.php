@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'AddAboutToDoctors' => $baseDir . '/database/migrations/2017_05_08_042422_add_about_to_doctors.php',
     'AddAddedByUsersTable' => $baseDir . '/database/migrations/2017_05_18_071731_add_added_by_users_table.php',
+    'AddBrandNameToGenericmedicines' => $baseDir . '/database/migrations/2017_06_16_045519_add_brand_name_to_genericmedicines.php',
     'AddCountryIdCityIdImmigrationsTable' => $baseDir . '/database/migrations/2017_05_09_085912_add_country_id_city_id_immigrations_table.php',
     'AddCurrencyIdColumsToHotelsTable' => $baseDir . '/database/migrations/2017_04_25_091752_add_currency_id_colums_to_hotels_table.php',
     'AddFileNameDocumentsTable' => $baseDir . '/database/migrations/2017_05_22_063046_add_file_name_documents_table.php',

@@ -45,9 +45,9 @@
                   <tr>
                     <th>First Name</th>
                     <th>Last Name</th>
-                    <th>Email</th>
+                   <!--  <th>Email</th>
                     <th>Mobile No</th>
-                    <th>City</th>
+                    <th>City</th> -->
                     <th>Status</th>
                     <th width="11%">Actions</th>
                   </tr>
@@ -60,9 +60,9 @@
                       <tr>
                         <td>{{ $dd->first_name }}</td>
                         <td>{{ $dd->last_name }}</td>
-                        <td>{{ $dd->email }}</td>
+                        <!-- <td>{{ $dd->email }}</td>
                         <td>{{ $dd->mobile_no }}</td>
-                        <td>{{ $dd->cities->name }}</td>
+                        <td>{{ $dd->cities->name }}</td> -->
                         <td>
                           @if($dd->status ==1)
                             <span data-toggle="tooltip" data-original-title="Click here to change status">
