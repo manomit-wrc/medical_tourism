@@ -49,3 +49,12 @@ Stack trace:
 [2017-06-15 11:13:25] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '('' in C:\medical_tourism\app\Http\Controllers\SearchController.php:116
 Stack trace:
 #0 {main}  
+[2017-06-15 11:58:16] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '('' in C:\medical_tourism\app\Http\Controllers\SearchController.php:116
+Stack trace:
+#0 {main}  
+[2017-06-15 12:22:52] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '('' in C:\medical_tourism\app\Http\Controllers\SearchController.php:116
+Stack trace:
+#0 {main}  
+[2017-06-19 05:11:59] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '('' in C:\medical_tourism\app\Http\Controllers\SearchController.php:116
+Stack trace:
+#0 {main}  
