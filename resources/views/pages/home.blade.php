@@ -16,7 +16,10 @@
                                 <ul>
                                     @if(count($procedure_lists) > 0)
                                       @foreach($procedure_lists as $procedure_lists)
-                                        <li><img src="{{url('/uploads/procedures/thumb/'.$procedure_lists->procedure_image)}}"  alt="Image 1"><h3>{{ $procedure_lists->name }}</h3></li>
+                                        <li>
+                                        <a href="{!!URL::to('search-data?_token='.csrf_token().'&select_treatment=&select_procedure='.$procedure_lists->id.'&txt_search=')!!}" > 
+                                        <img src="{{url('/uploads/procedures/thumb/'.$procedure_lists->procedure_image)}}"  alt="Image 1"><h3>{{ $procedure_lists->name }}</h3>
+                                        </a></li>
                                       @endforeach
                                     @endif
                                 </ul>

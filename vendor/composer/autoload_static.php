@@ -395,6 +395,7 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
     public static $classMap = array (
         'AddAboutToDoctors' => __DIR__ . '/../..' . '/database/migrations/2017_05_08_042422_add_about_to_doctors.php',
         'AddAddedByUsersTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_18_071731_add_added_by_users_table.php',
+        'AddBrandNameToGenericmedicines' => __DIR__ . '/../..' . '/database/migrations/2017_06_16_045519_add_brand_name_to_genericmedicines.php',
         'AddCountryIdCityIdImmigrationsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_09_085912_add_country_id_city_id_immigrations_table.php',
         'AddCurrencyIdColumsToHotelsTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_25_091752_add_currency_id_colums_to_hotels_table.php',
         'AddFileNameDocumentsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_22_063046_add_file_name_documents_table.php',

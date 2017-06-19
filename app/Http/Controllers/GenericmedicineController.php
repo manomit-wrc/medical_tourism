@@ -20,7 +20,7 @@ class GenericmedicineController extends Controller
       $genericmedicine = Genericmedicine::where('status', '!=', 2)->orderBy('id','desc')->get();
       //echo "<pre>"; print_r($langcapbes); die;
     	return view('admin.genericmedicine.index')->with('genericmedicine',$genericmedicine);
-    }
+  }
 
    	public function create()
     {
@@ -32,7 +32,8 @@ class GenericmedicineController extends Controller
     public function store(Request $request)
     {
       $this->validate($request, [
-        'generic_name_of_the_medicine' => 'required|unique:genericmedicines',
+        'generic_name_of_the_medicine' => 'required',
+        'brand_name' => 'required',
         'unit' => 'required',
         'price' => 'required',
         'procedure_id' => 'required'
@@ -40,6 +41,7 @@ class GenericmedicineController extends Controller
 
        	$gems = new Genericmedicine();
        	$gems->generic_name_of_the_medicine = $request->generic_name_of_the_medicine;
+        $gems->brand_name = $request->brand_name;
        	$gems->unit = $request->unit;
        	$gems->price = $request->price;
        	$gems->save();
@@ -67,12 +69,14 @@ class GenericmedicineController extends Controller
         $gems = Genericmedicine::find($id);
         // validate
         $this->validate($request, [
-        'generic_name_of_the_medicine' => 'required|unique:genericmedicines,generic_name_of_the_medicine,'.$id,
+        'generic_name_of_the_medicine' => 'required',
+        'brand_name' => 'required',
         'unit' => 'required',
         'price' => 'required',
         'procedure_id' => 'required'
       ]);
        	$gems->generic_name_of_the_medicine = $request->generic_name_of_the_medicine;
+        $gems->brand_name = $request->brand_name;
        	$gems->unit = $request->unit;
        	$gems->price = $request->price;
         $gems->status = $request->status; 

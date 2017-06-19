@@ -55,6 +55,13 @@
                         <!-- /.text input -->
                         <!-- text input -->
                         <div class="form-group">
+                          {!! Html::decode(Form::label('generic_name_of_the_medicine','Brand Name: <span style="color:red;">*</span>')) !!}
+                          {!! Form::text('brand_name','',array('class'=>'form-control','id'=>'brand_name','placeholder'=>'Enter Brand Name')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("brand_name").'</span>') !!}
+                        </div>
+                        <!-- /.text input -->
+                        <!-- text input -->
+                        <div class="form-group">
                           {!! Html::decode(Form::label('unit','Strip/Unit: <span style="color:red;">*</span>')) !!}
                           {!! Form::text('unit','',array('class'=>'form-control','id'=>'unit','placeholder'=>'Enter Strip/Unit')) !!}
                           {!! Html::decode('<span class="text-danger">'.$errors->first("unit").'</span>') !!}

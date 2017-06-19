@@ -15,46 +15,46 @@ class SearchController extends Controller
     }
 
     public function search_place(Request $request) {
-    	if($request->ajax()) {
-    		$query = $request->term;
+        if($request->ajax()) {
+            $query = $request->term;
         
-	        $cities=City::where('name','LIKE','%'.$query.'%')
-	        		->orWhereHas('state', function ($res) use ($query) {
-        				$res->where('name', 'like', '%'.$query.'%');
-        				$res->orWhereHas('country',function($res) use ($query){
-        					$res->where('name', 'like', '%'.$query.'%');                           
-        				});
-					})
-    				->orderBy('name')->get();
-	        
-	        $data=array();
-	        foreach ($cities as $city) {
-	                $data[]=array('value'=>$city->name,'id'=>$city->id);
-	        }
-	        if(count($data))
-	             return $data;
-	        else
-	            return ['value'=>'No Result Found','id'=>''];
-	    	}
+            $cities=City::where('name','LIKE','%'.$query.'%')
+                    ->orWhereHas('state', function ($res) use ($query) {
+                        $res->where('name', 'like', '%'.$query.'%');
+                        $res->orWhereHas('country',function($res) use ($query){
+                            $res->where('name', 'like', '%'.$query.'%');                           
+                        });
+                    })
+                    ->orderBy('name')->get();
+            
+            $data=array();
+            foreach ($cities as $city) {
+                    $data[]=array('value'=>$city->name,'id'=>$city->id);
+            }
+            if(count($data))
+                 return $data;
+            else
+                return ['value'=>'No Result Found','id'=>''];
+            }
     }
 
     public function search_data(Request $request) {
-    	$select_treatment = $request->select_treatment;
-    	$select_procedure = $request->select_procedure;
-    	$txt_search = $request->txt_search;
-    	/*echo $select_treatment." ".$select_procedure." ".$txt_search;
-    	die();*/
-    	$search_data = \App\Hospital::whereHas('city',function($res) use($txt_search) {
-    		$res->where('name','like','%'.$txt_search.'%');
+        $select_treatment = $request->select_treatment;
+        $select_procedure = $request->select_procedure;
+        $txt_search = $request->txt_search;
+        /*echo $select_treatment." ".$select_procedure." ".$txt_search;
+        die();*/
+        $search_data = \App\Hospital::whereHas('city',function($res) use($txt_search) {
+            $res->where('name','like','%'.$txt_search.'%');
 
-    	})
-    	->orWhereHas('treatments',function($res) use($select_treatment,$select_procedure){
-    		$res->where('treatments.id',$select_treatment);
-    		$res->whereHas('procedure', function($res) use($select_procedure){
-    		$res->where('procedures.id',$select_procedure);
-    		});
-    	})->orderBy('hospitals.name')->get();
-    	 //echo "<pre>"; print_r($search_data[0]->country->name); die();
+        })
+        ->orWhereHas('treatments',function($res) use($select_treatment,$select_procedure){
+            $res->where('treatments.id',$select_treatment);
+            $res->whereHas('procedure', function($res) use($select_procedure){
+            $res->where('procedures.id',$select_procedure);
+            });
+        })->orderBy('hospitals.name')->get();
+         //echo "<pre>"; print_r($search_data[0]->country->name); die();
         //echo "<pre>"; print_r($search_data); die();
         /*$locations=[
             ['city'=>'kolkata','lat'=> -33.890542,'longi'=> 151.274856,'ord'=> 4],
@@ -72,7 +72,7 @@ class SearchController extends Controller
             $i++;
          }
         //echo "<pre>"; print_r($locations); die();
-    	//return view('pages.searchdata')->with('search_data',$search_data);
+        //return view('pages.searchdata')->with('search_data',$search_data);
         return view('pages.searchdata',compact('search_data','locations'));
     }
     public function hospitalsearch_res(Request $request) {
@@ -113,7 +113,7 @@ class SearchController extends Controller
         }else{
             $cityid ='';
         }
-        $search_data = \App\Hospital::('city',function($res) use($txt_search) {
+        $search_data = \App\Hospital::whereHas('city',function($res) use($txt_search) {
             $res->where('name','like','%'.$txt_search.'%');
 
         })->where('hospitals.name','like','%'.$search_val.'%')->where('hospitals.city_id',$cityid)->orderBy('hospitals.name')->get();

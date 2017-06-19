@@ -69,18 +69,19 @@
 
                             <label>
                             State <span style="color:red;">* </span>
-                               <select name="state_id" id="state_id" class="listtypeI select2" ></select>
+                               <select name="state_id" id="state_id" class="listtypeI select2" >
+                                 <option value="">Please select country</option>
+                               </select>
                                {!! Html::decode('<span class="text-danger">'.$errors->first("state_id").'</span>') !!}
                             </label>
 
                             <label>
                             City <span style="color:red;">* </span>
-                               <select name="city_id" id="city_id" class="listtypeI select2" ></select>
+                               <select name="city_id" id="city_id" class="listtypeI select2" >
+                                 <option value="">Please select state</option>
+                               </select>
                                {!! Html::decode('<span class="text-danger">'.$errors->first("city_id").'</span>') !!}
-                            </label>
-                            
-                            
-
+                            </label>                         
                             <label>
                             Comments <span style="color:red;">* </span>
                             {!! Form::textarea('comments','',array('class'=>'Cinput','id'=>'comments_id','placeholder'=>'Enter comments')) !!}
