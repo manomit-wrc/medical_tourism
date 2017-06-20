@@ -3,7 +3,7 @@
 @section('content')
 <!--Right panel start here-->
   <div class="col-md-8">
-        <div class="rightP">
+        <div class="sernewD1">
            <h3>About <b>doctor</b></h3>
           
           <p>{{ $doctor_details->about }}</p>

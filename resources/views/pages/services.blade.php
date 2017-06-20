@@ -8,16 +8,15 @@
             @if (count($service_lists) > 0)
                 @foreach($service_lists as $service_lists)
                     <div class="col-sm-6 col-md-6">
-                        <div class="servicesbox">
+                        <div class="servicesboxnew">
                             <a  href="{!!URL::to('/servicedetails/'.$service_lists->id)!!}"><img src="{{url('/uploads/medicalfacilities/thumb_352_170/'.$service_lists->facility_image)}}" alt=""></a>
-                            <h4><a  href="{!!URL::to('/servicedetails/'.$service_lists->id)!!}">{{ $service_lists->name }}</a></h4>
+                            <h4><a href="{!!URL::to('/servicedetails/'.$service_lists->id)!!}">{{ $service_lists->name }}</a></h4>
                             <p>{!! \Illuminate\Support\Str::words($service_lists->description, 10,'....')  !!}</p>
-                            <a class="viewdetails" href="{!!URL::to('/servicedetails/'.$service_lists->id)!!}">VIEW MORE</a>
+                            <a class="viewdetailsnew" href="{!!URL::to('/servicedetails/'.$service_lists->id)!!}">VIEW MORE</a>
                         </div>
                     </div>
                 @endforeach
             @endif
-
         </div>
     </div>
 </div>
