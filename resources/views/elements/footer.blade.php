@@ -91,11 +91,11 @@
                       </div>
                       <div class="col-md-3">
                           <h3>Connect With Us</h3>
-                          <a href="javascript:void(0)" class="socialF"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                          <a href="javascript:void(0)" class="socialF"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                          <a href="javascript:void(0)" class="socialF"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                          <a href="javascript:void(0)" class="socialF"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                          <a href="javascript:void(0)" class="socialF"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                          <a href="https://www.facebook.com/wrctechnologies" class="socialF" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                          <a href="https://twitter.com/wrctechnologies" class="socialF" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                          <a href="javascript:void(0)" class="socialF" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                          <a href="https://www.linkedin.com/company/wrc-technologies-pvt-ltd" class="socialF" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                          <a href="javascript:void(0)" class="socialF" target="_blank"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
                       </div>
                   </div>
                   <div class="row">

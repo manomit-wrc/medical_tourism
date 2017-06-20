@@ -187,6 +187,7 @@ return [
         GoogleMaps\ServiceProvider\GoogleMapsServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Cmgmyr\Messenger\MessengerServiceProvider::class,
+        Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
     ],
 
     /*
@@ -242,6 +243,12 @@ return [
         'VisitLog' => Sarfraznawaz2005\VisitLog\Facades\VisitLog::class,
         'GoogleMaps' => GoogleMaps\Facade\GoogleMapsFacade::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+         //other Facades ommited
+        'SEOMeta'   => Artesaos\SEOTools\Facades\SEOMeta::class,
+        'OpenGraph' => Artesaos\SEOTools\Facades\OpenGraph::class,
+        'Twitter'   => Artesaos\SEOTools\Facades\TwitterCard::class,
+        //or
+        'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
     ],
 
 ];

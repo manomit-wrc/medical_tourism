@@ -1,0 +1,9 @@
+[2017-06-20 11:04:25] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'Dimsav\Translatable\TranslatableServiceProvider' not found' in C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Foundation\ProviderRepository.php:146
+Stack trace:
+#0 {main}  
+[2017-06-20 11:05:52] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'Dimsav\Translatable\TranslatableServiceProvider' not found' in C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Foundation\ProviderRepository.php:146
+Stack trace:
+#0 {main}  
+[2017-06-20 12:10:43] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'Dimsav\Translatable\TranslatableServiceProvider' not found' in C:\xampp\htdocs\medical_tourism\vendor\laravel\framework\src\Illuminate\Foundation\ProviderRepository.php:146
+Stack trace:
+#0 {main}  
