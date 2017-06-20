@@ -26,7 +26,7 @@
                             </div>
                             <a href="#" class="jcarousel-control-prev arrow_M0"><img src="{!!URL::to('storage/frontend/images/mal.png')!!}"  alt="Image 1"></a>
                             <a href="#" class="jcarousel-control-next arrow_M0"><img src="{!!URL::to('storage/frontend/images/mar.png')!!}"  alt="Image 1"></a>
-                            <p class="jcarousel-pagination"></p>
+                            <!-- <p class="jcarousel-pagination"></p> -->
                         </div>
                       </div>
                   </div>
