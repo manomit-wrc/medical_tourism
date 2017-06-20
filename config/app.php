@@ -247,7 +247,7 @@ return [
         'SEOMeta'   => Artesaos\SEOTools\Facades\SEOMeta::class,
         'OpenGraph' => Artesaos\SEOTools\Facades\OpenGraph::class,
         'Twitter'   => Artesaos\SEOTools\Facades\TwitterCard::class,
-        //or
+        //or SEO
         'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
     ],
 

@@ -10,7 +10,14 @@
             <div class="Himg">
                 <img src="{{url('/uploads/hospitals/'.$hospital_data->avators)}}" alt="Hospital Image">
                 <h4><b>{{ $hospital_data->name }}</b></h4>
+                @php
+                if(!empty($hospital_data->website))
+                {
+                @endphp
                 <p><i class="fa fa-globe" aria-hidden="true"></i> <a href="">{{ $hospital_data->website }}</a></p>
+                @php
+                }
+               @endphp
             </div>
           </div>
 
