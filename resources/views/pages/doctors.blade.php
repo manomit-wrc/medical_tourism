@@ -35,7 +35,19 @@
             @foreach($doctor_data as $doctor_data)
             <div class="col-sm-6 col-md-4">
                 <div class="servicesboxN">
-                    <a href="{!!URL::to('/doctordetail/'.$doctor_data->id)!!}"><img src="{{url('/uploads/doctors/thumb/'.$doctor_data->avators)}}" alt="doctor Image"></a>
+                    <a href="{!!URL::to('/doctordetail/'.$doctor_data->id)!!}">
+                    @php
+                    if($doctor_data->avators !=''){
+                    @endphp
+                    <img src="{{url('/uploads/doctors/thumb/'.$doctor_data->avators)}}" alt="doctor Image">
+                    @php
+                    }else {
+                    @endphp
+                    <img src="{{url('/uploads/doctors/noimage_user.jpg')}}" alt="doctor Image">
+                     @php
+                    }
+                   @endphp
+                    </a>
                     <h4>{{ $doctor_data->first_name.' '.$doctor_data->last_name }}</h4>
                     <p>{!! \Illuminate\Support\Str::words($doctor_data->about, 8,'....')  !!}</p>
                     <a href="#" class="socialD1"><i class="fa fa-facebook" aria-hidden="true"></i></a>

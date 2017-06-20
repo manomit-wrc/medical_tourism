@@ -226,7 +226,7 @@
           </a>
           <ul class="treeview-menu">
             @if($user_view_composer->hasRole('admin/homepagecontent',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'homepagecontent' ? 'active' : null }}"><a href="/admin/homepagecontent"><i class="fa fa-file-code-o"></i>Homepage Content</a></li>@endif 
-            @if($user_view_composer->hasRole('admin/cmspagedetail',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'cmspagedetail' ? 'active' : null }}"><a href="{!!URL::to('/admin/cmspagedetail')!!}"><i class="fa fa-file-code-o"></i>CMS Page</a></li>@endif
+            @if($user_view_composer->hasRole('admin/cmspagedetail',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'cmspagedetail' ? 'active' : null }}"><a href="{!!URL::to('/admin/cmspagedetail')!!}"><i class="fa fa-file-code-o"></i>CMS Pages</a></li>@endif
           </ul>
         </li>
         @endif

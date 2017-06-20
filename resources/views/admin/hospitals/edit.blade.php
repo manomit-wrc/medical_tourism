@@ -87,7 +87,7 @@
                         <!-- file input -->
                         <div class="form-group">
                           {!! Html::decode(Form::label('avators','Image: ')) !!}
-                           <img src="{{url('/uploads/hospitals/thumb/'.$hosptl_data->avators)}}" alt="Hospital Image" class="img_broder">
+                           <img src="{{url('/uploads/hospitals/thumb/'.$hosptl_data->avators)}}" alt="Hospital Image" style="width:450px; height:214px;" class="img_broder">
                           {!! Form::file('avators', null) !!}
                           <span style="color:red;">* (Image must be minimum of 745x214)</span>
                           {!! Html::decode('<br /><span class="text-danger">'.$errors->first("avators").'</span>') !!}

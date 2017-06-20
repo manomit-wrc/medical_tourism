@@ -7,7 +7,7 @@
                  <div class="call"><i class="fa fa-phone" aria-hidden="true"></i>Call us now +62 008 65 001</div>
             </div>
             <div class="col-md-5">
-                 <div class="rightlinks">
+                <div class="rightlinks">
                    @if(Auth::guard('front')->check())
                     <span id="profileheaderimg">
                      <img src="{!! Auth::guard('front')->user()->thumb() !!}" alt=""></span> Welcome <a href="{!!URL::to('/profile')!!}" style="color:#691134"  onmouseover="this.style.color='#cf4d7e';" onmouseout="this.style.color='#691134';">{!! \Illuminate\Support\Str::words(Auth::guard('front')->user()->first_name, 1,'..')  !!}</a>                     
@@ -19,7 +19,7 @@
                      </ul>
                    @endif
 
-                    </div>
+                </div>
             </div>
 
             <!-- login Modal -->
