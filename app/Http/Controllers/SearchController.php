@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\City;
 use App\State;
 use App\Country;
+use App\Treatment;
 
 class SearchController extends Controller
 {
@@ -38,15 +39,37 @@ class SearchController extends Controller
             }
     }
 
+    public function search_treatment(Request $request) {
+      
+      if($request->ajax()) {
+        $procedure_id = $request->procedure_id;
+        if($procedure_id) {
+          $treatment_list = Treatment::where('procedure_id',$procedure_id)->get()->pluck('name','id')->toArray();
+          /*echo "<pre>"; print_r($treatment_list); die;*/
+          if($treatment_list) {
+            return response()->json(['status' => '1','treatment_list'=>$treatment_list]);
+          }
+          else {
+            return response()->json(['status' => '0','treatment_list'=>array()]);
+          }
+        }
+      }
+    }
+
     public function search_data(Request $request) {
         $select_treatment = $request->select_treatment;
         $select_procedure = $request->select_procedure;
         $txt_search = $request->txt_search;
-        /*echo $select_treatment." ".$select_procedure." ".$txt_search;
-        die();*/
+        //echo $select_treatment." ".$select_procedure." ".$txt_search; die();
         $search_data = \App\Hospital::whereHas('city',function($res) use($txt_search) {
             $res->where('name','like','%'.$txt_search.'%');
 
+        })
+        ->orWhereHas('state',function($res) use($txt_search) {
+            $res->where('name','like','%'.$txt_search.'%');
+        })
+         ->orWhereHas('country',function($res) use($txt_search) {
+            $res->where('name','like','%'.$txt_search.'%');
         })
         ->orWhereHas('treatments',function($res) use($select_treatment,$select_procedure){
             $res->where('treatments.id',$select_treatment);
