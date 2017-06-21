@@ -5,67 +5,88 @@
     <div class="rightP">
         <!--<h3>Our <b>Services</b></h3>-->
         <div class="row">
+
+          <div class="col-md-6">
+            <div class="Himg">
+                <img src="{{url('/uploads/hospitals/'.$hospital_data->avators)}}" alt="Hospital Image">
+                <h4><b>{{ $hospital_data->name }}</b></h4>
+                @php
+                if(!empty($hospital_data->website))
+                {
+                @endphp
+                <p><i class="fa fa-globe" aria-hidden="true"></i> <a href="">{{ $hospital_data->website }}</a></p>
+                @php
+                }
+               @endphp
+            </div>
+          </div>
+
+          <div class="col-md-6">
+              <div class="Hright">
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td><b>Address</b></td>
+                    <td>:</td>
+                    <td>{{ $hospital_data->street_address }}</td>
+                  </tr>
+                  <tr>
+                    <td><b>City</b></td>
+                    <td>:</td>
+                    <td>{{ $hospital_data->city->name }} - {{ $hospital_data->zipcode }}</td>
+                  </tr>
+                  <tr>
+                    <td width="30%"><b>Phone no</b></td>
+                    <td>:</td>
+                    <td>{{ $hospital_data->phone }}</td>
+                  </tr>
+                  <tr>
+                    <td><b>Email</b></td>
+                    <td>:</td>
+                    <td>{{ $hospital_data->email }}</td>
+                  </tr>
+                </table>
+              </div>
+
+              <div class="Hright">
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td><b>No. of Hospital Beds</b></td>
+                    <td>:</td>
+                    <td>{{ $hospital_data->number_of_beds }}</td>
+                  </tr>
+                  <tr>
+                    <td><b>No. of ICU Beds</b></td>
+                    <td>:</td>
+                    <td>{{ $hospital_data->number_of_icu_beds }}</td>
+                  </tr>
+                  <tr>
+                    <td width="60%"><b>No. of Operating Rooms</b></td>
+                    <td>:</td>
+                    <td>{{ $hospital_data->number_of_operating_rooms }}</td>
+                  </tr>
+                  <tr>
+                    <td><b>Payment Mode</b></td>
+                    <td>:</td>
+                    <td>card, cash, wire</td>
+                  </tr>
+                  <tr>
+                    <td><b>Avg. International Patients</b></td>
+                    <td>:</td>
+                    <td>{{ $hospital_data->number_of_avg_international_patients }}</td>
+                  </tr>
+                </table>
+              </div>
+          </div>
+
+
             <div class="col-sm-12">
                 <div class="detailsP">
-                    <img src="{{url('/uploads/hospitals/'.$hospital_data->avators)}}" alt="Hospital Image">
-                    <h4><b>{{ $hospital_data->name }}</b></h4>
-                    <p><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;{{ $hospital_data->country->name }}, {{ $hospital_data->state->name }},, {{ $hospital_data->city->name }}</p>
-                     <p><i class="fa fa-globe" aria-hidden="true"></i> <a href="">{{ $hospital_data->website }}</a></p>
+                    <!-- <img src="{{url('/uploads/hospitals/'.$hospital_data->avators)}}" alt="Hospital Image"> -->
+                    <!-- <h4><b>{{ $hospital_data->name }}</b></h4> -->
+                    <!-- <p><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;{{ $hospital_data->country->name }}, {{ $hospital_data->state->name }},, {{ $hospital_data->city->name }}</p> -->
+                     <!-- <p><i class="fa fa-globe" aria-hidden="true"></i> <a href="">{{ $hospital_data->website }}</a></p> -->
 
-                    <div class="row">
-                        <div class="col-md-6 col-sm-6">
-                          <ul class="address">
-                            <li>
-                              <strong>Address</strong>
-                              <span><em>:</em>  {{ $hospital_data->street_address }} </span>
-                            </li>
-                            <li>
-                              <strong>City</strong>
-                              <span><em>:</em>   {{ $hospital_data->city->name }} - {{ $hospital_data->zipcode }} </span>
-                            </li>
-                            <li>
-                              <strong>Phone no</strong>
-                              <span><em>:</em>  {{ $hospital_data->phone }}</span>
-                            </li>
-                            <li>
-                              <strong>Email</strong>
-                              <span><em>:</em>  {{ $hospital_data->email }} </span>
-                            </li>
-                            <li>
-                               <strong></strong>
-                              <span><em></em> </span>
-                            </li>
-                          </ul>     
-                        </div>
-
-                        <div class="col-md-6 col-sm-6">
-                          <ul class="number">
-                            <li>
-                              <strong>No. of Hospital Beds</strong>
-                              <span>:  {{ $hospital_data->number_of_beds }}</span>
-                            </li>
-                            <li>
-                              <strong>No. of ICU Beds</strong>
-                              <span>:   {{ $hospital_data->number_of_icu_beds }}</span>
-                            </li>
-                            <li>
-                              <strong>No. of Operating Rooms</strong>
-                              <span>:  {{ $hospital_data->number_of_operating_rooms }}</span>
-                            </li>
-                            <li>
-                              <strong>Payment Mode</strong>
-                              <span>:  card, cash, wire</span>
-                            </li>
-                            <li>
-                              <strong>Avg. International Patients</strong>
-                              <span>:  {{ $hospital_data->number_of_avg_international_patients }}</span>
-                            </li>                                                               
-                          </ul>
-                        </div>
-
-                        <div class="clearfix"></div>
-
-                    </div>
+                    
                 </div>
 
 

@@ -37,6 +37,7 @@
     33 => 'GoogleMaps\\ServiceProvider\\GoogleMapsServiceProvider',
     34 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
     35 => 'Cmgmyr\\Messenger\\MessengerServiceProvider',
+    36 => 'Artesaos\\SEOTools\\Providers\\SEOToolsServiceProvider',
   ),
   'eager' => 
   array (
@@ -157,6 +158,14 @@
     'Collective\\Html\\HtmlBuilder' => 'Collective\\Html\\HtmlServiceProvider',
     'Collective\\Html\\FormBuilder' => 'Collective\\Html\\HtmlServiceProvider',
     'GoogleMaps' => 'GoogleMaps\\ServiceProvider\\GoogleMapsServiceProvider',
+    'Artesaos\\SEOTools\\Contracts\\SEOTools' => 'Artesaos\\SEOTools\\Providers\\SEOToolsServiceProvider',
+    'Artesaos\\SEOTools\\Contracts\\MetaTags' => 'Artesaos\\SEOTools\\Providers\\SEOToolsServiceProvider',
+    'Artesaos\\SEOTools\\Contracts\\TwitterCards' => 'Artesaos\\SEOTools\\Providers\\SEOToolsServiceProvider',
+    'Artesaos\\SEOTools\\Contracts\\OpenGraph' => 'Artesaos\\SEOTools\\Providers\\SEOToolsServiceProvider',
+    'seotools' => 'Artesaos\\SEOTools\\Providers\\SEOToolsServiceProvider',
+    'seotools.metatags' => 'Artesaos\\SEOTools\\Providers\\SEOToolsServiceProvider',
+    'seotools.opengraph' => 'Artesaos\\SEOTools\\Providers\\SEOToolsServiceProvider',
+    'seotools.twitter' => 'Artesaos\\SEOTools\\Providers\\SEOToolsServiceProvider',
   ),
   'when' => 
   array (
@@ -200,6 +209,9 @@
     array (
     ),
     'GoogleMaps\\ServiceProvider\\GoogleMapsServiceProvider' => 
+    array (
+    ),
+    'Artesaos\\SEOTools\\Providers\\SEOToolsServiceProvider' => 
     array (
     ),
   ),
