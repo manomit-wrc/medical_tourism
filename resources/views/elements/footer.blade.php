@@ -382,6 +382,9 @@
             {                     
               $("#new_tag_error").hide();
             }                     
+          }
+          function getDepartment(){
+             $("#select_procedure").html("Please enter new tag");
           } 
           </script> 
                  

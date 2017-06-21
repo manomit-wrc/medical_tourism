@@ -6,7 +6,7 @@
             <div class="container">
                 <div class="row">
                   <div class="fieldbox">
-                    <select name="select_treatment" class="listtype" id="select_treatment">
+                    <select name="select_treatment" onchange="getDepartment(this.value)" class="listtype" id="select_treatment">
                         <option value="">Specility</option>
                         @foreach($treatment_list as $key=>$value)
                           <option value="{{$key}}">{{$value}}</option>
@@ -16,7 +16,7 @@
 
                   <div class="fieldbox">
                     <select name="select_procedure" class="listtype" id="select_procedure">
-                        <option value="">Procedure</option>
+                        <option value="">Department</option>
                         @foreach($procedure_list as $key=>$value)
                           <option value="{{$key}}">{{$value}}</option>
                         @endforeach
