@@ -43,8 +43,7 @@
               @endphp
                 {!! Form::open(array('method' => 'POST','role'=>'form','url'=>'admin/hospitals/store_medicaltest/','id'=>'medicaltest_add')) !!}
                   <input id="hospital_id" name="hospital_id" type="hidden" value="{{Request::segment(4)}}">                
-                  <div class="col-md-6">                 
-
+                  <div class="col-md-6">                  
                     <ul id="tree2" class="tree">
                     @foreach($medicaltestdata as $key => $val)
                       
@@ -63,7 +62,7 @@
                                   <input type="text" name="test_price{{ $val1['id'] }}" placeholder="price" value="{{ $val1['test_price'] }}">
                                 </td>
                               </tr>
-                          </table>
+                            </table>
                           </li>
                           @endforeach                       
                          <li class="last-child{{ $val['cat_id'] }}"><a href="javascript:void(0)"  style="cursor: pointer; text-decoration:none;" onclick="addnewmedicaltest({{ $val['cat_id'] }})">Add New</a></li>                         
@@ -112,5 +111,5 @@
     </section>
     <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->  
+  <!-- /.content-wrapper -->
 @stop

@@ -26,7 +26,7 @@ class MedicaltestController extends Controller
         echo $data['medicaltest'][0]['test_name'];
         die();*/
         return view('admin.medicaltest.index',$data); 
-    }
+  }
 
    	public function create()
     {
@@ -44,6 +44,7 @@ class MedicaltestController extends Controller
 
        	$medt = new Medicaltest();
        	$medt->test_name = $request->test_name;
+        $medt->indications = $request->indications;
        	$medt->medicaltestcategories_id = $request->medicaltestcategories_id;       	     
        	$medt->save();      	
       	Session::flash('message', 'Successfully added!');
@@ -68,6 +69,7 @@ class MedicaltestController extends Controller
         'medicaltestcategories_id' => 'required'        
       ]);
        	$medtest->test_name = $request->test_name;
+        $medtest->indications = $request->indications;
         $medtest->status = $request->status;
        	$medtest->medicaltestcategories_id = $request->medicaltestcategories_id;        
        	$medtest->save();       

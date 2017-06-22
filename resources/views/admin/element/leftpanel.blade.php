@@ -245,6 +245,20 @@
         </li>
         @endif
 
+        @if($user_view_composer->hasRole('admin/testcenter',Auth::guard('admin')->user()->id))
+        <li class="treeview {{ Request::segment(2) === 'testcenter' ? 'active' : null }}">
+          <a href="javascript:void(0)">
+            <i class="fa fa-file-word-o"></i> <span>Test Center </span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            @if($user_view_composer->hasRole('admin/testcenter',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'testcenter' ? 'active' : null }}"><a href="/admin/testcenter"><i class="fa fa-file-code-o"></i>Test Center List</a></li>@endif 
+          </ul>
+        </li>
+        @endif
+
 
       </ul>
     </section>

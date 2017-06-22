@@ -43,6 +43,7 @@
                   <tr>
                     <th>Test Name</th>
                     <th>Category</th>
+                    <th>Indications</th>
                     <th>status</th>
                     <th width="11%">Actions</th>
                     <th style="display:none;"></th>
@@ -56,10 +57,11 @@
                     @foreach($medicaltest as $medtval)
                     
                       <tr>
-                        <td>{{$medtval['test_name']}}</td>
+                        <td>{{ $medtval['test_name']}}</td>
                         <td>{{ $medtval['medicaltestcategories']['cat_name'] }}</td>
+                        <td>{{ ($medtval['indications']) ? $medtval['indications']:'N/A' }}</td>
                        <!--  <td>{{ ($medtval['status'] ==1)? 'Active':'In-Active' }}</td> -->
-                       <td>
+                        <td>
                           @if($medtval['status'] ==1)
                             <span data-toggle="tooltip" data-original-title="Click here to change status">
                             <input type="checkbox" checked id="tog{{ $medtval['id'] }}" onchange="return changeStatus('/admin/medicaltest/changestatus',{{ $medtval['id'] }})" value="1"  data-toggle="toggle2">

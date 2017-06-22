@@ -64,7 +64,10 @@
                           </select>
                           {!! Html::decode('<span class="text-danger">'.$errors->first("medicaltestcategories_id").'</span>') !!}                          
                         </div>             
-
+                        <div class="form-group">
+                          {!! Html::decode(Form::label('indications','Indications: ')) !!}
+                          {!!Form::text('indications','',array('class'=>'form-control','id'=>'indications','placeholder'=>'Enter  indications')) !!}
+                        </div>
                         <!-- input submit button -->
                         <div>
                            {!! Form::submit('submit',array('class'=>'btn btn-primary pull-left','id'=>'exact-submit-button'))!!}

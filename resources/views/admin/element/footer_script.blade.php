@@ -74,13 +74,24 @@
         "autoWidth": false
      });
      //For treatments ,medicaltest section
-     $('#datatbl_trtmnt_id,#datatbl_medicaltest_id').DataTable({
+     $('#datatbl_trtmnt_id').DataTable({
         "paging": true,
         "lengthChange": true,
         "searching": true,
         "order": [[ 4, "desc" ]],
         "columnDefs": [
           { "targets": [2,3], "orderable": false }
+        ],
+        "info": true,
+        "autoWidth": false
+     });
+     $('#datatbl_medicaltest_id').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "order": [[ 5, "desc" ]],
+        "columnDefs": [
+          { "targets": [3,4], "orderable": false }
         ],
         "info": true,
         "autoWidth": false

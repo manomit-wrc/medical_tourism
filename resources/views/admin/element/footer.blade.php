@@ -383,7 +383,7 @@ $(function () {
                     setTimeout(function() {
                       $('#result').fadeOut('fast');
                       $("#hosmedtest").modal('hide');
-                      var str ='<li><input name="medicaltestArr[]" class="checkboxcatproduct'+ result.lastinsert_id+'" id="'+result.lastinsert_id+'" type="checkbox" value="'+result.lastinsert_id+'">'+ result.test_name+'</li>';
+                      var str ='<li><table width="100%"><tr><td width="90%"><input name="medicaltestArr[]" class="checkboxcatproduct'+ result.lastinsert_id+'" id="'+result.lastinsert_id+'" type="checkbox" value="'+result.lastinsert_id+'">'+ result.test_name+'</td><td style="padding:5px; 0"><input type="text" name="test_price'+result.lastinsert_id+'" placeholder="price" value=""></td></tr></table></li>';
                     // $("#product_data_"+medicaltest_cat_id).append(str);
                     $(".last-child"+medicaltest_cat_id).before(str);
                     $("#test_name").val('');

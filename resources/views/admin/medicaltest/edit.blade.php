@@ -62,6 +62,10 @@
                           {!! Html::decode('<span class="text-danger">'.$errors->first("medicaltestcategories_id").'</span>') !!}                          
                         </div>
                         <div class="form-group">
+                          {!! Html::decode(Form::label('indications','Indications: ')) !!}
+                          {!! Form::text('indications',null,array('class'=>'form-control','id'=>'indications','placeholder'=>'Enter indications')) !!}
+                        </div>
+                        <div class="form-group">
                           <label for="name">Status: </label>
                           <select name="status" id="status" class="form-control" autofocus >
                             <option value="1" {{ $medicaltest->status == "1" ? 'selected' : '' }}>Active</option>

@@ -362,6 +362,7 @@ class HospitalController extends Controller
       //echo "<pre>"; print_r($hospitalmedicaltest); die;
       foreach ($hospitalmedicaltest as $key => $value) {
           $data['medicaltest_array'][] = $value['medicaltest_id'];
+          /* $data['medicaltest_array'][]['test_price'] = $value['test_price']; */
       }
       //echo "<pre>"; print_r($data['medicaltest_array']); die;
      /* $data['medicaltestdata'] = array();
@@ -388,7 +389,7 @@ class HospitalController extends Controller
         $data1[] = array(
           'cat_id' => $val->id,
           'catname' => $val->cat_name,
-          'testarr' => $this->gettestarr($val->id)
+          'testarr' => $this->gettestarr($val->id,$id)
         );
       }
       $data['medicaltestdata'] =$data1;
@@ -398,24 +399,38 @@ class HospitalController extends Controller
       return view('admin.hospitals.medicaltest',$data);
     }
 
-    public function gettestarr($cat_id) {
-      $medicaltest = Medicaltest::where('medicaltestcategories_id',$cat_id)->get()->toArray();
-        //echo "<pre>"; print_r($medicaltest); die;
-		$data = array();
+    public function gettestarr($cat_id,$hospital_id) {
+      $medicaltest = Medicaltest::where('medicaltestcategories_id',$cat_id)->get()->toArray();      
+		    $data = array();
         foreach($medicaltest as $keyy => $vall)
         {      
           $data[] = array(
             'id' => $vall['id'],
-            'testname' => $vall['test_name'],          
+            'testname' => $vall['test_name'],
+            'test_price' => $this->gettestprice($vall['id'],$hospital_id)                    
           );
         }
         return $data;
     }
 
+    public function gettestprice($test_id,$hospital_id) {
+      $hospitalmedicaltest = HospitalMedicalTest::where('hospital_id',$hospital_id)->where('medicaltest_id',$test_id)->get()->toArray();
+      if(!empty($hospitalmedicaltest)){      
+        if($hospitalmedicaltest[0]['test_price'] !=''){
+          $data = $hospitalmedicaltest[0]['test_price'];
+        }else{
+          $data ='';
+        }
+      }else{
+          $data ='';
+      }
+        return $data;
+    }
+
     public function store_medicaltest(Request $request) {
-      //echo "<pre>"; print_r($request->all()); die;
+      /*echo "<pre>"; print_r($request->all()); die;*/
       $hospital_id = $request->hospital_id;
-      $medicaltestArr = $request->medicaltestArr;
+      $medicaltestArr = $request->medicaltestArr;      
       if(count($medicaltestArr) > 0){
       // print_r($medicaltestArr); die();
       //echo $request->hospital_id;  die;
@@ -427,14 +442,18 @@ class HospitalController extends Controller
         {
           $affectedRows = \App\HospitalMedicalTest::where('hospital_id', '=', $hospital_id)->delete();        
         }
+        $test_price = '';
         foreach ($medicaltestArr as $key => $value) {
+          $test_price = 'test_price'.$value;           
           $data[] = [
                 'hospital_id' => $hospital_id,
                 'medicaltest_id' => $value,
+                'test_price' => $request->$test_price,
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ];
-        }
+        }       
+        
         //echo "<pre>"; print_r($data); die;
         $result = \App\HospitalMedicalTest::insert($data);
         Session::flash('message', 'Successfully added!');
