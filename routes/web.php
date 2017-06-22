@@ -59,13 +59,13 @@ Route::get('/getattdocumenttags','PagesController@getattdocumenttags');
 
 Route::get('/api/get-state-list','CountryStateCityController@getStateList');
 Route::get('/api/get-city-list','CountryStateCityController@getCityList');
+Route::post('/get_state_list','PagesController@get_state_list');
+Route::post('/get_city_list','PagesController@get_city_list');
 
 Route::group(['middleware' => ['front']], function() {
     Route::get('/profile','PagesController@patient_profile');
     Route::post('/update-profile','PagesController@update_profile');
     Route::get('/patient-logout','PagesController@patient_logout');
-    Route::post('/get_state_list','PagesController@get_state_list');
-    Route::post('/get_city_list','PagesController@get_city_list');
     Route::get('/change-password','PagesController@change_password');
     Route::post('update-password','PagesController@update_password');
     Route::get('/upload-documents','PagesController@upload_documents');

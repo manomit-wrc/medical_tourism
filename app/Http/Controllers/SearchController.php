@@ -27,6 +27,8 @@ class SearchController extends Controller
                         });
                     })
                     ->orderBy('name')->get();
+                    //->toSql();
+                    //print_r($cities); die;
             
             $data=array();
             foreach ($cities as $city) {

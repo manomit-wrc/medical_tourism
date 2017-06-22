@@ -44,7 +44,7 @@
               <div class="container">
                   <div class="row">
                       <div class="col-md-2">
-                          <h3>Swasthya Bandhav</h3>
+                          <h3>Swaasthya Bandhav</h3>
                           <ul>
                               <li><a href="{!!URL::to('/')!!}">Home</a></li>
                               <li><a href="{!!URL::to('/about')!!}">About Swasthya Bandhav</a></li>
@@ -63,18 +63,18 @@
                           <ul>
                             @if (count($providertype_lists) > 0)
                               @foreach($providertype_lists as $providertype_lists)
-                              <li><a href="#">{{ $providertype_lists->name }}</a></li>
+                              <li><a href="javascript:void(0)">{{ $providertype_lists->name }}</a></li>
                               @endforeach
                             @endif
                           </ul>
                       </div>
 
                       <div class="col-md-2">
-                          <h3>Medical Treatment</h3>
+                          <h3>Medical Procedure</h3>
                           <ul>
                             @if (count($treatment_lists) > 0)
                               @foreach($treatment_lists as $treatment_lists)
-                              <li><a href="#">{{ ucfirst(strtolower($treatment_lists->name)) }}</a></li>
+                              <li><a href="{!!URL::to('search-data?_token='.csrf_token().'&select_treatment='.$treatment_lists->id.'&select_procedure=&txt_search=')!!}" > {{ ucfirst(strtolower($treatment_lists->name)) }}</a></li>
                               @endforeach
                             @endif
                           </ul>
@@ -84,7 +84,7 @@
                           <ul>
                               @if (count($city_lists) > 0)
                               @foreach($city_lists as $city_lists)
-                              <li><a href="#">{{ ucfirst(strtolower($city_lists->name)) }}</a></li>
+                              <li><a href="{!!URL::to('search-data?_token='.csrf_token().'&select_treatment=&select_procedure=&txt_search='.$city_lists->name)!!}" >{{ ucfirst(strtolower($city_lists->name)) }}</a></li>
                               @endforeach
                             @endif
                           </ul>
