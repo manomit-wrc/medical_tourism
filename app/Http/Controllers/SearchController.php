@@ -19,20 +19,29 @@ class SearchController extends Controller
         if($request->ajax()) {
             $query = $request->term;
         
-            $cities=City::where('name','LIKE','%'.$query.'%')
+            /*$cities=City::where('name','LIKE','%'.$query.'%')
                     ->orWhereHas('state', function ($res) use ($query) {
                         $res->where('name', 'like', '%'.$query.'%');
                         $res->orWhereHas('country',function($res) use ($query){
                             $res->where('name', 'like', '%'.$query.'%');                           
                         });
                     })
-                    ->orderBy('name')->get();
-                    //->toSql();
-                    //print_r($cities); die;
+                    ->orderBy('name')->get();*/
+            $cities = Country::select("name")->where('name','LIKE','%'.$query.'%');
+            $states = State::select("name")->where('name','LIKE','%'.$query.'%');
+
+            $allcitiesstatescount = City::select("name")->where('name','LIKE','%'.$query.'%')
+                    ->union($cities)
+                    ->union($states)
+                    ->orderBy('name')
+                    ->get();        
+               
+            
+            //print_r($allcitiesstatescount); die;
             
             $data=array();
-            foreach ($cities as $city) {
-                    $data[]=array('value'=>$city->name,'id'=>$city->id);
+            foreach ($allcitiesstatescount as $citystatecount) {
+                    $data[]=array('value'=>$citystatecount->name,'id'=>$citystatecount->id);
             }
             if(count($data))
                  return $data;
