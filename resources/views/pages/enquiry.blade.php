@@ -58,16 +58,16 @@
                             <div class="col-md-6">                            
                             <label>
                              Speciality <span style="color:red;">* </span>
-                             {!! Form::select('treatment_id', $treat_list, null, ['class' => 'listtypeI']) !!}
-                             {!! Html::decode('<span class="text-danger">'.$errors->first("treatment_id").'</span>') !!}
+                             {!! Form::select('procedure_id', $proc_list, null, ['id'=>'select_procedure','class' => 'listtypeI']) !!}
+                             {!! Html::decode('<span class="text-danger">'.$errors->first("procedure_id").'</span>') !!}
                             </label>
                             </div>
 
                             <div class="col-md-6">
                             <label>
                               Procedure <span style="color:red;">* </span>
-                              {!! Form::select('procedure_id', $proc_list, null, ['class' => 'listtypeI']) !!}
-                              {!! Html::decode('<span class="text-danger">'.$errors->first("procedure_id").'</span>') !!}
+                              {!! Form::select('treatment_id', $treat_list, null, ['id'=>'select_treatment','class' => 'listtypeI']) !!}
+                              {!! Html::decode('<span class="text-danger">'.$errors->first("treatment_id").'</span>') !!}
                             </label>
                             </div>
 

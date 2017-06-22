@@ -548,7 +548,7 @@
                     data: {
                         term : request.term
                     },
-                    success: function(data) {
+                    success: function(data) { //alert(data);
                         response(data);
                        
                     }
@@ -567,6 +567,30 @@
     }
       $(document).ready(function(e){
         BindControls();
+
+        $("#select_procedure").change(function(e){
+          var value = $(this).val();
+          if(value) {
+            $.ajax({
+              type:"POST",
+              url:"/search-treatment",
+              data: {procedure_id:value, _token:"{{csrf_token()}}"},
+              success:function(response) { //alert(response);
+                $('#select_treatment').find('option').not(':first').remove();
+                for (var key in response.treatment_list) {
+                  $("#select_treatment").append('<option value="'+key+'">'+response.treatment_list[key]+'</option>');
+                }
+              },
+              error:function(xhr) {
+
+              }
+            });
+          }
+          else {
+            $('#select_treatment').find('option').not(':first').remove();
+          }
+        });
+
       });
     </script>
 

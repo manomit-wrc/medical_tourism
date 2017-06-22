@@ -44,7 +44,8 @@ Route::post('/patient-registration','PagesController@patient_registration');
 Route::post('/patient-login','PagesController@patient_login');
 Route::post('/patient-forgotpass','PagesController@patient_forgotpass');
 Route::get('/search-place','SearchController@search_place');
-Route::get('search-data','SearchController@search_data');
+Route::post('/search-treatment','SearchController@search_treatment');
+Route::get('/search-data','SearchController@search_data');
 Route::post('/hospitalsearch-res','SearchController@hospitalsearch_res');
 Route::post('/hospitalsearch-resmap','SearchController@hospitalsearch_resmap');
 Route::post('/profile_image_upload','PagesController@profile_image_upload');
@@ -58,13 +59,13 @@ Route::get('/getattdocumenttags','PagesController@getattdocumenttags');
 
 Route::get('/api/get-state-list','CountryStateCityController@getStateList');
 Route::get('/api/get-city-list','CountryStateCityController@getCityList');
+Route::post('/get_state_list','PagesController@get_state_list');
+Route::post('/get_city_list','PagesController@get_city_list');
 
 Route::group(['middleware' => ['front']], function() {
     Route::get('/profile','PagesController@patient_profile');
     Route::post('/update-profile','PagesController@update_profile');
     Route::get('/patient-logout','PagesController@patient_logout');
-    Route::post('/get_state_list','PagesController@get_state_list');
-    Route::post('/get_city_list','PagesController@get_city_list');
     Route::get('/change-password','PagesController@change_password');
     Route::post('update-password','PagesController@update_password');
     Route::get('/upload-documents','PagesController@upload_documents');

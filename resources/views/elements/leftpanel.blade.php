@@ -21,19 +21,21 @@
               @endphp
             <form name="frmSearch1" id="frmSearch1" method="get" action="/search-data">
                 {{csrf_field()}}
-                <select name="select_treatment" class="listtypeleft">
-                    <option value="">Specility</option>
+                 <select name="select_procedure" class="listtypeleft" id="select_procedure">
+                    <option value="">Speciality</option>
+                    @foreach($procedure_list as $key=>$value)
+                      <option value="{{$key}}" {{ ($select_procedure == $key)? 'selected':'' }}>{{$value}}</option>
+                    @endforeach
+                </select>
+
+                <select name="select_treatment" class="listtypeleft" id="select_treatment">
+                    <option value="">Procedure</option>
                     @foreach($treatment_list as $key=>$value)
                         <option value="{{$key}}" {{ ($select_treatment == $key)? 'selected':'' }}>{{$value}}</option>
                     @endforeach
                 </select>
 
-                <select name="select_procedure" class="listtypeleft" id="select_procedure">
-                    <option value="">Procedure</option>
-                    @foreach($procedure_list as $key=>$value)
-                      <option value="{{$key}}" {{ ($select_procedure == $key)? 'selected':'' }}>{{$value}}</option>
-                    @endforeach
-                </select>
+               
 
                <!--  <select name="" class="listtypeleft">
                    <option value="Location">Location</option>
