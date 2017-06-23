@@ -12,7 +12,7 @@
         script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyB4eCXS81oEuOHH9BJ_vOVvqQL1qY90kIA&sensor=false&callback=initialize";
         document.body.appendChild(script);
     });
-	var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+	//var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
 	
     function initialize() {
         var map;
@@ -74,7 +74,7 @@
             marker = new google.maps.Marker({
                 position: position,
                 map: map,
-				        icon: image,				
+				        icon: map,				
                 title: markers[i][0]
             });
             
