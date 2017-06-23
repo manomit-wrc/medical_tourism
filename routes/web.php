@@ -471,5 +471,17 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('/admin/images/addimage', array('as' => 'add_image_to_album','uses' => 'ImageController@postAdd'));
     Route::get('/admin/images/deleteimage/{id}', array('as' => 'delete_image','uses' => 'ImageController@getDelete'));
 
+    //document tag categories section
+    Route::get('/admin/testcentre','TestcentreController@index');
+    Route::get('/admin/testcentre/create','TestcentreController@create');
+    Route::post('/admin/testcentre/store','TestcentreController@store');
+    Route::get('/admin/testcentre/edit/{id}','TestcentreController@edit');
+    Route::patch('/admin/testcentre/update/{id}','TestcentreController@update');    
+    Route::get('/admin/testcentre/delete/{id}','TestcentreController@delete');
+    Route::post('/admin/testcentre/changestatus/','TestcentreController@ajaxtestchangestatus');
+    Route::get('/admin/testcentre/medicaltest/{id}','TestcentreController@medicaltest');
+    Route::post('/admin/testcentre/store_medicaltest/','TestcentreController@store_medicaltest');
+    Route::post('/admin/testcentre/ajaxstoremedicaltest/','TestcentreController@ajaxstoremedicaltest');
+    Route::post('/admin/testcentre/gettestarr/','TestcentreController@gettestarr');
     
 });

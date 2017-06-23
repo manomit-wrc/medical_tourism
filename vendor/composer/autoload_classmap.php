@@ -50,6 +50,7 @@ return array(
     'CreateAccrediationsTable' => $baseDir . '/database/migrations/2017_04_21_051438_create_accrediations_table.php',
     'CreateAlbumsTable' => $baseDir . '/database/migrations/2017_06_07_051901_create_albums_table.php',
     'CreateBannersTable' => $baseDir . '/database/migrations/2017_04_21_124438_create_banners_table.php',
+    'CreateCentreMedicaltestsTable' => $baseDir . '/database/migrations/2017_06_22_104730_create_centre_medicaltests_table.php',
     'CreateCmspageDetailsTable' => $baseDir . '/database/migrations/2017_05_10_043258_create_cmspage_details_table.php',
     'CreateCmspagesTable' => $baseDir . '/database/migrations/2017_05_10_041907_create_cmspages_table.php',
     'CreateConnectivitiesTable' => $baseDir . '/database/migrations/2017_04_26_071329_create_connectivities_table.php',

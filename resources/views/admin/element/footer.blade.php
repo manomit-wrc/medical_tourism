@@ -401,6 +401,49 @@ $(function () {
           });
         }
     }
+
+     function submitcentremedicaltest(){
+      var medicaltest_cat_id = $('#medicaltest_cat_id').val()
+      var test_name = $("#test_name").val();
+        if(test_name ==''){
+          document.getElementById('test_name').style.border = '1px solid red !important';
+          $("#test_name_error").css("display", "block");
+          document.getElementById("test_name_error").innerHTML = "Please enter test name";
+          document.getElementById('test_name').focus();
+          return false
+        }else{
+          $.ajax({
+            type:"POST",
+            url:"/admin/testcentre/ajaxstoremedicaltest",
+            data: {medicaltestcategories_id:$('#medicaltest_cat_id').val(),testcentre_id:$('#testcentre_id').val(),test_name:$('#test_name').val(),_token:"{{csrf_token()}}"},
+              success:function(response) {
+                var result = $.parseJSON(response);
+                if(result.status == 1) {
+                    $("#result").css("display", "block");
+                    $("#result").removeClass("alert-danger");
+                    $("#result").addClass("alert-success");
+                    $("#result").html(result.msg);
+                    setTimeout(function() {
+                      $('#result').fadeOut('fast');
+                      $("#hosmedtest").modal('hide');
+                      var str ='<li><table width="100%"><tr><td width="90%"><input name="medicaltestArr[]" class="checkboxcatproduct'+ result.lastinsert_id+'" id="'+result.lastinsert_id+'" type="checkbox" value="'+result.lastinsert_id+'">'+ result.test_name+'</td><td style="padding:5px; 0"><input type="text" name="test_price'+result.lastinsert_id+'" placeholder="price" value=""></td></tr></table></li>';
+                    // $("#product_data_"+medicaltest_cat_id).append(str);
+                    $(".last-child"+medicaltest_cat_id).before(str);
+                    $("#test_name").val('');
+                  }, 200);
+                } else{
+                    $("#result").css("display", "block");
+                    $("#result").removeClass("alert-success");
+                    $("#result").addClass("alert-danger");
+                    $("#result").html(result.msg);
+                    setTimeout(function() {
+                      $('#result').fadeOut('fast');
+                    }, 2000);
+                }
+             }
+          });
+        }
+    }
     function resetmedicaltest(){
       $("#test_name_error").hide();
       $("#test_name").val('');
