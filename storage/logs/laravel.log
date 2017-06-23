@@ -6483,3 +6483,6 @@ Stack trace:
 #44 C:\medical_tourism\public\index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #45 C:\medical_tourism\server.php(21): require_once('C:\\medical_tour...')
 #46 {main}  
+[2017-06-23 04:52:14] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '(', expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$'' in C:\medical_tourism\app\Http\Controllers\TestcentreController.php:59
+Stack trace:
+#0 {main}  

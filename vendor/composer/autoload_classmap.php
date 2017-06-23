@@ -80,6 +80,7 @@ return array(
     'CreateHotelsTable' => $baseDir . '/database/migrations/2017_04_25_132205_create_hotels_table.php',
     'CreateImagesTable' => $baseDir . '/database/migrations/2017_06_07_053218_create_images_table.php',
     'CreateImmigrationsTable' => $baseDir . '/database/migrations/2017_05_09_070335_create_immigrations_table.php',
+    'CreateItemsTable' => $baseDir . '/database/migrations/2017_06_23_054231_create_items_table.php',
     'CreateLanguageCapabilitiesTable' => $baseDir . '/database/migrations/2017_04_13_104412_create_language_capabilities_table.php',
     'CreateMedicalFacilitiesTable' => $baseDir . '/database/migrations/2017_04_24_105551_create_medical_facilities_table.php',
     'CreateMedicalTestCategoriesTable' => $baseDir . '/database/migrations/2017_05_03_051552_create_medical_test_categories_table.php',

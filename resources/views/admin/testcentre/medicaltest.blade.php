@@ -50,9 +50,11 @@
                       
                       <li class="branch">
                         <input name="countrychk2[]" id="select_allcatproduct{{ $val['cat_id']}}" class="productcatalog" type="checkbox" value="{{ $val['cat_id'] }}">
-                        <a href="javascript:void(0)" onclick="showproducts({{ $val['cat_id'] }})">{{ $val['catname'] }} </a>
-                        <ul id="product_data_{{ $val['cat_id'] }}" style="display:none;">                         
-                          @foreach($val['testarr'] as $key1 => $val1)                               <li>
+                        <a href="javascript:void(0)" onclick="showproducts({{ $val['cat_id'] }})">{{ $val['catname'] }}
+                        </a>
+                        <ul id="product_data_{{ $val['cat_id'] }}" style="display:none;">  
+                        @foreach($val['testarr'] as $key1 => $val1)                              
+                         <li>
                           <table width="100%">
                               <tr>
                                 <td width="90%">
@@ -66,7 +68,7 @@
                           </table>
                           </li>
                           @endforeach                       
-                         <li class="last-child{{ $val['cat_id'] }}"><a href="javascript:void(0)"  style="cursor: pointer; text-decoration:none;" onclick="addnewmedicaltest({{ $val['cat_id'] }})">Add New</a></li>                         
+                          <li class="last-child{{ $val['cat_id'] }}"><a href="javascript:void(0)"  style="cursor: pointer; text-decoration:none;" onclick="addnewmedicaltest({{ $val['cat_id'] }})">Add New</a></li>                         
                         </ul>
                       </li>
                     @endforeach                          

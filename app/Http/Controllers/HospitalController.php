@@ -563,4 +563,27 @@ class HospitalController extends Controller
     echo json_encode($result3[0]);
     //return $result3[0];
   }
+
+  public function importExcel(Request $request)
+  {
+    if($request->hasFile('import_file')){
+      $path = $request->file('import_file')->getRealPath();
+      $data = Excel::load($path, function($reader) {})->get();
+      if(!empty($data) && $data->count()){
+        foreach ($data->toArray() as $key => $value) {
+          if(!empty($value)){
+            foreach ($value as $v) {    
+              $insert[] = ['title' => $v['title'], 'description' => $v['description']];
+            }
+          }
+        }       
+        if(!empty($insert)){
+          Item::insert($insert);         
+          $request->session()->flash("message", "Successfully added!");
+          return Redirect::to('/admin/hospitals');
+        }
+      }
+    }
+    return back()->with('error','Please Check your file, Something is wrong there.');
+  }
 }
