@@ -8,6 +8,7 @@ use App\City;
 use App\State;
 use App\Country;
 use App\Treatment;
+use Illuminate\Support\Facades\DB;
 
 class SearchController extends Controller
 {
@@ -109,31 +110,48 @@ class SearchController extends Controller
         //return view('pages.searchdata')->with('search_data',$search_data);
         return view('pages.searchdata',compact('search_data','locations'));
     }
-    public function hospitalsearch_res(Request $request) {
+   public function hospitalsearch_res(Request $request) {
         $select_treatment = $request->select_treatment;
         $select_procedure = $request->select_procedure;
         $search_val = $request->search_val;      
         $txt_search = $request->txt_search;
-        /*echo $select_treatment." ".$select_procedure." ".$txt_search;
-        die();*/
-        if($txt_search!=''){
-            $city_data = City::where('name',$txt_search)->get();
-            $cityid = $city_data[0]->id;
-        }else{
-            $cityid ='';
-        }
        
-        $search_data = \App\Hospital::whereHas('city',function($res) use($txt_search) {
-            $res->where('name','like','%'.$txt_search.'%');
+        //echo $select_treatment." ".$select_procedure." ".$txt_search; die();
 
-        })->where('hospitals.name','like','%'.$search_val.'%')->where('hospitals.city_id',$cityid)->orderBy('hospitals.name')->get();
-        $locations = array();
-         $i=1;
-         foreach($search_data as $key=>$value) {
-            //echo $value->country->name; die;
-            $locations[] = array('city'=>$value->name,'lat'=>$value->hosp_latitude,'longi'=>$value->hosp_longitude,'ord'=> $i);
-            $i++;
-         }
+        $sql="SELECT hos.id,hos.avators,hos.name,city.name as city_name,stat.name as state_name,cnt.name as country_name FROM hospitals hos";
+        if(!empty($select_treatment))
+        {
+          $sql.=" LEFT JOIN hospital_treatment hostrt ON hos.id=hostrt.hospital_id AND hostrt.treatment_id=".$select_treatment;  
+        } 
+
+        if(!empty($select_procedure))
+        {
+          if(!empty($select_treatment))
+          {  
+           $sql.="  LEFT JOIN treatments treat ON hostrt.treatment_id=treat.id AND treat.procedure_id=".$select_procedure;  
+          }else{
+            $sql.=" LEFT JOIN hospital_treatment hostrt ON hos.id=hostrt.hospital_id LEFT JOIN treatments treat ON hostrt.treatment_id=treat.id AND treat.procedure_id=".$select_procedure;  
+          }
+        }
+        if(!empty($txt_search)|| !empty($search_val))
+        {
+          $sql.=" JOIN countries cnt ON hos.country_id=cnt.id JOIN states stat ON hos.state_id=stat.id  JOIN cities city ON hos.city_id=city.id";  
+        }  
+
+        if(!empty($txt_search))
+        {
+          $sql.="  AND (city.name LIKE  '%".$txt_search."%' OR stat.name LIKE  '%".$txt_search."%' OR cnt.name LIKE  '%".$txt_search."%')";  
+        }
+
+        if(!empty($search_val))
+        {
+          $sql.=" AND (hos.name LIKE  '%".$search_val."%' OR city.name LIKE  '%".$search_val."%' OR stat.name LIKE  '%".$search_val."%' OR cnt.name LIKE  '%".$search_val."%')";  
+        }
+        //echo $sql; die;
+        $search_data = DB::select($sql);
+        //echo "<pre>"; print_r($search_data); echo $search_data[0]->id; die;
+         
+        
         return view('pages.ajaxsearchdata',compact('search_data'));
     }
     public function hospitalsearch_resmap(Request $request) {
