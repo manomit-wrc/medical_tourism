@@ -60,10 +60,8 @@
                             </div>
                             <a href="#" class="jcarousel-control-prev"><img src="{!!URL::to('storage/frontend/images/mal.png')!!}"  alt="Image 1"></a>
                             <a href="#" class="jcarousel-control-next"><img src="{!!URL::to('storage/frontend/images/mar.png')!!}"  alt="Image 1"></a>
-
                             <p class="jcarousel-pagination pagimob"></p>
                         </div>
-
                       </div>
                   </div>
               </div>
