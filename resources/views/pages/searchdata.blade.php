@@ -17,7 +17,9 @@
     function initialize() {
         var map;    
         var bounds = new google.maps.LatLngBounds();
-        var mapOptions = {            
+        var mapOptions = {  
+            zoom: 10,
+            center: new google.maps.LatLng(-33.92, 151.25),          
             mapTypeId: 'roadmap'
         };
                         
@@ -31,6 +33,7 @@
          $.each(locations, function( index, value ){
            markers.push([value.city, value.lat,value.longi,value.ord]);
          });
+        
         <!-- Multiple Markers -->
         /*var markers = [
             ['Coogee Beach', -33.923036, 151.259052, 5],
@@ -46,6 +49,7 @@
             '<h3>'+value.city+'</h3>' +
             '</div>']);
          });
+       
         /*var infoWindowContent = [
             ['<div class="info_content">' +
             '<h3>Bondi Beach</h3>' +
@@ -79,7 +83,7 @@
             });
             
             <!-- Allow each marker to have an info window     -->
-            google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            google.maps.event.addListener(marker, 'click', (function(marker, i) { 
                 return function() {
                     infoWindow.setContent(infoWindowContent[i][0]);
                     infoWindow.open(map, marker);
@@ -90,7 +94,7 @@
         }
         <!-- Override our map zoom level once our fitBounds function runs (Make sure it only runs once) -->
         var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
-            this.setZoom(5);
+            //this.setZoom(5);
             google.maps.event.removeListener(boundsListener);
         });
         
