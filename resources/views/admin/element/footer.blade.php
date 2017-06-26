@@ -608,6 +608,31 @@ function last_seen_pin(address)
   </div>
 <!-- end modal  -->
 
+<div class="modal fade" id="hospitalimport_modal" role="dialog">
+    <div class="modal-dialog">            
+      <form class="form-horizontal" action="" id="imageUploadForm" method="post" enctype="multipart/form-data">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" onclick="refresh()">&times;</button>
+            <h4 style="text-align: center;">Upload Hospital FIle</h4>
+          </div>
+          <div class="modal-body">
+            <div class="alert alert-success fade in alert-dismissable" id="resultimage" style="display:none"></div>
+            <label class="fileContainer">
+              <i class="fa fa-upload" aria-hidden="true"></i>
+              <input name="avators" id="avators" type="file" value=""/>  
+            </label>
+            <br /><br /><span style="color:red; width: 100%; text-align: center; display: block;">Please upload bmp,gif,jpg,jpeg,png extension file</span> 
+          </div>
+          <div class="modal-footer">
+            <input type="hidden" name="_token" value="{{csrf_token()}}">          
+            <input class="viewmoreBTN" type="submit" onclick="return uploadimage();" value="Update"><div>&nbsp;</div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
 
 <footer class="main-footer">
     <div class="pull-right hidden-xs">

@@ -56,7 +56,7 @@ class TestcentreController extends Controller
       
       $hptl = new Testcentre($request->input()) ;
       $hptl->name = $request->get('name') ;      
-      $hptl->email_id = $request->  ('email_id') ;
+      $hptl->email_id = $request->get('email_id') ;
       $hptl->mobile_no = $request->get('mobile_no') ;
       $hptl->address = $request->get('address') ;     
       $hptl->country_id = $request->get('country_id') ;

@@ -483,5 +483,9 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('/admin/testcentre/store_medicaltest/','TestcentreController@store_medicaltest');
     Route::post('/admin/testcentre/ajaxstoremedicaltest/','TestcentreController@ajaxstoremedicaltest');
     Route::post('/admin/testcentre/gettestarr/','TestcentreController@gettestarr');
+
+    Route::get('/admin/item/importExport', 'MaatwebsiteDemoController@importExport');
+    Route::get('/admin/item/downloadExcel/{type}', 'MaatwebsiteDemoController@downloadExcel');
+    Route::post('/admin/item/importExcel', 'MaatwebsiteDemoController@importExcel');
     
 });

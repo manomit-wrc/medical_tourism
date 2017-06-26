@@ -85,7 +85,7 @@
                 <div class="accdbox">
                     <a href="{!!URL::to('/connectivity')!!}"><img src="{{url('/uploads/homepagecontent/thumb_360_167/'.$homepagecondata[0]->accomodation_left_image)}}"  alt="{{ $homepagecondata[0]->accomodation_left_title }}"></a>
                     <h3>{{ $homepagecondata[0]->accomodation_left_title }}</h3>
-                    <p>{{ $homepagecondata[0]->accomodation_left_description }}</p>
+                    <p>{!! \Illuminate\Support\Str::words($homepagecondata[0]->accomodation_left_description, 24,'....')  !!}</p>
                 </div>
             </div>
 
@@ -93,7 +93,7 @@
                 <div class="accdbox">
                     <a href="{!!URL::to('/immigration')!!}"><img src="{{url('/uploads/homepagecontent/thumb_360_167/'.$homepagecondata[0]->accomodation_middle_image)}}"  alt="{{ $homepagecondata[0]->accomodation_middle_title }}"></a>
                     <h3>{{ $homepagecondata[0]->accomodation_middle_title }}</h3>
-                    <p>{{ $homepagecondata[0]->accomodation_middle_description }}</p>
+                    <p>{!! \Illuminate\Support\Str::words($homepagecondata[0]->accomodation_middle_description, 24,'....')  !!}</p>
                 </div>
             </div>
 
@@ -101,7 +101,7 @@
                 <div class="accdbox">
                     <a href="{!!URL::to('/visa')!!}"><img src="{{url('/uploads/homepagecontent/thumb_360_167/'.$homepagecondata[0]->accomodation_right_image)}}"  alt="{{ $homepagecondata[0]->accomodation_right_title }}"></a>
                     <h3>{{ $homepagecondata[0]->accomodation_right_title }}</h3>
-                    <p>{{ $homepagecondata[0]->accomodation_right_description }}</p>
+                    <p>{!! \Illuminate\Support\Str::words($homepagecondata[0]->accomodation_right_description, 24,'....')  !!}</p>
                 </div>
             </div>
             <br clear="all">

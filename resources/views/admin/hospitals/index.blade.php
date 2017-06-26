@@ -29,7 +29,9 @@
               <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
             </div>
 
-            <div class="topbtn"><a href="{!!URL::to('/admin/hospitals/create')!!}"><button type="button" class="btn bg-purple btn-rightad">ADD</button></a></div>
+            <div class="topbtn"><a href="{!!URL::to('/admin/hospitals/create')!!}"><button type="button" class="btn bg-purple btn-rightad">ADD</button></a>&nbsp;
+            <a href="javascript:void(0)" data-toggle="modal" data-target="#hospitalimport_modal"><button type="button" class="btn bg-purple btn-rightad">Import</button></a></div>
+
 
             <!-- /.box-header -->
             <div class="box-body">
