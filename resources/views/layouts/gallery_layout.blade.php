@@ -2,6 +2,9 @@
 <html lang="en">
 	@include('elements.head')
   	<body>
+      <!--On  Page load default Loader include section start here -->
+         <div class="se-pre-con"></div>
+      <!-- Ends -->
     	@include('elements.header')
     	@include('elements.headernav')
       <div class="container-fluid">
