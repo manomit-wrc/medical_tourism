@@ -15,9 +15,9 @@
 	//var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
 	
     function initialize() {
-        var map;
+        var map;    
         var bounds = new google.maps.LatLngBounds();
-        var mapOptions = {
+        var mapOptions = {            
             mapTypeId: 'roadmap'
         };
                         
@@ -90,7 +90,7 @@
         }
         <!-- Override our map zoom level once our fitBounds function runs (Make sure it only runs once) -->
         var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
-            this.setZoom(3);
+            this.setZoom(5);
             google.maps.event.removeListener(boundsListener);
         });
         

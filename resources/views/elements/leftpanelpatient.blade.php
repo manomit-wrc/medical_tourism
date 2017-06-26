@@ -3,7 +3,19 @@
       <div class="qtbox">
         <div class="user_img">
             <div class="editP"><a href="javascript:void(0)" data-toggle="modal" data-target="#profileimage_modal"><i class="fa fa-pencil" aria-hidden="true"></i></a></div>
-            <span id="upload"><img src="{!! Auth::guard('front')->user()->photo() !!}" alt=""></span>
+            <span id="upload">            
+             @php
+              if(Auth::guard('front')->user()->photo() !=''){
+                @endphp
+                <img src="{!! Auth::guard('front')->user()->photo() !!}" alt="Image">
+                @php
+                }else {
+                @endphp
+                <img src="{{url('/uploads/doctors/noimage_user.jpg')}}" alt="Image">
+                 @php
+              }
+              @endphp
+            </span>
         </div>
 
         <h5 class="user_name">{{Auth::guard('front')->user()->first_name}}&nbsp;{{Auth::guard('front')->user()->last_name}}</h5>

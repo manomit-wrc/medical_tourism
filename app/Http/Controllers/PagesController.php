@@ -417,12 +417,12 @@ class PagesController extends Controller
   public function update_password(Request $request) {
     $this->validate($request,[
       'old_password' => 'required|check_old_password',
-      'new_password' => 'required',
+      'new_password' => ['max:32','min:6','regex:/^(?=.*[a-z|A-Z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/'],
       'confirm_password' => 'required|same:new_password'
     ],[
       'old_password.required' => 'Please enter old password',
       'old_password.check_old_password' => 'Old password not matched',
-      'new_password.required' => 'Please enter new password',
+      'new_password.regex' => 'Password should contain atleast one uppercase/lowercase letter,one number and one special character',
       'confirm_password.required' => 'Please enter confirm password',
       'confirm_password.same' => 'New password and confirm password should matched'
     ]);
@@ -572,10 +572,10 @@ class PagesController extends Controller
   }
   public function reset_password($security_code,Request $request) {   
   $this->validate($request,[      
-      'new_password' => 'required',
+      'new_password' => ['max:32','min:6','regex:/^(?=.*[a-z|A-Z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/'],
       'confirm_password' => 'required|same:new_password'
     ],[           
-      'new_password.required' => 'Please enter new password',
+      'new_password.regex' => 'Password should contain atleast one uppercase/lowercase letter,one number and one special character',
       'confirm_password.required' => 'Please enter confirm password',
       'confirm_password.same' => 'New password and confirm password should matched'
     ]); 
@@ -657,7 +657,7 @@ public function documentupload(Request $request) {
         }
       }
     }else{
-      $returnArr = array('status'=>'3','msg'=>'Please select an image');
+      $returnArr = array('status'=>'3','msg'=>'Please select an document');
     }
   }
     echo json_encode($returnArr);

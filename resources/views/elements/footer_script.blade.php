@@ -198,9 +198,10 @@
             });
             $.validator.addMethod("pwcheck", function(value) {
                return /[A-Z]/.test(value) // has a uppercase letter
-                   && /[a-z]/.test(value) // has a lowercase letter
-                   && /\d/.test(value) // has a digit
-            },"Must have atleast one uppercase, one lowercase and one number");
+                  && /[a-z]/.test(value) // has a lowercase letter
+                  && /\d/.test(value) // has a digit
+                  && /[!@#$%^&*]/.test(value) // has a special character
+            },"Must have atleast one uppercase, one lowercase and one number,one special character");
             $("#frmRegistration").validate({
               rules: {
                 first_name: {
