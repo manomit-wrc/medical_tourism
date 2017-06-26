@@ -35,7 +35,7 @@
                   <div class="modal-body">
                       <div class="infbox">
                         <div class="userid"><i class="fa fa-user" aria-hidden="true"></i></div>
-                        <input name="login_email_id" id="login_email_id" type="text" class="loginuser" placeholder="Enter Email ID" />
+                        <input name="login_email_id" id="login_email_id" type="text" class="loginuser" placeholder="Enter Email ID" autofocus/>
                       </div>
                       <br clear="all">
                       <div class="infbox">
@@ -70,7 +70,7 @@
                       <div class="alert alert-success fade in alert-dismissable" id="result" style="display:none"></div>
                       <div class="infbox">
                         <div class="userid"><i class="fa fa-user" aria-hidden="true"></i></div>
-                        <input name="forgot_email_id" id="forgot_email_id" type="text" class="loginuser" placeholder="Enter Email ID" />
+                        <input name="forgot_email_id" id="forgot_email_id" type="text" class="loginuser" placeholder="Enter Email ID" autofocus/>
                       </div>                      
                       <br clear="all">
                       <div class="remindbox">                          
@@ -99,7 +99,7 @@
                   <div class="modal-body">
                       <div class="infbox">
                         <div class="userid"><i class="fa fa-user" aria-hidden="true"></i></div>
-                        <input name="first_name" id="first_name" type="text" class="loginuser" placeholder="Enter First Name" />
+                        <input name="first_name" id="first_name" type="text" class="loginuser" placeholder="Enter First Name" autofocus />
                       </div>
                       <br clear="all">
                       <div class="infbox">
