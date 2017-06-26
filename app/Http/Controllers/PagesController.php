@@ -62,9 +62,9 @@ class PagesController extends Controller
 
 	public function servicedetails($id)
 	{
-		  $service_data = MedicalFacility::findOrFail($id);
-		  //echo "<pre>"; print_r($service_data); die;
-      return view('pages.servicedetails')->with('service_data', $service_data);
+		$service_data = MedicalFacility::findOrFail($id);
+		//echo "<pre>"; print_r($service_data); die;
+      	return view('pages.servicedetails')->with('service_data', $service_data);
 	}
 
 	public function enquiry()
@@ -87,7 +87,7 @@ class PagesController extends Controller
 	{
 		$doctor_data = Doctor::all();
 		//echo "<pre>"; print_r($doctor_data); die;
-    return view('pages.doctors')->with('doctor_data',$doctor_data);
+    	return view('pages.doctors')->with('doctor_data',$doctor_data);
 		//return view('pages.doctors');
 	}
 
@@ -95,9 +95,9 @@ class PagesController extends Controller
 	{
 		$data['doctor_details'] = Doctor::findOrFail($id);
 		$data['doctor_procedure_details'] = Doctor::with('procedures')->where('id',$id)->get()->toArray();
-    $data['doctor_degree_details'] = Doctor::with('degrees')->where('id',$id)->get()->toArray();
+    	$data['doctor_degree_details'] = Doctor::with('degrees')->where('id',$id)->get()->toArray();
 		//echo "<pre>"; print_r($data); die;
-    return view('pages.doctordetail',$data);
+    	return view('pages.doctordetail',$data);
 	}
 
 	public function contact()
@@ -666,18 +666,18 @@ public function documentupload(Request $request) {
 public function successreset() {    
     return view('pages.reset');
 }
-  public function document_delete(Request $request,$id) {
-      if($id) {
-          $docu_cat = \App\Document::find($id);
-          $status = '2';
-          $docu_cat->status = $status; 
-          $del = $docu_cat->save();
-          if($del) {      
-              $request->session()->flash("message", "Successfully deleted");
-              return redirect('/upload-documents');
-          }
-      }
-  }
+	public function document_delete(Request $request,$id) {
+	  if($id) {
+	      $docu_cat = \App\Document::find($id);
+	      $status = '2';
+	      $docu_cat->status = $status; 
+	      $del = $docu_cat->save();
+	      if($del) {      
+	          $request->session()->flash("message", "Successfully deleted");
+	          return redirect('/upload-documents');
+	      }
+	  }
+	}
     public function document_download(Request $request,$id) {
         if($id) {
             $docu_cat = \App\Document::find($id);
