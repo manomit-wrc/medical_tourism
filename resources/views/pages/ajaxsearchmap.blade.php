@@ -21,7 +21,7 @@
         <!-- Multiple Markers -->
         var markers = [];  
          $.each(locations, function( index, value ){
-           markers.push([value.city, value.lat,value.longi,value.ord]);
+           markers.push([value.hospname,value.lat,value.longi,value.hosid,value.city,value.country,value.ord]);
          });
         <!-- Multiple Markers -->
         /*var markers = [
@@ -33,9 +33,9 @@
                            
         <!-- Info Window Content -->
         var infoWindowContent = [];  
-         $.each(locations, function( index, value ){
+         $.each(locations, function(index,value){
            infoWindowContent.push(['<div class="info_content">' +
-            '<h3>'+value.city+'</h3>' +
+            '<h3>'+value.hospname+'</h3>' +value.city+'</h3><br/>'+value.country+'</h3><br/>'+
             '</div>']);
          });
         /*var infoWindowContent = [
@@ -62,20 +62,30 @@
         <!-- Loop through our array of markers & place each one on the map   -->
         for( i = 0; i < markers.length; i++ ) {
             var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
+            var hos_id=markers[i][3];
             bounds.extend(position);
             marker = new google.maps.Marker({
                 position: position,
+                url: '/searchdetails/'+hos_id,
                 map: map,
                 title: markers[i][0]
             });
             
+
+             google.maps.event.addListener(marker, 'click', function() {
+                window.location.href = marker.url;
+             });
+
+
             <!-- Allow each marker to have an info window     -->
-            google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            google.maps.event.addListener(marker, 'mouseover', (function(marker, i) { 
                 return function() {
                     infoWindow.setContent(infoWindowContent[i][0]);
+                    infoWindow.setOptions({maxWidth: 200});
                     infoWindow.open(map, marker);
                 }
             })(marker, i));
+
             <!-- Automatically center the map fitting all markers on the screen -->
             map.fitBounds(bounds);
         }
