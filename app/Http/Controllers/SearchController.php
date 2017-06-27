@@ -89,7 +89,7 @@ class SearchController extends Controller
             $res->where('procedures.id',$select_procedure);
             });
         })->orderBy('hospitals.name')->get();
-         //echo "<pre>"; print_r($search_data[0]->country->name); die();
+         //echo "<pre>"; print_r($search_data[0]->city->name); print_r($search_data[0]->country->name); die();
         //echo "<pre>"; print_r($search_data); die();
         /*$locations=[
             ['city'=>'kolkata','lat'=> -33.890542,'longi'=> 151.274856,'ord'=> 4],
@@ -103,7 +103,7 @@ class SearchController extends Controller
          $i=1;
          foreach($search_data as $key=>$value) {
             //echo $value->country->name; die;
-            $locations[] = array('city'=>$value->name,'lat'=>$value->hosp_latitude,'longi'=>$value->hosp_longitude,'ord'=> $i);
+            $locations[] = array('hospname'=>$value->name,'lat'=>$value->hosp_latitude,'longi'=>$value->hosp_longitude,'hosid'=>$value->id,'city'=>$value->city->name,'country'=>$value->country->name,'ord'=> $i);
             $i++;
          }
         //echo "<pre>"; print_r($locations); die();
@@ -197,7 +197,7 @@ class SearchController extends Controller
         $locations = array();
          $i=1;
          foreach($search_data as $key=>$value) {           
-            $locations[] = array('city'=>$value->name,'lat'=>$value->hosp_latitude,'longi'=>$value->hosp_longitude,'ord'=> $i);
+            $locations[] = array('hospname'=>$value->name,'lat'=>$value->hosp_latitude,'longi'=>$value->hosp_longitude,'hosid'=>$value->id,'city'=>$value->city_name,'country'=>$value->state_name,'ord'=> $i);
             $i++;
          }
         return view('pages.ajaxsearchmap',compact('locations'));

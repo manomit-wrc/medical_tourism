@@ -49,7 +49,7 @@
           width: 100%;
           height: 100%;
           z-index: 9999;
-          background: url(storage/frontend/images/loader/Preloader_3.gif) center no-repeat #fff;
+          background: url('/storage/frontend/images/loader/Preloader_3.gif') center no-repeat #fff;
         }
       </style>
 
