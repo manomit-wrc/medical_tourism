@@ -46,4 +46,27 @@ class CountryStateCityController extends Controller
         $cities = City::orderBy('name')->pluck('name', 'id')->all();
         return response()->json($cities);
     }
+    
+    public function getCountryId(Request $request)
+    {
+        //echo $request->city_name; die;
+        $countries = Country::where('name','LIKE','%'.$request->country_name.'%')->pluck('id')->all();
+        return $countries[0];
+    }
+
+    public function getStateId(Request $request)
+    {
+        //echo $request->city_name; die;
+        $states = State::where('name','LIKE','%'.$request->state_name.'%')->pluck('id')->all();
+        return $states[0];
+    }
+
+    public function getCityId(Request $request)
+    {
+        //echo $request->city_name; die;
+        $cities = City::where('name','LIKE','%'.$request->city_name.'%')->pluck('id')->all();
+        return $cities[0];
+    }
+     
+    
 }

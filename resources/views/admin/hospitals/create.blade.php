@@ -125,7 +125,8 @@
                         <!-- form-group dropdown-->
                         <div class="form-group">
                            {!! Html::decode(Form::label('state_id','State: <span style="color:red;">*</span>')) !!}
-                           <select name="state_id" id="state_id" class="form-control select2" ></select>
+                          <!--  <select name="state_id" id="state_id" class="form-control select2" ></select> -->
+                           {!! Form::select('state_id',['' => 'Select'] +$states, null, ['class' => 'form-control select2']) !!}
                            {!! Html::decode('<span class="text-danger">'.$errors->first("state_id").'</span>') !!}
                         </div>
                         <!-- /.form-group dropdown-->
@@ -133,7 +134,8 @@
                          <!-- form-group dropdown-->
                         <div class="form-group">
                            {!! Html::decode(Form::label('city_id','City: <span style="color:red;">*</span>')) !!}
-                           <select name="city_id" id="city_id" class="form-control select2" ></select>
+                           <!-- <select name="city_id" id="city_id" class="form-control select2" ></select> -->
+                           {!! Form::select('city_id',['' => 'Select'] +$cities, null, ['class' => 'form-control select2']) !!}
                             {!! Html::decode('<span class="text-danger">'.$errors->first("city_id").'</span>') !!}
                         </div>
                         <!-- /.form-group dropdown-->

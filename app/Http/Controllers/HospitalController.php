@@ -46,7 +46,9 @@ class HospitalController extends Controller
     public function create()
     {
        $countries = Country::orderBy('name')->pluck('name', 'id')->all();
-       return view('admin.hospitals.create', compact('countries'));
+       $states = State::orderBy('name')->pluck('name', 'id')->all();
+       $cities = City::orderBy('name')->pluck('name', 'id')->all();
+       return view('admin.hospitals.create', compact('countries','states','cities'));
     }
 
     /**

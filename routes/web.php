@@ -62,6 +62,9 @@ Route::get('/api/get-city-list','CountryStateCityController@getCityList');
 Route::post('/get_state_list','PagesController@get_state_list');
 Route::post('/get_city_list','PagesController@get_city_list');
 
+
+
+
 Route::group(['middleware' => ['front']], function() {
     Route::get('/profile','PagesController@patient_profile');
     Route::post('/update-profile','PagesController@update_profile');
@@ -353,7 +356,8 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('/admin/hospitals/ajaxstoretreatment/','HospitalController@ajaxstoretreatment');
     Route::post('/admin/hospitals/gettreatarr/','HospitalController@gettreatarr');
     Route::post('/admin/hospitals/changestatus/','HospitalController@ajaxhoschangestatus');
-    Route::post('/admin/hospitals/getLnt/','HospitalController@getLnt');
+    //Route::post('/admin/hospitals/getLnt/','HospitalController@getLnt');
+
 
     //package type section
     Route::get('/admin/package-types/', 'PackageTypeController@index');
@@ -438,7 +442,9 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/api/dependent-dropdown','CountryStateCityController@index');
     Route::get('/admin/api/get-state-list','CountryStateCityController@getStateList');
     Route::get('/admin/api/get-city-list','CountryStateCityController@getCityList');
-   
+    Route::post('/admin/api/get-country-id','CountryStateCityController@getCountryId');
+    Route::post('/admin/api/get-state-id','CountryStateCityController@getStateId');
+    Route::post('/admin/api/get-city-id','CountryStateCityController@getCityId');
 
     // home page content
     Route::get('/admin/homepagecontent','HomePageContentController@index');
