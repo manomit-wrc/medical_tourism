@@ -24,6 +24,7 @@ return array(
     'AddPermissionIdToPermissions' => $baseDir . '/database/migrations/2017_04_25_125438_add_permission_id_to_permissions.php',
     'AddProcedureImageColumsToProceduresTable' => $baseDir . '/database/migrations/2017_04_24_130154_add_procedure_image_colums_to_procedures_table.php',
     'AddRememberTokenToPatientsTable' => $baseDir . '/database/migrations/2017_05_08_073932_add_remember_token_to_patients_table.php',
+    'AddSearchAddressHospitals' => $baseDir . '/database/migrations/2017_06_27_091010_add_search_address_hospitals.php',
     'AddSecurityCodePatientsTable' => $baseDir . '/database/migrations/2017_05_18_084353_add_security_code_patients_table.php',
     'AddSendMessageSendStatusContactusTable' => $baseDir . '/database/migrations/2017_05_16_062102_add_send_message_send_status_contactus_table.php',
     'AddSoftDeletesToMessagesTable' => $baseDir . '/database/migrations/2017_03_30_152742_add_soft_deletes_to_messages_table.php',

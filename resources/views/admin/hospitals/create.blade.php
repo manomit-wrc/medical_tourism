@@ -98,10 +98,18 @@
 
                     </div>
                     <div class="col-md-6">
+                         <!-- text input -->
+                        <div class="form-group">
+                          {!! Html::decode(Form::label('search_address','Search Address: <span style="color:red;">*</span>')) !!}
+                          {!! Form::text('search_address','',array('class'=>'form-control srch_address','id'=>'search_address','placeholder'=>'Search hospital address')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("search_address").'</span>') !!}
+                        </div>
+                        <!-- /.text input -->
+
                         <!-- text input -->
                         <div class="form-group">
                           {!! Html::decode(Form::label('street_address','Address: <span style="color:red;">*</span>')) !!}
-                          {!! Form::text('street_address','',array('class'=>'form-control','id'=>'street_address','onBlur'=>'return last_seen_pin(this.value)','placeholder'=>'Enter hospital address')) !!}
+                          {!! Form::text('street_address','',array('class'=>'form-control','id'=>'street_address','placeholder'=>'Enter hospital address')) !!}
                           {!! Html::decode('<span class="text-danger">'.$errors->first("street_address").'</span>') !!}
                         </div>
                         <!-- /.text input -->

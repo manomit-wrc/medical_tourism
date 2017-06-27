@@ -69,6 +69,10 @@
       CKEDITOR.replace('textarea_id');
   </script>
 @endif
+<!---For Address autocomplete start in doctor page-->
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyB4eCXS81oEuOHH9BJ_vOVvqQL1qY90kIA&sensor=false&libraries=places"></script>
+{!!Html::script("storage/admin/js/jquery.geocomplete.min.js")!!}
+<!---For Address autocomplete end-->
 <script>
 /*ckeditor implementation initialization*/
  //id here
@@ -141,6 +145,18 @@ $(function () {
       "info": true,
       "autoWidth": false
     });
+
+
+     //<!---For Address autocomplete start in doctor page-->
+     $(".srch_address")
+     .geocomplete()
+     .bind("geocode:result", function (event, result) {            
+      $("#hosp_latitude").val(result.geometry.location.lat());
+      $("#hosp_longitude").val(result.geometry.location.lng());
+      console.log(result);
+      });
+     //<!---For Address autocomplete start in doctor page-->
+
   });
 </script>
 
@@ -543,7 +559,7 @@ $(function () {
     }
 
 
-function last_seen_pin(address)
+/*function last_seen_pin(address)
 {
   
   dataString = "address=" + address;  
@@ -567,7 +583,7 @@ function last_seen_pin(address)
     }
     }
   });
-}
+}*/
 </script>
 <!-- hospital wise treatment end -- >
 
