@@ -76,6 +76,7 @@
                           @endif
                         </td>
                         <td>
+                          <a href="{!!URL::to('/admin/doctors/view',$dd->id)!!}" data-toggle="tooltip" data-original-title="View"><i class="fa fa-eye" style="color:blue;" aria-hidden="true"></i></a>&nbsp;
                           <a href="{!!URL::to('/admin/doctors/edit',$dd->id)!!}" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" style="color:green;" aria-hidden="true"></i></a>&nbsp;
                           <a href="javascript:void(0)" onclick="return deldata('{!!URL::to('/admin/doctors/delete',$dd->id)!!}')" data-toggle="tooltip" data-original-title="Delete" ><i class="fa fa-times" style="color:red;" aria-hidden="true"></i></a>
                         </td>

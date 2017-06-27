@@ -315,6 +315,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('/admin/doctors/get_state_list','DoctorController@get_state_list');
     Route::post('/admin/doctors/get_city_list','DoctorController@get_city_list');
     Route::post('/admin/doctors/changestatus/','DoctorController@ajaxdoctorchangestatus');
+    Route::get('/admin/doctors/view/{id}','DoctorController@view');
 
     //provider connectivitysettings master section
     Route::get('/admin/providerconnectivity', 'ProviderConnectivityController@index');
