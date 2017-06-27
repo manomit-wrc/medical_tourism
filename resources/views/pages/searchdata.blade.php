@@ -13,13 +13,14 @@
         document.body.appendChild(script);
     });
 	//var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
-	
+	  var origin = new google.maps.LatLng(22.5726,88.3639);
+
     function initialize() {
         var map;    
         var bounds = new google.maps.LatLngBounds();
         var mapOptions = {  
-            zoom: 10,
-            center: new google.maps.LatLng(-33.92, 151.25),          
+            zoom: 20,
+            center: origin,          
             mapTypeId: 'roadmap'
         };
                         
@@ -78,7 +79,6 @@
             marker = new google.maps.Marker({
                 position: position,
                 map: map,
-				        icon: map,				
                 title: markers[i][0]
             });
             
@@ -86,9 +86,11 @@
             google.maps.event.addListener(marker, 'click', (function(marker, i) { 
                 return function() {
                     infoWindow.setContent(infoWindowContent[i][0]);
+                    /*infoWindow.setOptions({maxWidth: 200});*/
                     infoWindow.open(map, marker);
                 }
             })(marker, i));
+
             <!-- Automatically center the map fitting all markers on the screen -->
             map.fitBounds(bounds);
         }
