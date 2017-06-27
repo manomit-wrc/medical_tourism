@@ -1,4 +1,4 @@
-<footer class="footer hed_logo">
+<!-- <footer class="footer hed_logo">
       <div class="container">
           <div class="col-lg-12 footer_app">
               <ul>
@@ -29,7 +29,7 @@
                 </ul>
             </div>
         </div>
-    </footer>
+    </footer> -->
 </div>
 <!-- jQuery 2.2.3 -->
 {!! Html::script("storage/admin/js/jquery-2.2.3.min.js") !!}
@@ -63,7 +63,7 @@
 {!! Html::style('storage/admin/css/bootstrap-toggle.min.css') !!}
 {!! Html::script("storage/admin/js/bootstrap-toggle.min.js")!!}
 
-@if((Request::segment(2) === 'package-types' && (Request::segment(3) === 'create' || Request::segment(3) === 'edit'))||(Request::segment(2) === 'successstories' && (Request::segment(3) === 'create' || Request::segment(3) === 'edit')) ||(Request::segment(2) === 'cmspagedetail' && (Request::segment(3) === 'create' || Request::segment(3) === 'edit')))
+@if((Request::segment(2) === 'package-types' && (Request::segment(3) === 'create' || Request::segment(3) === 'edit'))||(Request::segment(2) === 'successstories' && (Request::segment(3) === 'create' || Request::segment(3) === 'edit')) ||(Request::segment(2) === 'cmspagedetail' && (Request::segment(3) === 'create' || Request::segment(3) === 'edit')) ||(Request::segment(2) === 'doctors' && (Request::segment(3) === 'create' || Request::segment(3) === 'edit')))
   {!! Html::script("vendor/unisharp/laravel-ckeditor/ckeditor.js")!!}
   <script type="text/javascript">
       CKEDITOR.replace('textarea_id');

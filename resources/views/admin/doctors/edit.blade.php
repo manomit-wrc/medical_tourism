@@ -53,8 +53,8 @@
 
                   <div class="col-md-6">
                   <div class="form-group {{ $errors->has('about') ? 'has-error' : '' }}">
-                    <!-- {!! Html::decode(Form::label('about','Description: <span style="color:red;">*</span>')) !!} -->
-                    {!! Html::decode(Form::label('about','Description: ')) !!}
+                    <!-- {!! Html::decode(Form::label('about','Bio : <span style="color:red;">*</span>')) !!} -->
+                    {!! Html::decode(Form::label('about','Bio : ')) !!}
                     {!! Form::textarea('about',".$doctor_details->about.",array('class'=>'form-control ','id'=>'textarea_id','placeholder'=>'Enter about doctor')) !!}
                     <span class="text-danger">{{ $errors->first('about') }}</span>
                   </div>
@@ -126,6 +126,23 @@
                       <span class="text-danger">{{ $errors->first('email') }}</span>
                     </div>
                   </div>
+                   <div class="col-md-6">
+                    <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
+                      <!-- <label for="name">Email: <span style="color:red;">*</span></label> -->
+                      <label for="name">Sex:</label>
+                      <select name="sex" id="sex" class="form-control" autofocus >
+                        <option value="male" {{ $doctor_details->sex == "male" ? 'selected' : '' }}>Male</option>
+                        <option value="female" {{ $doctor_details->sex == "female" ? 'selected' : '' }}>Female</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">                      
+                      <label for="name">Registration Number:</label>
+                      <input type="text" name="reg_no" id="reg_no" class="form-control" value="{{ ($doctor_details->reg_no)? $doctor_details->reg_no:''  }}" autofocus >                     
+                    </div>
+                  </div>
 
                   <div class="col-md-6">
                     <div class="form-group {{ $errors->has('mobile_no') ? 'has-error' : '' }}">
@@ -150,7 +167,17 @@
                       <!-- <label for="name">Image: <span style="color:red;">*</span></label> -->
                       <label for="name">Image: </label>
                       <input type="file" name="avators" id="avators" autofocus ><br />
+                    @php
+                    if($doctor_details->avators !=''){
+                    @endphp 
                       <img src="{{url('/uploads/doctors/thumb/'.$doctor_details->avators)}}" alt="Doctor Image" class="img_broder">
+                      @php
+                    }else {
+                    @endphp
+                      <img src="{{url('/uploads/doctors/noimage_user.jpg')}}" alt="doctor Image" class="img_broder" width="100" height="100">
+                     @php
+                    }
+                   @endphp     
                       <span class="text-danger">{{ $errors->first('avators') }}</span>
                     </div>
                   </div>

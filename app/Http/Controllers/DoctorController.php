@@ -119,6 +119,8 @@ class DoctorController extends Controller
         $doctors->city_id = $request->city_id;
         $doctors->zipcode = $request->zipcode;
         $doctors->email = $request->email;
+        $doctors->sex = $request->sex;
+        $doctors->reg_no = $request->reg_no;
         $doctors->mobile_no = $request->mobile_no;
         $doctors->phone_no = $request->phone_no;
         $doctors->avators = $fileName;
@@ -150,6 +152,29 @@ class DoctorController extends Controller
         }
 
         return view('admin.doctors.edit',$data);
+      }
+    }
+
+    public function view($id) {
+      if($id) {
+        $data['doctor_details'] = Doctor::find($id);
+        $data['doctor_procedure_details'] = Doctor::with('procedures')->where('id',$id)->get()->toArray();
+        $data['doctor_degree_details'] = Doctor::with('degrees')->where('id',$id)->get()->toArray();
+
+        $data['country_list'] = \App\Country::get()->pluck('name','id');
+        $data['state_list'] = \App\State::where('country_id',$data['doctor_details']->country_id)->get()->pluck('name','id');
+        $data['city_list'] = \App\City::where('state_id',$data['doctor_details']->state_id)->get()->pluck('name','id');
+        $data['degree_list'] = \App\Degree::get()->pluck('name','id')->toArray();
+        $data['procedure_list'] = \App\Procedure::get()->pluck('name','id')->toArray();
+        foreach ($data['doctor_procedure_details'][0]['procedures'] as $key => $value) {
+          $data['procedures_array'][] = $value['id'];
+        }
+        foreach ($data['doctor_degree_details'][0]['degrees'] as $key => $value) {
+          $data['degrees_array'][] = $value['id'];
+        }
+       $data['previous'] = Doctor::where('id', '<', $id)->where('status', '!=','2')->max('id');
+       $data['next'] = Doctor::where('id', '>', $id)->where('status', '!=','2')->min('id');  
+        return view('admin.doctors.view',$data);
       }
     }
 
@@ -237,6 +262,8 @@ class DoctorController extends Controller
           $doctors->city_id = $request->city_id;
           $doctors->zipcode = $request->zipcode;
           $doctors->email = $request->email;
+          $doctors->sex = $request->sex;
+          $doctors->reg_no = $request->reg_no;
           $doctors->mobile_no = $request->mobile_no;
           $doctors->phone_no = $request->phone_no;
           $doctors->avators = $fileName;

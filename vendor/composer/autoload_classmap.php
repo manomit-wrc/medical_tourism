@@ -26,6 +26,7 @@ return array(
     'AddRememberTokenToPatientsTable' => $baseDir . '/database/migrations/2017_05_08_073932_add_remember_token_to_patients_table.php',
     'AddSecurityCodePatientsTable' => $baseDir . '/database/migrations/2017_05_18_084353_add_security_code_patients_table.php',
     'AddSendMessageSendStatusContactusTable' => $baseDir . '/database/migrations/2017_05_16_062102_add_send_message_send_status_contactus_table.php',
+    'AddSexRegNoDoctors' => $baseDir . '/database/migrations/2017_06_27_053640_add_sex_reg_no_doctors.php',
     'AddSoftDeletesToMessagesTable' => $baseDir . '/database/migrations/2017_03_30_152742_add_soft_deletes_to_messages_table.php',
     'AddSoftDeletesToParticipantsTable' => $baseDir . '/database/migrations/2014_11_03_154831_add_soft_deletes_to_participants_table.php',
     'AddSoftdeletesToThreadsTable' => $baseDir . '/database/migrations/2014_12_04_124531_add_softdeletes_to_threads_table.php',

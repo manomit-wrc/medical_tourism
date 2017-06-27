@@ -52,7 +52,7 @@
                   <div class="col-md-6">
                   <div class="form-group {{ $errors->has('about') ? 'has-error' : '' }}">
                     <!-- {!! Html::decode(Form::label('about','Description: <span style="color:red;">*</span>')) !!} -->
-                    {!! Html::decode(Form::label('about','Description:')) !!}
+                    {!! Html::decode(Form::label('about','Bio :')) !!}
                     {!! Form::textarea('about','',array('class'=>'form-control ','id'=>'textarea_id','placeholder'=>'Enter about doctor')) !!}
                     <span class="text-danger">{{ $errors->first('about') }}</span>
                   </div>
@@ -115,6 +115,22 @@
                       <label for="name">Email: </label>
                       <input type="text" name="email" id="email" class="form-control" value="{{ old('email')}}" autofocus >
                       <span class="text-danger">{{ $errors->first('email') }}</span>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">                     
+                      <label for="name">Sex: </label>
+                      <select name="sex" id="sex" class="form-control" autofocus >
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">                     
+                      <label for="name">Registration Number: </label>
+                      <input type="text" name="reg_no" id="reg_no" class="form-control" value="{{ old('reg_no')}}" autofocus >                     
                     </div>
                   </div>
 
