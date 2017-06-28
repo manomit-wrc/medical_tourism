@@ -96,6 +96,14 @@
 
                     </div>
                     <div class="col-md-6">
+                         <!-- text input -->
+                        <div class="form-group">
+                          {!! Html::decode(Form::label('search_address','Search Address:')) !!}
+                          {!! Form::text('search_address',null,array('class'=>'form-control srch_address','id'=>'search_address','placeholder'=>'Search hospital address')) !!}
+                          {!! Html::decode('<span class="text-danger">'.$errors->first("search_address").'</span>') !!}
+                        </div>
+                        <!-- /.text input -->
+                        
                         <!-- text input -->
                         <div class="form-group">
                           {!! Html::decode(Form::label('street_address','Address: <span style="color:red;">*</span>')) !!}

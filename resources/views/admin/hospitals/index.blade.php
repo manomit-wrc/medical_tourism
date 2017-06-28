@@ -45,7 +45,7 @@
                     <th>Hospital name</th>
                     <th>Address</th>
                     <th>Status</th>
-                    <th width="35%">Actions</th>
+                    <th width="10%">Actions</th>
                   </tr>
                 </thead>
                
@@ -70,11 +70,11 @@
                         <td>
                           <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
                             <!-- we will add this later since its a little more complicated than the other two buttons -->                             
-                          <a href="{!!URL::to('/admin/hospitals/show',$hospitals_list->id)!!}" class="btn btn-info">view</a>
-                          <a href="{!!URL::to('/admin/hospitals/treatment',$hospitals_list->id)!!}" class="btn btn-warning">Treatment</a>
-                          <a href="{!!URL::to('/admin/hospitals/medicaltest',$hospitals_list->id)!!}" class="btn btn-warning">Medical Test</a>   
-                          <a href="{!!URL::to('/admin/hospitals/edit',$hospitals_list->id)!!}" class="btn btn-primary">Edit</a>
-                          <a href="javascript:void(0)" onclick="return deldata('{!!URL::to('/admin/hospitals/delete',$hospitals_list->id)!!}')" class="btn btn-danger" >Delete</a>
+                          <a href="{!!URL::to('/admin/hospitals/show',$hospitals_list->id)!!}" data-toggle="tooltip" data-original-title="View"><i class="fa fa-eye" style="color:blue;" aria-hidden="true"></i></a>&nbsp;
+                          <a href="{!!URL::to('/admin/hospitals/treatment',$hospitals_list->id)!!}" data-toggle="tooltip" data-original-title="Treatment"><i class="fa fa-stethoscope" style="color:black;" aria-hidden="true"></i></a>&nbsp;
+                          <a href="{!!URL::to('/admin/hospitals/medicaltest',$hospitals_list->id)!!}" data-toggle="tooltip" data-original-title="Medical Test"><i class="fa fa-medkit" style="color:orange;" aria-hidden="true"></i></a>&nbsp;   
+                          <a href="{!!URL::to('/admin/hospitals/edit',$hospitals_list->id)!!}" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" style="color:green;" aria-hidden="true"></i></a>&nbsp;
+                          <a href="javascript:void(0)" onclick="return deldata('{!!URL::to('/admin/hospitals/delete',$hospitals_list->id)!!}')" data-toggle="tooltip" data-original-title="Delete" ><i class="fa fa-times" style="color:red;" aria-hidden="true"></i></a>
                         </td>
                       </tr>
                     @endforeach

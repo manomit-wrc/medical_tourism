@@ -44,7 +44,7 @@
                   <li>
                     <a href="#">
                       <div class="pull-left">
-                        <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                        <!-- <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image"> -->
                       </div>
                       <h4>
                         AdminLTE Design Team
@@ -68,7 +68,7 @@
                   <li>
                     <a href="#">
                       <div class="pull-left">
-                        <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                        <!-- <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image"> -->
                       </div>
                       <h4>
                         Sales Department
@@ -80,7 +80,7 @@
                   <li>
                     <a href="#">
                       <div class="pull-left">
-                        <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                        <!-- <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image"> -->
                       </div>
                       <h4>
                         Reviewers

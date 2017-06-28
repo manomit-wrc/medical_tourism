@@ -31,8 +31,7 @@
         </div>
     </footer> -->
 </div>
-<!-- jQuery 2.2.3 -->
-{!! Html::script("storage/admin/js/jquery-2.2.3.min.js") !!}
+
 <!-- Bootstrap 3.3.6 -->
 {!! Html::script("storage/admin/js/bootstrap.min.js") !!}
 <!-- Select2 -->
@@ -70,7 +69,7 @@
   </script>
 @endif
 <!---For Address autocomplete start in doctor page-->
-<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyB4eCXS81oEuOHH9BJ_vOVvqQL1qY90kIA&sensor=true&libraries=places"></script>
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyB4eCXS81oEuOHH9BJ_vOVvqQL1qY90kIA&libraries=places"></script>
 {!!Html::script("storage/admin/js/jquery.geocomplete.min.js")!!}
 <!---For Address autocomplete end-->
 <script>
@@ -134,26 +133,50 @@ function deldata(url){
       });
   }
 
-/*function getLatLong($address){
-    if(!empty($address)){
-        //Formatted address
-        $formattedAddr = str_replace(' ','+',$address);
-        //Send request and receive json data by address
-        $geocodeFromAddr = file_get_contents('http://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyB4eCXS81oEuOHH9BJ_vOVvqQL1qY90kIA&address='.$formattedAddr.'&sensor=false'); 
-        $output = json_decode($geocodeFromAddr);
-        //Get latitude and longitute from json data
-        $data['latitude']  = $output->results[0]->geometry->location->lat; 
-        $data['longitude'] = $output->results[0]->geometry->location->lng;
-        //Return latitude and longitude of the given address
-        if(!empty($data)){
-            return $data;
-        }else{
-            return false;
-        }
-    }else{
-        return false;   
+/* This showResult function is used as the callback function*/
+
+function showResult(result) {
+    document.getElementById('hosp_latitude').value = result.geometry.location.lat();
+    document.getElementById('hosp_longitude').value = result.geometry.location.lng();
+    //alert(result.geometry.location.lat());
+    //alert(result.geometry.location.lng());
+}
+
+function getLatitudeLongitude(callback, address) {
+    // If adress is not supplied, use default value 'Ferrol, Galicia, Spain'
+    address = address || 'Ferrol, Galicia, Spain';
+    // Initialize the Geocoder
+    geocoder = new google.maps.Geocoder();
+    if (geocoder) {
+        geocoder.geocode({
+            'address': address
+        }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                callback(results[0]);
+            }
+        });
     }
-}*/
+}
+
+var cityidd = document.getElementById('city_id');
+if(cityidd){
+cityidd.addEventListener("change", function () {  //alert("hi");
+    var selectedAddText = document.getElementById("street_address").value;
+
+    var selcityadd = document.getElementById("city_id");
+    var selectedCityText = selcityadd.options[selcityadd.selectedIndex].text;
+
+    var selstateadd = document.getElementById("state_id");
+    var selectedStreetText = selstateadd.options[selstateadd.selectedIndex].text;
+
+    var selcounadd = document.getElementById("country_id");
+    var selectedCountryText = selcounadd.options[selcounadd.selectedIndex].text;
+
+    var address = selectedAddText+' '+selectedCityText+' '+selectedStreetText+' '+selectedCountryText;
+    //alert(address);
+    getLatitudeLongitude(showResult,address)
+});
+}
 
 
 
@@ -182,6 +205,8 @@ $(function () {
         $("#hosp_latitude").val(result.geometry.location.lat());
         $("#hosp_longitude").val(result.geometry.location.lng());
         $("#street_address").val(result.address_components[0].long_name+','+result.address_components[1].long_name);
+        $("#zipcode").val(result.address_components[6].long_name);
+
          var countryName=result.address_components[5].long_name;
          var stateName=result.address_components[4].long_name;
          var cityName=result.address_components[2].long_name;
@@ -228,13 +253,6 @@ $(function () {
         
       });
      //<!---For Address autocomplete start in doctor page-->
-
-     <!---->
-    /* $('#city_id').on('change', function() {
-        var arr_string= $("#street_address").val()+''+$("#city_id").val()+''+''+$("#state_id").val()+''+$("#country_id").val();
-        getLatLong(arr_string);
-      });*/
-     <!---->
 
   });
 </script>
