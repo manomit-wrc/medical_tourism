@@ -19,11 +19,9 @@
   <!-- Main content -->
      <section class="content">
       <div class="row">
-
         <!-- right column -->
         <div class="col-md-12">
           <!-- Horizontal Form -->
-
           <!-- /.box -->
           <!-- general form elements disabled -->
           <div class="box box-warning">

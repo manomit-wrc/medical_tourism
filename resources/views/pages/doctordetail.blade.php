@@ -6,7 +6,7 @@
         <div class="sernewD1">
            <h3>About <b>doctor</b></h3>
           
-          <p>{{ $doctor_details->about }}</p>
+          <p>{{ strip_tags($doctor_details->about) }}</p>
         </div>
   </div>
 <!--Right panel end-->
