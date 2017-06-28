@@ -4,7 +4,7 @@
   	<body>
        <!--On  Page load default Loader include section start here -->
          <div class="se-pre-con"></div>
-      <!-- Ends -->
+       <!-- Ends -->
     	@include('elements.header')
     	@include('elements.headernav')
       @include('elements.slider')

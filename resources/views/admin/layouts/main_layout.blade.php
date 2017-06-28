@@ -18,3 +18,6 @@
   <![endif]-->
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
+   <!--On  Page load default Loader include section start here -->
+         <div class="se-pre-con"></div>
+       <!-- Ends -->

@@ -98,6 +98,7 @@ class HospitalController extends Controller
       $hptl->email = $request->get('email') ;
       $hptl->phone = $request->get('phone') ;
       $hptl->website = $request->get('website') ;
+      $hptl->search_address = $request->get('search_address') ;
       $hptl->street_address = $request->get('street_address') ;
       $hptl->phone = $request->get('phone') ;
       $hptl->country_id = $request->get('country_id') ;
@@ -316,6 +317,7 @@ class HospitalController extends Controller
       $hptl->email = $request->get('email') ;
       $hptl->phone = $request->get('phone') ;
       $hptl->website = $request->get('website') ;
+      $hptl->search_address = $request->get('search_address') ;
       $hptl->street_address = $request->get('street_address') ;
       $hptl->phone = $request->get('phone') ;
       $hptl->country_id = $request->get('country_id') ;
