@@ -64,6 +64,7 @@ return array(
     'CreateCurrencyTable' => $baseDir . '/database/migrations/2013_11_26_161501_create_currency_table.php',
     'CreateDegreesTable' => $baseDir . '/database/migrations/2017_04_24_100115_create_degrees_table.php',
     'CreateDoctorDegreeTable' => $baseDir . '/database/migrations/2017_04_26_082652_create_doctor_degree_table.php',
+    'CreateDoctorHospitalsTable' => $baseDir . '/database/migrations/2017_06_27_103840_create_doctor_hospitals_table.php',
     'CreateDoctorProcedureTable' => $baseDir . '/database/migrations/2017_04_26_082629_create_doctor_procedure_table.php',
     'CreateDoctorsTable' => $baseDir . '/database/migrations/2017_04_26_071406_create_doctors_table.php',
     'CreateDocumentDocumentTagsTable' => $baseDir . '/database/migrations/2017_05_25_092816_create_document_document_tags_table.php',

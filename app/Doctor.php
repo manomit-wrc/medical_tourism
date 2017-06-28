@@ -24,4 +24,7 @@ class Doctor extends Model
     public function cities() {
       return $this->belongsTo('\App\City','city_id');
     }
+    public function doctorwisehospitals() {
+      return $this->belongsToMany('\App\Hospital','doctor_hospitals','doctor_id','hospital_id');
+    }
 }
