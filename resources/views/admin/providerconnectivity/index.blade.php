@@ -44,7 +44,7 @@
                     <th>Name</th>
                     <th>Distance from hospital</th>
                     <th>Status</th>
-                    <th width="11%">Actions</th>
+                    <th>Actions</th>
                   </tr>
                 </thead>
                
@@ -70,8 +70,8 @@
                         <td>
                           <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
                             <!-- we will add this later since its a little more complicated than the other two buttons -->                             
-                          <a href="{!!URL::to('/admin/providerconnectivity/edit',$conn_lists->id)!!}" class="btn btn-primary">Edit</a>
-                          <a href="javascript:void(0)" onclick="return deldata('{!!URL::to('/admin/providerconnectivity/delete',$conn_lists->id)!!}')" class="btn btn-danger" >Delete</a>
+                          <a href="{!!URL::to('/admin/providerconnectivity/edit',$conn_lists->id)!!}" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" style="color:green;" aria-hidden="true"></i></a>&nbsp;                          
+                          <a href="javascript:void(0)" onclick="return deldata('{!!URL::to('/admin/providerconnectivity/delete',$conn_lists->id)!!}')" data-toggle="tooltip" data-original-title="Delete" ><i class="fa fa-times" style="color:red;" aria-hidden="true"></i></a>
                         </td>
                       </tr>
                     @endforeach

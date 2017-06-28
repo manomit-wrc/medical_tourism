@@ -1,6 +1,17 @@
 @extends('admin.layouts.dashboard_layout')
 @section('title', 'Hospital')
 @section('content')
+<!--loader within a page start-->
+<div class="modalloader" style="display: none">
+    <div class="centerloader">
+        <img alt="" src="/storage/frontend/images/loader/loader.gif" />
+    </div>
+</div>
+<!--loader within a page start-->
+
+
+
+
  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -103,7 +114,7 @@
                           {!! Html::decode('<span class="text-danger">'.$errors->first("search_address").'</span>') !!}
                         </div>
                         <!-- /.text input -->
-                        
+
                         <!-- text input -->
                         <div class="form-group">
                           {!! Html::decode(Form::label('street_address','Address: <span style="color:red;">*</span>')) !!}
