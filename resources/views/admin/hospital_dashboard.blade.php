@@ -522,7 +522,7 @@
                       <span class="users-list-date">14 Jan</span>
                     </li>
                     <li>
-                      <img src="dist/img/user4-128x128.jpg" alt="User Image">
+                     <!--  <img src="dist/img/user4-128x128.jpg" alt="User Image"> -->
                       <a class="users-list-name" href="#">Nora</a>
                       <span class="users-list-date">15 Jan</span>
                     </li>

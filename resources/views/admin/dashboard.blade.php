@@ -318,7 +318,7 @@
                         <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
                       </div>
                       <!-- /.direct-chat-info -->
-                      <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image"><!-- /.direct-chat-img -->
+                     <!--  <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image" -->><!-- /.direct-chat-img -->
                       <div class="direct-chat-text">
                         You better believe it!
                       </div>
@@ -348,7 +348,7 @@
                         <span class="direct-chat-timestamp pull-left">23 Jan 6:10 pm</span>
                       </div>
                       <!-- /.direct-chat-info -->
-                      <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image"><!-- /.direct-chat-img -->
+                      <!-- <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image"> --><!-- /.direct-chat-img -->
                       <div class="direct-chat-text">
                         I would love to.
                       </div>
@@ -394,7 +394,7 @@
                       <!-- End Contact Item -->
                       <li>
                         <a href="#">
-                          <img class="contacts-list-img" src="dist/img/user3-128x128.jpg" alt="User Image">
+                         <!--  <img class="contacts-list-img" src="dist/img/user3-128x128.jpg" alt="User Image"> -->
 
                           <div class="contacts-list-info">
                                 <span class="contacts-list-name">
@@ -522,12 +522,12 @@
                       <span class="users-list-date">14 Jan</span>
                     </li>
                     <li>
-                      <img src="dist/img/user4-128x128.jpg" alt="User Image">
+                     <!--  <img src="dist/img/user4-128x128.jpg" alt="User Image"> -->
                       <a class="users-list-name" href="#">Nora</a>
                       <span class="users-list-date">15 Jan</span>
                     </li>
                     <li>
-                      <img src="dist/img/user3-128x128.jpg" alt="User Image">
+                      <!-- <img src="dist/img/user3-128x128.jpg" alt="User Image"> -->
                       <a class="users-list-name" href="#">Nadia</a>
                       <span class="users-list-date">15 Jan</span>
                     </li>

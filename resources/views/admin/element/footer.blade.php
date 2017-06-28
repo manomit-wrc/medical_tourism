@@ -70,7 +70,7 @@
   </script>
 @endif
 <!---For Address autocomplete start in doctor page-->
-<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyB4eCXS81oEuOHH9BJ_vOVvqQL1qY90kIA&sensor=false&libraries=places"></script>
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyB4eCXS81oEuOHH9BJ_vOVvqQL1qY90kIA&sensor=true&libraries=places"></script>
 {!!Html::script("storage/admin/js/jquery.geocomplete.min.js")!!}
 <!---For Address autocomplete end-->
 <script>
@@ -133,6 +133,32 @@ function deldata(url){
           }
       });
   }
+
+/*function getLatLong($address){
+    if(!empty($address)){
+        //Formatted address
+        $formattedAddr = str_replace(' ','+',$address);
+        //Send request and receive json data by address
+        $geocodeFromAddr = file_get_contents('http://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyB4eCXS81oEuOHH9BJ_vOVvqQL1qY90kIA&address='.$formattedAddr.'&sensor=false'); 
+        $output = json_decode($geocodeFromAddr);
+        //Get latitude and longitute from json data
+        $data['latitude']  = $output->results[0]->geometry->location->lat; 
+        $data['longitude'] = $output->results[0]->geometry->location->lng;
+        //Return latitude and longitude of the given address
+        if(!empty($data)){
+            return $data;
+        }else{
+            return false;
+        }
+    }else{
+        return false;   
+    }
+}*/
+
+
+
+
+
 $(function () {  
     //Initialize Select2 Elements
     $(".js-example-basic-multiple").select2();
@@ -150,12 +176,65 @@ $(function () {
      //<!---For Address autocomplete start in doctor page-->
      $(".srch_address")
      .geocomplete()
-     .bind("geocode:result", function (event, result) {            
-      $("#hosp_latitude").val(result.geometry.location.lat());
-      $("#hosp_longitude").val(result.geometry.location.lng());
-      console.log(result);
+     .bind("geocode:result", function (event, result) {  
+       //console.log(result); 
+       //alert(result.address_components[0].long_name);          
+        $("#hosp_latitude").val(result.geometry.location.lat());
+        $("#hosp_longitude").val(result.geometry.location.lng());
+        $("#street_address").val(result.address_components[0].long_name+','+result.address_components[1].long_name);
+         var countryName=result.address_components[5].long_name;
+         var stateName=result.address_components[4].long_name;
+         var cityName=result.address_components[2].long_name;
+
+         $.ajax({
+             type:"POST",
+             url:"/admin/api/get-country-id",
+             data: {country_name:countryName,_token:"{{csrf_token()}}"},
+             success:function(res){ //alert(res);
+              if(res){
+                 $("#country_id").val(res);
+              }else{
+                   $("#country_id").val('');
+              }
+             }
+          });
+
+         $.ajax({
+             type:"POST",
+             url:"/admin/api/get-state-id",
+             data: {state_name:stateName,_token:"{{csrf_token()}}"},
+             success:function(res){ //alert(res);
+              if(res){
+                 $("#state_id").val(res);
+              }else{
+                  $("#state_id").val('');
+              }
+             }
+          });
+         
+         $.ajax({
+             type:"POST",
+             url:"/admin/api/get-city-id",
+             data: {city_name:cityName,_token:"{{csrf_token()}}"},
+             success:function(res){ //alert(res);
+              if(res){
+                 $("#city_id").val(res);
+              }else{
+                   $("#city_id").val('');
+              }
+             }
+          });
+
+        
       });
      //<!---For Address autocomplete start in doctor page-->
+
+     <!---->
+    /* $('#city_id').on('change', function() {
+        var arr_string= $("#street_address").val()+''+$("#city_id").val()+''+''+$("#state_id").val()+''+$("#country_id").val();
+        getLatLong(arr_string);
+      });*/
+     <!---->
 
   });
 </script>
