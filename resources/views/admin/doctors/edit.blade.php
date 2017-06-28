@@ -206,7 +206,18 @@
                       <span class="text-danger">{{ $errors->first('procedure_id') }}</span>
                     </div>
                   </div>
+                  <div class="col-md-6">
+                      <label for="name">Associated With:</label>
+                      <select class="form-control" id="associated_id[]" name="associated_id[]" multiple="multiple">
+                        @foreach($hospital_list as $key => $value)
+                        <option value="{{ $key }}" {{ (!empty($doctorwisehospitals_array)) ? in_array($key, $doctorwisehospitals_array)? 'selected':'' :'' }}>{{$value}}</option>
+                        @endforeach
+                      </select>                        
+                  </div>
 
+                  <br clear="all">
+                  <div>&nbsp;</div>
+            
                   <div>
                     <input type="submit" name="submit" id="exact-submit-button" class="btn btn-primary pull-left" value="Submit" >
                   </div>

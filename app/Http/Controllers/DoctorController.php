@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Doctor;
+use App\Hospital;
 use Validator;
 use Image;
 use Auth;
@@ -32,7 +33,8 @@ class DoctorController extends Controller
       $country_list = \App\Country::get()->pluck('name','id');
       $degree_list = \App\Degree::get()->pluck('name','id')->toArray();
       $procedure_list = \App\Procedure::get()->pluck('name','id')->toArray();
-      return view('admin.doctors.create')->with(['country_list'=>$country_list,'degree_list'=>$degree_list,'procedure_list'=>$procedure_list]);
+      $hospital_list = \App\Hospital::get()->pluck('name','id')->toArray();
+      return view('admin.doctors.create')->with(['country_list'=>$country_list,'degree_list'=>$degree_list,'procedure_list'=>$procedure_list,'hospital_list'=>$hospital_list]);
     }
 
     public function store(Request $request) {
@@ -125,10 +127,9 @@ class DoctorController extends Controller
         $doctors->phone_no = $request->phone_no;
         $doctors->avators = $fileName;
         $doctors->save();
-
         $doctors->procedures()->attach($request->procedure_id);
         $doctors->degrees()->attach($request->degree_id);
-
+        $doctors->doctorwisehospitals()->attach($request->associated_id);
         $request->session()->flash("message", "Doctor addedd successfully");
         return redirect('/admin/doctors');
     }
@@ -136,9 +137,10 @@ class DoctorController extends Controller
     public function edit($id) {
       if($id) {
         $data['doctor_details'] = Doctor::find($id);
+        $data['hospital_list'] = \App\Hospital::get()->pluck('name','id')->toArray();
         $data['doctor_procedure_details'] = Doctor::with('procedures')->where('id',$id)->get()->toArray();
         $data['doctor_degree_details'] = Doctor::with('degrees')->where('id',$id)->get()->toArray();
-
+        $data['doctorwisehospitals'] = Doctor::with('doctorwisehospitals')->where('id',$id)->get()->toArray();
         $data['country_list'] = \App\Country::get()->pluck('name','id');
         $data['state_list'] = \App\State::where('country_id',$data['doctor_details']->country_id)->get()->pluck('name','id');
         $data['city_list'] = \App\City::where('state_id',$data['doctor_details']->state_id)->get()->pluck('name','id');
@@ -150,7 +152,9 @@ class DoctorController extends Controller
         foreach ($data['doctor_degree_details'][0]['degrees'] as $key => $value) {
           $data['degrees_array'][] = $value['id'];
         }
-
+        foreach ($data['doctorwisehospitals'][0]['doctorwisehospitals'] as $key => $value) {
+          $data['doctorwisehospitals_array'][] = $value['id'];
+        }
         return view('admin.doctors.edit',$data);
       }
     }
@@ -172,8 +176,8 @@ class DoctorController extends Controller
         foreach ($data['doctor_degree_details'][0]['degrees'] as $key => $value) {
           $data['degrees_array'][] = $value['id'];
         }
-       $data['previous'] = Doctor::where('id', '<', $id)->where('status', '!=','2')->max('id');
-       $data['next'] = Doctor::where('id', '>', $id)->where('status', '!=','2')->min('id');  
+        $data['previous'] = Doctor::where('id', '<', $id)->where('status', '!=','2')->max('id');
+        $data['next'] = Doctor::where('id', '>', $id)->where('status', '!=','2')->min('id');  
         return view('admin.doctors.view',$data);
       }
     }
@@ -274,6 +278,9 @@ class DoctorController extends Controller
 
           $doctors->degrees()->wherePivot('doctor_id', '=', $request->id)->detach();
           $doctors->degrees()->attach($request->degree_id);
+
+          $doctors->doctorwisehospitals()->wherePivot('doctor_id', '=', $request->id)->detach();
+          $doctors->doctorwisehospitals()->attach($request->associated_id);
 
           $request->session()->flash("message", "Doctor updated successfully");
           return redirect('/admin/doctors');

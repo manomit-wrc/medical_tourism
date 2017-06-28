@@ -1,9 +1,6 @@
 <?php
-
 namespace App;
-
 use Illuminate\Database\Eloquent\Model;
-
 class Procedure extends Model
 {
     /**
@@ -31,10 +28,9 @@ class Procedure extends Model
     }
 
     public function doctors() {
-
-      return $this->belongsToMany('\App\Doctor','doctor_procedure','procedure_id','doctor_id');
+		return $this->belongsToMany('\App\Doctor','doctor_procedure','procedure_id','doctor_id');
     }
     public function genericmedicines() {
-      return $this->belongsToMany('\App\Genericmedicine','genericmedicine_categories','procedure_id','genericmedicine_id');
+		return $this->belongsToMany('\App\Genericmedicine','genericmedicine_categories','procedure_id','genericmedicine_id');
     }
 }
