@@ -212,9 +212,16 @@ $(function () {
          var cityName=result.address_components[2].long_name;
 
          $.ajax({
+             async: true,   // this will solve the problem
              type:"POST",
              url:"/admin/api/get-country-id",
              data: {country_name:countryName,_token:"{{csrf_token()}}"},
+             beforeSend: function () {
+                        $(".modalloader").show();
+              },
+              complete: function () {
+                  $(".modalloader").hide();
+              },
              success:function(res){ //alert(res);
               if(res){
                  $("#country_id").val(res);
@@ -225,9 +232,16 @@ $(function () {
           });
 
          $.ajax({
+             async: true,   // this will solve the problem
              type:"POST",
              url:"/admin/api/get-state-id",
              data: {state_name:stateName,_token:"{{csrf_token()}}"},
+             beforeSend: function () {
+                        $(".modalloader").show();
+              },
+              complete: function () {
+                  $(".modalloader").hide();
+              },
              success:function(res){ //alert(res);
               if(res){
                  $("#state_id").val(res);
@@ -238,9 +252,16 @@ $(function () {
           });
          
          $.ajax({
+             async: true,   // this will solve the problem
              type:"POST",
              url:"/admin/api/get-city-id",
              data: {city_name:cityName,_token:"{{csrf_token()}}"},
+             beforeSend: function () {
+                        $(".modalloader").show();
+              },
+              complete: function () {
+                  $(".modalloader").hide();
+              },
              success:function(res){ //alert(res);
               if(res){
                  $("#city_id").val(res);

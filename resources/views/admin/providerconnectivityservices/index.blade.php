@@ -40,7 +40,7 @@
                     <th>Service name</th>
                     <th>Description</th>
                     <th>Status</th>
-                    <th width="11%">Actions</th>
+                    <th>Actions</th>
                   </tr>
                 </thead>
                
@@ -64,8 +64,8 @@
                           @endif
                         </td>
                         <td>
-                          <a href="{!!URL::to('/admin/providerconnectivityservices/edit',$conn_services_lists->id)!!}" class="btn btn-primary">Edit</a>
-                          <a href="javascript:void(0)" onclick="return deldata('{!!URL::to('/admin/providerconnectivityservices/delete',$conn_services_lists->id)!!}')" class="btn btn-danger" >Delete</a>
+                          <a href="{!!URL::to('/admin/providerconnectivityservices/edit',$conn_services_lists->id)!!}" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" style="color:green;" aria-hidden="true"></i></a>&nbsp;                        
+                          <a href="javascript:void(0)" onclick="return deldata('{!!URL::to('/admin/providerconnectivityservices/delete',$conn_services_lists->id)!!}')" data-toggle="tooltip" data-original-title="Delete" ><i class="fa fa-times" style="color:red;" aria-hidden="true"></i></a>
                         </td>
                       </tr>
                     @endforeach

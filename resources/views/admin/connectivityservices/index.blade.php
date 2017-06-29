@@ -43,7 +43,7 @@
                     <th style="display:none;"></th>
                     <th>Connectivity service name</th>
                     <th>Status</th>
-                    <th width="11%">Actions</th>
+                    <th>Actions</th>
                   </tr>
                 </thead>
                

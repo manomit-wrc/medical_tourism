@@ -51,21 +51,37 @@ class CountryStateCityController extends Controller
     {
         //echo $request->city_name; die;
         $countries = Country::where('name','regexp','[[:<:]]'.$request->country_name.'[[:>:]]')->pluck('id')->all();
-        return $countries[0];
+        if($countries)
+        {
+            return $countries[0];
+        }else{
+            return "";
+        }   
+        
     }
 
     public function getStateId(Request $request)
     {
         //echo $request->city_name; die;
         $states = State::where('name','LIKE','%'.$request->state_name.'%')->pluck('id')->all();
-        return $states[0];
+        if($states)
+        {
+          return $states[0];
+        }else{
+            return "";
+        }
     }
 
     public function getCityId(Request $request)
     {
         //echo $request->city_name; die;
         $cities = City::where('name','LIKE','%'.$request->city_name.'%')->pluck('id')->all();
+        if($cities)
+        {
         return $cities[0];
+        }else{
+            return "";
+        }
     }
      
     
