@@ -1,0 +1,21 @@
+[2017-06-29 08:51:48] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '{'' in C:\medical_tourism\app\Http\Controllers\PagesController.php:374
+Stack trace:
+#0 {main}  
+[2017-06-29 08:51:49] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '{'' in C:\medical_tourism\app\Http\Controllers\PagesController.php:374
+Stack trace:
+#0 {main}  
+[2017-06-29 08:58:12] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to undefined function App\Http\Controllers\find()' in C:\medical_tourism\app\Http\Controllers\PagesController.php:374
+Stack trace:
+#0 {main}  
+[2017-06-29 09:00:56] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to undefined function App\Http\Controllers\find()' in C:\medical_tourism\app\Http\Controllers\PagesController.php:374
+Stack trace:
+#0 {main}  
+[2017-06-29 09:01:05] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to undefined function App\Http\Controllers\find()' in C:\medical_tourism\app\Http\Controllers\PagesController.php:374
+Stack trace:
+#0 {main}  
+[2017-06-29 09:01:31] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Call to undefined function App\Http\Controllers\find()' in C:\medical_tourism\app\Http\Controllers\PagesController.php:374
+Stack trace:
+#0 {main}  
+[2017-06-29 09:20:52] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '&&' (T_BOOLEAN_AND)' in C:\medical_tourism\app\Http\Controllers\PagesController.php:374
+Stack trace:
+#0 {main}  

@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Hospital;
+use App\Doctor;
 use App\HotelClassType;
 use App\Country;
 use App\State;
@@ -45,10 +46,11 @@ class HospitalController extends Controller
      */
     public function create()
     {
-       $countries = Country::orderBy('name')->pluck('name', 'id')->all();
-       $states = State::orderBy('name')->pluck('name', 'id')->all();
-       $cities = City::orderBy('name')->pluck('name', 'id')->all();
-       return view('admin.hospitals.create', compact('countries','states','cities'));
+      $countries = Country::orderBy('name')->pluck('name', 'id')->all();
+      $states = State::orderBy('name')->pluck('name', 'id')->all();
+      $cities = City::orderBy('name')->pluck('name', 'id')->all();
+      $doctor_list = \App\Doctor::get()->pluck('name','id')->toArray();
+       return view('admin.hospitals.create', compact('countries','states','cities','doctor_list'));
     }
 
     /**

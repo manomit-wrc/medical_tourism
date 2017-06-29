@@ -339,7 +339,7 @@ class PagesController extends Controller
   }
 
   public function update_profile(Request $request) {
-    $this->validate($request,[
+    $this->validate($request,[      
       'first_name' => 'required|max:50',
       'last_name' => 'required|max:50',
       'email_id' => 'required|email|unique:patients,email_id,'.Auth::guard('front')->user()->id,
@@ -357,6 +357,11 @@ class PagesController extends Controller
     ]);
 
     $patients = \App\Patient::find(Auth::guard('front')->user()->id);
+    if($patients->is_patient ==''){
+        $this->validate($request,[
+        'are_you_patient' => 'required'      
+      ]);
+    }  
     if($patients) { 
         $patients->first_name = $request->first_name;
         $patients->last_name = $request->last_name;
@@ -368,7 +373,22 @@ class PagesController extends Controller
         $patients->sex = $request->sex;
         $patients->country_id = $request->country_id;
         $patients->state_id = $request->state_id;
-        $patients->city_id = $request->city_id;
+        $patients->city_id = $request->city_id;        
+        if($request->are_you_patient =='N'){
+          $patients->is_patient = $request->are_you_patient;  
+          $patients->patient_first_name = $request->patient_first_name;
+          $patients->patient_last_name = $request->patient_last_name;
+          $patients->relation_with = $request->relation_with;
+        }else if(!empty($patients->is_patient) && $patients->is_patient =='N'){
+          $patients->is_patient = $patients->is_patient; 
+          $patients->patient_first_name = $request->patient_first_name;
+          $patients->patient_last_name = $request->patient_last_name;
+          $patients->relation_with = $request->relation_with;
+        }else if($request->are_you_patient =='Y'){
+          $patients->is_patient = $request->are_you_patient;   
+          $patients->patient_first_name = $request->first_name;
+          $patients->patient_last_name = $request->last_name;
+        }
         $patients->date_of_birth = $request->dob_days."-".$request->dob_month."-".$request->dob_year;     
         $patients->save();
         $request->session()->flash("message", "Profile updated successfully");
