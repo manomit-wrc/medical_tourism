@@ -31,20 +31,40 @@
           </div>
         </div>
         <div class="box-body">
-          <b>Name</b> : {{ $hosptl_data->name }}<br/>
-          <b>Description</b> : {{ $hosptl_data->description }}<br/>
-          <b>Phone</b> : {{ $hosptl_data->phone }}<br/>
-          <b>Website</b> : {{ $hosptl_data->website }}<br/>
-          <b>Address</b> : {{ $hosptl_data->street_address }} <br/>
-          <b>City</b> : {{ $hosptl_data->city->name }}<br/>
-          <b>State</b> : {{ $hosptl_data->city->state->name }}<br/>
-          <b>Country</b> :{{ $hosptl_data->city->state->country->name }}<br/>
-          <b>Zipcode</b> :{{ $hosptl_data->zipcode}}<br/>
-          <b>Number of beds</b> : {{ $hosptl_data->number_of_beds }}<br/>
-          <b>Number of icu beds</b> : {{ $hosptl_data->number_of_icu_beds }}<br/>
-          <b>Number of operating rooms</b> : {{ $hosptl_data->number_of_operating_rooms }}<br/>
-          <b>Number of average international patients</b> : {{ $hosptl_data->number_of_avg_international_patients }}<br/>
-          <b>Image</b> : <img src="{{url('/uploads/hospitals/thumb/'.$hosptl_data->avators)}}" alt="Hospital Image"><br/>
+          
+          <div class="col-md-6">
+            <div class="col_box" style="padding-bottom: 20px;">
+                <div class="col-md-12"><b>Name</b> : {{ $hosptl_data->name }}</div>
+                <div class="col-md-12"><b>Phone</b> : {{ $hosptl_data->phone }}</div>
+                <div class="col-md-12"><b>Website</b> : {{ $hosptl_data->website }}</div>
+                <div class="col-md-12"><b>Address</b> : {{ $hosptl_data->street_address }}</div>
+                <div class="col-md-12"><b>City</b> : {{ $hosptl_data->city->name }}</div>
+                <div class="col-md-12"><b>State</b> : {{ $hosptl_data->city->state->name }}</div>
+            </div>
+          </div>
+          
+          <div class="col-md-6">
+            <div class="col_box" style="padding-bottom: 20px;">
+              <div class="col-md-12"><b>Country</b> :{{ $hosptl_data->city->state->country->name }}</div>
+              <div class="col-md-12"><b>Zipcode</b> :{{ $hosptl_data->zipcode}}</div>
+              <div class="col-md-12"><b>Number of beds</b> : {{ $hosptl_data->number_of_beds }}</div>
+              <div class="col-md-12"><b>Number of icu beds</b> : {{ $hosptl_data->number_of_icu_beds }}</div>
+              <div class="col-md-12"><b>Number of operating rooms</b> : {{ $hosptl_data->number_of_operating_rooms }}</div>
+              <div class="col-md-12"><b>Number of average international patients</b> : {{ $hosptl_data->number_of_avg_international_patients }}</div>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="col_box" style="padding-bottom: 20px;">
+              <div class="col-md-12"><b>Description</b> : {{ $hosptl_data->description }}</div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="col_box" style="padding-bottom: 20px;">
+            <!-- <b>Image</b> :  --><img src="{{url('/uploads/hospitals/thumb/'.$hosptl_data->avators)}}" alt="Hospital Image" style="width: 100%">
+            </div>
+          </div>
         </div>
         <!-- /.box-body -->
         <!-- <div class="box-footer">
