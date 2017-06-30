@@ -206,13 +206,14 @@
                         <div class="form-group">
                             <label for="name">Associated With:</label>
                             <select class="form-control" id="associated_id[]" name="associated_id[]" multiple="multiple">
-                              @foreach($doctor_list as $key => $value)
-                              <option value="{{ $key }}" {{ (!empty($doctorhospital_array)) ? in_array($key, $doctorhospital_array)? 'selected':'' :'' }}>{{$value}}</option>
+                              @if (count($doctor_list) > 0)
+                              @foreach($doctor_list as $dd)
+                              <option value="{{ $dd->id }}" {{ (!empty($doctorhospital_array)) ? in_array($dd->id, $doctorhospital_array)? 'selected':'' :'' }}>{{ $dd->first_name }} {{ $dd->last_name }}</option>
                               @endforeach
+                              @endif
                             </select>                        
                         </div>
                         <!-- /.text input -->
-
                          <!-- input submit button -->
                         <div>
                            {!! Form::submit('submit',array('class'=>'btn btn-primary pull-left','id'=>'exact-submit-button'))!!}

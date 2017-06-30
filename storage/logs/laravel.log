@@ -497,3 +497,9 @@ Stack trace:
 #52 C:\xampp\htdocs\medical_tourism\public\index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #53 C:\xampp\htdocs\medical_tourism\server.php(21): require_once('C:\\xampp\\htdocs...')
 #54 {main}  
+[2017-06-30 05:59:04] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'App\Http\Controllers\DB' not found' in C:\medical_tourism\app\Http\Controllers\HospitalController.php:53
+Stack trace:
+#0 {main}  
+[2017-06-30 06:15:36] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'as' (T_AS)' in C:\medical_tourism\storage\framework\views\16b2d9a31cc59e8dea9f1c946e19dd544bca6480.php:257
+Stack trace:
+#0 {main}  

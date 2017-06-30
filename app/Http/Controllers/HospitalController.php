@@ -49,7 +49,8 @@ class HospitalController extends Controller
       $countries = Country::orderBy('name')->pluck('name', 'id')->all();
       $states = State::orderBy('name')->pluck('name', 'id')->all();
       $cities = City::orderBy('name')->pluck('name', 'id')->all();
-      $doctor_list = \App\Doctor::get()->pluck('first_name','id')->toArray();
+      //$doctor_list = \App\Doctor::get()->pluck('first_name','id')->toArray();
+      $doctor_list = \App\Doctor::where('status', '!=', 2)->get();
        return view('admin.hospitals.create', compact('countries','states','cities','doctor_list'));
     }
 
@@ -272,7 +273,8 @@ class HospitalController extends Controller
       foreach ($data['doctorhospital'][0]['doctorhospital'] as $key => $value) {
           $data['doctorhospital_array'][] = $value['id'];
       }
-      $data['doctor_list'] = \App\Doctor::get()->pluck('first_name','id')->toArray();    
+      $data['doctor_list']  = \App\Doctor::where('status', '!=', 2)->get();
+      /*$data['doctor_list'] = \App\Doctor::get()->pluck('first_name','id')->toArray(); */   
       /* return view('admin.hospitals.edit', compact('hosptl_data','countries','states','cities','hotelclasstypes','doctor_list'));*/
         return view('admin.hospitals.edit',$data);
     }

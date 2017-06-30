@@ -205,9 +205,11 @@
                         <div class="form-group">
                             <label for="name">Associated With:</label>
                             <select class="form-control" id="associated_id[]" name="associated_id[]" multiple="multiple">
-                              @foreach($doctor_list as $key => $value)
-                              <option value="{{ $key }}">{{$value}}</option>
+                             @if (count($doctor_list) > 0)
+                              @foreach($doctor_list as $dd)
+                              <option value="{{ $dd->id }}">{{ $dd->first_name }} {{ $dd->last_name }}</option>
                               @endforeach
+                              @endif
                             </select>                        
                         </div>
                         <!-- /.text input -->
