@@ -7,9 +7,9 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Patient;
 use Carbon\Carbon;
-use Cmgmyr\Messenger\Models\Message;
-use Cmgmyr\Messenger\Models\Participant;
-use Cmgmyr\Messenger\Models\Thread;
+use App\Message;
+use App\Participant;
+use App\Thread;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
@@ -23,7 +23,7 @@ class MessagesController extends Controller
      * @return mixed
      */
     public function index($patid)
-    {  //echo $patid; die;
+    {   //echo $patid; die;
         $patient_id=$patid;
         // All threads, ignore deleted/archived participants
         //$threads = Thread::getAllLatest()->get();

@@ -93,6 +93,7 @@ return array(
     'CreatePackageTypesTable' => $baseDir . '/database/migrations/2017_04_27_125305_create_package_types_table.php',
     'CreateParticipantsTable' => $baseDir . '/database/migrations/2014_10_28_180224_create_participants_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+    'CreatePatientEnquiryTable' => $baseDir . '/database/migrations/2017_06_29_090240_create_patient_enquiry_table.php',
     'CreatePatientsTable' => $baseDir . '/database/migrations/2017_05_05_092313_create_patients_table.php',
     'CreatePaymentTypesTable' => $baseDir . '/database/migrations/2017_04_25_054933_create_payment_types_table.php',
     'CreatePermissionsTable' => $baseDir . '/database/migrations/2017_04_25_113125_create_permissions_table.php',
