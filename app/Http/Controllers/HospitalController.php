@@ -49,7 +49,7 @@ class HospitalController extends Controller
       $countries = Country::orderBy('name')->pluck('name', 'id')->all();
       $states = State::orderBy('name')->pluck('name', 'id')->all();
       $cities = City::orderBy('name')->pluck('name', 'id')->all();
-      $doctor_list = \App\Doctor::get()->pluck('name','id')->toArray();
+      $doctor_list = \App\Doctor::get()->pluck('first_name','id')->toArray();
        return view('admin.hospitals.create', compact('countries','states','cities','doctor_list'));
     }
 
@@ -136,6 +136,7 @@ class HospitalController extends Controller
             $hptl->avators = $fileName ;
         }
       $hptl->save() ;
+      $hptl->doctorhospital()->attach($request->associated_id);
 
       Session::flash('message', 'Successfully added!');
       return Redirect::to('/admin/hospitals');
@@ -262,12 +263,18 @@ class HospitalController extends Controller
     public function edit($id)
     {
         // get the Hotel
-       $hosptl_data = Hospital::findOrFail($id);
-       $countries = Country::orderBy('name')->pluck('name', 'id')->all();
-       $states = State::orderBy('name')->pluck('name', 'id')->all();
-       $cities = City::orderBy('name')->pluck('name', 'id')->all();
-       $hotelclasstypes = HotelClassType::orderBy('id')->pluck('name', 'id')->all();    
-       return view('admin.hospitals.edit', compact('hosptl_data','countries','states','cities','hotelclasstypes'));
+      $data['hosptl_data'] = Hospital::findOrFail($id);
+      $data['countries'] = Country::orderBy('name')->pluck('name', 'id')->all();
+      $data['states'] = State::orderBy('name')->pluck('name', 'id')->all();
+      $data['cities'] = City::orderBy('name')->pluck('name', 'id')->all();
+      $data['hotelclasstypes'] = HotelClassType::orderBy('id')->pluck('name', 'id')->all();
+      $data['doctorhospital'] = Hospital::with('doctorhospital')->where('id',$id)->get()->toArray();
+      foreach ($data['doctorhospital'][0]['doctorhospital'] as $key => $value) {
+          $data['doctorhospital_array'][] = $value['id'];
+      }
+      $data['doctor_list'] = \App\Doctor::get()->pluck('first_name','id')->toArray();    
+      /* return view('admin.hospitals.edit', compact('hosptl_data','countries','states','cities','hotelclasstypes','doctor_list'));*/
+        return view('admin.hospitals.edit',$data);
     }
 
     /**
@@ -355,7 +362,8 @@ class HospitalController extends Controller
             $hptl->avators = $fileName ;
         }
       $hptl->save() ;
-
+      $hptl->doctorhospital()->wherePivot('hospital_id', '=', $request->id)->detach();
+      $hptl->doctorhospital()->attach($request->associated_id);
 
         // redirect
         Session::flash('message', 'Successfully updated');

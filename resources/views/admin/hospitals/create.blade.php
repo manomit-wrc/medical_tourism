@@ -201,6 +201,15 @@
                           {!! Form::text('number_of_avg_international_patients','',array('class'=>'form-control','id'=>'number_of_avg_international_patients','placeholder'=>'Enter number of average internatinal patients')) !!}
                            <!-- {!! Html::decode('<span class="text-danger">'.$errors->first("number_of_avg_international_patients").'</span>') !!} -->
                         </div>
+                        
+                        <div class="form-group">
+                            <label for="name">Associated With:</label>
+                            <select class="form-control" id="associated_id[]" name="associated_id[]" multiple="multiple">
+                              @foreach($doctor_list as $key => $value)
+                              <option value="{{ $key }}">{{$value}}</option>
+                              @endforeach
+                            </select>                        
+                        </div>
                         <!-- /.text input -->
 
                          <!-- input submit button -->
