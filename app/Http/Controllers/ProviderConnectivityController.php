@@ -25,7 +25,7 @@ class ProviderConnectivityController extends Controller
      * @return Response
      */
     public function index() {
-        $conn_lists = ProviderConnectivity::where('status', '!=', 2)->get();
+        $conn_lists = ProviderConnectivity::where('status', '!=', 2)->orderBy('name','asc')->get();
         //echo "<pre>"; print_r($conn_lists[0]->connectivity); die;
         return view('admin.providerconnectivity.index')->with('conn_lists',$conn_lists);
     }

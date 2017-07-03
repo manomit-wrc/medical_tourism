@@ -17,7 +17,7 @@ class GenericmedicineController extends Controller
     	
     }
 	public function index() {
-      $genericmedicine = Genericmedicine::where('status', '!=', 2)->orderBy('id','desc')->get();
+      $genericmedicine = Genericmedicine::where('status', '!=', 2)->orderBy('generic_name_of_the_medicine','asc')->get();
       //echo "<pre>"; print_r($langcapbes); die;
     	return view('admin.genericmedicine.index')->with('genericmedicine',$genericmedicine);
   }

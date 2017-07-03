@@ -25,7 +25,7 @@ class SuccessStoryController extends Controller
      * @return Response
      */
     public function index() {
-        $succstory_lists = SuccessStories::where('status', '!=', 2)->get();
+        $succstory_lists = SuccessStories::where('status', '!=', 2)->orderBy('title','asc')->get();
         //echo "<pre>"; print_r($succstory_lists); die;
         return view('admin.successstories.index')->with('succstory_lists',$succstory_lists);
     }

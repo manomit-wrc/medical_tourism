@@ -15,7 +15,7 @@ class PackageTypeController extends Controller
     }
 
     public function index() {
-      $package_type_list = PackageType::where('status', '!=', 2)->get();
+      $package_type_list = PackageType::where('status', '!=', 2)->orderBy('name','asc')->get();
       return view('admin.package_types.index')->with('package_type_list',$package_type_list);
     }
     public function create() {

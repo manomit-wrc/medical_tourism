@@ -13,7 +13,7 @@ class RoleController extends Controller
     }
 
     public function index() {
-      $data = \App\Role::where('status', '!=', 2)->orderBy('id','desc')->get();
+      $data = \App\Role::where('status', '!=', 2)->orderBy('name','asc')->get();
 
       return view('admin.role.index',compact('data'));
     }

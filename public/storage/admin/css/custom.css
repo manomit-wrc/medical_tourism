@@ -108,3 +108,44 @@
     height: 128px;
     width: 128px;
 }
+
+.thumbnail{
+    padding: 15px;
+    width: 100%;
+    float: left;
+    text-align: center;
+}
+
+.thumbnail img{
+    /* width: 100%; */
+    height: 100px;
+    border-radius: 15px;
+}
+
+.media-body{
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+    display: block;
+    float: left;
+}
+
+.media-heading{
+     width: 100%;
+    text-align: center;
+    font-size: 17px !important;
+    font-weight: bold;
+}
+
+.white-panel {
+  position: absolute;
+  background: white;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+  padding: 10px;
+}
+
+#pinBoot {
+  position: relative;
+  max-width: 100%;
+  width: 100%;
+}

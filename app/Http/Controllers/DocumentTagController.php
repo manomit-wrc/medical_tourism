@@ -14,7 +14,7 @@ use Validator;
 class DocumentTagController extends Controller
 {
     public function index() {
-      $documenttag = DocumentTag::where('status', '!=', 2)->orderBy('id','desc')->get();
+      $documenttag = DocumentTag::where('status', '!=', 2)->orderBy('tag_name','asc')->get();
         //echo "<pre>"; print_r($medicaltestcategories); die;
     	return view('admin.documenttag.index',compact('documenttag'));
     }

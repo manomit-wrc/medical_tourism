@@ -25,7 +25,7 @@ class ProcedureController extends Controller
      * @return Response
      */
     public function index() {
-        $procedure_lists = Procedure::where('status', '!=', 2)->orderBy('id','desc')->get();
+        $procedure_lists = Procedure::where('status', '!=', 2)->orderBy('name','asc')->get();
         //echo "<pre>"; print_r($langcapbes); die;
         return view('admin.procedure.index',compact('procedure_lists'));
     }

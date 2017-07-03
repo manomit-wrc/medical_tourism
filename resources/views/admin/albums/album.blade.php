@@ -34,9 +34,10 @@
           
          
           <div class="container">
-            <div class="starter-template">
-                <div class="media">
-                  <img class="media-object pull-left" alt="{{$album->name}}" src="{{url('/uploads/albums/'.$album->cover_image)}}" width="350px">
+
+          <div class="col-lg-4">
+              <div class="thumbnail">
+                <img class="media-object pull-left" alt="{{$album->name}}" src="{{url('/uploads/albums/'.$album->cover_image)}}" width="350px">
                   <div class="media-body">
                     <h2 class="media-heading" style="font-size: 26px;">Album Name:</h2>
                     <p>{{$album->name}}</p>
@@ -47,15 +48,14 @@
                         <a href="{{URL::route('delete_album',array('id'=>$album->id))}}" onclick="return confirm('Are yousure?')"><button type="button"class="btn btn-danger btn-large">Delete Album</button></a>
                     </div>
                   </div>
-                </div>
-            </div>
+              </div>
           </div>
 
+          <br clear="all"> 
 
-          <div class="row">
-              @foreach($album->Photos as $photo)
-              <div class="col-lg-3">
-              <div class="thumbnail" style="max-height: 350px;min-height: 350px;">
+            @foreach($album->Photos as $photo)
+              <div class="col-lg-4">
+              <div class="thumbnail">
               <img alt="{{$album->name}}" src="{{url('/uploads/albums/'.$photo->image)}}">
               <div class="caption">
               <p>{{$photo->description}}</p>
@@ -65,7 +65,13 @@
               </div>
               </div>
               @endforeach
+
+
+            
           </div>
+
+
+          
 
 
         </div>

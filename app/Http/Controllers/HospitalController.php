@@ -35,7 +35,7 @@ class HospitalController extends Controller
      * @return Response
      */
     public function index() {
-        $hospitals_list = Hospital::where('status', '!=', 2)->get();
+        $hospitals_list = Hospital::where('status', '!=', 2)->orderBy('name','asc')->get();
         return view('admin.hospitals.index')->with('hospitals_list',$hospitals_list);
     }
 
@@ -50,7 +50,7 @@ class HospitalController extends Controller
       $states = State::orderBy('name')->pluck('name', 'id')->all();
       $cities = City::orderBy('name')->pluck('name', 'id')->all();
       //$doctor_list = \App\Doctor::get()->pluck('first_name','id')->toArray();
-      $doctor_list = \App\Doctor::where('status', '!=', 2)->get();
+      $doctor_list = \App\Doctor::where('status', '!=', 2)->orderBy('first_name')->get();
        return view('admin.hospitals.create', compact('countries','states','cities','doctor_list'));
     }
 
@@ -273,7 +273,7 @@ class HospitalController extends Controller
       foreach ($data['doctorhospital'][0]['doctorhospital'] as $key => $value) {
           $data['doctorhospital_array'][] = $value['id'];
       }
-      $data['doctor_list']  = \App\Doctor::where('status', '!=', 2)->get();
+      $data['doctor_list']  = \App\Doctor::where('status', '!=', 2)->orderBy('first_name')->get();
       /*$data['doctor_list'] = \App\Doctor::get()->pluck('first_name','id')->toArray(); */   
       /* return view('admin.hospitals.edit', compact('hosptl_data','countries','states','cities','hotelclasstypes','doctor_list'));*/
         return view('admin.hospitals.edit',$data);
@@ -423,7 +423,7 @@ class HospitalController extends Controller
           $data[] = array(
             'id' => $vall['id'],
             'testname' => $vall['test_name'],
-            'test_price' => $this->gettestprice($vall['id'],$hospital_id)                    
+            'test_price' => $this->gettestprice($vall['id'],$hospital_id)                   
           );
         }
         return $data;
