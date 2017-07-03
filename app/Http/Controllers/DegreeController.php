@@ -23,7 +23,7 @@ class DegreeController extends Controller
      * @return Response
      */
     public function index() {
-        $deg_lists = Degree::where('status', '!=', 2)->orderBy('id','desc')->get();
+        $deg_lists = Degree::where('status', '!=', 2)->orderBy('name','asc')->get();
         //echo "<pre>"; print_r($langcapbes); die;
         return view('admin.degree.index',compact('deg_lists'));
     }

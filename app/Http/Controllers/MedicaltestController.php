@@ -18,8 +18,7 @@ class MedicaltestController extends Controller
     	
     }
 	public function index() {
-        $medicaltest = Medicaltest::with('medicaltestcategories')->where('status', '!=', 2)->orderBy('medicaltestcategories_id')->get()->toArray();
-        
+        $medicaltest = Medicaltest::with('medicaltestcategories')->where('status', '!=', 2)->orderBy('test_name')->get()->toArray();        
         $data['medicaltest'] = $medicaltest;
         /*echo "<pre>";
         print_r($data['medicaltest']);
@@ -30,7 +29,7 @@ class MedicaltestController extends Controller
 
    	public function create()
     {
-    	$category_list = \App\MedicalTestCategories::get()->pluck('cat_name','id')->toArray();
+    	$category_list = \App\MedicalTestCategories::orderBy('cat_name')->get()->pluck('cat_name','id')->toArray();
        //	return view('admin.genericmedicine.create');
        return view('admin.medicaltest.create')->with(['category_list'=>$category_list]);
     }
@@ -55,7 +54,7 @@ class MedicaltestController extends Controller
     {
         $medicaltest = Medicaltest::findOrFail($id);
         $data['medicaltest'] = $medicaltest; 
-        $data['category_list'] = \App\MedicalTestCategories::get()->pluck('cat_name','id')->toArray();
+        $data['category_list'] = \App\MedicalTestCategories::orderBy('cat_name')->get()->pluck('cat_name','id')->toArray();
        	return view('admin.medicaltest.edit',$data);      
     }    
 

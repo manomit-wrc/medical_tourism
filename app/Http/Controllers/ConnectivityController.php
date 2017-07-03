@@ -23,7 +23,7 @@ class ConnectivityController extends Controller
      * @return Response
      */
     public function index() {
-    	$connectivity_data = Connectivity::where('status', '!=', 2)->orderBy('id','desc')->get();
+    	$connectivity_data = Connectivity::where('status', '!=', 2)->orderBy('name','asc')->get();
         //echo "<pre>"; print_r($connectivity_data); die;
         return view('admin.connectivity.index',compact('connectivity_data'));
     }

@@ -20,20 +20,20 @@ class DoctorController extends Controller
       $login_user_id=Auth::guard('admin')->user()->id; 
       if($login_user_id==1)//If admin login
       {
-        $doctor_data = Doctor::where('status', '!=', 2)->get();
+        $doctor_data = Doctor::where('status', '!=', 2)->orderBy('first_name','asc')->get();
       }
       else//If login others
       {
-        $doctor_data = Doctor::where('status', '!=', 2)->where('user_id','=',$login_user_id)->get();
+        $doctor_data = Doctor::where('status', '!=', 2)->where('user_id','=',$login_user_id)->orderBy('first_name','asc')->get();
       }
       return view('admin.doctors.index')->with('doctor_data',$doctor_data);
     }
 
     public function create() {
-      $country_list = \App\Country::get()->pluck('name','id');
-      $degree_list = \App\Degree::get()->pluck('name','id')->toArray();
-      $procedure_list = \App\Procedure::get()->pluck('name','id')->toArray();
-      $hospital_list = \App\Hospital::get()->pluck('name','id')->toArray();
+      $country_list = \App\Country::orderBy('name','asc')->get()->pluck('name','id');
+      $degree_list = \App\Degree::orderBy('name','asc')->get()->pluck('name','id')->toArray();
+      $procedure_list = \App\Procedure::orderBy('name','asc')->get()->pluck('name','id')->toArray();
+      $hospital_list = \App\Hospital::orderBy('name','asc')->get()->pluck('name','id')->toArray();
       return view('admin.doctors.create')->with(['country_list'=>$country_list,'degree_list'=>$degree_list,'procedure_list'=>$procedure_list,'hospital_list'=>$hospital_list]);
     }
 
@@ -137,15 +137,15 @@ class DoctorController extends Controller
     public function edit($id) {
       if($id) {
         $data['doctor_details'] = Doctor::find($id);
-        $data['hospital_list'] = \App\Hospital::get()->pluck('name','id')->toArray();
+        $data['hospital_list'] = \App\Hospital::orderBy('name','asc')->get()->pluck('name','id')->toArray();
         $data['doctor_procedure_details'] = Doctor::with('procedures')->where('id',$id)->get()->toArray();
         $data['doctor_degree_details'] = Doctor::with('degrees')->where('id',$id)->get()->toArray();
         $data['doctorwisehospitals'] = Doctor::with('doctorwisehospitals')->where('id',$id)->get()->toArray();
-        $data['country_list'] = \App\Country::get()->pluck('name','id');
-        $data['state_list'] = \App\State::where('country_id',$data['doctor_details']->country_id)->get()->pluck('name','id');
-        $data['city_list'] = \App\City::where('state_id',$data['doctor_details']->state_id)->get()->pluck('name','id');
-        $data['degree_list'] = \App\Degree::get()->pluck('name','id')->toArray();
-        $data['procedure_list'] = \App\Procedure::get()->pluck('name','id')->toArray();
+        $data['country_list'] = \App\Country::orderBy('name','asc')->get()->pluck('name','id');
+        $data['state_list'] = \App\State::where('country_id',$data['doctor_details']->country_id)->orderBy('name','asc')->get()->pluck('name','id');
+        $data['city_list'] = \App\City::where('state_id',$data['doctor_details']->state_id)->orderBy('name','asc')->get()->pluck('name','id');
+        $data['degree_list'] = \App\Degree::orderBy('name','asc')->get()->pluck('name','id')->toArray();
+        $data['procedure_list'] = \App\Procedure::orderBy('name','asc')->get()->pluck('name','id')->toArray();
         foreach ($data['doctor_procedure_details'][0]['procedures'] as $key => $value) {
           $data['procedures_array'][] = $value['id'];
         }

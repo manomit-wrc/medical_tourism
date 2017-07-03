@@ -28,7 +28,7 @@ class Hospital extends Model
       return $this->belongsToMany('\App\Treatment','hospital_treatment','hospital_id','treatment_id');
     }
     public function doctorhospital() {
-      return $this->belongsToMany('\App\Doctor','doctor_hospitals','doctor_id','hospital_id');
+      return $this->belongsToMany('\App\Doctor','doctor_hospitals','hospital_id','doctor_id');
     }    
     
 }

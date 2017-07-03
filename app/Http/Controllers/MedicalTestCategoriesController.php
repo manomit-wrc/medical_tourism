@@ -17,10 +17,10 @@ class MedicalTestCategoriesController extends Controller
     	
     }
 	public function index() {
-      $medicaltestcategories = MedicalTestCategories::where('status', '!=', 2)->orderBy('id','desc')->get();
-        //echo "<pre>"; print_r($medicaltestcategories); die;
+      $medicaltestcategories = MedicalTestCategories::where('status', '!=', 2)->orderBy('cat_name','asc')->get();
+      //echo "<pre>"; print_r($medicaltestcategories); die;
     	return view('admin.medicaltestcategories.index',compact('medicaltestcategories'));
-    }
+  }
 
    	public function create()
     {    	

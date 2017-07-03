@@ -23,7 +23,7 @@ class ConnectivityServicesController extends Controller
      * @return Response
      */
     public function index() {
-    	$con_srv_data = ConnectivityServices::where('status', '!=', 2)->orderBy('id','desc')->get();
+    	$con_srv_data = ConnectivityServices::where('status', '!=', 2)->orderBy('name','asc')->get();
         //echo "<pre>"; print_r($con_srv_data); die;
         return view('admin.connectivityservices.index',compact('con_srv_data'));
     }

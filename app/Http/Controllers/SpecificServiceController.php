@@ -23,7 +23,7 @@ class SpecificServiceController extends Controller
      * @return Response
      */
     public function index() {
-        $langcapabilites = SpecificService::where('status', '!=', 2)->get();
+        $langcapabilites = SpecificService::where('status', '!=', 2)->orderBy('name','asc')->get();
         //echo "<pre>"; print_r($langcapbes); die;
     	return view('admin.specificservice.index')->with('langcapabilites',$langcapabilites);
     }

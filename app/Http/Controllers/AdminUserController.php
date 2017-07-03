@@ -21,18 +21,18 @@ class AdminUserController extends Controller
       $login_user_id=Auth::guard('admin')->user()->id;
       if($login_user_id==1)//If admin login
       {
-       $user_data = User::with('roles')->where('status', '!=', 2)->where('id', '!=', 1)->orderBy('id','desc')->get(); //Admin user will not be displayed    
+       $user_data = User::with('roles')->where('status', '!=', 2)->where('id', '!=', 1)->orderBy('name','asc')->get(); //Admin user will not be displayed    
       }
       else
       {
-       $user_data = User::with('roles')->where('status', '!=', 2)->where('id', '!=', 1)->where('added_by','=',$login_user_id)->orderBy('id','desc')->get(); //Admin user will not be displayed     
+       $user_data = User::with('roles')->where('status', '!=', 2)->where('id', '!=', 1)->where('added_by','=',$login_user_id)->orderBy('name','asc')->get(); //Admin user will not be displayed     
       }
       return view('admin.users.index',compact('user_data'));
     }
 
     public function create() {
 
-      $role_list = Role::get()->pluck('name','id');
+      $role_list = Role::orderBy('name','asc')->get()->pluck('name','id');
       return view('admin.users.create')->with('role_list', $role_list);
     }
 
@@ -84,7 +84,7 @@ class AdminUserController extends Controller
     public function edit($id) {
       $user_data = User::with('roles')->where('id',$id)->get();
       //echo "<pre>"; print_r($user_data[0]->roles[0]->name); die;
-      $role_list = Role::get()->pluck('name','id');
+      $role_list = Role::orderBy('name','asc')->get()->pluck('name','id');
       return view('admin.users.edit')->with(['role_list'=> $role_list,'user_data' => $user_data]);
     }
 

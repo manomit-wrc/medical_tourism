@@ -25,7 +25,7 @@ class AccrediationController extends Controller
      * @return Response
      */
     public function index() {
-        $accrediation_lists = Accrediation::where('status', '!=', 2)->get();
+        $accrediation_lists = Accrediation::where('status', '!=', 2)->orderBy('name','asc')->get();
         //echo "<pre>"; print_r($accrediation_lists); die;
         return view('admin.accrediation.index')->with('accrediation_lists',$accrediation_lists);
     }

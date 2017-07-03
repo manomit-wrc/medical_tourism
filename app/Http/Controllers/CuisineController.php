@@ -23,7 +23,7 @@ class CuisineController extends Controller
      * @return Response
      */
     public function index() {
-        $cuisine_lists = Cuisine::where('status', '!=', 2)->orderBy('id','desc')->get();
+        $cuisine_lists = Cuisine::where('status', '!=', 2)->orderBy('name','asc')->get();
         //echo "<pre>"; print_r($cuisine_lists); die;
         return view('admin.cuisine.index',compact('cuisine_lists'));
     }

@@ -23,7 +23,7 @@ class PaymentTypeController extends Controller
      * @return Response
      */
     public function index() {
-        $paymnttype_lists = PaymentType::where('status', '!=', 2)->orderBy('id','desc')->get();
+        $paymnttype_lists = PaymentType::where('status', '!=', 2)->orderBy('name','asc')->get();
         //echo "<pre>"; print_r($paymnttype_lists); die;
         return view('admin.paymenttype.index',compact('paymnttype_lists'));
     }

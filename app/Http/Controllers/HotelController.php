@@ -28,7 +28,7 @@ class HotelController extends Controller
      * @return Response
      */
     public function index() {
-        $hotels_list = Hotel::where('status', '!=', 2)->orderBy('id','desc')->get();
+        $hotels_list = Hotel::where('status', '!=', 2)->orderBy('name','asc')->get();
         //echo "<pre>"; print_r($hotels_list); die; //print_r($hotels_list[0]->city->state->country); die;
         return view('admin.hotel.index',compact('hotels_list'));
     }
@@ -41,7 +41,7 @@ class HotelController extends Controller
     public function create()
     {
        $countries = Country::orderBy('name')->pluck('name', 'id')->all();
-       $hotelclasstypes = HotelClassType::orderBy('id')->pluck('name', 'id')->all();	
+       $hotelclasstypes = HotelClassType::orderBy('name')->pluck('name', 'id')->all();	
        return view('admin.hotel.create', compact('countries', 'hotelclasstypes'));
     }
 
@@ -118,7 +118,7 @@ class HotelController extends Controller
        $countries = Country::orderBy('name')->pluck('name', 'id')->all();
        $states = State::orderBy('name')->pluck('name', 'id')->all();
        $cities = City::orderBy('name')->pluck('name', 'id')->all();
-       $hotelclasstypes = HotelClassType::orderBy('id')->pluck('name', 'id')->all();    
+       $hotelclasstypes = HotelClassType::orderBy('name')->pluck('name', 'id')->all();    
        return view('admin.hotel.edit', compact('hotels_data','countries','states','cities','hotelclasstypes'));
     }
 

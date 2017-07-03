@@ -39,6 +39,54 @@
                         </select>
                     </label>
                 </div> -->
+                @php
+                if(Auth::guard('front')->user()->is_patient ==''){
+                @endphp
+                <div class="col-md-12">
+                    <label>
+                        Are you patient ? &nbsp; &nbsp;
+                        <input type="radio" value="Y" id="is_patient" onclick="showptn(this.value)" name="are_you_patient" style="{{ $errors->has('are_you_patient')?'border:1px solid #f00':''}}">&nbsp;YES &nbsp;
+                        <input type="radio" value="N"  id="is_patient1" onclick="showptn(this.value)" name="are_you_patient" style="{{ $errors->has('are_you_patient')?'border:1px solid #f00':''}}">&nbsp;NO 
+                    </label>
+                     {!! Html::decode('<span class="text-danger">'.$errors->first("are_you_patient").'</span>') !!}
+                </div>
+                <script>                
+                function showptn(val){
+                    if(val=='N'){                     
+                       $("#shw").show();
+                    }else if(val=='Y'){
+                       $("#shw").hide();
+                    }
+                }
+                </script>
+                @php
+                    }
+                @endphp
+                <div id="shw" @php if(Auth::guard('front')->user()->is_patient =='N'){ @endphp style="display:block;" @php }else { @endphp style="display:none;" @php } @endphp>
+                    <div class="col-md-6">
+                        <label>
+                            Patient First Name
+                            <input type="text" name="patient_first_name" class="Cinput" value="{{Auth::guard('front')->user()->patient_first_name}}" style="{{$errors->has('patient_first_name')?'border:1px solid #f00':''}}">
+                        </label>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>
+                            Patient Last Name
+                            <input type="text" name="patient_last_name" class="Cinput" value="{{Auth::guard('front')->user()->patient_last_name}}" style="{{$errors->has('patient_last_name')?'border:1px solid #f00':''}}">
+                        </label>
+                    </div>
+                    <br clear="all">
+                    
+
+                    <div class="col-md-12">
+                        <label>
+                            Relation with
+                            <input type="text" name="relation_with" class="Cinput" value="{{Auth::guard('front')->user()->relation_with}}" style="{{$errors->has('relation_with')?'border:1px solid #f00':''}}">
+                        </label>
+                    </div>
+                </div>
+              
 
                 <div class="col-md-6">
                     <label>
