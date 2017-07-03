@@ -1,6 +1,5 @@
 <?php
-
-namespace Cmgmyr\Messenger\Models;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Database\Eloquent\SoftDeletes;

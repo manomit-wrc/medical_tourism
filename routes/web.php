@@ -296,6 +296,16 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/patients/show/{id}','PatientController@show');
     Route::post('/admin/patients/changestatus/','PatientController@ajaxpatientchangestatus');
 
+    //Patient enquiry section
+    Route::get('/admin/patientenquiry/{id}','PatientEnquiryController@index');
+    Route::get('/admin/patientenquiry/create','PatientEnquiryController@create');
+    Route::post('/admin/patientenquiry/store','PatientEnquiryController@store');
+    Route::get('/admin/patientenquiry/edit/{id}','PatientEnquiryController@edit');
+    Route::patch('/admin/patientenquiry/update/{id}','PatientEnquiryController@update');
+    Route::get('/admin/patientenquiry/delete/{id}','PatientEnquiryController@delete');
+    Route::get('/admin/patientenquiry/show/{id}','PatientEnquiryController@show');
+    Route::post('/admin/patientenquiry/changestatus/','PatientEnquiryController@ajaxpatientchangestatus');
+
     //Message section
     Route::get('/admin/messages/{id}','MessagesController@index');
     Route::get('/admin/messages/create/{id}','MessagesController@create');

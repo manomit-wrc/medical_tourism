@@ -19,6 +19,7 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
         '377d15ea71be0306a9829d9f78207a1c' => __DIR__ . '/..' . '/torann/currency/src/helpers.php',
+        '6e67a68a136412df229d6e99b7e0c7ae' => __DIR__ . '/..' . '/nahid/talk/src/helpers/talk.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -40,6 +41,7 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         ),
         'T' => 
         array (
+            'Torann\\LaravelMetaTags\\' => 23,
             'Torann\\Currency\\' => 16,
             'TijsVerkoyen\\CssToInlineStyles\\' => 31,
         ),
@@ -62,6 +64,7 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
             'SuperClosure\\' => 13,
+            'SebastianBerc\\Repositories\\' => 27,
             'Sarfraznawaz2005\\VisitLog\\' => 26,
         ),
         'R' => 
@@ -74,6 +77,10 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
             'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
             'PhpParser\\' => 10,
+        ),
+        'N' => 
+        array (
+            'Nahid\\Talk\\' => 11,
         ),
         'M' => 
         array (
@@ -142,6 +149,10 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         'Unisharp\\Ckeditor\\' => 
         array (
             0 => __DIR__ . '/..' . '/unisharp/laravel-ckeditor',
+        ),
+        'Torann\\LaravelMetaTags\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/torann/laravel-meta-tags/src/Torann/LaravelMetaTags',
         ),
         'Torann\\Currency\\' => 
         array (
@@ -219,6 +230,10 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         array (
             0 => __DIR__ . '/..' . '/jeremeamia/SuperClosure/src',
         ),
+        'SebastianBerc\\Repositories\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sebastian-berc/repositories/src',
+        ),
         'Sarfraznawaz2005\\VisitLog\\' => 
         array (
             0 => __DIR__ . '/..' . '/sarfraznawaz2005/visitlog/src',
@@ -242,6 +257,10 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
+        ),
+        'Nahid\\Talk\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/nahid/talk/src',
         ),
         'Monolog\\' => 
         array (
@@ -423,6 +442,7 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         'AddNewsImageToNewsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_05_113435_add_news_image_to_news_table.php',
         'AddNicenameCountriesTable' => __DIR__ . '/../..' . '/database/migrations/2017_06_09_051911_add_nicename_countries_table.php',
         'AddPasswordToPatientsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_05_102509_add_password_to_patients_table.php',
+        'AddPatientIdPatientEnquiries' => __DIR__ . '/../..' . '/database/migrations/2017_07_03_072318_add_patient_id_patient_enquiries.php',
         'AddPermissionIdToPermissions' => __DIR__ . '/../..' . '/database/migrations/2017_04_25_125438_add_permission_id_to_permissions.php',
         'AddProcedureImageColumsToProceduresTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_24_130154_add_procedure_image_colums_to_procedures_table.php',
         'AddRememberTokenToPatientsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_08_073932_add_remember_token_to_patients_table.php',
@@ -494,6 +514,7 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         'CreatePackageTypesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_27_125305_create_package_types_table.php',
         'CreateParticipantsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_28_180224_create_participants_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+        'CreatePatientEnquiryDetailsTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_03_055512_create_patient_enquiry_details_table.php',
         'CreatePatientEnquiryTable' => __DIR__ . '/../..' . '/database/migrations/2017_06_29_090240_create_patient_enquiry_table.php',
         'CreatePatientsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_05_092313_create_patients_table.php',
         'CreatePaymentTypesTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_25_054933_create_payment_types_table.php',
@@ -1002,6 +1023,9 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         'PHP_Token_XOR_EQUAL' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD_FROM' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'Pusher' => __DIR__ . '/..' . '/pusher/pusher-php-server/lib/Pusher.php',
+        'PusherException' => __DIR__ . '/..' . '/pusher/pusher-php-server/lib/Pusher.php',
+        'PusherInstance' => __DIR__ . '/..' . '/pusher/pusher-php-server/lib/Pusher.php',
         'RemoveNicenameIso3NumcodeCountriesTable' => __DIR__ . '/../..' . '/database/migrations/2017_06_09_064956_remove_nicename_iso3_numcode_countries_table.php',
         'RoleTableSeeder' => __DIR__ . '/../..' . '/database/seeds/RoleTableSeeder.php',
         'SebastianBergmann\\CodeCoverage\\CodeCoverage' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/CodeCoverage.php',

@@ -18,4 +18,5 @@ return array(
     'a0edc8309cc5e1d60e3047b5df6b7052' => $vendorDir . '/guzzlehttp/psr7/src/functions_include.php',
     'f18cc91337d49233e5754e93f3ed9ec3' => $vendorDir . '/laravelcollective/html/src/helpers.php',
     '377d15ea71be0306a9829d9f78207a1c' => $vendorDir . '/torann/currency/src/helpers.php',
+    '6e67a68a136412df229d6e99b7e0c7ae' => $vendorDir . '/nahid/talk/src/helpers/talk.php',
 );
