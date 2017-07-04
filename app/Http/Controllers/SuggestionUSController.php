@@ -22,7 +22,7 @@ class SuggestionUSController extends Controller
      */
 
     public function index() {
-        $suggusdata = SuggestionUS::all();
+        $suggusdata = SuggestionUS::orderBy('name','asc')->get();
         /* echo "<pre>"; print_r($suggusdata); die;*/
         return view('admin.suggestion.index')->with('suggusdata',$suggusdata);
     }
@@ -44,12 +44,12 @@ class SuggestionUSController extends Controller
     {
 
         $this->validate($request, [
-        		'name' => 'required',
-        		'email' => 'required|email',
-        		'mobile_no' => 'required',
-        		'subject' => 'required',
-        		'message' => 'required'
-        	]);
+    		'name' => 'required',
+    		'email' => 'required|email',
+    		'mobile_no' => 'required',
+    		'subject' => 'required',
+    		'message' => 'required'
+    	]);
 
 
         $save=SuggestionUS::create($request->all());

@@ -64,9 +64,7 @@ class PackageTypeController extends Controller
         $package_details->description = $request->ckeditor;
         $package_details->status = $request->status;
         $package_details->user_id = Auth::guard('admin')->user()->id;
-
         $package_details->save();
-
         $request->session()->flash("message", "Package type updated successfully");
         return redirect('/admin/package-types');
       }

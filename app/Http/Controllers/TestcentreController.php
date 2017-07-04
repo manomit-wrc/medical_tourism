@@ -25,7 +25,7 @@ class TestcentreController extends Controller
     }
 
     public function index() {
-        $testcentre_list = Testcentre::where('status', '!=', 2)->get();
+        $testcentre_list = Testcentre::where('status', '!=', 2)->orderBy('name','asc')->get();
         return view('admin.testcentre.index')->with('testcentre_list',$testcentre_list);
     }
     public function create()
