@@ -73,6 +73,7 @@ Route::group(['middleware' => ['front']], function() {
     Route::post('update-password','PagesController@update_password');
     Route::get('/upload-documents','PagesController@upload_documents');
     Route::get('/my-enquiry','PagesController@my_enquiry');
+    Route::get('/my-enquiry-details','PagesController@my_enquiry_details');
     
 });
 //Route::get('/successstory','HelperController@successstory');

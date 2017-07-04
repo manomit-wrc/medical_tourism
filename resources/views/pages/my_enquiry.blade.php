@@ -4,65 +4,87 @@
 <div class="col-md-8">
     <div class="rightP">
         <h3>My <b>Enquiries</b></h3>
+
+        <script>
+           function showhide()
+           {
+                 var div = document.getElementById("newpost");
+          if (div.style.display !== "none") {
+              div.style.display = "none";
+          }
+          else {
+              div.style.display = "block";
+          }
+           }
+        </script>
         
-        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-            <div class="panel panel-default">
-              <div class="panel-heading" role="tab" id="headingOne">
-                <h4 class="panel-title">
-                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    Enquiries 01
-                  </a>
-                </h4>
-              </div>
-              <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                <div class="panel-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                </div>
-              </div>
+        <div class="myenquiriesB">
+            <div class="table-responsive">
+                <table class="table table-condensed">
+                  <tr>
+                    <td><b>Swaasthya Bandhav</b></td>
+                    <td>Test reports</td>
+                    <td align="right">
+                      <div class="chatarea">
+                          <a href="javascript:void(0)" onclick="showhide()"><i class="fa fa-commenting" aria-hidden="true"></i></a>
+                            <div id="newpost" class="chatbox" style="display:none;">
+                              <textarea class="Cinput" rows="3"></textarea>
+                              <button type="button" class="buttonchat">SEND</button>
+                            </div>
+                      </div>
+                    </td>
+                    <td align="right">Jul 4</td>
+                  </tr>
+
+                  <tr>
+                    <td><b>Swaasthya Bandhav</b></td>
+                    <td>Test reports</td>
+                    <td align="right">
+                      <div class="chatarea">
+                          <a href="javascript:void(0)" onclick="showhide()"><i class="fa fa-commenting" aria-hidden="true"></i></a>
+                            <div id="newpost" class="chatbox" style="display:none;">
+                              <textarea class="Cinput" rows="3"></textarea>
+                              <button type="button" class="buttonchat">SEND</button>
+                            </div>
+                      </div>
+                    </td>
+                    <td align="right">Jul 4</td>
+                  </tr>
+
+                  <tr>
+                    <td><b>Swaasthya Bandhav</b></td>
+                    <td>Test reports</td>
+                    <td align="right">
+                      <div class="chatarea">
+                          <a href="javascript:void(0)" onclick="showhide()"><i class="fa fa-commenting" aria-hidden="true"></i></a>
+                            <div id="newpost" class="chatbox" style="display:none;">
+                              <textarea class="Cinput" rows="3"></textarea>
+                              <button type="button" class="buttonchat">SEND</button>
+                            </div>
+                      </div>
+                    </td>
+                    <td align="right">Jul 4</td>
+                  </tr>
+
+                  <tr>
+                    <td>Swaasthya Bandhav</td>
+                    <td>Test reports</td>
+                    <td align="right">
+                      <div class="chatarea">
+                          <a href="javascript:void(0)" onclick="showhide()"><i class="fa fa-commenting" aria-hidden="true"></i></a>
+                            <div id="newpost" class="chatbox" style="display:none;">
+                              <textarea class="Cinput" rows="3"></textarea>
+                              <button type="button" class="buttonchat">SEND</button>
+                            </div>
+                      </div>
+                    </td>
+                    <td align="right">Jul 4</td>
+                  </tr>
+                  
+                  
+                </table>
             </div>
-            <div class="panel panel-default">
-              <div class="panel-heading" role="tab" id="headingTwo">
-                <h4 class="panel-title">
-                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    Enquiries 02
-                  </a>
-                </h4>
-              </div>
-              <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                <div class="panel-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                </div>
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading" role="tab" id="headingThree">
-                <h4 class="panel-title">
-                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    Enquiries 03
-                  </a>
-                </h4>
-              </div>
-              <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                <div class="panel-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                </div>
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading" role="tab" id="headingfore">
-                <h4 class="panel-title">
-                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsefore" aria-expanded="false" aria-controls="collapsefore">
-                    Enquiries 04
-                  </a>
-                </h4>
-              </div>
-              <div id="collapsefore" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                <div class="panel-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                </div>
-              </div>
-            </div>
-          </div>
+        </div>
     </div>
 </div>
 @stop

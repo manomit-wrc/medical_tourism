@@ -494,6 +494,12 @@ class PagesController extends Controller
     $city_details = \App\Patient::with('cities')->find(Auth::guard('front')->user()->id)->toArray();
     return view('pages.my_enquiry')->with(['country_details'=>$country_details,'state_details'=>$state_details,'city_details'=>$city_details]);    
   }
+  public function my_enquiry_details() {
+    $country_details = \App\Patient::with('countries')->find(Auth::guard('front')->user()->id)->toArray();
+    $state_details = \App\Patient::with('states')->find(Auth::guard('front')->user()->id)->toArray();
+    $city_details = \App\Patient::with('cities')->find(Auth::guard('front')->user()->id)->toArray();
+    return view('pages.my_enquiry_details')->with(['country_details'=>$country_details,'state_details'=>$state_details,'city_details'=>$city_details]);    
+  }
 
   public function profile_image_upload(Request $request) {   
     $fielava = $_FILES['avators']['name']; 
