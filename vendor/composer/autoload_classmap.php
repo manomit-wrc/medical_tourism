@@ -22,7 +22,7 @@ return array(
     'AddNewsImageToNewsTable' => $baseDir . '/database/migrations/2017_05_05_113435_add_news_image_to_news_table.php',
     'AddNicenameCountriesTable' => $baseDir . '/database/migrations/2017_06_09_051911_add_nicename_countries_table.php',
     'AddPasswordToPatientsTable' => $baseDir . '/database/migrations/2017_05_05_102509_add_password_to_patients_table.php',
-    'AddPatientIdPatientEnquiries' => $baseDir . '/database/migrations/2017_07_03_072318_add_patient_id_patient_enquiries.php',
+    'AddPatientIdPatientEnquiries' => $baseDir . '/database/migrations/2017_07_04_072518_add_patient_id_patient_enquiries.php',
     'AddPermissionIdToPermissions' => $baseDir . '/database/migrations/2017_04_25_125438_add_permission_id_to_permissions.php',
     'AddProcedureImageColumsToProceduresTable' => $baseDir . '/database/migrations/2017_04_24_130154_add_procedure_image_colums_to_procedures_table.php',
     'AddRememberTokenToPatientsTable' => $baseDir . '/database/migrations/2017_05_08_073932_add_remember_token_to_patients_table.php',

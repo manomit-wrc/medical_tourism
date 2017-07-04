@@ -493,6 +493,20 @@ $(function () {
       $("#medicaltest_cat_id").val(val);
     }
 
+    function viewmoremessage(msgdtl_id){  //alert(msgdtl_id);
+      $("#vwmrmsg").modal('show');
+      $.ajax({
+            type:"POST",
+            url:"/admin/patientenquiry/showfullmessage",
+            data: {msgdtl_id:msgdtl_id,_token:"{{csrf_token()}}"},
+              success:function(response) { //alert(response);
+                var result = $.parseJSON(response);
+                $("#msg_dtl").html(result);
+             }
+          });
+      
+    }
+
     function submitmedicaltest(){
       var medicaltest_cat_id = $('#medicaltest_cat_id').val()
       var test_name = $("#test_name").val();
