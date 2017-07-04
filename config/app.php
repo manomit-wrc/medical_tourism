@@ -188,6 +188,7 @@ return [
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Cmgmyr\Messenger\MessengerServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
+        Torann\LaravelMetaTags\MetaTagsServiceProvider::class,
     ],
 
     /*
@@ -249,6 +250,9 @@ return [
         'Twitter'   => Artesaos\SEOTools\Facades\TwitterCard::class,
         //or SEO
         'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
+        //Talk
+        'Talk' => Nahid\Talk\Facades\Talk::class,
+         'MetaTag'   => Torann\LaravelMetaTags\Facades\MetaTag::class,
     ],
 
 ];

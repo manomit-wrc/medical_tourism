@@ -1,13 +1,12 @@
 <?php
-
-namespace Cmgmyr\Messenger\Models;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Participant extends Model
+class Participant extends Eloquent
 {
-     use SoftDeletes;
+    use SoftDeletes;
 
     /**
      * The database table used by the model.
@@ -21,7 +20,7 @@ class Participant extends Model
      *
      * @var array
      */
-    protected $fillable = ['thread_id', 'user_id', 'user_type', 'last_read'];
+    protected $fillable = ['thread_id', 'user_id', 'last_read'];
 
     /**
      * The attributes that should be mutated to dates.
@@ -62,16 +61,5 @@ class Participant extends Model
     public function user()
     {
         return $this->belongsTo(Models::user(), 'user_id');
-    }
-    /**
-     * Patient relationship.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     *
-     * @codeCoverageIgnore
-     */
-    public function patient()
-    {
-        return $this->belongsTo(Models::patient(), 'user_id');
     }
 }

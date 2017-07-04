@@ -15,12 +15,8 @@ class CreatePatientEnquiryTable extends Migration
     {
         Schema::create('patient_enquiries', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('sender_id');
-            $table->char('sender_type',1);
-            $table->integer('reciever_id');
-            $table->char('reciever_type',1);
-            $table->string('subject');
-            $table->text('message');
+            $table->text('subject');
+            $table->smallInteger('status')->default(1);
             $table->timestamps();
         });
     }

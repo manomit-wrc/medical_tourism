@@ -16,8 +16,10 @@
         "laravel/framework": "5.3.*",
         "laravelcollective/html": "5.3.*",
         "maatwebsite/excel": "^2.1",
+        "nahid/talk": "^2.2",
         "sarfraznawaz2005/visitlog": "dev-master",
         "torann/currency": "^1.0",
+        "torann/laravel-meta-tags": "^3.0",
         "unisharp/laravel-ckeditor": "^4.6"
     },
     "require-dev": {

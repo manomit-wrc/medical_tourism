@@ -72,20 +72,8 @@
                          <!--  <a href="{!!URL::to('/admin/patients/edit',$data->id)!!}" class="btn btn-primary">Edit</a> -->
                           <a href="javascript:void(0)" onclick="return deldata('{!!URL::to('/admin/patients/delete',$data->id)!!}')" data-toggle="tooltip" data-original-title="Delete" ><i class="fa fa-times" style="color:red;" aria-hidden="true"></i></a>&nbsp;
                           
-                          @if (count($data->participants) > 0)
-                          @php
-                          $i=1;
-                          @endphp
-                           @foreach($data->participants as $pdata)
-                           @if($i==1)
-                            @if($pdata->user_type =='P')
-                             <a href="{!!URL::to('/admin/messages',$data->id)!!}" style="color:green;" data-toggle="tooltip" data-original-title="Message"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
-                            @endif
-                            @endif
-                            @php
-                              $i++;
-                            @endphp 
-                           @endforeach
+                          @if (count($data->patientenquiry) > 0)
+                             <a href="{!!URL::to('/admin/patientenquiry',$data->id)!!}" style="color:green;" data-toggle="tooltip" data-original-title="Message"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
                           @endif
                         </td>
                       </tr>

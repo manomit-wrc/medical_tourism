@@ -42,12 +42,16 @@ class Patient extends Authenticatable
   public function cities() {
     return $this->belongsTo('\App\City','city_id');
   }
-  public function participants()
+  public function patientenquiry()
+  {
+      return $this->hasMany('\App\PatientEnquiry', 'patient_id');
+  }
+  /*public function participants()
   {
       return $this->hasMany('\Cmgmyr\Messenger\Models\Participant', 'user_id');
   }
   public function messages()
   {
       return $this->hasMany('\Cmgmyr\Messenger\Models\Message', 'user_id');
-  }
+  }*/
 }

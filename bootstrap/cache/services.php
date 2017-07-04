@@ -38,6 +38,7 @@
     34 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
     35 => 'Cmgmyr\\Messenger\\MessengerServiceProvider',
     36 => 'Artesaos\\SEOTools\\Providers\\SEOToolsServiceProvider',
+    37 => 'Torann\\LaravelMetaTags\\MetaTagsServiceProvider',
   ),
   'eager' => 
   array (
@@ -166,6 +167,7 @@
     'seotools.metatags' => 'Artesaos\\SEOTools\\Providers\\SEOToolsServiceProvider',
     'seotools.opengraph' => 'Artesaos\\SEOTools\\Providers\\SEOToolsServiceProvider',
     'seotools.twitter' => 'Artesaos\\SEOTools\\Providers\\SEOToolsServiceProvider',
+    'metatag' => 'Torann\\LaravelMetaTags\\MetaTagsServiceProvider',
   ),
   'when' => 
   array (
@@ -212,6 +214,9 @@
     array (
     ),
     'Artesaos\\SEOTools\\Providers\\SEOToolsServiceProvider' => 
+    array (
+    ),
+    'Torann\\LaravelMetaTags\\MetaTagsServiceProvider' => 
     array (
     ),
   ),
