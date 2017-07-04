@@ -14,7 +14,8 @@ class AddPatientIdPatientEnquiries extends Migration
     public function up()
     {
         Schema::table('patient_enquiries', function (Blueprint $table) {
-            $table->integer('patient_id')->after('subject');
+           $table->integer('patient_id')->after('subject')->unsigned();
+           $table->foreign('patient_id')->references('id')->on('patients');
         });
     }
 
@@ -26,7 +27,7 @@ class AddPatientIdPatientEnquiries extends Migration
     public function down()
     {
         Schema::table('patient_enquiries', function (Blueprint $table) {
-            $table->dropColumn('patient_id');
+           $table->dropColumn('patient_id');
         });
     }
 }

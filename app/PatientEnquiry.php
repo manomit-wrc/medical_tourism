@@ -25,4 +25,7 @@ class PatientEnquiry extends Model
     {
        return $this->hasMany('App\PatientEnquiryDetail', 'patient_enquiry_id', 'id');
     }
+    public function patient() {
+       return $this->belongsTo('\App\Patient');
+    }
 }

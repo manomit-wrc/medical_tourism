@@ -6,7 +6,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-    <?php echo $patient_enq_data[0]['first_name'].' '.$patient_enq_data[0]['last_name'].'\'s '.'Enquiry'; ?>
+        Patient's Enquiry
+  
        <!--  <small>advanced tables</small> -->
       </h1>
       <ol class="breadcrumb">
@@ -27,7 +28,10 @@
               <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
             </div>
 
-            <div class="topbtn"><!-- <a href="{{ url('/admin/patients/create') }}"><button type="button" class="btn bg-purple btn-rightad">ADD</button></a> --></div>
+            <div class="topbtn">
+               <!-- <a href="{{ url('/admin/patients/create') }}"><button type="button" class="btn bg-purple btn-rightad">Reply to Patient</button></a>&nbsp;&nbsp;
+               <a href="{{ url('/admin/patients/create') }}"><button type="button" class="btn bg-purple btn-rightad">Reply to Hospital</button></a> -->
+             </div>
 
             <!-- /.box-header -->
             <div class="box-body">
@@ -38,45 +42,20 @@
                 <thead>
                   <tr>
                     <th style="display:none;"></th>
-                    <th>Sender</th>
-                    <th>Reciever</th>
                     <th>Subject</th>
-                    <th>Message</th>
-                    <th>Date</th>
-                   <!--  <th>Status</th>
-                    <th width="18%">Actions</th> -->
+                    <th>Posted On</th>
+                    <th width="18%">Actions</th>
                   </tr>
                 </thead>
 
                 <tbody>
-                  <?php //echo "<pre>"; print_r($patient_enq_data); die; ?>
                   @if (count($patient_enq_data) > 0)
-                  
-                    @foreach($patient_enq_data as $key=>$val)
-                      <tr><?php //echo $val['sender_name']; die;?>
-                        <td style="display:none;"><input type="hidden" value="{{ $val['id'] }}"></td>
-                        <td>
-                          {{ $val['sender_name'] }}
-                           @if ($val['sender_type']==1)
-                             <i class="fa fa-user-secret" aria-hidden="true"></i>
-                           @endif 
-                           @if ($val['sender_type']==3)
-                            <i class="fa fa-hospital-o" aria-hidden="true"></i>
-                           @endif
-                        </td>
-                        <td>{{ $val['reciever_name'] }}
-                           @if ($val['reciever_type']==1)
-                             <i class="fa fa-user-secret" aria-hidden="true"></i>
-                           @endif 
-                           @if ($val['reciever_type']==3)
-                            <i class="fa fa-hospital-o" aria-hidden="true"></i>
-                           @endif
-                        </td>
-                        <td>{{ $val['subject'] }}</td>
-                        <td>{{ $val['message'] }}</td>
-                        <td>
-                         {{ date("d F Y",strtotime($val['created_at'])) }} at {{ date("g:ha",strtotime($val['created_at'])) }}
-                        </td>
+                    @foreach($patient_enq_data as $val)
+                      <tr>
+                        <td style="display:none;"><input type="hidden" value="{{ $val->id }}"></td>
+                        <td>{{ $val->subject }}</td>
+                        <td>{{ date("d F Y",strtotime($val->created_at)) }} at {{ date("g:ha",strtotime($val->created_at)) }}</td>
+                        <td><a href="{!!URL::to('/admin/patientenquiry/show',$val->patient_id)!!}" data-toggle="tooltip" data-original-title="View"><i class="fa fa-eye" style="color:blue;" aria-hidden="true"></i></a></td>
                       </tr>
                     @endforeach
                   @endif
@@ -89,6 +68,9 @@
                 </tfoot>
               </table>
             </div>
+
+            
+
             <!-- /.box-body -->
           </div>
           <!-- /.box -->

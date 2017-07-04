@@ -1,61 +1,132 @@
 @extends('admin.layouts.dashboard_layout')
-@section('title', 'Patient')
+@section('title', 'Patient Enquiry Details')
 @section('content')
-  <!-- Content Wrapper. Contains page content -->
+ <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-       {{ $patient_data->first_name.' '.$patient_data->last_name }}
+    <?php echo $patient_enq_data[0]['first_name'].' '.$patient_enq_data[0]['last_name'].'\'s '.'Enquiry'; ?>
+       <!--  <small>advanced tables</small> -->
       </h1>
       <ol class="breadcrumb">
-        <li><a href="{!!URL::to('/admin/dashboard')!!}">Home</a></li>
-        <li><a href="{!!URL::to('/admin/patients')!!}">Patient</a></li>
-        <li class="active">Details</li>
+        <li><a href="javascript:void(0)">Home</a></li>
+         <li><a href="{!!URL::to('/admin/patientenquiry/'.$patient_enq_data[0]['patient_id'])!!}">Patient Enquiry</a></li>
+        <li class="active">Patient Enquiry Details</li>
+
       </ol>
     </section>
 
     <!-- Main content -->
-    <section class="content">
+     <section class="content">
+      <div class="row">
+        <div class="col-xs-12">
 
-      <!-- Default box -->
-      <div class="box">
-        <div class="box-header with-border">
-          <!-- <h3 class="box-title">Title</h3> -->
+          <div class="box">
+            <div class="box-header">
+              <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
+            </div>
 
-          <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-              <i class="fa fa-minus"></i></button>
-            <!-- <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-              <i class="fa fa-times"></i></button> -->
+            <div class="topbtn"><!-- <a href="{{ url('/admin/patients/create') }}"> --><button type="button" class="btn bg-purple btn-rightad">Reply to Patient</button><!-- </a> -->&nbsp;&nbsp;
+              <!-- <a href="{{ url('/admin/patients/create') }}"> --><button type="button" class="btn bg-purple btn-rightad">Reply to Hospital</button><!-- </a> --></div>
+
+            <!-- /.box-header -->
+            <div class="box-body">
+              @if (Session::has('message'))
+                  <div class="alert alert-info" id="result7">{{ Session::get('message') }}</div>
+              @endif
+              <table id="datatbl_patient_id" class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th style="display:none;"></th>
+                    <th>Sender</th>
+                    <th>Reciever</th>
+                    <th>Subject</th>
+                    <th>Message</th>
+                    <th>Date</th>
+                   <!--  <th>Status</th>
+                    <th width="18%">Actions</th> -->
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <?php //echo "<pre>"; print_r($patient_enq_data); die; ?>
+                  @if (count($patient_enq_data) > 0)
+                  
+                    @foreach($patient_enq_data as $key=>$val)
+                      <tr><?php //echo $val['sender_name']; die;?>
+                        <td style="display:none;"><input type="hidden" value="{{ $val['id'] }}"></td>
+                        <td>
+                          {{ $val['sender_name'] }}
+                           @if ($val['sender_type']==1)
+                             <i class="fa fa-user-secret" aria-hidden="true"></i>
+                           @endif 
+                           @if ($val['sender_type']==3)
+                            <i class="fa fa-hospital-o" aria-hidden="true"></i>
+                           @endif
+                        </td>
+                        <td>{{ $val['reciever_name'] }}
+                           @if ($val['reciever_type']==1)
+                             <i class="fa fa-user-secret" aria-hidden="true"></i>
+                           @endif 
+                           @if ($val['reciever_type']==3)
+                            <i class="fa fa-hospital-o" aria-hidden="true"></i>
+                           @endif
+                        </td>
+                        <td>{{ $val['subject'] }}</td>
+                        <td>{!! \Illuminate\Support\Str::words($val['message'], 10,'....')  !!} 
+                           @if(str_word_count($val['message'])>10)
+                             <a href="javascript:void(0)"  style="cursor: pointer; text-decoration:none;" onclick="viewmoremessage({{ $val['enq_detail_id'] }})">View More</a>
+                           @endif
+                        </td>   
+                        <td>
+                         {{ date("d F Y",strtotime($val['created_at'])) }} at {{ date("g:ha",strtotime($val['created_at'])) }}
+                        </td>
+                      </tr>
+                    @endforeach
+                  @endif
+                </tbody>
+                <tfoot>
+               <!--  <tr>
+                  <th>Rendering engine</th>
+                  <th>Browser</th>
+                </tr> -->
+                </tfoot>
+              </table>
+            </div>
+
+            <!--Modal section start  here-->
+              <div class="modal fade" id="vwmrmsg" role="dialog" data-backdrop="static" data-keyboard="false">
+                  <div class="modal-dialog" style="width: 800px;">
+                    <div class="modal-content" >
+                      <div class="modal-header" style="padding: 0 15px;">
+                        <button style=" margin-top: 15px !important" type="button" onclick="return resetmedicaltest();" class="close" data-dismiss="modal">&times;</button>        
+                        <h4 style="color:#777">Message</h4>
+                      </div>                                    
+                      
+                      <div class="modal-body">
+                        <div class="alert alert-success fade in alert-dismissable" id="result" style="display:none"></div>
+                          <div class="form-group">
+                           <div id="msg_dtl"></div>
+                          </div>                        
+                      </div>  
+
+                      <div class="modal-footer">                        
+                        <button type="button" class="btn btn-default" onclick="return resetmedicaltest();" data-dismiss="modal">Close</button>&nbsp;
+                        <input type="hidden" name="medicaltest_cat_id" id="medicaltest_cat_id"  value="">
+                      </div>                      
+                    </div>      
+                  </div>
+                </div>
+            <!--modal section end here-->
+
+            <!-- /.box-body -->
           </div>
+          <!-- /.box -->
         </div>
-        <div class="box-body">
-          <b>Name</b> : {{ $patient_data->first_name }}  {{ $patient_data->last_name }}<br/>
-          <b>Email</b> : {{ $patient_data->email_id }}<br/>
-          <b>Mobile Number</b> : {{ $patient_data->mobile_no }}<br/>
-          <b>Sex</b> : {{ $patient_data->sex }}<br/>
-          <b>Address</b> : {{ $patient_data->address }}<br/>
-          <b>City</b> : {{ $patient_data->cities->name }}<br/>
-          <b>State</b> : {{ $patient_data->states->name }}<br/>
-          <b>Country</b> : {{ $patient_data->countries->name }}<br/>
-          <b>Pincode</b> : {{ $patient_data->pincode }}<br/>
-          <b>Date of birth</b> : {{ $patient_data->date_of_birth }}<br/>
-          <b>Biography</b> : {{ $patient_data->biography }}<br/>
-          @if(!empty($patient_data->avators))
-            <b>Image</b> : <img src="{{url('/uploads/patients/thumb/'.$patient_data->avators)}}" alt="Patient Image"><br/>
-          @else
-            <b>Image</b> : <img src="{{url('/uploads/patients/patient.jpg')}}" alt="Patient Image"><br/>
-          @endif
-        </div>
-        <!-- /.box-body -->
-        <!-- <div class="box-footer">
-          Footer
-        </div> -->
-        <!-- /.box-footer-->
+        <!-- /.col -->
       </div>
-      <!-- /.box -->
-
+      <!-- /.row -->
     </section>
     <!-- /.content -->
   </div>

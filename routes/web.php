@@ -298,12 +298,15 @@ Route::group(['middleware' => ['admin']], function () {
 
     //Patient enquiry section
     Route::get('/admin/patientenquiry/{id}','PatientEnquiryController@index');
+    Route::post('/admin/patientenquiry/showfullmessage','PatientEnquiryController@showfullmessage');
+    Route::get('/admin/patientenquiry/show/{id}','PatientEnquiryController@show');
+    
     Route::get('/admin/patientenquiry/create','PatientEnquiryController@create');
     Route::post('/admin/patientenquiry/store','PatientEnquiryController@store');
     Route::get('/admin/patientenquiry/edit/{id}','PatientEnquiryController@edit');
     Route::patch('/admin/patientenquiry/update/{id}','PatientEnquiryController@update');
     Route::get('/admin/patientenquiry/delete/{id}','PatientEnquiryController@delete');
-    Route::get('/admin/patientenquiry/show/{id}','PatientEnquiryController@show');
+   
     Route::post('/admin/patientenquiry/changestatus/','PatientEnquiryController@ajaxpatientchangestatus');
 
     //Message section
