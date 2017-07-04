@@ -506,11 +506,51 @@ class PagesController extends Controller
   }
 
   public function myenquiryPost(Request $request)
-  {
-        echo "<pre>"; print_r($_POST); die; 
-       
-        //return back()->with('success', 'Thanks for contacting us!');
+  {        
+        $mt = new PatientEnquiry() ;
+        $mt->subject = $request->subject;
+        $mt->created_at = date('Y-m-d H:i:s'); 
+        $mt->updated_at = date('Y-m-d H:i:s'); 
+        $mt->patient_id = Auth::guard('front')->user()->id;
+        $mt->save();
+        $lastinsert_id = $mt->id;
+        if($lastinsert_id){
+        $mt1 = new PatientEnquiryDetail() ;
+        if($file = $request->hasFile('avators')) {
 
+            $file = $request->file('avators') ;
+
+            $fileName = time().'_'.$file->getClientOriginalName() ;
+
+            //thumb destination path
+            $destinationPath = public_path().'/uploads/enquiry' ;
+
+            $img = Image::make($file->getRealPath());
+
+            $img->resize(745, 214, function ($constraint){
+                $constraint->aspectRatio();
+            })->save($destinationPath.'/'.$fileName);
+
+            //original destination path
+            $destinationPath = public_path().'/uploads/enquiry/' ;
+            $file->move($destinationPath,$fileName);
+
+            $mt1->attachment = $fileName ;
+        }
+        $mt1->message = $request->message;
+        $mt1->subject = $request->subject;
+        $mt1->patient_enquiry_id = $lastinsert_id;
+        $mt1->reciever_id = 1;
+        $mt1->sender_id = Auth::guard('front')->user()->id;
+        $mt1->sender_type = 2;
+        $mt1->reciever_type = 1;
+        $mt1->created_at = date('Y-m-d H:i:s'); 
+        $mt1->updated_at = date('Y-m-d H:i:s');
+        $mt1->save();
+        $request->session()->flash("message", "Posted successfully");
+        return redirect('/my-enquiry');
+        } 
+             
   }
 
   public function profile_image_upload(Request $request) {   
