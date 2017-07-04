@@ -18,7 +18,7 @@
                                       @foreach($procedure_lists as $procedure_lists)
                                         <li>
                                         <a href="{!!URL::to('search-data?_token='.csrf_token().'&select_treatment=&select_procedure='.$procedure_lists->id.'&txt_search=')!!}" > 
-                                        <img src="{{url('/uploads/procedures/thumb/'.$procedure_lists->procedure_image)}}"  alt="Image 1"><h3>{{ $procedure_lists->name }}</h3>
+                                        <img src="{{url('/uploads/procedures/thumb/'.$procedure_lists->procedure_image)}}"  alt="Image 1"><h3>{!! \Illuminate\Support\Str::words($procedure_lists->name, 10,'....')  !!} </h3>
                                         </a></li>
                                       @endforeach
                                     @endif
