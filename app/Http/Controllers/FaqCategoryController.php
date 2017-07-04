@@ -14,7 +14,7 @@ use Validator;
 
 class FaqCategoryController extends Controller
 {
-     public function __construct() {
+    public function __construct() {
 
     }
 
@@ -24,7 +24,7 @@ class FaqCategoryController extends Controller
      * @return Response
      */
     public function index() {
-    	$faq_cat_data = FaqCategory::where('status', '!=', 2)->get();
+    	$faq_cat_data = FaqCategory::where('status', '!=', 2)->orderBy('name','asc')->get();
         //echo "<pre>"; print_r($faq_cat_data); die;
         return view('admin.faqcategories.index')->with('faq_cat_data',$faq_cat_data);
     }

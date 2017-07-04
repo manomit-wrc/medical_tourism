@@ -23,7 +23,7 @@ class ContactUSController extends Controller
      */
 
     public function index() {
-        $contactusdata = ContactUS::all();
+        $contactusdata = ContactUS::where('status', '!=', 0)->orderBy('name','asc')->get();
         /* echo "<pre>"; print_r($contactusdata); die;*/
         return view('admin.contact.index')->with('contactusdata',$contactusdata);
     }
