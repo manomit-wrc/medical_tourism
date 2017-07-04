@@ -74,6 +74,7 @@ Route::group(['middleware' => ['front']], function() {
     Route::get('/upload-documents','PagesController@upload_documents');
     Route::get('/my-enquiry','PagesController@my_enquiry');
     Route::post('/add-my-enquiry','PagesController@myenquiryPost');
+    Route::get('/my-enquiry-details','PagesController@my_enquiry_details');
     
 });
 //Route::get('/successstory','HelperController@successstory');

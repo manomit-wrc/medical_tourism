@@ -26,7 +26,7 @@ class ImmigrationController extends Controller
      * @return Response
      */
     public function index() {
-        $immigration_lists = Immigration::where('status', '!=', 2)->get();
+        $immigration_lists = Immigration::where('status', '!=', 2)->orderBy('name','asc')->get();
         //echo "<pre>"; print_r($immigration_lists); die;
         return view('admin.immigration.index')->with('immigration_lists',$immigration_lists);
     }

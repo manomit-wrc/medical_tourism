@@ -19,7 +19,7 @@ class EnquiryController extends Controller
      */
 
     public function index() {
-        $enqdata = Enquiry::all();
+        $enqdata = Enquiry::where('status', '!=', 2)->orderBy('full_name','asc')->get();
         /* echo "<pre>"; print_r($enqdata); die;*/
         return view('admin.enquiry.index')->with('enqdata',$enqdata);
     }

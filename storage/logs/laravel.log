@@ -2520,3 +2520,6 @@ Stack trace:
 #46 C:\xampp\htdocs\medical_tourism\public\index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #47 C:\xampp\htdocs\medical_tourism\server.php(21): require_once('C:\\xampp\\htdocs...')
 #48 {main}  
+[2017-07-04 12:38:38] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '<<' (T_SL)' in C:\xampp\htdocs\medical_tourism\routes\web.php:76
+Stack trace:
+#0 {main}  

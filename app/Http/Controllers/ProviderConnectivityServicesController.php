@@ -39,13 +39,13 @@ class ProviderConnectivityServicesController extends Controller
      */
     public function create()
     {
-       //$pro_conn_data = ProviderConnectivity::all();
-       //echo "<pre>"; print_r($pro_conn_data[0]); print_r($pro_conn_data[0]->connectivity); die;
-       $pro_conn_data = ProviderConnectivity::orderBy('name')->pluck('name', 'id')->all();
-       //echo "<pre>"; print_r($pro_conn_data); die;
-       $connectivity_serv_data = ConnectivityServices::orderBy('name')->pluck('name', 'id')->all();
-       //echo "<pre>"; print_r($connectivity_serv_data); die;
-       return view('admin.providerconnectivityservices.create', compact('pro_conn_data','connectivity_serv_data'));
+      //$pro_conn_data = ProviderConnectivity::all();
+      //echo "<pre>"; print_r($pro_conn_data[0]); print_r($pro_conn_data[0]->connectivity); die;
+      $pro_conn_data = ProviderConnectivity::orderBy('name')->pluck('name', 'id')->all();
+      //echo "<pre>"; print_r($pro_conn_data); die;
+      $connectivity_serv_data = ConnectivityServices::orderBy('name')->pluck('name', 'id')->all();
+      //echo "<pre>"; print_r($connectivity_serv_data); die;
+      return view('admin.providerconnectivityservices.create', compact('pro_conn_data','connectivity_serv_data'));
     }
 
     /**

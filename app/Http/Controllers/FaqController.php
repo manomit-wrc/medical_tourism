@@ -24,7 +24,7 @@ class FaqController extends Controller
      * @return Response
      */
     public function index() {
-        $faqlist = Faq::with('faqcategory')->orderBy('faqcategory_id')->where('status', '!=', 2)->get()->toArray();     
+        $faqlist = Faq::with('faqcategory')->orderBy('faqcategory_id')->where('status', '!=', 2)->orderBy('title','asc')->get()->toArray();     
         $data['faqlist'] = $faqlist;
        /* echo "<pre>";
         print_r($data['faqlist']);       
@@ -39,7 +39,7 @@ class FaqController extends Controller
      */
     public function create()
     {
-        $category_list = FaqCategory::get()->pluck('name','id')->toArray();
+        $category_list = FaqCategory::orderBy('name','asc')->get()->pluck('name','id')->toArray();
        //   return view('admin.genericmedicine.create');
        return view('admin.faq.create')->with(['category_list'=>$category_list]);
     }
@@ -87,7 +87,7 @@ class FaqController extends Controller
     {
        // get the Connectivity
        $faqdata = Faq::findOrFail($id);       
-       $category_list = FaqCategory::get()->pluck('name','id')->toArray();      
+       $category_list = FaqCategory::orderBy('name','asc')->get()->pluck('name','id')->toArray();      
        return view('admin.faq.edit')->with(array('faqdata'=> $faqdata,'category_list'=> $category_list));
     }
 

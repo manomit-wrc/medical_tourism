@@ -498,6 +498,12 @@ class PagesController extends Controller
     $city_details = \App\Patient::with('cities')->find(Auth::guard('front')->user()->id)->toArray();
     return view('pages.my_enquiry')->with(['country_details'=>$country_details,'state_details'=>$state_details,'city_details'=>$city_details]);    
   }
+  public function my_enquiry_details() {
+    $country_details = \App\Patient::with('countries')->find(Auth::guard('front')->user()->id)->toArray();
+    $state_details = \App\Patient::with('states')->find(Auth::guard('front')->user()->id)->toArray();
+    $city_details = \App\Patient::with('cities')->find(Auth::guard('front')->user()->id)->toArray();
+    return view('pages.my_enquiry_details')->with(['country_details'=>$country_details,'state_details'=>$state_details,'city_details'=>$city_details]);    
+  }
 
   public function myenquiryPost(Request $request)
   {
@@ -576,20 +582,20 @@ class PagesController extends Controller
     die();
   }
   public function securitycode($email_id) {            
-      do{
-        $sec_code = rand(10000000, 99999999);
-        $seccode = base64_encode($sec_code.time());       
-        $r = \App\Patient::where('security_code',$seccode)->get()->toArray();       
-        if(count($r)== 0) 
-        {
-          break;  
-        }
-        }while(1);     
-        $rr = \App\Patient::where('email_id',$email_id)->get()->toArray();
-        $patobj = \App\Patient::find($rr[0]['id']);            
-        $patobj->security_code = $seccode; 
-        $patobj->save();        
-        return $sec_code;
+    do{
+      $sec_code = rand(10000000, 99999999);
+      $seccode = base64_encode($sec_code.time());       
+      $r = \App\Patient::where('security_code',$seccode)->get()->toArray();       
+      if(count($r)== 0) 
+      {
+        break;  
+      }
+      }while(1);     
+      $rr = \App\Patient::where('email_id',$email_id)->get()->toArray();
+      $patobj = \App\Patient::find($rr[0]['id']);            
+      $patobj->security_code = $seccode; 
+      $patobj->save();        
+      return $sec_code;
   }
 
   public function changepassword($url) {

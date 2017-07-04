@@ -4,7 +4,20 @@
 <div class="col-md-8">
     <div class="qtbox">
         <h3>My <b>Enquiries</b></h3>
-        
+
+        <script>
+           function showhide()
+           {
+                 var div = document.getElementById("newpost");
+          if (div.style.display !== "none") {
+              div.style.display = "none";
+          }
+          else {
+              div.style.display = "block";
+          }
+           }
+        </script>
+
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
               <form name="myenq" id="myenq" method="post" action="/add-my-enquiry" enctype="multipart/form-data">
@@ -33,6 +46,75 @@
             </div>
         </div>
 
+
+
+        <div class="myenquiriesB">
+            <div class="table-responsive">
+                <table class="table table-condensed">
+                  <tr>
+                    <td><b>Swaasthya Bandhav</b></td>
+                    <td>Test reports</td>
+                    <td align="right">
+                      <div class="chatarea">
+                          <a href="javascript:void(0)" onclick="showhide()"><i class="fa fa-commenting" aria-hidden="true"></i></a>
+                            <div id="newpost" class="chatbox" style="display:none;">
+                              <textarea class="Cinput" rows="3"></textarea>
+                              <button type="button" class="buttonchat">SEND</button>
+                            </div>
+                      </div>
+                    </td>
+                    <td align="right">Jul 4</td>
+                  </tr>
+
+                  <tr>
+                    <td><b>Swaasthya Bandhav</b></td>
+                    <td>Test reports</td>
+                    <td align="right">
+                      <div class="chatarea">
+                          <a href="javascript:void(0)" onclick="showhide()"><i class="fa fa-commenting" aria-hidden="true"></i></a>
+                            <div id="newpost" class="chatbox" style="display:none;">
+                              <textarea class="Cinput" rows="3"></textarea>
+                              <button type="button" class="buttonchat">SEND</button>
+                            </div>
+                      </div>
+                    </td>
+                    <td align="right">Jul 4</td>
+                  </tr>
+
+                  <tr>
+                    <td><b>Swaasthya Bandhav</b></td>
+                    <td>Test reports</td>
+                    <td align="right">
+                      <div class="chatarea">
+                          <a href="javascript:void(0)" onclick="showhide()"><i class="fa fa-commenting" aria-hidden="true"></i></a>
+                            <div id="newpost" class="chatbox" style="display:none;">
+                              <textarea class="Cinput" rows="3"></textarea>
+                              <button type="button" class="buttonchat">SEND</button>
+                            </div>
+                      </div>
+                    </td>
+                    <td align="right">Jul 4</td>
+                  </tr>
+
+                  <tr>
+                    <td>Swaasthya Bandhav</td>
+                    <td>Test reports</td>
+                    <td align="right">
+                      <div class="chatarea">
+                          <a href="javascript:void(0)" onclick="showhide()"><i class="fa fa-commenting" aria-hidden="true"></i></a>
+                            <div id="newpost" class="chatbox" style="display:none;">
+                              <textarea class="Cinput" rows="3"></textarea>
+                              <button type="button" class="buttonchat">SEND</button>
+                            </div>
+                      </div>
+                    </td>
+                    <td align="right">Jul 4</td>
+                  </tr>
+                  
+                  
+                </table>
+            </div>
+        </div>
 
     </div>
 </div>
