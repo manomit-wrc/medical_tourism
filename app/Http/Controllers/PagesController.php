@@ -29,6 +29,10 @@ use App\CmsPageDetail;
 use App\Hospital;
 use App\Album;
 use App\Images;
+use App\Patient;
+use App\PatientEnquiry;
+use App\PatientEnquiryDetail;
+
 
 class PagesController extends Controller
 {
@@ -499,6 +503,14 @@ class PagesController extends Controller
     $state_details = \App\Patient::with('states')->find(Auth::guard('front')->user()->id)->toArray();
     $city_details = \App\Patient::with('cities')->find(Auth::guard('front')->user()->id)->toArray();
     return view('pages.my_enquiry_details')->with(['country_details'=>$country_details,'state_details'=>$state_details,'city_details'=>$city_details]);    
+  }
+
+  public function myenquiryPost(Request $request)
+  {
+        echo "<pre>"; print_r($_POST); die; 
+       
+        //return back()->with('success', 'Thanks for contacting us!');
+
   }
 
   public function profile_image_upload(Request $request) {   

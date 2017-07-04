@@ -73,6 +73,7 @@ Route::group(['middleware' => ['front']], function() {
     Route::post('update-password','PagesController@update_password');
     Route::get('/upload-documents','PagesController@upload_documents');
     Route::get('/my-enquiry','PagesController@my_enquiry');
+    Route::post('/add-my-enquiry','PagesController@myenquiryPost');
     Route::get('/my-enquiry-details','PagesController@my_enquiry_details');
     
 });
@@ -298,10 +299,10 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('/admin/patients/changestatus/','PatientController@ajaxpatientchangestatus');
 
     //Patient enquiry section
-    Route::get('/admin/patientenquiry/{id}','PatientEnquiryController@index');
+    Route::get('/admin/patientenquiry','PatientEnquiryController@index');
     Route::post('/admin/patientenquiry/showfullmessage','PatientEnquiryController@showfullmessage');
     Route::get('/admin/patientenquiry/show/{id}','PatientEnquiryController@show');
-    
+
     Route::get('/admin/patientenquiry/create','PatientEnquiryController@create');
     Route::post('/admin/patientenquiry/store','PatientEnquiryController@store');
     Route::get('/admin/patientenquiry/edit/{id}','PatientEnquiryController@edit');

@@ -98,20 +98,48 @@
 
         
         @if($user_view_composer->hasRole('admin/adminuser',Auth::guard('admin')->user()->id) || $user_view_composer->hasRole('admin/permission',Auth::guard('admin')->user()->id) || $user_view_composer->hasRole('admin/patients',Auth::guard('admin')->user()->id)|| $user_view_composer->hasRole('admin/messages',Auth::guard('admin')->user()->id))
-        <li class="treeview {{ Request::segment(2) === 'adminuser' || Request::segment(2) === 'permission' || Request::segment(2) === 'patients'? 'active' : null || Request::segment(2) === 'messages'? 'active' : null }}">
+        <li class="treeview {{ Request::segment(2) === 'adminuser' || Request::segment(2) === 'permission' }}">
           <a href="javascript:void(0)">
-            <i class="fa fa-users"></i> <span>User management</span>
+            <i class="fa fa-users"></i> <span>Admin user management</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            @if($user_view_composer->hasRole('admin/adminuser',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'adminuser' ? 'active' : null }}" ><a href="{{ url('/admin/adminuser')}}"><i class="fa fa-group"></i>Manage user</a></li>@endif
+            @if($user_view_composer->hasRole('admin/adminuser',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'adminuser' ? 'active' : null }}" ><a href="{{ url('/admin/adminuser')}}"><i class="fa fa-group"></i>Manage admin user</a></li>@endif
             @if($user_view_composer->hasRole('admin/permission',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'permission' ? 'active' : null }}" ><a href="{{ url('/admin/permission')}}"><i class="fa fa-key"></i>Manage permission</a></li>@endif
-            @if($user_view_composer->hasRole('admin/patients',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'patients' ? 'active' : null }}" ><a href="{{ url('/admin/patients')}}"><i class="fa fa-group"></i>Manage patient</a></li>@endif
+           </ul>
+        </li>
+        @endif
+
+        @if($user_view_composer->hasRole('admin/patients',Auth::guard('admin')->user()->id)))
+        <li class="treeview {{ Request::segment(2) === 'patients'? 'active' : null }}">
+          <a href="javascript:void(0)">
+            <i class="fa fa-users"></i> <span>Frontend user management</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+             @if($user_view_composer->hasRole('admin/patients',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'patients' ? 'active' : null }}" ><a href="{{ url('/admin/patients')}}"><i class="fa fa-group"></i>Manage frontend user</a></li>@endif
           </ul>
         </li>
         @endif
+
+
+        @if($user_view_composer->hasRole('admin/patientenquiry',Auth::guard('admin')->user()->id))
+        <li class="treeview {{ Request::segment(2) === 'patientenquiry' ? 'active' : null }}">
+          <a href="javascript:void(0)">
+            <i class="fa fa-pencil-square-o"></i> <span>User Enquiry</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+             @if($user_view_composer->hasRole('admin/patientenquiry',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'patientenquiry' ? 'active' : null }}"><a href="{!!URL::to('/admin/patientenquiry')!!}"><i class="fa fa-pencil-square-o"></i>Enquiry list</a></li>@endif
+          </ul>
+        </li>
+         @endif
 
         <li class="treeview {{ Request::segment(2) === 'doctors' || Request::segment(2) === 'providerconnectivity' || Request::segment(2) === 'providerconnectivityservices' || Request::segment(2) === 'hospitals' || Request::segment(2) === 'package-types'  ? 'active' : null }}">
           <a href="javascript:void(0)">
@@ -143,7 +171,7 @@
         </li>
         @endif
         
-        @if($user_view_composer->hasRole('admin/enquiry',Auth::guard('admin')->user()->id))
+        <!-- @if($user_view_composer->hasRole('admin/enquiry',Auth::guard('admin')->user()->id))
         <li class="treeview {{ Request::segment(2) === 'enquiry' ? 'active' : null }}">
           <a href="javascript:void(0)">
             <i class="fa fa-pencil-square-o"></i> <span>Enquiry</span>
@@ -155,7 +183,7 @@
              @if($user_view_composer->hasRole('admin/enquiry',Auth::guard('admin')->user()->id))<li class="{{ Request::segment(2) === 'enquiry' ? 'active' : null }}"><a href="{!!URL::to('/admin/enquiry')!!}"><i class="fa fa-pencil-square-o"></i>Enquiry list</a></li>@endif
           </ul>
         </li>
-         @endif
+         @endif -->
 
         @if($user_view_composer->hasRole('admin/contact',Auth::guard('admin')->user()->id))
         <li class="treeview {{ Request::segment(2) === 'contact' ? 'active' : null }}">

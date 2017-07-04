@@ -17,10 +17,16 @@ class PatientEnquiryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
-       $patient_enq_data = PatientEnquiry::where('patient_id', '=',$id)->orderBy('id','desc')->get();
-       //echo "<pre>"; print_r($patient_enq_data->patient); die;
+       //$patient_enq_data = PatientEnquiry::orderBy('id','desc')->get();
+       // get the Patient enquiry
+        $sql="SELECT patenq.*,pat.first_name,pat.last_name FROM patient_enquiries patenq";
+        $sql.=" JOIN patients pat ON pat.id=patenq.patient_id ";
+        $sql.=" WHERE 1=1 ";
+        $sql.=" ORDER BY patenq.id DESC";
+        $patient_enq_data = DB::select($sql);
+        //echo "<pre>"; print_r($patient_enq_data); die;
        return view('admin.patientenquiry.index', compact('patient_enq_data'));
     }
 

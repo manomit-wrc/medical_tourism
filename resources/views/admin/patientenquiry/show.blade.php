@@ -1,5 +1,5 @@
 @extends('admin.layouts.dashboard_layout')
-@section('title', 'Patient Enquiry Details')
+@section('title', 'Enquiry Details')
 @section('content')
  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -11,8 +11,8 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="javascript:void(0)">Home</a></li>
-         <li><a href="{!!URL::to('/admin/patientenquiry/'.$patient_enq_data[0]['patient_id'])!!}">Patient Enquiry</a></li>
-        <li class="active">Patient Enquiry Details</li>
+         <li><a href="{!!URL::to('/admin/patientenquiry/')!!}">Enquiry</a></li>
+        <li class="active">Enquiry Details</li>
 
       </ol>
     </section>
