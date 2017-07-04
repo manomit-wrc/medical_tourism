@@ -48,17 +48,17 @@ class LanguageCapabilityController extends Controller
      */
     public function store(Request $request)
     {
-       $this->validate($request, [
-        'name' => 'required|unique:language_capabilities'
-      ]);
+        $this->validate($request, [
+            'name' => 'required|unique:language_capabilities'
+        ]);
 
-      // Getting all data after success validation.
-      //dd($request->all());
-      $input = $request->all();
+        // Getting all data after success validation.
+        //dd($request->all());
+        $input = $request->all();
 
-      LanguageCapability::create($input);
-      Session::flash('message', 'Successfully added!');
-      return Redirect::to('/admin/languagecapability');
+        LanguageCapability::create($input);
+        Session::flash('message', 'Successfully added!');
+        return Redirect::to('/admin/languagecapability');
     }
 
     /**
