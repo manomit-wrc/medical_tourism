@@ -4,7 +4,12 @@
 <div class="col-md-8">
     <div class="qtbox">
         <h3>My <b>Enquiries</b></h3>
-
+        @if (Session::has('message'))
+                <div class="alert alert-info" id="resultdocumentmsg">{{ Session::get('message') }}</div>
+            @endif
+            @if (Session::has('error_message'))
+                <div class="alert alert-warning" id="resultdocumentmsg">{{ Session::get('error_message') }}</div>
+              @endif
         <script>
            function showhide()
            {
@@ -37,6 +42,11 @@
                             {!! Html::decode('<span class="text-danger">'.$errors->first("message").'</span>') !!}
                    </label>
                 </div>
+                <div class="col-md-12">
+                          {!! Html::decode(Form::label('avators','Attachment: ')) !!}
+                          {!! Form::file('avators', null) !!}
+                          <span style="color:red;">* </span>                          
+                        </div>
 
                 <div class="col-sm-12">
                     <button type="submit" class="button" style="margin-top: 0;">SAVE</button>
