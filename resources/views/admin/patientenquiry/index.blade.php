@@ -1,19 +1,17 @@
 @extends('admin.layouts.dashboard_layout')
-@section('title', 'Patient Enquiry')
+@section('title', 'Enquiry')
 @section('content')
  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Patient's Enquiry
-  
+        Enquiry
        <!--  <small>advanced tables</small> -->
       </h1>
       <ol class="breadcrumb">
         <li><a href="javascript:void(0)">Home</a></li>
-         <li><a href="{!!URL::to('/admin/patients')!!}">Patient</a></li>
-        <li class="active">Patient Enquiry</li>
+        <li class="active">Enquiry</li>
 
       </ol>
     </section>
@@ -38,25 +36,26 @@
               @if (Session::has('message'))
                   <div class="alert alert-info" id="result7">{{ Session::get('message') }}</div>
               @endif
-              <table id="datatbl_patient_id" class="table table-bordered table-striped">
+              <table id="datatbl_langcapability_id" class="table table-bordered table-striped">
                 <thead>
                   <tr>
                     <th style="display:none;"></th>
+                    <th>Sender</th>
                     <th>Subject</th>
                     <th>Posted On</th>
-                    <th width="18%">Actions</th>
+                   
                   </tr>
                 </thead>
 
                 <tbody>
                   @if (count($patient_enq_data) > 0)
                     @foreach($patient_enq_data as $val)
-                      <tr>
+                     <tr>
                         <td style="display:none;"><input type="hidden" value="{{ $val->id }}"></td>
-                        <td>{{ $val->subject }}</td>
-                        <td>{{ date("d F Y",strtotime($val->created_at)) }} at {{ date("g:ha",strtotime($val->created_at)) }}</td>
-                        <td><a href="{!!URL::to('/admin/patientenquiry/show',$val->patient_id)!!}" data-toggle="tooltip" data-original-title="View"><i class="fa fa-eye" style="color:blue;" aria-hidden="true"></i></a></td>
-                      </tr>
+                        <td> <a href="{!!URL::to('/admin/patientenquiry/show',$val->patient_id)!!}" data-toggle="tooltip" data-original-title="View">{{ $val->first_name.' '.$val->last_name }} </a></td>
+                        <td> <a href="{!!URL::to('/admin/patientenquiry/show',$val->patient_id)!!}" data-toggle="tooltip" data-original-title="View">{{ $val->subject }} </a></td>
+                        <td> <a href="{!!URL::to('/admin/patientenquiry/show',$val->patient_id)!!}" data-toggle="tooltip" data-original-title="View">{{ date("d F Y",strtotime($val->created_at)) }} at {{ date("g:ha",strtotime($val->created_at)) }} </a></td>
+                     </tr>
                     @endforeach
                   @endif
                 </tbody>
