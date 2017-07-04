@@ -2514,3 +2514,124 @@ clear: both;
 	vertical-align: top;
 	padding: 8px 4px;
 }
+
+.myenquiriesB{
+	width: 100%;
+	float: left;
+	padding: 25px;
+	background: #fff;
+	padding-bottom: 0;
+	-moz-box-shadow:3px 3px  #ccc;
+-webkit-box-shadow:3px 3px  #ccc;
+box-shadow:3px 3px  #ccc;
+}
+
+.myenquiriesB a{
+	color: #000;
+	text-decoration: none;
+}
+
+
+.chatarea{
+	width: 100%;
+	position: relative;
+}
+
+.chatbox{
+	width: 320px;
+	background: #fff;
+	padding: 20px;
+	position: absolute;
+	right: -10px;
+	top: 35px;
+	-webkit-box-shadow: 10px 10px 5px -8px rgba(0,0,0,0.49);
+-moz-box-shadow: 10px 10px 5px -8px rgba(0,0,0,0.49);
+box-shadow: 10px 10px 5px -8px rgba(0,0,0,0.49);
+border: 4px solid #f2f2f2;
+}
+
+.chatbox:before{
+	width: 18px;
+	height: 9px;
+	position: absolute;
+	content: "";
+	background: url(../images/chattop.png) right top no-repeat;
+	right: 5px;
+	top: -13px;
+}
+
+.table-responsive{
+	overflow-x: inherit;
+}
+
+.buttonchat{
+	font-size: 16px;
+	color: #fff;
+	font-weight: 400;
+	text-align: center;
+	width: 100%;
+	background: #038dd5;
+	border:0;
+	padding: 10px 0;
+}
+
+.buttonchat:hover{
+	background: #0157a7;
+}
+
+.table-condensed tr:hover{
+	background: #f2f2f2;
+}
+
+.table-condensed td{
+	padding: 7px 10px !important;
+}
+
+.top_mail{
+	width: 100%;
+	float: left;
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 15px;
+}
+
+.top_mail h4{
+	float: left;
+	margin-top: 5px;
+}
+
+.top_mail li{
+	float: right;
+	list-style: none;
+	background: #f4f4f4;
+	padding:5px 8px;
+	border: 1px solid #ccc;
+}
+
+.top_mail li ul li{
+	background: none;
+	border: none;
+	border: 0;
+	width: 100%;
+	text-align: left;
+	padding-left: 3px;
+}
+
+.top_mail li .dropdown-menu{
+	right: 0 !important;
+	left: auto;
+}
+
+
+.mailarea{
+	width: 100%;
+	float: left;
+	margin-bottom: 20px;
+}
+
+.loopbox{
+	width: 100%;
+	float: left;
+	background: #f4f4f4;
+	border-bottom: 1px solid #ccc;
+	padding: 10px;
+}
