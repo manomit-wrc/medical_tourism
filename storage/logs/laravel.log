@@ -1,0 +1,15 @@
+[2017-07-05 10:50:37] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected ''); ?>"  alt="Image 1">' (T_CONSTANT_ENCAPSED_STRING)' in C:\xampp\htdocs\medical_tourism\storage\framework\views\ef421613f0ef7979a95a1fcf9b74d3066c09dd73.php:61
+Stack trace:
+#0 {main}  
+[2017-07-05 10:50:56] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected ''); ?>"  alt="Image 1">' (T_CONSTANT_ENCAPSED_STRING)' in C:\xampp\htdocs\medical_tourism\storage\framework\views\ef421613f0ef7979a95a1fcf9b74d3066c09dd73.php:61
+Stack trace:
+#0 {main}  
+[2017-07-05 10:52:05] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'src' (T_STRING)' in C:\xampp\htdocs\medical_tourism\storage\framework\views\ef421613f0ef7979a95a1fcf9b74d3066c09dd73.php:62
+Stack trace:
+#0 {main}  
+[2017-07-05 10:52:25] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected ''); ?>"  alt="Image 1">' (T_CONSTANT_ENCAPSED_STRING)' in C:\xampp\htdocs\medical_tourism\storage\framework\views\ef421613f0ef7979a95a1fcf9b74d3066c09dd73.php:64
+Stack trace:
+#0 {main}  
+[2017-07-05 10:52:44] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'storage' (T_STRING)' in C:\xampp\htdocs\medical_tourism\storage\framework\views\ef421613f0ef7979a95a1fcf9b74d3066c09dd73.php:64
+Stack trace:
+#0 {main}  
