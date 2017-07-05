@@ -27,12 +27,21 @@
 
                 <table class="table table-condensed">
                      @if (count($patient_enq_data) > 0)
-                        @foreach($patient_enq_data as $val)
+                        @foreach($patient_enq_data as $key=>$val)
                       <tr>
-                       <!--  <td><b>{{ $val->first_name.' '.$val->last_name }}</b></td> -->
-                       <td>Swaasthya Bandhav</td>
-                        <td>{!! \Illuminate\Support\Str::words($val->subject, 10,'....')  !!}</td>
-                        <td align="right">
+                       <!-- <td><b>{{ $val['first_name'].' '.$val['last_name'] }}</b></td> -->
+                      
+                       <td>
+                         <a href="{!!URL::to('/my-enquiry-details',$val['id'])!!}" data-toggle="tooltip" data-original-title="View">
+                        Swaasthya Bandhav <b>{{ $val['total']>1?'('.$val['total'].')':'' }}</b>
+                         </a>
+                      </td>
+                        <td>
+                          <a href="{!!URL::to('/my-enquiry-details',$val['id'])!!}" data-toggle="tooltip" data-original-title="View">
+                            {!! \Illuminate\Support\Str::words($val['subject'], 10,'....')  !!}
+                          </a>
+                        </td>
+                        <!-- <td align="right">
                           <div class="chatarea">
                               <a href="javascript:void(0)" onclick="showhide()"><i class="fa fa-commenting" aria-hidden="true"></i></a>
                                 <div id="newpost" class="chatbox" style="display:none;">
@@ -40,8 +49,11 @@
                                   <button type="button" class="buttonchat">SEND</button>
                                 </div>
                           </div>
-                        </td>
-                        <td align="right">{{ date("d F Y",strtotime($val->created_at)) }} at {{ date("g:ha",strtotime($val->created_at)) }}</td>
+                        </td> -->
+                        <td align="right">
+                         <a href="{!!URL::to('/my-enquiry-details',$val['id'])!!}" data-toggle="tooltip" data-original-title="View">
+                          {{ date("d F Y",strtotime($val['created_at'])) }} at {{ date("g:ha",strtotime($val['created_at'])) }}</td>
+                         </a>
                       </tr>
                        @endforeach
                       @endif
