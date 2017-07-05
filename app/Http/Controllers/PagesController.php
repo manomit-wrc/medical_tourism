@@ -33,6 +33,7 @@ use App\Patient;
 use App\PatientEnquiry;
 use App\PatientEnquiryDetail;
 use App\User;
+use App\PatientEnquiryAttachment;
 use Illuminate\Support\Facades\DB;
 
 
