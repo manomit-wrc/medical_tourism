@@ -96,7 +96,7 @@
                       <li role="presentation" class="active"><a href="#aboutus" aria-controls="aboutus" role="tab" data-toggle="tab">About Us</a></li>
                       <li role="presentation"><a href="#treatment" aria-controls="Treatment" role="tab" data-toggle="tab">Facilities & Services</a></li>
                       <li role="presentation"><a href="#facilities" aria-controls="facilities" role="tab" data-toggle="tab">Facilities</a></li>
-                      <li role="presentation"><a href="#distination" aria-controls="distination" role="tab" data-toggle="tab">Distination</a></li>
+                      <li role="presentation"><a href="#distination" aria-controls="distination" role="tab" data-toggle="tab">Destination</a></li>
                       <li role="presentation"><a href="#cp" aria-controls="cp" role="tab" data-toggle="tab">contact provider</a></li>
                     </ul>
 

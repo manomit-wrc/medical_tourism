@@ -29,6 +29,12 @@
       {!! Html::script("storage/frontend/js/gallery/scripts-single.js") !!}
     @endif
    
+    @if(Request::segment(1) === 'enquirysend')
+      {!! Html::script("vendor/unisharp/laravel-ckeditor/ckeditor.js")!!}
+      <script type="text/javascript">
+          CKEDITOR.replace('textarea_id');
+      </script>
+    @endif
     <script type="text/javascript">
        $(function () {$('[data-toggle="tooltip"]').tooltip()})
     </script>
