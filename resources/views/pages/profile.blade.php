@@ -81,7 +81,7 @@
 
                     <div class="col-md-12">
                         <label>
-                            Relation with
+                            Relationship with
                             <input type="text" name="relation_with" class="Cinput" value="{{Auth::guard('front')->user()->relation_with}}" style="{{$errors->has('relation_with')?'border:1px solid #f00':''}}">
                         </label>
                     </div>
