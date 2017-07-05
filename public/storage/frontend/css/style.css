@@ -2713,8 +2713,8 @@ z-index: 5;
 }
 
 .mailsender .dropdown-menu{
-	/* left: 0;
-	right: 0; */
+	/* left: 0;*/
+	right: auto; 
 	box-shadow: none;
 	border-radius: 0;
 }
