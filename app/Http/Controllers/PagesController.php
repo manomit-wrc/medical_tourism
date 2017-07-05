@@ -16,6 +16,7 @@ use App\Treatment;
 use App\Country;
 use App\State;
 use App\City;
+use App\PatientEnquiryAttachment;
 
 use Hash;
 use Illuminate\Support\Facades\Mail;
@@ -512,7 +513,7 @@ class PagesController extends Controller
   }
 
   public function myenquiryPost(Request $request)
-  {        
+  { 
         $mt = new PatientEnquiry() ;
         $mt->subject = $request->subject;
         $mt->created_at = date('Y-m-d H:i:s'); 
@@ -521,27 +522,7 @@ class PagesController extends Controller
         $mt->save();
         $lastinsert_id = $mt->id;
         if($lastinsert_id){
-        $mt1 = new PatientEnquiryDetail() ;
-        if($file = $request->hasFile('avators')) {
-
-            $file = $request->file('avators') ;
-
-            $fileName = time().'_'.$file->getClientOriginalName() ;
-
-            //thumb destination path
-            $destinationPath = public_path().'/uploads/enquiry' ;
-
-            $img = Image::make($file->getRealPath());
-
-            $img->resize(745, 214, function ($constraint){
-                $constraint->aspectRatio();
-            })->save($destinationPath.'/'.$fileName);
-
-            //original destination path
-            $destinationPath = public_path().'/uploads/enquiry/' ;
-            $file->move($destinationPath,$fileName);
-            $mt1->attachment = $fileName ;
-        }
+        $mt1 = new PatientEnquiryDetail() ;        
         $mt1->message = $request->message;
         $mt1->subject = $request->subject;
         $mt1->patient_enquiry_id = $lastinsert_id;
@@ -552,6 +533,26 @@ class PagesController extends Controller
         $mt1->created_at = date('Y-m-d H:i:s'); 
         $mt1->updated_at = date('Y-m-d H:i:s');
         $mt1->save();
+        $lastinsert_id1 = $mt1->id;
+        if($lastinsert_id1){         
+          if($file = $request->hasFile('avators')) {
+            $files = $request->file('avators');
+            foreach($files as $file) {
+               $mt2 = new PatientEnquiryAttachment() ;
+              $fileName = time().'_'.$file->getClientOriginalName() ;           
+              $img = Image::make($file->getRealPath());       
+              //original destination path
+              $destinationPath = public_path().'/uploads/drop/' ;
+              if($file->move($destinationPath,$fileName)){
+                $mt2->attachment = $fileName ;
+                $mt2->patient_enquiry_details_id = $lastinsert_id1;            
+                $mt2->created_at = date('Y-m-d H:i:s'); 
+                $mt2->updated_at = date('Y-m-d H:i:s');
+                $mt2->save();
+              }
+            }
+          }
+        }
         $request->session()->flash("message", "Posted successfully");
         return redirect('/my-enquiry');
         } 
