@@ -32,6 +32,7 @@ use App\Images;
 use App\Patient;
 use App\PatientEnquiry;
 use App\PatientEnquiryDetail;
+use Illuminate\Support\Facades\DB;
 
 
 class PagesController extends Controller
@@ -502,7 +503,17 @@ class PagesController extends Controller
     $country_details = \App\Patient::with('countries')->find(Auth::guard('front')->user()->id)->toArray();
     $state_details = \App\Patient::with('states')->find(Auth::guard('front')->user()->id)->toArray();
     $city_details = \App\Patient::with('cities')->find(Auth::guard('front')->user()->id)->toArray();
-    return view('pages.my_enquiry')->with(['country_details'=>$country_details,'state_details'=>$state_details,'city_details'=>$city_details]);    
+
+
+     // get the Patient enquiry
+      $login_user_id=Auth::guard('front')->user()->id;
+      $sql="SELECT patenq.*,pat.first_name,pat.last_name FROM patient_enquiries patenq";
+      $sql.=" JOIN patients pat ON pat.id=patenq.patient_id ";
+      $sql.=" WHERE patenq.patient_id=".$login_user_id;
+      $sql.=" ORDER BY patenq.id DESC";
+      $patient_enq_data = DB::select($sql);
+      //echo "<pre>"; print_r($patient_enq_data); die;
+    return view('pages.my_enquiry')->with(['country_details'=>$country_details,'state_details'=>$state_details,'city_details'=>$city_details,'patient_enq_data'=>$patient_enq_data]);    
   }
   public function my_enquiry_details() {
     $country_details = \App\Patient::with('countries')->find(Auth::guard('front')->user()->id)->toArray();
