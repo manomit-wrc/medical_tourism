@@ -74,6 +74,5 @@ class EnquiryController extends Controller
         Session::flash('message', 'Thanks for enquiry through Swaasthya Bandhav!');
         return Redirect::to('/enquiry');
         //return back()->with('success', 'Thanks for contacting us!');
-
     }
 }

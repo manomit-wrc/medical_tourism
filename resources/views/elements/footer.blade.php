@@ -1,4 +1,5 @@
-<div class="container-fluid">
+<!--Success stroy section start-->
+<!--<div class="container-fluid">
       <div class="row">
           <div class="ssbg">
               <div class="container">
@@ -35,8 +36,8 @@
               </div>
           </div>
       </div>
-  </div>
-
+  </div>-->
+<!--Success stroy section end-->
 
 <div class="container-fluid">
       <div class="row">
