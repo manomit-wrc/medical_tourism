@@ -492,7 +492,7 @@ class PagesController extends Controller
     $city_details = \App\Patient::with('cities')->find(Auth::guard('front')->user()->id)->toArray();
     return view('pages.upload_document')->with(['country_details'=>$country_details,'state_details'=>$state_details,'city_details'=>$city_details,'documentdata'=>$documentdata]);    
   }
-  public function my_enquiry() {
+  public function my_enquiry_send() {
     $country_details = \App\Patient::with('countries')->find(Auth::guard('front')->user()->id)->toArray();
     $state_details = \App\Patient::with('states')->find(Auth::guard('front')->user()->id)->toArray();
     $city_details = \App\Patient::with('cities')->find(Auth::guard('front')->user()->id)->toArray();
