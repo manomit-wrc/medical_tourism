@@ -4,12 +4,7 @@
 <div class="col-md-8">
     <div class="qtbox">
         <h3>My <b>Enquiries</b></h3>
-        @if (Session::has('message'))
-                <div class="alert alert-info" id="resultdocumentmsg">{{ Session::get('message') }}</div>
-            @endif
-            @if (Session::has('error_message'))
-                <div class="alert alert-warning" id="resultdocumentmsg">{{ Session::get('error_message') }}</div>
-              @endif
+       
         <script>
            function showhide()
            {
@@ -23,42 +18,9 @@
            }
         </script>
 
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-              <form name="myenq" id="myenq" method="post" action="/add-my-enquiry" enctype="multipart/form-data">
-                 {{csrf_field()}}
-                <div class="col-md-12">
-                    <label>
-                        Subject <span style="color:red;">* </span>
-                             {!! Form::text('subject','',array('class'=>'Iinput','id'=>'subject','placeholder'=>'Enter subject')) !!}
-                             {!! Html::decode('<span class="text-danger">'.$errors->first("subject").'</span>') !!}
-                    </label>
-                </div>
-
-                <div class="col-md-12">
-                    <label>
-                         Message <span style="color:red;">* </span>
-                            {!! Form::textarea('message','',array('class'=>'Cinput','id'=>'message','placeholder'=>'Enter message')) !!}
-                            {!! Html::decode('<span class="text-danger">'.$errors->first("message").'</span>') !!}
-                   </label>
-                </div>
-                <div class="col-md-12">
-                          {!! Html::decode(Form::label('avators','Attachment: ')) !!}
-                          {!! Form::file('avators', null) !!}
-                          <span style="color:red;">* </span>                          
-                        </div>
-
-                <div class="col-sm-12">
-                    <button type="submit" class="button" style="margin-top: 0;">SAVE</button>
-                </div>
-            
-             </form>
-            </div>
-        </div>
+        
 
 
-
-        <div class="myenquiriesB">
             <div class="table-responsive">
                 <table class="table table-condensed">
                   <tr>
@@ -124,7 +86,6 @@
                   
                 </table>
             </div>
-        </div>
 
     </div>
 </div>

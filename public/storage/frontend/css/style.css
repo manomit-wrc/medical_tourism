@@ -853,7 +853,7 @@ p{
 	background: #fff;
 	padding: 20px;
 	border-top: 6px solid #038dd5;
-	min-height: 465px;
+	/* min-height: 465px; */
 }
 
 .qtbox h3{
@@ -2624,6 +2624,10 @@ z-index: 5;
 .top_mail li .dropdown-menu{
 	right: 0 !important;
 	left: auto;
+}
+
+.qtbox table{
+	margin-bottom: 0;
 }
 
 
