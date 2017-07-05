@@ -540,7 +540,6 @@ class PagesController extends Controller
             //original destination path
             $destinationPath = public_path().'/uploads/enquiry/' ;
             $file->move($destinationPath,$fileName);
-
             $mt1->attachment = $fileName ;
         }
         $mt1->message = $request->message;

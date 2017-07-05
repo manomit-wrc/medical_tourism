@@ -44,7 +44,7 @@
                 </div>
                 <div class="col-md-12">
                           {!! Html::decode(Form::label('avators','Attachment: ')) !!}
-                          {!! Form::file('avators', null) !!}
+                          {!! Form::file('avators[]', null) !!}
                           <span style="color:red;">* </span>                          
                         </div>
 
