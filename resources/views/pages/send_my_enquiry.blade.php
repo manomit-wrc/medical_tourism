@@ -2,6 +2,7 @@
 @section('title', 'My Enquiry')
 @section('content')
 <div class="col-md-8">
+  
     <div class="qtbox">
         <h3>My <b>Enquiries</b></h3>
         @if (Session::has('message'))
@@ -38,7 +39,7 @@
                 <div class="col-md-12">
                     <label>
                          Message <span style="color:red;">* </span>
-                            {!! Form::textarea('message','',array('class'=>'Cinput','id'=>'message','placeholder'=>'Enter message')) !!}
+                            {!! Form::textarea('message','',array('class'=>'Cinput','id'=>'textarea_id','placeholder'=>'Enter message')) !!}
                             {!! Html::decode('<span class="text-danger">'.$errors->first("message").'</span>') !!}
                    </label>
                 </div>

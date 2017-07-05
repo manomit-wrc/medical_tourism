@@ -77,6 +77,7 @@
                       <span class="text-danger">{{ $errors->first('country_id') }}</span>
                     </div>
                   </div>
+
                   <div class="col-md-6">
                     <div class="form-group {{ $errors->has('state_id') ? 'has-error' : '' }}">
                       <label for="name">State: <span style="color:red;">*</span></label>
@@ -87,13 +88,13 @@
                       <span class="text-danger">{{ $errors->first('state_id') }}</span>
                     </div>
                   </div>
+
                   <div class="col-md-6">
                     <div class="form-group {{ $errors->has('city_id') ? 'has-error' : '' }}">
                       <label for="name">City: <span style="color:red;">*</span></label>
                       <select name="city_id" id="doctor_city_id" class="form-control" autofocus >
                         <option value="">Select Any</option>
                       </select>
-
                       <span class="text-danger">{{ $errors->first('city_id') }}</span>
                     </div>
                   </div>
