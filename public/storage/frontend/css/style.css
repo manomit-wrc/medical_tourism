@@ -2599,9 +2599,12 @@ z-index: 5;
 	padding-bottom: 15px;
 }
 
-.top_mail h4{
+.top_mail h5{
 	float: left;
-	margin-top: 5px;
+	margin-top: 15px;
+	margin-bottom: 0;
+	font-size: 17px;
+	font-weight: bold;
 }
 
 .top_mail li{
@@ -2610,6 +2613,10 @@ z-index: 5;
 	background: #f4f4f4;
 	padding:5px 8px;
 	border: 1px solid #ccc;
+}
+.back_right{
+	margin-right: 6px;
+	float: right;
 }
 
 .top_mail li ul li{
@@ -2640,7 +2647,79 @@ z-index: 5;
 .loopbox{
 	width: 100%;
 	float: left;
-	background: #f4f4f4;
+	background: #f2f2f2;
 	border-bottom: 1px solid #ccc;
 	padding: 10px;
 }
+
+.loopbox a{
+	color: #000;
+}
+
+.loopbox img{
+	width: 40px;
+	height: 40px;
+}
+
+.loopname{
+	padding-top: 8px;
+}
+
+.maildet{
+	width: 100%;
+	/* padding-top: 15px; */
+}
+
+.maildet .dropdown{
+	background: #f2f2f2;
+	list-style: none;
+	float: right;
+	clear: both;
+	padding: 6px 10px;
+}
+
+.maildet .dropdown-menu{
+	right: 0;
+	left: auto;
+}
+
+.top_mail li ul li{
+	padding-right: 0;
+}
+
+.maildet p{
+	text-align: left;
+	margin-top: 12px;
+	float: left;
+	width: 90%;
+	padding: 0 0 25px 0;
+	border-bottom: 1px solid #f4f4f4;
+}
+
+.mailsender{
+	float: left;
+	color: #666;
+	margin-left:60px;
+	font-size: 14px;
+	margin-top: -10px;
+}
+
+.mailsender .dropdown{
+	background: none;
+	border: 1px solid #f4f4f4;
+	margin-left: 10px;
+	padding: 5px;
+	line-height: 7px;
+}
+
+.mailsender .dropdown-menu{
+	/* left: 0;*/
+	right: auto; 
+	box-shadow: none;
+	border-radius: 0;
+}
+
+.caret{
+	margin-left: 0;
+}
+
