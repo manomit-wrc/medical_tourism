@@ -34,7 +34,7 @@
         <button type="button" class="{{ (Request::segment(1) == 'change-password') ? 'active_btn':'qtboxbtn' }} " onclick="window.location.href = '/change-password'"><i class="fa fa-lock" aria-hidden="true"></i> Change Password</button>
         <button type="button" class="{{ (Request::segment(1) == 'profile') ? 'active_btn':'qtboxbtn' }}" onclick="window.location.href = '/profile'"><i class="fa fa-user" aria-hidden="true"></i> Profile</button>
         <button type="button" class="{{ (Request::segment(1) == 'upload-documents') ? 'active_btn':'qtboxbtn' }}" onclick="window.location.href = '/upload-documents'"><i class="fa fa-cog" aria-hidden="true"></i> Documents</button>
-        <button type="button" class="{{ (Request::segment(1) == 'my-enquiry') ? 'active_btn':'qtboxbtn' }}" onclick="window.location.href = '/my-enquiry'"><i class="fa fa-file" aria-hidden="true"></i> My Enquiry</button>
+        <button type="button" class="{{ (Request::segment(1) == 'my-enquiry'||Request::segment(1) == 'my-enquiry-details') ? 'active_btn':'qtboxbtn' }}" onclick="window.location.href = '/my-enquiry'"><i class="fa fa-file" aria-hidden="true"></i> My Enquiry</button>
 
         <!-- <button type="button" class="qtboxbtn" onclick="window.location.href = '/patient-logout'"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</button> -->
 

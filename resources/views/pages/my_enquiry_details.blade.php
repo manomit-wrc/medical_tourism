@@ -1,5 +1,5 @@
 @extends('layouts.inner_layout')
-@section('title', 'Faqs')
+@section('title', 'Enquiry Details')
 @section('content')
 <script>
    
@@ -37,7 +37,7 @@
         
 
             <div class="top_mail">
-                <h5>Arijit</h5>
+                <h5>{{ $patient_enq_data[0]['subject'] }}</h5>
 
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
@@ -46,7 +46,7 @@
                     <li><a href="#"><i class="fa fa-forward" aria-hidden="true"></i> Forward</a></li>
                   </ul>
                 </li>
-                <li class="back_right"><a href="#"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a></li>
+                <li class="back_right"><a href="{{ url('/my-enquiry') }}"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a></li>
             </div>
 
             
@@ -72,7 +72,7 @@
                       </div>
                     </a>
 
-                    <div id="newpost<?php echo $val['enq_detail_id']; ?>" style="display:none;">
+                    <div id="newpost<?php echo $val['enq_detail_id']; ?>" style="display:none;" class="maildet">
                       <div class="mailsender">
                       to me
                       <li class="dropdown">

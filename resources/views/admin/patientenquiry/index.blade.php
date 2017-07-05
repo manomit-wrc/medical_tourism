@@ -36,36 +36,43 @@
               @if (Session::has('message'))
                   <div class="alert alert-info" id="result7">{{ Session::get('message') }}</div>
               @endif
-              <table id="datatbl_langcapability_id" class="table table-bordered table-striped">
-                <thead>
-                  <tr>
-                    <th style="display:none;"></th>
-                    <th>Sender</th>
-                    <th>Subject</th>
-                    <th>Posted On</th>
-                   
-                  </tr>
-                </thead>
+             <div class="table-responsive">
 
-                <tbody>
-                  @if (count($patient_enq_data) > 0)
-                    @foreach($patient_enq_data as $val)
-                     <tr>
-                        <td style="display:none;"><input type="hidden" value="{{ $val->id }}"></td>
-                        <td> <a href="{!!URL::to('/admin/patientenquiry/show',$val->patient_id)!!}" data-toggle="tooltip" data-original-title="View">{{ $val->first_name.' '.$val->last_name }} </a></td>
-                        <td> <a href="{!!URL::to('/admin/patientenquiry/show',$val->patient_id)!!}" data-toggle="tooltip" data-original-title="View">{{ $val->subject }} </a></td>
-                        <td> <a href="{!!URL::to('/admin/patientenquiry/show',$val->patient_id)!!}" data-toggle="tooltip" data-original-title="View">{{ date("d F Y",strtotime($val->created_at)) }} at {{ date("g:ha",strtotime($val->created_at)) }} </a></td>
-                     </tr>
-                    @endforeach
-                  @endif
-                </tbody>
-                <tfoot>
-               <!--  <tr>
-                  <th>Rendering engine</th>
-                  <th>Browser</th>
-                </tr> -->
-                </tfoot>
-              </table>
+                <table class="table table-condensed">
+                     <tr><td>From</td><td>Subject</td><td>Date</td></tr>
+                     @if (count($patient_enq_data) > 0)
+                        @foreach($patient_enq_data as $key=>$val)
+                      <tr>
+                       <!-- <td><b>{{ $val['first_name'].' '.$val['last_name'] }}</b></td> -->
+                      
+                       <td>
+                         <a href="{!!URL::to('/admin/patientenquiry/show',$val['id'])!!}" data-toggle="tooltip" data-original-title="View">
+                        {{ $val['first_name'].' '.$val['last_name'] }}<b>{{ $val['total']>1?'('.$val['total'].')':'' }}</b>
+                         </a>
+                      </td>
+                        <td>
+                          <a href="{!!URL::to('/admin/patientenquiry/show',$val['id'])!!}" data-toggle="tooltip" data-original-title="View">
+                            {!! \Illuminate\Support\Str::words($val['subject'], 10,'....')  !!}
+                          </a>
+                        </td>
+                        <!-- <td align="right">
+                          <div class="chatarea">
+                              <a href="javascript:void(0)" onclick="showhide()"><i class="fa fa-commenting" aria-hidden="true"></i></a>
+                                <div id="newpost" class="chatbox" style="display:none;">
+                                  <textarea class="Cinput" rows="3"></textarea>
+                                  <button type="button" class="buttonchat">SEND</button>
+                                </div>
+                          </div>
+                        </td> -->
+                        <td>
+                         <a href="{!!URL::to('/admin/patientenquiry/show',$val['id'])!!}" data-toggle="tooltip" data-original-title="View">
+                          {{ date("d F Y",strtotime($val['created_at'])) }} at {{ date("g:ha",strtotime($val['created_at'])) }}</td>
+                         </a>
+                      </tr>
+                       @endforeach
+                      @endif
+                </table>
+            </div>
             </div>
 
             
