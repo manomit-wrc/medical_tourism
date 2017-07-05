@@ -16,7 +16,6 @@ use App\Treatment;
 use App\Country;
 use App\State;
 use App\City;
-use App\PatientEnquiryAttachment;
 
 use Hash;
 use Illuminate\Support\Facades\Mail;
@@ -33,6 +32,7 @@ use App\Images;
 use App\Patient;
 use App\PatientEnquiry;
 use App\PatientEnquiryDetail;
+use App\User;
 use Illuminate\Support\Facades\DB;
 
 
@@ -43,8 +43,8 @@ class PagesController extends Controller
 
   }
 
-	public function about()
-	{
+  public function about()
+  {
     $cmspage_data = Cmspage::select(['id'])->where('pagename', '=', 'aboutus')->get();
     //echo "<pre>"; echo $cmspage_data[0]->id; die;
     $cmspagedtls_data = CmsPageDetail::where('cmspage_id', '=',$cmspage_data[0]->id)->get();
@@ -55,25 +55,25 @@ class PagesController extends Controller
       $aboutpage_data[$value->slag]=$value->description;
     }  
     //echo "<pre>"; print_r($aboutpage_data); die;
-		return view('pages.about',compact('aboutpage_data'));
-	}
+    return view('pages.about',compact('aboutpage_data'));
+  }
 
-	public function services()
-	{
+  public function services()
+  {
       $service_lists = MedicalFacility::all();
       //echo "<pre>"; print_r($service_lists); die;
       return view('pages.services')->with('service_lists',$service_lists);
-	}
+  }
 
-	public function servicedetails($id)
-	{
-		$service_data = MedicalFacility::findOrFail($id);
-		//echo "<pre>"; print_r($service_data); die;
-      	return view('pages.servicedetails')->with('service_data', $service_data);
-	}
+  public function servicedetails($id)
+  {
+    $service_data = MedicalFacility::findOrFail($id);
+    //echo "<pre>"; print_r($service_data); die;
+        return view('pages.servicedetails')->with('service_data', $service_data);
+  }
 
-	public function enquiry()
-	{
+  public function enquiry()
+  {
    
     $treat_list= Treatment::where('status', 1)->orderBy('name')->pluck('name', 'id');
     //echo "<pre>"; print_r($treat_list); die;
@@ -81,32 +81,32 @@ class PagesController extends Controller
     //echo "<pre>"; print_r($proc_list); die;
     $countries = Country::orderBy('name')->pluck('name', 'id')->all();
     return view('pages.enquiry',compact('treat_list','proc_list','countries'));
-	}
+  }
 
-	public function facilities()
-	{
-		return view('pages.facilities');
-	}
+  public function facilities()
+  {
+    return view('pages.facilities');
+  }
 
-	public function doctors()
-	{
-		$doctor_data = Doctor::all();
-		//echo "<pre>"; print_r($doctor_data); die;
-    	return view('pages.doctors')->with('doctor_data',$doctor_data);
-		//return view('pages.doctors');
-	}
+  public function doctors()
+  {
+    $doctor_data = Doctor::all();
+    //echo "<pre>"; print_r($doctor_data); die;
+      return view('pages.doctors')->with('doctor_data',$doctor_data);
+    //return view('pages.doctors');
+  }
 
-	public function doctordetail($id)
-	{
-		$data['doctor_details'] = Doctor::findOrFail($id);
-		$data['doctor_procedure_details'] = Doctor::with('procedures')->where('id',$id)->get()->toArray();
-    	$data['doctor_degree_details'] = Doctor::with('degrees')->where('id',$id)->get()->toArray();
-		//echo "<pre>"; print_r($data); die;
-    	return view('pages.doctordetail',$data);
-	}
+  public function doctordetail($id)
+  {
+    $data['doctor_details'] = Doctor::findOrFail($id);
+    $data['doctor_procedure_details'] = Doctor::with('procedures')->where('id',$id)->get()->toArray();
+      $data['doctor_degree_details'] = Doctor::with('degrees')->where('id',$id)->get()->toArray();
+    //echo "<pre>"; print_r($data); die;
+      return view('pages.doctordetail',$data);
+  }
 
-	public function contact()
-	{
+  public function contact()
+  {
     $cmspage_data = Cmspage::select(['id'])->where('pagename', '=', 'contactus')->get();
     //echo "<pre>"; echo $cmspage_data[0]->id; die;
     $cmspagedtls_data = CmsPageDetail::where('cmspage_id', '=',$cmspage_data[0]->id)->get();
@@ -122,7 +122,7 @@ class PagesController extends Controller
           ->get(); 
       echo "<pre>"; print_r($response); die;*/
     return view('pages.contact',compact('contactpage_data'));
-	}
+  }
 
   public function suggestion()
   {
@@ -159,47 +159,47 @@ class PagesController extends Controller
   }
 
   public function news()
-	{
+  {
       $news_lists = News::all();
         //echo "<pre>"; print_r($news_lists); die;
       return view('pages.news')->with('news_lists',$news_lists);
-	}
+  }
 
-	public function newsdetails($id)
-	{
-		  $news_data = News::findOrFail($id);
-		  //echo "<pre>"; print_r($news_data); die;
+  public function newsdetails($id)
+  {
+      $news_data = News::findOrFail($id);
+      //echo "<pre>"; print_r($news_data); die;
       return view('pages.newsdetails')->with('news_data',$news_data);
-	}
+  }
 
-	public function faqs()
-	{  
+  public function faqs()
+  {  
       $faq_data = Faq::has('FaqCategory')->where('status', '=', 1)->orderBy('faqcategory_id')->get();
       //echo "<pre>"; print_r($faq_data); die;
       return view('pages.faqs')->with('faq_data',$faq_data);
-	}
+  }
 
-	public function connectivity()
-	{
+  public function connectivity()
+  {
       //$faqs_lists = Faq::all();
       //echo "<pre>"; print_r($faqs_lists); die;
       //return view('pages.faqs')->with('faqs_lists',$faqs_lists);
       return view('pages.connectivity');
-	}
+  }
 
-	public function immigration()
-	{
+  public function immigration()
+  {
       $immigration_lists = Immigration::all();
       //echo "<pre>"; print_r($immigration_lists); die;
       return view('pages.immigration')->with('immigration_lists',$immigration_lists);
-	}
+  }
 
-	public function visa()
-	{
+  public function visa()
+  {
       $cntvisa_lists = CountryVisa::all();
      //echo "<pre>"; print_r($cntvisa_lists); die;
       return view('pages.visa')->with('cntvisa_lists',$cntvisa_lists);
-	}
+  }
 
   public function successstory_details($id)
   {
@@ -312,13 +312,13 @@ class PagesController extends Controller
   public function patient_login(Request $request) {
     if($request->ajax()) {
       if(Auth::guard('front')->attempt(['email_id'=>$request->email_id, 'password'=>$request->password, 'status'=> '1'], $request->remember_me)) {
-    		return response()->json(['status'=>'1']);
-    	}else if(Auth::guard('front')->attempt(['mobile_no'=>$request->email_id, 'password'=>$request->password, 'status'=> '1'], $request->remember_me)) {
+        return response()->json(['status'=>'1']);
+      }else if(Auth::guard('front')->attempt(['mobile_no'=>$request->email_id, 'password'=>$request->password, 'status'=> '1'], $request->remember_me)) {
         return response()->json(['status'=>'1']);
       }
-    	else {
-    		return response()->json(['status'=>'0']);
-    	}
+      else {
+        return response()->json(['status'=>'0']);
+      }
     }
   }
 
@@ -494,46 +494,130 @@ class PagesController extends Controller
     $city_details = \App\Patient::with('cities')->find(Auth::guard('front')->user()->id)->toArray();
     return view('pages.upload_document')->with(['country_details'=>$country_details,'state_details'=>$state_details,'city_details'=>$city_details,'documentdata'=>$documentdata]);    
   }
-  public function my_enquiry_send() {
+ public function my_enquiry_send() {
     $country_details = \App\Patient::with('countries')->find(Auth::guard('front')->user()->id)->toArray();
     $state_details = \App\Patient::with('states')->find(Auth::guard('front')->user()->id)->toArray();
     $city_details = \App\Patient::with('cities')->find(Auth::guard('front')->user()->id)->toArray();
-    return view('pages.send_my_enquiry')->with(['country_details'=>$country_details,'state_details'=>$state_details,'city_details'=>$city_details]);    
+    $documentdata = \App\Document::where('status', '!=', 2)->where('patient_id', '=', Auth::guard('front')->user()->id)->orderBy('id','desc')->get();
+    return view('pages.send_my_enquiry')->with(['country_details'=>$country_details,'state_details'=>$state_details,'city_details'=>$city_details,'documentdata'=>$documentdata]);    
   }
   public function my_enquiry() {
-    $country_details = \App\Patient::with('countries')->find(Auth::guard('front')->user()->id)->toArray();
-    $state_details = \App\Patient::with('states')->find(Auth::guard('front')->user()->id)->toArray();
-    $city_details = \App\Patient::with('cities')->find(Auth::guard('front')->user()->id)->toArray();
+      $country_details = \App\Patient::with('countries')->find(Auth::guard('front')->user()->id)->toArray();
+      $state_details = \App\Patient::with('states')->find(Auth::guard('front')->user()->id)->toArray();
+      $city_details = \App\Patient::with('cities')->find(Auth::guard('front')->user()->id)->toArray();
 
 
-     // get the Patient enquiry
+     // get the Patient enquiry table
       $login_user_id=Auth::guard('front')->user()->id;
       $sql="SELECT patenq.*,pat.first_name,pat.last_name FROM patient_enquiries patenq";
       $sql.=" JOIN patients pat ON pat.id=patenq.patient_id ";
       $sql.=" WHERE patenq.patient_id=".$login_user_id;
       $sql.=" ORDER BY patenq.id DESC";
-      $patient_enq_data = DB::select($sql);
-      //echo "<pre>"; print_r($patient_enq_data); die;
-    return view('pages.my_enquiry')->with(['country_details'=>$country_details,'state_details'=>$state_details,'city_details'=>$city_details,'patient_enq_data'=>$patient_enq_data]);    
+      $patient_enq_data_obj = DB::select($sql);
+      //echo "<pre>"; print_r($patient_enq_data_obj); die;
+      $patient_enq_data=array();
+      foreach($patient_enq_data_obj AS $key=>$val){
+        //total count from enquiry details
+        $sqlnw="SELECT count(id) AS total FROM patient_enquiry_details WHERE patient_enquiry_id=".$val->id;
+        $pat_data = DB::select($sqlnw);
+        //echo "<pre>"; print_r($pat_data[0]->total);
+        //echo "<pre>"; print_r($val->id); 
+        $patient_enq_data[$key]['id']=$val->id;
+        $patient_enq_data[$key]['subject'] = $val->subject;
+        $patient_enq_data[$key]['patient_id'] = $val->patient_id;
+        $patient_enq_data[$key]['status'] = $val->status;
+        $patient_enq_data[$key]['created_at'] = $val->created_at;
+        $patient_enq_data[$key]['updated_at'] = $val->updated_at;
+        $patient_enq_data[$key]['first_name'] = $val->first_name;
+        $patient_enq_data[$key]['last_name'] = $val->last_name;
+        $patient_enq_data[$key]['total'] = $pat_data[0]->total;
+            
+      }
+      //echo "<pre>"; print_r($patient_enq_data); 
+      //die;
+       
+
+      return view('pages.my_enquiry')->with(['country_details'=>$country_details,'state_details'=>$state_details,'city_details'=>$city_details,'patient_enq_data'=>$patient_enq_data]);    
   }
-  public function my_enquiry_details() {
+  public function my_enquiry_details($enq_id=null) {
     $country_details = \App\Patient::with('countries')->find(Auth::guard('front')->user()->id)->toArray();
     $state_details = \App\Patient::with('states')->find(Auth::guard('front')->user()->id)->toArray();
     $city_details = \App\Patient::with('cities')->find(Auth::guard('front')->user()->id)->toArray();
-    return view('pages.my_enquiry_details')->with(['country_details'=>$country_details,'state_details'=>$state_details,'city_details'=>$city_details]);    
+
+     // get the Patient enquiry details
+        $sql="SELECT patenq.id,pat.first_name,pat.last_name,patenq.patient_id,patenq.status,patenqdet.id as enq_detail_id,patenqdet.patient_enquiry_id,patenqdet.sender_id,patenqdet.sender_type,patenqdet.reciever_id,patenqdet.reciever_type,patenqdet.subject,patenqdet.message,patenqdet.created_at FROM patient_enquiries patenq";
+        $sql.=" JOIN patients pat ON pat.id=patenq.patient_id ";
+        $sql.=" JOIN patient_enquiry_details patenqdet ON patenqdet.patient_enquiry_id=patenq.id ";
+        $sql.=" WHERE patenqdet.patient_enquiry_id=".$enq_id;
+        $patient_enq = DB::select($sql);
+        //echo "<pre>"; print_r($patient_enq); die;
+        $patient_enq_data = array();
+        foreach($patient_enq as $keyy => $vall)
+        { 
+          
+          if($vall->sender_type==2)//If sender is patient
+          {
+              $sender_name = $this->gettusername('Patient',$vall->sender_id);
+          }
+          else
+          {//If sender is admin or hospital
+              $sender_name = $this->gettusername('User',$vall->sender_id);
+          } 
+
+          if($vall->reciever_type==2)//If reciever is patient
+          {
+              $reciever_name = $this->gettusername('Patient',$vall->reciever_id);
+          }
+          else
+          {//If reciever is admin or hospital
+              $reciever_name = $this->gettusername('User',$vall->reciever_id);
+          } 
+
+          $patient_enq_data[] = array(
+            'id' => $vall->id,
+            'enq_detail_id' => $vall->enq_detail_id,
+            'patient_id' => $vall->patient_id,
+            'first_name' => $vall->first_name,
+            'last_name' => $vall->last_name,
+            'sender_name' => $sender_name, 
+            'sender_type' => $vall->sender_type,  
+            'reciever_name' => $reciever_name, 
+            'reciever_type' => $vall->reciever_type, 
+            'subject' => $vall->subject,
+            'message' => $vall->message,
+            'created_at' => $vall->created_at                    
+          );
+        }
+        //echo "<pre>"; print_r($patient_enq_data); die;
+    return view('pages.my_enquiry_details')->with(['country_details'=>$country_details,'state_details'=>$state_details,'city_details'=>$city_details,'patient_enq_data'=>$patient_enq_data]);    
+  }
+
+ public function gettusername($table,$id)
+ { //echo $table; die;
+     $data ='';  
+    if($table=='Patient')
+    {
+      $userdata = Patient::where('id',$id)->get()->toArray();
+       $data =$userdata[0]['first_name'].' '.$userdata[0]['last_name'];
+    }else{
+      $userdata = User::where('id',$id)->get()->toArray();
+      $data =$userdata[0]['name'];
+     } 
+   
+      return $data;
   }
 
   public function myenquiryPost(Request $request)
-  { 
+  {
         $mt = new PatientEnquiry() ;
         $mt->subject = $request->subject;
-        $mt->created_at = date('Y-m-d H:i:s'); 
-        $mt->updated_at = date('Y-m-d H:i:s'); 
+        $mt->created_at = date('Y-m-d H:i:s');
+        $mt->updated_at = date('Y-m-d H:i:s');
         $mt->patient_id = Auth::guard('front')->user()->id;
         $mt->save();
         $lastinsert_id = $mt->id;
         if($lastinsert_id){
-        $mt1 = new PatientEnquiryDetail() ;        
+        $mt1 = new PatientEnquiryDetail() ;
         $mt1->message = $request->message;
         $mt1->subject = $request->subject;
         $mt1->patient_enquiry_id = $lastinsert_id;
@@ -541,23 +625,34 @@ class PagesController extends Controller
         $mt1->sender_id = Auth::guard('front')->user()->id;
         $mt1->sender_type = 2;
         $mt1->reciever_type = 1;
-        $mt1->created_at = date('Y-m-d H:i:s'); 
+        $mt1->created_at = date('Y-m-d H:i:s');
         $mt1->updated_at = date('Y-m-d H:i:s');
         $mt1->save();
         $lastinsert_id1 = $mt1->id;
-        if($lastinsert_id1){         
+        if($lastinsert_id1){
+          if(isset($request->document) && !empty($request->document)){
+            $files1 = $request->document;
+            foreach($files1 as $file1) {
+                $mt3 = new PatientEnquiryAttachment() ;
+                $mt3->attachment = $file1;
+                $mt3->patient_enquiry_details_id = $lastinsert_id1;
+                $mt3->created_at = date('Y-m-d H:i:s');
+                $mt3->updated_at = date('Y-m-d H:i:s');
+                $mt3->save();
+            }
+          }
           if($file = $request->hasFile('avators')) {
             $files = $request->file('avators');
             foreach($files as $file) {
                $mt2 = new PatientEnquiryAttachment() ;
-              $fileName = time().'_'.$file->getClientOriginalName() ;           
-              $img = Image::make($file->getRealPath());       
+              $fileName = time().'_'.$file->getClientOriginalName() ;
+              $img = Image::make($file->getRealPath());
               //original destination path
               $destinationPath = public_path().'/uploads/drop/' ;
               if($file->move($destinationPath,$fileName)){
                 $mt2->attachment = $fileName ;
-                $mt2->patient_enquiry_details_id = $lastinsert_id1;            
-                $mt2->created_at = date('Y-m-d H:i:s'); 
+                $mt2->patient_enquiry_details_id = $lastinsert_id1;
+                $mt2->created_at = date('Y-m-d H:i:s');
                 $mt2->updated_at = date('Y-m-d H:i:s');
                 $mt2->save();
               }
@@ -566,8 +661,8 @@ class PagesController extends Controller
         }
         $request->session()->flash("message", "Posted successfully");
         return redirect('/my-enquiry');
-        } 
-             
+        }
+
   }
 
   public function profile_image_upload(Request $request) {   
@@ -760,18 +855,18 @@ public function documentupload(Request $request) {
 public function successreset() {    
     return view('pages.reset');
 }
-	public function document_delete(Request $request,$id) {
-	  if($id) {
-	      $docu_cat = \App\Document::find($id);
-	      $status = '2';
-	      $docu_cat->status = $status; 
-	      $del = $docu_cat->save();
-	      if($del) {      
-	          $request->session()->flash("message", "Successfully deleted");
-	          return redirect('/upload-documents');
-	      }
-	  }
-	}
+  public function document_delete(Request $request,$id) {
+    if($id) {
+        $docu_cat = \App\Document::find($id);
+        $status = '2';
+        $docu_cat->status = $status; 
+        $del = $docu_cat->save();
+        if($del) {      
+            $request->session()->flash("message", "Successfully deleted");
+            return redirect('/upload-documents');
+        }
+    }
+  }
     public function document_download(Request $request,$id) {
         if($id) {
             $docu_cat = \App\Document::find($id);
