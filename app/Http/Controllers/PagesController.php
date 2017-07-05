@@ -500,22 +500,44 @@ class PagesController extends Controller
     return view('pages.send_my_enquiry')->with(['country_details'=>$country_details,'state_details'=>$state_details,'city_details'=>$city_details]);    
   }
   public function my_enquiry() {
-    $country_details = \App\Patient::with('countries')->find(Auth::guard('front')->user()->id)->toArray();
-    $state_details = \App\Patient::with('states')->find(Auth::guard('front')->user()->id)->toArray();
-    $city_details = \App\Patient::with('cities')->find(Auth::guard('front')->user()->id)->toArray();
+      $country_details = \App\Patient::with('countries')->find(Auth::guard('front')->user()->id)->toArray();
+      $state_details = \App\Patient::with('states')->find(Auth::guard('front')->user()->id)->toArray();
+      $city_details = \App\Patient::with('cities')->find(Auth::guard('front')->user()->id)->toArray();
 
 
-     // get the Patient enquiry
+     // get the Patient enquiry table
       $login_user_id=Auth::guard('front')->user()->id;
       $sql="SELECT patenq.*,pat.first_name,pat.last_name FROM patient_enquiries patenq";
       $sql.=" JOIN patients pat ON pat.id=patenq.patient_id ";
       $sql.=" WHERE patenq.patient_id=".$login_user_id;
       $sql.=" ORDER BY patenq.id DESC";
-      $patient_enq_data = DB::select($sql);
-      //echo "<pre>"; print_r($patient_enq_data); die;
-    return view('pages.my_enquiry')->with(['country_details'=>$country_details,'state_details'=>$state_details,'city_details'=>$city_details,'patient_enq_data'=>$patient_enq_data]);    
+      $patient_enq_data_obj = DB::select($sql);
+      //echo "<pre>"; print_r($patient_enq_data_obj); die;
+      $patient_enq_data=array();
+      foreach($patient_enq_data_obj AS $key=>$val){
+        //total count from enquiry details
+        $sqlnw="SELECT count(id) AS total FROM patient_enquiry_details WHERE patient_enquiry_id=".$val->id;
+        $pat_data = DB::select($sqlnw);
+        //echo "<pre>"; print_r($pat_data[0]->total);
+        //echo "<pre>"; print_r($val->id); 
+        $patient_enq_data[$key]['id']=$val->id;
+        $patient_enq_data[$key]['subject'] = $val->subject;
+        $patient_enq_data[$key]['patient_id'] = $val->patient_id;
+        $patient_enq_data[$key]['status'] = $val->status;
+        $patient_enq_data[$key]['created_at'] = $val->created_at;
+        $patient_enq_data[$key]['updated_at'] = $val->updated_at;
+        $patient_enq_data[$key]['first_name'] = $val->first_name;
+        $patient_enq_data[$key]['last_name'] = $val->last_name;
+        $patient_enq_data[$key]['total'] = $pat_data[0]->total;
+            
+      }
+      //echo "<pre>"; print_r($patient_enq_data); 
+      //die;
+       
+
+      return view('pages.my_enquiry')->with(['country_details'=>$country_details,'state_details'=>$state_details,'city_details'=>$city_details,'patient_enq_data'=>$patient_enq_data]);    
   }
-  public function my_enquiry_details() {
+  public function my_enquiry_details($id=null) {
     $country_details = \App\Patient::with('countries')->find(Auth::guard('front')->user()->id)->toArray();
     $state_details = \App\Patient::with('states')->find(Auth::guard('front')->user()->id)->toArray();
     $city_details = \App\Patient::with('cities')->find(Auth::guard('front')->user()->id)->toArray();
