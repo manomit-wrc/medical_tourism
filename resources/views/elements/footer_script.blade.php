@@ -32,14 +32,6 @@
     <script type="text/javascript">
        $(function () {$('[data-toggle="tooltip"]').tooltip()})
     </script>
-    <?php echo Request::segment(2); die(); ?>
-    @if((Request::segment(2) === 'package-types' && (Request::segment(3) === 'create')))
-  {!! Html::script("vendor/unisharp/laravel-ckeditor/ckeditor.js")!!}
-  <script type="text/javascript">
-      CKEDITOR.replace('textarea_id');
-  </script>
-@endif
-
     <script type="text/javascript">
     function deldata(url){
       swal({

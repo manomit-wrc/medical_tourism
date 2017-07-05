@@ -498,6 +498,12 @@ class PagesController extends Controller
     $city_details = \App\Patient::with('cities')->find(Auth::guard('front')->user()->id)->toArray();
     return view('pages.send_my_enquiry')->with(['country_details'=>$country_details,'state_details'=>$state_details,'city_details'=>$city_details]);    
   }
+  public function my_enquiry() {
+    $country_details = \App\Patient::with('countries')->find(Auth::guard('front')->user()->id)->toArray();
+    $state_details = \App\Patient::with('states')->find(Auth::guard('front')->user()->id)->toArray();
+    $city_details = \App\Patient::with('cities')->find(Auth::guard('front')->user()->id)->toArray();
+    return view('pages.my_enquiry')->with(['country_details'=>$country_details,'state_details'=>$state_details,'city_details'=>$city_details]);    
+  }
   public function my_enquiry_details() {
     $country_details = \App\Patient::with('countries')->find(Auth::guard('front')->user()->id)->toArray();
     $state_details = \App\Patient::with('states')->find(Auth::guard('front')->user()->id)->toArray();
