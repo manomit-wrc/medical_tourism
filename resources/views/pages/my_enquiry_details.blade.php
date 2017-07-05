@@ -25,17 +25,19 @@
            function showhide()
            {
                  var div = document.getElementById("newpost");
-          if (div.style.display !== "none") {
-              div.style.display = "none";
-          }
-          else {
-              div.style.display = "block";
-          }
-           }
-        </script>
+                    if (div.style.display !== "block") {
+                        div.style.display = "block";
+                        document.getElementById("abc").style.backgroundColor = "#fff";
+                    }
+                    else {
+                        div.style.display = "none";
+                        document.getElementById("abc").style.backgroundColor = "#f2f2f2";
+                    }
+                     }
+          </script>
 
              <div class="mailarea">
-                <div class="loopbox">
+                <div id="abc" class="loopbox">
                     <a href="javascript:void(0)" onclick="showhide()">
                       <div class="row">
                           <div class="col-xs-1">
@@ -68,6 +70,8 @@
                       </p>
                     </div>
                 </div>
+
+
              </div>
 
 
