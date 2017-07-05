@@ -82,7 +82,7 @@ class PatientEnquiryController extends Controller
      */
     public function show($id)
     {
-        // get the Patient enquiry
+        // get the Patient enquiry details
         $sql="SELECT patenq.id,pat.first_name,pat.last_name,patenq.patient_id,patenq.status,patenqdet.id as enq_detail_id,patenqdet.patient_enquiry_id,patenqdet.sender_id,patenqdet.sender_type,patenqdet.reciever_id,patenqdet.reciever_type,patenqdet.subject,patenqdet.message,patenqdet.created_at FROM patient_enquiries patenq";
         $sql.=" JOIN patients pat ON pat.id=patenq.patient_id ";
         $sql.=" JOIN patient_enquiry_details patenqdet ON patenqdet.patient_enquiry_id=patenq.id ";
