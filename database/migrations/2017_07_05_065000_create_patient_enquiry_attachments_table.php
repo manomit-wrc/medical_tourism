@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePatientEnquiryTable extends Migration
+class CreatePatientEnquiryAttachmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreatePatientEnquiryTable extends Migration
      */
     public function up()
     {
-        Schema::create('patient_enquiries', function (Blueprint $table) {
+        Schema::create('patient_enquiry_attachments', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('subject');
-            $table->smallInteger('status')->default(1);
+            $table->integer('patient_enquiry_details_id');
+            $table->string('attachment');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreatePatientEnquiryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('patient_enquiries');
+        Schema::dropIfExists('patient_enquiry_attachments');
     }
 }
