@@ -6,7 +6,7 @@
         <h3>My <b>Enquiries</b></h3>
        
         <script>
-           function showhide()
+          /* function showhide()
            {
                  var div = document.getElementById("newpost");
                   if (div.style.display !== "none") {
@@ -14,8 +14,15 @@
                   }else{
                       div.style.display = "block";
                   }
-          }
+          }*/
         </script>
+
+        @if (Session::has('message'))
+                <div class="alert alert-info" id="resultdocumentmsg">{{ Session::get('message') }}</div>
+        @endif
+        @if (Session::has('error_message'))
+            <div class="alert alert-warning" id="resultdocumentmsg">{{ Session::get('error_message') }}</div>
+        @endif
 
         
 

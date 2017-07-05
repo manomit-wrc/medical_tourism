@@ -32,6 +32,7 @@ use App\Images;
 use App\Patient;
 use App\PatientEnquiry;
 use App\PatientEnquiryDetail;
+use App\User;
 use Illuminate\Support\Facades\DB;
 
 
@@ -493,11 +494,12 @@ class PagesController extends Controller
     $city_details = \App\Patient::with('cities')->find(Auth::guard('front')->user()->id)->toArray();
     return view('pages.upload_document')->with(['country_details'=>$country_details,'state_details'=>$state_details,'city_details'=>$city_details,'documentdata'=>$documentdata]);    
   }
-  public function my_enquiry_send() {
+ public function my_enquiry_send() {
     $country_details = \App\Patient::with('countries')->find(Auth::guard('front')->user()->id)->toArray();
     $state_details = \App\Patient::with('states')->find(Auth::guard('front')->user()->id)->toArray();
     $city_details = \App\Patient::with('cities')->find(Auth::guard('front')->user()->id)->toArray();
-    return view('pages.send_my_enquiry')->with(['country_details'=>$country_details,'state_details'=>$state_details,'city_details'=>$city_details]);    
+    $documentdata = \App\Document::where('status', '!=', 2)->where('patient_id', '=', Auth::guard('front')->user()->id)->orderBy('id','desc')->get();
+    return view('pages.send_my_enquiry')->with(['country_details'=>$country_details,'state_details'=>$state_details,'city_details'=>$city_details,'documentdata'=>$documentdata]);    
   }
   public function my_enquiry() {
       $country_details = \App\Patient::with('countries')->find(Auth::guard('front')->user()->id)->toArray();
@@ -537,45 +539,85 @@ class PagesController extends Controller
 
       return view('pages.my_enquiry')->with(['country_details'=>$country_details,'state_details'=>$state_details,'city_details'=>$city_details,'patient_enq_data'=>$patient_enq_data]);    
   }
-  public function my_enquiry_details($id=null) {
+  public function my_enquiry_details($enq_id=null) {
     $country_details = \App\Patient::with('countries')->find(Auth::guard('front')->user()->id)->toArray();
     $state_details = \App\Patient::with('states')->find(Auth::guard('front')->user()->id)->toArray();
     $city_details = \App\Patient::with('cities')->find(Auth::guard('front')->user()->id)->toArray();
-    return view('pages.my_enquiry_details')->with(['country_details'=>$country_details,'state_details'=>$state_details,'city_details'=>$city_details]);    
+
+     // get the Patient enquiry details
+        $sql="SELECT patenq.id,pat.first_name,pat.last_name,patenq.patient_id,patenq.status,patenqdet.id as enq_detail_id,patenqdet.patient_enquiry_id,patenqdet.sender_id,patenqdet.sender_type,patenqdet.reciever_id,patenqdet.reciever_type,patenqdet.subject,patenqdet.message,patenqdet.created_at FROM patient_enquiries patenq";
+        $sql.=" JOIN patients pat ON pat.id=patenq.patient_id ";
+        $sql.=" JOIN patient_enquiry_details patenqdet ON patenqdet.patient_enquiry_id=patenq.id ";
+        $sql.=" WHERE patenqdet.patient_enquiry_id=".$enq_id;
+        $patient_enq = DB::select($sql);
+        //echo "<pre>"; print_r($patient_enq); die;
+        $patient_enq_data = array();
+        foreach($patient_enq as $keyy => $vall)
+        { 
+          
+          if($vall->sender_type==2)//If sender is patient
+          {
+              $sender_name = $this->gettusername('Patient',$vall->sender_id);
+          }
+          else
+          {//If sender is admin or hospital
+              $sender_name = $this->gettusername('User',$vall->sender_id);
+          } 
+
+          if($vall->reciever_type==2)//If reciever is patient
+          {
+              $reciever_name = $this->gettusername('Patient',$vall->reciever_id);
+          }
+          else
+          {//If reciever is admin or hospital
+              $reciever_name = $this->gettusername('User',$vall->reciever_id);
+          } 
+
+          $patient_enq_data[] = array(
+            'id' => $vall->id,
+            'enq_detail_id' => $vall->enq_detail_id,
+            'patient_id' => $vall->patient_id,
+            'first_name' => $vall->first_name,
+            'last_name' => $vall->last_name,
+            'sender_name' => $sender_name, 
+            'sender_type' => $vall->sender_type,  
+            'reciever_name' => $reciever_name, 
+            'reciever_type' => $vall->reciever_type, 
+            'subject' => $vall->subject,
+            'message' => $vall->message,
+            'created_at' => $vall->created_at                    
+          );
+        }
+        //echo "<pre>"; print_r($patient_enq_data); die;
+    return view('pages.my_enquiry_details')->with(['country_details'=>$country_details,'state_details'=>$state_details,'city_details'=>$city_details,'patient_enq_data'=>$patient_enq_data]);    
+  }
+
+ public function gettusername($table,$id)
+ { //echo $table; die;
+     $data ='';  
+    if($table=='Patient')
+    {
+      $userdata = Patient::where('id',$id)->get()->toArray();
+       $data =$userdata[0]['first_name'].' '.$userdata[0]['last_name'];
+    }else{
+      $userdata = User::where('id',$id)->get()->toArray();
+      $data =$userdata[0]['name'];
+     } 
+   
+      return $data;
   }
 
   public function myenquiryPost(Request $request)
-  {        
+  {
         $mt = new PatientEnquiry() ;
         $mt->subject = $request->subject;
-        $mt->created_at = date('Y-m-d H:i:s'); 
-        $mt->updated_at = date('Y-m-d H:i:s'); 
+        $mt->created_at = date('Y-m-d H:i:s');
+        $mt->updated_at = date('Y-m-d H:i:s');
         $mt->patient_id = Auth::guard('front')->user()->id;
         $mt->save();
         $lastinsert_id = $mt->id;
         if($lastinsert_id){
         $mt1 = new PatientEnquiryDetail() ;
-        if($file = $request->hasFile('avators')) {
-
-            $file = $request->file('avators') ;
-
-            $fileName = time().'_'.$file->getClientOriginalName() ;
-
-            //thumb destination path
-            $destinationPath = public_path().'/uploads/enquiry' ;
-
-            $img = Image::make($file->getRealPath());
-
-            $img->resize(745, 214, function ($constraint){
-                $constraint->aspectRatio();
-            })->save($destinationPath.'/'.$fileName);
-
-            //original destination path
-            $destinationPath = public_path().'/uploads/enquiry/' ;
-            $file->move($destinationPath,$fileName);
-
-            $mt1->attachment = $fileName ;
-        }
         $mt1->message = $request->message;
         $mt1->subject = $request->subject;
         $mt1->patient_enquiry_id = $lastinsert_id;
@@ -583,13 +625,44 @@ class PagesController extends Controller
         $mt1->sender_id = Auth::guard('front')->user()->id;
         $mt1->sender_type = 2;
         $mt1->reciever_type = 1;
-        $mt1->created_at = date('Y-m-d H:i:s'); 
+        $mt1->created_at = date('Y-m-d H:i:s');
         $mt1->updated_at = date('Y-m-d H:i:s');
         $mt1->save();
+        $lastinsert_id1 = $mt1->id;
+        if($lastinsert_id1){
+          if(isset($request->document) && !empty($request->document)){
+            $files1 = $request->document;
+            foreach($files1 as $file1) {
+                $mt3 = new PatientEnquiryAttachment() ;
+                $mt3->attachment = $file1;
+                $mt3->patient_enquiry_details_id = $lastinsert_id1;
+                $mt3->created_at = date('Y-m-d H:i:s');
+                $mt3->updated_at = date('Y-m-d H:i:s');
+                $mt3->save();
+            }
+          }
+          if($file = $request->hasFile('avators')) {
+            $files = $request->file('avators');
+            foreach($files as $file) {
+               $mt2 = new PatientEnquiryAttachment() ;
+              $fileName = time().'_'.$file->getClientOriginalName() ;
+              $img = Image::make($file->getRealPath());
+              //original destination path
+              $destinationPath = public_path().'/uploads/drop/' ;
+              if($file->move($destinationPath,$fileName)){
+                $mt2->attachment = $fileName ;
+                $mt2->patient_enquiry_details_id = $lastinsert_id1;
+                $mt2->created_at = date('Y-m-d H:i:s');
+                $mt2->updated_at = date('Y-m-d H:i:s');
+                $mt2->save();
+              }
+            }
+          }
+        }
         $request->session()->flash("message", "Posted successfully");
         return redirect('/my-enquiry');
-        } 
-             
+        }
+
   }
 
   public function profile_image_upload(Request $request) {   
