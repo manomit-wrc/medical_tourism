@@ -4,13 +4,13 @@
 <div class="col-md-8">
   
     <div class="qtbox">
-        <h3>My <b>Enquiries</b></h3>
+        <h3>Submit <b>Your Enquiries</b></h3>
         @if (Session::has('message'))
                 <div class="alert alert-info" id="resultdocumentmsg">{{ Session::get('message') }}</div>
         @endif
         @if (Session::has('error_message'))
             <div class="alert alert-warning" id="resultdocumentmsg">{{ Session::get('error_message') }}</div>
-        @endif      
+        @endif   
 
         <div class="row">
             <div class="col-md-12">
@@ -39,13 +39,13 @@
                     <br />
                 </div>
                 <div class="col-md-12">
-                       <label>                           
+                      <label>                           
                           <input type="checkbox" value="1" class="te_fr feild_right required" id="upload_document" onclick="adduploadocument()" name="upload_document"> Upload Document
                       </label>
-                  </div>
+                </div>
                   <div class="col-md-12" style="display:none;" id="new_tag_name">
                       <label>                           
-                          <div class = "table-responsive">                                       
+                      <div class = "table-responsive">                                      
                         <table class="table">
                             <thead>
                               <tr>
@@ -68,7 +68,7 @@
                             @endif       
                             </tbody>
                         </table>
-                    </div>
+                      </div>
                       </label>
                        
                   </div>

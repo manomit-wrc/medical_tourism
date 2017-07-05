@@ -17,7 +17,7 @@
                       @if(Request::segment(1) != 'search-data')
                         @if(Request::segment(1) == 'doctordetail')
                             @include('elements.leftpaneldoctor')
-                        @elseif(Request::segment(1) != 'profile' && Request::segment(1) != 'upload-documents' && Request::segment(1) != 'change-password' && Request::segment(1) != 'activate'  && Request::segment(1) != 'my-enquiry' && Request::segment(1) != 'enquirysend' && Request::segment(1) != 'enquiry'  && Request::segment(1) != 'suggestion' && Request::segment(1) != 'gallery')
+                        @elseif(Request::segment(1) != 'profile' && Request::segment(1) != 'upload-documents' && Request::segment(1) != 'change-password' && Request::segment(1) != 'activate'  && Request::segment(1) != 'my-enquiry' && Request::segment(1) != 'enquirysend' && Request::segment(1) != 'my-enquiry-details' && Request::segment(1) != 'enquiry'  && Request::segment(1) != 'suggestion' && Request::segment(1) != 'gallery')
                             @include('elements.leftpanel')
                         @elseif(Request::segment(1) != 'enquiry' && Request::segment(1) != 'gallery' && Request::segment(1) != 'suggestion' && Request::segment(1) != 'activate')
                             @include('elements.leftpanelpatient')    
