@@ -2518,7 +2518,7 @@ clear: both;
 .myenquiriesB{
 	width: 100%;
 	float: left;
-	padding: 25px;
+	/*padding: 25px;*/
 	background: #fff;
 	padding-bottom: 0;
 	-moz-box-shadow:3px 3px  #ccc;
@@ -2529,6 +2529,10 @@ box-shadow:3px 3px  #ccc;
 .myenquiriesB a{
 	color: #000;
 	text-decoration: none;
+}
+
+.myenquiriesB .table-condensed{
+	margin-bottom: 0;
 }
 
 
@@ -2548,6 +2552,7 @@ box-shadow:3px 3px  #ccc;
 -moz-box-shadow: 10px 10px 5px -8px rgba(0,0,0,0.49);
 box-shadow: 10px 10px 5px -8px rgba(0,0,0,0.49);
 border: 4px solid #f2f2f2;
+z-index: 5;
 }
 
 .chatbox:before{
@@ -2580,11 +2585,11 @@ border: 4px solid #f2f2f2;
 }
 
 .table-condensed tr:hover{
-	background: #f2f2f2;
+	background: #f8f8f8;
 }
 
 .table-condensed td{
-	padding: 7px 10px !important;
+	padding: 15px !important;
 }
 
 .top_mail{
