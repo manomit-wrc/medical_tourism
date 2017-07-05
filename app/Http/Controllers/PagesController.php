@@ -546,7 +546,7 @@ class PagesController extends Controller
     $city_details = \App\Patient::with('cities')->find(Auth::guard('front')->user()->id)->toArray();
 
      // get the Patient enquiry details
-        $sql="SELECT patenq.id,pat.first_name,pat.last_name,patenq.patient_id,patenq.status,patenqdet.id as enq_detail_id,patenqdet.patient_enquiry_id,patenqdet.sender_id,patenqdet.sender_type,patenqdet.reciever_id,patenqdet.reciever_type,patenqdet.subject,patenqdet.message,patenqdet.created_at FROM patient_enquiries patenq";
+        $sql="SELECT patenq.id,pat.avators as images,pat.first_name,pat.last_name,patenq.patient_id,patenq.status,patenqdet.id as enq_detail_id,patenqdet.patient_enquiry_id,patenqdet.sender_id,patenqdet.sender_type,patenqdet.reciever_id,patenqdet.reciever_type,patenqdet.subject,patenqdet.message,patenqdet.created_at FROM patient_enquiries patenq";
         $sql.=" JOIN patients pat ON pat.id=patenq.patient_id ";
         $sql.=" JOIN patient_enquiry_details patenqdet ON patenqdet.patient_enquiry_id=patenq.id ";
         $sql.=" WHERE patenqdet.patient_enquiry_id=".$enq_id;
@@ -559,19 +559,24 @@ class PagesController extends Controller
           if($vall->sender_type==2)//If sender is patient
           {
               $sender_name = $this->gettusername('Patient',$vall->sender_id);
+              $sender_image = $this->gettuserimage('Patient',$vall->sender_id);
+              
           }
           else
           {//If sender is admin or hospital
               $sender_name = $this->gettusername('User',$vall->sender_id);
+              $sender_image ='';
           } 
 
           if($vall->reciever_type==2)//If reciever is patient
           {
               $reciever_name = $this->gettusername('Patient',$vall->reciever_id);
+              $reciever_image = $this->gettuserimage('Patient',$vall->reciever_id);
           }
           else
           {//If reciever is admin or hospital
               $reciever_name = $this->gettusername('User',$vall->reciever_id);
+              $reciever_image ='';
           } 
 
           $patient_enq_data[] = array(
@@ -581,9 +586,11 @@ class PagesController extends Controller
             'first_name' => $vall->first_name,
             'last_name' => $vall->last_name,
             'sender_name' => $sender_name, 
-            'sender_type' => $vall->sender_type,  
+            'sender_type' => $vall->sender_type,
+            'sender_image' => $sender_image,  
             'reciever_name' => $reciever_name, 
             'reciever_type' => $vall->reciever_type, 
+            'reciever_image' => $reciever_image, 
             'subject' => $vall->subject,
             'message' => $vall->message,
             'created_at' => $vall->created_at                    
@@ -604,6 +611,19 @@ class PagesController extends Controller
       $userdata = User::where('id',$id)->get()->toArray();
       $data =$userdata[0]['name'];
      } 
+   
+      return $data;
+  }
+   public function gettuserimage($table,$id)
+  { //echo $table; die;
+     $data ='';  
+    if($table=='Patient')
+    {
+      $userdata = Patient::where('id',$id)->get()->toArray();
+       $data =$userdata[0]['avators'];
+    }else{
+       $data =null;
+    } 
    
       return $data;
   }
