@@ -2240,11 +2240,15 @@ div#myScrollWrapper {
 .scrollable.gray-skin .scroll-bar .thumb {
   background-color:#999;
   border-radius: 50px;
+  cursor: pointer;
+  -webkit-transition: width 2s, height 2s, background-color 2s, -webkit-transform 2s;
+    transition: width 2s, height 2s, background-color 2s, transform 2s;
+
 
 }
 
 .scrollable.gray-skin .scroll-bar:hover .thumb {
-  background-color: #666;
+  background-color: #333;
 }
 
 .scrollable.gray-skin .scroll-bar.vertical {
