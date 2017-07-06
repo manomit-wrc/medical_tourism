@@ -66,7 +66,7 @@
 
             
 
-             <div class="mailarea">
+             <div class="mailarea">             
                 @if (count($patient_enq_data) > 0)
                     @foreach($patient_enq_data as $key=>$val)
                 <div id="abc<?php echo $val['enq_detail_id']; ?>" class="loopbox">
@@ -107,7 +107,14 @@
                       </li>
                       <p>
                      {!! $val['message'] !!} 
-                      </p>
+                      </p>                        
+                        @if (count($val['allattachment']) > 0)
+                          @foreach($val['allattachment'] as $key1=>$val1)
+                             <p>
+                           <a href="{!!URL::to('/admin/document-download',$val1['id'])!!}" >{!! $val1['attachment'] !!} </a>
+                            </p>
+                          @endforeach
+                      @endif
                     </div>
                 </div>
                  @endforeach

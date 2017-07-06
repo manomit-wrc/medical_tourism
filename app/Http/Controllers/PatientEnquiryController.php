@@ -8,6 +8,8 @@ use App\User;
 use App\Patient;
 use App\PatientEnquiry;
 use App\PatientEnquiryDetail;
+use App\PatientEnquiryAttachment;
+
 use Illuminate\Support\Facades\DB;
 
 class PatientEnquiryController extends Controller
@@ -162,11 +164,31 @@ class PatientEnquiryController extends Controller
             'reciever_image' => $reciever_image, 
             'subject' => $vall->subject,
             'message' => $vall->message,
+            'allattachment' => $this->attachment($vall->enq_detail_id), 
             'created_at' => $vall->created_at                    
           );
         }
         //echo "<pre>"; print_r($patient_enq_data); die;
        return view('admin.patientenquiry.show', compact('patient_enq_data'));
+    }
+    public function attachment($enq_detail_id) {
+      $patientenquiryattach = PatientEnquiryAttachment::where('patient_enquiry_details_id',$enq_detail_id)->get()->toArray();      
+        $data = array();
+        foreach($patientenquiryattach as $keyy => $vall)
+        {      
+          $data[] = array(
+            'id' => $vall['id'],
+            'attachment' => $vall['attachment']                   
+          );
+        }
+        return $data;
+    }
+    public function document_download(Request $request,$id) {
+        if($id) {
+            $docu_cat = \App\PatientEnquiryAttachment::find($id);
+            $file_path = public_path('/uploads/drop').'/'.$docu_cat->attachment;
+            return response()->download($file_path); 
+        }
     }
 
     /**

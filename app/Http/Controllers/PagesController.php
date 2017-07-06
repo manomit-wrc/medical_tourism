@@ -666,9 +666,7 @@ class PagesController extends Controller
             $files = $request->file('avators');
             foreach($files as $file) {
                $mt2 = new PatientEnquiryAttachment() ;
-              $fileName = time().'_'.$file->getClientOriginalName() ;
-              $img = Image::make($file->getRealPath());
-              //original destination path
+              $fileName = time().'_'.$file->getClientOriginalName() ;           
               $destinationPath = public_path().'/uploads/drop/' ;
               if($file->move($destinationPath,$fileName)){
                 $mt2->attachment = $fileName ;
