@@ -110,9 +110,9 @@
                       </p>                        
                         @if (count($val['allattachment']) > 0)
                           @foreach($val['allattachment'] as $key1=>$val1)
-                             <p>
-                           <a href="{!!URL::to('/admin/document-download',$val1['id'])!!}" >{!! $val1['attachment'] !!} </a>
-                            </p>
+                             <div class="attachments">
+                           <i class="fa fa-paperclip" aria-hidden="true"></i> <a href="{!!URL::to('/admin/document-download',$val1['id'])!!}" >{!! $val1['attachment'] !!} </a>
+                            </div>
                           @endforeach
                       @endif
                     </div>

@@ -334,7 +334,7 @@ z-index: 5;
 .mailsender{
     float: left;
     color: #666;
-    margin-left:60px;
+    margin-left:109px;
     font-size: 14px;
     margin-top: -10px;
 }
@@ -356,4 +356,20 @@ z-index: 5;
 
 .caret{
     margin-left: 0;
+}
+
+.attachments{
+    width: auto; 
+    display: inline-block;
+    padding: 8px 15px;
+    background: #f4f4f4;
+    margin-right: 10px;
+}
+
+.attachments:hover{
+    background: #f1f1f1;
+}
+
+.colblack{
+    color: #000;
 }
