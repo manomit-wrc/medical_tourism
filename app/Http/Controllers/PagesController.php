@@ -645,10 +645,12 @@ class PagesController extends Controller
 
   public function myenquiryPost(Request $request)
   {
+        date_default_timezone_set('Asia/Kolkata');
+        $timestamp = date("Y-m-d H:i:s");
         $mt = new PatientEnquiry() ;
         $mt->subject = $request->subject;
-        $mt->created_at = date('Y-m-d H:i:s');
-        $mt->updated_at = date('Y-m-d H:i:s');
+        $mt->created_at = $timestamp;
+        $mt->updated_at = $timestamp;
         $mt->patient_id = Auth::guard('front')->user()->id;
         $mt->save();
         $lastinsert_id = $mt->id;
@@ -661,8 +663,8 @@ class PagesController extends Controller
         $mt1->sender_id = Auth::guard('front')->user()->id;
         $mt1->sender_type = 2;
         $mt1->reciever_type = 1;
-        $mt1->created_at = date('Y-m-d H:i:s');
-        $mt1->updated_at = date('Y-m-d H:i:s');
+        $mt1->created_at = $timestamp;
+        $mt1->updated_at = $timestamp;
         $mt1->save();
         $lastinsert_id1 = $mt1->id;
         if($lastinsert_id1){
@@ -672,8 +674,8 @@ class PagesController extends Controller
                 $mt3 = new PatientEnquiryAttachment() ;
                 $mt3->attachment = $file1;
                 $mt3->patient_enquiry_details_id = $lastinsert_id1;
-                $mt3->created_at = date('Y-m-d H:i:s');
-                $mt3->updated_at = date('Y-m-d H:i:s');
+                $mt3->created_at = $timestamp;
+                $mt3->updated_at = $timestamp;
                 $mt3->save();
             }
           }
@@ -686,8 +688,8 @@ class PagesController extends Controller
               if($file->move($destinationPath,$fileName)){
                 $mt2->attachment = $fileName ;
                 $mt2->patient_enquiry_details_id = $lastinsert_id1;
-                $mt2->created_at = date('Y-m-d H:i:s');
-                $mt2->updated_at = date('Y-m-d H:i:s');
+                $mt2->created_at = $timestamp;
+                $mt2->updated_at = $timestamp;
                 $mt2->save();
               }
             }
