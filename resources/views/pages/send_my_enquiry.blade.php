@@ -90,11 +90,12 @@
                 $("#subject_error").css("display", "block");
                 document.getElementById("subject_error").innerHTML = "Please enter subject";
                 document.getElementById('subject').focus();
-                return false
+                return false;
               }else{
                 $("#subject_error").css("display", "none");     
                 document.getElementById('subject').style.border = '';
                 document.getElementById("subject_error").innerHTML = "";
+                return true;
               }
               
               var textarea_id = $("#textarea_id").val();                
@@ -103,11 +104,12 @@
                 $("#textarea_id_error").css("display", "block");
                 document.getElementById("textarea_id_error").innerHTML = "Please enter message";
                 document.getElementById('textarea_id').focus();
-                return false
+                return false;
               }else{
                 $("#textarea_id_error").css("display", "none");      
                 document.getElementById('textarea_id').style.border = '';
                 document.getElementById("textarea_id_error").innerHTML = "";
+                return true;
               }
     }
     function adduploadocument(){
