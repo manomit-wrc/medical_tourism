@@ -287,14 +287,19 @@
                   success:function(response) {
                     if(response.status == 1)
                     {
-                      $("#first_name").val('');
-                      $("#last_name").val('');
-                      $("#email_id").val('');
-                      $("#mobile_no").val('');
-                      $("#password").val('');
                       $(".registration").html(response.msg);
-                      $(".registration").addClass('registration-success');
-                      $(".registration").removeClass('registration-error');
+                      setTimeout(function() {
+                        $('.registration').fadeOut('fast');
+                        $("#first_name").val('');
+                        $("#last_name").val('');
+                        $("#email_id").val('');
+                        $("#mobile_no").val('');
+                        $("#password").val('');
+                        
+                        $(".registration").addClass('registration-success');
+                        $(".registration").removeClass('registration-error');
+                        $("#RegModal").modal('hide');
+                      }, 5000);
                     }
                     else {
 

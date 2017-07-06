@@ -83,7 +83,7 @@
                             @endif
                           </div>
                           <div class="col-xs-9"><div class="loopname">{{ $val['sender_name'] }}</div></div>
-                          <div class="col-xs-2" align="right"><div class="loopname">{{ date("d F Y",strtotime($val['created_at'])) }} </div></div>
+                          <div class="col-xs-2" align="right"><div class="loopname">{{ date("d F Y g:i A",strtotime($val['created_at'])) }} </div></div>
                       </div>
                     </a>
 

@@ -55,6 +55,7 @@ Route::get('/successreset','PagesController@successreset');
 Route::post('/documentupload','PagesController@documentupload');
 Route::get('/document-delete/{id}','PagesController@document_delete');
 Route::get('/document-download/{id}','PagesController@document_download');
+Route::get('/attachment-download/{id}','PagesController@attachment_download');
 Route::get('/getattdocumenttags','PagesController@getattdocumenttags');
 
 Route::get('/api/get-state-list','CountryStateCityController@getStateList');
