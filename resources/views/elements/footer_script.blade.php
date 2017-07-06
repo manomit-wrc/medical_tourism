@@ -21,8 +21,8 @@
     <!-- {!!Html::script("storage/frontend/js/jquery.do.scroll.js")!!}
     {!!Html::script("storage/frontend/js/script.js")!!} 
     {!!Html::script("storage/frontend/js/jquery.sticky.js")!!}-->
-    {!!Html::script("storage/frontend/js/jquery.custom-scrollbar.js")!!}
 
+    {!!Html::script("storage/frontend/js/jquery.custom-scrollbar.js")!!}
     @if(Request::segment(1) == 'gallery')
       {!! Html::script("storage/frontend/js/gallery/plugins.js") !!}
       {!! Html::script("storage/frontend/js/gallery/scripts.js") !!}
