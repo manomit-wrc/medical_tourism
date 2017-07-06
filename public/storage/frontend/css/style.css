@@ -115,7 +115,8 @@ color: #545454;
 }
 
 .navbar-right li a{
-	padding: 13px 23px;
+	/* padding: 13px 23px; */
+	padding: 13px 43px;
 }
 
 .imageWDTH{
@@ -852,7 +853,7 @@ p{
 	float: left;
 	background: #fff;
 	padding: 20px;
-	border-top: 6px solid #038dd5;
+	border-top: 3px solid #038dd5;
 	/* min-height: 465px; */
 }
 
@@ -891,6 +892,7 @@ p{
   box-sizing: border-box;
   -webkit-appearance: none;
   -moz-appearance: none;
+  border-radius: 6px;
 }
 
 .inputleft{
@@ -906,6 +908,7 @@ p{
   box-sizing: border-box;
   -webkit-appearance: none;
   -moz-appearance: none;
+  border-radius: 6px;
 }
 
 .qtbox button{
@@ -918,6 +921,7 @@ p{
 	border:0;
 	padding: 10px 0;
 	margin-top: 20px;
+	border-radius: 6px;
 }
 
 .qtbox button:hover{
@@ -1084,6 +1088,7 @@ p{
 	margin-bottom: 15px;
 	margin-top: 5px;
 	font-weight: normal;
+	border-radius: 6px;
 }
 
 .Iinput{
@@ -1112,6 +1117,7 @@ p{
   box-sizing: border-box;
   -webkit-appearance: none;
   -moz-appearance: none;
+  border-radius: 6px;
 }
 
 .listtypeleft2{
@@ -1130,6 +1136,7 @@ p{
   -webkit-appearance: none;
   -moz-appearance: none;
   margin-right: 15px;
+  border-radius: 6px;
 }
 
 .listtypeleft2:last-child{
@@ -1152,6 +1159,9 @@ label{
 	border:0;
 	padding: 10px 0;
 	margin-top: 20px;
+	-webkit-transition: width 2s, height 2s, background-color 2s, -webkit-transform 2s;
+    transition: width 2s, height 2s, background-color 2s, transform;
+	border-radius: 6px;
 }
 
 .button:hover{
@@ -1342,17 +1352,18 @@ box-shadow:3px 3px  #d4d4d4;
 }
 
 .dr_img{
-	width: 250px;
-	height: 250px;
+	width: 200px;
+	height: 200px;
 	margin: 15px auto;
 	position: relative;
 }
 
 .dr_img img{
-	width: 250px;
-	height: 250px;
-	padding: 5px;
-	border: 5px solid #ccc;
+	width: 200px;
+	height: 200px;
+	padding: 3px;
+	border: 2px solid #ccc;
+	border-radius: 50%;
 }
 
 .editP a{
@@ -1987,6 +1998,7 @@ label.error {
     width: 70%;
     margin:0px auto;
     display: block; 
+    border-radius: 6px;
 }
 
 .fileContainer [type=file] {

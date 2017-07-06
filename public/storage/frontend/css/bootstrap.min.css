@@ -4072,7 +4072,8 @@ textarea.input-group-sm>.input-group-btn>.btn {
 .nav>li>a {
     position: relative;
     display: block;
-    padding: 13px 15px
+    /* padding: 13px 15px; */
+    padding: 13px 35px;
 }
 .nav>li>a:focus,
 .nav>li>a:hover {
