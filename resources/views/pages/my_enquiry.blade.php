@@ -28,9 +28,13 @@
 
 
             <div class="table-responsive">
-                 <div class="topbtn">
-                      <a href="{{ url('/enquirysend') }}"><button type="button" class="btn bg-purple btn-rightad">Add New</button></a>
+                <div class="col-md-3 col-md-offset-9">
+                   <div class="topbtn">
+                        <a href="{{ url('/enquirysend') }}"><button type="button" class="btn bg-purple btn-rightad"><i class="fa fa-plus" aria-hidden="true"></i> Add New</button></a>
+                   </div>
                  </div>
+
+                 <div>&nbsp;</div>
 
                 <table class="table table-condensed">
                      @if (count($patient_enq_data) > 0)
