@@ -4,12 +4,12 @@
   </tr>
   <tr>
     <td colspan="3" style="border: 3px solid #cf4d7e; padding: 20px; font-family: arial; font-size: 16px; line-height: 24px;">
-		Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-
-    Click on the below link to activate your account.
-
-    <a href="{{$activation_link}}" target="_blank">{{$activation_link}}</a>
-
+		<p>Dear {{$name}}, </p>
+    <p>You have successfully registered to Swaasthya Bandhav.</p>
+    <p>Click on the below link to activate your account.<br />
+    <a href="{{$activation_link}}" target="_blank">Activation Link</a><p>
+    <p>if the above link does not work, copy the {{$activation_link}} and paste it in the address bar of your browser.</p>
+    {{$activation_link}}
     </td>
 
   </tr>

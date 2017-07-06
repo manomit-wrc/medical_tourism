@@ -17,10 +17,12 @@ class RegistrationEmail extends Mailable
      * @return void
      */
     public $activation_link;
-    public function __construct($activation_link)
+    public $name;
+    public function __construct($activation_link,$name)
     {
         //
         $this->activation_link = $activation_link;
+        $this->name = $name;
     }
 
     /**
