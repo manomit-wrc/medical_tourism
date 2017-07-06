@@ -2726,3 +2726,19 @@ z-index: 5;
 .qtbox table a{
 	color: #000;
 }
+
+.attachments{
+    width: auto; 
+    display: inline-block;
+    padding: 8px 15px;
+    background: #f4f4f4;
+    margin-right: 10px;
+}
+
+.attachments:hover{
+    background: #f1f1f1;
+}
+
+.colblack{
+    color: #000;
+}

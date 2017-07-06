@@ -38,7 +38,7 @@
              <div class="table-responsive">
 
                 <table class="table table-condensed">
-                     <tr><td>From</td><td>Subject</td><td align="right">Date</td></tr>
+                     <tr><td><b>From</b></td><td><b>Subject</b></td><td align="right"><b>Date</b></td></tr>
                      @if (count($patient_enq_data) > 0)
                         @foreach($patient_enq_data as $key=>$val)
                       <tr>
