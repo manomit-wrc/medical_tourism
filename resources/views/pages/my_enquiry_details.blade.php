@@ -93,6 +93,22 @@
                       <p>
                      {!! $val['message'] !!} 
                       </p>
+
+                      
+                      <div class="attachments">
+                           <i class="fa fa-paperclip" aria-hidden="true"></i> <a href="#">attachment01</a>
+                      </div>
+
+                      <div class="attachments">
+                           <i class="fa fa-paperclip" aria-hidden="true"></i> <a href="#">attachment02</a>
+                      </div>
+
+                      <div class="attachments">
+                           <i class="fa fa-paperclip" aria-hidden="true"></i> <a href="#">attachment03</a>
+                      </div>
+                          
+
+
                     </div>
                 </div>
                  @endforeach
