@@ -55,6 +55,7 @@ Route::get('/successreset','PagesController@successreset');
 Route::post('/documentupload','PagesController@documentupload');
 Route::get('/document-delete/{id}','PagesController@document_delete');
 Route::get('/document-download/{id}','PagesController@document_download');
+Route::get('/attachment-download/{id}','PagesController@attachment_download');
 Route::get('/getattdocumenttags','PagesController@getattdocumenttags');
 
 Route::get('/api/get-state-list','CountryStateCityController@getStateList');
@@ -311,6 +312,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/patientenquiry/delete/{id}','PatientEnquiryController@delete');
    
     Route::post('/admin/patientenquiry/changestatus/','PatientEnquiryController@ajaxpatientchangestatus');
+    Route::get('/admin/document-download/{id}','PatientEnquiryController@document_download');
 
     //Message section
     Route::get('/admin/messages/{id}','MessagesController@index');

@@ -91,14 +91,14 @@
                 <div class="col-md-6">
                     <label>
                         First Name
-                        <input type="text" name="first_name" class="Cinput" value="{{Auth::guard('front')->user()->first_name}}" style="{{$errors->has('first_name')?'border:1px solid #f00':''}}">
+                        <input type="text" name="first_name" class="Cinput" value="{{ucwords(Auth::guard('front')->user()->first_name)}}" style="{{$errors->has('first_name')?'border:1px solid #f00':''}}">
                     </label>
                 </div>
 
                 <div class="col-md-6">
                     <label>
                         Last Name
-                        <input type="text" name="last_name" class="Cinput" value="{{Auth::guard('front')->user()->last_name}}" style="{{$errors->has('last_name')?'border:1px solid #f00':''}}">
+                        <input type="text" name="last_name" class="Cinput" value="{{ucwords(Auth::guard('front')->user()->last_name)}}" style="{{$errors->has('last_name')?'border:1px solid #f00':''}}">
                     </label>
                 </div>
                 <br clear="all">
@@ -202,12 +202,12 @@
                     </label>
                 </div>
 
-                <div class="col-md-12">
+                <!-- <div class="col-md-12">
                     <label>
                         Biography
                         <textarea name="biography" cols="" rows="5" class="Cinput" style="{{$errors->has('biography')?'border:1px solid #f00':''}}">{{Auth::guard('front')->user()->biography}}</textarea>
                     </label>
-                </div>
+                </div> -->
 
                 <div class="col-sm-3">
                     <button type="submit" class="button">SAVE</button>

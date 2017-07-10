@@ -121,7 +121,7 @@
         <button type="button" onclick="getsearchval(); getsearchvalmap();"></button>
     </div>   
 
-
+    <div id="rest">
     <div id="vertical-scrollbar-demo" class="gray-skin demo"> 
 	@if (count($search_data) > 0)
             @foreach($search_data as $searchval)
@@ -135,6 +135,9 @@
 
 	@endforeach
 	@endif
+
+  
+    </div>
     </div>
 
 <script type="text/javascript">
@@ -158,7 +161,7 @@ function getsearchval(){
           _token: "{{csrf_token()}}"
         },
           success:function(response) {
-            $("#vertical-scrollbar-demo").html(response);                        
+            $("#rest").html(response);                        
           }
       });
 }

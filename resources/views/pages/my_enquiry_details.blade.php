@@ -78,8 +78,8 @@
                       <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                          <li><a>From : arijit@wrctechnologies.com</a></li>
-                          <li><a>to : master@wrctechnologies.com</a></li>
+                          <li><a>From : abc@wrctechnologies.com</a></li>
+                          <li><a>to : xyz@wrctechnologies.com</a></li>
                         </ul>
                       </li>
 
@@ -93,6 +93,18 @@
                       <p>
                      {!! $val['message'] !!} 
                       </p>
+
+                      
+                       @if (count($val['allattachment']) > 0)
+                          @foreach($val['allattachment'] as $key1=>$val1)
+                             <div class="attachments">
+                           <i class="fa fa-paperclip" aria-hidden="true"></i> <a href="{!!URL::to('/attachment-download',$val1['id'])!!}" >{!! $val1['attachment'] !!} </a>
+                            </div>
+                          @endforeach
+                      @endif
+                          
+
+
                     </div>
                 </div>
                  @endforeach

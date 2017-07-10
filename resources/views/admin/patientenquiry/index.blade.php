@@ -12,7 +12,6 @@
       <ol class="breadcrumb">
         <li><a href="javascript:void(0)">Home</a></li>
         <li class="active">Enquiry</li>
-
       </ol>
     </section>
 
@@ -39,19 +38,19 @@
              <div class="table-responsive">
 
                 <table class="table table-condensed">
-                     <tr><td>From</td><td>Subject</td><td>Date</td></tr>
+                     <tr><td><b>From</b></td><td><b>Subject</b></td><td align="right"><b>Date</b></td></tr>
                      @if (count($patient_enq_data) > 0)
                         @foreach($patient_enq_data as $key=>$val)
                       <tr>
                        <!-- <td><b>{{ $val['first_name'].' '.$val['last_name'] }}</b></td> -->
                       
                        <td>
-                         <a href="{!!URL::to('/admin/patientenquiry/show',$val['id'])!!}" data-toggle="tooltip" data-original-title="View">
+                         <a href="{!!URL::to('/admin/patientenquiry/show',$val['id'])!!}" data-toggle="tooltip" data-original-title="View" class="colblack">
                         {{ $val['first_name'].' '.$val['last_name'] }}<b>{{ $val['total']>1?'('.$val['total'].')':'' }}</b>
                          </a>
                       </td>
                         <td>
-                          <a href="{!!URL::to('/admin/patientenquiry/show',$val['id'])!!}" data-toggle="tooltip" data-original-title="View">
+                          <a href="{!!URL::to('/admin/patientenquiry/show',$val['id'])!!}" data-toggle="tooltip" data-original-title="View" class="colblack">
                             {!! \Illuminate\Support\Str::words($val['subject'], 10,'....')  !!}
                           </a>
                         </td>
@@ -64,10 +63,12 @@
                                 </div>
                           </div>
                         </td> -->
-                        <td>
-                         <a href="{!!URL::to('/admin/patientenquiry/show',$val['id'])!!}" data-toggle="tooltip" data-original-title="View">
-                          {{ date("d F Y",strtotime($val['created_at'])) }} at {{ date("g:ha",strtotime($val['created_at'])) }}</td>
+                        <td align="right">
+                         <a href="{!!URL::to('/admin/patientenquiry/show',$val['id'])!!}" data-toggle="tooltip" data-original-title="View" class="colblack">
+                          {{ date("d F Y",strtotime($val['created_at'])) }} at {{ date("g:ha",strtotime($val['created_at'])) }}
+                          <i class="fa fa-paperclip" aria-hidden="true"></i>
                          </a>
+                         </td>
                       </tr>
                        @endforeach
                       @endif

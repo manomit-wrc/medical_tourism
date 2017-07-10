@@ -290,6 +290,8 @@ class PagesController extends Controller
 
   public function patient_registration(Request $request) {
     if($request->ajax()) {
+      $first_name = $request->input('first_name');
+      $last_name = $request->input('last_name');
       $patient = new \App\Patient();
       $patient->first_name = $request->input('first_name');
       $patient->last_name = $request->input('last_name');
@@ -300,8 +302,9 @@ class PagesController extends Controller
       $patient->status = "0";
 
       if($patient->save()) {
+        $name = $first_name.' '.$last_name;
         $activation_link = config('app.url').'activate/'.$patient->remember_token."/".time();
-        Mail::to($request->input('email_id'))->send(new RegistrationEmail($activation_link));
+        Mail::to($request->input('email_id'))->send(new RegistrationEmail($activation_link,$name));
         return response()->json(['status'=>'1','msg'=>'Registration successfully done. Email activation link is sent to your email']);
       }
       else {
@@ -358,8 +361,7 @@ class PagesController extends Controller
       'city_id' => 'required',
       'dob_year' => 'required',
       'dob_month' => 'required',
-      'dob_days' => 'required',
-      'biography' => 'required'
+      'dob_days' => 'required'
     ]);
 
     $patients = \App\Patient::find(Auth::guard('front')->user()->id);
@@ -374,8 +376,8 @@ class PagesController extends Controller
        /* $patients->username = $request->username; */
         $patients->mobile_no = $request->mobile_no;
         $patients->email_id = $request->email_id;
-       /* $patients->title = $request->title;*/
-        $patients->biography = $request->biography;
+       /* $patients->title = $request->title;
+        $patients->biography = $request->biography;*/
         $patients->sex = $request->sex;
         $patients->country_id = $request->country_id;
         $patients->state_id = $request->state_id;
@@ -593,12 +595,25 @@ class PagesController extends Controller
             'reciever_image' => $reciever_image, 
             'subject' => $vall->subject,
             'message' => $vall->message,
+            'allattachment' => $this->attachment($vall->enq_detail_id),
             'created_at' => $vall->created_at                    
           );
         }
         //echo "<pre>"; print_r($patient_enq_data); die;
     return view('pages.my_enquiry_details')->with(['country_details'=>$country_details,'state_details'=>$state_details,'city_details'=>$city_details,'patient_enq_data'=>$patient_enq_data]);    
   }
+  public function attachment($enq_detail_id) {
+      $patientenquiryattach = PatientEnquiryAttachment::where('patient_enquiry_details_id',$enq_detail_id)->get()->toArray();      
+        $data = array();
+        foreach($patientenquiryattach as $keyy => $vall)
+        {      
+          $data[] = array(
+            'id' => $vall['id'],
+            'attachment' => $vall['attachment']                   
+          );
+        }
+        return $data;
+    }
 
  public function gettusername($table,$id)
  { //echo $table; die;
@@ -630,10 +645,12 @@ class PagesController extends Controller
 
   public function myenquiryPost(Request $request)
   {
+        date_default_timezone_set('Asia/Kolkata');
+        $timestamp = date("Y-m-d H:i:s");
         $mt = new PatientEnquiry() ;
         $mt->subject = $request->subject;
-        $mt->created_at = date('Y-m-d H:i:s');
-        $mt->updated_at = date('Y-m-d H:i:s');
+        $mt->created_at = $timestamp;
+        $mt->updated_at = $timestamp;
         $mt->patient_id = Auth::guard('front')->user()->id;
         $mt->save();
         $lastinsert_id = $mt->id;
@@ -646,8 +663,8 @@ class PagesController extends Controller
         $mt1->sender_id = Auth::guard('front')->user()->id;
         $mt1->sender_type = 2;
         $mt1->reciever_type = 1;
-        $mt1->created_at = date('Y-m-d H:i:s');
-        $mt1->updated_at = date('Y-m-d H:i:s');
+        $mt1->created_at = $timestamp;
+        $mt1->updated_at = $timestamp;
         $mt1->save();
         $lastinsert_id1 = $mt1->id;
         if($lastinsert_id1){
@@ -657,8 +674,8 @@ class PagesController extends Controller
                 $mt3 = new PatientEnquiryAttachment() ;
                 $mt3->attachment = $file1;
                 $mt3->patient_enquiry_details_id = $lastinsert_id1;
-                $mt3->created_at = date('Y-m-d H:i:s');
-                $mt3->updated_at = date('Y-m-d H:i:s');
+                $mt3->created_at = $timestamp;
+                $mt3->updated_at = $timestamp;
                 $mt3->save();
             }
           }
@@ -666,15 +683,13 @@ class PagesController extends Controller
             $files = $request->file('avators');
             foreach($files as $file) {
                $mt2 = new PatientEnquiryAttachment() ;
-              $fileName = time().'_'.$file->getClientOriginalName() ;
-              $img = Image::make($file->getRealPath());
-              //original destination path
+              $fileName = time().'_'.$file->getClientOriginalName() ;           
               $destinationPath = public_path().'/uploads/drop/' ;
               if($file->move($destinationPath,$fileName)){
                 $mt2->attachment = $fileName ;
                 $mt2->patient_enquiry_details_id = $lastinsert_id1;
-                $mt2->created_at = date('Y-m-d H:i:s');
-                $mt2->updated_at = date('Y-m-d H:i:s');
+                $mt2->created_at = $timestamp;
+                $mt2->updated_at = $timestamp;
                 $mt2->save();
               }
             }
@@ -892,6 +907,13 @@ public function successreset() {
         if($id) {
             $docu_cat = \App\Document::find($id);
             $file_path = public_path('/uploads/drop').'/'.$docu_cat->document;
+            return response()->download($file_path); 
+        }
+    }
+    public function attachment_download(Request $request,$id) {
+        if($id) {
+            $docu_cat = \App\PatientEnquiryAttachment::find($id);
+            $file_path = public_path('/uploads/drop').'/'.$docu_cat->attachment;
             return response()->download($file_path); 
         }
     }

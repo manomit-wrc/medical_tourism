@@ -66,7 +66,7 @@
 
             
 
-             <div class="mailarea">
+             <div class="mailarea">             
                 @if (count($patient_enq_data) > 0)
                     @foreach($patient_enq_data as $key=>$val)
                 <div id="abc<?php echo $val['enq_detail_id']; ?>" class="loopbox">
@@ -83,7 +83,7 @@
                             @endif
                           </div>
                           <div class="col-xs-9"><div class="loopname">{{ $val['sender_name'] }}</div></div>
-                          <div class="col-xs-2" align="right"><div class="loopname">{{ date("d F Y",strtotime($val['created_at'])) }} </div></div>
+                          <div class="col-xs-2" align="right"><div class="loopname">{{ date("d F Y g:i A",strtotime($val['created_at'])) }} </div></div>
                       </div>
                     </a>
 
@@ -107,7 +107,14 @@
                       </li>
                       <p>
                      {!! $val['message'] !!} 
-                      </p>
+                      </p>                        
+                        @if (count($val['allattachment']) > 0)
+                          @foreach($val['allattachment'] as $key1=>$val1)
+                             <div class="attachments">
+                           <i class="fa fa-paperclip" aria-hidden="true"></i> <a href="{!!URL::to('/admin/document-download',$val1['id'])!!}" >{!! $val1['attachment'] !!} </a>
+                            </div>
+                          @endforeach
+                      @endif
                     </div>
                 </div>
                  @endforeach
