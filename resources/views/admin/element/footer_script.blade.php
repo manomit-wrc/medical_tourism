@@ -1,5 +1,83 @@
 <script type="text/javascript">
   $(document).ready(function(e){
+      <!--////////////////////Reply from Admin section start here/////////////////////////-->
+      if($("#reply_to_user_type").val()==1)
+      {
+        $('#user_section_area').show();
+        $('#hosp_section_area').hide();
+      }
+      if($("#reply_to_user_type").val()==2)
+      {
+        $('#user_section_area').hide();
+        $('#hosp_section_area').show();
+      }
+
+     $("#reply_to_user_type").change(function(e){
+        //alert($(this).val());
+        if($(this).val()==1)
+        {
+          $('#user_section_area').show();
+          $('#hosp_section_area').hide();
+        } 
+
+        if($(this).val()==2)
+        {
+          $('#user_section_area').hide();
+          $('#hosp_section_area').show();
+        } 
+
+     });
+    $("#btnReply").click(function(e){ 
+       
+         if($("#reply_to_user_type").val() == 2 ) {
+            var reply_to=$("#reply_to_hosp").val();
+         }else{
+            var reply_to=$("#reply_to_user_id").val();
+         }
+        $.ajax({
+                  type: "POST",
+                  url: "/admin/patientenquiry/reply",
+                  data: {
+                    pat_enq_id: $("#pat_enq_id").val(),
+                    reply_to_user_type: $("#reply_to_user_type").val(),
+                    reply_to:reply_to,
+                    message: $("#message").val(),
+                    _token: "{{csrf_token()}}"
+                  },
+                 /* beforeSend:function() {
+                    $("#btnReply").prop('disabled', true);
+                  },*/
+                  success:function(response) { //alert(response.status);
+                    if(response.status == 1)
+                    {
+                      $(".msgdisplay").html(response.msg);
+                      setTimeout(function(){
+                        $("#message").val('');
+                        $("#rplysection").hide();
+                        
+                      },5000);
+                    }
+                    else {
+
+                      $(".msgdisplay").html(response.msg);
+                      /*$(".registration").addClass('registration-error');
+                      $(".registration").removeClass('registration-success');*/
+                    }
+                  
+                    $("#btnReply").prop('disabled', false);
+
+                  },
+                  error:function(xhr) {
+                    $(".msgdisplay").html("Error occurred. Please try again");
+                   /* $(".msgdisplay").addClass('registration-error');
+                    $(".msgdisplay").removeClass('registration-success');*/
+                    $("#btnReply").prop('disabled', false);
+                  }
+                });
+    });
+    
+     <!--////////////////////Reply from Admin section end here/////////////////////////-->
+
     $("#doctor_country_id").change(function(e){
       var value = $(this).val();
       if(value) {

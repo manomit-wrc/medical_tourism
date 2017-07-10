@@ -105,6 +105,28 @@
                         </div>
                          <!-- /.file input -->
 
+                         <!--//////////////////////////ADMIN USER SECTION START////////////////////////////-->
+                        <!--  <label>Hospital Admin Section</label>
+
+                         <div class="form-group {{ $errors->has('user_name') ? 'has-error' : '' }}">
+                            <label for="user_name">Name: <span style="color:red;">*</span></label>
+                            <input type="text" name="user_name" id="user_name" class="form-control" value="{{ old('user_name')}}"  >
+                            <span class="text-danger">{{ $errors->first('user_name') }}</span>
+                          </div>
+
+                          <div class="form-group {{ $errors->has('user_email') ? 'has-error' : '' }}">
+                            <label for="user_email">Email: <span style="color:red;">*</span></label>
+                            <input type="text" name="user_email" id="user_email" class="form-control" value="{{ old('user_email')}}"  >
+                            <span class="text-danger">{{ $errors->first('user_email') }}</span>
+                          </div>
+
+                          <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
+                              <label for="name">Password: <span style="color:red;">*</span></label>
+                              <input type="password" name="password" id="password" class="form-control" autofocus >
+                              <span class="text-danger">{{ $errors->first('password') }}</span>
+                          </div> -->
+                          <!--//////////////////////////ADMIN USER SECTION END////////////////////////////-->
+
                     </div>
                     <div class="col-md-6">
                          <!-- text input -->

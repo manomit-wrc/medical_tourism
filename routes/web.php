@@ -313,6 +313,7 @@ Route::group(['middleware' => ['admin']], function () {
    
     Route::post('/admin/patientenquiry/changestatus/','PatientEnquiryController@ajaxpatientchangestatus');
     Route::get('/admin/document-download/{id}','PatientEnquiryController@document_download');
+    Route::post('/admin/patientenquiry/reply','PatientEnquiryController@reply');
 
     //Message section
     Route::get('/admin/messages/{id}','MessagesController@index');

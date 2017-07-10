@@ -21,6 +21,10 @@ use Session;
 use Validator;
 use Image;
 use File;
+use App\User;
+use App\Role;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\AdminUserRegistrationMail;
 use Illuminate\Support\Facades\Route;
 
 class HospitalController extends Controller
@@ -84,13 +88,22 @@ class HospitalController extends Controller
             'number_of_icu_beds' => 'required|numeric',
             'number_of_operating_rooms' => 'required|numeric',
             'number_of_avg_international_patients' => 'required|numeric',*/
-            'avators' => 'required|image|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=745,min_height=214'
+            'avators' => 'required|image|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=745,min_height=214',
+            'user_name' => 'required|max:50',
+            'user_email' => 'required|email|unique:users,email',
+            'password' => ['required','max:32','min:8','regex:/^(?=.*[a-z|A-Z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/']
        ],[
         'country_id.required' => 'country field is required',
         'state_id.required' => 'state field is required',
         'city_id.required' => 'city field is required',
         'hosp_latitude.required' => 'latitude field is required',
-        'hosp_longitude.required' => 'longitude field is required'
+        'hosp_longitude.required' => 'longitude field is required',
+        'user_name.required' => 'Please enter name',
+        'user_name.max' => 'Name maximum have 50 characters',
+        'password.required' => 'Please enter password',
+        'password.min' => 'Please enter password atleast 8',
+        'password.max' => 'Please enter password atmost 32',
+        'password.regex' => 'Password should contain atleast one uppercase/lowercase letter,one number and one special character'
         ])->validate();
 
       // Getting all data after success validation.
@@ -135,9 +148,40 @@ class HospitalController extends Controller
             $file->move($destinationPath,$fileName);
 
             $hptl->avators = $fileName ;
-        }
+      }
       $hptl->save() ;
       $hptl->doctorhospital()->attach($request->associated_id);
+      
+      if($hptl->save())//Add hospital admin data
+      { 
+        $login_user_id=Auth::guard('admin')->user()->id; //Login user id
+        $namevar=$request->user_name;
+        $emailvar=$request->user_email;
+        $passvar=$request->password;
+
+        $user = new User();
+        $user->name = $request->user_name;
+        $user->email = $request->user_email;
+        $user->password = bcrypt($request->password);
+
+        if($login_user_id!=1)//Login user other than super admin
+        {
+          $user->added_by =$login_user_id;
+          $added_user_data = User::with('roles')->where('id',$id)->get();
+          //echo "<pre>"; print_r($added_user_data[0]->name); die;
+          //echo "<pre>"; print_r($added_user_data[0]->roles[0]->name); die;
+          $adminname=$added_user_data[0]->roles[0]->name.'('.$added_user_data[0]->name.')';
+        }else{
+          $adminname='Swaasthya Bandhav Admin';
+        }  
+        
+        $user->save();
+        $role_user = Role::where('id',2)->first();
+        $user->roles()->attach($role_user);
+        $rolename=$role_user->name;
+        Mail::to($emailvar)->send(new AdminUserRegistrationMail($namevar,$adminname,$rolename,$emailvar,$passvar));
+      }  
+      
 
       Session::flash('message', 'Successfully added!');
       return Redirect::to('/admin/hospitals');
