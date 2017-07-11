@@ -1,7 +1,7 @@
-         {!! Html::style('storage/frontend/css/gallery/jcarousel.responsive.css') !!}
-         {!! Html::script("storage/frontend/js/gallery/jquery1.js") !!}
-         {!! Html::script("storage/frontend/js/gallery/jquery.jcarousel.min.js") !!}
-         {!! Html::script("storage/frontend/js/gallery/jcarousel.responsive.js") !!}
+ {!! Html::style('storage/frontend/css/gallery/jcarousel.responsive.css') !!}
+ {!! Html::script("storage/frontend/js/gallery/jquery1.js") !!}
+ {!! Html::script("storage/frontend/js/gallery/jquery.jcarousel.min.js") !!}
+ {!! Html::script("storage/frontend/js/gallery/jcarousel.responsive.js") !!}
    
   
     <div class="jcarousel-wrapper">

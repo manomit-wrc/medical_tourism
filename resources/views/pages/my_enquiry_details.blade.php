@@ -56,7 +56,7 @@
                               @php
                                 $sender_image=$val['sender_image'];
                               @endphp
-                             <img src="{!!URL::to('/uploads/patients/thumb/'.$sender_image)!!}"  alt="Image 1">
+                             <img src="{!!URL::to('/uploads/patients/'.$sender_image)!!}"  alt="Image 1">
                             @else 
                              <img src="{!!URL::to('storage/frontend/images/noimage.jpg')!!}"  alt="Image 1">
                             @endif
