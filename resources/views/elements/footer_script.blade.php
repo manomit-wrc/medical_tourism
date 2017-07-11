@@ -100,18 +100,20 @@
                   success:function(response) { //alert(response.status);
                     if(response.status == 1)
                     {
-                      $(".msgdisplay").html(response.msg);
+                      $("#msgdisplay").html(response.msg);
                       setTimeout(function(){
                         $("#message").val('');
                         $("#rplysection").hide();
                         
                       },5000);
+                      window.location.replace("/my-enquiry-details/"+response.pat_enq_id);
                     }
                     else {
 
-                      $(".msgdisplay").html(response.msg);
+                      $("#msgdisplay").html(response.msg);
                       /*$(".registration").addClass('registration-error');
                       $(".registration").removeClass('registration-success');*/
+                      window.location.replace("/my-enquiry-details/"+response.pat_enq_id);
                     }
                   
                     $("#btnReply").prop('disabled', false);

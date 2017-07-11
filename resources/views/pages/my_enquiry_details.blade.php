@@ -27,7 +27,7 @@
     <div class="qtbox">
         <h3>My <b>Enquiry Details</b></h3>
 
-        
+          <div class="alert alert-info" id="msgdisplay"></div>
         
 
             <div class="top_mail">

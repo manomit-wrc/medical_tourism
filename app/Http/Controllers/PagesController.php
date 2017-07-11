@@ -563,10 +563,10 @@ class PagesController extends Controller
           $patientenqdtls->created_at = $timestamp;
 
           if($patientenqdtls->save()) {
-            return response()->json(['status'=>'1','msg'=>'Successfully reply has been made']);
+            return response()->json(['status'=>'1','pat_enq_id'=>$pat_enq_id,'msg'=>'Successfully reply has been made']);
           }
           else {
-            return response()->json(['status'=>'0','msg'=>'Reply interrupted. Please try again']);
+            return response()->json(['status'=>'0','pat_enq_id'=>$pat_enq_id,'msg'=>'Reply interrupted. Please try again']);
           }
       
 
