@@ -84,6 +84,53 @@
         $(".registration-error").hide(); 
       }
       $(document).ready(function(){
+      <!--////////////////////Reply from login section start here/////////////////////////-->
+      $("#btnReply").click(function(){ 
+        $.ajax({
+                  type: "POST",
+                  url: "/reply",
+                  data: {
+                    pat_enq_id: $("#pat_enq_id").val(),
+                    message: $("#message").val(),
+                    _token: "{{csrf_token()}}"
+                  },
+                  beforeSend:function() {
+                    $("#btnReply").prop('disabled', true);
+                  },
+                  success:function(response) { //alert(response.status);
+                    if(response.status == 1)
+                    {
+                      $(".msgdisplay").html(response.msg);
+                      setTimeout(function(){
+                        $("#message").val('');
+                        $("#rplysection").hide();
+                        
+                      },5000);
+                    }
+                    else {
+
+                      $(".msgdisplay").html(response.msg);
+                      /*$(".registration").addClass('registration-error');
+                      $(".registration").removeClass('registration-success');*/
+                    }
+                  
+                    $("#btnReply").prop('disabled', false);
+
+                  },
+                  error:function(xhr) {
+                    $(".msgdisplay").html("Error occurred. Please try again");
+                   /* $(".msgdisplay").addClass('registration-error');
+                    $(".msgdisplay").removeClass('registration-success');*/
+                    $("#btnReply").prop('disabled', false);
+                  }
+                });
+    });
+    
+     <!--////////////////////Reply from login section end here/////////////////////////-->
+
+
+
+
           // Every time a modal is shown, if it has an autofocus element, focus on it.
           $('.modal').on('shown.bs.modal', function() {
             $(this).find('[autofocus]').focus();
