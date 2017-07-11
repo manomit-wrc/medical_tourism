@@ -1,3 +1,4 @@
+<div id="vertical-scrollbar-demo" class="gray-skin demo scrollable" tabindex="-1">
 @if (count($search_data) > 0)
   @foreach($search_data as $searchval)
     <div class="filterbox">
@@ -8,5 +9,10 @@
     </div>
   @endforeach
 @endif
-
-
+</div>
+<script type="text/javascript">
+  
+        $(".demo").customScrollbar();
+        $("#fixed-thumb-size-demo").customScrollbar({fixedThumbHeight: 50, fixedThumbWidth: 60});
+    
+</script>
