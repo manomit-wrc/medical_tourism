@@ -107,53 +107,8 @@ class HospitalController extends Controller
         ])->validate();
 
       // Getting all data after success validation.
-      
-      $hptl = new Hospital($request->input()) ;
-      $hptl->name = $request->get('name') ;
-      $hptl->description = $request->get('description') ;
-      $hptl->email = $request->get('email') ;
-      $hptl->phone = $request->get('phone') ;
-      $hptl->website = $request->get('website') ;
-      $hptl->search_address = $request->get('search_address') ;
-      $hptl->street_address = $request->get('street_address') ;
-      $hptl->phone = $request->get('phone') ;
-      $hptl->country_id = $request->get('country_id') ;
-      $hptl->state_id = $request->get('state_id') ;
-      $hptl->hosp_latitude = $request->get('hosp_latitude') ;
-      $hptl->hosp_longitude = $request->get('hosp_longitude') ;
-      $hptl->zipcode = $request->get('zipcode') ;
-      $hptl->number_of_beds = $request->get('number_of_beds') ;
-      $hptl->number_of_icu_beds = $request->get('number_of_icu_beds') ;
-      $hptl->number_of_operating_rooms = $request->get('number_of_operating_rooms') ;
-      $hptl->number_of_avg_international_patients = $request->get('number_of_avg_international_patients') ;
+       //Add hospital admin data
      
-
-      if($file = $request->hasFile('avators')) {
-
-            $file = $request->file('avators') ;
-
-            $fileName = time().'_'.$file->getClientOriginalName() ;
-
-            //thumb destination path
-            $destinationPath = public_path().'/uploads/hospitals/thumb' ;
-
-            $img = Image::make($file->getRealPath());
-
-            $img->resize(745, 214, function ($constraint){
-                $constraint->aspectRatio();
-            })->save($destinationPath.'/'.$fileName);
-
-            //original destination path
-            $destinationPath = public_path().'/uploads/hospitals/' ;
-            $file->move($destinationPath,$fileName);
-
-            $hptl->avators = $fileName ;
-      }
-      $hptl->save() ;
-      $hptl->doctorhospital()->attach($request->associated_id);
-      
-      if($hptl->save())//Add hospital admin data
-      { 
         $login_user_id=Auth::guard('admin')->user()->id; //Login user id
         $namevar=$request->user_name;
         $emailvar=$request->user_email;
@@ -175,12 +130,62 @@ class HospitalController extends Controller
           $adminname='Swaasthya Bandhav Admin';
         }  
         
-        $user->save();
+        $user->save(); 
+        $lastinsert_user_id = $user->id;
         $role_user = Role::where('id',2)->first();
         $user->roles()->attach($role_user);
         $rolename=$role_user->name;
         Mail::to($emailvar)->send(new AdminUserRegistrationMail($namevar,$adminname,$rolename,$emailvar,$passvar));
-      }  
+       
+
+
+      if($lastinsert_user_id>0)
+      {  
+        $hptl = new Hospital($request->input()) ;
+        $hptl->name = $request->get('name') ;
+        $hptl->description = $request->get('description') ;
+        $hptl->email = $request->get('email') ;
+        $hptl->phone = $request->get('phone') ;
+        $hptl->website = $request->get('website') ;
+        $hptl->search_address = $request->get('search_address') ;
+        $hptl->street_address = $request->get('street_address') ;
+        $hptl->phone = $request->get('phone') ;
+        $hptl->country_id = $request->get('country_id') ;
+        $hptl->state_id = $request->get('state_id') ;
+        $hptl->hosp_latitude = $request->get('hosp_latitude') ;
+        $hptl->hosp_longitude = $request->get('hosp_longitude') ;
+        $hptl->zipcode = $request->get('zipcode') ;
+        $hptl->number_of_beds = $request->get('number_of_beds') ;
+        $hptl->number_of_icu_beds = $request->get('number_of_icu_beds') ;
+        $hptl->number_of_operating_rooms = $request->get('number_of_operating_rooms') ;
+        $hptl->number_of_avg_international_patients = $request->get('number_of_avg_international_patients') ;
+        $hptl->user_id =$lastinsert_user_id;
+
+        if($file = $request->hasFile('avators')) {
+
+              $file = $request->file('avators') ;
+
+              $fileName = time().'_'.$file->getClientOriginalName() ;
+
+              //thumb destination path
+              $destinationPath = public_path().'/uploads/hospitals/thumb' ;
+
+              $img = Image::make($file->getRealPath());
+
+              $img->resize(745, 214, function ($constraint){
+                  $constraint->aspectRatio();
+              })->save($destinationPath.'/'.$fileName);
+
+              //original destination path
+              $destinationPath = public_path().'/uploads/hospitals/' ;
+              $file->move($destinationPath,$fileName);
+
+              $hptl->avators = $fileName ;
+        }
+        $hptl->save() ;
+        $hptl->doctorhospital()->attach($request->associated_id);
+      }
+      
       
 
       Session::flash('message', 'Successfully added!');
@@ -307,7 +312,7 @@ class HospitalController extends Controller
      */
     public function edit($id)
     {
-        // get the Hotel
+      // get the Hotel
       $data['hosptl_data'] = Hospital::findOrFail($id);
       $data['countries'] = Country::orderBy('name')->pluck('name', 'id')->all();
       $data['states'] = State::orderBy('name')->pluck('name', 'id')->all();
@@ -318,6 +323,9 @@ class HospitalController extends Controller
           $data['doctorhospital_array'][] = $value['id'];
       }
       $data['doctor_list']  = \App\Doctor::where('status', '!=', 2)->orderBy('first_name')->get();
+      //echo "<pre>"; echo $data['hosptl_data']->user_id; die;
+      $data['user_data'] = User::with('roles')->where('id', $data['hosptl_data']->user_id)->get();
+      //echo "<pre>"; print_r($user_data[0]->name); print_r($user_data[0]->roles[0]->name); die;
       /*$data['doctor_list'] = \App\Doctor::get()->pluck('first_name','id')->toArray(); */   
       /* return view('admin.hospitals.edit', compact('hosptl_data','countries','states','cities','hotelclasstypes','doctor_list'));*/
         return view('admin.hospitals.edit',$data);
@@ -334,6 +342,7 @@ class HospitalController extends Controller
     {
         //echo $id; die;
         $hptl = Hospital::find($id);
+        //echo "<pre>";echo $hptl->user_id; die;
         // validate
         //echo "<pre>"; print_r($request->all()); die;
         Validator::make($request->all(), [
@@ -357,13 +366,19 @@ class HospitalController extends Controller
             'number_of_beds' => 'numeric',
             'number_of_icu_beds' => 'numeric',
             'number_of_operating_rooms' => 'numeric',
-            'number_of_avg_international_patients' => 'numeric'            
+            'number_of_avg_international_patients' => 'numeric',
+            'user_name' => 'required|max:50',
+            'user_email' => 'required|email|unique:users,email,'.$hptl->user_id,
+            'password' => ['max:32','min:6','regex:/^(?=.*[a-z|A-Z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/'],           
        ],[
         'country_id.required' => 'country field is required',
         'state_id.required' => 'state field is required',
         'city_id.required' => 'city field is required',
         'hosp_latitude.required' => 'latitude field is required',
-        'hosp_longitude.required' => 'longitude field is required'
+        'hosp_longitude.required' => 'longitude field is required',
+        'user_name.required' => 'Please enter name',
+        'user_name.max' => 'Name maximum have 50 characters',
+        'password.regex' => 'Password should contain atleast one uppercase/lowercase letter,one number and one special character'
         ])->validate();
 
       // Getting all data after success validation.
@@ -410,6 +425,21 @@ class HospitalController extends Controller
       $hptl->save() ;
       $hptl->doctorhospital()->wherePivot('hospital_id', '=', $request->id)->detach();
       $hptl->doctorhospital()->attach($request->associated_id);
+
+
+      //Update in to user table
+      $user_details = User::find($hptl->user_id);
+      $user_details->name = $request->user_name;
+      $user_details->email = $request->user_email;
+      if($request->password) {
+        $user_details->password = bcrypt($request->password);
+      }
+      $user_details->save();
+
+      $user_details->roles()->wherePivot('user_id', '=',$hptl->user_id)->detach();
+      $role_user = Role::where('id',2)->first();
+
+      $user_details->roles()->attach($role_user);
 
         // redirect
         Session::flash('message', 'Successfully updated');
