@@ -261,6 +261,11 @@
                   && /\d/.test(value) // has a digit
                   && /[!@#$%^&*]/.test(value) // has a special character
             },"Must have atleast one uppercase, one lowercase and one number,one special character");
+            
+            $.validator.addMethod("emailRegex", function(value, element) {
+              return this.optional(element) || /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/i.test(value);
+            }, "Email not correct");
+   //end
             $("#frmRegistration").validate({
               rules: {
                 first_name: {
@@ -272,6 +277,7 @@
                 email_id: {
                   required: true,
                   email: true,
+                  emailRegex: true,
                   remote: {
                     url: "/frontend/check_user_exist",
                     type: "GET"
@@ -303,6 +309,7 @@
                 email_id: {
                   required: "Enter Email ID",
                   email: "Enter Valid Email ID",
+                  emailRegex: "Enter Valid Email ID",
                   remote: $.validator.format("{0} is already in use")
 
                 },
@@ -381,7 +388,7 @@
               },
               messages: {
                 login_email_id: {
-                  required: "Please enter email id"
+                  required: "Please enter email id or mobile no"
                 },
                 login_password: {
                   required: "Please enter password"

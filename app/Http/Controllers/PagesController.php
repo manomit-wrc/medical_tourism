@@ -301,7 +301,7 @@ class PagesController extends Controller
       $patient->remember_token = str_replace("/","",Hash::make(str_random(30)));
       $patient->status = "0";
 
-      if($patient->save()) {
+      if($patient->save()){
         $name = $first_name.' '.$last_name;
         $activation_link = config('app.url').'activate/'.$patient->remember_token."/".time();
         Mail::to($request->input('email_id'))->send(new RegistrationEmail($activation_link,$name));

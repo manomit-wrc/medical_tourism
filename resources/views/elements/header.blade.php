@@ -35,12 +35,12 @@
                   <div class="modal-body">
                       <div class="infbox">
                         <div class="userid"><i class="fa fa-user" aria-hidden="true"></i></div>
-                        <input name="login_email_id" id="login_email_id" type="text" class="loginuser" placeholder="Enter Email ID" autofocus/>
+                        <input name="login_email_id" id="login_email_id" type="text" class="loginuser" placeholder="Enter email or mobile no" autofocus/>
                       </div>
                       <br clear="all">
                       <div class="infbox">
                         <div class="userid"><i class="fa fa-unlock-alt" aria-hidden="true"></i></div>
-                        <input name="login_password" id="login_password" type="password" class="loginuser" placeholder="Enter Password" />
+                        <input name="login_password" id="login_password" type="password" class="loginuser" placeholder="Enter password" />
                       </div>
                       <br clear="all">
                       <div class="remindbox">
