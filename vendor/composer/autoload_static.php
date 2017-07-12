@@ -439,6 +439,7 @@ class ComposerStaticInit610c22266a2c39428f9e9e943ff083dc
         'AddHospitalLongitudeHospitalsTable' => __DIR__ . '/../..' . '/database/migrations/2017_06_06_120503_add_hospital_longitude_hospitals_table.php',
         'AddIndicationsMedicaltests' => __DIR__ . '/../..' . '/database/migrations/2017_06_21_120341_add_indications_medicaltests.php',
         'AddIsPatientPatientFirstNamePatientLastNameRelationWithPatients' => __DIR__ . '/../..' . '/database/migrations/2017_06_29_070002_add_is_patient_patient_first_name_patient_last_name_relation_with_patients.php',
+        'AddIsSeenPatientEnquiryDetails' => __DIR__ . '/../..' . '/database/migrations/2017_07_12_070852_add_is_seen_patient_enquiry_details.php',
         'AddIso3NumcodePhonecodeCountriesTable' => __DIR__ . '/../..' . '/database/migrations/2017_06_09_053129_add_iso3_numcode_phonecode_countries_table.php',
         'AddNewsImageToNewsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_05_113435_add_news_image_to_news_table.php',
         'AddNicenameCountriesTable' => __DIR__ . '/../..' . '/database/migrations/2017_06_09_051911_add_nicename_countries_table.php',

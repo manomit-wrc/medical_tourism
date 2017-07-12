@@ -37,6 +37,7 @@ class PatientEnquiryController extends Controller
       $sql="SELECT patenq.*,pat.first_name,pat.last_name FROM patient_enquiries patenq";
       $sql.=" JOIN patients pat ON pat.id=patenq.patient_id ";
       $sql.=" ORDER BY patenq.id DESC";
+      //echo $sql; die;
       $patient_enq_data_obj = DB::select($sql);
       //echo "<pre>"; print_r($patient_enq_data_obj); die;
       $patient_enq_data=array();
@@ -141,7 +142,7 @@ class PatientEnquiryController extends Controller
      */
     public function show($enq_id)
     {
-      // get the Patient enquiry details
+      //get the Patient enquiry details
       $login_user_id=Auth::guard('admin')->user()->id;
       if($login_user_id==1)//If admin login
       {

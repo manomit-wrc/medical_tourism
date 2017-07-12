@@ -1,5 +1,6 @@
 <script type="text/javascript">
   $(document).ready(function(e){
+    
       <!--////////////////////Reply from Admin section start here/////////////////////////-->
       if($("#reply_to_user_type").val()==1)//User is patient
       {
@@ -19,7 +20,7 @@
       }
 
      $("#reply_to_user_type").change(function(e){
-        alert($(this).val());
+        //alert($(this).val());
         if($(this).val()==1)
         {
           $('#user_section_area').show();

@@ -18,6 +18,7 @@ return array(
     'AddHospitalLongitudeHospitalsTable' => $baseDir . '/database/migrations/2017_06_06_120503_add_hospital_longitude_hospitals_table.php',
     'AddIndicationsMedicaltests' => $baseDir . '/database/migrations/2017_06_21_120341_add_indications_medicaltests.php',
     'AddIsPatientPatientFirstNamePatientLastNameRelationWithPatients' => $baseDir . '/database/migrations/2017_06_29_070002_add_is_patient_patient_first_name_patient_last_name_relation_with_patients.php',
+    'AddIsSeenPatientEnquiryDetails' => $baseDir . '/database/migrations/2017_07_12_070852_add_is_seen_patient_enquiry_details.php',
     'AddIso3NumcodePhonecodeCountriesTable' => $baseDir . '/database/migrations/2017_06_09_053129_add_iso3_numcode_phonecode_countries_table.php',
     'AddNewsImageToNewsTable' => $baseDir . '/database/migrations/2017_05_05_113435_add_news_image_to_news_table.php',
     'AddNicenameCountriesTable' => $baseDir . '/database/migrations/2017_06_09_051911_add_nicename_countries_table.php',

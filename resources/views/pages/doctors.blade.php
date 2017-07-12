@@ -7,18 +7,20 @@
         <div class="row">
 
               <div class="fieldboxD">
-                <select name="" class="listtypeleft">
-                    <option value="Specility">Specility</option>
-                    <option value="Specility">Specility</option>
-                    <option value="Specility">Specility</option>
+                <select name="select_procedure" class="listtypeleft">
+                    <option value="">Speciality</option>
+                     @foreach($procedure_list as $key=>$value)
+                      <option value="{{$key}}" >{{$value}}</option>
+                    @endforeach
                 </select>
               </div>
 
               <div class="fieldboxD">
                 <select name="" class="listtypeleft">
-                    <option value="Procedure">Procedure</option>
-                    <option value="Procedure">Procedure</option>
-                    <option value="Procedure">Procedure</option>
+                     <option value="">Procedure</option>
+                    @foreach($treatment_list as $key=>$value)
+                        <option value="{{$key}}" >{{$value}}</option>
+                    @endforeach
                 </select>
               </div>
 
@@ -35,7 +37,11 @@
             @foreach($doctor_data as $doctor_data)
             <div class="col-sm-6 col-md-4">
                 <div class="servicesboxN">
+                    @if(Auth::guard('front')->check())
                     <a href="{!!URL::to('/doctordetail/'.$doctor_data->id)!!}">
+                    @else  
+                    <a href="#" data-toggle="modal" data-target="#LoginModal"> 
+                    @endif 
                     @php
                     if($doctor_data->avators !=''){
                     @endphp
@@ -48,7 +54,15 @@
                     }
                    @endphp
                     </a>
-                    <h4>{{ $doctor_data->first_name.' '.$doctor_data->last_name }}</h4>
+                    <h4>
+                      @if(Auth::guard('front')->check())
+                        <a href="{!!URL::to('/doctordetail/'.$doctor_data->id)!!}">
+                      @else  
+                        <a href="#" data-toggle="modal" data-target="#LoginModal"> 
+                      @endif
+                          {{ $doctor_data->first_name.' '.$doctor_data->last_name }}
+                      </a>  
+                    </h4>
                     <p>{!! \Illuminate\Support\Str::words($doctor_data->about, 8,'....')  !!}</p>
                     <a href="#" class="socialD1"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                     <a href="#" class="socialD2"><i class="fa fa-twitter" aria-hidden="true"></i></a>

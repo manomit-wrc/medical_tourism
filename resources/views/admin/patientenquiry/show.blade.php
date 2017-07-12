@@ -135,6 +135,7 @@
                     <input type="hidden" id="reply_to_user_id" name="reply_to_user_id" value="{{ $patient_enq_data[0]['patient_id'] }}">
 
                     <div class="form-group" >
+                      <label>Whom do you reply to?</label>
                       <select id="reply_to_user_type" name="reply_to_user_type" class="form-control" >
                         <?php 
                         if((Auth::guard('admin')->user()->id)==1)//for admin only
@@ -156,6 +157,7 @@
                     </div>
 
                     <div class="form-group" id="hosp_section_area" style="display:none;">
+                      <label>(Please select multiple hospital to reply at a time)</label>
                       <select id="reply_to_hosp"  name="reply_to_hosp[]" class="form-control" multiple="multiple">
                           @foreach($hospital_list as $key=>$val)
                            <option value="{{ $key }}">{{ $val }}</option>
@@ -164,6 +166,7 @@
                     </div>
                   
                     <div class="form-group">
+                      <label>Message:</label>
                       <textarea id="message" name="message" class="form-control" cols="50" rows="10"></textarea>
                     </div>
 
