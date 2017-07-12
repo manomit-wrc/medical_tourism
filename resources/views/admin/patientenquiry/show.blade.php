@@ -1,6 +1,7 @@
 @extends('admin.layouts.dashboard_layout')
 @section('title', 'Enquiry Details')
 @section('content')
+
 <script>
    
    function showhide(id)
@@ -83,7 +84,7 @@
                               @php
                                 $sender_image=$val['sender_image'];
                               @endphp
-                             <img src="{!!URL::to('/uploads/patients/thumb/'.$sender_image)!!}"  alt="Image 1">
+                             <img src="{!!URL::to('/uploads/patients/'.$sender_image)!!}"  alt="Image 1">
                             @else 
                              <img src="{!!URL::to('storage/frontend/images/noimage.jpg')!!}"  alt="Image 1">
                             @endif
@@ -135,8 +136,18 @@
 
                     <div class="form-group" >
                       <select id="reply_to_user_type" name="reply_to_user_type" class="form-control" >
+                        <?php 
+                        if((Auth::guard('admin')->user()->id)==1)//for admin only
+                        { 
+                        ?>
                         <option value="1">User</option>
                         <option value="2">Hospital</option>
+                        <?php 
+                        }else{ ?>
+                         <option value="3">Admin</option>
+                       <?php
+                        } 
+                        ?>
                       </select>  
                     </div>
                     

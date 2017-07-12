@@ -39,7 +39,16 @@ class HospitalController extends Controller
      * @return Response
      */
     public function index() {
-        $hospitals_list = Hospital::where('status', '!=', 2)->orderBy('name','asc')->get();
+       $login_user_id=Auth::guard('admin')->user()->id; 
+       if($login_user_id==1)//If admin login
+      {
+       $hospitals_list = Hospital::where('status', '!=', 2)->orderBy('name','asc')->get();
+      }
+      else
+      {
+       $hospitals_list = Hospital::where('status', '!=', 2)->where('user_id', '=',$login_user_id)->orderBy('name','asc')->get();
+      }
+        
         return view('admin.hospitals.index')->with('hospitals_list',$hospitals_list);
     }
 

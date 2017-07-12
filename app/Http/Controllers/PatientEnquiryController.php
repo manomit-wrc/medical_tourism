@@ -9,6 +9,7 @@ use App\Patient;
 use App\PatientEnquiry;
 use App\PatientEnquiryDetail;
 use App\PatientEnquiryAttachment;
+use Auth;
 
 use Illuminate\Support\Facades\DB;
 
@@ -22,7 +23,17 @@ class PatientEnquiryController extends Controller
     public function index()
     {
        //$patient_enq_data = PatientEnquiry::orderBy('id','desc')->get();
-       // get the Patient enquiry table
+       //get the Patient enquiry table
+      $login_user_id=Auth::guard('admin')->user()->id;
+      if($login_user_id==1)//If admin login
+      {
+
+      }
+      else
+      {
+
+      } 
+
       $sql="SELECT patenq.*,pat.first_name,pat.last_name FROM patient_enquiries patenq";
       $sql.=" JOIN patients pat ON pat.id=patenq.patient_id ";
       $sql.=" ORDER BY patenq.id DESC";
@@ -130,11 +141,23 @@ class PatientEnquiryController extends Controller
      */
     public function show($enq_id)
     {
-        // get the Patient enquiry details
+      // get the Patient enquiry details
+      $login_user_id=Auth::guard('admin')->user()->id;
+      if($login_user_id==1)//If admin login
+      {
+         $var="";
+      }
+      else
+      {
+         $var=" AND patenqdet.sender_type!=2 AND patenqdet.reciever_type!=2";
+        //$var=" AND patenqdet.sender_type!=2 AND patenqdet.reciever_type!=2 AND  patenqdet.sender_id=".$login_user_id." AND patenqdet.reciever_id=".$login_user_id."";
+      }
         $sql="SELECT patenq.id,pat.avators as images,pat.first_name,pat.last_name,patenq.patient_id,patenq.status,patenqdet.id as enq_detail_id,patenqdet.patient_enquiry_id,patenqdet.sender_id,patenqdet.sender_type,patenqdet.reciever_id,patenqdet.reciever_type,patenqdet.subject,patenqdet.message,patenqdet.created_at FROM patient_enquiries patenq";
         $sql.=" JOIN patients pat ON pat.id=patenq.patient_id ";
-        $sql.=" JOIN patient_enquiry_details patenqdet ON patenqdet.patient_enquiry_id=patenq.id ";
+        $sql.=" JOIN patient_enquiry_details patenqdet ON patenqdet.patient_enquiry_id=patenq.id ".$var;
         $sql.=" WHERE patenqdet.patient_enquiry_id=".$enq_id;
+
+        //echo $sql; die;
         $patient_enq = DB::select($sql);
         //echo "<pre>"; print_r($patient_enq); die;
         $patient_enq_data = array();
@@ -220,7 +243,7 @@ class PatientEnquiryController extends Controller
           else {
             return response()->json(['status'=>'0','msg'=>'Reply interrupted. Please try again']);
           }
-        }else{//for hospital
+        }else if($request->input('reply_to_user_type')==2){//Reply to hospital
           //echo "<pre>"; print_r($request->input('reply_to')); die;
           foreach($request->input('reply_to') as $key=>$val)
           { 
@@ -244,6 +267,28 @@ class PatientEnquiryController extends Controller
                 return response()->json(['status'=>'0','msg'=>'Registration interrupted. Please try again']);
               }
           }
+
+        }else{//Reply to Admin
+            
+              $patientenqdtls = new \App\PatientEnquiryDetail();
+              $patientenqdtls->patient_enquiry_id = $request->input('pat_enq_id');
+              $patientenqdtls->sender_id = Auth::guard('admin')->user()->id;
+              $patientenqdtls->sender_type = 3;
+              $patientenqdtls->reciever_id = $request->input('reply_to');
+              $patientenqdtls->reciever_type = 1;
+              $patientenqdtls->subject = $patient_enq_data->subject;
+              $patientenqdtls->message = $request->input('message');
+              $patientenqdtls->status = 1;
+              $patientenqdtls->created_at = $timestamp;
+              //echo "<pre>"; print_r($patientenqdtls); die;
+              if($patientenqdtls->save()) {
+               
+                return response()->json(['status'=>'1','msg'=>'Registration successfully done. Email activation link is sent to your email']);
+              }
+              else {
+                return response()->json(['status'=>'0','msg'=>'Registration interrupted. Please try again']);
+              }
+         
 
         }
 

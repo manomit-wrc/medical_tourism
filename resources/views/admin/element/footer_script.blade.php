@@ -1,19 +1,25 @@
 <script type="text/javascript">
   $(document).ready(function(e){
       <!--////////////////////Reply from Admin section start here/////////////////////////-->
-      if($("#reply_to_user_type").val()==1)
+      if($("#reply_to_user_type").val()==1)//User is patient
       {
         $('#user_section_area').show();
         $('#hosp_section_area').hide();
       }
-      if($("#reply_to_user_type").val()==2)
+      if($("#reply_to_user_type").val()==2)//User is hospital
       {
         $('#user_section_area').hide();
         $('#hosp_section_area').show();
       }
 
+      if($("#reply_to_user_type").val()==3)//User is Admin
+      {
+        $('#reply_to_user_id').val(1);
+       
+      }
+
      $("#reply_to_user_type").change(function(e){
-        //alert($(this).val());
+        alert($(this).val());
         if($(this).val()==1)
         {
           $('#user_section_area').show();
