@@ -63,7 +63,7 @@
                         </td> -->
                         <td align="right">
                          <a href="{!!URL::to('/my-enquiry-details',$val['id'])!!}" data-toggle="tooltip" data-original-title="View">
-                          {{ date("d F Y",strtotime($val['created_at'])) }} at {{ date("g:ha",strtotime($val['created_at'])) }}</td>
+                          {{ date("d F Y g:i A",strtotime($val['created_at'])) }}</td>
                          </a>
                       </tr>
                        @endforeach

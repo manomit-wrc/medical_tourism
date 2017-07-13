@@ -261,7 +261,7 @@
                     <label>
                       Document :<span style="color:red;">*</span>
                       <input name="document" id="document" style="margin-top:10px;" type="file" value=""/>
-                      <div style="margin-top:10px;"><span style="color:red;">Note : </span>Please upload bmp, gif, jpg, jpeg, png, mp4, flv, avi, wmv, asf, webm, ogv, txt, pdf, psd, doc, rtf, ppt, docx extension file.
+                      <div style="margin-top:10px;"><span style="color:red;">Note : </span>Please upload bmp,&nbsp;gif,&nbsp; jpg,&nbsp; jpeg,&nbsp; png,&nbsp; mp4,&nbsp; flv,&nbsp; avi,&nbsp; wmv,&nbsp; asf,&nbsp; webm,&nbsp; ogv,&nbsp; txt,&nbsp; pdf,&nbsp; psd,&nbsp; doc,&nbsp; rtf,&nbsp; ppt,&nbsp; docx extension file.
                       </div>   
                     </label>                
                   </div> 

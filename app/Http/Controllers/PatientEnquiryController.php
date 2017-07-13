@@ -59,12 +59,11 @@ class PatientEnquiryController extends Controller
       }else{
         $userdata = User::where('id',$id)->get()->toArray();
         $data =$userdata[0]['name'];
-       } 
-     
-        return $data;
+      } 
+      return $data;
     }
 
-     public function gettuserimage($table,$id)
+    public function gettuserimage($table,$id)
     { //echo $table; die;
        $data ='';  
       if($table=='Patient')

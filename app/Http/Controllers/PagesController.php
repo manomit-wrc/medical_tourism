@@ -537,8 +537,7 @@ class PagesController extends Controller
             
       }
       //echo "<pre>"; print_r($patient_enq_data); 
-      //die;
-       
+      //die;       
 
       return view('pages.my_enquiry')->with(['country_details'=>$country_details,'state_details'=>$state_details,'city_details'=>$city_details,'patient_enq_data'=>$patient_enq_data]);    
   }
@@ -613,7 +612,7 @@ class PagesController extends Controller
           );
         }
         return $data;
-    }
+  }
 
  public function gettusername($table,$id)
  { //echo $table; die;

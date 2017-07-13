@@ -47,13 +47,12 @@
                   </ul>
                 </li>
                 <li class="back_right"><a href="{{ url('/my-enquiry') }}"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a></li>
-            </div>
+            </div>  
 
-            
-
-             <div class="mailarea">
+            <div class="mailarea">
                 @if (count($patient_enq_data) > 0)
                     @foreach($patient_enq_data as $key=>$val)
+
                 <div id="abc<?php echo $val['enq_detail_id']; ?>" class="loopbox">
                     <a href="javascript:void(0)" onclick="showhide(<?php echo $val['enq_detail_id']; ?>)" >
                       <div class="row">
@@ -68,7 +67,7 @@
                             @endif
                           </div>
                           <div class="col-xs-9"><div class="loopname">{{ $val['sender_name'] }}</div></div>
-                          <div class="col-xs-2" align="right"><div class="loopname">{{ date("d F Y",strtotime($val['created_at'])) }} </div></div>
+                          <div class="col-xs-2" align="right"><div class="loopname">{{ date("d F Y g:i A",strtotime($val['created_at'])) }} </div></div>
                       </div>
                     </a>
 
@@ -101,11 +100,8 @@
                            <i class="fa fa-paperclip" aria-hidden="true"></i> <a href="{!!URL::to('/attachment-download',$val1['id'])!!}" >{!! $val1['attachment'] !!} </a>
                             </div>
                           @endforeach
-                      @endif
-                          
-
-
-                    </div>
+                      @endif 
+                      </div>
                 </div>
                  @endforeach
               @endif

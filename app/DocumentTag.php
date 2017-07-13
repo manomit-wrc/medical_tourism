@@ -8,7 +8,7 @@ class DocumentTag extends Model
 {
 	protected $table = 'document_tags';
    	protected $fillable = ['tag_name','status','created_at','updated_at'];
-    /*public function document() {
+    public function document() {
        return $this->belongsTo('\App\Document');
-    }*/
+    }
 }

@@ -18,8 +18,7 @@ class PatientEnquiry extends Model
      *
      * @var array
      */
-    protected $fillable = ['subject','status','created_at','updated_at'];
-    
+    protected $fillable = ['subject','status','created_at','updated_at'];   
    
     public function patientenquirydetails()
     {
