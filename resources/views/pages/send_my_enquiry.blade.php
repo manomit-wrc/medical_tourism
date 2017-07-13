@@ -33,14 +33,14 @@
                 </div>
                 <div class="col-md-12">                    
                     <label>
-                         Attachment
+                         Attachments
                            <input type="file" name="avators[]" multiple />
                    </label>
                     <br />
                 </div>
                 <div class="col-md-12">
                       <label>                           
-                          <input type="checkbox" value="1" class="te_fr feild_right required" id="upload_document" onclick="adduploadocument()" name="upload_document"> Chose document from your library
+                          <input type="checkbox" value="1" class="te_fr feild_right required" id="upload_document" onclick="adduploadocument()" name="upload_document"> Choose documents from your library
                       </label>
                 </div>
                   <div class="col-md-12" style="display:none;" id="new_tag_name">

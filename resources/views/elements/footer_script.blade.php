@@ -84,6 +84,55 @@
         $(".registration-error").hide(); 
       }
       $(document).ready(function(){
+      <!--////////////////////Reply from login section start here/////////////////////////-->
+      $("#btnReply").click(function(){ 
+        $.ajax({
+                  type: "POST",
+                  url: "/reply",
+                  data: {
+                    pat_enq_id: $("#pat_enq_id").val(),
+                    message: $("#message").val(),
+                    _token: "{{csrf_token()}}"
+                  },
+                  beforeSend:function() {
+                    $("#btnReply").prop('disabled', true);
+                  },
+                  success:function(response) { //alert(response.status);
+                    if(response.status == 1)
+                    {
+                      $("#msgdisplay").html(response.msg);
+                      setTimeout(function(){
+                        $("#message").val('');
+                        $("#rplysection").hide();
+                        
+                      },5000);
+                      window.location.replace("/my-enquiry-details/"+response.pat_enq_id);
+                    }
+                    else {
+
+                      $("#msgdisplay").html(response.msg);
+                      /*$(".registration").addClass('registration-error');
+                      $(".registration").removeClass('registration-success');*/
+                      window.location.replace("/my-enquiry-details/"+response.pat_enq_id);
+                    }
+                  
+                    $("#btnReply").prop('disabled', false);
+
+                  },
+                  error:function(xhr) {
+                    $(".msgdisplay").html("Error occurred. Please try again");
+                   /* $(".msgdisplay").addClass('registration-error');
+                    $(".msgdisplay").removeClass('registration-success');*/
+                    $("#btnReply").prop('disabled', false);
+                  }
+                });
+    });
+    
+     <!--////////////////////Reply from login section end here/////////////////////////-->
+
+
+
+
           // Every time a modal is shown, if it has an autofocus element, focus on it.
           $('.modal').on('shown.bs.modal', function() {
             $(this).find('[autofocus]').focus();
@@ -212,6 +261,11 @@
                   && /\d/.test(value) // has a digit
                   && /[!@#$%^&*]/.test(value) // has a special character
             },"Must have atleast one uppercase, one lowercase and one number,one special character");
+            
+            $.validator.addMethod("emailRegex", function(value, element) {
+              return this.optional(element) || /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/i.test(value);
+            }, "Email not correct");
+   //end
             $("#frmRegistration").validate({
               rules: {
                 first_name: {
@@ -223,6 +277,7 @@
                 email_id: {
                   required: true,
                   email: true,
+                  emailRegex: true,
                   remote: {
                     url: "/frontend/check_user_exist",
                     type: "GET"
@@ -254,6 +309,7 @@
                 email_id: {
                   required: "Enter Email ID",
                   email: "Enter Valid Email ID",
+                  emailRegex: "Enter Valid Email ID",
                   remote: $.validator.format("{0} is already in use")
 
                 },
@@ -332,7 +388,7 @@
               },
               messages: {
                 login_email_id: {
-                  required: "Please enter email id"
+                  required: "Please enter email id or mobile no"
                 },
                 login_password: {
                   required: "Please enter password"

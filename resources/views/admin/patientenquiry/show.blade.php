@@ -1,6 +1,7 @@
 @extends('admin.layouts.dashboard_layout')
 @section('title', 'Enquiry Details')
 @section('content')
+
 <script>
    
    function showhide(id)
@@ -16,7 +17,12 @@
           document.getElementById("abc"+id).style.backgroundColor = "#f2f2f2";
       }
     }
-
+    
+    function opentextarea()
+    { 
+        var rplysectiondiv = document.getElementById("rplysection"); 
+        rplysectiondiv.style.display = "block";
+    }
 </script>
  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -38,7 +44,6 @@
      <section class="content">
       <div class="row">
         <div class="col-xs-12">
-
           <div class="box">
             <div class="box-header">
               <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
@@ -51,6 +56,7 @@
               @if (Session::has('message'))
                   <div class="alert alert-info" id="result7">{{ Session::get('message') }}</div>
               @endif
+              <div class="alert alert-info msgdisplay" style="display:none;"></div>
               <div class="top_mail">
                 <h5>{{ $patient_enq_data[0]['subject'] }}</h5>
 
@@ -67,8 +73,8 @@
             
 
              <div class="mailarea">             
-                @if (count($patient_enq_data) > 0)
-                    @foreach($patient_enq_data as $key=>$val)
+              @if (count($patient_enq_data) > 0)
+                @foreach($patient_enq_data as $key=>$val)
                 <div id="abc<?php echo $val['enq_detail_id']; ?>" class="loopbox">
                     <a href="javascript:void(0)" onclick="showhide(<?php echo $val['enq_detail_id']; ?>)" >
                       <div class="row">
@@ -77,7 +83,7 @@
                               @php
                                 $sender_image=$val['sender_image'];
                               @endphp
-                             <img src="{!!URL::to('/uploads/patients/thumb/'.$sender_image)!!}"  alt="Image 1">
+                             <img src="{!!URL::to('/uploads/patients/'.$sender_image)!!}"  alt="Image 1">
                             @else 
                              <img src="{!!URL::to('storage/frontend/images/noimage.jpg')!!}"  alt="Image 1">
                             @endif
@@ -89,12 +95,12 @@
 
                     <div id="newpost<?php echo $val['enq_detail_id']; ?>" style="display:none;" class="maildet">
                       <div class="mailsender">
-                      to me
+                      to {{ $val['reciever_name'] }}
                       <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                          <li><a>From : arijit@wrctechnologies.com</a></li>
-                          <li><a>to : master@wrctechnologies.com</a></li>
+                          <li><a>From : {{ $val['sender_email'] }}</a></li>
+                          <li><a>to : {{ $val['reciever_email'] }}</a></li>
                         </ul>
                       </li>
 
@@ -102,7 +108,7 @@
                       <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                          <li><a href="#"><i class="fa fa-reply" aria-hidden="true"></i> Reply</a></li>
+                          <li><a href="javascript:void(0);" onclick="return opentextarea();" ><i class="fa fa-reply" aria-hidden="true"></i> Reply</a></li>
                         </ul>
                       </li>
                       <p>
@@ -119,10 +125,58 @@
                 </div>
                  @endforeach
               @endif
-                
-
-
              </div>
+             
+              <!--Reply section start here-->
+              <div id="rplysection" style="display:none;">
+                  <form name="frmReplypat" id="frmReplypat" method="post" >
+                    <input type="hidden" id="pat_enq_id" name="pat_enq_id" value="{{ $patient_enq_data[0]['id'] }}">
+                    <input type="hidden" id="reply_to_user_id" name="reply_to_user_id" value="{{ $patient_enq_data[0]['patient_id'] }}">
+
+                    <div class="form-group" >
+                      <label>Whom do you reply to?</label>
+                      <select id="reply_to_user_type" name="reply_to_user_type" class="form-control" >
+                        <?php 
+                        if((Auth::guard('admin')->user()->id)==1)//for admin only
+                        { 
+                        ?>
+                        <option value="1">User</option>
+                        <option value="2">Hospital</option>
+                        <?php 
+                        }else{ ?>
+                         <option value="3">Admin</option>
+                       <?php
+                        } 
+                        ?>
+                      </select>  
+                    </div>
+                    
+                    <div class="form-group" id="user_section_area">
+                      <input type="text" id="reply_to_user"  name="reply_to_user" class="form-control" value="{{ $patient_enq_data[0]['sender_name'] }}">
+                    </div>
+
+                    <div class="form-group" id="hosp_section_area" style="display:none;">
+                      <label>(Please select multiple hospital to reply at a time)</label>
+                      <select id="reply_to_hosp"  name="reply_to_hosp[]" class="form-control" multiple="multiple">
+                          @foreach($hospital_list as $key=>$val)
+                           <option value="{{ $key }}">{{ $val }}</option>
+                          @endforeach
+                      </select>
+                    </div>
+                  
+                    <div class="form-group">
+                      <label>Message:</label>
+                      <textarea id="message" name="message" class="form-control" cols="50" rows="10"></textarea>
+                    </div>
+
+                    <div>
+                        <button type="button" class="btn btn-primary pull-left" id="btnReply">SEND</button>
+                    </div>
+                </form>
+              </div> 
+               <!--Reply section end here-->
+
+
             </div>
 
             <!--Modal section start  here-->

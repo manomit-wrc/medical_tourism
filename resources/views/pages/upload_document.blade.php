@@ -38,8 +38,8 @@
                                     @endphp
 
                                     <tr>
-                                        <td>{{ $doc_data->file_name }} <br />
-                                        {{ $doc_data->document }}        
+                                        <td>{{ $doc_data->file_name }}<br />
+                                            {{ $doc_data->document }}        
                                         </td>
                                         <td><a href="{!!URL::to('/document-download',$doc_data->id)!!}" >
                                             @php
@@ -57,7 +57,6 @@
                                                 }
                                             @endphp
                                             </a>
-
                                         </td>
                                         <td>{{ $doc_data->document }}</td>
                                         <td><a data-toggle="tooltip" data-placement="top" title="Click here for delete this document" href="javascript:void(0)" onclick="return deldata('{!!URL::to('/document-delete',$doc_data->id)!!}')"><i class="fa fa-times" style="color:red;" aria-hidden="true"></i></a></td>

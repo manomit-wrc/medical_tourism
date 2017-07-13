@@ -628,7 +628,7 @@ class PagesController extends Controller
    
       return $data;
   }
-   public function gettuserimage($table,$id)
+  public function gettuserimage($table,$id)
   { //echo $table; die;
      $data ='';  
     if($table=='Patient')

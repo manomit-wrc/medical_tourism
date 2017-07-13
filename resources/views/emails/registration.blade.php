@@ -8,7 +8,7 @@
     <p>You have successfully registered to Swaasthya Bandhav.</p>
     <p>Click on the below link to activate your account.<br />
     <a href="{{$activation_link}}" target="_blank">Activation Link</a><p>
-    <p>if the above link does not work, copy the {{$activation_link}} and paste it in the address bar of your browser.</p>
+    <p>If the above link does not work, copy and paste the below link in the address bar of your browser.</p>
     {{$activation_link}}
     </td>
 

@@ -4,18 +4,6 @@
 <div class="col-md-8">
     <div class="qtbox">
         <h3>My <b>Enquiries</b></h3>
-       
-        <script>
-          /* function showhide()
-           {
-                 var div = document.getElementById("newpost");
-                  if (div.style.display !== "none") {
-                      div.style.display = "none";
-                  }else{
-                      div.style.display = "block";
-                  }
-          }*/
-        </script>
 
         @if (Session::has('message'))
                 <div class="alert alert-info" id="resultdocumentmsg">{{ Session::get('message') }}</div>
@@ -23,8 +11,6 @@
         @if (Session::has('error_message'))
             <div class="alert alert-warning" id="resultdocumentmsg">{{ Session::get('error_message') }}</div>
         @endif
-
-        
 
 
             <div class="table-responsive">
@@ -39,7 +25,7 @@
                 <table class="table table-condensed">
                      @if (count($patient_enq_data) > 0)
                         @foreach($patient_enq_data as $key=>$val)
-                      <tr>
+                      <tr bgcolor="{{ $val['total']>1?'#E6E6FA':'' }}">
                        <!-- <td><b>{{ $val['first_name'].' '.$val['last_name'] }}</b></td> -->
                       
                        <td>
