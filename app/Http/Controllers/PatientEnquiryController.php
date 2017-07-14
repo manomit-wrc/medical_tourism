@@ -9,6 +9,7 @@ use App\Patient;
 use App\PatientEnquiry;
 use App\PatientEnquiryDetail;
 use App\PatientEnquiryAttachment;
+use Auth;
 
 use Illuminate\Support\Facades\DB;
 
@@ -22,10 +23,21 @@ class PatientEnquiryController extends Controller
     public function index()
     {
        //$patient_enq_data = PatientEnquiry::orderBy('id','desc')->get();
-       // get the Patient enquiry table
+       //get the Patient enquiry table
+      $login_user_id=Auth::guard('admin')->user()->id;
+      if($login_user_id==1)//If admin login
+      {
+
+      }
+      else
+      {
+
+      } 
+
       $sql="SELECT patenq.*,pat.first_name,pat.last_name FROM patient_enquiries patenq";
       $sql.=" JOIN patients pat ON pat.id=patenq.patient_id ";
       $sql.=" ORDER BY patenq.id DESC";
+      //echo $sql; die;
       $patient_enq_data_obj = DB::select($sql);
       //echo "<pre>"; print_r($patient_enq_data_obj); die;
       $patient_enq_data=array();
@@ -50,20 +62,35 @@ class PatientEnquiryController extends Controller
        return view('admin.patientenquiry.index', compact('patient_enq_data'));
     }
 
-    public function gettusername($table,$id) { //echo $table; die;
-       $data ='';  
+    public function gettusername($table,$id) { //echo $table; $id; die;
+      $data ='';  
       if($table=='Patient')
       {
-        $userdata = Patient::where('id',$id)->get()->toArray();
+         $userdata = Patient::where('id',$id)->get()->toArray();
          $data =$userdata[0]['first_name'].' '.$userdata[0]['last_name'];
       }else{
         $userdata = User::where('id',$id)->get()->toArray();
         $data =$userdata[0]['name'];
-      } 
-      return $data;
+       } 
+     
+        return $data;
     }
 
-    public function gettuserimage($table,$id)
+     public function gettuseremail($table,$id) { //echo $table; die;
+       $data ='';  
+      if($table=='Patient')
+      {
+         $userdata = Patient::where('id',$id)->get()->toArray();
+         $data =$userdata[0]['email_id'].' '.$userdata[0]['last_name'];
+      }else{
+        $userdata = User::where('id',$id)->get()->toArray();
+        $data =$userdata[0]['email'];
+       } 
+     
+        return $data;
+    }
+
+     public function gettuserimage($table,$id)
     { //echo $table; die;
        $data ='';  
       if($table=='Patient')
@@ -72,9 +99,8 @@ class PatientEnquiryController extends Controller
          $data =$userdata[0]['avators'];
       }else{
          $data =null;
-      } 
-     
-        return $data;
+      }     
+      return $data;
     }
 
 
@@ -115,11 +141,23 @@ class PatientEnquiryController extends Controller
      */
     public function show($enq_id)
     {
-        // get the Patient enquiry details
+      //get the Patient enquiry details
+      $login_user_id=Auth::guard('admin')->user()->id;
+      if($login_user_id==1)//If admin login
+      {
+         $var="";
+      }
+      else
+      {
+         $var=" AND patenqdet.sender_type!=2 AND patenqdet.reciever_type!=2";
+        //$var=" AND patenqdet.sender_type!=2 AND patenqdet.reciever_type!=2 AND  patenqdet.sender_id=".$login_user_id." AND patenqdet.reciever_id=".$login_user_id."";
+      }
         $sql="SELECT patenq.id,pat.avators as images,pat.first_name,pat.last_name,patenq.patient_id,patenq.status,patenqdet.id as enq_detail_id,patenqdet.patient_enquiry_id,patenqdet.sender_id,patenqdet.sender_type,patenqdet.reciever_id,patenqdet.reciever_type,patenqdet.subject,patenqdet.message,patenqdet.created_at FROM patient_enquiries patenq";
         $sql.=" JOIN patients pat ON pat.id=patenq.patient_id ";
-        $sql.=" JOIN patient_enquiry_details patenqdet ON patenqdet.patient_enquiry_id=patenq.id ";
+        $sql.=" JOIN patient_enquiry_details patenqdet ON patenqdet.patient_enquiry_id=patenq.id ".$var;
         $sql.=" WHERE patenqdet.patient_enquiry_id=".$enq_id;
+
+        //echo $sql; die;
         $patient_enq = DB::select($sql);
         //echo "<pre>"; print_r($patient_enq); die;
         $patient_enq_data = array();
@@ -129,23 +167,27 @@ class PatientEnquiryController extends Controller
           if($vall->sender_type==2)//If sender is patient
           {
               $sender_name = $this->gettusername('Patient',$vall->sender_id);
+              $sender_email = $this->gettuseremail('Patient',$vall->sender_id);
               $sender_image = $this->gettuserimage('Patient',$vall->sender_id);
               
           }
           else
           {//If sender is admin or hospital
               $sender_name = $this->gettusername('User',$vall->sender_id);
+              $sender_email = $this->gettuseremail('User',$vall->sender_id);
               $sender_image ='';
           } 
 
           if($vall->reciever_type==2)//If reciever is patient
           {
               $reciever_name = $this->gettusername('Patient',$vall->reciever_id);
+              $reciever_email = $this->gettuseremail('Patient',$vall->reciever_id);
               $reciever_image = $this->gettuserimage('Patient',$vall->reciever_id);
           }
           else
           {//If reciever is admin or hospital
               $reciever_name = $this->gettusername('User',$vall->reciever_id);
+              $reciever_email = $this->gettuseremail('User',$vall->reciever_id);
               $reciever_image ='';
           } 
 
@@ -155,10 +197,12 @@ class PatientEnquiryController extends Controller
             'patient_id' => $vall->patient_id,
             'first_name' => $vall->first_name,
             'last_name' => $vall->last_name,
-            'sender_name' => $sender_name, 
+            'sender_name' => $sender_name,
+            'sender_email' => $sender_email, 
             'sender_type' => $vall->sender_type,
             'sender_image' => $sender_image,  
             'reciever_name' => $reciever_name, 
+            'reciever_email' => $reciever_email, 
             'reciever_type' => $vall->reciever_type, 
             'reciever_image' => $reciever_image, 
             'subject' => $vall->subject,
@@ -168,8 +212,88 @@ class PatientEnquiryController extends Controller
           );
         }
         //echo "<pre>"; print_r($patient_enq_data); die;
-       return view('admin.patientenquiry.show', compact('patient_enq_data'));
+        $hospital_list = \App\Hospital::orderBy('name','asc')->get()->pluck('name','user_id')->toArray();
+        //echo "<pre>"; print_r($hospital_list); die;
+       return view('admin.patientenquiry.show', compact('patient_enq_data','hospital_list'));
     }
+    public function reply(Request $request) {
+      //echo "<pre>"; print_r($request->input()); die;
+      if($request->ajax()) {
+         $pat_enq_id=$request->input('pat_enq_id');
+         $patient_enq_data = PatientEnquiry::findOrFail($pat_enq_id);
+         //echo $patient_enq_data->subject; die;
+         date_default_timezone_set('Asia/Kolkata');
+         $timestamp = date("Y-m-d H:i:s");
+        if($request->input('reply_to_user_type')==1)//For user
+        {
+          $patientenqdtls = new \App\PatientEnquiryDetail();
+          $patientenqdtls->patient_enquiry_id = $request->input('pat_enq_id');
+          $patientenqdtls->sender_id =1; //Auth::guard('admin')->user()->id;
+          $patientenqdtls->sender_type = 1;
+          $patientenqdtls->reciever_id = $request->input('reply_to');
+          $patientenqdtls->reciever_type = 2;
+          $patientenqdtls->subject = $patient_enq_data->subject;
+          $patientenqdtls->message = $request->input('message');
+          $patientenqdtls->status = 1;
+          $patientenqdtls->created_at = $timestamp;
+
+          if($patientenqdtls->save()) {
+            return response()->json(['status'=>'1','msg'=>'Successfully reply has been made']);
+          }
+          else {
+            return response()->json(['status'=>'0','msg'=>'Reply interrupted. Please try again']);
+          }
+        }else if($request->input('reply_to_user_type')==2){//Reply to hospital
+          //echo "<pre>"; print_r($request->input('reply_to')); die;
+          foreach($request->input('reply_to') as $key=>$val)
+          { 
+              
+              $patientenqdtls = new \App\PatientEnquiryDetail();
+              $patientenqdtls->patient_enquiry_id = $request->input('pat_enq_id');
+              $patientenqdtls->sender_id = 1;//Auth::guard('admin')->user()->id;
+              $patientenqdtls->sender_type = 1;
+              $patientenqdtls->reciever_id = $val;
+              $patientenqdtls->reciever_type = 3;
+              $patientenqdtls->subject = $patient_enq_data->subject;
+              $patientenqdtls->message = $request->input('message');
+              $patientenqdtls->status = 1;
+              $patientenqdtls->created_at = $timestamp;
+              //echo "<pre>"; print_r($patientenqdtls); die;
+              if($patientenqdtls->save()) {
+               
+                return response()->json(['status'=>'1','msg'=>'Registration successfully done. Email activation link is sent to your email']);
+              }
+              else {
+                return response()->json(['status'=>'0','msg'=>'Registration interrupted. Please try again']);
+              }
+          }
+
+        }else{//Reply to Admin
+            
+              $patientenqdtls = new \App\PatientEnquiryDetail();
+              $patientenqdtls->patient_enquiry_id = $request->input('pat_enq_id');
+              $patientenqdtls->sender_id = Auth::guard('admin')->user()->id;
+              $patientenqdtls->sender_type = 3;
+              $patientenqdtls->reciever_id = $request->input('reply_to');
+              $patientenqdtls->reciever_type = 1;
+              $patientenqdtls->subject = $patient_enq_data->subject;
+              $patientenqdtls->message = $request->input('message');
+              $patientenqdtls->status = 1;
+              $patientenqdtls->created_at = $timestamp;
+              //echo "<pre>"; print_r($patientenqdtls); die;
+              if($patientenqdtls->save()) {
+               
+                return response()->json(['status'=>'1','msg'=>'Registration successfully done. Email activation link is sent to your email']);
+              }
+              else {
+                return response()->json(['status'=>'0','msg'=>'Registration interrupted. Please try again']);
+              }
+         
+
+        }
+
+    }
+  }
     public function attachment($enq_detail_id) {
       $patientenquiryattach = PatientEnquiryAttachment::where('patient_enquiry_details_id',$enq_detail_id)->get()->toArray();      
         $data = array();

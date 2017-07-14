@@ -497,7 +497,7 @@ class PagesController extends Controller
     $city_details = \App\Patient::with('cities')->find(Auth::guard('front')->user()->id)->toArray();
     return view('pages.upload_document')->with(['country_details'=>$country_details,'state_details'=>$state_details,'city_details'=>$city_details,'documentdata'=>$documentdata]);    
   }
-  public function my_enquiry_send() {
+ public function my_enquiry_send() {
     $country_details = \App\Patient::with('countries')->find(Auth::guard('front')->user()->id)->toArray();
     $state_details = \App\Patient::with('states')->find(Auth::guard('front')->user()->id)->toArray();
     $city_details = \App\Patient::with('cities')->find(Auth::guard('front')->user()->id)->toArray();
@@ -521,7 +521,7 @@ class PagesController extends Controller
       $patient_enq_data=array();
       foreach($patient_enq_data_obj AS $key=>$val){
         //total count from enquiry details
-        $sqlnw="SELECT count(id) AS total FROM patient_enquiry_details WHERE patient_enquiry_id=".$val->id;
+        $sqlnw="SELECT count(id) AS total FROM patient_enquiry_details WHERE patient_enquiry_id=".$val->id." AND sender_type!=3 AND reciever_type!=3";
         $pat_data = DB::select($sqlnw);
         //echo "<pre>"; print_r($pat_data[0]->total);
         //echo "<pre>"; print_r($val->id); 
@@ -537,9 +537,40 @@ class PagesController extends Controller
             
       }
       //echo "<pre>"; print_r($patient_enq_data); 
-      //die;       
+      //die;
+       
 
       return view('pages.my_enquiry')->with(['country_details'=>$country_details,'state_details'=>$state_details,'city_details'=>$city_details,'patient_enq_data'=>$patient_enq_data]);    
+  }
+  public function reply(Request $request) {
+      //echo "<pre>"; print_r($request->input()); die;
+      if($request->ajax()) {
+         $pat_enq_id=$request->input('pat_enq_id');
+         $patient_enq_data = PatientEnquiry::findOrFail($pat_enq_id);
+         //echo $patient_enq_data->subject; die;
+         date_default_timezone_set('Asia/Kolkata');
+         $timestamp = date("Y-m-d H:i:s");
+       
+          $patientenqdtls = new \App\PatientEnquiryDetail();
+          $patientenqdtls->patient_enquiry_id = $request->input('pat_enq_id');
+          $patientenqdtls->sender_id =Auth::guard('front')->user()->id;
+          $patientenqdtls->sender_type = 2;
+          $patientenqdtls->reciever_id = 1;
+          $patientenqdtls->reciever_type = 1;
+          $patientenqdtls->subject = $patient_enq_data->subject;
+          $patientenqdtls->message = $request->input('message');
+          $patientenqdtls->status = 1;
+          $patientenqdtls->created_at = $timestamp;
+
+          if($patientenqdtls->save()) {
+            return response()->json(['status'=>'1','pat_enq_id'=>$pat_enq_id,'msg'=>'Successfully reply has been made']);
+          }
+          else {
+            return response()->json(['status'=>'0','pat_enq_id'=>$pat_enq_id,'msg'=>'Reply interrupted. Please try again']);
+          }
+      
+
+    }
   }
   public function my_enquiry_details($enq_id=null) {
     $country_details = \App\Patient::with('countries')->find(Auth::guard('front')->user()->id)->toArray();
@@ -550,7 +581,7 @@ class PagesController extends Controller
         $sql="SELECT patenq.id,pat.avators as images,pat.first_name,pat.last_name,patenq.patient_id,patenq.status,patenqdet.id as enq_detail_id,patenqdet.patient_enquiry_id,patenqdet.sender_id,patenqdet.sender_type,patenqdet.reciever_id,patenqdet.reciever_type,patenqdet.subject,patenqdet.message,patenqdet.created_at FROM patient_enquiries patenq";
         $sql.=" JOIN patients pat ON pat.id=patenq.patient_id ";
         $sql.=" JOIN patient_enquiry_details patenqdet ON patenqdet.patient_enquiry_id=patenq.id ";
-        $sql.=" WHERE patenqdet.patient_enquiry_id=".$enq_id;
+        $sql.=" WHERE patenqdet.patient_enquiry_id=".$enq_id." AND patenqdet.sender_type!=3 AND patenqdet.reciever_type!=3";
         $patient_enq = DB::select($sql);
         //echo "<pre>"; print_r($patient_enq); die;
         $patient_enq_data = array();
@@ -560,23 +591,27 @@ class PagesController extends Controller
           if($vall->sender_type==2)//If sender is patient
           {
               $sender_name = $this->gettusername('Patient',$vall->sender_id);
+              $sender_email = $this->gettuseremail('Patient',$vall->sender_id);
               $sender_image = $this->gettuserimage('Patient',$vall->sender_id);
               
           }
           else
           {//If sender is admin or hospital
               $sender_name = $this->gettusername('User',$vall->sender_id);
+              $sender_email = $this->gettuseremail('User',$vall->sender_id);
               $sender_image ='';
           } 
 
           if($vall->reciever_type==2)//If reciever is patient
           {
               $reciever_name = $this->gettusername('Patient',$vall->reciever_id);
+              $reciever_email = $this->gettuseremail('Patient',$vall->reciever_id);
               $reciever_image = $this->gettuserimage('Patient',$vall->reciever_id);
           }
           else
           {//If reciever is admin or hospital
               $reciever_name = $this->gettusername('User',$vall->reciever_id);
+              $reciever_email = $this->gettuseremail('User',$vall->reciever_id);
               $reciever_image ='';
           } 
 
@@ -586,10 +621,12 @@ class PagesController extends Controller
             'patient_id' => $vall->patient_id,
             'first_name' => $vall->first_name,
             'last_name' => $vall->last_name,
-            'sender_name' => $sender_name, 
+            'sender_name' => $sender_name,
+            'sender_email' => $sender_email, 
             'sender_type' => $vall->sender_type,
             'sender_image' => $sender_image,  
-            'reciever_name' => $reciever_name, 
+            'reciever_name' => $reciever_name,
+            'reciever_email' => $reciever_email,
             'reciever_type' => $vall->reciever_type, 
             'reciever_image' => $reciever_image, 
             'subject' => $vall->subject,
@@ -612,7 +649,7 @@ class PagesController extends Controller
           );
         }
         return $data;
-  }
+    }
 
  public function gettusername($table,$id)
  { //echo $table; die;
@@ -627,6 +664,19 @@ class PagesController extends Controller
      } 
    
       return $data;
+  }
+  public function gettuseremail($table,$id) { //echo $table; die;
+      $data ='';  
+      if($table=='Patient')
+      {
+         $userdata = Patient::where('id',$id)->get()->toArray();
+         $data =$userdata[0]['email_id'].' '.$userdata[0]['last_name'];
+      }else{
+        $userdata = User::where('id',$id)->get()->toArray();
+        $data =$userdata[0]['email'];
+       } 
+     
+        return $data;
   }
   public function gettuserimage($table,$id)
   { //echo $table; die;
@@ -681,7 +731,7 @@ class PagesController extends Controller
           if($file = $request->hasFile('avators')) {
             $files = $request->file('avators');
             foreach($files as $file) {
-              $mt2 = new PatientEnquiryAttachment() ;
+               $mt2 = new PatientEnquiryAttachment() ;
               $fileName = time().'_'.$file->getClientOriginalName() ;           
               $destinationPath = public_path().'/uploads/drop/' ;
               if($file->move($destinationPath,$fileName)){
