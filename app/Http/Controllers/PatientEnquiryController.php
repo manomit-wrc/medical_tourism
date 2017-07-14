@@ -99,8 +99,9 @@ class PatientEnquiryController extends Controller
          $data =$userdata[0]['avators'];
       }else{
          $data =null;
-      }     
-      return $data;
+      } 
+     
+        return $data;
     }
 
 
